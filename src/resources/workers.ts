@@ -67,10 +67,14 @@ export interface WorkerRetrieveResponse {
   workEmail: string | null;
 }
 
-export type WorkerListResponse = Array<WorkerListResponse.WorkerListResponseItem>;
+export interface WorkerListResponse {
+  data: Array<WorkerListResponse.Data>;
+
+  hasMore: boolean;
+}
 
 export namespace WorkerListResponse {
-  export interface WorkerListResponseItem {
+  export interface Data {
     /**
      * The id of the worker.
      */
@@ -121,6 +125,21 @@ export namespace WorkerListResponse {
 }
 
 export interface WorkerListParams {
+  /**
+   * The id of the worker.
+   */
+  afterId?: string;
+
+  /**
+   * The id of the worker.
+   */
+  beforeId?: string;
+
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
+
   statuses?: Array<'onboarding' | 'active' | 'offboarding' | 'inactive'>;
 
   types?: Array<'employee' | 'contractor'>;
