@@ -27,6 +27,8 @@ const client = new WarpHr({
 });
 
 const policies = await client.timeOff.policies.list();
+
+console.log(policies.data);
 ```
 
 ### Request & Response types
@@ -140,7 +142,7 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: policies, response: raw } = await client.timeOff.policies.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(policies);
+console.log(policies.data);
 ```
 
 ### Logging

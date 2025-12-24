@@ -1,6 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { Policies, type PolicyRetrieveResponse, type PolicyListResponse } from './policies';
+export {
+  Policies,
+  type PolicyRetrieveResponse,
+  type PolicyListResponse,
+  type PolicyListParams,
+} from './policies';
 export {
   TimeOff,
   type TimeOffListAssignmentsResponse,

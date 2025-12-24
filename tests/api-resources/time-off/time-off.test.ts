@@ -25,7 +25,13 @@ describe('resource timeOff', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.timeOff.listAssignments(
-        { policyIds: ['string'], workerIds: ['wrk_1234'] },
+        {
+          afterId: 'afterId',
+          beforeId: 'beforeId',
+          limit: 'limit',
+          policyIds: ['string'],
+          workerIds: ['wrk_1234'],
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WarpHr.NotFoundError);
@@ -72,8 +78,11 @@ describe('resource timeOff', () => {
     await expect(
       client.timeOff.listRequests(
         {
+          afterId: 'afterId',
+          beforeId: 'beforeId',
           endsBefore: 'endsBefore',
           endsOnOrAfter: 'endsOnOrAfter',
+          limit: 'limit',
           policyIds: ['string'],
           startsBefore: 'startsBefore',
           startsOnOrAfter: 'startsOnOrAfter',

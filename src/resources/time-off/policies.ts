@@ -10,8 +10,11 @@ export class Policies extends APIResource {
     return this._client.get(path`/v1/time_off/policies/${id}`, options);
   }
 
-  list(options?: RequestOptions): APIPromise<PolicyListResponse> {
-    return this._client.get('/v1/time_off/policies', options);
+  list(
+    query: PolicyListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<PolicyListResponse> {
+    return this._client.get('/v1/time_off/policies', { query, ...options });
   }
 }
 
@@ -41,10 +44,14 @@ export interface PolicyRetrieveResponse {
   unit: 'hour' | 'day';
 }
 
-export type PolicyListResponse = Array<PolicyListResponse.PolicyListResponseItem>;
+export interface PolicyListResponse {
+  data: Array<PolicyListResponse.Data>;
+
+  hasMore: boolean;
+}
 
 export namespace PolicyListResponse {
-  export interface PolicyListResponseItem {
+  export interface Data {
     id: string;
 
     description: string | null;
@@ -71,9 +78,21 @@ export namespace PolicyListResponse {
   }
 }
 
+export interface PolicyListParams {
+  afterId?: string;
+
+  beforeId?: string;
+
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
+}
+
 export declare namespace Policies {
   export {
     type PolicyRetrieveResponse as PolicyRetrieveResponse,
     type PolicyListResponse as PolicyListResponse,
+    type PolicyListParams as PolicyListParams,
   };
 }
