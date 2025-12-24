@@ -22,7 +22,7 @@ Types:
 Methods:
 
 - <code title="get /v1/time_off/policies/{id}">client.timeOff.policies.<a href="./src/resources/time-off/policies.ts">retrieve</a>(id) -> PolicyRetrieveResponse</code>
-- <code title="get /v1/time_off/policies">client.timeOff.policies.<a href="./src/resources/time-off/policies.ts">list</a>() -> PolicyListResponse</code>
+- <code title="get /v1/time_off/policies">client.timeOff.policies.<a href="./src/resources/time-off/policies.ts">list</a>({ ...params }) -> PolicyListResponse</code>
 
 # Workers
 

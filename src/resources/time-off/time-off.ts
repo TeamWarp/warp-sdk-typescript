@@ -2,7 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import * as PoliciesAPI from './policies';
-import { Policies, PolicyListResponse, PolicyRetrieveResponse } from './policies';
+import { Policies, PolicyListParams, PolicyListResponse, PolicyRetrieveResponse } from './policies';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
 
@@ -31,26 +31,38 @@ export class TimeOff extends APIResource {
   }
 }
 
-export type TimeOffListAssignmentsResponse =
-  Array<TimeOffListAssignmentsResponse.TimeOffListAssignmentsResponseItem>;
+export interface TimeOffListAssignmentsResponse {
+  data: Array<TimeOffListAssignmentsResponse.Data>;
+
+  hasMore: boolean;
+}
 
 export namespace TimeOffListAssignmentsResponse {
-  export interface TimeOffListAssignmentsResponseItem {
+  export interface Data {
+    id: string;
+
     /**
      * a string to be decoded into a Date
      */
     assignedAt: string;
 
-    legacyWorkerId: string;
-
     policyId: string;
+
+    /**
+     * The id of the worker.
+     */
+    workerId: string;
   }
 }
 
-export type TimeOffListBalancesResponse = Array<TimeOffListBalancesResponse.TimeOffListBalancesResponseItem>;
+export interface TimeOffListBalancesResponse {
+  data: Array<TimeOffListBalancesResponse.Data>;
+
+  hasMore: boolean;
+}
 
 export namespace TimeOffListBalancesResponse {
-  export interface TimeOffListBalancesResponseItem {
+  export interface Data {
     accruedLocked: number;
 
     accruedUnlocked: number;
@@ -67,10 +79,14 @@ export namespace TimeOffListBalancesResponse {
   }
 }
 
-export type TimeOffListRequestsResponse = Array<TimeOffListRequestsResponse.TimeOffListRequestsResponseItem>;
+export interface TimeOffListRequestsResponse {
+  data: Array<TimeOffListRequestsResponse.Data>;
+
+  hasMore: boolean;
+}
 
 export namespace TimeOffListRequestsResponse {
-  export interface TimeOffListRequestsResponseItem {
+  export interface Data {
     id: string;
 
     /**
@@ -104,6 +120,15 @@ export namespace TimeOffListRequestsResponse {
 }
 
 export interface TimeOffListAssignmentsParams {
+  afterId?: string;
+
+  beforeId?: string;
+
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
+
   policyIds?: Array<string>;
 
   workerIds?: Array<string>;
@@ -126,6 +151,10 @@ export interface TimeOffListBalancesParams {
 }
 
 export interface TimeOffListRequestsParams {
+  afterId?: string;
+
+  beforeId?: string;
+
   /**
    * a string to be decoded into a Date
    */
@@ -135,6 +164,11 @@ export interface TimeOffListRequestsParams {
    * a string to be decoded into a Date
    */
   endsOnOrAfter?: string;
+
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
 
   policyIds?: Array<string>;
 
@@ -169,5 +203,6 @@ export declare namespace TimeOff {
     Policies as Policies,
     type PolicyRetrieveResponse as PolicyRetrieveResponse,
     type PolicyListResponse as PolicyListResponse,
+    type PolicyListParams as PolicyListParams,
   };
 }

@@ -37,7 +37,14 @@ describe('resource workers', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.workers.list(
-        { statuses: ['onboarding'], types: ['employee'], workEmail: 'workEmail' },
+        {
+          afterId: 'wrk_1234',
+          beforeId: 'wrk_1234',
+          limit: 'limit',
+          statuses: ['onboarding'],
+          types: ['employee'],
+          workEmail: 'workEmail',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WarpHr.NotFoundError);
