@@ -69,6 +69,8 @@ export interface TimeOffListAssignmentsResponse {
 }
 
 export interface TimeOffListBalancesResponse {
+  id: string;
+
   accruedLocked: number;
 
   accruedUnlocked: number;
