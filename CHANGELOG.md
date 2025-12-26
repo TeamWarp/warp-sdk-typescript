@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 (2025-12-26)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([ea9020e](https://github.com/TeamWarp/warp-sdk-typescript/commit/ea9020ede4440daf459c8e7f3073b483201dce96))
+* **api:** manual updates ([775b5f0](https://github.com/TeamWarp/warp-sdk-typescript/commit/775b5f0cc7545ce3770e201bd9c1f45e53123ff4))
+
 ## 0.3.0 (2025-12-26)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.2.0...v0.3.0)
