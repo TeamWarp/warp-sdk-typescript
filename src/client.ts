@@ -14,18 +14,29 @@ import * as Opts from './internal/request-options';
 import * as qs from './internal/qs';
 import { VERSION } from './version';
 import * as Errors from './core/error';
+import * as Pagination from './core/pagination';
+import { AbstractPage, type CursorPageParams, CursorPageResponse } from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import { WorkerListParams, WorkerListResponse, WorkerRetrieveResponse, Workers } from './resources/workers';
+import {
+  WorkerListParams,
+  WorkerListResponse,
+  WorkerListResponsesCursorPage,
+  WorkerRetrieveResponse,
+  Workers,
+} from './resources/workers';
 import {
   TimeOff,
   TimeOffListAssignmentsParams,
   TimeOffListAssignmentsResponse,
+  TimeOffListAssignmentsResponsesCursorPage,
   TimeOffListBalancesParams,
   TimeOffListBalancesResponse,
+  TimeOffListBalancesResponsesCursorPage,
   TimeOffListRequestsParams,
   TimeOffListRequestsResponse,
+  TimeOffListRequestsResponsesCursorPage,
 } from './resources/time-off/time-off';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
@@ -476,6 +487,25 @@ export class WarpHr {
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
 
+  getAPIList<Item, PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>>(
+    path: string,
+    Page: new (...args: any[]) => PageClass,
+    opts?: RequestOptions,
+  ): Pagination.PagePromise<PageClass, Item> {
+    return this.requestAPIList(Page, { method: 'get', path, ...opts });
+  }
+
+  requestAPIList<
+    Item = unknown,
+    PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>,
+  >(
+    Page: new (...args: ConstructorParameters<typeof Pagination.AbstractPage>) => PageClass,
+    options: FinalRequestOptions,
+  ): Pagination.PagePromise<PageClass, Item> {
+    const request = this.makeRequest(options, null, undefined);
+    return new Pagination.PagePromise<PageClass, Item>(this as any as WarpHr, request, Page);
+  }
+
   async fetchWithTimeout(
     url: RequestInfo,
     init: RequestInit | undefined,
@@ -718,11 +748,17 @@ WarpHr.Workers = Workers;
 export declare namespace WarpHr {
   export type RequestOptions = Opts.RequestOptions;
 
+  export import CursorPage = Pagination.CursorPage;
+  export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
+
   export {
     TimeOff as TimeOff,
     type TimeOffListAssignmentsResponse as TimeOffListAssignmentsResponse,
     type TimeOffListBalancesResponse as TimeOffListBalancesResponse,
     type TimeOffListRequestsResponse as TimeOffListRequestsResponse,
+    type TimeOffListAssignmentsResponsesCursorPage as TimeOffListAssignmentsResponsesCursorPage,
+    type TimeOffListBalancesResponsesCursorPage as TimeOffListBalancesResponsesCursorPage,
+    type TimeOffListRequestsResponsesCursorPage as TimeOffListRequestsResponsesCursorPage,
     type TimeOffListAssignmentsParams as TimeOffListAssignmentsParams,
     type TimeOffListBalancesParams as TimeOffListBalancesParams,
     type TimeOffListRequestsParams as TimeOffListRequestsParams,
@@ -732,6 +768,7 @@ export declare namespace WarpHr {
     Workers as Workers,
     type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerListResponse as WorkerListResponse,
+    type WorkerListResponsesCursorPage as WorkerListResponsesCursorPage,
     type WorkerListParams as WorkerListParams,
   };
 }

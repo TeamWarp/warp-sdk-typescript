@@ -2,8 +2,14 @@
 
 import { APIResource } from '../../core/resource';
 import * as PoliciesAPI from './policies';
-import { Policies, PolicyListParams, PolicyListResponse, PolicyRetrieveResponse } from './policies';
-import { APIPromise } from '../../core/api-promise';
+import {
+  Policies,
+  PolicyListParams,
+  PolicyListResponse,
+  PolicyListResponsesCursorPage,
+  PolicyRetrieveResponse,
+} from './policies';
+import { CursorPage, type CursorPageParams, PagePromise } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
 
 export class TimeOff extends APIResource {
@@ -12,118 +18,105 @@ export class TimeOff extends APIResource {
   listAssignments(
     query: TimeOffListAssignmentsParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<TimeOffListAssignmentsResponse> {
-    return this._client.get('/v1/time_off/assignments', { query, ...options });
+  ): PagePromise<TimeOffListAssignmentsResponsesCursorPage, TimeOffListAssignmentsResponse> {
+    return this._client.getAPIList('/v1/time_off/assignments', CursorPage<TimeOffListAssignmentsResponse>, {
+      query,
+      ...options,
+    });
   }
 
   listBalances(
     query: TimeOffListBalancesParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<TimeOffListBalancesResponse> {
-    return this._client.get('/v1/time_off/balances', { query, ...options });
+  ): PagePromise<TimeOffListBalancesResponsesCursorPage, TimeOffListBalancesResponse> {
+    return this._client.getAPIList('/v1/time_off/balances', CursorPage<TimeOffListBalancesResponse>, {
+      query,
+      ...options,
+    });
   }
 
   listRequests(
     query: TimeOffListRequestsParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<TimeOffListRequestsResponse> {
-    return this._client.get('/v1/time_off/requests', { query, ...options });
+  ): PagePromise<TimeOffListRequestsResponsesCursorPage, TimeOffListRequestsResponse> {
+    return this._client.getAPIList('/v1/time_off/requests', CursorPage<TimeOffListRequestsResponse>, {
+      query,
+      ...options,
+    });
   }
 }
+
+export type TimeOffListAssignmentsResponsesCursorPage = CursorPage<TimeOffListAssignmentsResponse>;
+
+export type TimeOffListBalancesResponsesCursorPage = CursorPage<TimeOffListBalancesResponse>;
+
+export type TimeOffListRequestsResponsesCursorPage = CursorPage<TimeOffListRequestsResponse>;
 
 export interface TimeOffListAssignmentsResponse {
-  data: Array<TimeOffListAssignmentsResponse.Data>;
+  id: string;
 
-  hasMore: boolean;
-}
+  /**
+   * a string to be decoded into a Date
+   */
+  assignedAt: string;
 
-export namespace TimeOffListAssignmentsResponse {
-  export interface Data {
-    id: string;
+  policyId: string;
 
-    /**
-     * a string to be decoded into a Date
-     */
-    assignedAt: string;
-
-    policyId: string;
-
-    /**
-     * The id of the worker.
-     */
-    workerId: string;
-  }
+  /**
+   * The id of the worker.
+   */
+  workerId: string;
 }
 
 export interface TimeOffListBalancesResponse {
-  data: Array<TimeOffListBalancesResponse.Data>;
+  accruedLocked: number;
 
-  hasMore: boolean;
-}
+  accruedUnlocked: number;
 
-export namespace TimeOffListBalancesResponse {
-  export interface Data {
-    accruedLocked: number;
+  available: number;
 
-    accruedUnlocked: number;
+  holds: number;
 
-    available: number;
+  legacyWorkerId: string;
 
-    holds: number;
+  policyId: string;
 
-    legacyWorkerId: string;
-
-    policyId: string;
-
-    used: number;
-  }
+  used: number;
 }
 
 export interface TimeOffListRequestsResponse {
-  data: Array<TimeOffListRequestsResponse.Data>;
+  id: string;
 
-  hasMore: boolean;
+  /**
+   * a string to be decoded into a Date
+   */
+  createdAt: string;
+
+  /**
+   * a string to be decoded into a Date
+   */
+  endAt: string;
+
+  reason: string | null;
+
+  requestedMinutes: number;
+
+  /**
+   * a string to be decoded into a Date
+   */
+  startAt: string;
+
+  status: 'pending' | 'approved' | 'denied';
+
+  timeOffPolicyId: string;
+
+  /**
+   * The id of the worker.
+   */
+  workerId: string;
 }
 
-export namespace TimeOffListRequestsResponse {
-  export interface Data {
-    id: string;
-
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: string;
-
-    /**
-     * a string to be decoded into a Date
-     */
-    endAt: string;
-
-    reason: string | null;
-
-    requestedMinutes: number;
-
-    /**
-     * a string to be decoded into a Date
-     */
-    startAt: string;
-
-    status: 'pending' | 'approved' | 'denied';
-
-    timeOffPolicyId: string;
-
-    /**
-     * The id of the worker.
-     */
-    workerId: string;
-  }
-}
-
-export interface TimeOffListAssignmentsParams {
-  afterId?: string;
-
-  beforeId?: string;
-
+export interface TimeOffListAssignmentsParams extends CursorPageParams {
   /**
    * a number less than or equal to 100
    */
@@ -134,11 +127,7 @@ export interface TimeOffListAssignmentsParams {
   workerIds?: Array<string>;
 }
 
-export interface TimeOffListBalancesParams {
-  afterId?: string;
-
-  beforeId?: string;
-
+export interface TimeOffListBalancesParams extends CursorPageParams {
   /**
    * a string to be decoded into a Date
    */
@@ -159,11 +148,7 @@ export interface TimeOffListBalancesParams {
   workerIds?: Array<string>;
 }
 
-export interface TimeOffListRequestsParams {
-  afterId?: string;
-
-  beforeId?: string;
-
+export interface TimeOffListRequestsParams extends CursorPageParams {
   /**
    * a string to be decoded into a Date
    */
@@ -203,6 +188,9 @@ export declare namespace TimeOff {
     type TimeOffListAssignmentsResponse as TimeOffListAssignmentsResponse,
     type TimeOffListBalancesResponse as TimeOffListBalancesResponse,
     type TimeOffListRequestsResponse as TimeOffListRequestsResponse,
+    type TimeOffListAssignmentsResponsesCursorPage as TimeOffListAssignmentsResponsesCursorPage,
+    type TimeOffListBalancesResponsesCursorPage as TimeOffListBalancesResponsesCursorPage,
+    type TimeOffListRequestsResponsesCursorPage as TimeOffListRequestsResponsesCursorPage,
     type TimeOffListAssignmentsParams as TimeOffListAssignmentsParams,
     type TimeOffListBalancesParams as TimeOffListBalancesParams,
     type TimeOffListRequestsParams as TimeOffListRequestsParams,
@@ -212,6 +200,7 @@ export declare namespace TimeOff {
     Policies as Policies,
     type PolicyRetrieveResponse as PolicyRetrieveResponse,
     type PolicyListResponse as PolicyListResponse,
+    type PolicyListResponsesCursorPage as PolicyListResponsesCursorPage,
     type PolicyListParams as PolicyListParams,
   };
 }

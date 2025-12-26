@@ -8,9 +8,9 @@ Types:
 
 Methods:
 
-- <code title="get /v1/time_off/assignments">client.timeOff.<a href="./src/resources/time-off/time-off.ts">listAssignments</a>({ ...params }) -> TimeOffListAssignmentsResponse</code>
-- <code title="get /v1/time_off/balances">client.timeOff.<a href="./src/resources/time-off/time-off.ts">listBalances</a>({ ...params }) -> TimeOffListBalancesResponse</code>
-- <code title="get /v1/time_off/requests">client.timeOff.<a href="./src/resources/time-off/time-off.ts">listRequests</a>({ ...params }) -> TimeOffListRequestsResponse</code>
+- <code title="get /v1/time_off/assignments">client.timeOff.<a href="./src/resources/time-off/time-off.ts">listAssignments</a>({ ...params }) -> TimeOffListAssignmentsResponsesCursorPage</code>
+- <code title="get /v1/time_off/balances">client.timeOff.<a href="./src/resources/time-off/time-off.ts">listBalances</a>({ ...params }) -> TimeOffListBalancesResponsesCursorPage</code>
+- <code title="get /v1/time_off/requests">client.timeOff.<a href="./src/resources/time-off/time-off.ts">listRequests</a>({ ...params }) -> TimeOffListRequestsResponsesCursorPage</code>
 
 ## Policies
 
@@ -22,7 +22,7 @@ Types:
 Methods:
 
 - <code title="get /v1/time_off/policies/{id}">client.timeOff.policies.<a href="./src/resources/time-off/policies.ts">retrieve</a>(id) -> PolicyRetrieveResponse</code>
-- <code title="get /v1/time_off/policies">client.timeOff.policies.<a href="./src/resources/time-off/policies.ts">list</a>({ ...params }) -> PolicyListResponse</code>
+- <code title="get /v1/time_off/policies">client.timeOff.policies.<a href="./src/resources/time-off/policies.ts">list</a>({ ...params }) -> PolicyListResponsesCursorPage</code>
 
 # Workers
 
@@ -34,4 +34,4 @@ Types:
 Methods:
 
 - <code title="get /v1/workers/{id}">client.workers.<a href="./src/resources/workers.ts">retrieve</a>(id) -> WorkerRetrieveResponse</code>
-- <code title="get /v1/workers">client.workers.<a href="./src/resources/workers.ts">list</a>({ ...params }) -> WorkerListResponse</code>
+- <code title="get /v1/workers">client.workers.<a href="./src/resources/workers.ts">list</a>({ ...params }) -> WorkerListResponsesCursorPage</code>
