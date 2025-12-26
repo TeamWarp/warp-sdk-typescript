@@ -135,10 +135,19 @@ export interface TimeOffListAssignmentsParams {
 }
 
 export interface TimeOffListBalancesParams {
+  afterId?: string;
+
+  beforeId?: string;
+
   /**
    * a string to be decoded into a Date
    */
   endDate?: string;
+
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
 
   policyIds?: Array<string>;
 
