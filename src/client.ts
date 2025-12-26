@@ -53,7 +53,7 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['WARP_HR_API_KEY'].
+   * Defaults to process.env['WARP_API_KEY'].
    */
   apiKey?: string | undefined;
 
@@ -147,7 +147,7 @@ export class WarpHr {
   /**
    * API Client for interfacing with the Warp Hr API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['WARP_HR_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['WARP_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['WARP_HR_BASE_URL'] ?? https://api.joinwarp.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -158,12 +158,12 @@ export class WarpHr {
    */
   constructor({
     baseURL = readEnv('WARP_HR_BASE_URL'),
-    apiKey = readEnv('WARP_HR_API_KEY'),
+    apiKey = readEnv('WARP_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.WarpHrError(
-        "The WARP_HR_API_KEY environment variable is missing or empty; either provide it, or instantiate the WarpHr client with an apiKey option, like new WarpHr({ apiKey: 'My API Key' }).",
+        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the WarpHr client with an apiKey option, like new WarpHr({ apiKey: 'My API Key' }).",
       );
     }
 
