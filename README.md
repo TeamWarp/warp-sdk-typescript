@@ -26,9 +26,10 @@ const client = new WarpHr({
   apiKey: process.env['WARP_HR_API_KEY'], // This is the default and can be omitted
 });
 
-const policies = await client.timeOff.policies.list();
+const page = await client.timeOff.policies.list();
+const policyListResponse = page.data[0];
 
-console.log(policies.data);
+console.log(policyListResponse.id);
 ```
 
 ### Request & Response types
@@ -43,7 +44,7 @@ const client = new WarpHr({
   apiKey: process.env['WARP_HR_API_KEY'], // This is the default and can be omitted
 });
 
-const policies: WarpHr.TimeOff.PolicyListResponse = await client.timeOff.policies.list();
+const [policyListResponse]: [WarpHr.TimeOff.PolicyListResponse] = await client.timeOff.policies.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -56,7 +57,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-const policies = await client.timeOff.policies.list().catch(async (err) => {
+const page = await client.timeOff.policies.list().catch(async (err) => {
   if (err instanceof WarpHr.APIError) {
     console.log(err.status); // 400
     console.log(err.name); // BadRequestError
@@ -122,6 +123,37 @@ On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
+## Auto-pagination
+
+List methods in the WarpHr API are paginated.
+You can use the `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllPolicyListResponses(params) {
+  const allPolicyListResponses = [];
+  // Automatically fetches more pages as needed.
+  for await (const policyListResponse of client.timeOff.policies.list()) {
+    allPolicyListResponses.push(policyListResponse);
+  }
+  return allPolicyListResponses;
+}
+```
+
+Alternatively, you can request a single page at a time:
+
+```ts
+let page = await client.timeOff.policies.list();
+for (const policyListResponse of page.data) {
+  console.log(policyListResponse);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = await page.getNextPage();
+  // ...
+}
+```
+
 ## Advanced Usage
 
 ### Accessing raw Response data (e.g., headers)
@@ -140,9 +172,11 @@ const response = await client.timeOff.policies.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: policies, response: raw } = await client.timeOff.policies.list().withResponse();
+const { data: page, response: raw } = await client.timeOff.policies.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(policies.data);
+for await (const policyListResponse of page) {
+  console.log(policyListResponse.id);
+}
 ```
 
 ### Logging

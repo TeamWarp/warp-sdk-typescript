@@ -5,6 +5,7 @@ export {
   type PolicyRetrieveResponse,
   type PolicyListResponse,
   type PolicyListParams,
+  type PolicyListResponsesCursorPage,
 } from './policies';
 export {
   TimeOff,
@@ -14,4 +15,7 @@ export {
   type TimeOffListAssignmentsParams,
   type TimeOffListBalancesParams,
   type TimeOffListRequestsParams,
+  type TimeOffListAssignmentsResponsesCursorPage,
+  type TimeOffListBalancesResponsesCursorPage,
+  type TimeOffListRequestsResponsesCursorPage,
 } from './time-off';

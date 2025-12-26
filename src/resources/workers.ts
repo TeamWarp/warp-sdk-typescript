@@ -2,6 +2,7 @@
 
 import { APIResource } from '../core/resource';
 import { APIPromise } from '../core/api-promise';
+import { CursorPage, type CursorPageParams, PagePromise } from '../core/pagination';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -13,10 +14,12 @@ export class Workers extends APIResource {
   list(
     query: WorkerListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<WorkerListResponse> {
-    return this._client.get('/v1/workers', { query, ...options });
+  ): PagePromise<WorkerListResponsesCursorPage, WorkerListResponse> {
+    return this._client.getAPIList('/v1/workers', CursorPage<WorkerListResponse>, { query, ...options });
   }
 }
+
+export type WorkerListResponsesCursorPage = CursorPage<WorkerListResponse>;
 
 export interface WorkerRetrieveResponse {
   /**
@@ -68,73 +71,55 @@ export interface WorkerRetrieveResponse {
 }
 
 export interface WorkerListResponse {
-  data: Array<WorkerListResponse.Data>;
-
-  hasMore: boolean;
-}
-
-export namespace WorkerListResponse {
-  export interface Data {
-    /**
-     * The id of the worker.
-     */
-    id: string;
-
-    businessName: string | null;
-
-    /**
-     * The "ui" name of a worker. If it's a business contractor business name is used.
-     * Otherwise we default to preferred name, then first-last.
-     */
-    displayName: string;
-
-    /**
-     * An email with a reasonably valid regex (shamelessly taken from zod)
-     */
-    email: string;
-
-    /**
-     * A date string in the form YYYY-MM-DD
-     */
-    endDate: string | null;
-
-    firstName: string;
-
-    isBusiness: boolean | null;
-
-    lastName: string;
-
-    position: string;
-
-    preferredName: string | null;
-
-    /**
-     * A date string in the form YYYY-MM-DD
-     */
-    startDate: string;
-
-    status: 'onboarding' | 'active' | 'offboarding' | 'inactive';
-
-    type: 'employee' | 'contractor';
-
-    /**
-     * An email with a reasonably valid regex (shamelessly taken from zod)
-     */
-    workEmail: string | null;
-  }
-}
-
-export interface WorkerListParams {
   /**
    * The id of the worker.
    */
-  afterId?: string;
+  id: string;
+
+  businessName: string | null;
 
   /**
-   * The id of the worker.
+   * The "ui" name of a worker. If it's a business contractor business name is used.
+   * Otherwise we default to preferred name, then first-last.
    */
-  beforeId?: string;
+  displayName: string;
 
+  /**
+   * An email with a reasonably valid regex (shamelessly taken from zod)
+   */
+  email: string;
+
+  /**
+   * A date string in the form YYYY-MM-DD
+   */
+  endDate: string | null;
+
+  firstName: string;
+
+  isBusiness: boolean | null;
+
+  lastName: string;
+
+  position: string;
+
+  preferredName: string | null;
+
+  /**
+   * A date string in the form YYYY-MM-DD
+   */
+  startDate: string;
+
+  status: 'onboarding' | 'active' | 'offboarding' | 'inactive';
+
+  type: 'employee' | 'contractor';
+
+  /**
+   * An email with a reasonably valid regex (shamelessly taken from zod)
+   */
+  workEmail: string | null;
+}
+
+export interface WorkerListParams extends CursorPageParams {
   /**
    * a number less than or equal to 100
    */
@@ -151,6 +136,7 @@ export declare namespace Workers {
   export {
     type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerListResponse as WorkerListResponse,
+    type WorkerListResponsesCursorPage as WorkerListResponsesCursorPage,
     type WorkerListParams as WorkerListParams,
   };
 }
