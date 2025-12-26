@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 (2025-12-26)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([b631ad9](https://github.com/TeamWarp/warp-sdk-typescript/commit/b631ad9d2e27c422838a8ebebca4c43a73b5517a))
+* **api:** pagination configuration ([deb6f49](https://github.com/TeamWarp/warp-sdk-typescript/commit/deb6f49681b2b3c1c417e6866ad03f8ce2878fe8))
+
 ## 0.2.0 (2025-12-26)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.1.0...v0.2.0)
