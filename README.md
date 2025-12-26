@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import WarpHr from 'warp-hr';
 
 const client = new WarpHr({
-  apiKey: process.env['WARP_HR_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted
 });
 
 const page = await client.timeOff.policies.list();
@@ -41,7 +41,7 @@ This library includes TypeScript definitions for all request params and response
 import WarpHr from 'warp-hr';
 
 const client = new WarpHr({
-  apiKey: process.env['WARP_HR_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted
 });
 
 const [policyListResponse]: [WarpHr.TimeOff.PolicyListResponse] = await client.timeOff.policies.list();
