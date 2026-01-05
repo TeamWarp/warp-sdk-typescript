@@ -7,10 +7,16 @@ import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
 export class Workers extends APIResource {
+  /**
+   * Get a specific worker by id.
+   */
   retrieve(id: string, options?: RequestOptions): APIPromise<WorkerRetrieveResponse> {
     return this._client.get(path`/v1/workers/${id}`, options);
   }
 
+  /**
+   * List all workers. Workers includ
+   */
   list(
     query: WorkerListParams | null | undefined = {},
     options?: RequestOptions,

@@ -7,10 +7,16 @@ import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
 export class Policies extends APIResource {
+  /**
+   * Get a specific time off policy by id
+   */
   retrieve(id: string, options?: RequestOptions): APIPromise<PolicyRetrieveResponse> {
     return this._client.get(path`/v1/time_off/policies/${id}`, options);
   }
 
+  /**
+   * Get the time off policies for your company
+   */
   list(
     query: PolicyListParams | null | undefined = {},
     options?: RequestOptions,
@@ -25,6 +31,9 @@ export class Policies extends APIResource {
 export type PolicyListResponsesCursorPage = CursorPage<PolicyListResponse>;
 
 export interface PolicyRetrieveResponse {
+  /**
+   * a string starting with "top\_"
+   */
   id: string;
 
   description: string | null;
@@ -43,6 +52,9 @@ export interface PolicyRetrieveResponse {
 
   schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited';
 
+  /**
+   * a string starting with "tot\_"
+   */
   timeOffTypeId: string;
 
   timeOffTypeName: string;
@@ -51,6 +63,9 @@ export interface PolicyRetrieveResponse {
 }
 
 export interface PolicyListResponse {
+  /**
+   * a string starting with "top\_"
+   */
   id: string;
 
   description: string | null;
@@ -69,6 +84,9 @@ export interface PolicyListResponse {
 
   schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited';
 
+  /**
+   * a string starting with "tot\_"
+   */
   timeOffTypeId: string;
 
   timeOffTypeName: string;
