@@ -15,6 +15,11 @@ import { RequestOptions } from '../../internal/request-options';
 export class TimeOff extends APIResource {
   policies: PoliciesAPI.Policies = new PoliciesAPI.Policies(this._client);
 
+  /**
+   * Time off assignments are mappings between workers and time off policies. Useful
+   * for finding out which policies a worker is assigned to, or which workers are
+   * assigned to a given policy.
+   */
   listAssignments(
     query: TimeOffListAssignmentsParams | null | undefined = {},
     options?: RequestOptions,
@@ -25,6 +30,9 @@ export class TimeOff extends APIResource {
     });
   }
 
+  /**
+   * Get worker remaining time-off balances.
+   */
   listBalances(
     query: TimeOffListBalancesParams | null | undefined = {},
     options?: RequestOptions,
@@ -35,6 +43,9 @@ export class TimeOff extends APIResource {
     });
   }
 
+  /**
+   * Get the time off requests that workers in your company have made.
+   */
   listRequests(
     query: TimeOffListRequestsParams | null | undefined = {},
     options?: RequestOptions,
@@ -60,6 +71,9 @@ export interface TimeOffListAssignmentsResponse {
    */
   assignedAt: string;
 
+  /**
+   * a string starting with "top\_"
+   */
   policyId: string;
 
   /**
@@ -81,6 +95,9 @@ export interface TimeOffListBalancesResponse {
 
   legacyWorkerId: string;
 
+  /**
+   * a string starting with "top\_"
+   */
   policyId: string;
 
   used: number;
@@ -110,6 +127,9 @@ export interface TimeOffListRequestsResponse {
 
   status: 'pending' | 'approved' | 'denied';
 
+  /**
+   * a string starting with "top\_"
+   */
   timeOffPolicyId: string;
 
   /**
