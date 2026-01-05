@@ -113,6 +113,11 @@ export interface TimeOffListRequestsResponse {
   timeOffPolicyId: string;
 
   /**
+   * The time zone that the worker is requesting time off in.
+   */
+  timeZone: string | null;
+
+  /**
    * The id of the worker.
    */
   workerId: string;
