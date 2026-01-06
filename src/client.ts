@@ -232,7 +232,7 @@ export class WarpHr {
   }
 
   protected stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { arrayFormat: 'comma' });
+    return qs.stringify(query, { arrayFormat: 'repeat' });
   }
 
   private getUserAgent(): string {
