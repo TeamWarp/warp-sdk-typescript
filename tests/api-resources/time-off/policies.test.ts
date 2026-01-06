@@ -10,7 +10,7 @@ const client = new WarpHr({
 describe('resource policies', () => {
   // Prism tests are disabled
   test.skip('retrieve', async () => {
-    const responsePromise = client.timeOff.policies.retrieve('id');
+    const responsePromise = client.timeOff.policies.retrieve('top_1234');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -37,7 +37,7 @@ describe('resource policies', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.timeOff.policies.list(
-        { afterId: 'afterId', beforeId: 'beforeId', limit: 'limit' },
+        { afterId: 'top_1234', beforeId: 'top_1234', limit: 'limit' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WarpHr.NotFoundError);

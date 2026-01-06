@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0 (2026-01-06)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** api update ([95bb8af](https://github.com/TeamWarp/warp-sdk-typescript/commit/95bb8afac6cddeed767934feaa42eee3ddbf74f8))
+
+
+### Bug Fixes
+
+* **api:** query settings array format repeat ([b171d95](https://github.com/TeamWarp/warp-sdk-typescript/commit/b171d9587efa085b1065b9e33498dc41dd15c4be))
+
 ## 0.5.0 (2026-01-05)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.4.0...v0.5.0)
