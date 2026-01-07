@@ -37,7 +37,11 @@ describe('resource policies', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.timeOff.policies.list(
-        { afterId: 'top_1234', beforeId: 'top_1234', limit: 'limit' },
+        {
+          afterId: 'top_1234',
+          beforeId: 'top_1234',
+          limit: 'limit',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(WarpHr.NotFoundError);
