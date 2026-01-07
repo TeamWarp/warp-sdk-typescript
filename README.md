@@ -44,7 +44,8 @@ const client = new WarpHr({
   apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted
 });
 
-const [policyListResponse]: [WarpHr.TimeOff.PolicyListResponse] = await client.timeOff.policies.list();
+const [policyListResponse]: [WarpHr.TimeOff.PolicyListResponse] =
+  await client.timeOff.policies.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
