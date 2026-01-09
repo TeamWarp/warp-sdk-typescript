@@ -68,6 +68,11 @@ export interface WorkerRetrieveResponse {
 
   status: 'onboarding' | 'active' | 'offboarding' | 'inactive';
 
+  /**
+   * The IANA timezone of the worker (e.g., America/New_York).
+   */
+  timeZone: string | null;
+
   type: 'employee' | 'contractor';
 
   /**
@@ -116,6 +121,11 @@ export interface WorkerListResponse {
   startDate: string;
 
   status: 'onboarding' | 'active' | 'offboarding' | 'inactive';
+
+  /**
+   * The IANA timezone of the worker (e.g., America/New_York).
+   */
+  timeZone: string | null;
 
   type: 'employee' | 'contractor';
 
