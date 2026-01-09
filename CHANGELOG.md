@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.7.0 (2026-01-09)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([a7141ab](https://github.com/TeamWarp/warp-sdk-typescript/commit/a7141ab4a82e94f0c80f8ed42b58eac3b8d47a1a))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([1c73c3d](https://github.com/TeamWarp/warp-sdk-typescript/commit/1c73c3d81f172c98a3a8f3878a3ad1348d606db6))
+
 ## 0.6.0 (2026-01-06)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.5.0...v0.6.0)
