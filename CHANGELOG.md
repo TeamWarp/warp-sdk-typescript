@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.7.1 (2026-01-17)
+
+Full Changelog: [v0.7.0...v0.7.1](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.7.0...v0.7.1)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([5bc4791](https://github.com/TeamWarp/warp-sdk-typescript/commit/5bc4791eee1af12a367d7389ac6de00844533a00))
+* **internal:** update lock file ([51232f5](https://github.com/TeamWarp/warp-sdk-typescript/commit/51232f5858352f99b211ecc6ebe4ac52b8f1bdf0))
+* **internal:** upgrade babel, qs, js-yaml ([d3679bf](https://github.com/TeamWarp/warp-sdk-typescript/commit/d3679bfd7a2a42d604d1226a3d005a6cde6f417f))
+* **internal:** upgrade brace-expansion and @babel/helpers ([e0a6c06](https://github.com/TeamWarp/warp-sdk-typescript/commit/e0a6c06ea13d7e45991831f641f5adc76ab9e4ba))
+
 ## 0.7.0 (2026-01-09)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.6.0...v0.7.0)
