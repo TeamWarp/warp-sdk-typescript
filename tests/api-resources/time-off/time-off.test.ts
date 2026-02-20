@@ -8,7 +8,7 @@ const client = new WarpHr({
 });
 
 describe('resource timeOff', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listAssignments', async () => {
     const responsePromise = client.timeOff.listAssignments();
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource timeOff', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listAssignments: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -37,7 +37,7 @@ describe('resource timeOff', () => {
     ).rejects.toThrow(WarpHr.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listBalances', async () => {
     const responsePromise = client.timeOff.listBalances();
     const rawResponse = await responsePromise.asResponse();
@@ -49,7 +49,7 @@ describe('resource timeOff', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listBalances: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -68,7 +68,7 @@ describe('resource timeOff', () => {
     ).rejects.toThrow(WarpHr.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listRequests', async () => {
     const responsePromise = client.timeOff.listRequests();
     const rawResponse = await responsePromise.asResponse();
@@ -80,7 +80,7 @@ describe('resource timeOff', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listRequests: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
