@@ -60,7 +60,7 @@ $ yarn link warp-hr
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global warp-hr
+$ pnpm link --global warp-hr
 ```
 
 ## Running tests
