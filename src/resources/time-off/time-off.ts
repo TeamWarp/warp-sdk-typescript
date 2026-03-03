@@ -12,6 +12,9 @@ import {
 import { CursorPage, type CursorPageParams, PagePromise } from '../../core/pagination';
 import { RequestOptions } from '../../internal/request-options';
 
+/**
+ * Endpoints for worker time off management. See time off requests, which workers are assigned to which policies, or worker remaining balances.
+ */
 export class TimeOff extends APIResource {
   policies: PoliciesAPI.Policies = new PoliciesAPI.Policies(this._client);
 

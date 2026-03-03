@@ -6,6 +6,9 @@ import { CursorPage, type CursorPageParams, PagePromise } from '../core/paginati
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * Endpoints for worker management. "Wokers" include anyone employed by your company, whether US or international, full-time employees or contractors.
+ */
 export class Workers extends APIResource {
   /**
    * Get a specific worker by id.

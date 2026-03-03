@@ -6,6 +6,9 @@ import { CursorPage, type CursorPageParams, PagePromise } from '../../core/pagin
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Endpoints for worker time off management. See time off requests, which workers are assigned to which policies, or worker remaining balances.
+ */
 export class Policies extends APIResource {
   /**
    * Get a specific time off policy by id
