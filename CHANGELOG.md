@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.8.0 (2026-03-09)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** api update ([4fd9214](https://github.com/TeamWarp/warp-sdk-typescript/commit/4fd921447c9a244f7ff29a3b0c5ef1b5e9057943))
+
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([0a20277](https://github.com/TeamWarp/warp-sdk-typescript/commit/0a2027791f3ea781c94410ece36aa43970166032))
+* **client:** avoid removing abort listener too early ([6334b05](https://github.com/TeamWarp/warp-sdk-typescript/commit/6334b058dc22ad755927ad17c8f9453215787fb8))
+* **client:** preserve URL params already embedded in path ([dbeef70](https://github.com/TeamWarp/warp-sdk-typescript/commit/dbeef7072a9991875cce70f08c19602a3476c52c))
+* **docs/contributing:** correct pnpm link command ([ba2125e](https://github.com/TeamWarp/warp-sdk-typescript/commit/ba2125e0c1949983495dec1a357ee70154a1b9b2))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([1a21033](https://github.com/TeamWarp/warp-sdk-typescript/commit/1a21033b3b89bb2bae665f1955495f827eafe5e1))
+* **ci:** upgrade `actions/github-script` ([f8bb3d6](https://github.com/TeamWarp/warp-sdk-typescript/commit/f8bb3d602a19a79c1216da53affbd4df23c86a17))
+* **client:** do not parse responses with empty content-length ([6d95c4f](https://github.com/TeamWarp/warp-sdk-typescript/commit/6d95c4f77551754af115784737d2c589418d4731))
+* **client:** restructure abort controller binding ([509a391](https://github.com/TeamWarp/warp-sdk-typescript/commit/509a391ae56e78fe6a7f6526efe8a791e7c2dd10))
+* **internal/client:** fix form-urlencoded requests ([3f8035c](https://github.com/TeamWarp/warp-sdk-typescript/commit/3f8035cc0ffd99625e7426fd40c373d824e06747))
+* **internal:** avoid type checking errors with ts-reset ([8721da6](https://github.com/TeamWarp/warp-sdk-typescript/commit/8721da6794454aaad9d71636c87a61568dab1e3c))
+* **internal:** codegen related update ([2d54d63](https://github.com/TeamWarp/warp-sdk-typescript/commit/2d54d631896105a77d3ad892825de04ea524a315))
+* **internal:** codegen related update ([ad0e598](https://github.com/TeamWarp/warp-sdk-typescript/commit/ad0e59898a040d99d27034227ace52850d4aeb61))
+* **internal:** fix pagination internals not accepting option promises ([9b48950](https://github.com/TeamWarp/warp-sdk-typescript/commit/9b4895093468ea7c404d9d22ff6d87f12a7eba69))
+* **internal:** move stringifyQuery implementation to internal function ([c83ef1d](https://github.com/TeamWarp/warp-sdk-typescript/commit/c83ef1d51da255652f6b3e5437159d441026f8df))
+* **internal:** remove mock server code ([91018fa](https://github.com/TeamWarp/warp-sdk-typescript/commit/91018faca5e333f549815977fc9094facea756a9))
+* **internal:** update `actions/checkout` version ([5bc4791](https://github.com/TeamWarp/warp-sdk-typescript/commit/5bc4791eee1af12a367d7389ac6de00844533a00))
+* **internal:** update lock file ([51232f5](https://github.com/TeamWarp/warp-sdk-typescript/commit/51232f5858352f99b211ecc6ebe4ac52b8f1bdf0))
+* **internal:** upgrade babel, qs, js-yaml ([d3679bf](https://github.com/TeamWarp/warp-sdk-typescript/commit/d3679bfd7a2a42d604d1226a3d005a6cde6f417f))
+* **internal:** upgrade brace-expansion and @babel/helpers ([e0a6c06](https://github.com/TeamWarp/warp-sdk-typescript/commit/e0a6c06ea13d7e45991831f641f5adc76ab9e4ba))
+* **internal:** upgrade pnpm ([3844311](https://github.com/TeamWarp/warp-sdk-typescript/commit/38443118947be431b8c1aab5987f04a019a37d66))
+* **internal:** upgrade pnpm version ([9317175](https://github.com/TeamWarp/warp-sdk-typescript/commit/9317175831dc7419fb662062135cb4a7b212d9de))
+* update mock server docs ([64c5bcd](https://github.com/TeamWarp/warp-sdk-typescript/commit/64c5bcd7052d0afb0721fca3a52f263944d3eef5))
+
 ## 0.7.0 (2026-01-09)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.6.0...v0.7.0)
