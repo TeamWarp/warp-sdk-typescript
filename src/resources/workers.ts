@@ -39,6 +39,11 @@ export interface WorkerRetrieveResponse {
   businessName: string | null;
 
   /**
+   * The department the worker belongs to, or null if unassigned.
+   */
+  department: WorkerRetrieveResponse.Department | null;
+
+  /**
    * The "ui" name of a worker. If it's a business contractor business name is used.
    * Otherwise we default to preferred name, then first-last.
    */
@@ -84,6 +89,20 @@ export interface WorkerRetrieveResponse {
   workEmail: string | null;
 }
 
+export namespace WorkerRetrieveResponse {
+  /**
+   * The department the worker belongs to, or null if unassigned.
+   */
+  export interface Department {
+    /**
+     * The tag of the department
+     */
+    id: string;
+
+    name: string;
+  }
+}
+
 export interface WorkerListResponse {
   /**
    * The id of the worker.
@@ -91,6 +110,11 @@ export interface WorkerListResponse {
   id: string;
 
   businessName: string | null;
+
+  /**
+   * The department the worker belongs to, or null if unassigned.
+   */
+  department: WorkerListResponse.Department | null;
 
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used.
@@ -136,6 +160,20 @@ export interface WorkerListResponse {
    * An email with a reasonably valid regex (shamelessly taken from zod)
    */
   workEmail: string | null;
+}
+
+export namespace WorkerListResponse {
+  /**
+   * The department the worker belongs to, or null if unassigned.
+   */
+  export interface Department {
+    /**
+     * The tag of the department
+     */
+    id: string;
+
+    name: string;
+  }
 }
 
 export interface WorkerListParams extends CursorPageParams {
