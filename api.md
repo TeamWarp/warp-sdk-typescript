@@ -35,3 +35,17 @@ Methods:
 
 - <code title="get /v1/workers/{id}">client.workers.<a href="./src/resources/workers.ts">retrieve</a>(id) -> WorkerRetrieveResponse</code>
 - <code title="get /v1/workers">client.workers.<a href="./src/resources/workers.ts">list</a>({ ...params }) -> WorkerListResponsesCursorPage</code>
+
+# Departments
+
+Types:
+
+- <code><a href="./src/resources/departments.ts">DepartmentCreateResponse</a></code>
+- <code><a href="./src/resources/departments.ts">DepartmentUpdateResponse</a></code>
+- <code><a href="./src/resources/departments.ts">DepartmentListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/departments">client.departments.<a href="./src/resources/departments.ts">create</a>({ ...params }) -> DepartmentCreateResponse</code>
+- <code title="patch /v1/departments/{id}">client.departments.<a href="./src/resources/departments.ts">update</a>(id, { ...params }) -> DepartmentUpdateResponse</code>
+- <code title="get /v1/departments">client.departments.<a href="./src/resources/departments.ts">list</a>({ ...params }) -> DepartmentListResponsesCursorPage</code>
