@@ -20,6 +20,16 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import {
+  DepartmentCreateParams,
+  DepartmentCreateResponse,
+  DepartmentListParams,
+  DepartmentListResponse,
+  DepartmentListResponsesCursorPage,
+  DepartmentUpdateParams,
+  DepartmentUpdateResponse,
+  Departments,
+} from './resources/departments';
+import {
   WorkerListParams,
   WorkerListResponse,
   WorkerListResponsesCursorPage,
@@ -767,10 +777,15 @@ export class WarpHr {
    * Endpoints for worker management. "Wokers" include anyone employed by your company, whether US or international, full-time employees or contractors.
    */
   workers: API.Workers = new API.Workers(this);
+  /**
+   * Endpoints for department management. Create, list, and update departments within your company.
+   */
+  departments: API.Departments = new API.Departments(this);
 }
 
 WarpHr.TimeOff = TimeOff;
 WarpHr.Workers = Workers;
+WarpHr.Departments = Departments;
 
 export declare namespace WarpHr {
   export type RequestOptions = Opts.RequestOptions;
@@ -797,5 +812,16 @@ export declare namespace WarpHr {
     type WorkerListResponse as WorkerListResponse,
     type WorkerListResponsesCursorPage as WorkerListResponsesCursorPage,
     type WorkerListParams as WorkerListParams,
+  };
+
+  export {
+    Departments as Departments,
+    type DepartmentCreateResponse as DepartmentCreateResponse,
+    type DepartmentUpdateResponse as DepartmentUpdateResponse,
+    type DepartmentListResponse as DepartmentListResponse,
+    type DepartmentListResponsesCursorPage as DepartmentListResponsesCursorPage,
+    type DepartmentCreateParams as DepartmentCreateParams,
+    type DepartmentUpdateParams as DepartmentUpdateParams,
+    type DepartmentListParams as DepartmentListParams,
   };
 }

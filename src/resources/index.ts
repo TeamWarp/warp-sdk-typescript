@@ -1,6 +1,16 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  Departments,
+  type DepartmentCreateResponse,
+  type DepartmentUpdateResponse,
+  type DepartmentListResponse,
+  type DepartmentCreateParams,
+  type DepartmentUpdateParams,
+  type DepartmentListParams,
+  type DepartmentListResponsesCursorPage,
+} from './departments';
+export {
   TimeOff,
   type TimeOffListAssignmentsResponse,
   type TimeOffListBalancesResponse,
