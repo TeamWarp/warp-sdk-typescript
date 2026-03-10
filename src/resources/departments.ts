@@ -46,7 +46,7 @@ export type DepartmentListResponsesCursorPage = CursorPage<DepartmentListRespons
 
 export interface DepartmentCreateResponse {
   /**
-   * The tag of the department
+   * The unique public id of the department
    */
   id: string;
 
@@ -60,7 +60,7 @@ export interface DepartmentCreateResponse {
 
 export interface DepartmentUpdateResponse {
   /**
-   * The tag of the department
+   * The unique public id of the department
    */
   id: string;
 
@@ -74,7 +74,7 @@ export interface DepartmentUpdateResponse {
 
 export interface DepartmentListResponse {
   /**
-   * The tag of the department
+   * The unique public id of the department
    */
   id: string;
 

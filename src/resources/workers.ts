@@ -95,7 +95,7 @@ export namespace WorkerRetrieveResponse {
    */
   export interface Department {
     /**
-     * The tag of the department
+     * The unique public id of the department
      */
     id: string;
 
@@ -168,7 +168,7 @@ export namespace WorkerListResponse {
    */
   export interface Department {
     /**
-     * The tag of the department
+     * The unique public id of the department
      */
     id: string;
 
