@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.10.0 (2026-03-13)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** api update ([0789362](https://github.com/TeamWarp/warp-sdk-typescript/commit/078936253cfe0ba950cf71b9480ffc61aa644f78))
+* **api:** workplaces api ([bd204c2](https://github.com/TeamWarp/warp-sdk-typescript/commit/bd204c29f6af128fa333fdf7295143a7f309ca7e))
+
+
+### Chores
+
+* **internal:** update dependencies to address dependabot vulnerabilities ([200d12e](https://github.com/TeamWarp/warp-sdk-typescript/commit/200d12e6a0f6593475576b88ff1bede12660dd51))
+
 ## 0.9.0 (2026-03-09)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.8.0...v0.9.0)
