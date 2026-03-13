@@ -29,3 +29,13 @@ export {
   type WorkerListParams,
   type WorkerListResponsesCursorPage,
 } from './workers';
+export {
+  Workplaces,
+  type WorkplaceCreateResponse,
+  type WorkplaceUpdateResponse,
+  type WorkplaceListResponse,
+  type WorkplaceCreateParams,
+  type WorkplaceUpdateParams,
+  type WorkplaceListParams,
+  type WorkplaceListResponsesCursorPage,
+} from './workplaces';

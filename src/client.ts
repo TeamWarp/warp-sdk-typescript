@@ -37,6 +37,16 @@ import {
   Workers,
 } from './resources/workers';
 import {
+  WorkplaceCreateParams,
+  WorkplaceCreateResponse,
+  WorkplaceListParams,
+  WorkplaceListResponse,
+  WorkplaceListResponsesCursorPage,
+  WorkplaceUpdateParams,
+  WorkplaceUpdateResponse,
+  Workplaces,
+} from './resources/workplaces';
+import {
   TimeOff,
   TimeOffListAssignmentsParams,
   TimeOffListAssignmentsResponse,
@@ -781,11 +791,16 @@ export class WarpHr {
    * Endpoints for department management. Create, list, and update departments within your company.
    */
   departments: API.Departments = new API.Departments(this);
+  /**
+   * Endpoints for workplace management. Create, list, and update workplaces within your company.
+   */
+  workplaces: API.Workplaces = new API.Workplaces(this);
 }
 
 WarpHr.TimeOff = TimeOff;
 WarpHr.Workers = Workers;
 WarpHr.Departments = Departments;
+WarpHr.Workplaces = Workplaces;
 
 export declare namespace WarpHr {
   export type RequestOptions = Opts.RequestOptions;
@@ -823,5 +838,16 @@ export declare namespace WarpHr {
     type DepartmentCreateParams as DepartmentCreateParams,
     type DepartmentUpdateParams as DepartmentUpdateParams,
     type DepartmentListParams as DepartmentListParams,
+  };
+
+  export {
+    Workplaces as Workplaces,
+    type WorkplaceCreateResponse as WorkplaceCreateResponse,
+    type WorkplaceUpdateResponse as WorkplaceUpdateResponse,
+    type WorkplaceListResponse as WorkplaceListResponse,
+    type WorkplaceListResponsesCursorPage as WorkplaceListResponsesCursorPage,
+    type WorkplaceCreateParams as WorkplaceCreateParams,
+    type WorkplaceUpdateParams as WorkplaceUpdateParams,
+    type WorkplaceListParams as WorkplaceListParams,
   };
 }
