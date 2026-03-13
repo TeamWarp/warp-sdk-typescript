@@ -49,3 +49,17 @@ Methods:
 - <code title="post /v1/departments">client.departments.<a href="./src/resources/departments.ts">create</a>({ ...params }) -> DepartmentCreateResponse</code>
 - <code title="patch /v1/departments/{id}">client.departments.<a href="./src/resources/departments.ts">update</a>(id, { ...params }) -> DepartmentUpdateResponse</code>
 - <code title="get /v1/departments">client.departments.<a href="./src/resources/departments.ts">list</a>({ ...params }) -> DepartmentListResponsesCursorPage</code>
+
+# Workplaces
+
+Types:
+
+- <code><a href="./src/resources/workplaces.ts">WorkplaceCreateResponse</a></code>
+- <code><a href="./src/resources/workplaces.ts">WorkplaceUpdateResponse</a></code>
+- <code><a href="./src/resources/workplaces.ts">WorkplaceListResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/workplaces">client.workplaces.<a href="./src/resources/workplaces.ts">create</a>({ ...params }) -> WorkplaceCreateResponse</code>
+- <code title="patch /v1/workplaces/{id}">client.workplaces.<a href="./src/resources/workplaces.ts">update</a>(id, { ...params }) -> WorkplaceUpdateResponse</code>
+- <code title="get /v1/workplaces">client.workplaces.<a href="./src/resources/workplaces.ts">list</a>({ ...params }) -> WorkplaceListResponsesCursorPage</code>
