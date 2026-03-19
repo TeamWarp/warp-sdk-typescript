@@ -30,11 +30,18 @@ Types:
 
 - <code><a href="./src/resources/workers.ts">WorkerRetrieveResponse</a></code>
 - <code><a href="./src/resources/workers.ts">WorkerListResponse</a></code>
+- <code><a href="./src/resources/workers.ts">WorkerCreateContractorResponse</a></code>
+- <code><a href="./src/resources/workers.ts">WorkerCreateEmployeeResponse</a></code>
+- <code><a href="./src/resources/workers.ts">WorkerInviteResponse</a></code>
 
 Methods:
 
 - <code title="get /v1/workers/{id}">client.workers.<a href="./src/resources/workers.ts">retrieve</a>(id) -> WorkerRetrieveResponse</code>
 - <code title="get /v1/workers">client.workers.<a href="./src/resources/workers.ts">list</a>({ ...params }) -> WorkerListResponsesCursorPage</code>
+- <code title="delete /v1/workers/{id}">client.workers.<a href="./src/resources/workers.ts">delete</a>(id) -> void</code>
+- <code title="post /v1/workers/contractor">client.workers.<a href="./src/resources/workers.ts">createContractor</a>({ ...params }) -> WorkerCreateContractorResponse</code>
+- <code title="post /v1/workers/employee">client.workers.<a href="./src/resources/workers.ts">createEmployee</a>({ ...params }) -> WorkerCreateEmployeeResponse</code>
+- <code title="post /v1/workers/{id}/invite">client.workers.<a href="./src/resources/workers.ts">invite</a>(id) -> WorkerInviteResponse</code>
 
 # Departments
 

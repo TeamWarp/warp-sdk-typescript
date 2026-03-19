@@ -30,6 +30,11 @@ import {
   Departments,
 } from './resources/departments';
 import {
+  WorkerCreateContractorParams,
+  WorkerCreateContractorResponse,
+  WorkerCreateEmployeeParams,
+  WorkerCreateEmployeeResponse,
+  WorkerInviteResponse,
   WorkerListParams,
   WorkerListResponse,
   WorkerListResponsesCursorPage,
@@ -825,8 +830,13 @@ export declare namespace WarpHr {
     Workers as Workers,
     type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerListResponse as WorkerListResponse,
+    type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
+    type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
+    type WorkerInviteResponse as WorkerInviteResponse,
     type WorkerListResponsesCursorPage as WorkerListResponsesCursorPage,
     type WorkerListParams as WorkerListParams,
+    type WorkerCreateContractorParams as WorkerCreateContractorParams,
+    type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
   };
 
   export {
