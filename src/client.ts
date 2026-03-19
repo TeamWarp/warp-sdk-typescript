@@ -784,7 +784,7 @@ export class WarpHr {
    */
   timeOff: API.TimeOff = new API.TimeOff(this);
   /**
-   * Endpoints for worker management. "Wokers" include anyone employed by your company, whether US or international, full-time employees or contractors.
+   * Endpoints for worker management. "Workers" include anyone employed by your company, whether US or international, full-time employees or contractors.
    */
   workers: API.Workers = new API.Workers(this);
   /**
