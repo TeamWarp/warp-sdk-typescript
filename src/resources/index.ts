@@ -26,7 +26,12 @@ export {
   Workers,
   type WorkerRetrieveResponse,
   type WorkerListResponse,
+  type WorkerCreateContractorResponse,
+  type WorkerCreateEmployeeResponse,
+  type WorkerInviteResponse,
   type WorkerListParams,
+  type WorkerCreateContractorParams,
+  type WorkerCreateEmployeeParams,
   type WorkerListResponsesCursorPage,
 } from './workers';
 export {
