@@ -41,7 +41,7 @@ describe('resource workers', () => {
           afterId: 'wrk_1234',
           beforeId: 'wrk_1234',
           limit: 'limit',
-          statuses: ['onboarding'],
+          statuses: ['draft'],
           types: ['employee'],
           workEmail: 'workEmail',
         },

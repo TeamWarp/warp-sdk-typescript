@@ -7,7 +7,7 @@ import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
 /**
- * Endpoints for worker management. "Wokers" include anyone employed by your company, whether US or international, full-time employees or contractors.
+ * Endpoints for worker management. "Workers" include anyone employed by your company, whether US or international, full-time employees or contractors.
  */
 export class Workers extends APIResource {
   /**
@@ -18,7 +18,8 @@ export class Workers extends APIResource {
   }
 
   /**
-   * List all workers. Workers includ
+   * List all workers. Workers include anyone employed by the company, whether US or
+   * international, full-time employees or contractors.
    */
   list(
     query: WorkerListParams | null | undefined = {},
@@ -74,7 +75,7 @@ export interface WorkerRetrieveResponse {
    */
   startDate: string;
 
-  status: 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
 
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
@@ -147,7 +148,7 @@ export interface WorkerListResponse {
    */
   startDate: string;
 
-  status: 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
 
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
@@ -182,7 +183,7 @@ export interface WorkerListParams extends CursorPageParams {
    */
   limit?: string;
 
-  statuses?: Array<'onboarding' | 'active' | 'offboarding' | 'inactive'>;
+  statuses?: Array<'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'>;
 
   types?: Array<'employee' | 'contractor'>;
 
