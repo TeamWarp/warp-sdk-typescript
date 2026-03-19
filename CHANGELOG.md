@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.11.0 (2026-03-19)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **api:** api update ([611d59d](https://github.com/TeamWarp/warp-sdk-typescript/commit/611d59d14fc9e7bdb1ad14b21b799c942e08c5d1))
+* **api:** worker invite endpoints ([47841b2](https://github.com/TeamWarp/warp-sdk-typescript/commit/47841b2efbd1c65723aed00407537091203f7712))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([d6c7a54](https://github.com/TeamWarp/warp-sdk-typescript/commit/d6c7a54643e740421b41365b944c5a29272826ea))
+
 ## 0.10.0 (2026-03-13)
 
 Full Changelog: [v0.9.0...v0.10.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.9.0...v0.10.0)
