@@ -760,6 +760,12 @@ export interface WorkerCreateContractorParams {
   compensation?: WorkerCreateContractorParams.Compensation | null;
 
   /**
+   * The contractor's pay schedule. Must be a pay schedule that the company has
+   * configured.
+   */
+  paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
+
+  /**
    * A description of the work the contractor will perform.
    */
   scopeOfWork?: string | null;
@@ -897,6 +903,12 @@ export interface WorkerCreateEmployeeParams {
    * US state.
    */
   workLocation: WorkerCreateEmployeeParams.UnionMember0 | WorkerCreateEmployeeParams.UnionMember1;
+
+  /**
+   * The employee's pay schedule. Must be a pay schedule that the company has
+   * configured.
+   */
+  paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 
   /**
    * Whether the employee is required to complete I-9 work authorization. Set to
