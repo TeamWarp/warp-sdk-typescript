@@ -102,6 +102,7 @@ describe('resource workers', () => {
         currency: 'USD',
         per: 'hour',
       },
+      paySchedule: 'weekly',
       scopeOfWork: 'Frontend development for the customer dashboard',
       workEmail: 'john@joinwarp.com',
     });
@@ -141,6 +142,7 @@ describe('resource workers', () => {
       position: 'Software Engineer',
       startDate: '2000-01-01',
       workLocation: { type: 'office', workplaceId: 'wkp_1234' },
+      paySchedule: 'weekly',
       requireI9: true,
       stateRegistration: 'self_managed',
       stockOptions: 10000,
