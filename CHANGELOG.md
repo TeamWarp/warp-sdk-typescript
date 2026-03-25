@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.12.1 (2026-03-25)
+
+Full Changelog: [v0.12.0...v0.12.1](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.12.0...v0.12.1)
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([7ea1ebb](https://github.com/TeamWarp/warp-sdk-typescript/commit/7ea1ebbcb6054f3c3933d40ba31c428f8f740731))
+* **internal:** update gitignore ([3c732da](https://github.com/TeamWarp/warp-sdk-typescript/commit/3c732dafffa225fdbfe512136af35506fef71059))
+
 ## 0.12.0 (2026-03-23)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.11.0...v0.12.0)
