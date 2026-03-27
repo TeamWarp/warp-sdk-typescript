@@ -1,4 +1,4 @@
 configured_endpoints: 17
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/warp-rankincodes%2Fwarp-hr-9018dab36c2dbb1f444ea6e3b23117787e3ef0cb5f065291b310ad3315f3ccc3.yml
-openapi_spec_hash: c67ec52cf399cb4ee956f84915815ec1
-config_hash: ad2d21097c9fb51c439b96c947f70e49
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/warp-rankincodes%2Fwarp-hr-f7081fe59ef5b0360787c38a6b0c2528ea3771b427f6970a0d483f063fde17b0.yml
+openapi_spec_hash: e5137141268c2130a3c5027ba8e62bca
+config_hash: cd2a258160b107fe6de4dd1f4c5506a0
