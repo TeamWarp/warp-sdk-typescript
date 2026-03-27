@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.2 (2026-03-27)
+
+Full Changelog: [v0.12.1...v0.12.2](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.12.1...v0.12.2)
+
+### Chores
+
+* configure new SDK language ([4960173](https://github.com/TeamWarp/warp-sdk-typescript/commit/4960173908a0897976b4cd1af0cbb0fef07f910e))
+
 ## 0.12.1 (2026-03-25)
 
 Full Changelog: [v0.12.0...v0.12.1](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.12.0...v0.12.1)
