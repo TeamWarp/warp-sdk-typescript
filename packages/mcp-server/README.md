@@ -1,4 +1,4 @@
-# Warp Hr TypeScript MCP Server
+# Warp TypeScript MCP Server
 
 It is generated with [Stainless](https://www.stainless.com/).
 

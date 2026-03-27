@@ -5,7 +5,7 @@ import util from 'node:util';
 import Fuse from 'fuse.js';
 import ts from 'typescript';
 import { WorkerOutput } from './code-tool-types';
-import { WarpHr, ClientOptions } from 'warp-hr';
+import { Warp, ClientOptions } from 'warp-hr';
 
 function getRunFunctionSource(code: string): {
   type: 'declaration' | 'expression';
@@ -53,10 +53,10 @@ function getRunFunctionSource(code: string): {
 function getTSDiagnostics(code: string): string[] {
   const functionSource = getRunFunctionSource(code)!;
   const codeWithImport = [
-    'import { WarpHr } from "warp-hr";',
+    'import { Warp } from "warp-hr";',
     functionSource.type === 'declaration' ?
-      `async function run(${functionSource.client}: WarpHr)`
-    : `const run: (${functionSource.client}: WarpHr) => Promise<unknown> =`,
+      `async function run(${functionSource.client}: Warp)`
+    : `const run: (${functionSource.client}: Warp) => Promise<unknown> =`,
     functionSource.code,
   ].join('\n');
   const sourcePath = path.resolve('code.ts');
@@ -247,7 +247,7 @@ const fetch = async (req: Request): Promise<Response> => {
     );
   }
 
-  const client = new WarpHr({
+  const client = new Warp({
     ...opts,
   });
 

@@ -17,7 +17,7 @@ import { SdkMethod } from './methods';
 import { McpCodeExecutionMode } from './options';
 import { ClientOptions } from 'warp-hr';
 
-const prompt = `Runs JavaScript code to interact with the Warp Hr API.
+const prompt = `Runs JavaScript code to interact with the Warp API.
 
 You are a skilled TypeScript programmer writing code to interface with the service.
 Define an async function named "run" that takes a single parameter of an initialized SDK client and it will be run.
@@ -150,7 +150,7 @@ const remoteStainlessHandler = async ({
       readEnv('WARP_API_KEY') ?? client.apiKey,
       'set WARP_API_KEY environment variable or provide apiKey client option',
     ),
-    WARP_HR_BASE_URL: readEnv('WARP_HR_BASE_URL') ?? client.baseURL ?? undefined,
+    WARP_BASE_URL: readEnv('WARP_BASE_URL') ?? client.baseURL ?? undefined,
   };
   // Merge any upstream client envs from the request header, with upstream values taking precedence.
   const mergedClientEnvs = { ...localClientEnvs, ...reqContext.upstreamClientEnvs };
