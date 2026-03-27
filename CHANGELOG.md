@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.0 (2026-03-27)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** update contact email ([fdf3472](https://github.com/TeamWarp/warp-sdk-typescript/commit/fdf347290de23b31338961be2e9307e3dd3989e6))
+
 ## 0.13.0 (2026-03-27)
 
 Full Changelog: [v0.12.2...v0.13.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.12.2...v0.13.0)
