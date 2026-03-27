@@ -902,7 +902,7 @@ export interface WorkerCreateEmployeeParams {
    * Where the employee will work. Either an existing company workplace or a remote
    * US state.
    */
-  workLocation: WorkerCreateEmployeeParams.UnionMember0 | WorkerCreateEmployeeParams.UnionMember1;
+  workLocation: WorkerCreateEmployeeParams.OfficeWorkLocation | WorkerCreateEmployeeParams.RemoteWorkLocation;
 
   /**
    * The employee's pay schedule. Must be a pay schedule that the company has
@@ -954,7 +954,7 @@ export namespace WorkerCreateEmployeeParams {
   /**
    * Employee works from a company workplace.
    */
-  export interface UnionMember0 {
+  export interface OfficeWorkLocation {
     type: 'office';
 
     /**
@@ -966,7 +966,7 @@ export namespace WorkerCreateEmployeeParams {
   /**
    * Employee works remotely from a US state.
    */
-  export interface UnionMember1 {
+  export interface RemoteWorkLocation {
     /**
      * The US state where the remote employee works. Required for tax purposes.
      */
