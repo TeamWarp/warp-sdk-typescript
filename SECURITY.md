@@ -20,7 +20,7 @@ or products provided by Warp Hr, please follow the respective company's security
 
 ### Warp Hr Terms and Policies
 
-Please contact adam@joinwarp.com for any questions or concerns regarding the security of our services.
+Please contact adam@warp.co for any questions or concerns regarding the security of our services.
 
 ---
 
