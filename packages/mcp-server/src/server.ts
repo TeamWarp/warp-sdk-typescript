@@ -8,7 +8,7 @@ import {
   SetLevelRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 import { ClientOptions } from 'warp-hr';
-import WarpHr from 'warp-hr';
+import Warp from 'warp-hr';
 import { codeTool } from './code-tool';
 import docsSearchTool from './docs-search-tool';
 import { getInstructions } from './instructions';
@@ -62,15 +62,15 @@ export async function initMcpServer(params: {
     error: logAtLevel('error'),
   };
 
-  let _client: WarpHr | undefined;
+  let _client: Warp | undefined;
   let _clientError: Error | undefined;
   let _logLevel: 'debug' | 'info' | 'warn' | 'error' | 'off' | undefined;
 
-  const getClient = (): WarpHr => {
+  const getClient = (): Warp => {
     if (_clientError) throw _clientError;
     if (!_client) {
       try {
-        _client = new WarpHr({
+        _client = new Warp({
           logger,
           ...params.clientOptions,
           defaultHeaders: {
@@ -105,7 +105,7 @@ export async function initMcpServer(params: {
       throw new Error(`Unknown tool: ${name}`);
     }
 
-    let client: WarpHr;
+    let client: Warp;
     try {
       client = getClient();
     } catch (error) {

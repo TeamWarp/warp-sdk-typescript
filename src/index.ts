@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { WarpHr as default } from './client';
+export { Warp as default } from './client';
 
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './core/api-promise';
-export { WarpHr, type ClientOptions } from './client';
+export { Warp, type ClientOptions } from './client';
 export { PagePromise } from './core/pagination';
 export {
-  WarpHrError,
+  WarpError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
