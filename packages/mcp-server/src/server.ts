@@ -26,7 +26,7 @@ export const newMcpServer = async ({
   new McpServer(
     {
       name: 'warp_hr_api',
-      version: '0.13.0',
+      version: '0.14.0',
     },
     {
       instructions: await getInstructions({ stainlessApiKey, customInstructionsPath }),
