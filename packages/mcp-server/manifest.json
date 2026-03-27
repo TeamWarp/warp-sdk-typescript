@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.2",
   "name": "warp-hr-mcp",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "The official MCP Server for the Warp Hr API",
   "author": {
     "name": "Warp Hr",
