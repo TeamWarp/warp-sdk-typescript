@@ -1,6 +1,6 @@
 {
   "name": "warp-hr",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "The official TypeScript library for the Warp Hr API",
   "author": "Warp Hr <adam@warp.co>",
   "types": "dist/index.d.ts",
