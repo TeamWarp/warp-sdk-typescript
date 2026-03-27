@@ -85,7 +85,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['WARP_HR_BASE_URL'].
+   * Defaults to process.env['WARP_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -139,7 +139,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['WARP_HR_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['WARP_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -152,9 +152,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Warp Hr API.
+ * API Client for interfacing with the Warp API.
  */
-export class WarpHr {
+export class Warp {
   apiKey: string;
 
   baseURL: string;
@@ -170,10 +170,10 @@ export class WarpHr {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Warp Hr API.
+   * API Client for interfacing with the Warp API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['WARP_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['WARP_HR_BASE_URL'] ?? https://api.joinwarp.com] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['WARP_BASE_URL'] ?? https://api.joinwarp.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -182,13 +182,13 @@ export class WarpHr {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('WARP_HR_BASE_URL'),
+    baseURL = readEnv('WARP_BASE_URL'),
     apiKey = readEnv('WARP_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.WarpHrError(
-        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the WarpHr client with an apiKey option, like new WarpHr({ apiKey: 'My API Key' }).",
+      throw new Errors.WarpError(
+        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the Warp client with an apiKey option, like new Warp({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -199,14 +199,14 @@ export class WarpHr {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? WarpHr.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('WARP_HR_LOG'), "process.env['WARP_HR_LOG']", this) ??
+      parseLogLevel(readEnv('WARP_LOG'), "process.env['WARP_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -534,7 +534,7 @@ export class WarpHr {
     options: PromiseOrValue<FinalRequestOptions>,
   ): Pagination.PagePromise<PageClass, Item> {
     const request = this.makeRequest(options, null, undefined);
-    return new Pagination.PagePromise<PageClass, Item>(this as any as WarpHr, request, Page);
+    return new Pagination.PagePromise<PageClass, Item>(this as any as Warp, request, Page);
   }
 
   async fetchWithTimeout(
@@ -765,10 +765,10 @@ export class WarpHr {
     }
   }
 
-  static WarpHr = this;
+  static Warp = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WarpHrError = Errors.WarpHrError;
+  static WarpError = Errors.WarpError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -802,12 +802,12 @@ export class WarpHr {
   workplaces: API.Workplaces = new API.Workplaces(this);
 }
 
-WarpHr.TimeOff = TimeOff;
-WarpHr.Workers = Workers;
-WarpHr.Departments = Departments;
-WarpHr.Workplaces = Workplaces;
+Warp.TimeOff = TimeOff;
+Warp.Workers = Workers;
+Warp.Departments = Departments;
+Warp.Workplaces = Workplaces;
 
-export declare namespace WarpHr {
+export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
 
   export import CursorPage = Pagination.CursorPage;

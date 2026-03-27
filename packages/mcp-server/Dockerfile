@@ -1,4 +1,4 @@
-# Dockerfile for Warp Hr MCP Server
+# Dockerfile for Warp MCP Server
 #
 # This Dockerfile builds a Docker image for the MCP Server.
 #
