@@ -5,13 +5,14 @@
   "description": "The official MCP Server for the Warp Hr API",
   "author": {
     "name": "Warp Hr",
-    "email": "adam@joinwarp.com"
+    "email": "adam@warp.co"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TeamWarp/warp-sdk-typescript.git"
   },
   "homepage": "https://github.com/TeamWarp/warp-sdk-typescript/tree/main/packages/mcp-server#readme",
+  "documentation": "https://docs.warp.co",
   "server": {
     "type": "node",
     "entry_point": "index.js",
