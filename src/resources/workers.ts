@@ -13,6 +13,11 @@ import { path } from '../internal/utils/path';
 export class Workers extends APIResource {
   /**
    * Get a specific worker by id.
+   *
+   * @example
+   * ```ts
+   * const worker = await client.workers.retrieve('wrk_1234');
+   * ```
    */
   retrieve(id: string, options?: RequestOptions): APIPromise<WorkerRetrieveResponse> {
     return this._client.get(path`/v1/workers/${id}`, options);
@@ -21,6 +26,14 @@ export class Workers extends APIResource {
   /**
    * List all workers. Workers include anyone employed by the company, whether US or
    * international, full-time employees or contractors.
+   *
+   * @example
+   * ```ts
+   * // Automatically fetches more pages as needed.
+   * for await (const workerListResponse of client.workers.list()) {
+   *   // ...
+   * }
+   * ```
    */
   list(
     query: WorkerListParams | null | undefined = {},
@@ -32,6 +45,11 @@ export class Workers extends APIResource {
   /**
    * Delete a worker. Only workers who have not yet completed onboarding can be
    * deleted. Active workers must be properly offboarded.
+   *
+   * @example
+   * ```ts
+   * await client.workers.delete('wrk_1234');
+   * ```
    */
   delete(id: string, options?: RequestOptions): APIPromise<void> {
     return this._client.delete(path`/v1/workers/${id}`, {
@@ -44,6 +62,21 @@ export class Workers extends APIResource {
    * Create a new contractor. The worker will be created in draft status and must be
    * invited separately via the invite endpoint. For business contractors, the
    * businessName field is required.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workers.createContractor({
+   *   departmentId: 'dpt_1234',
+   *   email: 'john@joinwarp.com',
+   *   entityType: 'individual',
+   *   firstName: 'Melissa',
+   *   lastName: 'Jones',
+   *   managerId: 'wrk_1234',
+   *   position: 'Design Consultant',
+   *   startDate: '2000-01-01',
+   *   workCountry: 'AD',
+   * });
+   * ```
    */
   createContractor(
     body: WorkerCreateContractorParams,
@@ -56,6 +89,21 @@ export class Workers extends APIResource {
    * Create a new US employee. The worker will be created in draft status and must be
    * invited separately via the invite endpoint. If hiring in a state without an
    * existing tax registration, you must specify the stateRegistration field.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workers.createEmployee({
+   *   compensation: { amount: 1, per: 'hour' },
+   *   departmentId: 'dpt_1234',
+   *   email: 'john@joinwarp.com',
+   *   firstName: 'Jonathan',
+   *   lastName: 'Galt',
+   *   managerId: 'wrk_1234',
+   *   position: 'Software Engineer',
+   *   startDate: '2000-01-01',
+   *   workLocation: { type: 'office', workplaceId: 'wkp_1234' },
+   * });
+   * ```
    */
   createEmployee(
     body: WorkerCreateEmployeeParams,
@@ -68,6 +116,11 @@ export class Workers extends APIResource {
    * Send or resend the worker invite so they can accept and complete onboarding to
    * Warp. If the worker has already been invited, the invite will be resent with
    * extended validity.
+   *
+   * @example
+   * ```ts
+   * const response = await client.workers.invite('wrk_1234');
+   * ```
    */
   invite(id: string, options?: RequestOptions): APIPromise<WorkerInviteResponse> {
     return this._client.post(path`/v1/workers/${id}/invite`, options);
