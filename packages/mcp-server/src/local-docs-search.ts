@@ -70,23 +70,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list_assignments\n\n`client.timeOff.listAssignments(afterId?: string, beforeId?: string, limit?: string, policyIds?: string[], workerIds?: string[]): { id: string; assignedAt: string; policyId: string; workerId: string; }`\n\n**get** `/v1/time_off/assignments`\n\nTime off assignments are mappings between workers and time off policies. Useful for finding out which policies a worker is assigned to, or which workers are assigned to a given policy.\n\n### Parameters\n\n- `afterId?: string`\n\n- `beforeId?: string`\n\n- `limit?: string`\n  a number less than or equal to 100\n\n- `policyIds?: string[]`\n\n- `workerIds?: string[]`\n\n### Returns\n\n- `{ id: string; assignedAt: string; policyId: string; workerId: string; }`\n\n  - `id: string`\n  - `assignedAt: string`\n  - `policyId: string`\n  - `workerId: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListAssignmentsResponse of client.timeOff.listAssignments()) {\n  console.log(timeOffListAssignmentsResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'time_off list_assignments',
-        example: "warp-hr time-off list-assignments \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.timeOff.listAssignments',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListAssignmentsResponse of client.timeOff.listAssignments()) {\n  console.log(timeOffListAssignmentsResponse.id);\n}",
       },
       go: {
         method: 'client.TimeOff.ListAssignments',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.TimeOff.ListAssignments(context.TODO(), warphr.TimeOffListAssignmentsParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'time_off list_assignments',
+        example: "warp-hr time-off list-assignments \\\n  --api-key 'My API Key'",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/time_off/assignments \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.timeOff.listAssignments',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListAssignmentsResponse of client.timeOff.listAssignments()) {\n  console.log(timeOffListAssignmentsResponse.id);\n}",
       },
     },
   },
@@ -112,22 +112,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list_balances\n\n`client.timeOff.listBalances(afterId?: string, beforeId?: string, endDate?: string, limit?: string, policyIds?: string[], startDate?: string, workerIds?: string[]): { id: string; accruedLocked: number; accruedUnlocked: number; available: number; holds: number; legacyWorkerId: string; policyId: string; used: number; }`\n\n**get** `/v1/time_off/balances`\n\nGet worker remaining time-off balances.\n\n### Parameters\n\n- `afterId?: string`\n\n- `beforeId?: string`\n\n- `endDate?: string`\n  a string to be decoded into a Date\n\n- `limit?: string`\n  a number less than or equal to 100\n\n- `policyIds?: string[]`\n\n- `startDate?: string`\n  a string to be decoded into a Date\n\n- `workerIds?: string[]`\n\n### Returns\n\n- `{ id: string; accruedLocked: number; accruedUnlocked: number; available: number; holds: number; legacyWorkerId: string; policyId: string; used: number; }`\n\n  - `id: string`\n  - `accruedLocked: number`\n  - `accruedUnlocked: number`\n  - `available: number`\n  - `holds: number`\n  - `legacyWorkerId: string`\n  - `policyId: string`\n  - `used: number`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListBalancesResponse of client.timeOff.listBalances()) {\n  console.log(timeOffListBalancesResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'time_off list_balances',
-        example: "warp-hr time-off list-balances \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.timeOff.listBalances',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListBalancesResponse of client.timeOff.listBalances()) {\n  console.log(timeOffListBalancesResponse.id);\n}",
       },
       go: {
         method: 'client.TimeOff.ListBalances',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.TimeOff.ListBalances(context.TODO(), warphr.TimeOffListBalancesParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'time_off list_balances',
+        example: "warp-hr time-off list-balances \\\n  --api-key 'My API Key'",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/time_off/balances \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.timeOff.listBalances',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListBalancesResponse of client.timeOff.listBalances()) {\n  console.log(timeOffListBalancesResponse.id);\n}",
       },
     },
   },
@@ -156,22 +156,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list_requests\n\n`client.timeOff.listRequests(afterId?: string, beforeId?: string, endsBefore?: string, endsOnOrAfter?: string, limit?: string, policyIds?: string[], startsBefore?: string, startsOnOrAfter?: string, statuses?: 'pending' | 'approved' | 'denied'[], workerIds?: string[]): { id: string; createdAt: string; endAt: string; reason: string; requestedMinutes: number; startAt: string; status: 'pending' | 'approved' | 'denied'; timeOffPolicyId: string; timeZone: string; workerId: string; }`\n\n**get** `/v1/time_off/requests`\n\nGet the time off requests that workers in your company have made.\n\n### Parameters\n\n- `afterId?: string`\n\n- `beforeId?: string`\n\n- `endsBefore?: string`\n  a string to be decoded into a Date\n\n- `endsOnOrAfter?: string`\n  a string to be decoded into a Date\n\n- `limit?: string`\n  a number less than or equal to 100\n\n- `policyIds?: string[]`\n\n- `startsBefore?: string`\n  a string to be decoded into a Date\n\n- `startsOnOrAfter?: string`\n  a string to be decoded into a Date\n\n- `statuses?: 'pending' | 'approved' | 'denied'[]`\n\n- `workerIds?: string[]`\n\n### Returns\n\n- `{ id: string; createdAt: string; endAt: string; reason: string; requestedMinutes: number; startAt: string; status: 'pending' | 'approved' | 'denied'; timeOffPolicyId: string; timeZone: string; workerId: string; }`\n\n  - `id: string`\n  - `createdAt: string`\n  - `endAt: string`\n  - `reason: string`\n  - `requestedMinutes: number`\n  - `startAt: string`\n  - `status: 'pending' | 'approved' | 'denied'`\n  - `timeOffPolicyId: string`\n  - `timeZone: string`\n  - `workerId: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListRequestsResponse of client.timeOff.listRequests()) {\n  console.log(timeOffListRequestsResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'time_off list_requests',
-        example: "warp-hr time-off list-requests \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.timeOff.listRequests',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListRequestsResponse of client.timeOff.listRequests()) {\n  console.log(timeOffListRequestsResponse.id);\n}",
       },
       go: {
         method: 'client.TimeOff.ListRequests',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.TimeOff.ListRequests(context.TODO(), warphr.TimeOffListRequestsParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'time_off list_requests',
+        example: "warp-hr time-off list-requests \\\n  --api-key 'My API Key'",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/time_off/requests \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.timeOff.listRequests',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const timeOffListRequestsResponse of client.timeOff.listRequests()) {\n  console.log(timeOffListRequestsResponse.id);\n}",
       },
     },
   },
@@ -189,22 +189,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.timeOff.policies.list(afterId?: string, beforeId?: string, limit?: string): { id: string; description: string; hoursWorkedPerChunk: number; isUnlimited: boolean; minutesPerChunk: number; minutesPerPeriod: number; name: string; paid: boolean; schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited'; timeOffTypeId: string; timeOffTypeName: string; unit: 'hour' | 'day'; }`\n\n**get** `/v1/time_off/policies`\n\nGet the time off policies for your company\n\n### Parameters\n\n- `afterId?: string`\n  a string starting with \"top_\"\n\n- `beforeId?: string`\n  a string starting with \"top_\"\n\n- `limit?: string`\n  a number less than or equal to 100\n\n### Returns\n\n- `{ id: string; description: string; hoursWorkedPerChunk: number; isUnlimited: boolean; minutesPerChunk: number; minutesPerPeriod: number; name: string; paid: boolean; schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited'; timeOffTypeId: string; timeOffTypeName: string; unit: 'hour' | 'day'; }`\n\n  - `id: string`\n  - `description: string`\n  - `hoursWorkedPerChunk: number`\n  - `isUnlimited: boolean`\n  - `minutesPerChunk: number`\n  - `minutesPerPeriod: number`\n  - `name: string`\n  - `paid: boolean`\n  - `schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited'`\n  - `timeOffTypeId: string`\n  - `timeOffTypeName: string`\n  - `unit: 'hour' | 'day'`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const policyListResponse of client.timeOff.policies.list()) {\n  console.log(policyListResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'policies list',
-        example: "warp-hr time-off:policies list \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.timeOff.policies.list',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const policyListResponse of client.timeOff.policies.list()) {\n  console.log(policyListResponse.id);\n}",
       },
       go: {
         method: 'client.TimeOff.Policies.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.TimeOff.Policies.List(context.TODO(), warphr.TimeOffPolicyListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'policies list',
+        example: "warp-hr time-off:policies list \\\n  --api-key 'My API Key'",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/time_off/policies \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.timeOff.policies.list',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const policyListResponse of client.timeOff.policies.list()) {\n  console.log(policyListResponse.id);\n}",
       },
     },
   },
@@ -222,23 +222,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.timeOff.policies.retrieve(id: string): { id: string; description: string; hoursWorkedPerChunk: number; isUnlimited: boolean; minutesPerChunk: number; minutesPerPeriod: number; name: string; paid: boolean; schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited'; timeOffTypeId: string; timeOffTypeName: string; unit: 'hour' | 'day'; }`\n\n**get** `/v1/time_off/policies/{id}`\n\nGet a specific time off policy by id\n\n### Parameters\n\n- `id: string`\n  a string starting with \"top_\"\n\n### Returns\n\n- `{ id: string; description: string; hoursWorkedPerChunk: number; isUnlimited: boolean; minutesPerChunk: number; minutesPerPeriod: number; name: string; paid: boolean; schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited'; timeOffTypeId: string; timeOffTypeName: string; unit: 'hour' | 'day'; }`\n\n  - `id: string`\n  - `description: string`\n  - `hoursWorkedPerChunk: number`\n  - `isUnlimited: boolean`\n  - `minutesPerChunk: number`\n  - `minutesPerPeriod: number`\n  - `name: string`\n  - `paid: boolean`\n  - `schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited'`\n  - `timeOffTypeId: string`\n  - `timeOffTypeName: string`\n  - `unit: 'hour' | 'day'`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst policy = await client.timeOff.policies.retrieve('top_1234');\n\nconsole.log(policy);\n```",
     perLanguage: {
-      cli: {
-        method: 'policies retrieve',
-        example: "warp-hr time-off:policies retrieve \\\n  --api-key 'My API Key' \\\n  --id top_1234",
+      typescript: {
+        method: 'client.timeOff.policies.retrieve',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst policy = await client.timeOff.policies.retrieve('top_1234');\n\nconsole.log(policy.id);",
       },
       go: {
         method: 'client.TimeOff.Policies.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpolicy, err := client.TimeOff.Policies.Get(context.TODO(), "top_1234")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", policy.ID)\n}\n',
       },
+      cli: {
+        method: 'policies retrieve',
+        example: "warp-hr time-off:policies retrieve \\\n  --api-key 'My API Key' \\\n  --id top_1234",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/time_off/policies/$ID \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.timeOff.policies.retrieve',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst policy = await client.timeOff.policies.retrieve('top_1234');\n\nconsole.log(policy.id);",
       },
     },
   },
@@ -264,22 +264,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.workers.list(afterId?: string, beforeId?: string, limit?: string, statuses?: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'[], types?: 'employee' | 'contractor'[], workEmail?: string): { id: string; businessName: string; department: object; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n**get** `/v1/workers`\n\nList all workers. Workers include anyone employed by the company, whether US or international, full-time employees or contractors.\n\n### Parameters\n\n- `afterId?: string`\n  The id of the worker.\n\n- `beforeId?: string`\n  The id of the worker.\n\n- `limit?: string`\n  a number less than or equal to 100\n\n- `statuses?: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'[]`\n\n- `types?: 'employee' | 'contractor'[]`\n\n- `workEmail?: string`\n\n### Returns\n\n- `{ id: string; businessName: string; department: { id: string; name: string; }; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n  - `id: string`\n  - `businessName: string`\n  - `department: { id: string; name: string; }`\n  - `displayName: string`\n  - `email: string`\n  - `endDate: string`\n  - `firstName: string`\n  - `isBusiness: boolean`\n  - `lastName: string`\n  - `position: string`\n  - `preferredName: string`\n  - `startDate: string`\n  - `status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'`\n  - `timeZone: string`\n  - `type: 'employee' | 'contractor'`\n  - `workEmail: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const workerListResponse of client.workers.list()) {\n  console.log(workerListResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'workers list',
-        example: "warp-hr workers list \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.workers.list',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const workerListResponse of client.workers.list()) {\n  console.log(workerListResponse.id);\n}",
       },
       go: {
         method: 'client.Workers.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.Workers.List(context.TODO(), warphr.WorkerListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'workers list',
+        example: "warp-hr workers list \\\n  --api-key 'My API Key'",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/workers \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.workers.list',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const workerListResponse of client.workers.list()) {\n  console.log(workerListResponse.id);\n}",
       },
     },
   },
@@ -297,22 +297,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.workers.retrieve(id: string): { id: string; businessName: string; department: object; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n**get** `/v1/workers/{id}`\n\nGet a specific worker by id.\n\n### Parameters\n\n- `id: string`\n  The id of the worker.\n\n### Returns\n\n- `{ id: string; businessName: string; department: { id: string; name: string; }; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n  - `id: string`\n  - `businessName: string`\n  - `department: { id: string; name: string; }`\n  - `displayName: string`\n  - `email: string`\n  - `endDate: string`\n  - `firstName: string`\n  - `isBusiness: boolean`\n  - `lastName: string`\n  - `position: string`\n  - `preferredName: string`\n  - `startDate: string`\n  - `status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'`\n  - `timeZone: string`\n  - `type: 'employee' | 'contractor'`\n  - `workEmail: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst worker = await client.workers.retrieve('wrk_1234');\n\nconsole.log(worker);\n```",
     perLanguage: {
-      cli: {
-        method: 'workers retrieve',
-        example: "warp-hr workers retrieve \\\n  --api-key 'My API Key' \\\n  --id wrk_1234",
+      typescript: {
+        method: 'client.workers.retrieve',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst worker = await client.workers.retrieve('wrk_1234');\n\nconsole.log(worker.id);",
       },
       go: {
         method: 'client.Workers.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tworker, err := client.Workers.Get(context.TODO(), "wrk_1234")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", worker.ID)\n}\n',
       },
+      cli: {
+        method: 'workers retrieve',
+        example: "warp-hr workers retrieve \\\n  --api-key 'My API Key' \\\n  --id wrk_1234",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/workers/$ID \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.workers.retrieve',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst worker = await client.workers.retrieve('wrk_1234');\n\nconsole.log(worker.id);",
       },
     },
   },
@@ -329,23 +329,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.workers.delete(id: string): void`\n\n**delete** `/v1/workers/{id}`\n\nDelete a worker. Only workers who have not yet completed onboarding can be deleted. Active workers must be properly offboarded.\n\n### Parameters\n\n- `id: string`\n  The id of the worker.\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nawait client.workers.delete('wrk_1234')\n```",
     perLanguage: {
-      cli: {
-        method: 'workers delete',
-        example: "warp-hr workers delete \\\n  --api-key 'My API Key' \\\n  --id wrk_1234",
+      typescript: {
+        method: 'client.workers.delete',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nawait client.workers.delete('wrk_1234');",
       },
       go: {
         method: 'client.Workers.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\terr := client.Workers.Delete(context.TODO(), "wrk_1234")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n}\n',
       },
+      cli: {
+        method: 'workers delete',
+        example: "warp-hr workers delete \\\n  --api-key 'My API Key' \\\n  --id wrk_1234",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/workers/$ID \\\n    -X DELETE \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.workers.delete',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nawait client.workers.delete('wrk_1234');",
       },
     },
   },
@@ -379,24 +379,24 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create_employee\n\n`client.workers.createEmployee(compensation: { amount: number; per: 'hour' | 'year'; }, departmentId: string, email: string, firstName: string, lastName: string, managerId: string, position: string, startDate: string, workLocation: { type: 'office'; workplaceId: string; } | { state: string; type: 'remote'; }, paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually', requireI9?: boolean, stateRegistration?: 'self_managed' | 'warp_managed', stockOptions?: number, workEmail?: string): { id: string; businessName: string; department: object; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n**post** `/v1/workers/employee`\n\nCreate a new US employee. The worker will be created in draft status and must be invited separately via the invite endpoint. If hiring in a state without an existing tax registration, you must specify the stateRegistration field.\n\n### Parameters\n\n- `compensation: { amount: number; per: 'hour' | 'year'; }`\n  The employee's base compensation.\n  - `amount: number`\n    a positive number\n  - `per: 'hour' | 'year'`\n    Whether the amount is per hour or per year.\n\n- `departmentId: string`\n  The department to assign this employee to.\n\n- `email: string`\n  Personal email address. The invite will be sent here.\n\n- `firstName: string`\n  a non empty string\n\n- `lastName: string`\n  a non empty string\n\n- `managerId: string`\n  The worker id of this employee's direct manager.\n\n- `position: string`\n  The employee's job title.\n\n- `startDate: string`\n  A date string in the form YYYY-MM-DD\n\n- `workLocation: { type: 'office'; workplaceId: string; } | { state: string; type: 'remote'; }`\n  Where the employee will work. Either an existing company workplace or a remote US state.\n\n- `paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually'`\n  The employee's pay schedule. Must be a pay schedule that the company has configured.\n\n- `requireI9?: boolean`\n  Whether the employee is required to complete I-9 work authorization. Set to false if the employee has already been verified off-platform. Defaults to true.\n\n- `stateRegistration?: 'self_managed' | 'warp_managed'`\n  How state tax registration is handled for this employee's work state. Required when hiring in a state where your company doesn't have an existing registration. Use 'self_managed' if you've already registered in this state, or 'warp_managed' for Warp to handle registration on your behalf.\n\n- `stockOptions?: number`\n  a non-negative number\n\n- `workEmail?: string`\n  An email with a reasonably valid regex (shamelessly taken from zod)\n\n### Returns\n\n- `{ id: string; businessName: string; department: { id: string; name: string; }; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n  - `id: string`\n  - `businessName: string`\n  - `department: { id: string; name: string; }`\n  - `displayName: string`\n  - `email: string`\n  - `endDate: string`\n  - `firstName: string`\n  - `isBusiness: boolean`\n  - `lastName: string`\n  - `position: string`\n  - `preferredName: string`\n  - `startDate: string`\n  - `status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'`\n  - `timeZone: string`\n  - `type: 'employee' | 'contractor'`\n  - `workEmail: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst response = await client.workers.createEmployee({\n  compensation: { amount: 1, per: 'hour' },\n  departmentId: 'dpt_1234',\n  email: 'john@joinwarp.com',\n  firstName: 'Jonathan',\n  lastName: 'Galt',\n  managerId: 'wrk_1234',\n  position: 'Software Engineer',\n  startDate: '2000-01-01',\n  workLocation: { type: 'office', workplaceId: 'wkp_1234' },\n});\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'workers create_employee',
+      typescript: {
+        method: 'client.workers.createEmployee',
         example:
-          "warp-hr workers create-employee \\\n  --api-key 'My API Key' \\\n  --compensation '{amount: 1, per: hour}' \\\n  --department-id dpt_1234 \\\n  --email john@joinwarp.com \\\n  --first-name Jonathan \\\n  --last-name Galt \\\n  --manager-id wrk_1234 \\\n  --position 'Software Engineer' \\\n  --start-date 2000-01-01 \\\n  --work-location '{type: office, workplaceId: wkp_1234}'",
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.workers.createEmployee({\n  compensation: { amount: 1, per: 'hour' },\n  departmentId: 'dpt_1234',\n  email: 'john@joinwarp.com',\n  firstName: 'Jonathan',\n  lastName: 'Galt',\n  managerId: 'wrk_1234',\n  position: 'Software Engineer',\n  startDate: '2000-01-01',\n  workLocation: { type: 'office', workplaceId: 'wkp_1234' },\n});\n\nconsole.log(response.id);",
       },
       go: {
         method: 'client.Workers.NewEmployee',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tresponse, err := client.Workers.NewEmployee(context.TODO(), warphr.WorkerNewEmployeeParams{\n\t\tCompensation: warphr.F(warphr.WorkerNewEmployeeParamsCompensation{\n\t\t\tAmount: warphr.F(1.000000),\n\t\t\tPer:    warphr.F(warphr.WorkerNewEmployeeParamsCompensationPerHour),\n\t\t}),\n\t\tDepartmentID: warphr.F("dpt_1234"),\n\t\tEmail:        warphr.F("john@joinwarp.com"),\n\t\tFirstName:    warphr.F("Jonathan"),\n\t\tLastName:     warphr.F("Galt"),\n\t\tManagerID:    warphr.F("wrk_1234"),\n\t\tPosition:     warphr.F("Software Engineer"),\n\t\tStartDate:    warphr.F("2000-01-01"),\n\t\tWorkLocation: warphr.F[warphr.WorkerNewEmployeeParamsWorkLocationUnion](warphr.WorkerNewEmployeeParamsWorkLocationOfficeWorkLocation{\n\t\t\tType:        warphr.F(warphr.WorkerNewEmployeeParamsWorkLocationOfficeWorkLocationTypeOffice),\n\t\t\tWorkplaceID: warphr.F("wkp_1234"),\n\t\t}),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.ID)\n}\n',
       },
+      cli: {
+        method: 'workers create_employee',
+        example:
+          "warp-hr workers create-employee \\\n  --api-key 'My API Key' \\\n  --compensation '{amount: 1, per: hour}' \\\n  --department-id dpt_1234 \\\n  --email john@joinwarp.com \\\n  --first-name Jonathan \\\n  --last-name Galt \\\n  --manager-id wrk_1234 \\\n  --position 'Software Engineer' \\\n  --start-date 2000-01-01 \\\n  --work-location '{type: office, workplaceId: wkp_1234}'",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/workers/employee \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "compensation": {\n            "amount": 1,\n            "per": "hour"\n          },\n          "departmentId": "dpt_1234",\n          "email": "john@joinwarp.com",\n          "firstName": "Jonathan",\n          "lastName": "Galt",\n          "managerId": "wrk_1234",\n          "position": "Software Engineer",\n          "startDate": "2000-01-01",\n          "workLocation": {\n            "type": "office",\n            "workplaceId": "wkp_1234"\n          }\n        }\'',
-      },
-      typescript: {
-        method: 'client.workers.createEmployee',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.workers.createEmployee({\n  compensation: { amount: 1, per: 'hour' },\n  departmentId: 'dpt_1234',\n  email: 'john@joinwarp.com',\n  firstName: 'Jonathan',\n  lastName: 'Galt',\n  managerId: 'wrk_1234',\n  position: 'Software Engineer',\n  startDate: '2000-01-01',\n  workLocation: { type: 'office', workplaceId: 'wkp_1234' },\n});\n\nconsole.log(response.id);",
       },
     },
   },
@@ -430,24 +430,24 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create_contractor\n\n`client.workers.createContractor(departmentId: string, email: string, entityType: 'individual' | 'business', firstName: string, lastName: string, managerId: string, position: string, startDate: string, workCountry: string, businessName?: string, compensation?: { amount: number; currency: string; per: 'hour' | 'year' | 'month' | 'week'; }, paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually', scopeOfWork?: string, workEmail?: string): { id: string; businessName: string; department: object; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n**post** `/v1/workers/contractor`\n\nCreate a new contractor. The worker will be created in draft status and must be invited separately via the invite endpoint. For business contractors, the businessName field is required.\n\n### Parameters\n\n- `departmentId: string`\n  The department to assign this contractor to.\n\n- `email: string`\n  Personal email address. The invite will be sent here.\n\n- `entityType: 'individual' | 'business'`\n  Whether the contractor is an individual person or a business entity.\n\n- `firstName: string`\n  a non empty string\n\n- `lastName: string`\n  a non empty string\n\n- `managerId: string`\n  The worker id of this contractor's direct manager.\n\n- `position: string`\n  The contractor's role or job title.\n\n- `startDate: string`\n  A date string in the form YYYY-MM-DD\n\n- `workCountry: string`\n\n- `businessName?: string`\n  Required when entityType is \"business\". The legal name of the contractor's business.\n\n- `compensation?: { amount: number; currency: string; per: 'hour' | 'year' | 'month' | 'week'; }`\n  The pay rate for the contractor. Leave this blank if you'd like to pay this contractor on-demand or via invoicing.\n  - `amount: number`\n    a positive number\n  - `currency: string`\n  - `per: 'hour' | 'year' | 'month' | 'week'`\n    The pay period for the compensation amount.\n\n- `paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually'`\n  The contractor's pay schedule. Must be a pay schedule that the company has configured.\n\n- `scopeOfWork?: string`\n  A description of the work the contractor will perform.\n\n- `workEmail?: string`\n  An email with a reasonably valid regex (shamelessly taken from zod)\n\n### Returns\n\n- `{ id: string; businessName: string; department: { id: string; name: string; }; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n  - `id: string`\n  - `businessName: string`\n  - `department: { id: string; name: string; }`\n  - `displayName: string`\n  - `email: string`\n  - `endDate: string`\n  - `firstName: string`\n  - `isBusiness: boolean`\n  - `lastName: string`\n  - `position: string`\n  - `preferredName: string`\n  - `startDate: string`\n  - `status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'`\n  - `timeZone: string`\n  - `type: 'employee' | 'contractor'`\n  - `workEmail: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst response = await client.workers.createContractor({\n  departmentId: 'dpt_1234',\n  email: 'john@joinwarp.com',\n  entityType: 'individual',\n  firstName: 'Melissa',\n  lastName: 'Jones',\n  managerId: 'wrk_1234',\n  position: 'Design Consultant',\n  startDate: '2000-01-01',\n  workCountry: 'AD',\n});\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'workers create_contractor',
+      typescript: {
+        method: 'client.workers.createContractor',
         example:
-          "warp-hr workers create-contractor \\\n  --api-key 'My API Key' \\\n  --department-id dpt_1234 \\\n  --email john@joinwarp.com \\\n  --entity-type individual \\\n  --first-name Melissa \\\n  --last-name Jones \\\n  --manager-id wrk_1234 \\\n  --position 'Design Consultant' \\\n  --start-date 2000-01-01 \\\n  --work-country AD",
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.workers.createContractor({\n  departmentId: 'dpt_1234',\n  email: 'john@joinwarp.com',\n  entityType: 'individual',\n  firstName: 'Melissa',\n  lastName: 'Jones',\n  managerId: 'wrk_1234',\n  position: 'Design Consultant',\n  startDate: '2000-01-01',\n  workCountry: 'AD',\n});\n\nconsole.log(response.id);",
       },
       go: {
         method: 'client.Workers.NewContractor',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tresponse, err := client.Workers.NewContractor(context.TODO(), warphr.WorkerNewContractorParams{\n\t\tDepartmentID: warphr.F("dpt_1234"),\n\t\tEmail:        warphr.F("john@joinwarp.com"),\n\t\tEntityType:   warphr.F(warphr.WorkerNewContractorParamsEntityTypeIndividual),\n\t\tFirstName:    warphr.F("Melissa"),\n\t\tLastName:     warphr.F("Jones"),\n\t\tManagerID:    warphr.F("wrk_1234"),\n\t\tPosition:     warphr.F("Design Consultant"),\n\t\tStartDate:    warphr.F("2000-01-01"),\n\t\tWorkCountry:  warphr.F(warphr.WorkerNewContractorParamsWorkCountryAd),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.ID)\n}\n',
       },
+      cli: {
+        method: 'workers create_contractor',
+        example:
+          "warp-hr workers create-contractor \\\n  --api-key 'My API Key' \\\n  --department-id dpt_1234 \\\n  --email john@joinwarp.com \\\n  --entity-type individual \\\n  --first-name Melissa \\\n  --last-name Jones \\\n  --manager-id wrk_1234 \\\n  --position 'Design Consultant' \\\n  --start-date 2000-01-01 \\\n  --work-country AD",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/workers/contractor \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "departmentId": "dpt_1234",\n          "email": "john@joinwarp.com",\n          "entityType": "individual",\n          "firstName": "Melissa",\n          "lastName": "Jones",\n          "managerId": "wrk_1234",\n          "position": "Design Consultant",\n          "startDate": "2000-01-01",\n          "workCountry": "AD"\n        }\'',
-      },
-      typescript: {
-        method: 'client.workers.createContractor',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.workers.createContractor({\n  departmentId: 'dpt_1234',\n  email: 'john@joinwarp.com',\n  entityType: 'individual',\n  firstName: 'Melissa',\n  lastName: 'Jones',\n  managerId: 'wrk_1234',\n  position: 'Design Consultant',\n  startDate: '2000-01-01',\n  workCountry: 'AD',\n});\n\nconsole.log(response.id);",
       },
     },
   },
@@ -466,23 +466,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## invite\n\n`client.workers.invite(id: string): { id: string; businessName: string; department: object; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n**post** `/v1/workers/{id}/invite`\n\nSend or resend the worker invite so they can accept and complete onboarding to Warp. If the worker has already been invited, the invite will be resent with extended validity.\n\n### Parameters\n\n- `id: string`\n  The id of the worker.\n\n### Returns\n\n- `{ id: string; businessName: string; department: { id: string; name: string; }; displayName: string; email: string; endDate: string; firstName: string; isBusiness: boolean; lastName: string; position: string; preferredName: string; startDate: string; status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'; timeZone: string; type: 'employee' | 'contractor'; workEmail: string; }`\n\n  - `id: string`\n  - `businessName: string`\n  - `department: { id: string; name: string; }`\n  - `displayName: string`\n  - `email: string`\n  - `endDate: string`\n  - `firstName: string`\n  - `isBusiness: boolean`\n  - `lastName: string`\n  - `position: string`\n  - `preferredName: string`\n  - `startDate: string`\n  - `status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'`\n  - `timeZone: string`\n  - `type: 'employee' | 'contractor'`\n  - `workEmail: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst response = await client.workers.invite('wrk_1234');\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'workers invite',
-        example: "warp-hr workers invite \\\n  --api-key 'My API Key' \\\n  --id wrk_1234",
+      typescript: {
+        method: 'client.workers.invite',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.workers.invite('wrk_1234');\n\nconsole.log(response.id);",
       },
       go: {
         method: 'client.Workers.Invite',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tresponse, err := client.Workers.Invite(context.TODO(), "wrk_1234")\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.ID)\n}\n',
       },
+      cli: {
+        method: 'workers invite',
+        example: "warp-hr workers invite \\\n  --api-key 'My API Key' \\\n  --id wrk_1234",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/workers/$ID/invite \\\n    -X POST \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.workers.invite',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst response = await client.workers.invite('wrk_1234');\n\nconsole.log(response.id);",
       },
     },
   },
@@ -499,22 +499,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.departments.list(afterId?: string, beforeId?: string, limit?: string): { id: string; createdAt: string; name: string; }`\n\n**get** `/v1/departments`\n\nList all departments for your company.\n\n### Parameters\n\n- `afterId?: string`\n  The unique public id of the department\n\n- `beforeId?: string`\n  The unique public id of the department\n\n- `limit?: string`\n  a number less than or equal to 100\n\n### Returns\n\n- `{ id: string; createdAt: string; name: string; }`\n\n  - `id: string`\n  - `createdAt: string`\n  - `name: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const departmentListResponse of client.departments.list()) {\n  console.log(departmentListResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'departments list',
-        example: "warp-hr departments list \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.departments.list',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const departmentListResponse of client.departments.list()) {\n  console.log(departmentListResponse.id);\n}",
       },
       go: {
         method: 'client.Departments.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.Departments.List(context.TODO(), warphr.DepartmentListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'departments list',
+        example: "warp-hr departments list \\\n  --api-key 'My API Key'",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/departments \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.departments.list',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const departmentListResponse of client.departments.list()) {\n  console.log(departmentListResponse.id);\n}",
       },
     },
   },
@@ -531,23 +531,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.departments.create(name: string): { id: string; createdAt: string; name: string; }`\n\n**post** `/v1/departments`\n\nCreate a new department.\n\n### Parameters\n\n- `name: string`\n  a non empty string\n\n### Returns\n\n- `{ id: string; createdAt: string; name: string; }`\n\n  - `id: string`\n  - `createdAt: string`\n  - `name: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst department = await client.departments.create({ name: 'name' });\n\nconsole.log(department);\n```",
     perLanguage: {
-      cli: {
-        method: 'departments create',
-        example: "warp-hr departments create \\\n  --api-key 'My API Key' \\\n  --name name",
+      typescript: {
+        method: 'client.departments.create',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst department = await client.departments.create({ name: 'name' });\n\nconsole.log(department.id);",
       },
       go: {
         method: 'client.Departments.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tdepartment, err := client.Departments.New(context.TODO(), warphr.DepartmentNewParams{\n\t\tName: warphr.F("name"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", department.ID)\n}\n',
       },
+      cli: {
+        method: 'departments create',
+        example: "warp-hr departments create \\\n  --api-key 'My API Key' \\\n  --name name",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/departments \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "name": "name"\n        }\'',
-      },
-      typescript: {
-        method: 'client.departments.create',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst department = await client.departments.create({ name: 'name' });\n\nconsole.log(department.id);",
       },
     },
   },
@@ -564,23 +564,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## update\n\n`client.departments.update(id: string, name?: string): { id: string; createdAt: string; name: string; }`\n\n**patch** `/v1/departments/{id}`\n\nUpdate an existing department.\n\n### Parameters\n\n- `id: string`\n  The unique public id of the department\n\n- `name?: string`\n\n### Returns\n\n- `{ id: string; createdAt: string; name: string; }`\n\n  - `id: string`\n  - `createdAt: string`\n  - `name: string`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst department = await client.departments.update('dpt_1234');\n\nconsole.log(department);\n```",
     perLanguage: {
-      cli: {
-        method: 'departments update',
-        example: "warp-hr departments update \\\n  --api-key 'My API Key' \\\n  --id dpt_1234",
+      typescript: {
+        method: 'client.departments.update',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst department = await client.departments.update('dpt_1234');\n\nconsole.log(department.id);",
       },
       go: {
         method: 'client.Departments.Update',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tdepartment, err := client.Departments.Update(\n\t\tcontext.TODO(),\n\t\t"dpt_1234",\n\t\twarphr.DepartmentUpdateParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", department.ID)\n}\n',
       },
+      cli: {
+        method: 'departments update',
+        example: "warp-hr departments update \\\n  --api-key 'My API Key' \\\n  --id dpt_1234",
+      },
       http: {
         example:
           "curl https://api.joinwarp.com/v1/departments/$ID \\\n    -X PATCH \\\n    -H 'Content-Type: application/json' \\\n    -H \"x-api-key: $WARP_API_KEY\" \\\n    -d '{}'",
-      },
-      typescript: {
-        method: 'client.departments.update',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst department = await client.departments.update('dpt_1234');\n\nconsole.log(department.id);",
       },
     },
   },
@@ -598,22 +598,22 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.workplaces.list(afterId?: string, beforeId?: string, limit?: string): { id: string; address: object; createdAt: string; name: string; status: 'active' | 'archived'; type: 'remote' | 'office'; }`\n\n**get** `/v1/workplaces`\n\nList all workplaces for your company.\n\n### Parameters\n\n- `afterId?: string`\n  Public workplace identifier\n\n- `beforeId?: string`\n  Public workplace identifier\n\n- `limit?: string`\n  a number less than or equal to 100\n\n### Returns\n\n- `{ id: string; address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }; createdAt: string; name: string; status: 'active' | 'archived'; type: 'remote' | 'office'; }`\n\n  - `id: string`\n  - `address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }`\n  - `createdAt: string`\n  - `name: string`\n  - `status: 'active' | 'archived'`\n  - `type: 'remote' | 'office'`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\n// Automatically fetches more pages as needed.\nfor await (const workplaceListResponse of client.workplaces.list()) {\n  console.log(workplaceListResponse);\n}\n```",
     perLanguage: {
-      cli: {
-        method: 'workplaces list',
-        example: "warp-hr workplaces list \\\n  --api-key 'My API Key'",
+      typescript: {
+        method: 'client.workplaces.list',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const workplaceListResponse of client.workplaces.list()) {\n  console.log(workplaceListResponse.id);\n}",
       },
       go: {
         method: 'client.Workplaces.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tpage, err := client.Workplaces.List(context.TODO(), warphr.WorkplaceListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", page)\n}\n',
       },
+      cli: {
+        method: 'workplaces list',
+        example: "warp-hr workplaces list \\\n  --api-key 'My API Key'",
+      },
       http: {
         example: 'curl https://api.joinwarp.com/v1/workplaces \\\n    -H "x-api-key: $WARP_API_KEY"',
-      },
-      typescript: {
-        method: 'client.workplaces.list',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\n// Automatically fetches more pages as needed.\nfor await (const workplaceListResponse of client.workplaces.list()) {\n  console.log(workplaceListResponse.id);\n}",
       },
     },
   },
@@ -635,24 +635,24 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.workplaces.create(address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }, name: string, type: 'remote' | 'office'): { id: string; address: object; createdAt: string; name: string; status: 'active' | 'archived'; type: 'remote' | 'office'; }`\n\n**post** `/v1/workplaces`\n\nCreate a new workplace.\n\n### Parameters\n\n- `address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }`\n  A valid US address\n  - `city: string`\n  - `country: 'US'`\n  - `line1: string`\n    a non empty string\n  - `postalCode: string`\n  - `state: string`\n  - `line2?: string`\n\n- `name: string`\n  a non empty string\n\n- `type: 'remote' | 'office'`\n\n### Returns\n\n- `{ id: string; address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }; createdAt: string; name: string; status: 'active' | 'archived'; type: 'remote' | 'office'; }`\n\n  - `id: string`\n  - `address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }`\n  - `createdAt: string`\n  - `name: string`\n  - `status: 'active' | 'archived'`\n  - `type: 'remote' | 'office'`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst workplace = await client.workplaces.create({\n  address: {\n  city: 'city',\n  country: 'US',\n  line1: 'x',\n  postalCode: 'postalCode',\n  state: 'AL',\n},\n  name: 'name',\n  type: 'remote',\n});\n\nconsole.log(workplace);\n```",
     perLanguage: {
-      cli: {
-        method: 'workplaces create',
+      typescript: {
+        method: 'client.workplaces.create',
         example:
-          "warp-hr workplaces create \\\n  --api-key 'My API Key' \\\n  --address '{city: city, country: US, line1: x, postalCode: postalCode, state: AL}' \\\n  --name name \\\n  --type remote",
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst workplace = await client.workplaces.create({\n  address: {\n    city: 'city',\n    country: 'US',\n    line1: 'x',\n    postalCode: 'postalCode',\n    state: 'AL',\n  },\n  name: 'name',\n  type: 'remote',\n});\n\nconsole.log(workplace.id);",
       },
       go: {
         method: 'client.Workplaces.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tworkplace, err := client.Workplaces.New(context.TODO(), warphr.WorkplaceNewParams{\n\t\tAddress: warphr.F(warphr.WorkplaceNewParamsAddress{\n\t\t\tCity:       warphr.F("city"),\n\t\t\tCountry:    warphr.F(warphr.WorkplaceNewParamsAddressCountryUs),\n\t\t\tLine1:      warphr.F("x"),\n\t\t\tPostalCode: warphr.F("postalCode"),\n\t\t\tState:      warphr.F(warphr.WorkplaceNewParamsAddressStateAl),\n\t\t}),\n\t\tName: warphr.F("name"),\n\t\tType: warphr.F(warphr.WorkplaceNewParamsTypeRemote),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", workplace.ID)\n}\n',
       },
+      cli: {
+        method: 'workplaces create',
+        example:
+          "warp-hr workplaces create \\\n  --api-key 'My API Key' \\\n  --address '{city: city, country: US, line1: x, postalCode: postalCode, state: AL}' \\\n  --name name \\\n  --type remote",
+      },
       http: {
         example:
           'curl https://api.joinwarp.com/v1/workplaces \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "address": {\n            "city": "city",\n            "country": "US",\n            "line1": "x",\n            "postalCode": "postalCode",\n            "state": "AL"\n          },\n          "name": "name",\n          "type": "remote"\n        }\'',
-      },
-      typescript: {
-        method: 'client.workplaces.create',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst workplace = await client.workplaces.create({\n  address: {\n    city: 'city',\n    country: 'US',\n    line1: 'x',\n    postalCode: 'postalCode',\n    state: 'AL',\n  },\n  name: 'name',\n  type: 'remote',\n});\n\nconsole.log(workplace.id);",
       },
     },
   },
@@ -670,23 +670,23 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## update\n\n`client.workplaces.update(id: string, name?: string): { id: string; address: object; createdAt: string; name: string; status: 'active' | 'archived'; type: 'remote' | 'office'; }`\n\n**patch** `/v1/workplaces/{id}`\n\nUpdate an existing workplace.\n\n### Parameters\n\n- `id: string`\n  Public workplace identifier\n\n- `name?: string`\n\n### Returns\n\n- `{ id: string; address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }; createdAt: string; name: string; status: 'active' | 'archived'; type: 'remote' | 'office'; }`\n\n  - `id: string`\n  - `address: { city: string; country: 'US'; line1: string; postalCode: string; state: string; line2?: string; }`\n  - `createdAt: string`\n  - `name: string`\n  - `status: 'active' | 'archived'`\n  - `type: 'remote' | 'office'`\n\n### Example\n\n```typescript\nimport Warp from 'warp-hr';\n\nconst client = new Warp();\n\nconst workplace = await client.workplaces.update('wkp_1234');\n\nconsole.log(workplace);\n```",
     perLanguage: {
-      cli: {
-        method: 'workplaces update',
-        example: "warp-hr workplaces update \\\n  --api-key 'My API Key' \\\n  --id wkp_1234",
+      typescript: {
+        method: 'client.workplaces.update',
+        example:
+          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst workplace = await client.workplaces.update('wkp_1234');\n\nconsole.log(workplace.id);",
       },
       go: {
         method: 'client.Workplaces.Update',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/TeamWarp/warp-go-sdk"\n\t"github.com/TeamWarp/warp-go-sdk/option"\n)\n\nfunc main() {\n\tclient := warphr.NewClient(\n\t\toption.WithAPIKey("My API Key"),\n\t)\n\tworkplace, err := client.Workplaces.Update(\n\t\tcontext.TODO(),\n\t\t"wkp_1234",\n\t\twarphr.WorkplaceUpdateParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", workplace.ID)\n}\n',
       },
+      cli: {
+        method: 'workplaces update',
+        example: "warp-hr workplaces update \\\n  --api-key 'My API Key' \\\n  --id wkp_1234",
+      },
       http: {
         example:
           "curl https://api.joinwarp.com/v1/workplaces/$ID \\\n    -X PATCH \\\n    -H 'Content-Type: application/json' \\\n    -H \"x-api-key: $WARP_API_KEY\" \\\n    -d '{}'",
-      },
-      typescript: {
-        method: 'client.workplaces.update',
-        example:
-          "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted\n});\n\nconst workplace = await client.workplaces.update('wkp_1234');\n\nconsole.log(workplace.id);",
       },
     },
   },
