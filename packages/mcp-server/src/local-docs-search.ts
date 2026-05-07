@@ -396,7 +396,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.joinwarp.com/v1/workers/employee \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "compensation": {\n            "amount": 1,\n            "per": "hour"\n          },\n          "departmentId": "dpt_1234",\n          "email": "john@joinwarp.com",\n          "firstName": "Jonathan",\n          "lastName": "Galt",\n          "managerId": "wrk_1234",\n          "position": "Software Engineer",\n          "startDate": "2000-01-01",\n          "workLocation": {\n            "type": "office",\n            "workplaceId": "wkp_1234"\n          }\n        }\'',
+          'curl https://api.joinwarp.com/v1/workers/employee \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "compensation": {\n            "amount": 1,\n            "per": "hour"\n          },\n          "departmentId": "dpt_1234",\n          "email": "john@joinwarp.com",\n          "firstName": "Jonathan",\n          "lastName": "Galt",\n          "managerId": "wrk_1234",\n          "position": "Software Engineer",\n          "startDate": "2000-01-01",\n          "workLocation": {\n            "type": "office",\n            "workplaceId": "wkp_1234"\n          },\n          "stockOptions": 10000\n        }\'',
       },
     },
   },
@@ -447,7 +447,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.joinwarp.com/v1/workers/contractor \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "departmentId": "dpt_1234",\n          "email": "john@joinwarp.com",\n          "entityType": "individual",\n          "firstName": "Melissa",\n          "lastName": "Jones",\n          "managerId": "wrk_1234",\n          "position": "Design Consultant",\n          "startDate": "2000-01-01",\n          "workCountry": "AD"\n        }\'',
+          'curl https://api.joinwarp.com/v1/workers/contractor \\\n    -H \'Content-Type: application/json\' \\\n    -H "x-api-key: $WARP_API_KEY" \\\n    -d \'{\n          "departmentId": "dpt_1234",\n          "email": "john@joinwarp.com",\n          "entityType": "individual",\n          "firstName": "Melissa",\n          "lastName": "Jones",\n          "managerId": "wrk_1234",\n          "position": "Design Consultant",\n          "startDate": "2000-01-01",\n          "workCountry": "AD",\n          "businessName": "Galt Enterprises, LLC",\n          "scopeOfWork": "Frontend development for the customer dashboard"\n        }\'',
       },
     },
   },
