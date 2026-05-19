@@ -1,7 +1,6 @@
 import fs from 'fs';
 import type { ResponseLike } from 'warp-hr/internal/to-file';
 import { toFile } from 'warp-hr/core/uploads';
-import { File } from 'node:buffer';
 
 class MyClass {
   name: string = 'foo';
