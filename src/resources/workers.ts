@@ -149,7 +149,7 @@ export interface WorkerRetrieveResponse {
   displayName: string;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   email: string;
 
@@ -183,7 +183,7 @@ export interface WorkerRetrieveResponse {
   type: 'employee' | 'contractor';
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail: string | null;
 }
@@ -222,7 +222,7 @@ export interface WorkerListResponse {
   displayName: string;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   email: string;
 
@@ -256,7 +256,7 @@ export interface WorkerListResponse {
   type: 'employee' | 'contractor';
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail: string | null;
 }
@@ -295,7 +295,7 @@ export interface WorkerCreateContractorResponse {
   displayName: string;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   email: string;
 
@@ -329,7 +329,7 @@ export interface WorkerCreateContractorResponse {
   type: 'employee' | 'contractor';
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail: string | null;
 }
@@ -368,7 +368,7 @@ export interface WorkerCreateEmployeeResponse {
   displayName: string;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   email: string;
 
@@ -402,7 +402,7 @@ export interface WorkerCreateEmployeeResponse {
   type: 'employee' | 'contractor';
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail: string | null;
 }
@@ -441,7 +441,7 @@ export interface WorkerInviteResponse {
   displayName: string;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   email: string;
 
@@ -475,7 +475,7 @@ export interface WorkerInviteResponse {
   type: 'employee' | 'contractor';
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail: string | null;
 }
@@ -824,7 +824,7 @@ export interface WorkerCreateContractorParams {
   scopeOfWork?: string | null;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail?: string | null;
 }
@@ -983,7 +983,7 @@ export interface WorkerCreateEmployeeParams {
   stockOptions?: number | null;
 
   /**
-   * An email with a reasonably valid regex (shamelessly taken from zod)
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    */
   workEmail?: string | null;
 }
