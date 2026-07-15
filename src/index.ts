@@ -1,11 +1,10 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-export { Warp as default } from './client';
+export { Warp as default } from './client.js';
 
 export { type Uploadable, toFile } from './core/uploads';
-export { APIPromise } from './core/api-promise';
-export { Warp, type ClientOptions } from './client';
-export { PagePromise } from './core/pagination';
+export { APIPromise } from './api-promise';
+export { Warp, type ClientOptions } from './client.js';
 export {
   WarpError,
   APIError,
@@ -20,4 +19,4 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from './core/error';
+} from './error';

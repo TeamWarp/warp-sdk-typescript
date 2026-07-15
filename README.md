@@ -1,21 +1,24 @@
-# Warp TypeScript API Library
+# Warp
 
-[![NPM version](<https://img.shields.io/npm/v/warp-hr.svg?label=npm%20(stable)>)](https://npmjs.org/package/warp-hr) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/warp-hr)
+Generated TypeScript SDK for Warp API.
 
-This library provides convenient access to the Warp REST API from server-side TypeScript or JavaScript.
+<br />
 
-The REST API documentation can be found on [docs.warp.co](https://docs.warp.co). The full API of this library can be found in [api.md](api.md).
+## Contents
 
-It is generated with [Stainless](https://www.stainless.com/).
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](./api.md)
+- [Authentication](#authentication)
+- [Errors](#errors)
+- [Client Options](#client-options)
+- [Request Options](#request-options)
+- [Retries and Timeouts](#retries-and-timeouts)
+- [Helpers](#helpers)
+- [Logging](#logging)
+- [Requirements](#requirements)
 
-## MCP Server
-
-Use the Warp MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.
-
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=warp-hr-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIndhcnAtaHItbWNwIl0sImVudiI6eyJXQVJQX0FQSV9LRVkiOiJNeSBBUEkgS2V5In19)
-[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22warp-hr-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22warp-hr-mcp%22%5D%2C%22env%22%3A%7B%22WARP_API_KEY%22%3A%22My%20API%20Key%22%7D%7D)
-
-> Note: You may need to set environment variables in your MCP client.
+<br />
 
 ## Installation
 
@@ -23,380 +26,129 @@ Use the Warp MCP Server to enable AI assistants to interact with this API, allow
 npm install warp-hr
 ```
 
+<br />
+
 ## Usage
 
-The full API of this library can be found in [api.md](api.md).
+```ts
+import client from "warp-hr";
 
-<!-- prettier-ignore -->
-```js
-import Warp from 'warp-hr';
-
-const client = new Warp({
-  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted
+const client = new client({
+  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 
-const page = await client.timeOff.policies.list();
-const policyListResponse = page.data[0];
-
-console.log(policyListResponse.id);
+const listAssignments = await client.timeOff.listAssignments();
+console.log(listAssignments);
 ```
 
-### Request & Response types
+The examples in the following sections assume a `client` configured as shown above.
 
-This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
+See the [API reference](./api.md) for every available operation.
 
-<!-- prettier-ignore -->
+<br />
+
+## Authentication
+
+Pass credentials to the generated client constructor. Environment variables are read automatically when supported by the target runtime.
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `apiKey` | `string \| provider` | - | Credential for the apiKey scheme. Defaults to WARP_API_KEY. |
+
+Declared schemes:
+
+- `apiKey` API key in header `x-api-key`
+
+<br />
+
+## Errors
+
+Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
+
 ```ts
-import Warp from 'warp-hr';
+import { APIError } from "warp-hr";
 
-const client = new Warp({
-  apiKey: process.env['WARP_API_KEY'], // This is the default and can be omitted
-});
-
-const [policyListResponse]: [Warp.TimeOff.PolicyListResponse] =
-  await client.timeOff.policies.list();
-```
-
-Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
-
-## Handling errors
-
-When the library is unable to connect to the API,
-or if the API returns a non-success status code (i.e., 4xx or 5xx response),
-a subclass of `APIError` will be thrown:
-
-<!-- prettier-ignore -->
-```ts
-const page = await client.timeOff.policies.list().catch(async (err) => {
-  if (err instanceof Warp.APIError) {
-    console.log(err.status); // 400
-    console.log(err.name); // BadRequestError
-    console.log(err.headers); // {server: 'nginx', ...}
-  } else {
-    throw err;
+try {
+  const listAssignments = await client.timeOff.listAssignments();
+} catch (err) {
+  if (err instanceof APIError) {
+    console.log(err.status, err.name, err.headers);
   }
-});
-```
-
-Error codes are as follows:
-
-| Status Code | Error Type                 |
-| ----------- | -------------------------- |
-| 400         | `BadRequestError`          |
-| 401         | `AuthenticationError`      |
-| 403         | `PermissionDeniedError`    |
-| 404         | `NotFoundError`            |
-| 422         | `UnprocessableEntityError` |
-| 429         | `RateLimitError`           |
-| >=500       | `InternalServerError`      |
-| N/A         | `APIConnectionError`       |
-
-### Retries
-
-Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
-Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
-429 Rate Limit, and >=500 Internal errors will all be retried by default.
-
-You can use the `maxRetries` option to configure or disable this:
-
-<!-- prettier-ignore -->
-```js
-// Configure the default for all requests:
-const client = new Warp({
-  maxRetries: 0, // default is 2
-});
-
-// Or, configure per-request:
-await client.timeOff.policies.list({
-  maxRetries: 5,
-});
-```
-
-### Timeouts
-
-Requests time out after 1 minute by default. You can configure this with a `timeout` option:
-
-<!-- prettier-ignore -->
-```ts
-// Configure the default for all requests:
-const client = new Warp({
-  timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-});
-
-// Override per-request:
-await client.timeOff.policies.list({
-  timeout: 5 * 1000,
-});
-```
-
-On timeout, an `APIConnectionTimeoutError` is thrown.
-
-Note that requests which time out will be [retried twice by default](#retries).
-
-## Auto-pagination
-
-List methods in the Warp API are paginated.
-You can use the `for await … of` syntax to iterate through items across all pages:
-
-```ts
-async function fetchAllPolicyListResponses(params) {
-  const allPolicyListResponses = [];
-  // Automatically fetches more pages as needed.
-  for await (const policyListResponse of client.timeOff.policies.list()) {
-    allPolicyListResponses.push(policyListResponse);
-  }
-  return allPolicyListResponses;
+  throw err;
 }
 ```
 
-Alternatively, you can request a single page at a time:
+Documented error statuses: `400`, `401`, `403`, `404`, `409`, `429`, `500`.
+
+<br />
+
+## Client Options
+
+Configure the generated client by setting any of these options when you create it.
 
 ```ts
-let page = await client.timeOff.policies.list();
-for (const policyListResponse of page.data) {
-  console.log(policyListResponse);
-}
+import client from "warp-hr";
 
-// Convenience methods are provided for manually paginating:
-while (page.hasNextPage()) {
-  page = await page.getNextPage();
-  // ...
-}
-```
-
-## Advanced Usage
-
-### Accessing raw Response data (e.g., headers)
-
-The "raw" `Response` returned by `fetch()` can be accessed through the `.asResponse()` method on the `APIPromise` type that all methods return.
-This method returns as soon as the headers for a successful response are received and does not consume the response body, so you are free to write custom parsing or streaming logic.
-
-You can also use the `.withResponse()` method to get the raw `Response` along with the parsed data.
-Unlike `.asResponse()` this method consumes the body, returning once it is parsed.
-
-<!-- prettier-ignore -->
-```ts
-const client = new Warp();
-
-const response = await client.timeOff.policies.list().asResponse();
-console.log(response.headers.get('X-My-Header'));
-console.log(response.statusText); // access the underlying Response object
-
-const { data: page, response: raw } = await client.timeOff.policies.list().withResponse();
-console.log(raw.headers.get('X-My-Header'));
-for await (const policyListResponse of page) {
-  console.log(policyListResponse.id);
-}
-```
-
-### Logging
-
-> [!IMPORTANT]
-> All log messages are intended for debugging only. The format and content of log messages
-> may change between releases.
-
-#### Log levels
-
-The log level can be configured in two ways:
-
-1. Via the `WARP_LOG` environment variable
-2. Using the `logLevel` client option (overrides the environment variable if set)
-
-```ts
-import Warp from 'warp-hr';
-
-const client = new Warp({
-  logLevel: 'debug', // Show all log messages
+const client = new client({
+  timeout: 60000,
+  maxRetries: 2,
+  logLevel: "debug",
 });
 ```
 
-Available log levels, from most to least verbose:
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `apiKey` | `string \| AuthTokenProvider` | `process.env["WARP_API_KEY"]` | Credential for the apiKey scheme. |
+| `baseURL` | `string \| null` | `process.env["WARP_BASE_URL"]` | Override the default API base URL. Pass `null` when selecting a configured environment. |
+| `timeout` | `number` | `60000` | Maximum time in milliseconds to wait for a response before aborting a request. |
+| `maxRetries` | `number` | `2` | Number of retries for temporary failures. |
+| `defaultHeaders` | `HeadersInit` | - | Headers sent with every request. |
+| `defaultQuery` | `Record<string, string \| undefined>` | - | Query parameters sent with every request. |
+| `fetchOptions` | `RequestInit` | - | Additional fetch options sent with every request. |
+| `fetch` | `Fetch` | - | Custom fetch implementation. |
+| `logLevel` | `"off" \| "error" \| "warn" \| "info" \| "debug" \| null` | `process.env["WARP_LOG"]` | Controls request and retry debug logging. |
+| `logger` | `Logger \| null` | `console` | Custom logger implementation. |
 
-- `'debug'` - Show debug messages, info, warnings, and errors
-- `'info'` - Show info messages, warnings, and errors
-- `'warn'` - Show warnings and errors (default)
-- `'error'` - Show only errors
-- `'off'` - Disable all logging
+<br />
 
-At the `'debug'` level, all HTTP requests and responses are logged, including headers and bodies.
-Some authentication-related headers are redacted, but sensitive data in request and response bodies
-may still be visible.
+## Request Options
 
-#### Custom logger
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `headers` | `HeadersInit` | - | Per-request headers. |
+| `query` | `Record<string, unknown>` | - | Per-request query parameters. |
+| `body` | `unknown` | - | Override the generated request body. |
+| `timeout` | `number` | - | Per-request timeout in milliseconds. |
+| `maxRetries` | `number` | - | Per-request retry count. |
+| `signal` | `AbortSignal` | - | Abort an in-flight request. |
+| `fetchOptions` | `RequestInit` | - | Per-request fetch options. |
+| `idempotencyKey` | `string` | - | Idempotency key for retry-safe operations. |
 
-By default, this library logs to `globalThis.console`. You can also provide a custom logger.
-Most logging libraries are supported, including [pino](https://www.npmjs.com/package/pino), [winston](https://www.npmjs.com/package/winston), [bunyan](https://www.npmjs.com/package/bunyan), [consola](https://www.npmjs.com/package/consola), [signale](https://www.npmjs.com/package/signale), and [@std/log](https://jsr.io/@std/log). If your logger doesn't work, please open an issue.
+<br />
 
-When providing a custom logger, the `logLevel` option still controls which messages are emitted, messages
-below the configured level will not be sent to your logger.
+## Retries and Timeouts
 
-```ts
-import Warp from 'warp-hr';
-import pino from 'pino';
+Generated clients support request timeouts and retry temporary failures such as network errors, 408, 409, 429, and 5xx responses. Retry delays honor `Retry-After` headers when present. Tune the retry and timeout client options shown above, or override them per request.
 
-const logger = pino();
+<br />
 
-const client = new Warp({
-  logger: logger.child({ name: 'Warp' }),
-  logLevel: 'debug', // Send all messages to pino, allowing it to filter
-});
-```
+## Helpers
 
-### Making custom/undocumented requests
+- Use `.withResponse()` on any request to inspect both parsed data and the raw `Response` object.
+- Every operation returns an `APIPromise`, so you can `await` it directly or chain `.withResponse()`.
 
-This library is typed for convenient access to the documented API. If you need to access undocumented
-endpoints, params, or response properties, the library can still be used.
+<br />
 
-#### Undocumented endpoints
+## Logging
 
-To make requests to undocumented endpoints, you can use `client.get`, `client.post`, and other HTTP verbs.
-Options on the client, such as retries, will be respected when making these requests.
+- Set `logLevel: "debug"` to log request URLs, options, response status, response headers, and retry attempts.
+- Pass a custom `logger` to route logs into your own observability pipeline.
+- Set `logLevel: null` to disable environment-driven logging.
 
-```ts
-await client.post('/some/path', {
-  body: { some_prop: 'foo' },
-  query: { some_query_arg: 'bar' },
-});
-```
-
-#### Undocumented request params
-
-To make requests using undocumented parameters, you may use `// @ts-expect-error` on the undocumented
-parameter. This library doesn't validate at runtime that the request matches the type, so any extra values you
-send will be sent as-is.
-
-```ts
-client.timeOff.policies.list({
-  // ...
-  // @ts-expect-error baz is not yet public
-  baz: 'undocumented option',
-});
-```
-
-For requests with the `GET` verb, any extra params will be in the query, all other requests will send the
-extra param in the body.
-
-If you want to explicitly send an extra argument, you can do so with the `query`, `body`, and `headers` request
-options.
-
-#### Undocumented response properties
-
-To access undocumented response properties, you may access the response object with `// @ts-expect-error` on
-the response object, or cast the response object to the requisite type. Like the request params, we do not
-validate or strip extra properties from the response from the API.
-
-### Customizing the fetch client
-
-By default, this library expects a global `fetch` function is defined.
-
-If you want to use a different `fetch` function, you can either polyfill the global:
-
-```ts
-import fetch from 'my-fetch';
-
-globalThis.fetch = fetch;
-```
-
-Or pass it to the client:
-
-```ts
-import Warp from 'warp-hr';
-import fetch from 'my-fetch';
-
-const client = new Warp({ fetch });
-```
-
-### Fetch options
-
-If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
-
-```ts
-import Warp from 'warp-hr';
-
-const client = new Warp({
-  fetchOptions: {
-    // `RequestInit` options
-  },
-});
-```
-
-#### Configuring proxies
-
-To modify proxy behavior, you can provide custom `fetchOptions` that add runtime-specific proxy
-options to requests:
-
-<img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
-
-```ts
-import Warp from 'warp-hr';
-import * as undici from 'undici';
-
-const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
-const client = new Warp({
-  fetchOptions: {
-    dispatcher: proxyAgent,
-  },
-});
-```
-
-<img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
-
-```ts
-import Warp from 'warp-hr';
-
-const client = new Warp({
-  fetchOptions: {
-    proxy: 'http://localhost:8888',
-  },
-});
-```
-
-<img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
-
-```ts
-import Warp from 'npm:warp-hr';
-
-const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
-const client = new Warp({
-  fetchOptions: {
-    client: httpClient,
-  },
-});
-```
-
-## Frequently Asked Questions
-
-## Semantic versioning
-
-This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
-
-1. Changes that only affect static types, without breaking runtime behavior.
-2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals.)_
-3. Changes that we do not expect to impact the vast majority of users in practice.
-
-We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
-
-We are keen for your feedback; please open an [issue](https://www.github.com/TeamWarp/warp-sdk-typescript/issues) with questions, bugs, or suggestions.
+<br />
 
 ## Requirements
 
-TypeScript >= 4.9 is supported.
+- Node.js 20+, a modern browser, or any runtime with `fetch` support
 
-The following runtimes are supported:
-
-- Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
-- Node.js 20 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher.
-- Bun 1.0 or later.
-- Cloudflare Workers.
-- Vercel Edge Runtime.
-- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
-- Nitro v2.6 or greater.
-
-Note that React Native is not supported at this time.
-
-If you are interested in other runtime environments, please open or upvote an issue on GitHub.
-
-## Contributing
-
-See [the contributing documentation](./CONTRIBUTING.md).
+Powered by Scalar.

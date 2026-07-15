@@ -1,0 +1,5326 @@
+{
+  "name": "Warp",
+  "slug": "warp",
+  "version": "0.1.5",
+  "generatorVersion": "0.16.5",
+  "servers": [
+    "https://api.joinwarp.com"
+  ],
+  "environments": {
+    "production": "https://api.joinwarp.com"
+  },
+  "environmentOrder": [
+    "production"
+  ],
+  "auth": [
+    "apiKey"
+  ],
+  "authDetails": [
+    {
+      "kind": "apiKey",
+      "id": "apiKey",
+      "in": "header",
+      "paramName": "x-api-key"
+    }
+  ],
+  "clientHeaderParams": [],
+  "schemas": [
+    {
+      "name": "Date",
+      "source": "Date",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "primitive",
+        "type": "string"
+      }
+    },
+    {
+      "name": "HttpApiDecodeError",
+      "source": "HttpApiDecodeError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "issues",
+            "publicName": "issues",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "array",
+              "items": {
+                "kind": "ref",
+                "name": "Issue"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "HttpApiDecodeError"
+              ],
+              "names": [
+                "HttpApiDecodeError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "Issue",
+      "source": "Issue",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "Pointer",
+                "Unexpected",
+                "Missing",
+                "Composite",
+                "Refinement",
+                "Transformation",
+                "Type",
+                "Forbidden"
+              ],
+              "names": [
+                "Pointer",
+                "Unexpected",
+                "Missing",
+                "Composite",
+                "Refinement",
+                "Transformation",
+                "Type",
+                "Forbidden"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "path",
+            "publicName": "path",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "array",
+              "items": {
+                "kind": "ref",
+                "name": "PropertyKey"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "PropertyKey",
+      "source": "PropertyKey",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "primitive",
+            "type": "string"
+          },
+          {
+            "kind": "primitive",
+            "type": "number"
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "_tag",
+                "publicName": "_tag",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "symbol"
+                  ],
+                  "names": [
+                    "Symbol"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "key",
+                "publicName": "key",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              }
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "variantNames": [
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "name": "InternalServerError",
+      "source": "InternalServerError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "name": "ApiKeyUnauthorized",
+      "source": "ApiKeyUnauthorized",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "ApiKeyUnauthorized"
+              ],
+              "names": [
+                "ApiKeyUnauthorized"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "RateLimitExceeded",
+      "source": "RateLimitExceeded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "retryAt",
+            "publicName": "retryAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "DateTimeUtc"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "RateLimitExceeded"
+              ],
+              "names": [
+                "RateLimitExceeded"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "DateTimeUtc",
+      "source": "DateTimeUtc",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "primitive",
+        "type": "string"
+      }
+    },
+    {
+      "name": "MissingRequiredCompanyPermissions",
+      "source": "MissingRequiredCompanyPermissions",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "requiredPermissions",
+            "publicName": "requiredPermissions",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "array",
+              "items": {
+                "kind": "object",
+                "properties": [
+                  {
+                    "name": "scope",
+                    "publicName": "scope",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "enum",
+                      "values": [
+                        "workers:profile",
+                        "workers:global:compensation",
+                        "workers:us:compensation",
+                        "workers:compliance",
+                        "workers:pii",
+                        "workers:banking",
+                        "workers:access",
+                        "workers:dependents",
+                        "workers:dependents:pii",
+                        "payrolls:global",
+                        "payrolls:us",
+                        "pay_schedules",
+                        "offers",
+                        "departments",
+                        "workplaces",
+                        "time_off",
+                        "time_tracking",
+                        "expenses",
+                        "general_ledger",
+                        "benefits",
+                        "tax_compliance",
+                        "kyb",
+                        "mdm",
+                        "lms",
+                        "authorized_users",
+                        "billing",
+                        "settings",
+                        "developer"
+                      ],
+                      "names": [
+                        "WorkersProfile",
+                        "WorkersGlobalCompensation",
+                        "WorkersUsCompensation",
+                        "WorkersCompliance",
+                        "WorkersPii",
+                        "WorkersBanking",
+                        "WorkersAccess",
+                        "WorkersDependents",
+                        "WorkersDependentsPii",
+                        "PayrollsGlobal",
+                        "PayrollsUs",
+                        "PaySchedules",
+                        "Offers",
+                        "Departments",
+                        "Workplaces",
+                        "TimeOff",
+                        "TimeTracking",
+                        "Expenses",
+                        "GeneralLedger",
+                        "Benefits",
+                        "TaxCompliance",
+                        "Kyb",
+                        "Mdm",
+                        "Lms",
+                        "AuthorizedUsers",
+                        "Billing",
+                        "Settings",
+                        "Developer"
+                      ],
+                      "deprecations": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false
+                      ]
+                    }
+                  },
+                  {
+                    "name": "level",
+                    "publicName": "level",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "enum",
+                      "values": [
+                        "read",
+                        "write",
+                        "manage"
+                      ],
+                      "names": [
+                        "Read",
+                        "Write",
+                        "Manage"
+                      ],
+                      "deprecations": [
+                        false,
+                        false,
+                        false
+                      ]
+                    }
+                  }
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "MissingRequiredCompanyPermissions"
+              ],
+              "names": [
+                "MissingRequiredCompanyPermissions"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "ApiNotEnabled",
+      "source": "ApiNotEnabled",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "ApiNotEnabled"
+              ],
+              "names": [
+                "ApiNotEnabled"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "Trimmed",
+      "source": "Trimmed",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "primitive",
+        "type": "string",
+        "validation": {
+          "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$"
+        }
+      }
+    },
+    {
+      "name": "DepartmentAlreadyExists",
+      "source": "DepartmentAlreadyExists",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": false,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "dpt_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^dpt_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "DepartmentAlreadyExists"
+              ],
+              "names": [
+                "DepartmentAlreadyExists"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "DepartmentNotFound",
+      "source": "DepartmentNotFound",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "dpt_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^dpt_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "DepartmentNotFound"
+              ],
+              "names": [
+                "DepartmentNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "ManagerNotFoundError",
+      "source": "ManagerNotFoundError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "ManagerNotFoundError"
+              ],
+              "names": [
+                "ManagerNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "TimeOffPolicyNotFound",
+      "source": "TimeOffPolicyNotFound",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^top_"
+                  }
+                },
+                {
+                  "kind": "primitive",
+                  "type": "number"
+                }
+              ],
+              "variantNames": [
+                "startsWith(\"top_\")",
+                null
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "TimeOffPolicyNotFound"
+              ],
+              "names": [
+                "TimeOffPolicyNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "TimeOffRequestNotFoundError",
+      "source": "TimeOffRequestNotFoundError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "number"
+                }
+              ],
+              "variantNames": [
+                null,
+                null
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "TimeOffRequestNotFoundError"
+              ],
+              "names": [
+                "TimeOffRequestNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "WorkerNotFoundError",
+      "source": "WorkerNotFoundError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkerNotFoundError"
+              ],
+              "names": [
+                "WorkerNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "OfficeWorkLocation",
+      "source": "OfficeWorkLocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "office"
+              ],
+              "names": [
+                "Office"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "workplaceId",
+            "publicName": "workplaceId",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "RemoteWorkLocation",
+      "source": "RemoteWorkLocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "remote"
+              ],
+              "names": [
+                "Remote"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "state",
+            "publicName": "state",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "AL",
+                "AK",
+                "AZ",
+                "AR",
+                "CA",
+                "CO",
+                "CT",
+                "DC",
+                "DE",
+                "FL",
+                "GA",
+                "HI",
+                "ID",
+                "IL",
+                "IN",
+                "IA",
+                "KS",
+                "KY",
+                "LA",
+                "ME",
+                "MD",
+                "MA",
+                "MI",
+                "MN",
+                "MS",
+                "MO",
+                "MT",
+                "NE",
+                "NV",
+                "NH",
+                "NJ",
+                "NM",
+                "NY",
+                "NC",
+                "ND",
+                "OH",
+                "OK",
+                "OR",
+                "PA",
+                "RI",
+                "SC",
+                "SD",
+                "TN",
+                "TX",
+                "UT",
+                "VT",
+                "VA",
+                "WA",
+                "WV",
+                "WI",
+                "WY"
+              ],
+              "names": [
+                "Al",
+                "Ak",
+                "Az",
+                "Ar",
+                "Ca",
+                "Co",
+                "Ct",
+                "Dc",
+                "De",
+                "Fl",
+                "Ga",
+                "Hi",
+                "Id",
+                "Il",
+                "In",
+                "Ia",
+                "Ks",
+                "Ky",
+                "La",
+                "Me",
+                "Md",
+                "Ma",
+                "Mi",
+                "Mn",
+                "Ms",
+                "Mo",
+                "Mt",
+                "Ne",
+                "Nv",
+                "Nh",
+                "Nj",
+                "Nm",
+                "Ny",
+                "Nc",
+                "Nd",
+                "Oh",
+                "Ok",
+                "Or",
+                "Pa",
+                "Ri",
+                "Sc",
+                "Sd",
+                "Tn",
+                "Tx",
+                "Ut",
+                "Vt",
+                "Va",
+                "Wa",
+                "Wv",
+                "Wi",
+                "Wy"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "StateRegistrationRequired",
+      "source": "StateRegistrationRequired",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "state",
+            "publicName": "state",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "StateRegistrationRequired"
+              ],
+              "names": [
+                "StateRegistrationRequired"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "WorkplaceNotFound",
+      "source": "WorkplaceNotFound",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkplaceNotFound"
+              ],
+              "names": [
+                "WorkplaceNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "PayScheduleNotConfigured",
+      "source": "PayScheduleNotConfigured",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "paySchedule",
+            "publicName": "paySchedule",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "weekly",
+                "biweekly",
+                "monthly",
+                "semimonthly",
+                "quarterly",
+                "annually"
+              ],
+              "names": [
+                "Weekly",
+                "Biweekly",
+                "Monthly",
+                "Semimonthly",
+                "Quarterly",
+                "Annually"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "PayScheduleNotConfigured"
+              ],
+              "names": [
+                "PayScheduleNotConfigured"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "SubscriptionLimitError",
+      "source": "SubscriptionLimitError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "SubscriptionLimitError"
+              ],
+              "names": [
+                "SubscriptionLimitError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "InvalidWorkerStatusError",
+      "source": "InvalidWorkerStatusError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidWorkerStatusError"
+              ],
+              "names": [
+                "InvalidWorkerStatusError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "WorkerAlreadyExistsError",
+      "source": "WorkerAlreadyExistsError",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkerAlreadyExistsError"
+              ],
+              "names": [
+                "WorkerAlreadyExistsError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "CannotDeleteWorker",
+      "source": "CannotDeleteWorker",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CannotDeleteWorker"
+              ],
+              "names": [
+                "CannotDeleteWorker"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "AddressInvalid",
+      "source": "AddressInvalid",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "suggestedAlternative",
+            "publicName": "suggestedAlternative",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "object",
+                  "properties": [
+                    {
+                      "name": "line1",
+                      "publicName": "line1",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string",
+                        "validation": {
+                          "minLength": 1
+                        }
+                      }
+                    },
+                    {
+                      "name": "line2",
+                      "publicName": "line2",
+                      "required": false,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "union",
+                        "variants": [
+                          {
+                            "kind": "primitive",
+                            "type": "string"
+                          },
+                          {
+                            "kind": "null"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "city",
+                      "publicName": "city",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "name": "state",
+                      "publicName": "state",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "name": "postalCode",
+                      "publicName": "postalCode",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "name": "country",
+                      "publicName": "country",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "enum",
+                        "values": [
+                          "AD",
+                          "AE",
+                          "AF",
+                          "AG",
+                          "AI",
+                          "AL",
+                          "AM",
+                          "AO",
+                          "AQ",
+                          "AR",
+                          "AS",
+                          "AT",
+                          "AU",
+                          "AW",
+                          "AX",
+                          "AZ",
+                          "BA",
+                          "BB",
+                          "BD",
+                          "BE",
+                          "BF",
+                          "BG",
+                          "BH",
+                          "BI",
+                          "BJ",
+                          "BL",
+                          "BM",
+                          "BN",
+                          "BO",
+                          "BQ",
+                          "BR",
+                          "BS",
+                          "BT",
+                          "BV",
+                          "BW",
+                          "BY",
+                          "BZ",
+                          "CA",
+                          "CC",
+                          "CD",
+                          "CF",
+                          "CG",
+                          "CH",
+                          "CI",
+                          "CK",
+                          "CL",
+                          "CM",
+                          "CN",
+                          "CO",
+                          "CR",
+                          "CU",
+                          "CV",
+                          "CW",
+                          "CX",
+                          "CY",
+                          "CZ",
+                          "DE",
+                          "DJ",
+                          "DK",
+                          "DM",
+                          "DO",
+                          "DZ",
+                          "EC",
+                          "EE",
+                          "EG",
+                          "EH",
+                          "ER",
+                          "ES",
+                          "ET",
+                          "FI",
+                          "FJ",
+                          "FK",
+                          "FM",
+                          "FO",
+                          "FR",
+                          "GA",
+                          "GB",
+                          "GD",
+                          "GE",
+                          "GF",
+                          "GG",
+                          "GH",
+                          "GI",
+                          "GL",
+                          "GM",
+                          "GN",
+                          "GP",
+                          "GQ",
+                          "GR",
+                          "GS",
+                          "GT",
+                          "GU",
+                          "GW",
+                          "GY",
+                          "HK",
+                          "HM",
+                          "HN",
+                          "HR",
+                          "HT",
+                          "HU",
+                          "ID",
+                          "IE",
+                          "IL",
+                          "IM",
+                          "IN",
+                          "IO",
+                          "IQ",
+                          "IR",
+                          "IS",
+                          "IT",
+                          "JE",
+                          "JM",
+                          "JO",
+                          "JP",
+                          "KE",
+                          "KG",
+                          "KH",
+                          "KI",
+                          "KM",
+                          "KN",
+                          "KP",
+                          "KR",
+                          "KW",
+                          "KY",
+                          "KZ",
+                          "LA",
+                          "LB",
+                          "LC",
+                          "LI",
+                          "LK",
+                          "LR",
+                          "LS",
+                          "LT",
+                          "LU",
+                          "LV",
+                          "LY",
+                          "MA",
+                          "MC",
+                          "MD",
+                          "ME",
+                          "MF",
+                          "MG",
+                          "MH",
+                          "MK",
+                          "ML",
+                          "MM",
+                          "MN",
+                          "MO",
+                          "MP",
+                          "MQ",
+                          "MR",
+                          "MS",
+                          "MT",
+                          "MU",
+                          "MV",
+                          "MW",
+                          "MX",
+                          "MY",
+                          "MZ",
+                          "NA",
+                          "NC",
+                          "NE",
+                          "NF",
+                          "NG",
+                          "NI",
+                          "NL",
+                          "NO",
+                          "NP",
+                          "NR",
+                          "NU",
+                          "NZ",
+                          "OM",
+                          "PA",
+                          "PE",
+                          "PF",
+                          "PG",
+                          "PH",
+                          "PK",
+                          "PL",
+                          "PM",
+                          "PN",
+                          "PR",
+                          "PS",
+                          "PT",
+                          "PW",
+                          "PY",
+                          "QA",
+                          "RE",
+                          "RO",
+                          "RS",
+                          "RU",
+                          "RW",
+                          "SA",
+                          "SB",
+                          "SC",
+                          "SD",
+                          "SE",
+                          "SG",
+                          "SH",
+                          "SI",
+                          "SJ",
+                          "SK",
+                          "SL",
+                          "SM",
+                          "SN",
+                          "SO",
+                          "SR",
+                          "SS",
+                          "ST",
+                          "SV",
+                          "SX",
+                          "SY",
+                          "SZ",
+                          "TC",
+                          "TD",
+                          "TF",
+                          "TG",
+                          "TH",
+                          "TJ",
+                          "TK",
+                          "TL",
+                          "TM",
+                          "TN",
+                          "TO",
+                          "TR",
+                          "TT",
+                          "TV",
+                          "TW",
+                          "TZ",
+                          "UA",
+                          "UG",
+                          "UM",
+                          "US",
+                          "UY",
+                          "UZ",
+                          "VA",
+                          "VC",
+                          "VE",
+                          "VG",
+                          "VI",
+                          "VN",
+                          "VU",
+                          "WF",
+                          "WS",
+                          "XK",
+                          "YE",
+                          "YT",
+                          "ZA",
+                          "ZM",
+                          "ZW"
+                        ],
+                        "names": [
+                          "Ad",
+                          "Ae",
+                          "Af",
+                          "Ag",
+                          "Ai",
+                          "Al",
+                          "Am",
+                          "Ao",
+                          "Aq",
+                          "Ar",
+                          "As",
+                          "At",
+                          "Au",
+                          "Aw",
+                          "Ax",
+                          "Az",
+                          "Ba",
+                          "Bb",
+                          "Bd",
+                          "Be",
+                          "Bf",
+                          "Bg",
+                          "Bh",
+                          "Bi",
+                          "Bj",
+                          "Bl",
+                          "Bm",
+                          "Bn",
+                          "Bo",
+                          "Bq",
+                          "Br",
+                          "Bs",
+                          "Bt",
+                          "Bv",
+                          "Bw",
+                          "By",
+                          "Bz",
+                          "Ca",
+                          "Cc",
+                          "Cd",
+                          "Cf",
+                          "Cg",
+                          "Ch",
+                          "Ci",
+                          "Ck",
+                          "Cl",
+                          "Cm",
+                          "Cn",
+                          "Co",
+                          "Cr",
+                          "Cu",
+                          "Cv",
+                          "Cw",
+                          "Cx",
+                          "Cy",
+                          "Cz",
+                          "De",
+                          "Dj",
+                          "Dk",
+                          "Dm",
+                          "Do",
+                          "Dz",
+                          "Ec",
+                          "Ee",
+                          "Eg",
+                          "Eh",
+                          "Er",
+                          "Es",
+                          "Et",
+                          "Fi",
+                          "Fj",
+                          "Fk",
+                          "Fm",
+                          "Fo",
+                          "Fr",
+                          "Ga",
+                          "Gb",
+                          "Gd",
+                          "Ge",
+                          "Gf",
+                          "Gg",
+                          "Gh",
+                          "Gi",
+                          "Gl",
+                          "Gm",
+                          "Gn",
+                          "Gp",
+                          "Gq",
+                          "Gr",
+                          "Gs",
+                          "Gt",
+                          "Gu",
+                          "Gw",
+                          "Gy",
+                          "Hk",
+                          "Hm",
+                          "Hn",
+                          "Hr",
+                          "Ht",
+                          "Hu",
+                          "Id",
+                          "Ie",
+                          "Il",
+                          "Im",
+                          "In",
+                          "Io",
+                          "Iq",
+                          "Ir",
+                          "Is",
+                          "It",
+                          "Je",
+                          "Jm",
+                          "Jo",
+                          "Jp",
+                          "Ke",
+                          "Kg",
+                          "Kh",
+                          "Ki",
+                          "Km",
+                          "Kn",
+                          "Kp",
+                          "Kr",
+                          "Kw",
+                          "Ky",
+                          "Kz",
+                          "La",
+                          "Lb",
+                          "Lc",
+                          "Li",
+                          "Lk",
+                          "Lr",
+                          "Ls",
+                          "Lt",
+                          "Lu",
+                          "Lv",
+                          "Ly",
+                          "Ma",
+                          "Mc",
+                          "Md",
+                          "Me",
+                          "Mf",
+                          "Mg",
+                          "Mh",
+                          "Mk",
+                          "Ml",
+                          "Mm",
+                          "Mn",
+                          "Mo",
+                          "Mp",
+                          "Mq",
+                          "Mr",
+                          "Ms",
+                          "Mt",
+                          "Mu",
+                          "Mv",
+                          "Mw",
+                          "Mx",
+                          "My",
+                          "Mz",
+                          "Na",
+                          "Nc",
+                          "Ne",
+                          "Nf",
+                          "Ng",
+                          "Ni",
+                          "Nl",
+                          "No",
+                          "Np",
+                          "Nr",
+                          "Nu",
+                          "Nz",
+                          "Om",
+                          "Pa",
+                          "Pe",
+                          "Pf",
+                          "Pg",
+                          "Ph",
+                          "Pk",
+                          "Pl",
+                          "Pm",
+                          "Pn",
+                          "Pr",
+                          "Ps",
+                          "Pt",
+                          "Pw",
+                          "Py",
+                          "Qa",
+                          "Re",
+                          "Ro",
+                          "Rs",
+                          "Ru",
+                          "Rw",
+                          "Sa",
+                          "Sb",
+                          "Sc",
+                          "Sd",
+                          "Se",
+                          "Sg",
+                          "Sh",
+                          "Si",
+                          "Sj",
+                          "Sk",
+                          "Sl",
+                          "Sm",
+                          "Sn",
+                          "So",
+                          "Sr",
+                          "Ss",
+                          "St",
+                          "Sv",
+                          "Sx",
+                          "Sy",
+                          "Sz",
+                          "Tc",
+                          "Td",
+                          "Tf",
+                          "Tg",
+                          "Th",
+                          "Tj",
+                          "Tk",
+                          "Tl",
+                          "Tm",
+                          "Tn",
+                          "To",
+                          "Tr",
+                          "Tt",
+                          "Tv",
+                          "Tw",
+                          "Tz",
+                          "Ua",
+                          "Ug",
+                          "Um",
+                          "Us",
+                          "Uy",
+                          "Uz",
+                          "Va",
+                          "Vc",
+                          "Ve",
+                          "Vg",
+                          "Vi",
+                          "Vn",
+                          "Vu",
+                          "Wf",
+                          "Ws",
+                          "Xk",
+                          "Ye",
+                          "Yt",
+                          "Za",
+                          "Zm",
+                          "Zw"
+                        ],
+                        "deprecations": [
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false
+                        ]
+                      }
+                    }
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "AddressInvalid"
+              ],
+              "names": [
+                "AddressInvalid"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "WorkplaceAlreadyExists",
+      "source": "WorkplaceAlreadyExists",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": false,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkplaceAlreadyExists"
+              ],
+              "names": [
+                "WorkplaceAlreadyExists"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "resources": [
+    "timeOff",
+    "timeOff.policies",
+    "workers",
+    "departments",
+    "workplaces"
+  ],
+  "publicResources": [
+    "timeOff",
+    "timeOff.policies",
+    "workers",
+    "departments",
+    "workplaces"
+  ],
+  "operations": [
+    {
+      "resource": "timeOff",
+      "publicResource": "timeOff",
+      "operation": "listAssignments",
+      "publicOperation": "listAssignments",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/time_off/assignments",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "policyIds",
+        "workerIds"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "policyIds",
+        "workerIds"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "policyIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "TimeOffListAssignmentsParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "timeOff",
+      "publicResource": "timeOff",
+      "operation": "listBalances",
+      "publicOperation": "listBalances",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/time_off/balances",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "policyIds",
+        "workerIds",
+        "startDate",
+        "endDate"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "policyIds",
+        "workerIds",
+        "startDate",
+        "endDate"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "policyIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "startDate",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "endDate",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "TimeOffListBalancesParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "TimeOffPolicyNotFound",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "timeOff",
+      "publicResource": "timeOff",
+      "operation": "listRequests",
+      "publicOperation": "listRequests",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/time_off/requests",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "statuses",
+        "policyIds",
+        "workerIds",
+        "startsOnOrAfter",
+        "startsBefore",
+        "endsOnOrAfter",
+        "endsBefore"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "statuses",
+        "policyIds",
+        "workerIds",
+        "startsOnOrAfter",
+        "startsBefore",
+        "endsOnOrAfter",
+        "endsBefore"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "policyIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "startsOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "startsBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "endsOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "endsBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "TimeOffListRequestsParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "TimeOffRequestNotFoundError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "timeOff.policies",
+      "publicResource": "timeOff.policies",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/time_off/policies",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PolicyListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "TimeOffPolicyNotFound",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "timeOff.policies",
+      "publicResource": "timeOff.policies",
+      "operation": "retrieve",
+      "publicOperation": "retrieve",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/time_off/policies/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PolicyRetrieveParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "TimeOffPolicyNotFound",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/workers",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "statuses",
+        "types",
+        "workEmail"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "statuses",
+        "types",
+        "workEmail"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workEmail",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "retrieve",
+      "publicOperation": "retrieve",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/workers/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerRetrieveParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "WorkerNotFoundError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "delete",
+      "publicOperation": "delete",
+      "deprecated": false,
+      "method": "DELETE",
+      "path": "/v1/workers/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerDeleteParams"
+      },
+      "result": {
+        "successStatus": "204",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "WorkerNotFoundError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "CannotDeleteWorker",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "createEmployee",
+      "publicOperation": "createEmployee",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/workers/employee",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "firstName",
+        "lastName",
+        "position",
+        "startDate",
+        "email",
+        "workEmail",
+        "requireI9",
+        "stateRegistration",
+        "departmentId",
+        "managerId",
+        "stockOptions",
+        "workLocation",
+        "compensation",
+        "paySchedule"
+      ],
+      "publicBodyParams": [
+        "firstName",
+        "lastName",
+        "position",
+        "startDate",
+        "email",
+        "workEmail",
+        "requireI9",
+        "stateRegistration",
+        "departmentId",
+        "managerId",
+        "stockOptions",
+        "workLocation",
+        "compensation",
+        "paySchedule"
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerCreateEmployeeParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "createContractor",
+      "publicOperation": "createContractor",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/workers/contractor",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "entityType",
+        "firstName",
+        "lastName",
+        "position",
+        "businessName",
+        "scopeOfWork",
+        "startDate",
+        "email",
+        "workEmail",
+        "departmentId",
+        "managerId",
+        "workCountry",
+        "compensation",
+        "paySchedule"
+      ],
+      "publicBodyParams": [
+        "entityType",
+        "firstName",
+        "lastName",
+        "position",
+        "businessName",
+        "scopeOfWork",
+        "startDate",
+        "email",
+        "workEmail",
+        "departmentId",
+        "managerId",
+        "workCountry",
+        "compensation",
+        "paySchedule"
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerCreateContractorParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "invite",
+      "publicOperation": "invite",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/workers/{id}/invite",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerInviteParams"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "WorkerNotFoundError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "departments",
+      "publicResource": "departments",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/departments",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DepartmentListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "departments",
+      "publicResource": "departments",
+      "operation": "create",
+      "publicOperation": "create",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/departments",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name"
+      ],
+      "publicBodyParams": [
+        "name"
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DepartmentCreateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "DepartmentAlreadyExists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "departments",
+      "publicResource": "departments",
+      "operation": "update",
+      "publicOperation": "update",
+      "deprecated": false,
+      "method": "PATCH",
+      "path": "/v1/departments/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name"
+      ],
+      "publicBodyParams": [
+        "name"
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DepartmentUpdateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "DepartmentNotFound",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "DepartmentAlreadyExists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workplaces",
+      "publicResource": "workplaces",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/workplaces",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkplaceListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workplaces",
+      "publicResource": "workplaces",
+      "operation": "create",
+      "publicOperation": "create",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/workplaces",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name",
+        "type",
+        "address"
+      ],
+      "publicBodyParams": [
+        "name",
+        "type",
+        "address"
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkplaceCreateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "WorkplaceAlreadyExists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "workplaces",
+      "publicResource": "workplaces",
+      "operation": "update",
+      "publicOperation": "update",
+      "deprecated": false,
+      "method": "PATCH",
+      "path": "/v1/workplaces/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name"
+      ],
+      "publicBodyParams": [
+        "name"
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkplaceUpdateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "HttpApiDecodeError",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "ApiKeyUnauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "WorkplaceNotFound",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "WorkplaceAlreadyExists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "RateLimitExceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    }
+  ],
+  "webhooks": []
+}

@@ -1,91 +1,45 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type { RequestInit, RequestInfo, BodyInit } from './internal/builtin-types';
-import type { HTTPMethod, PromiseOrValue, MergedRequestInit, FinalizedRequestInit } from './internal/types';
+import { APIPromise, type APIResponseProps } from './api-promise';
+import * as Errors from './error';
 import { uuid4 } from './internal/utils/uuid';
-import { validatePositiveInteger, isAbsoluteURL, safeJSON } from './internal/utils/values';
+import { validatePositiveInteger, isAbsoluteURL, safeJSON, isEmptyObj } from './internal/utils/values';
 import { sleep } from './internal/utils/sleep';
-export type { Logger, LogLevel } from './internal/utils/log';
 import { castToError, isAbortError } from './internal/errors';
-import type { APIResponseProps } from './internal/parse';
 import { getPlatformHeaders } from './internal/detect-platform';
 import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
-import { stringifyQuery } from './internal/utils/query';
-import { VERSION } from './version';
-import * as Errors from './core/error';
-import * as Pagination from './core/pagination';
-import { AbstractPage, type CursorPageParams, CursorPageResponse } from './core/pagination';
-import * as Uploads from './core/uploads';
-import * as API from './resources/index';
-import { APIPromise } from './core/api-promise';
-import {
-  DepartmentCreateParams,
-  DepartmentCreateResponse,
-  DepartmentListParams,
-  DepartmentListResponse,
-  DepartmentListResponsesCursorPage,
-  DepartmentUpdateParams,
-  DepartmentUpdateResponse,
-  Departments,
-} from './resources/departments';
-import {
-  WorkerCreateContractorParams,
-  WorkerCreateContractorResponse,
-  WorkerCreateEmployeeParams,
-  WorkerCreateEmployeeResponse,
-  WorkerInviteResponse,
-  WorkerListParams,
-  WorkerListResponse,
-  WorkerListResponsesCursorPage,
-  WorkerRetrieveResponse,
-  Workers,
-} from './resources/workers';
-import {
-  WorkplaceCreateParams,
-  WorkplaceCreateResponse,
-  WorkplaceListParams,
-  WorkplaceListResponse,
-  WorkplaceListResponsesCursorPage,
-  WorkplaceUpdateParams,
-  WorkplaceUpdateResponse,
-  Workplaces,
-} from './resources/workplaces';
-import {
-  TimeOff,
-  TimeOffListAssignmentsParams,
-  TimeOffListAssignmentsResponse,
-  TimeOffListAssignmentsResponsesCursorPage,
-  TimeOffListBalancesParams,
-  TimeOffListBalancesResponse,
-  TimeOffListBalancesResponsesCursorPage,
-  TimeOffListRequestsParams,
-  TimeOffListRequestsResponse,
-  TimeOffListRequestsResponsesCursorPage,
-} from './resources/time-off/time-off';
-import { type Fetch } from './internal/builtin-types';
-import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
-import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { readEnv } from './internal/utils/env';
-import {
-  type LogLevel,
-  type Logger,
-  formatRequestDetails,
-  loggerFor,
-  parseLogLevel,
-} from './internal/utils/log';
-import { isEmptyObj } from './internal/utils/values';
+import { formatRequestDetails, loggerFor, parseLogLevel, type LogLevel, type Logger } from './internal/utils/log';
+export type { Logger, LogLevel } from './internal/utils/log';
+import type { RequestInit, RequestInfo, BodyInit, Fetch } from './internal/builtin-types';
+import { buildHeaders, type HeadersLike } from './internal/headers';
+import type { FinalRequestOptions, RequestOptions } from './internal/request-options';
+import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValue } from './internal/types';
+import { stringify as stringifyQuery } from './internal/qs/stringify';
+import type { StringifyOptions } from './internal/qs/types';
+import { toFile } from './core/uploads';
+import { VERSION } from './version';
+import { TimeOff, type TimeOffListAssignmentsResponse, type TimeOffListBalancesResponse, type TimeOffListRequestsResponse, type TimeOffListAssignmentsParams, type TimeOffListBalancesParams, type TimeOffListRequestsParams } from "./resources/time-off/time-off";
+import { Workers, type WorkerListResponse, type WorkerRetrieveResponse, type WorkerCreateEmployeeResponse, type WorkerCreateContractorResponse, type WorkerInviteResponse, type WorkerListParams, type WorkerCreateEmployeeParams, type WorkerCreateContractorParams } from "./resources/workers";
+import { Departments, type DepartmentListResponse, type DepartmentCreateResponse, type DepartmentUpdateResponse, type DepartmentListParams, type DepartmentCreateParams, type DepartmentUpdateParams } from "./resources/departments";
+import { Workplaces, type WorkplaceListResponse, type WorkplaceCreateResponse, type WorkplaceUpdateResponse, type WorkplaceListParams, type WorkplaceCreateParams, type WorkplaceUpdateParams } from "./resources/workplaces";
+
+export type AuthTokenProvider = () => string | Promise<string>;
+
+const queryArrayFormat: NonNullable<StringifyOptions["arrayFormat"]> = "repeat";
+const queryAllowDots = false;
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['WARP_API_KEY'].
+   * Warp API key. Defaults to the WARP_API_KEY environment variable.
    */
-  apiKey?: string | undefined;
+  apiKey?: string | AuthTokenProvider | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['WARP_BASE_URL'].
+   * Defaults to process.env["WARP_BASE_URL"].
    */
   baseURL?: string | null | undefined;
 
@@ -99,6 +53,7 @@ export interface ClientOptions {
    * @unit milliseconds
    */
   timeout?: number | undefined;
+
   /**
    * Additional `RequestInit` options to be passed to `fetch` calls.
    * Properties will be overridden by per-request `fetchOptions`.
@@ -139,7 +94,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['WARP_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env["WARP_LOG"] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -151,11 +106,13 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
+export type WarpOptions = ClientOptions;
+
 /**
  * API Client for interfacing with the Warp API.
  */
 export class Warp {
-  apiKey: string;
+  apiKey: string | AuthTokenProvider | undefined;
 
   baseURL: string;
   maxRetries: number;
@@ -163,17 +120,18 @@ export class Warp {
   logger: Logger;
   logLevel: LogLevel | undefined;
   fetchOptions: MergedRequestInit | undefined;
-
   private fetch: Fetch;
   #encoder: Opts.RequestEncoder;
   protected idempotencyHeader?: string;
+  private _baseURLOverridden: boolean;
+  private _defaultBaseURL: string;
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Warp API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['WARP_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['WARP_BASE_URL'] ?? https://api.joinwarp.com] - Override the default base URL for the API.
+   * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
+   * @param {string} [opts.baseURL=process.env["WARP_BASE_URL"] ?? https://api.joinwarp.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -182,23 +140,18 @@ export class Warp {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('WARP_BASE_URL'),
-    apiKey = readEnv('WARP_API_KEY'),
+    baseURL = readEnv("WARP_BASE_URL"),
+    apiKey = readEnv("WARP_API_KEY"),
     ...opts
   }: ClientOptions = {}) {
-    if (apiKey === undefined) {
-      throw new Errors.WarpError(
-        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the Warp client with an apiKey option, like new Warp({ apiKey: 'My API Key' }).",
-      );
-    }
-
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api.joinwarp.com`,
+      baseURL: baseURL || "https://api.joinwarp.com",
     };
-
-    this.baseURL = options.baseURL!;
+    const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== "";
+    const defaultBaseURL = "https://api.joinwarp.com";
+    this.baseURL = options.baseURL || defaultBaseURL;
     this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
@@ -206,25 +159,36 @@ export class Warp {
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('WARP_LOG'), "process.env['WARP_LOG']", this) ??
+      parseLogLevel(readEnv("WARP_LOG"), "process.env[\"WARP_LOG\"]", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
     this.#encoder = Opts.FallbackEncoder;
 
-    this._options = options;
+    const customHeadersEnv = readEnv("WARP_CUSTOM_HEADERS");
+    if (customHeadersEnv) {
+      const parsed: Record<string, string> = {};
+      for (const line of customHeadersEnv.split('\n')) {
+        const colon = line.indexOf(':');
+        if (colon >= 0) {
+          parsed[line.substring(0, colon).trim()] = line.substring(colon + 1).trim();
+        }
+      }
+      options.defaultHeaders = { ...parsed, ...options.defaultHeaders };
+    }
+
+    this._options = { ...options, baseURL: baseURLOverridden ? this.baseURL : undefined };
+    this._baseURLOverridden = baseURLOverridden;
+    this._defaultBaseURL = defaultBaseURL;
 
     this.apiKey = apiKey;
   }
 
-  /**
-   * Create a new client instance re-using the same options given to the current client with optional overriding.
-   */
   withOptions(options: Partial<ClientOptions>): this {
-    const client = new (this.constructor as any as new (props: ClientOptions) => typeof this)({
+    const client = new (this.constructor as new (props: ClientOptions) => this)({
       ...this._options,
-      baseURL: this.baseURL,
+      ...(this.#baseURLOverridden() ? { baseURL: this.baseURL } : {}),
       maxRetries: this.maxRetries,
       timeout: this.timeout,
       logger: this.logger,
@@ -237,27 +201,17 @@ export class Warp {
     return client;
   }
 
-  /**
-   * Check whether the base URL is set to its default.
-   */
   #baseURLOverridden(): boolean {
-    return this.baseURL !== 'https://api.joinwarp.com';
+    // A named environment selects a default URL; only explicit overrides should bypass per-request defaults.
+    return this._baseURLOverridden || this.baseURL !== this._defaultBaseURL;
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
     return this._options.defaultQuery;
   }
 
-  protected validateHeaders({ values, nulls }: NullableHeaders) {
-    return;
-  }
-
-  protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
-    return buildHeaders([{ 'x-api-key': this.apiKey }]);
-  }
-
   protected stringifyQuery(query: object | Record<string, unknown>): string {
-    return stringifyQuery(query);
+    return stringifyQuery(query, { arrayFormat: queryArrayFormat, allowDots: queryAllowDots });
   }
 
   private getUserAgent(): string {
@@ -265,12 +219,12 @@ export class Warp {
   }
 
   protected defaultIdempotencyKey(): string {
-    return `stainless-node-retry-${uuid4()}`;
+    return `scalar-node-retry-${uuid4()}`;
   }
 
   protected makeStatusError(
     status: number,
-    error: Object,
+    error: object | undefined,
     message: string | undefined,
     headers: Headers,
   ): Errors.APIError {
@@ -283,10 +237,12 @@ export class Warp {
     defaultBaseURL?: string | undefined,
   ): string {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
+    // Guarantee exactly one "/" between baseURL and path so that bases without a trailing slash
+    // and paths without a leading slash do not fuse into a malformed URL (e.g. ".../v1" + "widgets").
     const url =
       isAbsoluteURL(path) ?
         new URL(path)
-      : new URL(baseURL + (baseURL.endsWith('/') && path.startsWith('/') ? path.slice(1) : path));
+      : new URL((baseURL.endsWith('/') ? baseURL : baseURL + '/') + (path.startsWith('/') ? path.slice(1) : path));
 
     const defaultQuery = this.defaultQuery();
     const pathQuery = Object.fromEntries(url.searchParams);
@@ -294,7 +250,7 @@ export class Warp {
       query = { ...pathQuery, ...defaultQuery, ...query };
     }
 
-    if (typeof query === 'object' && query && !Array.isArray(query)) {
+    if (typeof query === "object" && query && !Array.isArray(query)) {
       url.search = this.stringifyQuery(query);
     }
 
@@ -344,7 +300,7 @@ export class Warp {
   ): APIPromise<Rsp> {
     return this.request(
       Promise.resolve(opts).then((opts) => {
-        return { method, path, ...opts };
+        return { method, path, ...opts } as FinalRequestOptions;
       }),
     );
   }
@@ -513,36 +469,7 @@ export class Warp {
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
 
-  getAPIList<Item, PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>>(
-    path: string,
-    Page: new (...args: any[]) => PageClass,
-    opts?: PromiseOrValue<RequestOptions>,
-  ): Pagination.PagePromise<PageClass, Item> {
-    return this.requestAPIList(
-      Page,
-      opts && 'then' in opts ?
-        opts.then((opts) => ({ method: 'get', path, ...opts }))
-      : { method: 'get', path, ...opts },
-    );
-  }
-
-  requestAPIList<
-    Item = unknown,
-    PageClass extends Pagination.AbstractPage<Item> = Pagination.AbstractPage<Item>,
-  >(
-    Page: new (...args: ConstructorParameters<typeof Pagination.AbstractPage>) => PageClass,
-    options: PromiseOrValue<FinalRequestOptions>,
-  ): Pagination.PagePromise<PageClass, Item> {
-    const request = this.makeRequest(options, null, undefined);
-    return new Pagination.PagePromise<PageClass, Item>(this as any as Warp, request, Page);
-  }
-
-  async fetchWithTimeout(
-    url: RequestInfo,
-    init: RequestInit | undefined,
-    ms: number,
-    controller: AbortController,
-  ): Promise<Response> {
+  async fetchWithTimeout(url: RequestInfo, init: RequestInit | undefined, ms: number, controller: AbortController): Promise<Response> {
     const { signal, method, ...options } = init || {};
     const abort = this._makeAbort(controller);
     if (signal) signal.addEventListener('abort', abort, { once: true });
@@ -624,9 +551,18 @@ export class Warp {
       }
     }
 
-    // If the API asks us to wait a certain amount of time, just do what it
-    // says, but otherwise calculate a default
-    if (timeoutMillis === undefined) {
+    // If the API asks us to wait a certain amount of time, just do what it says,
+    // but cap server-provided delays at 60s so an oversized or malformed Retry-After
+    // (e.g. `retry-after-ms: 999999999`, a past HTTP-date, or a value that Date.parse
+    // failed on) cannot block retries for an unbounded amount of time. Otherwise fall
+    // back to the default exponential-backoff calculation.
+    const maxRetryAfterMillis = 60 * 1000;
+    if (
+      timeoutMillis === undefined ||
+      !Number.isFinite(timeoutMillis) ||
+      timeoutMillis <= 0 ||
+      timeoutMillis > maxRetryAfterMillis
+    ) {
       const maxRetries = options.maxRetries ?? this.maxRetries;
       timeoutMillis = this.calculateDefaultRetryTimeoutMillis(retriesRemaining, maxRetries);
     }
@@ -661,7 +597,7 @@ export class Warp {
     if ('timeout' in options) validatePositiveInteger('timeout', options.timeout);
     options.timeout = options.timeout ?? this.timeout;
     const { bodyHeaders, body } = this.buildBody({ options });
-    const reqHeaders = await this.buildHeaders({ options: inputOptions, method, bodyHeaders, retryCount });
+    const reqHeaders = await this.buildHeaders({ options, method, bodyHeaders, retryCount, url });
 
     const req: FinalizedRequestInit = {
       method,
@@ -669,11 +605,12 @@ export class Warp {
       ...(options.signal && { signal: options.signal }),
       ...((globalThis as any).ReadableStream &&
         body instanceof (globalThis as any).ReadableStream && { duplex: 'half' }),
-      ...(body && { body }),
+      // `buildBody` already collapses no-body into `undefined`; here we only need to drop that
+      // sentinel. A truthiness spread would also strip an intentional empty-string body.
+      ...(body !== undefined && { body }),
       ...((this.fetchOptions as any) ?? {}),
       ...((options.fetchOptions as any) ?? {}),
     };
-
     return { req, url, timeout: options.timeout };
   }
 
@@ -682,11 +619,13 @@ export class Warp {
     method,
     bodyHeaders,
     retryCount,
+    url,
   }: {
     options: FinalRequestOptions;
     method: HTTPMethod;
     bodyHeaders: HeadersLike;
     retryCount: number;
+    url: string;
   }): Promise<Headers> {
     let idempotencyHeaders: HeadersLike = {};
     if (this.idempotencyHeader && method !== 'get') {
@@ -699,8 +638,8 @@ export class Warp {
       {
         Accept: 'application/json',
         'User-Agent': this.getUserAgent(),
-        'X-Stainless-Retry-Count': String(retryCount),
-        ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
+        'X-Scalar-Retry-Count': String(retryCount),
+        ...(options.timeout ? { 'X-Scalar-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
         ...getPlatformHeaders(),
       },
       await this.authHeaders(options),
@@ -708,8 +647,9 @@ export class Warp {
       bodyHeaders,
       options.headers,
     ]);
+    appendAuthCookies(headers.values, await this.authCookiesAsync());
 
-    this.validateHeaders(headers);
+    this.validateAuth(url, headers.values, options);
 
     return headers.values;
   }
@@ -724,7 +664,11 @@ export class Warp {
     bodyHeaders: HeadersLike;
     body: BodyInit | undefined;
   } {
-    if (!body) {
+    // Skip only `null`/`undefined` so an intentional empty-string (or 0/false) payload still
+    // reaches the encoder. A plain `!body` check would silently drop those falsy-but-valid bodies,
+    // and `null` must be excluded here too because the iterator check below uses `in`, which
+    // throws on null.
+    if (body == null) {
       return { bodyHeaders: undefined, body: undefined };
     }
     const headers = buildHeaders([rawHeaders]);
@@ -733,9 +677,12 @@ export class Warp {
       ArrayBuffer.isView(body) ||
       body instanceof ArrayBuffer ||
       body instanceof DataView ||
-      (typeof body === 'string' &&
-        // Preserve legacy string encoding behavior for now
-        headers.values.has('content-type')) ||
+      // Always pass strings through verbatim. The previous guard required a caller-set
+      // `content-type` and otherwise fell through to `FallbackEncoder`, which JSON.stringifies
+      // the value and labels it `application/json` — silently quoting plain-text payloads and
+      // mislabeling them as JSON. fetch defaults a string body to `text/plain;charset=UTF-8`
+      // when no `content-type` is set, which is a safer default than misclaiming JSON.
+      typeof body === 'string' ||
       // `Blob` is superset of `File`
       ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
@@ -765,6 +712,60 @@ export class Warp {
     }
   }
 
+  private validateAuth(url: string, headers: Headers, options: FinalRequestOptions): void {
+    if (headers.has("x-api-key")) return;
+    if (headerExplicitlyOmitted(options.headers, "x-api-key")) return;
+    throw new Errors.AuthenticationError(401, {}, "Could not resolve authentication method. Expected x-api-key to be set.", headers);
+  }
+
+  authHeadersSync(): Record<string, string> {
+    const headers: Record<string, string> = {};
+    const apiKey = this.resolveAuthOptionSync("apiKey", this.apiKey);
+    if (apiKey) headers["x-api-key"] = apiKey;
+    return headers;
+  }
+
+  webSocketAuthHeaders(): Record<string, string> {
+    const apiKey = this.resolveAuthOptionSync("apiKey", this.apiKey);
+    if (apiKey) return { "x-api-key": apiKey };
+    return {};
+  }
+
+  protected async authHeaders(options: FinalRequestOptions): Promise<HeadersLike | undefined> {
+    return buildHeaders([await this.authHeadersAsync()]);
+  }
+
+  private async authQueryAsync(): Promise<Record<string, string>> {
+    const query: Record<string, string> = {};
+    return query;
+  }
+
+  private async authCookiesAsync(): Promise<Record<string, string>> {
+    const cookies: Record<string, string> = {};
+    return cookies;
+  }
+
+  private async authHeadersAsync(): Promise<Record<string, string>> {
+    const headers: Record<string, string> = {};
+    const apiKey = await this.resolveAuthOption("apiKey", this.apiKey);
+    if (apiKey) headers["x-api-key"] = apiKey;
+    return headers;
+  }
+
+  private async resolveAuthOption(optionName: string, value: string | AuthTokenProvider | null | undefined): Promise<string | undefined> {
+    if (value == null) return undefined;
+    const token = typeof value === "function" ? await value() : value;
+    if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    return token;
+  }
+
+  private resolveAuthOptionSync(optionName: string, value: string | AuthTokenProvider | null | undefined): string | undefined {
+    if (value == null) return undefined;
+    const token = typeof value === "function" ? value() : value;
+    if (typeof token !== "string" || !token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    return token;
+  }
+
   static Warp = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
@@ -782,24 +783,12 @@ export class Warp {
   static PermissionDeniedError = Errors.PermissionDeniedError;
   static UnprocessableEntityError = Errors.UnprocessableEntityError;
 
-  static toFile = Uploads.toFile;
+  static toFile = toFile;
 
-  /**
-   * Endpoints for worker time off management. See time off requests, which workers are assigned to which policies, or worker remaining balances.
-   */
-  timeOff: API.TimeOff = new API.TimeOff(this);
-  /**
-   * Endpoints for worker management. "Workers" include anyone employed by your company, whether US or international, full-time employees or contractors.
-   */
-  workers: API.Workers = new API.Workers(this);
-  /**
-   * Endpoints for department management. Create, list, and update departments within your company.
-   */
-  departments: API.Departments = new API.Departments(this);
-  /**
-   * Endpoints for workplace management. Create, list, and update workplaces within your company.
-   */
-  workplaces: API.Workplaces = new API.Workplaces(this);
+  timeOff: TimeOff = new TimeOff(this);
+  workers: Workers = new Workers(this);
+  departments: Departments = new Departments(this);
+  workplaces: Workplaces = new Workplaces(this);
 }
 
 Warp.TimeOff = TimeOff;
@@ -809,18 +798,11 @@ Warp.Workplaces = Workplaces;
 
 export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
-
-  export import CursorPage = Pagination.CursorPage;
-  export { type CursorPageParams as CursorPageParams, type CursorPageResponse as CursorPageResponse };
-
   export {
     TimeOff as TimeOff,
     type TimeOffListAssignmentsResponse as TimeOffListAssignmentsResponse,
     type TimeOffListBalancesResponse as TimeOffListBalancesResponse,
     type TimeOffListRequestsResponse as TimeOffListRequestsResponse,
-    type TimeOffListAssignmentsResponsesCursorPage as TimeOffListAssignmentsResponsesCursorPage,
-    type TimeOffListBalancesResponsesCursorPage as TimeOffListBalancesResponsesCursorPage,
-    type TimeOffListRequestsResponsesCursorPage as TimeOffListRequestsResponsesCursorPage,
     type TimeOffListAssignmentsParams as TimeOffListAssignmentsParams,
     type TimeOffListBalancesParams as TimeOffListBalancesParams,
     type TimeOffListRequestsParams as TimeOffListRequestsParams,
@@ -828,36 +810,56 @@ export declare namespace Warp {
 
   export {
     Workers as Workers,
-    type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerListResponse as WorkerListResponse,
-    type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
+    type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
+    type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,
-    type WorkerListResponsesCursorPage as WorkerListResponsesCursorPage,
     type WorkerListParams as WorkerListParams,
-    type WorkerCreateContractorParams as WorkerCreateContractorParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
+    type WorkerCreateContractorParams as WorkerCreateContractorParams,
   };
 
   export {
     Departments as Departments,
+    type DepartmentListResponse as DepartmentListResponse,
     type DepartmentCreateResponse as DepartmentCreateResponse,
     type DepartmentUpdateResponse as DepartmentUpdateResponse,
-    type DepartmentListResponse as DepartmentListResponse,
-    type DepartmentListResponsesCursorPage as DepartmentListResponsesCursorPage,
+    type DepartmentListParams as DepartmentListParams,
     type DepartmentCreateParams as DepartmentCreateParams,
     type DepartmentUpdateParams as DepartmentUpdateParams,
-    type DepartmentListParams as DepartmentListParams,
   };
 
   export {
     Workplaces as Workplaces,
+    type WorkplaceListResponse as WorkplaceListResponse,
     type WorkplaceCreateResponse as WorkplaceCreateResponse,
     type WorkplaceUpdateResponse as WorkplaceUpdateResponse,
-    type WorkplaceListResponse as WorkplaceListResponse,
-    type WorkplaceListResponsesCursorPage as WorkplaceListResponsesCursorPage,
+    type WorkplaceListParams as WorkplaceListParams,
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
-    type WorkplaceListParams as WorkplaceListParams,
   };
 }
+
+
+const headerExplicitlyOmitted = (source: HeadersLike | undefined, name: string): boolean => {
+  if (!source || Array.isArray(source) || source instanceof Headers) return false;
+  const target = name.toLowerCase();
+  return Object.entries(source).some(([key, value]) => key.toLowerCase() === target && value === null);
+};
+
+const appendAuthCookies = (headers: Headers, cookies: Record<string, string>): void => {
+  for (const [name, value] of Object.entries(cookies)) {
+    if (cookieHeaderHas(headers.get("Cookie"), name)) continue;
+    const cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+    const existing = headers.get("Cookie");
+    headers.set("Cookie", existing ? existing + "; " + cookie : cookie);
+  }
+};
+
+const cookieHeaderHas = (value: string | null, name: string): boolean => {
+  if (!value) return false;
+  const target = encodeURIComponent(name) + "=";
+  return value.split(";").some((cookie) => cookie.trim().startsWith(target));
+};
+

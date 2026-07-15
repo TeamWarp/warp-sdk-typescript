@@ -1,420 +1,192 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from '../core/resource';
-import { APIPromise } from '../core/api-promise';
-import { CursorPage, type CursorPageParams, PagePromise } from '../core/pagination';
-import { RequestOptions } from '../internal/request-options';
-import { path } from '../internal/utils/path';
+import { APIResource } from "../resource";
+import { APIPromise } from "../api-promise";
+import type { RequestOptions } from "../internal/request-options";
+import { path as __scalarPath } from "../internal/utils/path";
 
-/**
- * Endpoints for workplace management. Create, list, and update workplaces within your company.
- */
 export class Workplaces extends APIResource {
   /**
+   * List all workplaces for your company.
+   *
+   * @param {WorkplaceListParams} [params] - The parameters to send with the request.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<WorkplaceListResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const list = await client.workplaces.list();
+   * ```
+   */
+  list(params: WorkplaceListParams | null | undefined = {}, options?: RequestOptions): APIPromise<WorkplaceListResponse> {
+    const { limit, afterId, beforeId } = params ?? {};
+    return this._client.get("/v1/workplaces", { query: { limit: limit, afterId: afterId, beforeId: beforeId }, ...options });
+  }
+
+  /**
    * Create a new workplace.
+   *
+   * @param {WorkplaceCreateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<WorkplaceCreateResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const create = await client.workplaces.create({
+   *   name: "",
+   *   type: "remote",
+   *   address: {
+   *     line1: "x",
+   *     city: "",
+   *     postalCode: "",
+   *     state: "AL",
+   *     country: "US",
+   *   },
+   * });
+   * ```
    */
   create(body: WorkplaceCreateParams, options?: RequestOptions): APIPromise<WorkplaceCreateResponse> {
-    return this._client.post('/v1/workplaces', { body, ...options });
+    return this._client.post("/v1/workplaces", { body: body, ...options });
   }
 
   /**
    * Update an existing workplace.
+   *
+   * @param {string} id - Public workplace identifier
+   * @param {WorkplaceUpdateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<WorkplaceUpdateResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const update = await client.workplaces.update("wkp_1234", {});
+   * ```
    */
-  update(
-    id: string,
-    body: WorkplaceUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<WorkplaceUpdateResponse> {
-    return this._client.patch(path`/v1/workplaces/${id}`, { body, ...options });
-  }
-
-  /**
-   * List all workplaces for your company.
-   */
-  list(
-    query: WorkplaceListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<WorkplaceListResponsesCursorPage, WorkplaceListResponse> {
-    return this._client.getAPIList('/v1/workplaces', CursorPage<WorkplaceListResponse>, {
-      query,
-      ...options,
-    });
+  update(id: string, body: WorkplaceUpdateParams, options?: RequestOptions): APIPromise<WorkplaceUpdateResponse> {
+    return this._client.patch(__scalarPath`/v1/workplaces/${id}`, { body: body, ...options });
   }
 }
 
-export type WorkplaceListResponsesCursorPage = CursorPage<WorkplaceListResponse>;
-
-export interface WorkplaceCreateResponse {
+export interface WorkplaceListParams {
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
   /**
    * Public workplace identifier
+   * @pattern ^wkp_
    */
-  id: string;
-
-  /**
-   * A valid US address
-   */
-  address: WorkplaceCreateResponse.Address;
-
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: string;
-
-  name: string;
-
-  status: 'active' | 'archived';
-
-  type: 'remote' | 'office';
-}
-
-export namespace WorkplaceCreateResponse {
-  /**
-   * A valid US address
-   */
-  export interface Address {
-    city: string;
-
-    country: 'US';
-
-    /**
-     * a non empty string
-     */
-    line1: string;
-
-    postalCode: string;
-
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-
-    line2?: string | null;
-  }
-}
-
-export interface WorkplaceUpdateResponse {
+  afterId?: string;
   /**
    * Public workplace identifier
+   * @pattern ^wkp_
    */
-  id: string;
-
-  /**
-   * A valid US address
-   */
-  address: WorkplaceUpdateResponse.Address;
-
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: string;
-
-  name: string;
-
-  status: 'active' | 'archived';
-
-  type: 'remote' | 'office';
-}
-
-export namespace WorkplaceUpdateResponse {
-  /**
-   * A valid US address
-   */
-  export interface Address {
-    city: string;
-
-    country: 'US';
-
-    /**
-     * a non empty string
-     */
-    line1: string;
-
-    postalCode: string;
-
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-
-    line2?: string | null;
-  }
+  beforeId?: string;
 }
 
 export interface WorkplaceListResponse {
+  hasMore: boolean;
   /**
-   * Public workplace identifier
+   * an integer
    */
-  id: string;
-
-  /**
-   * A valid US address
-   */
-  address: WorkplaceListResponse.Address;
-
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: string;
-
-  name: string;
-
-  status: 'active' | 'archived';
-
-  type: 'remote' | 'office';
+  count: number;
+  data: Array<WorkplaceListResponse.Data>;
 }
 
 export namespace WorkplaceListResponse {
-  /**
-   * A valid US address
-   */
-  export interface Address {
-    city: string;
-
-    country: 'US';
-
+  export interface Data {
     /**
-     * a non empty string
+     * Public workplace identifier
+     * @pattern ^wkp_
      */
-    line1: string;
+    id: string;
+    name: string;
+    type: "remote" | "office";
+    status: "active" | "archived";
+    /**
+     * A valid US address
+     */
+    address: Data.Address;
+    /**
+     * a string to be decoded into a Date
+     */
+    createdAt: string;
+  }
 
-    postalCode: string;
-
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-
-    line2?: string | null;
+  export namespace Data {
+    export interface Address {
+      /**
+       * a non empty string
+       * @minLength 1
+       */
+      line1: string;
+      city: string;
+      postalCode: string;
+      state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
+      country: "US";
+      line2?: string | null;
+    }
   }
 }
 
 export interface WorkplaceCreateParams {
   /**
+   * a non empty string
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  name: string;
+  type: "remote" | "office";
+  /**
    * A valid US address
    */
   address: WorkplaceCreateParams.Address;
-
-  /**
-   * a non empty string
-   */
-  name: string;
-
-  type: 'remote' | 'office';
 }
 
 export namespace WorkplaceCreateParams {
+  export interface Address {
+    /**
+     * a non empty string
+     * @minLength 1
+     */
+    line1: string;
+    city: string;
+    postalCode: string;
+    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
+    country: "US";
+    line2?: string | null;
+  }
+}
+
+export interface WorkplaceCreateResponse {
+  /**
+   * Public workplace identifier
+   * @pattern ^wkp_
+   */
+  id: string;
+  name: string;
+  type: "remote" | "office";
+  status: "active" | "archived";
   /**
    * A valid US address
    */
+  address: WorkplaceCreateResponse.Address;
+  /**
+   * a string to be decoded into a Date
+   */
+  createdAt: string;
+}
+
+export namespace WorkplaceCreateResponse {
   export interface Address {
-    city: string;
-
-    country: 'US';
-
     /**
      * a non empty string
+     * @minLength 1
      */
     line1: string;
-
+    city: string;
     postalCode: string;
-
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-
+    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
+    country: "US";
     line2?: string | null;
   }
 }
@@ -423,21 +195,46 @@ export interface WorkplaceUpdateParams {
   name?: string;
 }
 
-export interface WorkplaceListParams extends CursorPageParams {
+export interface WorkplaceUpdateResponse {
   /**
-   * a number less than or equal to 100
+   * Public workplace identifier
+   * @pattern ^wkp_
    */
-  limit?: string;
+  id: string;
+  name: string;
+  type: "remote" | "office";
+  status: "active" | "archived";
+  /**
+   * A valid US address
+   */
+  address: WorkplaceUpdateResponse.Address;
+  /**
+   * a string to be decoded into a Date
+   */
+  createdAt: string;
 }
 
+export namespace WorkplaceUpdateResponse {
+  export interface Address {
+    /**
+     * a non empty string
+     * @minLength 1
+     */
+    line1: string;
+    city: string;
+    postalCode: string;
+    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
+    country: "US";
+    line2?: string | null;
+  }
+}
 export declare namespace Workplaces {
   export {
+    type WorkplaceListResponse as WorkplaceListResponse,
     type WorkplaceCreateResponse as WorkplaceCreateResponse,
     type WorkplaceUpdateResponse as WorkplaceUpdateResponse,
-    type WorkplaceListResponse as WorkplaceListResponse,
-    type WorkplaceListResponsesCursorPage as WorkplaceListResponsesCursorPage,
+    type WorkplaceListParams as WorkplaceListParams,
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
-    type WorkplaceListParams as WorkplaceListParams,
   };
 }
