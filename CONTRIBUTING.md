@@ -1,27 +1,43 @@
 ## Setting up the environment
 
+This repository uses [`pnpm`](https://pnpm.io/).
+Other package managers may work but are not officially supported for development.
+
 To set up the repository, run:
 
 ```sh
-$ npm install
-$ npm run build
+$ pnpm install
+$ pnpm build
 ```
 
 This will install all the required dependencies and build output files to `dist/`.
 
 ## Modifying/Adding code
 
-Most of this SDK is generated from our OpenAPI specification by [Scalar](https://scalar.com). Changes to generated files may be overwritten the next time the SDK is regenerated, so prefer updating the source specification for API-driven changes.
+Most of the SDK is generated code. Modifications to code will be persisted between generations, but may
+result in merge conflicts between manual patches and changes from the generator. The generator will never
+modify the contents of the `src/lib/` and `examples/` directories.
 
-## Type-checking
+## Adding and running examples
+
+All files in the `examples/` directory are not modified by the generator and can be freely edited or added to.
+
+```ts
+// add an example to examples/<your-example>.ts
+
+#!/usr/bin/env -S npm run tsn -T
+…
+```
 
 ```sh
-$ npm run typecheck
+$ chmod +x examples/<your-example>.ts
+# run the example against your api
+$ pnpm tsn -T examples/<your-example>.ts
 ```
 
 ## Using the repository from source
 
-If you'd like to use the repository from source, you can either install from git or link to a cloned repository:
+If you’d like to use the repository from source, you can either install from git or link to a cloned repository:
 
 To install via git:
 
@@ -36,12 +52,50 @@ Alternatively, to link a local copy of the repo:
 $ git clone https://www.github.com/TeamWarp/warp-sdk-typescript
 $ cd warp-sdk-typescript
 
-# Link
-$ npm link
+# With yarn
+$ yarn link
 $ cd ../my-package
-$ npm link warp-hr
+$ yarn link warp-hr
+
+# With pnpm
+$ pnpm link --global
+$ cd ../my-package
+$ pnpm link --global warp-hr
+```
+
+## Running tests
+
+```sh
+$ pnpm run test
+```
+
+## Linting and formatting
+
+This repository uses [prettier](https://www.npmjs.com/package/prettier) and
+[eslint](https://www.npmjs.com/package/eslint) to format the code in the repository.
+
+To lint:
+
+```sh
+$ pnpm lint
+```
+
+To format and fix all lint issues automatically:
+
+```sh
+$ pnpm fix
 ```
 
 ## Publishing and releases
 
-Releases are published to npm automatically when a GitHub release is published, via the [`TypeScript SDK Release`](https://www.github.com/TeamWarp/warp-sdk-typescript/actions/workflows/sdk-release.yml) workflow.
+Changes made to this repository via the automated release PR pipeline should publish to npm automatically. If
+the changes aren't made through the automated pipeline, you may want to make releases manually.
+
+### Publish with a GitHub workflow
+
+You can release to package managers by using [the `Publish NPM` GitHub action](https://www.github.com/TeamWarp/warp-sdk-typescript/actions/workflows/publish-npm.yml). This requires a setup organization or repository secret to be set up.
+
+### Publish manually
+
+If you need to manually release a package, you can run the `bin/publish-npm` script with an `NPM_TOKEN` set on
+the environment.
