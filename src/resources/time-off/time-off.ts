@@ -119,6 +119,8 @@ export interface TimeOffListRequestsResponse {
    */
   endAt: string;
 
+  endRangeType: 'date' | 'datetime';
+
   reason: string | null;
 
   requestedMinutes: number;
@@ -127,6 +129,8 @@ export interface TimeOffListRequestsResponse {
    * a string to be decoded into a Date
    */
   startAt: string;
+
+  startRangeType: 'date' | 'datetime';
 
   status: 'pending' | 'approved' | 'denied';
 
