@@ -4,7 +4,7 @@
   "description": "Warp TypeScript SDK",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marclave/warp-sdk-typescript.git"
+    "url": "git+https://github.com/TeamWarp/warp-sdk-typescript.git"
   },
   "type": "module",
   "sideEffects": false,

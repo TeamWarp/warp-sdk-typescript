@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.6 (2026-07-16)
+
+Minor internal updates.
+
 ## 0.15.0 (2026-03-27)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.14.0...v0.15.0)

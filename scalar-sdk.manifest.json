@@ -2,7 +2,7 @@
   "name": "Warp",
   "slug": "warp",
   "version": "0.1.5",
-  "generatorVersion": "0.16.5",
+  "generatorVersion": "0.16.8",
   "servers": [
     "https://api.joinwarp.com"
   ],
