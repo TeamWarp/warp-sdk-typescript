@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.16.0 (2026-07-18)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** api update ([6639f73](https://github.com/TeamWarp/warp-sdk-typescript/commit/6639f73147059dc9b7676c3396fa232bd965a8eb))
+* **api:** api update ([18c6ef3](https://github.com/TeamWarp/warp-sdk-typescript/commit/18c6ef3b0801c064089c5f89ae6d684292d7b925))
+* **api:** api update ([5ef161c](https://github.com/TeamWarp/warp-sdk-typescript/commit/5ef161c9049dcf3e9a5cab20b44a593ba9f28656))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([9703178](https://github.com/TeamWarp/warp-sdk-typescript/commit/970317808ede653f2b6769a1d7c15eb50a79c8d1))
+* support setting headers via env ([e33771c](https://github.com/TeamWarp/warp-sdk-typescript/commit/e33771cdda169e5f9c3d5e44a1e77b8258fc774b))
+
+
+### Bug Fixes
+
+* **ci:** bump @arethetypeswrong/cli to ^0.18.0 and run CI workflows on Node 24 ([7b65317](https://github.com/TeamWarp/warp-sdk-typescript/commit/7b653177e141d83af7e895325872f733845b580c))
+* **client:** send content-type header for requests with an omitted optional body ([c81e841](https://github.com/TeamWarp/warp-sdk-typescript/commit/c81e84105162d80aadb979ece12cc322c2c39633))
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([72a21bb](https://github.com/TeamWarp/warp-sdk-typescript/commit/72a21bb1618c81058a8337a214c45c02816bb2b6))
+
+
+### Chores
+
+* avoid formatting file that gets changed during releases ([0698cde](https://github.com/TeamWarp/warp-sdk-typescript/commit/0698cde758eb58f4ec0ec0c78a6d1b575fc60f59))
+* **ci:** escape input path in publish-npm workflow ([395652f](https://github.com/TeamWarp/warp-sdk-typescript/commit/395652f87e0c780291d5b3846aa83dfd093e2532))
+* **format:** run eslint and prettier separately ([b02da77](https://github.com/TeamWarp/warp-sdk-typescript/commit/b02da7708a54335713e4a99541a231aede18a461))
+* **internal:** codegen related update ([95c4dd5](https://github.com/TeamWarp/warp-sdk-typescript/commit/95c4dd57ec4231174da3f182273a2019c00a7a44))
+* **internal:** codegen related update ([b2d7549](https://github.com/TeamWarp/warp-sdk-typescript/commit/b2d7549ab6d87db0e4448ada730dde2c6a54299f))
+* **internal:** fix MCP server import ordering ([bab5733](https://github.com/TeamWarp/warp-sdk-typescript/commit/bab573355b4130ebc9d842dbf85a69674aabb11d))
+* **internal:** improve local docs search for MCP servers ([4d56c89](https://github.com/TeamWarp/warp-sdk-typescript/commit/4d56c892d50b97509e7574921b844917d9cafc01))
+* **internal:** improve local docs search for MCP servers ([f6b280d](https://github.com/TeamWarp/warp-sdk-typescript/commit/f6b280dff441d494e64c03a2bc19f6c4046c551a))
+* **internal:** more robust bootstrap script ([b5e3ead](https://github.com/TeamWarp/warp-sdk-typescript/commit/b5e3eade9e66b8dabb28cfd5c30b8ea0dd792a7a))
+* **internal:** show error causes in MCP servers when running in local mode ([e819191](https://github.com/TeamWarp/warp-sdk-typescript/commit/e819191237b344e1278ed9c53103c8d02e882a7b))
+* **internal:** support local docs search in MCP servers ([ba624b2](https://github.com/TeamWarp/warp-sdk-typescript/commit/ba624b26e2536dc5ff13b56f5af9c02256dd431e))
+* **internal:** support type annotations when running MCP in local execution mode ([978022a](https://github.com/TeamWarp/warp-sdk-typescript/commit/978022a79f78e8a64fb4ee603d6b42cf66fd070f))
+* **internal:** update docs ordering ([751ac98](https://github.com/TeamWarp/warp-sdk-typescript/commit/751ac98e02dddf059a99f61a31e326aead6e15c9))
+* **mcp-server:** add support for session id, forward client info ([d3210d3](https://github.com/TeamWarp/warp-sdk-typescript/commit/d3210d30aa8697125a3f973782962d38d00b597a))
+* **mcp-server:** increase local docs search result count from 5 to 10 ([1fc1858](https://github.com/TeamWarp/warp-sdk-typescript/commit/1fc185836f7b576aec4a50f105b9e475411504c8))
+* **mcp-server:** log client info ([96ffc12](https://github.com/TeamWarp/warp-sdk-typescript/commit/96ffc12a533fec8bd8048a88c8ddd4c5261eafdf))
+* redact api-key headers in debug logs ([8149edf](https://github.com/TeamWarp/warp-sdk-typescript/commit/8149edfc8d09609f20d1c10aa9c32d61d7517035))
+* restructure docs search code ([4b3fc2f](https://github.com/TeamWarp/warp-sdk-typescript/commit/4b3fc2f37d977829b7b89cba192fd49aba8dd409))
+* **tests:** remove redundant File import ([90931f9](https://github.com/TeamWarp/warp-sdk-typescript/commit/90931f9c0519510cd5df4fafefa79628f18b1f15))
+* update CLI documentation ([26e0191](https://github.com/TeamWarp/warp-sdk-typescript/commit/26e01913deb3de71af450180ff2fb36b612c0d6d))
+
+
+### Documentation
+
+* update examples ([df16b92](https://github.com/TeamWarp/warp-sdk-typescript/commit/df16b929bdbe6f26388072b75a055bc8f9e2917e))
+* update http mcp docs ([2ec172f](https://github.com/TeamWarp/warp-sdk-typescript/commit/2ec172fb2d6a65ff9c122fc845afb2e1ed0df56f))
+
 ## 0.15.0 (2026-03-27)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.14.0...v0.15.0)
