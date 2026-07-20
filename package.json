@@ -1,6 +1,6 @@
 {
   "name": "warp-hr",
-  "version": "0.1.6",
+  "version": "0.1.0",
   "description": "Warp TypeScript SDK",
   "repository": {
     "type": "git",
