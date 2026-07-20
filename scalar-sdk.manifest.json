@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.19.0",
+  "generatorVersion": "0.19.1",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -363,11 +363,13 @@
                         "workers:access",
                         "workers:dependents",
                         "workers:dependents:pii",
+                        "workers:custom_fields",
                         "payrolls:global",
                         "payrolls:us",
                         "pay_schedules",
                         "offers",
                         "departments",
+                        "levels",
                         "workplaces",
                         "time_off",
                         "time_tracking",
@@ -393,11 +395,13 @@
                         "WorkersAccess",
                         "WorkersDependents",
                         "WorkersDependentsPii",
+                        "WorkersCustomFields",
                         "PayrollsGlobal",
                         "PayrollsUs",
                         "PaySchedules",
                         "Offers",
                         "Departments",
+                        "Levels",
                         "Workplaces",
                         "TimeOff",
                         "TimeTracking",
@@ -414,6 +418,8 @@
                         "Developer"
                       ],
                       "deprecations": [
+                        false,
+                        false,
                         false,
                         false,
                         false,
