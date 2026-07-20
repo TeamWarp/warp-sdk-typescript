@@ -6,28 +6,3347 @@
     "summary": "Warp Public API - API for accessing your organization's data on Warp.",
     "x-scalar-sdk-installation": [
       {
-        "lang": "Python",
-        "source": "pip install warp-warp-api"
-      },
-      {
         "lang": "TypeScript",
-        "source": "npm install @warp/warp-api"
-      },
-      {
-        "lang": "TypeScript",
-        "source": "npm install warp-hr"
-      },
-      {
-        "lang": "Go",
-        "source": "go get warp-hr"
-      },
-      {
-        "lang": "Python",
-        "source": "pip install warp"
+        "description": "```sh\nnpm install warp-hr\n```"
       }
     ]
   },
   "paths": {
+    "/v1/custom-worker-fields": {
+      "get": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.list",
+        "parameters": [],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "name",
+                      "description",
+                      "type",
+                      "config",
+                      "status",
+                      "category",
+                      "accessLevel",
+                      "inputBy",
+                      "canWrite",
+                      "createdAt"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "The tag of a company custom worker field.",
+                        "title": "startsWith(\"cf_\")",
+                        "examples": [
+                          "cf_1234"
+                        ],
+                        "pattern": "^cf_"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "text",
+                          "number",
+                          "date",
+                          "boolean",
+                          "currency",
+                          "percentage",
+                          "select",
+                          "multi_select"
+                        ]
+                      },
+                      "config": {
+                        "type": "object",
+                        "required": [],
+                        "properties": {},
+                        "additionalProperties": {
+                          "$id": "/schemas/unknown",
+                          "title": "unknown"
+                        }
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "active",
+                          "archived"
+                        ]
+                      },
+                      "category": {
+                        "type": "string",
+                        "enum": [
+                          "info",
+                          "pii",
+                          "compensation",
+                          "banking",
+                          "it",
+                          "compliance"
+                        ]
+                      },
+                      "accessLevel": {
+                        "type": "string",
+                        "enum": [
+                          "admins",
+                          "manager",
+                          "worker"
+                        ]
+                      },
+                      "inputBy": {
+                        "type": "string",
+                        "enum": [
+                          "admin",
+                          "worker"
+                        ]
+                      },
+                      "required": {
+                        "type": "boolean"
+                      },
+                      "canWrite": {
+                        "type": "boolean"
+                      },
+                      "createdAt": {
+                        "$ref": "#/components/schemas/Date"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "List the custom worker field definitions your API key can read. Each field belongs to a worker-data category; fields whose category your key cannot read are omitted unless the key holds workers:custom_fields.",
+        "summary": "List custom worker fields"
+      },
+      "post": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.create",
+        "parameters": [],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "config",
+                    "status",
+                    "category",
+                    "accessLevel",
+                    "inputBy",
+                    "canWrite",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field.",
+                      "title": "startsWith(\"cf_\")",
+                      "examples": [
+                        "cf_1234"
+                      ],
+                      "pattern": "^cf_"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "text",
+                        "number",
+                        "date",
+                        "boolean",
+                        "currency",
+                        "percentage",
+                        "select",
+                        "multi_select"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "$id": "/schemas/unknown",
+                        "title": "unknown"
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "info",
+                        "pii",
+                        "compensation",
+                        "banking",
+                        "it",
+                        "compliance"
+                      ]
+                    },
+                    "accessLevel": {
+                      "type": "string",
+                      "enum": [
+                        "admins",
+                        "manager",
+                        "worker"
+                      ]
+                    },
+                    "inputBy": {
+                      "type": "string",
+                      "enum": [
+                        "admin",
+                        "worker"
+                      ]
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CustomWorkerFieldAlreadyExists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/CustomWorkerFieldAlreadyExists"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CustomWorkerFieldOptionAlreadyExists"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a custom worker field definition. The field type is immutable after creation. Select and multi_select fields can include their initial options. Access to values derives from the field category; requires the workers:custom_fields permission.",
+        "summary": "Create custom worker field",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "type",
+                  "category"
+                ],
+                "properties": {
+                  "name": {
+                    "$ref": "#/components/schemas/Trimmed",
+                    "description": "a non empty string"
+                  },
+                  "description": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "text",
+                      "number",
+                      "date",
+                      "boolean",
+                      "currency",
+                      "percentage",
+                      "select",
+                      "multi_select"
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {},
+                    "additionalProperties": {
+                      "$id": "/schemas/unknown",
+                      "title": "unknown"
+                    }
+                  },
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "info",
+                      "pii",
+                      "compensation",
+                      "banking",
+                      "it",
+                      "compliance"
+                    ]
+                  },
+                  "accessLevel": {
+                    "type": "string",
+                    "enum": [
+                      "admins",
+                      "manager",
+                      "worker"
+                    ]
+                  },
+                  "inputBy": {
+                    "type": "string",
+                    "enum": [
+                      "admin",
+                      "worker"
+                    ]
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "options": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "label",
+                        "value"
+                      ],
+                      "properties": {
+                        "label": {
+                          "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                        },
+                        "value": {
+                          "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                        },
+                        "sortOrder": {
+                          "type": "number"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/custom-worker-fields/{id}": {
+      "get": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field.",
+              "title": "startsWith(\"cf_\")",
+              "examples": [
+                "cf_1234"
+              ],
+              "pattern": "^cf_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "config",
+                    "status",
+                    "category",
+                    "accessLevel",
+                    "inputBy",
+                    "canWrite",
+                    "createdAt",
+                    "options"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field.",
+                      "title": "startsWith(\"cf_\")",
+                      "examples": [
+                        "cf_1234"
+                      ],
+                      "pattern": "^cf_"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "text",
+                        "number",
+                        "date",
+                        "boolean",
+                        "currency",
+                        "percentage",
+                        "select",
+                        "multi_select"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "$id": "/schemas/unknown",
+                        "title": "unknown"
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "info",
+                        "pii",
+                        "compensation",
+                        "banking",
+                        "it",
+                        "compliance"
+                      ]
+                    },
+                    "accessLevel": {
+                      "type": "string",
+                      "enum": [
+                        "admins",
+                        "manager",
+                        "worker"
+                      ]
+                    },
+                    "inputBy": {
+                      "type": "string",
+                      "enum": [
+                        "admin",
+                        "worker"
+                      ]
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    },
+                    "options": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "label",
+                          "value",
+                          "sortOrder",
+                          "status",
+                          "createdAt"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "The tag of a company custom worker field option.",
+                            "title": "startsWith(\"cfo_\")",
+                            "examples": [
+                              "cfo_1234"
+                            ],
+                            "pattern": "^cfo_"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "sortOrder": {
+                            "type": "number"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "active",
+                              "archived"
+                            ]
+                          },
+                          "createdAt": {
+                            "$ref": "#/components/schemas/Date"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a custom worker field definition, including its select options. Archived options may appear on existing worker values but cannot be newly selected.",
+        "summary": "Get custom worker field"
+      },
+      "patch": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field.",
+              "title": "startsWith(\"cf_\")",
+              "examples": [
+                "cf_1234"
+              ],
+              "pattern": "^cf_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "config",
+                    "status",
+                    "category",
+                    "accessLevel",
+                    "inputBy",
+                    "canWrite",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field.",
+                      "title": "startsWith(\"cf_\")",
+                      "examples": [
+                        "cf_1234"
+                      ],
+                      "pattern": "^cf_"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "text",
+                        "number",
+                        "date",
+                        "boolean",
+                        "currency",
+                        "percentage",
+                        "select",
+                        "multi_select"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "$id": "/schemas/unknown",
+                        "title": "unknown"
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "info",
+                        "pii",
+                        "compensation",
+                        "banking",
+                        "it",
+                        "compliance"
+                      ]
+                    },
+                    "accessLevel": {
+                      "type": "string",
+                      "enum": [
+                        "admins",
+                        "manager",
+                        "worker"
+                      ]
+                    },
+                    "inputBy": {
+                      "type": "string",
+                      "enum": [
+                        "admin",
+                        "worker"
+                      ]
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CustomWorkerFieldAlreadyExists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldAlreadyExists"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Update a custom worker field definition. The field type cannot be changed; create a new field instead. Requires the workers:custom_fields permission; changing the category, access level, or input source requires the manage level.",
+        "summary": "Update custom worker field",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "name": {
+                    "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                  },
+                  "description": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "config": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {},
+                    "additionalProperties": {
+                      "$id": "/schemas/unknown",
+                      "title": "unknown"
+                    }
+                  },
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "info",
+                      "pii",
+                      "compensation",
+                      "banking",
+                      "it",
+                      "compliance"
+                    ]
+                  },
+                  "accessLevel": {
+                    "type": "string",
+                    "enum": [
+                      "admins",
+                      "manager",
+                      "worker"
+                    ]
+                  },
+                  "inputBy": {
+                    "type": "string",
+                    "enum": [
+                      "admin",
+                      "worker"
+                    ]
+                  },
+                  "required": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/custom-worker-fields/{id}/archive": {
+      "post": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.archive",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field.",
+              "title": "startsWith(\"cf_\")",
+              "examples": [
+                "cf_1234"
+              ],
+              "pattern": "^cf_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "config",
+                    "status",
+                    "category",
+                    "accessLevel",
+                    "inputBy",
+                    "canWrite",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field.",
+                      "title": "startsWith(\"cf_\")",
+                      "examples": [
+                        "cf_1234"
+                      ],
+                      "pattern": "^cf_"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "text",
+                        "number",
+                        "date",
+                        "boolean",
+                        "currency",
+                        "percentage",
+                        "select",
+                        "multi_select"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "required": [],
+                      "properties": {},
+                      "additionalProperties": {
+                        "$id": "/schemas/unknown",
+                        "title": "unknown"
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "info",
+                        "pii",
+                        "compensation",
+                        "banking",
+                        "it",
+                        "compliance"
+                      ]
+                    },
+                    "accessLevel": {
+                      "type": "string",
+                      "enum": [
+                        "admins",
+                        "manager",
+                        "worker"
+                      ]
+                    },
+                    "inputBy": {
+                      "type": "string",
+                      "enum": [
+                        "admin",
+                        "worker"
+                      ]
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Archive a custom worker field. Archived fields keep their existing worker values but cannot receive new ones. Requires the workers:custom_fields permission at the manage level.",
+        "summary": "Archive custom worker field"
+      }
+    },
+    "/v1/custom-worker-fields/{id}/options": {
+      "post": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.createOption",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field.",
+              "title": "startsWith(\"cf_\")",
+              "examples": [
+                "cf_1234"
+              ],
+              "pattern": "^cf_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "label",
+                    "value",
+                    "sortOrder",
+                    "status",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field option.",
+                      "title": "startsWith(\"cfo_\")",
+                      "examples": [
+                        "cfo_1234"
+                      ],
+                      "pattern": "^cfo_"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "sortOrder": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CustomWorkerFieldOptionAlreadyExists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldOptionAlreadyExists"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Add an option to a select or multi_select custom worker field. The option value should be treated as stable; the label can change. Requires the workers:custom_fields permission.",
+        "summary": "Create field option",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "label",
+                  "value"
+                ],
+                "properties": {
+                  "label": {
+                    "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                  },
+                  "value": {
+                    "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                  },
+                  "sortOrder": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/v1/custom-worker-field-options/{id}": {
+      "patch": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.updateOption",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field option.",
+              "title": "startsWith(\"cfo_\")",
+              "examples": [
+                "cfo_1234"
+              ],
+              "pattern": "^cfo_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field option."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "label",
+                    "value",
+                    "sortOrder",
+                    "status",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field option.",
+                      "title": "startsWith(\"cfo_\")",
+                      "examples": [
+                        "cfo_1234"
+                      ],
+                      "pattern": "^cfo_"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "sortOrder": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldOptionNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldOptionNotFound"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CustomWorkerFieldOptionAlreadyExists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldOptionAlreadyExists"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Update the label or sort order of a custom worker field option. Options of archived fields cannot be edited. Requires the workers:custom_fields permission.",
+        "summary": "Update field option",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [],
+                "properties": {
+                  "label": {
+                    "$ref": "#/components/schemas/NonEmptyTrimmedString"
+                  },
+                  "sortOrder": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      },
+      "delete": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.deleteOption",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field option.",
+              "title": "startsWith(\"cfo_\")",
+              "examples": [
+                "cfo_1234"
+              ],
+              "pattern": "^cfo_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field option."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldOptionNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldOptionNotFound"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CustomWorkerFieldOptionInUse",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldOptionInUse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.",
+        "summary": "Delete unused field option"
+      }
+    },
+    "/v1/custom-worker-field-options/{id}/archive": {
+      "post": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.archiveOption",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field option.",
+              "title": "startsWith(\"cfo_\")",
+              "examples": [
+                "cfo_1234"
+              ],
+              "pattern": "^cfo_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field option."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "label",
+                    "value",
+                    "sortOrder",
+                    "status",
+                    "createdAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field option.",
+                      "title": "startsWith(\"cfo_\")",
+                      "examples": [
+                        "cfo_1234"
+                      ],
+                      "pattern": "^cfo_"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "sortOrder": {
+                      "type": "number"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "active",
+                        "archived"
+                      ]
+                    },
+                    "createdAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldOptionNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomWorkerFieldOptionNotFound"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Archive a custom worker field option. Archived options remain on existing worker values but cannot be newly selected. Requires the workers:custom_fields permission at the manage level.",
+        "summary": "Archive field option"
+      }
+    },
+    "/v1/worker-custom-field-values": {
+      "get": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.listValues",
+        "parameters": [
+          {
+            "name": "workerIds",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The id of the worker.",
+                "title": "startsWith(\"wrk_\")",
+                "examples": [
+                  "wrk_1234"
+                ],
+                "pattern": "^wrk_"
+              }
+            },
+            "required": false
+          },
+          {
+            "name": "fieldIds",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The tag of a company custom worker field.",
+                "title": "startsWith(\"cf_\")",
+                "examples": [
+                  "cf_1234"
+                ],
+                "pattern": "^cf_"
+              }
+            },
+            "required": false
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "workerId",
+                      "fieldId",
+                      "value",
+                      "updatedAt"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "The tag of a company custom worker field value.",
+                        "title": "startsWith(\"cfv_\")",
+                        "examples": [
+                          "cfv_1234"
+                        ],
+                        "pattern": "^cfv_"
+                      },
+                      "workerId": {
+                        "type": "string",
+                        "description": "The id of the worker.",
+                        "title": "startsWith(\"wrk_\")",
+                        "examples": [
+                          "wrk_1234"
+                        ],
+                        "pattern": "^wrk_"
+                      },
+                      "fieldId": {
+                        "type": "string",
+                        "description": "The tag of a company custom worker field.",
+                        "title": "startsWith(\"cf_\")",
+                        "examples": [
+                          "cf_1234"
+                        ],
+                        "pattern": "^cf_"
+                      },
+                      "value": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "text"
+                                ]
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "number"
+                                ]
+                              },
+                              "value": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "date"
+                                ]
+                              },
+                              "value": {
+                                "type": "string",
+                                "description": "A date string in the form YYYY-MM-DD",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                "title": "Date string",
+                                "examples": [
+                                  "2000-01-01",
+                                  "2001-09-11"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "boolean"
+                                ]
+                              },
+                              "value": {
+                                "type": "boolean"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "amount",
+                              "currencyCode"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "currency"
+                                ]
+                              },
+                              "amount": {
+                                "type": "number"
+                              },
+                              "currencyCode": {
+                                "type": "string",
+                                "enum": [
+                                  "USD",
+                                  "AUD",
+                                  "BGN",
+                                  "BRL",
+                                  "CAD",
+                                  "CHF",
+                                  "CZK",
+                                  "DKK",
+                                  "EUR",
+                                  "GBP",
+                                  "HKD",
+                                  "HUF",
+                                  "IDR",
+                                  "INR",
+                                  "JPY",
+                                  "MYR",
+                                  "NOK",
+                                  "NZD",
+                                  "CNY",
+                                  "PLN",
+                                  "RON",
+                                  "TRY",
+                                  "SEK",
+                                  "SGD",
+                                  "AED",
+                                  "ARS",
+                                  "BDT",
+                                  "BWP",
+                                  "CLP",
+                                  "COP",
+                                  "CRC",
+                                  "EGP",
+                                  "FJD",
+                                  "GEL",
+                                  "GHS",
+                                  "ILS",
+                                  "KES",
+                                  "KRW",
+                                  "LKR",
+                                  "MAD",
+                                  "MXN",
+                                  "NPR",
+                                  "PHP",
+                                  "PKR",
+                                  "THB",
+                                  "UAH",
+                                  "UGX",
+                                  "UYU",
+                                  "VND",
+                                  "ZAR",
+                                  "ZMW",
+                                  "TND",
+                                  "NGN",
+                                  "RSD",
+                                  "TWD",
+                                  "GTQ",
+                                  "HNL",
+                                  "DOP",
+                                  "SAR",
+                                  "XAF",
+                                  "PEN"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "value"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "percentage"
+                                ]
+                              },
+                              "value": {
+                                "type": "number"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "option"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "select"
+                                ]
+                              },
+                              "option": {
+                                "type": "object",
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "value",
+                                  "sortOrder",
+                                  "status",
+                                  "createdAt"
+                                ],
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "The tag of a company custom worker field option.",
+                                    "title": "startsWith(\"cfo_\")",
+                                    "examples": [
+                                      "cfo_1234"
+                                    ],
+                                    "pattern": "^cfo_"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "sortOrder": {
+                                    "type": "number"
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "active",
+                                      "archived"
+                                    ]
+                                  },
+                                  "createdAt": {
+                                    "$ref": "#/components/schemas/Date"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "required": [
+                              "type",
+                              "options"
+                            ],
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "multi_select"
+                                ]
+                              },
+                              "options": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "required": [
+                                    "id",
+                                    "label",
+                                    "value",
+                                    "sortOrder",
+                                    "status",
+                                    "createdAt"
+                                  ],
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The tag of a company custom worker field option.",
+                                      "title": "startsWith(\"cfo_\")",
+                                      "examples": [
+                                        "cfo_1234"
+                                      ],
+                                      "pattern": "^cfo_"
+                                    },
+                                    "label": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "sortOrder": {
+                                      "type": "number"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "active",
+                                        "archived"
+                                      ]
+                                    },
+                                    "createdAt": {
+                                      "$ref": "#/components/schemas/Date"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        ]
+                      },
+                      "updatedAt": {
+                        "$ref": "#/components/schemas/Date"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.",
+        "summary": "List worker custom field values"
+      },
+      "put": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.upsertValue",
+        "parameters": [],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "workerId",
+                    "fieldId",
+                    "value",
+                    "updatedAt"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field value.",
+                      "title": "startsWith(\"cfv_\")",
+                      "examples": [
+                        "cfv_1234"
+                      ],
+                      "pattern": "^cfv_"
+                    },
+                    "workerId": {
+                      "type": "string",
+                      "description": "The id of the worker.",
+                      "title": "startsWith(\"wrk_\")",
+                      "examples": [
+                        "wrk_1234"
+                      ],
+                      "pattern": "^wrk_"
+                    },
+                    "fieldId": {
+                      "type": "string",
+                      "description": "The tag of a company custom worker field.",
+                      "title": "startsWith(\"cf_\")",
+                      "examples": [
+                        "cf_1234"
+                      ],
+                      "pattern": "^cf_"
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "value"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "text"
+                              ]
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "value"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "number"
+                              ]
+                            },
+                            "value": {
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "value"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "date"
+                              ]
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "A date string in the form YYYY-MM-DD",
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                              "title": "Date string",
+                              "examples": [
+                                "2000-01-01",
+                                "2001-09-11"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "value"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "boolean"
+                              ]
+                            },
+                            "value": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "amount",
+                            "currencyCode"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "currency"
+                              ]
+                            },
+                            "amount": {
+                              "type": "number"
+                            },
+                            "currencyCode": {
+                              "type": "string",
+                              "enum": [
+                                "USD",
+                                "AUD",
+                                "BGN",
+                                "BRL",
+                                "CAD",
+                                "CHF",
+                                "CZK",
+                                "DKK",
+                                "EUR",
+                                "GBP",
+                                "HKD",
+                                "HUF",
+                                "IDR",
+                                "INR",
+                                "JPY",
+                                "MYR",
+                                "NOK",
+                                "NZD",
+                                "CNY",
+                                "PLN",
+                                "RON",
+                                "TRY",
+                                "SEK",
+                                "SGD",
+                                "AED",
+                                "ARS",
+                                "BDT",
+                                "BWP",
+                                "CLP",
+                                "COP",
+                                "CRC",
+                                "EGP",
+                                "FJD",
+                                "GEL",
+                                "GHS",
+                                "ILS",
+                                "KES",
+                                "KRW",
+                                "LKR",
+                                "MAD",
+                                "MXN",
+                                "NPR",
+                                "PHP",
+                                "PKR",
+                                "THB",
+                                "UAH",
+                                "UGX",
+                                "UYU",
+                                "VND",
+                                "ZAR",
+                                "ZMW",
+                                "TND",
+                                "NGN",
+                                "RSD",
+                                "TWD",
+                                "GTQ",
+                                "HNL",
+                                "DOP",
+                                "SAR",
+                                "XAF",
+                                "PEN"
+                              ]
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "value"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "percentage"
+                              ]
+                            },
+                            "value": {
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "option"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "select"
+                              ]
+                            },
+                            "option": {
+                              "type": "object",
+                              "required": [
+                                "id",
+                                "label",
+                                "value",
+                                "sortOrder",
+                                "status",
+                                "createdAt"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "The tag of a company custom worker field option.",
+                                  "title": "startsWith(\"cfo_\")",
+                                  "examples": [
+                                    "cfo_1234"
+                                  ],
+                                  "pattern": "^cfo_"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "string"
+                                },
+                                "sortOrder": {
+                                  "type": "number"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "active",
+                                    "archived"
+                                  ]
+                                },
+                                "createdAt": {
+                                  "$ref": "#/components/schemas/Date"
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "options"
+                          ],
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "multi_select"
+                              ]
+                            },
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "value",
+                                  "sortOrder",
+                                  "status",
+                                  "createdAt"
+                                ],
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "description": "The tag of a company custom worker field option.",
+                                    "title": "startsWith(\"cfo_\")",
+                                    "examples": [
+                                      "cfo_1234"
+                                    ],
+                                    "pattern": "^cfo_"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "sortOrder": {
+                                    "type": "number"
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "enum": [
+                                      "active",
+                                      "archived"
+                                    ]
+                                  },
+                                  "createdAt": {
+                                    "$ref": "#/components/schemas/Date"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "updatedAt": {
+                      "$ref": "#/components/schemas/Date"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/HttpApiDecodeError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldValue"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CustomWorkerFieldWorkerNotFound"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Create or replace a worker's value for a custom field. The value shape must match the field type, and your API key must hold write on the field's category.",
+        "summary": "Set worker custom field value",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "workerId",
+                  "fieldId",
+                  "value"
+                ],
+                "properties": {
+                  "workerId": {
+                    "type": "string",
+                    "description": "The id of the worker.",
+                    "title": "startsWith(\"wrk_\")",
+                    "examples": [
+                      "wrk_1234"
+                    ],
+                    "pattern": "^wrk_"
+                  },
+                  "fieldId": {
+                    "type": "string",
+                    "description": "The tag of a company custom worker field.",
+                    "title": "startsWith(\"cf_\")",
+                    "examples": [
+                      "cf_1234"
+                    ],
+                    "pattern": "^cf_"
+                  },
+                  "value": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "value"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "text"
+                            ]
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "value"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "number"
+                            ]
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "value"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "date"
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "A date string in the form YYYY-MM-DD",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "title": "Date string",
+                            "examples": [
+                              "2000-01-01",
+                              "2001-09-11"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "value"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "boolean"
+                            ]
+                          },
+                          "value": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "amount",
+                          "currencyCode"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "currency"
+                            ]
+                          },
+                          "amount": {
+                            "type": "number"
+                          },
+                          "currencyCode": {
+                            "type": "string",
+                            "enum": [
+                              "USD",
+                              "AUD",
+                              "BGN",
+                              "BRL",
+                              "CAD",
+                              "CHF",
+                              "CZK",
+                              "DKK",
+                              "EUR",
+                              "GBP",
+                              "HKD",
+                              "HUF",
+                              "IDR",
+                              "INR",
+                              "JPY",
+                              "MYR",
+                              "NOK",
+                              "NZD",
+                              "CNY",
+                              "PLN",
+                              "RON",
+                              "TRY",
+                              "SEK",
+                              "SGD",
+                              "AED",
+                              "ARS",
+                              "BDT",
+                              "BWP",
+                              "CLP",
+                              "COP",
+                              "CRC",
+                              "EGP",
+                              "FJD",
+                              "GEL",
+                              "GHS",
+                              "ILS",
+                              "KES",
+                              "KRW",
+                              "LKR",
+                              "MAD",
+                              "MXN",
+                              "NPR",
+                              "PHP",
+                              "PKR",
+                              "THB",
+                              "UAH",
+                              "UGX",
+                              "UYU",
+                              "VND",
+                              "ZAR",
+                              "ZMW",
+                              "TND",
+                              "NGN",
+                              "RSD",
+                              "TWD",
+                              "GTQ",
+                              "HNL",
+                              "DOP",
+                              "SAR",
+                              "XAF",
+                              "PEN"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "value"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "percentage"
+                            ]
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "optionId"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "select"
+                            ]
+                          },
+                          "optionId": {
+                            "type": "string",
+                            "description": "The tag of a company custom worker field option.",
+                            "title": "startsWith(\"cfo_\")",
+                            "examples": [
+                              "cfo_1234"
+                            ],
+                            "pattern": "^cfo_"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "type",
+                          "optionIds"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "multi_select"
+                            ]
+                          },
+                          "optionIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "description": "The tag of a company custom worker field option.",
+                              "title": "startsWith(\"cfo_\")",
+                              "examples": [
+                                "cfo_1234"
+                              ],
+                              "pattern": "^cfo_"
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        }
+      },
+      "delete": {
+        "tags": [
+          "CustomWorkerFields"
+        ],
+        "operationId": "CustomWorkerFields.clearValue",
+        "parameters": [
+          {
+            "name": "workerId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "The id of the worker.",
+              "title": "startsWith(\"wrk_\")",
+              "examples": [
+                "wrk_1234"
+              ],
+              "pattern": "^wrk_"
+            },
+            "required": true,
+            "description": "The id of the worker."
+          },
+          {
+            "name": "fieldId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "The tag of a company custom worker field.",
+              "title": "startsWith(\"cf_\")",
+              "examples": [
+                "cf_1234"
+              ],
+              "pattern": "^cf_"
+            },
+            "required": true,
+            "description": "The tag of a company custom worker field."
+          }
+        ],
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "The request did not match the expected schema",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpApiDecodeError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "ApiKeyUnauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyUnauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "MissingRequiredCompanyPermissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/MissingRequiredCompanyPermissions"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ApiNotEnabled"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CustomWorkerFieldNotFound",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                    },
+                    {
+                      "$ref": "#/components/schemas/CustomWorkerFieldWorkerNotFound"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RateLimitExceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RateLimitExceeded"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "InternalServerError",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/InternalServerError"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Remove a worker's value for a custom field. Your API key must hold write on the field's category.",
+        "summary": "Clear worker custom field value"
+      }
+    },
     "/v1/departments": {
       "get": {
         "tags": [
@@ -210,26 +3529,11 @@
         },
         "description": "List all departments for your company.",
         "summary": "List departments",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ndepartment = client.departments.list()\nprint(department)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.departments.list();\nconsole.log(list);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp departments list --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.List(context.Background(), sdk.DepartmentListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
           }
         ]
       },
@@ -380,26 +3684,11 @@
           },
           "required": true
         },
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ndepartment = client.departments.create(\n    name=\"\",\n)\nprint(department)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.departments.create({\n  name: \"\",\n});\nconsole.log(create);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp departments create --api-key \"$WARP_API_KEY\" --name 'name'"
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.New(context.Background(), sdk.DepartmentNewParams{\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
           }
         ]
       }
@@ -575,26 +3864,11 @@
           },
           "required": true
         },
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ndepartment = client.departments.update(\n    id=\"dpt_1234\",\n)\nprint(department)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.departments.update(\"dpt_1234\", {});\nconsole.log(update);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp departments update 'dpt_1234' --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.Update(context.Background(), \"dpt_1234\", sdk.DepartmentUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
           }
         ]
       }
@@ -1821,29 +5095,7 @@
           }
         },
         "description": "List the candidate offers for your company.",
-        "summary": "List offers",
-        "x-codeSamples": [
-          {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.list()\nprint(offer)"
-          },
-          {
-            "label": "TypeScript",
-            "lang": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.offers.list();\nconsole.log(list);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp offers list --api-key \"$API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.List(context.Background(), sdk.OfferListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
-          }
-        ]
+        "summary": "List offers"
       },
       "post": {
         "tags": [
@@ -3587,29 +6839,7 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.create(\n    candidate={\"first_name\": \"\", \"last_name\": \"\", \"email\": \"\"},\n    position={\"title\": \"\", \"start_date\": \"\"},\n    worker_type=\"employee\",\n    compensation={\"pay_basis\": \"year\", \"pay_currency\": \"USD\", \"pay_rate\": 0},\n    idempotency_key=\"\",\n)\nprint(offer)"
-          },
-          {
-            "label": "TypeScript",
-            "lang": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.offers.create({\n  candidate: {\n    firstName: \"\",\n    lastName: \"\",\n    email: \"\",\n  },\n  position: {\n    title: \"\",\n    startDate: \"\",\n  },\n  workerType: \"employee\",\n  compensation: {\n    payBasis: \"year\",\n    payCurrency: \"USD\",\n    payRate: 0,\n  },\n});\nconsole.log(create);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp offers create --api-key \"$API_KEY\" --candidate '{\"firstName\":\"\",\"lastName\":\"\",\"email\":\"\"}' --position '{\"title\":\"\",\"startDate\":\"\"}' --worker-type 'employee' --compensation '{\"payBasis\":\"year\",\"payCurrency\":\"USD\",\"payRate\":0}'"
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.New(context.Background(), sdk.OfferNewParams{\n\t\tCandidate: sdk.OfferNewParamsCandidate{\n\t\t\tFirstName: \"\",\n\t\t\tLastName: \"\",\n\t\t\tEmail: \"\",\n\t\t},\n\t\tCompensation: sdk.OfferNewParamsCompensation{\n\t\t\tPayBasis: \"year\",\n\t\t\tPayCurrency: \"USD\",\n\t\t\tPayRate: 0,\n\t\t},\n\t\tPosition: sdk.OfferNewParamsPosition{\n\t\t\tTitle: \"\",\n\t\t\tStartDate: \"\",\n\t\t},\n\t\tWorkerType: \"employee\",\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
-          }
-        ]
+        }
       }
     },
     "/v1/offers/{id}/void": {
@@ -4758,29 +7988,7 @@
           }
         },
         "description": "Void a previously sent offer. Only sent offers can be voided.",
-        "summary": "Void offer",
-        "x-codeSamples": [
-          {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.void(\n    id=\"id\",\n    idempotency_key=\"\",\n)\nprint(offer)"
-          },
-          {
-            "label": "TypeScript",
-            "lang": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst void_ = await client.offers.void(\"id\");\nconsole.log(void_);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp offers void 'id' --api-key \"$API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.Void(context.Background(), \"id\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
-          }
-        ]
+        "summary": "Void offer"
       }
     },
     "/v1/offers/{id}/extend-deadline": {
@@ -5958,29 +9166,7 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.extend_deadline(\n    id=\"id\",\n    expiration_time=\"\",\n    idempotency_key=\"\",\n)\nprint(offer)"
-          },
-          {
-            "label": "TypeScript",
-            "lang": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst extendDeadline = await client.offers.extendDeadline(\"id\", {\n  expirationTime: \"\",\n});\nconsole.log(extendDeadline);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp offers extend-deadline 'id' --api-key \"$API_KEY\" --expiration-time 'expirationTime'"
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.ExtendDeadline(context.Background(), \"id\", sdk.OfferExtendDeadlineParams{\n\t\tExpirationTime: \"\",\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
-          }
-        ]
+        }
       }
     },
     "/v1/offers/{id}/resend": {
@@ -7129,29 +10315,7 @@
           }
         },
         "description": "Resend the offer email to the candidate for a sent offer.",
-        "summary": "Resend offer",
-        "x-codeSamples": [
-          {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.resend(\n    id=\"id\",\n    idempotency_key=\"\",\n)\nprint(offer)"
-          },
-          {
-            "label": "TypeScript",
-            "lang": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst resend = await client.offers.resend(\"id\");\nconsole.log(resend);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp offers resend 'id' --api-key \"$API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.Resend(context.Background(), \"id\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
-          }
-        ]
+        "summary": "Resend offer"
       }
     },
     "/v1/time_off/policies": {
@@ -7435,26 +10599,11 @@
         },
         "description": "Get the time off policies for your company",
         "summary": "List time off policies",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\npolicy = client.time_off.policies.list()\nprint(policy)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.timeOff.policies.list();\nconsole.log(list);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp time-off:policies list --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tpolicy, err := client.TimeOff.Policies.List(context.Background(), sdk.TimeOffPolicyListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(policy)\n}"
           }
         ]
       }
@@ -7692,26 +10841,11 @@
         },
         "description": "Get a specific time off policy by id",
         "summary": "Get time off policy",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\npolicy = client.time_off.policies.retrieve(\n    id=\"top_1234\",\n)\nprint(policy)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.timeOff.policies.retrieve(\"top_1234\");\nconsole.log(retrieve);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp time-off:policies retrieve 'top_1234' --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tpolicy, err := client.TimeOff.Policies.Get(context.Background(), \"top_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(policy)\n}"
           }
         ]
       }
@@ -7923,26 +11057,11 @@
         },
         "description": "Time off assignments are mappings between workers and time off policies. Useful for finding out which policies a worker is assigned to, or which workers are assigned to a given policy.",
         "summary": "List time off assignments",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ntime_off = client.time_off.list_assignments()\nprint(time_off)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listAssignments = await client.timeOff.listAssignments();\nconsole.log(listAssignments);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp time-off list-assignments --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListAssignments(context.Background(), sdk.TimeOffListAssignmentsParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
           }
         ]
       }
@@ -8190,26 +11309,11 @@
         },
         "description": "Get worker remaining time-off balances.",
         "summary": "List time off balances",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ntime_off = client.time_off.list_balances()\nprint(time_off)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listBalances = await client.timeOff.listBalances();\nconsole.log(listBalances);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp time-off list-balances --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListBalances(context.Background(), sdk.TimeOffListBalancesParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
           }
         ]
       }
@@ -8367,7 +11471,9 @@
                           "workerId",
                           "status",
                           "startAt",
+                          "startRangeType",
                           "endAt",
+                          "endRangeType",
                           "reason",
                           "createdAt",
                           "requestedMinutes",
@@ -8406,8 +11512,22 @@
                           "startAt": {
                             "$ref": "#/components/schemas/Date"
                           },
+                          "startRangeType": {
+                            "type": "string",
+                            "enum": [
+                              "date",
+                              "datetime"
+                            ]
+                          },
                           "endAt": {
                             "$ref": "#/components/schemas/Date"
+                          },
+                          "endRangeType": {
+                            "type": "string",
+                            "enum": [
+                              "date",
+                              "datetime"
+                            ]
                           },
                           "reason": {
                             "anyOf": [
@@ -8526,26 +11646,11 @@
         },
         "description": "Get the time off requests that workers in your company have made.",
         "summary": "List time off requests",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ntime_off = client.time_off.list_requests()\nprint(time_off)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listRequests = await client.timeOff.listRequests();\nconsole.log(listRequests);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp time-off list-requests --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListRequests(context.Background(), sdk.TimeOffListRequestsParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
           }
         ]
       }
@@ -8966,26 +12071,11 @@
         },
         "description": "List all workers. Workers include anyone employed by the company, whether US or international, full-time employees or contractors.",
         "summary": "List workers",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.list()\nprint(worker)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workers.list();\nconsole.log(list);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workers list --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.List(context.Background(), sdk.WorkerListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           }
         ]
       }
@@ -9326,26 +12416,11 @@
         },
         "description": "Get a specific worker by id.",
         "summary": "Get worker",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.retrieve(\n    id=\"wrk_1234\",\n)\nprint(worker)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.workers.retrieve(\"wrk_1234\");\nconsole.log(retrieve);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workers retrieve 'wrk_1234' --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.Get(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           }
         ]
       },
@@ -9467,26 +12542,11 @@
         },
         "description": "Delete a worker. Only workers who have not yet completed onboarding can be deleted. Active workers must be properly offboarded.",
         "summary": "Delete worker",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nclient.workers.delete(\n    id=\"wrk_1234\",\n)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nawait client.workers.delete(\"wrk_1234\");"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workers delete 'wrk_1234' --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\terr := client.Workers.Delete(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n}"
           }
         ]
       }
@@ -10005,26 +13065,11 @@
           },
           "required": true
         },
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.create_employee(\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_location={\"type\": \"office\", \"workplace_id\": \"wkp_1234\"},\n    compensation={\"amount\": 0, \"per\": \"hour\"},\n)\nprint(worker)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst createEmployee = await client.workers.createEmployee({\n  firstName: \"\",\n  lastName: \"\",\n  position: \"\",\n  startDate: \"2000-01-01\",\n  email: \"john@joinwarp.com\",\n  departmentId: \"dpt_1234\",\n  managerId: \"wrk_1234\",\n  workLocation: {\n    type: \"office\",\n    workplaceId: \"wkp_1234\",\n  },\n  compensation: {\n    amount: 0,\n    per: \"hour\",\n  },\n});\nconsole.log(createEmployee);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workers create-employee --api-key \"$WARP_API_KEY\" --first-name 'firstName' --last-name 'lastName' --position 'position' --start-date '2000-01-01' --email 'john@joinwarp.com' --department-id 'dpt_1234' --manager-id 'wrk_1234' --work-location '{\"type\":\"office\",\"workplaceId\":\"wkp_1234\"}' --compensation '{\"amount\":0,\"per\":\"hour\"}'"
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.NewEmployee(context.Background(), sdk.WorkerNewEmployeeParams{\n\t\tCompensation: sdk.F[sdk.WorkerNewEmployeeParamsCompensation](sdk.WorkerNewEmployeeParamsCompensation{\n\t\t\tAmount: sdk.F[float64](0),\n\t\t}),\n\t\tDepartmentID: sdk.F[string](\"dpt_1234\"),\n\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\tFirstName: sdk.F[string](\"\"),\n\t\tLastName: sdk.F[string](\"\"),\n\t\tManagerID: sdk.F[string](\"wrk_1234\"),\n\t\tPosition: sdk.F[string](\"\"),\n\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t\tWorkLocation: sdk.F[sdk.WorkerNewEmployeeParamsWorkLocationUnion](sdk.WorkerNewEmployeeParamsWorkLocationOfficeWorkLocation{\n\t\t\tWorkplaceID: sdk.F[string](\"wkp_1234\"),\n\t\t}),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           }
         ]
       }
@@ -10851,26 +13896,11 @@
           },
           "required": true
         },
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.create_contractor(\n    entity_type=\"individual\",\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_country=\"AD\",\n)\nprint(worker)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst createContractor = await client.workers.createContractor({\n  entityType: \"individual\",\n  firstName: \"\",\n  lastName: \"\",\n  position: \"\",\n  startDate: \"2000-01-01\",\n  email: \"john@joinwarp.com\",\n  departmentId: \"dpt_1234\",\n  managerId: \"wrk_1234\",\n  workCountry: \"AD\",\n});\nconsole.log(createContractor);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workers create-contractor --api-key \"$WARP_API_KEY\" --entity-type 'individual' --first-name 'firstName' --last-name 'lastName' --position 'position' --start-date '2000-01-01' --email 'john@joinwarp.com' --department-id 'dpt_1234' --manager-id 'wrk_1234' --work-country 'AD'"
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.NewContractor(context.Background(), sdk.WorkerNewContractorParams{\n\t\tDepartmentID: sdk.F[string](\"dpt_1234\"),\n\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\tFirstName: sdk.F[string](\"\"),\n\t\tLastName: sdk.F[string](\"\"),\n\t\tManagerID: sdk.F[string](\"wrk_1234\"),\n\t\tPosition: sdk.F[string](\"\"),\n\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           }
         ]
       }
@@ -11231,26 +14261,11 @@
         },
         "description": "Send or resend the worker invite so they can accept and complete onboarding to Warp. If the worker has already been invited, the invite will be resent with extended validity.",
         "summary": "Invite worker",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.invite(\n    id=\"wrk_1234\",\n)\nprint(worker)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst invite = await client.workers.invite(\"wrk_1234\");\nconsole.log(invite);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workers invite 'wrk_1234' --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.Invite(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           }
         ]
       }
@@ -11551,26 +14566,11 @@
         },
         "description": "List all workplaces for your company.",
         "summary": "List workplaces",
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworkplace = client.workplaces.list()\nprint(workplace)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workplaces.list();\nconsole.log(list);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workplaces list --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.List(context.Background(), sdk.WorkplaceListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
           }
         ]
       },
@@ -11949,26 +14949,11 @@
           },
           "required": true
         },
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworkplace = client.workplaces.create(\n    name=\"\",\n    type=\"remote\",\n    address={\"line1\": \"x\", \"city\": \"\", \"postal_code\": \"\", \"state\": \"AL\", \"country\": \"US\"},\n)\nprint(workplace)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.workplaces.create({\n  name: \"\",\n  type: \"remote\",\n  address: {\n    line1: \"x\",\n    city: \"\",\n    postalCode: \"\",\n    state: \"AL\",\n    country: \"US\",\n  },\n});\nconsole.log(create);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workplaces create --api-key \"$WARP_API_KEY\" --name 'name' --type 'remote' --address '{\"line1\":\"x\",\"city\":\"\",\"postalCode\":\"\",\"state\":\"AL\",\"country\":\"US\"}'"
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.New(context.Background(), sdk.WorkplaceNewParams{\n\t\tAddress: sdk.F[sdk.WorkplaceNewParamsAddress](sdk.WorkplaceNewParamsAddress{\n\t\t\tLine1: sdk.F[string](\"x\"),\n\t\t\tCity: sdk.F[string](\"\"),\n\t\t\tPostalCode: sdk.F[string](\"\"),\n\t\t}),\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
           }
         ]
       }
@@ -12258,26 +15243,11 @@
           },
           "required": true
         },
-        "x-codeSamples": [
+        "x-scalar-examples": [
           {
-            "label": "Python",
-            "lang": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworkplace = client.workplaces.update(\n    id=\"wkp_1234\",\n)\nprint(workplace)"
-          },
-          {
-            "label": "TypeScript",
             "lang": "TypeScript",
+            "label": "TypeScript",
             "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.workplaces.update(\"wkp_1234\", {});\nconsole.log(update);"
-          },
-          {
-            "label": "Shell",
-            "lang": "Shell",
-            "source": "warp workplaces update 'wkp_1234' --api-key \"$WARP_API_KEY\""
-          },
-          {
-            "label": "Go",
-            "lang": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.Update(context.Background(), \"wkp_1234\", sdk.WorkplaceUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
           }
         ]
       }
@@ -12462,11 +15432,13 @@
                     "workers:access",
                     "workers:dependents",
                     "workers:dependents:pii",
+                    "workers:custom_fields",
                     "payrolls:global",
                     "payrolls:us",
                     "pay_schedules",
                     "offers",
                     "departments",
+                    "levels",
                     "workplaces",
                     "time_off",
                     "time_tracking",
@@ -12532,6 +15504,213 @@
         "title": "trimmed",
         "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$"
       },
+      "NonEmptyTrimmedString": {
+        "type": "string",
+        "description": "a non empty string",
+        "title": "nonEmptyString",
+        "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
+        "minLength": 1
+      },
+      "InvalidCustomWorkerFieldOperation": {
+        "type": "object",
+        "required": [
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "InvalidCustomWorkerFieldOperation"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomWorkerFieldAlreadyExists": {
+        "type": "object",
+        "required": [
+          "name",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "CustomWorkerFieldAlreadyExists"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomWorkerFieldOptionAlreadyExists": {
+        "type": "object",
+        "required": [
+          "value",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "CustomWorkerFieldOptionAlreadyExists"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomWorkerFieldNotFound": {
+        "type": "object",
+        "required": [
+          "id",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The tag of a company custom worker field.",
+            "title": "startsWith(\"cf_\")",
+            "examples": [
+              "cf_1234"
+            ],
+            "pattern": "^cf_"
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "CustomWorkerFieldNotFound"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomWorkerFieldOptionNotFound": {
+        "type": "object",
+        "required": [
+          "id",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The tag of a company custom worker field option.",
+            "title": "startsWith(\"cfo_\")",
+            "examples": [
+              "cfo_1234"
+            ],
+            "pattern": "^cfo_"
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "CustomWorkerFieldOptionNotFound"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomWorkerFieldOptionInUse": {
+        "type": "object",
+        "required": [
+          "id",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The tag of a company custom worker field option.",
+            "title": "startsWith(\"cfo_\")",
+            "examples": [
+              "cfo_1234"
+            ],
+            "pattern": "^cfo_"
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "CustomWorkerFieldOptionInUse"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvalidCustomWorkerFieldValue": {
+        "type": "object",
+        "required": [
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "InvalidCustomWorkerFieldValue"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomWorkerFieldWorkerNotFound": {
+        "type": "object",
+        "required": [
+          "id",
+          "message",
+          "_tag"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the worker.",
+            "title": "startsWith(\"wrk_\")",
+            "examples": [
+              "wrk_1234"
+            ],
+            "pattern": "^wrk_"
+          },
+          "message": {
+            "type": "string"
+          },
+          "_tag": {
+            "type": "string",
+            "enum": [
+              "CustomWorkerFieldWorkerNotFound"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "DepartmentAlreadyExists": {
         "type": "object",
         "required": [
@@ -12592,13 +15771,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "NonEmptyTrimmedString": {
-        "type": "string",
-        "description": "a non empty string",
-        "title": "nonEmptyString",
-        "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
-        "minLength": 1
       },
       "InvalidExpirationTimeError": {
         "type": "object",
@@ -13465,6 +16637,10 @@
     }
   ],
   "tags": [
+    {
+      "name": "CustomWorkerFields",
+      "description": "Company-defined custom fields for workers. Field definitions are administered with the workers:custom_fields permission; each field belongs to a worker-data category whose read/write grants govern its values."
+    },
     {
       "name": "Departments",
       "description": "Endpoints for department management. Create, list, and update departments within your company."

@@ -201,10 +201,12 @@ export namespace TimeOffListRequestsResponse {
      * a string to be decoded into a Date
      */
     startAt: string;
+    startRangeType: "date" | "datetime";
     /**
      * a string to be decoded into a Date
      */
     endAt: string;
+    endRangeType: "date" | "datetime";
     reason: string | null;
     /**
      * a string to be decoded into a Date
