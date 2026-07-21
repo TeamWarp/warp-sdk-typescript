@@ -13,10 +13,10 @@ import { writeFileSync } from 'node:fs'
 
 // The default export is the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
-import Warp from "warp-hr"
+import WarpAPI from "@warp/warp-api"
 
 // One shared client runs every case.
-const client = new Warp()
+const client = new WarpAPI()
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {
@@ -32,6 +32,223 @@ type SmokeResult = {
 // metadata used for filtering and reporting. This list is generated, so it stays in sync with
 // the SDK surface.
 const cases: { operation: string; method: string; path: string; run: () => Promise<unknown> }[] = [
+  {
+    operation: "list",
+    method: "GET",
+    path: "/v1/custom-worker-fields",
+    run: async () => {
+      const list = await client.customWorkerFields.list();
+    },
+  },
+
+  {
+    operation: "create",
+    method: "POST",
+    path: "/v1/custom-worker-fields",
+    run: async () => {
+      const create = await client.customWorkerFields.create({
+        name: "",
+        type: "text",
+        category: "info",
+      });
+    },
+  },
+
+  {
+    operation: "retrieve",
+    method: "GET",
+    path: "/v1/custom-worker-fields/{id}",
+    run: async () => {
+      const retrieve = await client.customWorkerFields.retrieve("cf_1234");
+    },
+  },
+
+  {
+    operation: "update",
+    method: "PATCH",
+    path: "/v1/custom-worker-fields/{id}",
+    run: async () => {
+      const update = await client.customWorkerFields.update("cf_1234", {});
+    },
+  },
+
+  {
+    operation: "archive",
+    method: "POST",
+    path: "/v1/custom-worker-fields/{id}/archive",
+    run: async () => {
+      const archive = await client.customWorkerFields.archive("cf_1234");
+    },
+  },
+
+  {
+    operation: "createOption",
+    method: "POST",
+    path: "/v1/custom-worker-fields/{id}/options",
+    run: async () => {
+      const createOption = await client.customWorkerFields.createOption("cf_1234", {
+        label: "x",
+        value: "x",
+      });
+    },
+  },
+
+  {
+    operation: "updateOption",
+    method: "PATCH",
+    path: "/v1/custom-worker-field-options/{id}",
+    run: async () => {
+      const updateOption = await client.customWorkerFields.updateOption("cfo_1234", {});
+    },
+  },
+
+  {
+    operation: "deleteOption",
+    method: "DELETE",
+    path: "/v1/custom-worker-field-options/{id}",
+    run: async () => {
+      await client.customWorkerFields.deleteOption("cfo_1234");
+    },
+  },
+
+  {
+    operation: "archiveOption",
+    method: "POST",
+    path: "/v1/custom-worker-field-options/{id}/archive",
+    run: async () => {
+      const archiveOption = await client.customWorkerFields.archiveOption("cfo_1234");
+    },
+  },
+
+  {
+    operation: "listValues",
+    method: "GET",
+    path: "/v1/worker-custom-field-values",
+    run: async () => {
+      const listValues = await client.customWorkerFields.listValues();
+    },
+  },
+
+  {
+    operation: "upsertValue",
+    method: "PUT",
+    path: "/v1/worker-custom-field-values",
+    run: async () => {
+      const upsertValue = await client.customWorkerFields.upsertValue({
+        workerId: "wrk_1234",
+        fieldId: "cf_1234",
+        value: {
+          type: "text",
+          value: "",
+        },
+      });
+    },
+  },
+
+  {
+    operation: "clearValue",
+    method: "DELETE",
+    path: "/v1/worker-custom-field-values",
+    run: async () => {
+      await client.customWorkerFields.clearValue({
+        workerId: "wrk_1234",
+        fieldId: "cf_1234",
+      });
+    },
+  },
+
+  {
+    operation: "list",
+    method: "GET",
+    path: "/v1/departments",
+    run: async () => {
+      const list = await client.departments.list();
+    },
+  },
+
+  {
+    operation: "create",
+    method: "POST",
+    path: "/v1/departments",
+    run: async () => {
+      const create = await client.departments.create({
+        name: "",
+      });
+    },
+  },
+
+  {
+    operation: "update",
+    method: "PATCH",
+    path: "/v1/departments/{id}",
+    run: async () => {
+      const update = await client.departments.update("dpt_1234", {});
+    },
+  },
+
+  {
+    operation: "list",
+    method: "GET",
+    path: "/v1/offers",
+    run: async () => {
+      const list = await client.offers.list();
+    },
+  },
+
+  {
+    operation: "create",
+    method: "POST",
+    path: "/v1/offers",
+    run: async () => {
+      const create = await client.offers.create({
+        candidate: {
+          firstName: "x",
+          lastName: "x",
+          email: "john@joinwarp.com",
+        },
+        position: {
+          title: "x",
+          startDate: "2000-01-01",
+        },
+        workerType: "employee",
+        compensation: {
+          payBasis: "year",
+          payCurrency: "USD",
+          payRate: 0,
+        },
+      });
+    },
+  },
+
+  {
+    operation: "void",
+    method: "POST",
+    path: "/v1/offers/{id}/void",
+    run: async () => {
+      const void_ = await client.offers.void("offr_1234");
+    },
+  },
+
+  {
+    operation: "extendDeadline",
+    method: "POST",
+    path: "/v1/offers/{id}/extend-deadline",
+    run: async () => {
+      const extendDeadline = await client.offers.extendDeadline("offr_1234", {
+        expirationTime: "",
+      });
+    },
+  },
+
+  {
+    operation: "resend",
+    method: "POST",
+    path: "/v1/offers/{id}/resend",
+    run: async () => {
+      const resend = await client.offers.resend("offr_1234");
+    },
+  },
+
   {
     operation: "listAssignments",
     method: "GET",
@@ -60,20 +277,20 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: "list",
+    operation: "timeOffGet",
     method: "GET",
     path: "/v1/time_off/policies",
     run: async () => {
-      const list = await client.timeOff.policies.list();
+      const timeOffGet = await client.timeOff.policies.timeOffGet();
     },
   },
 
   {
-    operation: "retrieve",
+    operation: "timeOffGet2",
     method: "GET",
     path: "/v1/time_off/policies/{id}",
     run: async () => {
-      const retrieve = await client.timeOff.policies.retrieve("top_1234");
+      const timeOffGet2 = await client.timeOff.policies.timeOffGet2("top_1234");
     },
   },
 
@@ -154,35 +371,6 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: "/v1/workers/{id}/invite",
     run: async () => {
       const invite = await client.workers.invite("wrk_1234");
-    },
-  },
-
-  {
-    operation: "list",
-    method: "GET",
-    path: "/v1/departments",
-    run: async () => {
-      const list = await client.departments.list();
-    },
-  },
-
-  {
-    operation: "create",
-    method: "POST",
-    path: "/v1/departments",
-    run: async () => {
-      const create = await client.departments.create({
-        name: "",
-      });
-    },
-  },
-
-  {
-    operation: "update",
-    method: "PATCH",
-    path: "/v1/departments/{id}",
-    run: async () => {
-      const update = await client.departments.update("dpt_1234", {});
     },
   },
 
