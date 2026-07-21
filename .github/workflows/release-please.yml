@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
+      # Consumed by the publish job's dispatch: without this mapping the dispatch ref would
+      # be empty, and `gh workflow run --ref ""` silently falls back to the default branch
+      # instead of the released tag.
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         id: release

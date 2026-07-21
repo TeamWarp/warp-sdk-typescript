@@ -1,6 +1,8 @@
 # Warp
 
-Generated TypeScript SDK for Warp API.
+This library provides convenient access to the Warp REST API from TypeScript or JavaScript.
+
+The full API of this library can be found in [api.md](./api.md).
 
 <br />
 
