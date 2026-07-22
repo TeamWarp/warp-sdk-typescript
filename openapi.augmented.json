@@ -214,7 +214,29 @@
           }
         },
         "description": "List the custom worker field definitions your API key can read. Each field belongs to a worker-data category; fields whose category your key cannot read are omitted unless the key holds workers:custom_fields.",
-        "summary": "List custom worker fields"
+        "summary": "List custom worker fields",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.customWorkerFields.list();\nconsole.log(list);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.list()\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.List(context.Background())\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields list --api-key \"$API_KEY\""
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -535,7 +557,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.customWorkerFields.create({\n  name: \"\",\n  type: \"text\",\n  category: \"info\",\n});\nconsole.log(create);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.create(\n    name=\"\",\n    type=\"text\",\n    category=\"info\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.New(context.Background(), sdk.CustomWorkerFieldNewParams{\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields create --api-key \"$API_KEY\" --name 'name' --type 'text' --category 'info'"
+          }
+        ]
       }
     },
     "/v1/custom-worker-fields/{id}": {
@@ -801,7 +845,29 @@
           }
         },
         "description": "Get a custom worker field definition, including its select options. Archived options may appear on existing worker values but cannot be newly selected.",
-        "summary": "Get custom worker field"
+        "summary": "Get custom worker field",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst retrieve = await client.customWorkerFields.retrieve(\"cf_1234\");\nconsole.log(retrieve);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.retrieve(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.Get(context.Background(), \"cf_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields retrieve 'cf_1234' --api-key \"$API_KEY\""
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -1101,7 +1167,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst update = await client.customWorkerFields.update(\"cf_1234\", {});\nconsole.log(update);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.update(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.Update(context.Background(), \"cf_1234\", sdk.CustomWorkerFieldUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields update 'cf_1234' --api-key \"$API_KEY\""
+          }
+        ]
       }
     },
     "/v1/custom-worker-fields/{id}/archive": {
@@ -1321,7 +1409,29 @@
           }
         },
         "description": "Archive a custom worker field. Archived fields keep their existing worker values but cannot receive new ones. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Archive custom worker field"
+        "summary": "Archive custom worker field",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst archive = await client.customWorkerFields.archive(\"cf_1234\");\nconsole.log(archive);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.archive(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.Archive(context.Background(), \"cf_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields archive 'cf_1234' --api-key \"$API_KEY\""
+          }
+        ]
       }
     },
     "/v1/custom-worker-fields/{id}/options": {
@@ -1521,7 +1631,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst createOption = await client.customWorkerFields.createOption(\"cf_1234\", {\n  label: \"x\",\n  value: \"x\",\n});\nconsole.log(createOption);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.create_option(\n    id=\"cf_1234\",\n    label=\"x\",\n    value=\"x\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.NewOption(context.Background(), \"cf_1234\", sdk.CustomWorkerFieldNewOptionParams{\n\t\tLabel: sdk.F[string](\"x\"),\n\t\tValue: sdk.F[string](\"x\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields create-option 'cf_1234' --api-key \"$API_KEY\" --label 'label' --value 'value'"
+          }
+        ]
       }
     },
     "/v1/custom-worker-field-options/{id}": {
@@ -1715,7 +1847,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst updateOption = await client.customWorkerFields.updateOption(\"cfo_1234\", {});\nconsole.log(updateOption);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.update_option(\n    id=\"cfo_1234\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.UpdateOption(context.Background(), \"cfo_1234\", sdk.CustomWorkerFieldUpdateOptionParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields update-option 'cfo_1234' --api-key \"$API_KEY\""
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1834,7 +1988,29 @@
           }
         },
         "description": "Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Delete unused field option"
+        "summary": "Delete unused field option",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nawait client.customWorkerFields.deleteOption(\"cfo_1234\");"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.custom_worker_fields.delete_option(\n    id=\"cfo_1234\",\n)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\terr := client.CustomWorkerFields.DeleteOption(context.Background(), \"cfo_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields delete-option 'cfo_1234' --api-key \"$API_KEY\""
+          }
+        ]
       }
     },
     "/v1/custom-worker-field-options/{id}/archive": {
@@ -1991,7 +2167,29 @@
           }
         },
         "description": "Archive a custom worker field option. Archived options remain on existing worker values but cannot be newly selected. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Archive field option"
+        "summary": "Archive field option",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst archiveOption = await client.customWorkerFields.archiveOption(\"cfo_1234\");\nconsole.log(archiveOption);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.archive_option(\n    id=\"cfo_1234\",\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.ArchiveOption(context.Background(), \"cfo_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields archive-option 'cfo_1234' --api-key \"$API_KEY\""
+          }
+        ]
       }
     },
     "/v1/worker-custom-field-values": {
@@ -2472,7 +2670,29 @@
           }
         },
         "description": "List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.",
-        "summary": "List worker custom field values"
+        "summary": "List worker custom field values",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst listValues = await client.customWorkerFields.listValues();\nconsole.log(listValues);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.list_values()\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.ListValues(context.Background(), sdk.CustomWorkerFieldListValuesParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields list-values --api-key \"$API_KEY\""
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -3221,7 +3441,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst upsertValue = await client.customWorkerFields.upsertValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n  value: {\n    type: \"text\",\n    value: \"\",\n  },\n});\nconsole.log(upsertValue);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.upsert_value(\n    worker_id=\"wrk_1234\",\n    field_id=\"cf_1234\",\n    value={\"type\": \"text\", \"value\": \"\"},\n)\nprint(custom_worker_field)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tcustomWorkerField, err := client.CustomWorkerFields.UpsertValue(context.Background(), sdk.CustomWorkerFieldUpsertValueParams{\n\t\tFieldID: sdk.F[string](\"cf_1234\"),\n\t\tValue: sdk.F[sdk.CustomWorkerFieldUpsertValueParamsValueUnion](sdk.CustomWorkerFieldUpsertValueParamsValueUnion{}),\n\t\tWorkerID: sdk.F[string](\"wrk_1234\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(customWorkerField)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields upsert-value --api-key \"$API_KEY\" --worker-id 'wrk_1234' --field-id 'cf_1234' --value '{\"type\":\"text\",\"value\":\"\"}'"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -3352,7 +3594,29 @@
           }
         },
         "description": "Remove a worker's value for a custom field. Your API key must hold write on the field's category.",
-        "summary": "Clear worker custom field value"
+        "summary": "Clear worker custom field value",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nawait client.customWorkerFields.clearValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n});"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.custom_worker_fields.clear_value(\n    worker_id=\"wrk_1234\",\n    field_id=\"cf_1234\",\n)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\terr := client.CustomWorkerFields.ClearValue(context.Background(), sdk.CustomWorkerFieldClearValueParams{\n\t\tFieldID: sdk.F[string](\"cf_1234\"),\n\t\tWorkerID: sdk.F[string](\"wrk_1234\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi custom-worker-fields clear-value --api-key \"$API_KEY\" --worker-id 'wrk_1234' --field-id 'cf_1234'"
+          }
+        ]
       }
     },
     "/v1/departments": {
@@ -3541,22 +3805,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.departments.list();\nconsole.log(list);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.departments.list();\nconsole.log(list);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ndepartment = client.departments.list()\nprint(department)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.list()\nprint(department)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.List(context.Background(), sdk.DepartmentListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.List(context.Background(), sdk.DepartmentListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp departments list --api-key \"$WARP_API_KEY\""
+            "source": "warpapi departments list --api-key \"$API_KEY\""
           }
         ]
       },
@@ -3711,22 +3975,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.departments.create({\n  name: \"\",\n});\nconsole.log(create);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.departments.create({\n  name: \"\",\n});\nconsole.log(create);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ndepartment = client.departments.create(\n    name=\"\",\n)\nprint(department)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.create(\n    name=\"\",\n)\nprint(department)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.New(context.Background(), sdk.DepartmentNewParams{\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.New(context.Background(), sdk.DepartmentNewParams{\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp departments create --api-key \"$WARP_API_KEY\" --name 'name'"
+            "source": "warpapi departments create --api-key \"$API_KEY\" --name 'name'"
           }
         ]
       }
@@ -3906,22 +4170,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.departments.update(\"dpt_1234\", {});\nconsole.log(update);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst update = await client.departments.update(\"dpt_1234\", {});\nconsole.log(update);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ndepartment = client.departments.update(\n    id=\"dpt_1234\",\n)\nprint(department)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.update(\n    id=\"dpt_1234\",\n)\nprint(department)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.Update(context.Background(), \"dpt_1234\", sdk.DepartmentUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tdepartment, err := client.Departments.Update(context.Background(), \"dpt_1234\", sdk.DepartmentUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(department)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp departments update 'dpt_1234' --api-key \"$WARP_API_KEY\""
+            "source": "warpapi departments update 'dpt_1234' --api-key \"$API_KEY\""
           }
         ]
       }
@@ -5148,7 +5412,29 @@
           }
         },
         "description": "List the candidate offers for your company.",
-        "summary": "List offers"
+        "summary": "List offers",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.offers.list();\nconsole.log(list);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.list()\nprint(offer)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.List(context.Background(), sdk.OfferListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi offers list --api-key \"$API_KEY\""
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -6892,7 +7178,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.offers.create({\n  candidate: {\n    firstName: \"x\",\n    lastName: \"x\",\n    email: \"john@joinwarp.com\",\n  },\n  position: {\n    title: \"x\",\n    startDate: \"2000-01-01\",\n  },\n  workerType: \"employee\",\n  compensation: {\n    payBasis: \"year\",\n    payCurrency: \"USD\",\n    payRate: 0,\n  },\n});\nconsole.log(create);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.create(\n    candidate={\"first_name\": \"x\", \"last_name\": \"x\", \"email\": \"john@joinwarp.com\"},\n    position={\"title\": \"x\", \"start_date\": \"2000-01-01\"},\n    worker_type=\"employee\",\n    compensation={\"pay_basis\": \"year\", \"pay_currency\": \"USD\", \"pay_rate\": 0},\n)\nprint(offer)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.New(context.Background(), sdk.OfferNewParams{\n\t\tCandidate: sdk.F[sdk.OfferNewParamsCandidate](sdk.OfferNewParamsCandidate{\n\t\t\tFirstName: sdk.F[string](\"x\"),\n\t\t\tLastName: sdk.F[string](\"x\"),\n\t\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\t}),\n\t\tCompensation: sdk.F[sdk.OfferNewParamsCompensation](sdk.OfferNewParamsCompensation{\n\t\t\tPayRate: sdk.F[float64](0),\n\t\t}),\n\t\tPosition: sdk.F[sdk.OfferNewParamsPosition](sdk.OfferNewParamsPosition{\n\t\t\tTitle: sdk.F[string](\"x\"),\n\t\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t\t}),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi offers create --api-key \"$API_KEY\" --candidate '{\"firstName\":\"x\",\"lastName\":\"x\",\"email\":\"john@joinwarp.com\"}' --position '{\"title\":\"x\",\"startDate\":\"2000-01-01\"}' --worker-type 'employee' --compensation '{\"payBasis\":\"year\",\"payCurrency\":\"USD\",\"payRate\":0}'"
+          }
+        ]
       }
     },
     "/v1/offers/{id}/void": {
@@ -8041,7 +8349,29 @@
           }
         },
         "description": "Void a previously sent offer. Only sent offers can be voided.",
-        "summary": "Void offer"
+        "summary": "Void offer",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst void_ = await client.offers.void(\"offr_1234\");\nconsole.log(void_);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.void(\n    id=\"offr_1234\",\n)\nprint(offer)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.Void(context.Background(), \"offr_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi offers void 'offr_1234' --api-key \"$API_KEY\""
+          }
+        ]
       }
     },
     "/v1/offers/{id}/extend-deadline": {
@@ -9219,7 +9549,29 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst extendDeadline = await client.offers.extendDeadline(\"offr_1234\", {\n  expirationTime: \"\",\n});\nconsole.log(extendDeadline);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.extend_deadline(\n    id=\"offr_1234\",\n    expiration_time=\"\",\n)\nprint(offer)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.ExtendDeadline(context.Background(), \"offr_1234\", sdk.OfferExtendDeadlineParams{\n\t\tExpirationTime: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi offers extend-deadline 'offr_1234' --api-key \"$API_KEY\" --expiration-time 'expirationTime'"
+          }
+        ]
       }
     },
     "/v1/offers/{id}/resend": {
@@ -10368,7 +10720,29 @@
           }
         },
         "description": "Resend the offer email to the candidate for a sent offer.",
-        "summary": "Resend offer"
+        "summary": "Resend offer",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript",
+            "lang": "TypeScript",
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst resend = await client.offers.resend(\"offr_1234\");\nconsole.log(resend);"
+          },
+          {
+            "label": "Python",
+            "lang": "Python",
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.resend(\n    id=\"offr_1234\",\n)\nprint(offer)"
+          },
+          {
+            "label": "Go",
+            "lang": "Go",
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\toffer, err := client.Offers.Resend(context.Background(), \"offr_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(offer)\n}"
+          },
+          {
+            "label": "Shell",
+            "lang": "Shell",
+            "source": "warpapi offers resend 'offr_1234' --api-key \"$API_KEY\""
+          }
+        ]
       }
     },
     "/v1/time_off/policies": {
@@ -10656,22 +11030,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.timeOff.policies.list();\nconsole.log(list);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst timeOffGet = await client.timeOff.policies.timeOffGet();\nconsole.log(timeOffGet);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\npolicy = client.time_off.policies.list()\nprint(policy)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\npolicy = client.time_off.policies.time_off_get()\nprint(policy)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tpolicy, err := client.TimeOff.Policies.List(context.Background(), sdk.TimeOffPolicyListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(policy)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tpolicy, err := client.TimeOff.Policies.TimeOffGet(context.Background(), sdk.TimeOffPolicyTimeOffGetParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(policy)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp time-off:policies list --api-key \"$WARP_API_KEY\""
+            "source": "warpapi time-off:policies time-off-get --api-key \"$API_KEY\""
           }
         ]
       }
@@ -10913,22 +11287,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.timeOff.policies.retrieve(\"top_1234\");\nconsole.log(retrieve);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst timeOffGet2 = await client.timeOff.policies.timeOffGet2(\"top_1234\");\nconsole.log(timeOffGet2);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\npolicy = client.time_off.policies.retrieve(\n    id=\"top_1234\",\n)\nprint(policy)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\npolicy = client.time_off.policies.time_off_get2(\n    id=\"top_1234\",\n)\nprint(policy)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tpolicy, err := client.TimeOff.Policies.Get(context.Background(), \"top_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(policy)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tpolicy, err := client.TimeOff.Policies.TimeOffGet2(context.Background(), \"top_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(policy)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp time-off:policies retrieve 'top_1234' --api-key \"$WARP_API_KEY\""
+            "source": "warpapi time-off:policies time-off-get2 'top_1234' --api-key \"$API_KEY\""
           }
         ]
       }
@@ -11144,22 +11518,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listAssignments = await client.timeOff.listAssignments();\nconsole.log(listAssignments);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst listAssignments = await client.timeOff.listAssignments();\nconsole.log(listAssignments);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ntime_off = client.time_off.list_assignments()\nprint(time_off)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_assignments()\nprint(time_off)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListAssignments(context.Background(), sdk.TimeOffListAssignmentsParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListAssignments(context.Background(), sdk.TimeOffListAssignmentsParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp time-off list-assignments --api-key \"$WARP_API_KEY\""
+            "source": "warpapi time-off list-assignments --api-key \"$API_KEY\""
           }
         ]
       }
@@ -11411,22 +11785,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listBalances = await client.timeOff.listBalances();\nconsole.log(listBalances);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst listBalances = await client.timeOff.listBalances();\nconsole.log(listBalances);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ntime_off = client.time_off.list_balances()\nprint(time_off)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_balances()\nprint(time_off)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListBalances(context.Background(), sdk.TimeOffListBalancesParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListBalances(context.Background(), sdk.TimeOffListBalancesParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp time-off list-balances --api-key \"$WARP_API_KEY\""
+            "source": "warpapi time-off list-balances --api-key \"$API_KEY\""
           }
         ]
       }
@@ -11763,22 +12137,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listRequests = await client.timeOff.listRequests();\nconsole.log(listRequests);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst listRequests = await client.timeOff.listRequests();\nconsole.log(listRequests);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\ntime_off = client.time_off.list_requests()\nprint(time_off)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_requests()\nprint(time_off)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListRequests(context.Background(), sdk.TimeOffListRequestsParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\ttimeOff, err := client.TimeOff.ListRequests(context.Background(), sdk.TimeOffListRequestsParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(timeOff)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp time-off list-requests --api-key \"$WARP_API_KEY\""
+            "source": "warpapi time-off list-requests --api-key \"$API_KEY\""
           }
         ]
       }
@@ -12203,22 +12577,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workers.list();\nconsole.log(list);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.workers.list();\nconsole.log(list);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.list()\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.list()\nprint(worker)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.List(context.Background(), sdk.WorkerListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.List(context.Background(), sdk.WorkerListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workers list --api-key \"$WARP_API_KEY\""
+            "source": "warpapi workers list --api-key \"$API_KEY\""
           }
         ]
       }
@@ -12563,22 +12937,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.workers.retrieve(\"wrk_1234\");\nconsole.log(retrieve);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst retrieve = await client.workers.retrieve(\"wrk_1234\");\nconsole.log(retrieve);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.retrieve(\n    id=\"wrk_1234\",\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.retrieve(\n    id=\"wrk_1234\",\n)\nprint(worker)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.Get(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.Get(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workers retrieve 'wrk_1234' --api-key \"$WARP_API_KEY\""
+            "source": "warpapi workers retrieve 'wrk_1234' --api-key \"$API_KEY\""
           }
         ]
       },
@@ -12704,22 +13078,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nawait client.workers.delete(\"wrk_1234\");"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nawait client.workers.delete(\"wrk_1234\");"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nclient.workers.delete(\n    id=\"wrk_1234\",\n)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.workers.delete(\n    id=\"wrk_1234\",\n)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\terr := client.Workers.Delete(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\terr := client.Workers.Delete(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workers delete 'wrk_1234' --api-key \"$WARP_API_KEY\""
+            "source": "warpapi workers delete 'wrk_1234' --api-key \"$API_KEY\""
           }
         ]
       }
@@ -13242,22 +13616,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst createEmployee = await client.workers.createEmployee({\n  firstName: \"\",\n  lastName: \"\",\n  position: \"\",\n  startDate: \"2000-01-01\",\n  email: \"john@joinwarp.com\",\n  departmentId: \"dpt_1234\",\n  managerId: \"wrk_1234\",\n  workLocation: {\n    type: \"office\",\n    workplaceId: \"wkp_1234\",\n  },\n  compensation: {\n    amount: 0,\n    per: \"hour\",\n  },\n});\nconsole.log(createEmployee);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst createEmployee = await client.workers.createEmployee({\n  firstName: \"\",\n  lastName: \"\",\n  position: \"\",\n  startDate: \"2000-01-01\",\n  email: \"john@joinwarp.com\",\n  departmentId: \"dpt_1234\",\n  managerId: \"wrk_1234\",\n  workLocation: {\n    type: \"office\",\n    workplaceId: \"wkp_1234\",\n  },\n  compensation: {\n    amount: 0,\n    per: \"hour\",\n  },\n});\nconsole.log(createEmployee);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.create_employee(\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_location={\"type\": \"office\", \"workplace_id\": \"wkp_1234\"},\n    compensation={\"amount\": 0, \"per\": \"hour\"},\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.create_employee(\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_location={\"type\": \"office\", \"workplace_id\": \"wkp_1234\"},\n    compensation={\"amount\": 0, \"per\": \"hour\"},\n)\nprint(worker)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.NewEmployee(context.Background(), sdk.WorkerNewEmployeeParams{\n\t\tCompensation: sdk.F[sdk.WorkerNewEmployeeParamsCompensation](sdk.WorkerNewEmployeeParamsCompensation{\n\t\t\tAmount: sdk.F[float64](0),\n\t\t}),\n\t\tDepartmentID: sdk.F[string](\"dpt_1234\"),\n\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\tFirstName: sdk.F[string](\"\"),\n\t\tLastName: sdk.F[string](\"\"),\n\t\tManagerID: sdk.F[string](\"wrk_1234\"),\n\t\tPosition: sdk.F[string](\"\"),\n\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t\tWorkLocation: sdk.F[sdk.WorkerNewEmployeeParamsWorkLocationUnion](sdk.WorkerNewEmployeeParamsWorkLocationOfficeWorkLocation{\n\t\t\tWorkplaceID: sdk.F[string](\"wkp_1234\"),\n\t\t}),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.NewEmployee(context.Background(), sdk.WorkerNewEmployeeParams{\n\t\tCompensation: sdk.F[sdk.WorkerNewEmployeeParamsCompensation](sdk.WorkerNewEmployeeParamsCompensation{\n\t\t\tAmount: sdk.F[float64](0),\n\t\t}),\n\t\tDepartmentID: sdk.F[string](\"dpt_1234\"),\n\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\tFirstName: sdk.F[string](\"\"),\n\t\tLastName: sdk.F[string](\"\"),\n\t\tManagerID: sdk.F[string](\"wrk_1234\"),\n\t\tPosition: sdk.F[string](\"\"),\n\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t\tWorkLocation: sdk.F[sdk.WorkerNewEmployeeParamsWorkLocationUnion](sdk.WorkerNewEmployeeParamsWorkLocationOfficeWorkLocation{\n\t\t\tWorkplaceID: sdk.F[string](\"wkp_1234\"),\n\t\t}),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workers create-employee --api-key \"$WARP_API_KEY\" --first-name 'firstName' --last-name 'lastName' --position 'position' --start-date '2000-01-01' --email 'john@joinwarp.com' --department-id 'dpt_1234' --manager-id 'wrk_1234' --work-location '{\"type\":\"office\",\"workplaceId\":\"wkp_1234\"}' --compensation '{\"amount\":0,\"per\":\"hour\"}'"
+            "source": "warpapi workers create-employee --api-key \"$API_KEY\" --first-name 'firstName' --last-name 'lastName' --position 'position' --start-date '2000-01-01' --email 'john@joinwarp.com' --department-id 'dpt_1234' --manager-id 'wrk_1234' --work-location '{\"type\":\"office\",\"workplaceId\":\"wkp_1234\"}' --compensation '{\"amount\":0,\"per\":\"hour\"}'"
           }
         ]
       }
@@ -14088,22 +14462,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst createContractor = await client.workers.createContractor({\n  entityType: \"individual\",\n  firstName: \"\",\n  lastName: \"\",\n  position: \"\",\n  startDate: \"2000-01-01\",\n  email: \"john@joinwarp.com\",\n  departmentId: \"dpt_1234\",\n  managerId: \"wrk_1234\",\n  workCountry: \"AD\",\n});\nconsole.log(createContractor);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst createContractor = await client.workers.createContractor({\n  entityType: \"individual\",\n  firstName: \"\",\n  lastName: \"\",\n  position: \"\",\n  startDate: \"2000-01-01\",\n  email: \"john@joinwarp.com\",\n  departmentId: \"dpt_1234\",\n  managerId: \"wrk_1234\",\n  workCountry: \"AD\",\n});\nconsole.log(createContractor);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.create_contractor(\n    entity_type=\"individual\",\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_country=\"AD\",\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.create_contractor(\n    entity_type=\"individual\",\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_country=\"AD\",\n)\nprint(worker)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.NewContractor(context.Background(), sdk.WorkerNewContractorParams{\n\t\tDepartmentID: sdk.F[string](\"dpt_1234\"),\n\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\tFirstName: sdk.F[string](\"\"),\n\t\tLastName: sdk.F[string](\"\"),\n\t\tManagerID: sdk.F[string](\"wrk_1234\"),\n\t\tPosition: sdk.F[string](\"\"),\n\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.NewContractor(context.Background(), sdk.WorkerNewContractorParams{\n\t\tDepartmentID: sdk.F[string](\"dpt_1234\"),\n\t\tEmail: sdk.F[string](\"john@joinwarp.com\"),\n\t\tFirstName: sdk.F[string](\"\"),\n\t\tLastName: sdk.F[string](\"\"),\n\t\tManagerID: sdk.F[string](\"wrk_1234\"),\n\t\tPosition: sdk.F[string](\"\"),\n\t\tStartDate: sdk.F[string](\"2000-01-01\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workers create-contractor --api-key \"$WARP_API_KEY\" --entity-type 'individual' --first-name 'firstName' --last-name 'lastName' --position 'position' --start-date '2000-01-01' --email 'john@joinwarp.com' --department-id 'dpt_1234' --manager-id 'wrk_1234' --work-country 'AD'"
+            "source": "warpapi workers create-contractor --api-key \"$API_KEY\" --entity-type 'individual' --first-name 'firstName' --last-name 'lastName' --position 'position' --start-date '2000-01-01' --email 'john@joinwarp.com' --department-id 'dpt_1234' --manager-id 'wrk_1234' --work-country 'AD'"
           }
         ]
       }
@@ -14468,22 +14842,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst invite = await client.workers.invite(\"wrk_1234\");\nconsole.log(invite);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst invite = await client.workers.invite(\"wrk_1234\");\nconsole.log(invite);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworker = client.workers.invite(\n    id=\"wrk_1234\",\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.invite(\n    id=\"wrk_1234\",\n)\nprint(worker)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.Invite(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworker, err := client.Workers.Invite(context.Background(), \"wrk_1234\")\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(worker)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workers invite 'wrk_1234' --api-key \"$WARP_API_KEY\""
+            "source": "warpapi workers invite 'wrk_1234' --api-key \"$API_KEY\""
           }
         ]
       }
@@ -14788,22 +15162,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workplaces.list();\nconsole.log(list);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.workplaces.list();\nconsole.log(list);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworkplace = client.workplaces.list()\nprint(workplace)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.list()\nprint(workplace)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.List(context.Background(), sdk.WorkplaceListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.List(context.Background(), sdk.WorkplaceListParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workplaces list --api-key \"$WARP_API_KEY\""
+            "source": "warpapi workplaces list --api-key \"$API_KEY\""
           }
         ]
       },
@@ -15186,22 +15560,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.workplaces.create({\n  name: \"\",\n  type: \"remote\",\n  address: {\n    line1: \"x\",\n    city: \"\",\n    postalCode: \"\",\n    state: \"AL\",\n    country: \"US\",\n  },\n});\nconsole.log(create);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.workplaces.create({\n  name: \"\",\n  type: \"remote\",\n  address: {\n    line1: \"x\",\n    city: \"\",\n    postalCode: \"\",\n    state: \"AL\",\n    country: \"US\",\n  },\n});\nconsole.log(create);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworkplace = client.workplaces.create(\n    name=\"\",\n    type=\"remote\",\n    address={\"line1\": \"x\", \"city\": \"\", \"postal_code\": \"\", \"state\": \"AL\", \"country\": \"US\"},\n)\nprint(workplace)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.create(\n    name=\"\",\n    type=\"remote\",\n    address={\"line1\": \"x\", \"city\": \"\", \"postal_code\": \"\", \"state\": \"AL\", \"country\": \"US\"},\n)\nprint(workplace)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.New(context.Background(), sdk.WorkplaceNewParams{\n\t\tAddress: sdk.F[sdk.WorkplaceNewParamsAddress](sdk.WorkplaceNewParamsAddress{\n\t\t\tLine1: sdk.F[string](\"x\"),\n\t\t\tCity: sdk.F[string](\"\"),\n\t\t\tPostalCode: sdk.F[string](\"\"),\n\t\t}),\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.New(context.Background(), sdk.WorkplaceNewParams{\n\t\tAddress: sdk.F[sdk.WorkplaceNewParamsAddress](sdk.WorkplaceNewParamsAddress{\n\t\t\tLine1: sdk.F[string](\"x\"),\n\t\t\tCity: sdk.F[string](\"\"),\n\t\t\tPostalCode: sdk.F[string](\"\"),\n\t\t}),\n\t\tName: sdk.F[string](\"\"),\n\t})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workplaces create --api-key \"$WARP_API_KEY\" --name 'name' --type 'remote' --address '{\"line1\":\"x\",\"city\":\"\",\"postalCode\":\"\",\"state\":\"AL\",\"country\":\"US\"}'"
+            "source": "warpapi workplaces create --api-key \"$API_KEY\" --name 'name' --type 'remote' --address '{\"line1\":\"x\",\"city\":\"\",\"postalCode\":\"\",\"state\":\"AL\",\"country\":\"US\"}'"
           }
         ]
       }
@@ -15495,22 +15869,22 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import client from \"warp-hr\";\n\nconst client = new client({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.workplaces.update(\"wkp_1234\", {});\nconsole.log(update);"
+            "source": "import WarpAPI from \"@warp/warp-api\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst update = await client.workplaces.update(\"wkp_1234\", {});\nconsole.log(update);"
           },
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"WARP_API_KEY\"),\n)\n\nworkplace = client.workplaces.update(\n    id=\"wkp_1234\",\n)\nprint(workplace)"
+            "source": "import os\n\nfrom warp_warp_api import WarpApi\n\nclient = WarpApi(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.update(\n    id=\"wkp_1234\",\n)\nprint(workplace)"
           },
           {
             "lang": "Go",
             "label": "Go",
-            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-go-sdk\"\n\t\"warp-go-sdk/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"WARP_API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.Update(context.Background(), \"wkp_1234\", sdk.WorkplaceUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
+            "source": "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\t\"os\"\n\n\tsdk \"warp-warp-api\"\n\t\"warp-warp-api/option\"\n)\n\nfunc main() {\n\tclient := sdk.NewClient(\n\t\toption.WithAPIKey(os.Getenv(\"API_KEY\")),\n\t)\n\n\tworkplace, err := client.Workplaces.Update(context.Background(), \"wkp_1234\", sdk.WorkplaceUpdateParams{})\n\tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Println(workplace)\n}"
           },
           {
             "lang": "Shell",
             "label": "CLI",
-            "source": "warp workplaces update 'wkp_1234' --api-key \"$WARP_API_KEY\""
+            "source": "warpapi workplaces update 'wkp_1234' --api-key \"$API_KEY\""
           }
         ]
       }

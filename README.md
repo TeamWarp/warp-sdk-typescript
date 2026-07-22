@@ -1,6 +1,6 @@
-# Warp
+# Warp API
 
-This library provides convenient access to the Warp REST API from TypeScript or JavaScript.
+This library provides convenient access to the Warp API from TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](./api.md).
 
@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](./api.md).
 ## Installation
 
 ```sh
-npm install warp-hr
+npm install @warp/warp-api
 ```
 
 <br />
@@ -33,14 +33,14 @@ npm install warp-hr
 ## Usage
 
 ```ts
-import client from "warp-hr";
+import WarpAPI from "@warp/warp-api";
 
-const client = new client({
-  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
+const client = new WarpAPI({
+  apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 
-const listAssignments = await client.timeOff.listAssignments();
-console.log(listAssignments);
+const list = await client.customWorkerFields.list();
+console.log(list);
 ```
 
 The examples in the following sections assume a `client` configured as shown above.
@@ -55,7 +55,7 @@ Pass credentials to the generated client constructor. Environment variables are 
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string \| provider` | - | Credential for the apiKey scheme. Defaults to WARP_API_KEY. |
+| `apiKey` | `string \| provider` | - | Credential for the apiKey scheme. Defaults to API_KEY. |
 
 Declared schemes:
 
@@ -68,10 +68,10 @@ Declared schemes:
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "warp-hr";
+import { APIError } from "@warp/warp-api";
 
 try {
-  const listAssignments = await client.timeOff.listAssignments();
+  const list = await client.customWorkerFields.list();
 } catch (err) {
   if (err instanceof APIError) {
     console.log(err.status, err.name, err.headers);
@@ -80,7 +80,7 @@ try {
 }
 ```
 
-Documented error statuses: `400`, `401`, `403`, `404`, `409`, `429`, `500`.
+Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`, `500`.
 
 <br />
 
@@ -89,9 +89,9 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `429`, `500`.
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import client from "warp-hr";
+import WarpAPI from "@warp/warp-api";
 
-const client = new client({
+const client = new WarpAPI({
   timeout: 60000,
   maxRetries: 2,
   logLevel: "debug",
@@ -100,7 +100,7 @@ const client = new client({
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string \| AuthTokenProvider` | `process.env["WARP_API_KEY"]` | Credential for the apiKey scheme. |
+| `apiKey` | `string \| AuthTokenProvider` | `process.env["API_KEY"]` | Credential for the apiKey scheme. |
 | `baseURL` | `string \| null` | `process.env["WARP_BASE_URL"]` | Override the default API base URL. Pass `null` when selecting a configured environment. |
 | `timeout` | `number` | `60000` | Maximum time in milliseconds to wait for a response before aborting a request. |
 | `maxRetries` | `number` | `2` | Number of retries for temporary failures. |
