@@ -49,9 +49,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import WarpAPI from "@warp/warp-api";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 ```

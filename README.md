@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](./api.md).
 ## Installation
 
 ```sh
-npm install @warp/warp-api
+npm install warp-hr
 ```
 
 <br />
@@ -33,9 +33,9 @@ npm install @warp/warp-api
 ## Usage
 
 ```ts
-import WarpAPI from "@warp/warp-api";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 
@@ -68,7 +68,7 @@ Declared schemes:
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "@warp/warp-api";
+import { APIError } from "warp-hr";
 
 try {
   const list = await client.customWorkerFields.list();
@@ -89,9 +89,9 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`, `500
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import WarpAPI from "@warp/warp-api";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   timeout: 60000,
   maxRetries: 2,
   logLevel: "debug",

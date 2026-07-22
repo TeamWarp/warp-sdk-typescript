@@ -108,12 +108,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type WarpAPIOptions = ClientOptions;
+export type WarpOptions = ClientOptions;
 
 /**
  * API Client for interfacing with the WarpApi API.
  */
-export class WarpAPI {
+export class Warp {
   apiKey: string | AuthTokenProvider | undefined;
 
   baseURL: string;
@@ -154,7 +154,7 @@ export class WarpAPI {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== "";
     const defaultBaseURL = "https://api.joinwarp.com";
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? WarpAPI.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -757,21 +757,21 @@ export class WarpAPI {
   private async resolveAuthOption(optionName: string, value: string | AuthTokenProvider | null | undefined): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === "function" ? await value() : value;
-    if (!token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
   private resolveAuthOptionSync(optionName: string, value: string | AuthTokenProvider | null | undefined): string | undefined {
     if (value == null) return undefined;
     const token = typeof value === "function" ? value() : value;
-    if (typeof token !== "string" || !token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (typeof token !== "string" || !token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static WarpAPI = this;
+  static Warp = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WarpAPIError = Errors.WarpAPIError;
+  static WarpError = Errors.WarpError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -795,14 +795,14 @@ export class WarpAPI {
   workplaces: Workplaces = new Workplaces(this);
 }
 
-WarpAPI.CustomWorkerFields = CustomWorkerFields;
-WarpAPI.Departments = Departments;
-WarpAPI.Offers = Offers;
-WarpAPI.TimeOff = TimeOff;
-WarpAPI.Workers = Workers;
-WarpAPI.Workplaces = Workplaces;
+Warp.CustomWorkerFields = CustomWorkerFields;
+Warp.Departments = Departments;
+Warp.Offers = Offers;
+Warp.TimeOff = TimeOff;
+Warp.Workers = Workers;
+Warp.Workplaces = Workplaces;
 
-export declare namespace WarpAPI {
+export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
   export {
     CustomWorkerFields as CustomWorkerFields,

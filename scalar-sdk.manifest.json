@@ -1,7 +1,7 @@
 {
   "name": "WarpApi",
   "slug": "warpApi",
-  "generatorVersion": "0.19.2",
+  "generatorVersion": "0.19.4",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -25,8 +25,8 @@
   "clientHeaderParams": [],
   "schemas": [
     {
-      "name": "Date",
-      "source": "Date",
+      "name": "date",
+      "source": "date",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -35,8 +35,8 @@
       }
     },
     {
-      "name": "HttpApiDecodeError",
-      "source": "HttpApiDecodeError",
+      "name": "http_api_decode_error",
+      "source": "http_api_decode_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -51,7 +51,7 @@
               "kind": "array",
               "items": {
                 "kind": "ref",
-                "name": "Issue"
+                "name": "issue"
               }
             }
           },
@@ -88,8 +88,8 @@
       }
     },
     {
-      "name": "Issue",
-      "source": "Issue",
+      "name": "issue",
+      "source": "issue",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -143,7 +143,7 @@
               "kind": "array",
               "items": {
                 "kind": "ref",
-                "name": "PropertyKey"
+                "name": "property_key"
               }
             }
           },
@@ -162,8 +162,8 @@
       }
     },
     {
-      "name": "PropertyKey",
-      "source": "PropertyKey",
+      "name": "property_key",
+      "source": "property_key",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -220,8 +220,8 @@
       }
     },
     {
-      "name": "InternalServerError",
-      "source": "InternalServerError",
+      "name": "internal_server_error",
+      "source": "internal_server_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -229,8 +229,8 @@
       }
     },
     {
-      "name": "ApiKeyUnauthorized",
-      "source": "ApiKeyUnauthorized",
+      "name": "api_key_unauthorized",
+      "source": "api_key_unauthorized",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -269,8 +269,8 @@
       }
     },
     {
-      "name": "RateLimitExceeded",
-      "source": "RateLimitExceeded",
+      "name": "rate_limit_exceeded",
+      "source": "rate_limit_exceeded",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -283,7 +283,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "DateTimeUtc"
+              "name": "date_time_utc"
             }
           },
           {
@@ -319,8 +319,8 @@
       }
     },
     {
-      "name": "DateTimeUtc",
-      "source": "DateTimeUtc",
+      "name": "date_time_utc",
+      "source": "date_time_utc",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -329,8 +329,8 @@
       }
     },
     {
-      "name": "MissingRequiredCompanyPermissions",
-      "source": "MissingRequiredCompanyPermissions",
+      "name": "missing_required_company_permissions",
+      "source": "missing_required_company_permissions",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -513,8 +513,8 @@
       }
     },
     {
-      "name": "ApiNotEnabled",
-      "source": "ApiNotEnabled",
+      "name": "api_not_enabled",
+      "source": "api_not_enabled",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -553,8 +553,8 @@
       }
     },
     {
-      "name": "Trimmed",
-      "source": "Trimmed",
+      "name": "trimmed",
+      "source": "trimmed",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -566,8 +566,8 @@
       }
     },
     {
-      "name": "NonEmptyTrimmedString",
-      "source": "NonEmptyTrimmedString",
+      "name": "non_empty_trimmed_string",
+      "source": "non_empty_trimmed_string",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -580,8 +580,8 @@
       }
     },
     {
-      "name": "InvalidCustomWorkerFieldOperation",
-      "source": "InvalidCustomWorkerFieldOperation",
+      "name": "invalid_custom_worker_field_operation",
+      "source": "invalid_custom_worker_field_operation",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -620,8 +620,8 @@
       }
     },
     {
-      "name": "CustomWorkerFieldAlreadyExists",
-      "source": "CustomWorkerFieldAlreadyExists",
+      "name": "custom_worker_field_already_exists",
+      "source": "custom_worker_field_already_exists",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -670,8 +670,8 @@
       }
     },
     {
-      "name": "CustomWorkerFieldOptionAlreadyExists",
-      "source": "CustomWorkerFieldOptionAlreadyExists",
+      "name": "custom_worker_field_option_already_exists",
+      "source": "custom_worker_field_option_already_exists",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -720,8 +720,8 @@
       }
     },
     {
-      "name": "CustomWorkerFieldNotFound",
-      "source": "CustomWorkerFieldNotFound",
+      "name": "custom_worker_field_not_found",
+      "source": "custom_worker_field_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -779,8 +779,8 @@
       }
     },
     {
-      "name": "CustomWorkerFieldOptionNotFound",
-      "source": "CustomWorkerFieldOptionNotFound",
+      "name": "custom_worker_field_option_not_found",
+      "source": "custom_worker_field_option_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -838,8 +838,8 @@
       }
     },
     {
-      "name": "CustomWorkerFieldOptionInUse",
-      "source": "CustomWorkerFieldOptionInUse",
+      "name": "custom_worker_field_option_in_use",
+      "source": "custom_worker_field_option_in_use",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -897,8 +897,8 @@
       }
     },
     {
-      "name": "InvalidCustomWorkerFieldValue",
-      "source": "InvalidCustomWorkerFieldValue",
+      "name": "invalid_custom_worker_field_value",
+      "source": "invalid_custom_worker_field_value",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -937,8 +937,8 @@
       }
     },
     {
-      "name": "CustomWorkerFieldWorkerNotFound",
-      "source": "CustomWorkerFieldWorkerNotFound",
+      "name": "custom_worker_field_worker_not_found",
+      "source": "custom_worker_field_worker_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -996,8 +996,8 @@
       }
     },
     {
-      "name": "DepartmentAlreadyExists",
-      "source": "DepartmentAlreadyExists",
+      "name": "department_already_exists",
+      "source": "department_already_exists",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1065,8 +1065,8 @@
       }
     },
     {
-      "name": "DepartmentNotFound",
-      "source": "DepartmentNotFound",
+      "name": "department_not_found",
+      "source": "department_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1124,8 +1124,8 @@
       }
     },
     {
-      "name": "InvalidExpirationTimeError",
-      "source": "InvalidExpirationTimeError",
+      "name": "invalid_expiration_time_error",
+      "source": "invalid_expiration_time_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1164,8 +1164,8 @@
       }
     },
     {
-      "name": "ManagerNotFoundError",
-      "source": "ManagerNotFoundError",
+      "name": "manager_not_found_error",
+      "source": "manager_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1223,8 +1223,8 @@
       }
     },
     {
-      "name": "OfferNotFoundError",
-      "source": "OfferNotFoundError",
+      "name": "offer_not_found_error",
+      "source": "offer_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1282,8 +1282,8 @@
       }
     },
     {
-      "name": "InvalidOfferStatusError",
-      "source": "InvalidOfferStatusError",
+      "name": "invalid_offer_status_error",
+      "source": "invalid_offer_status_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1368,8 +1368,8 @@
       }
     },
     {
-      "name": "TimeOffPolicyNotFound",
-      "source": "TimeOffPolicyNotFound",
+      "name": "time_off_policy_not_found",
+      "source": "time_off_policy_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1434,8 +1434,8 @@
       }
     },
     {
-      "name": "TimeOffRequestNotFoundError",
-      "source": "TimeOffRequestNotFoundError",
+      "name": "time_off_request_not_found_error",
+      "source": "time_off_request_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1497,8 +1497,8 @@
       }
     },
     {
-      "name": "WorkerNotFoundError",
-      "source": "WorkerNotFoundError",
+      "name": "worker_not_found_error",
+      "source": "worker_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1556,8 +1556,8 @@
       }
     },
     {
-      "name": "OfficeWorkLocation",
-      "source": "OfficeWorkLocation",
+      "name": "office_work_location",
+      "source": "office_work_location",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1605,8 +1605,8 @@
       }
     },
     {
-      "name": "RemoteWorkLocation",
-      "source": "RemoteWorkLocation",
+      "name": "remote_work_location",
+      "source": "remote_work_location",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1803,8 +1803,8 @@
       }
     },
     {
-      "name": "StateRegistrationRequired",
-      "source": "StateRegistrationRequired",
+      "name": "state_registration_required",
+      "source": "state_registration_required",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1853,8 +1853,8 @@
       }
     },
     {
-      "name": "WorkplaceNotFound",
-      "source": "WorkplaceNotFound",
+      "name": "workplace_not_found",
+      "source": "workplace_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1912,8 +1912,8 @@
       }
     },
     {
-      "name": "PayScheduleNotConfigured",
-      "source": "PayScheduleNotConfigured",
+      "name": "pay_schedule_not_configured",
+      "source": "pay_schedule_not_configured",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1985,8 +1985,8 @@
       }
     },
     {
-      "name": "SubscriptionLimitError",
-      "source": "SubscriptionLimitError",
+      "name": "subscription_limit_error",
+      "source": "subscription_limit_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2025,8 +2025,8 @@
       }
     },
     {
-      "name": "InvalidWorkerStatusError",
-      "source": "InvalidWorkerStatusError",
+      "name": "invalid_worker_status_error",
+      "source": "invalid_worker_status_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2084,8 +2084,8 @@
       }
     },
     {
-      "name": "WorkerAlreadyExistsError",
-      "source": "WorkerAlreadyExistsError",
+      "name": "worker_already_exists_error",
+      "source": "worker_already_exists_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2124,8 +2124,8 @@
       }
     },
     {
-      "name": "CannotDeleteWorker",
-      "source": "CannotDeleteWorker",
+      "name": "cannot_delete_worker",
+      "source": "cannot_delete_worker",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2183,8 +2183,8 @@
       }
     },
     {
-      "name": "AddressInvalid",
-      "source": "AddressInvalid",
+      "name": "address_invalid",
+      "source": "address_invalid",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3069,8 +3069,8 @@
       }
     },
     {
-      "name": "WorkplaceAlreadyExists",
-      "source": "WorkplaceAlreadyExists",
+      "name": "workplace_already_exists",
+      "source": "workplace_already_exists",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3213,7 +3213,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3228,7 +3228,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3254,7 +3254,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3414,7 +3414,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3451,7 +3451,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3541,7 +3541,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3556,7 +3556,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3582,7 +3582,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldNotFound",
+            "name": "custom_worker_field_not_found",
             "publicAliases": []
           }
         },
@@ -3597,7 +3597,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3757,7 +3757,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3783,7 +3783,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldNotFound",
+            "name": "custom_worker_field_not_found",
             "publicAliases": []
           }
         },
@@ -3798,7 +3798,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldAlreadyExists",
+            "name": "custom_worker_field_already_exists",
             "publicAliases": []
           }
         },
@@ -3813,7 +3813,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3903,7 +3903,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3918,7 +3918,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3944,7 +3944,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldNotFound",
+            "name": "custom_worker_field_not_found",
             "publicAliases": []
           }
         },
@@ -3959,7 +3959,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4095,7 +4095,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4121,7 +4121,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldNotFound",
+            "name": "custom_worker_field_not_found",
             "publicAliases": []
           }
         },
@@ -4136,7 +4136,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldOptionAlreadyExists",
+            "name": "custom_worker_field_option_already_exists",
             "publicAliases": []
           }
         },
@@ -4151,7 +4151,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4281,7 +4281,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4307,7 +4307,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldOptionNotFound",
+            "name": "custom_worker_field_option_not_found",
             "publicAliases": []
           }
         },
@@ -4322,7 +4322,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldOptionAlreadyExists",
+            "name": "custom_worker_field_option_already_exists",
             "publicAliases": []
           }
         },
@@ -4337,7 +4337,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4417,7 +4417,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -4432,7 +4432,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4458,7 +4458,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldOptionNotFound",
+            "name": "custom_worker_field_option_not_found",
             "publicAliases": []
           }
         },
@@ -4473,7 +4473,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldOptionInUse",
+            "name": "custom_worker_field_option_in_use",
             "publicAliases": []
           }
         },
@@ -4488,7 +4488,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4578,7 +4578,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -4593,7 +4593,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4619,7 +4619,7 @@
             }
           ],
           "model": {
-            "name": "CustomWorkerFieldOptionNotFound",
+            "name": "custom_worker_field_option_not_found",
             "publicAliases": []
           }
         },
@@ -4634,7 +4634,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4731,7 +4731,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -4746,7 +4746,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4772,7 +4772,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4896,7 +4896,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4933,7 +4933,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5020,7 +5020,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5035,7 +5035,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5072,7 +5072,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5177,7 +5177,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5192,7 +5192,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5218,7 +5218,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5319,7 +5319,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5334,7 +5334,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5360,7 +5360,7 @@
             }
           ],
           "model": {
-            "name": "DepartmentAlreadyExists",
+            "name": "department_already_exists",
             "publicAliases": []
           }
         },
@@ -5375,7 +5375,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5488,7 +5488,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5503,7 +5503,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5529,7 +5529,7 @@
             }
           ],
           "model": {
-            "name": "DepartmentNotFound",
+            "name": "department_not_found",
             "publicAliases": []
           }
         },
@@ -5544,7 +5544,7 @@
             }
           ],
           "model": {
-            "name": "DepartmentAlreadyExists",
+            "name": "department_already_exists",
             "publicAliases": []
           }
         },
@@ -5559,7 +5559,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5688,7 +5688,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5703,7 +5703,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5729,7 +5729,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5867,7 +5867,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5882,7 +5882,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5919,7 +5919,7 @@
             }
           ],
           "model": {
-            "name": "InvalidExpirationTimeError",
+            "name": "invalid_expiration_time_error",
             "publicAliases": []
           }
         },
@@ -5934,7 +5934,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -6025,7 +6025,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -6040,7 +6040,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -6066,7 +6066,7 @@
             }
           ],
           "model": {
-            "name": "OfferNotFoundError",
+            "name": "offer_not_found_error",
             "publicAliases": []
           }
         },
@@ -6081,7 +6081,7 @@
             }
           ],
           "model": {
-            "name": "InvalidOfferStatusError",
+            "name": "invalid_offer_status_error",
             "publicAliases": []
           }
         },
@@ -6096,7 +6096,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -6210,7 +6210,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -6225,7 +6225,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -6251,7 +6251,7 @@
             }
           ],
           "model": {
-            "name": "OfferNotFoundError",
+            "name": "offer_not_found_error",
             "publicAliases": []
           }
         },
@@ -6266,7 +6266,7 @@
             }
           ],
           "model": {
-            "name": "InvalidOfferStatusError",
+            "name": "invalid_offer_status_error",
             "publicAliases": []
           }
         },
@@ -6281,7 +6281,7 @@
             }
           ],
           "model": {
-            "name": "InvalidExpirationTimeError",
+            "name": "invalid_expiration_time_error",
             "publicAliases": []
           }
         },
@@ -6296,7 +6296,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -6387,7 +6387,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -6402,7 +6402,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -6428,7 +6428,7 @@
             }
           ],
           "model": {
-            "name": "OfferNotFoundError",
+            "name": "offer_not_found_error",
             "publicAliases": []
           }
         },
@@ -6443,7 +6443,7 @@
             }
           ],
           "model": {
-            "name": "InvalidOfferStatusError",
+            "name": "invalid_offer_status_error",
             "publicAliases": []
           }
         },
@@ -6458,7 +6458,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -6579,7 +6579,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -6594,7 +6594,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -6620,7 +6620,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -6758,7 +6758,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -6773,7 +6773,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -6799,7 +6799,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffPolicyNotFound",
+            "name": "time_off_policy_not_found",
             "publicAliases": []
           }
         },
@@ -6814,7 +6814,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -6976,7 +6976,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -6991,7 +6991,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -7017,7 +7017,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffRequestNotFoundError",
+            "name": "time_off_request_not_found_error",
             "publicAliases": []
           }
         },
@@ -7032,7 +7032,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -7138,7 +7138,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -7153,7 +7153,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -7179,7 +7179,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffPolicyNotFound",
+            "name": "time_off_policy_not_found",
             "publicAliases": []
           }
         },
@@ -7194,7 +7194,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -7284,7 +7284,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -7299,7 +7299,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -7325,7 +7325,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffPolicyNotFound",
+            "name": "time_off_policy_not_found",
             "publicAliases": []
           }
         },
@@ -7340,7 +7340,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -7469,7 +7469,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -7484,7 +7484,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -7510,7 +7510,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -7600,7 +7600,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -7615,7 +7615,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -7641,7 +7641,7 @@
             }
           ],
           "model": {
-            "name": "WorkerNotFoundError",
+            "name": "worker_not_found_error",
             "publicAliases": []
           }
         },
@@ -7656,7 +7656,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -7736,7 +7736,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -7751,7 +7751,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -7777,7 +7777,7 @@
             }
           ],
           "model": {
-            "name": "WorkerNotFoundError",
+            "name": "worker_not_found_error",
             "publicAliases": []
           }
         },
@@ -7792,7 +7792,7 @@
             }
           ],
           "model": {
-            "name": "CannotDeleteWorker",
+            "name": "cannot_delete_worker",
             "publicAliases": []
           }
         },
@@ -7807,7 +7807,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -7997,7 +7997,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -8034,7 +8034,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -8213,7 +8213,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -8228,7 +8228,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -8265,7 +8265,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -8356,7 +8356,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -8371,7 +8371,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -8397,7 +8397,7 @@
             }
           ],
           "model": {
-            "name": "WorkerNotFoundError",
+            "name": "worker_not_found_error",
             "publicAliases": []
           }
         },
@@ -8423,7 +8423,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -8528,7 +8528,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -8543,7 +8543,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -8569,7 +8569,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -8693,7 +8693,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -8719,7 +8719,7 @@
             }
           ],
           "model": {
-            "name": "WorkplaceAlreadyExists",
+            "name": "workplace_already_exists",
             "publicAliases": []
           }
         },
@@ -8734,7 +8734,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -8847,7 +8847,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -8862,7 +8862,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -8888,7 +8888,7 @@
             }
           ],
           "model": {
-            "name": "WorkplaceNotFound",
+            "name": "workplace_not_found",
             "publicAliases": []
           }
         },
@@ -8903,7 +8903,7 @@
             }
           ],
           "model": {
-            "name": "WorkplaceAlreadyExists",
+            "name": "workplace_already_exists",
             "publicAliases": []
           }
         },
@@ -8918,7 +8918,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },

@@ -1,24 +1,24 @@
 ---
 name: warp-api-typescript-sdk
-description: "TypeScript SDK for Warp API. Use when writing TypeScript code that calls Warp API with the @warp/warp-api package: installing it, constructing and authenticating the client, and calling API operations."
+description: "TypeScript SDK for Warp API. Use when writing TypeScript code that calls Warp API with the warp-hr package: installing it, constructing and authenticating the client, and calling API operations."
 ---
 
 # Warp API TypeScript SDK
 
-Generated TypeScript client for Warp API, published as `@warp/warp-api`. Use the generated client instead of hand-writing HTTP requests.
+Generated TypeScript client for Warp API, published as `warp-hr`. Use the generated client instead of hand-writing HTTP requests.
 
 ## Install
 
 ```sh
-npm install @warp/warp-api
+npm install warp-hr
 ```
 
 ## Client setup and authentication
 
 ```ts
-import WarpAPI from "@warp/warp-api";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 ```
@@ -30,9 +30,9 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import WarpAPI from "@warp/warp-api";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 
@@ -47,7 +47,7 @@ Method names, parameter shapes, and response types are generated from the API de
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "@warp/warp-api";
+import { APIError } from "warp-hr";
 
 try {
   const list = await client.customWorkerFields.list();
