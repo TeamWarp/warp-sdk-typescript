@@ -16,9 +16,9 @@ npm install warp-hr
 ## Client setup and authentication
 
 ```ts
-import Warp from "warp-hr";
+import WarpAPI from "warp-hr";
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 ```
@@ -30,9 +30,9 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import Warp from "warp-hr";
+import WarpAPI from "warp-hr";
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 

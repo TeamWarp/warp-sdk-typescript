@@ -33,9 +33,9 @@ npm install warp-hr
 ## Usage
 
 ```ts
-import Warp from "warp-hr";
+import WarpAPI from "warp-hr";
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
 });
 
@@ -89,9 +89,9 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`, `500
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import Warp from "warp-hr";
+import WarpAPI from "warp-hr";
 
-const client = new Warp({
+const client = new WarpAPI({
   timeout: 60000,
   maxRetries: 2,
   logLevel: "debug",
