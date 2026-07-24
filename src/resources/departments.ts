@@ -4,6 +4,8 @@ import { APIResource } from "../resource";
 import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { path as __scalarPath } from "../internal/utils/path";
+import type * as OffersAPI from "./offers";
+import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
 
 export class Departments extends APIResource {
   /**
@@ -96,7 +98,7 @@ export namespace DepartmentListResponse {
     /**
      * a string to be decoded into a Date
      */
-    createdAt: string;
+    createdAt: OffersAPI.Date;
   }
 }
 
@@ -105,7 +107,7 @@ export interface DepartmentCreateParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  name: string;
+  name: CustomWorkerFieldsAPI.Trimmed;
 }
 
 export interface DepartmentCreateResponse {
@@ -118,7 +120,7 @@ export interface DepartmentCreateResponse {
   /**
    * a string to be decoded into a Date
    */
-  createdAt: string;
+  createdAt: OffersAPI.Date;
 }
 
 export interface DepartmentUpdateParams {
@@ -135,7 +137,7 @@ export interface DepartmentUpdateResponse {
   /**
    * a string to be decoded into a Date
    */
-  createdAt: string;
+  createdAt: OffersAPI.Date;
 }
 export declare namespace Departments {
   export {

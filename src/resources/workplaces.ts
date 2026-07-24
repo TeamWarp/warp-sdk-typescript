@@ -4,6 +4,8 @@ import { APIResource } from "../resource";
 import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { path as __scalarPath } from "../internal/utils/path";
+import type * as OffersAPI from "./offers";
+import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
 
 export class Workplaces extends APIResource {
   /**
@@ -110,7 +112,7 @@ export namespace WorkplaceListResponse {
     /**
      * a string to be decoded into a Date
      */
-    createdAt: string;
+    createdAt: OffersAPI.Date;
   }
 
   export namespace Data {
@@ -134,7 +136,7 @@ export interface WorkplaceCreateParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  name: string;
+  name: CustomWorkerFieldsAPI.Trimmed;
   type: "remote" | "office";
   /**
    * A valid US address
@@ -173,7 +175,7 @@ export interface WorkplaceCreateResponse {
   /**
    * a string to be decoded into a Date
    */
-  createdAt: string;
+  createdAt: OffersAPI.Date;
 }
 
 export namespace WorkplaceCreateResponse {
@@ -211,7 +213,7 @@ export interface WorkplaceUpdateResponse {
   /**
    * a string to be decoded into a Date
    */
-  createdAt: string;
+  createdAt: OffersAPI.Date;
 }
 
 export namespace WorkplaceUpdateResponse {
