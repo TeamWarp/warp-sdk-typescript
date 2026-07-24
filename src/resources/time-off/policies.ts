@@ -9,16 +9,16 @@ export class Policies extends APIResource {
   /**
    * Get the time off policies for your company
    *
-   * @param {PolicyListParams} [params] - The parameters to send with the request.
+   * @param {PolicyTimeOffGetParams} [params] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PolicyListResponse>} Success
+   * @returns {APIPromise<PolicyTimeOffGetResponse>} Success
    *
    * @example
    * ```ts
-   * const list = await client.timeOff.policies.list();
+   * const timeOffGet = await client.timeOff.policies.timeOffGet();
    * ```
    */
-  list(params: PolicyListParams | null | undefined = {}, options?: RequestOptions): APIPromise<PolicyListResponse> {
+  timeOffGet(params: PolicyTimeOffGetParams | null | undefined = {}, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
     const { limit, afterId, beforeId } = params ?? {};
     return this._client.get("/v1/time_off/policies", { query: { limit: limit, afterId: afterId, beforeId: beforeId }, ...options });
   }
@@ -28,19 +28,19 @@ export class Policies extends APIResource {
    *
    * @param {string} id - a string starting with "top_"
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PolicyRetrieveResponse>} Success
+   * @returns {APIPromise<PolicyTimeOffGet2Response>} Success
    *
    * @example
    * ```ts
-   * const retrieve = await client.timeOff.policies.retrieve("top_1234");
+   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2("top_1234");
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<PolicyRetrieveResponse> {
+  timeOffGet2(id: string, options?: RequestOptions): APIPromise<PolicyTimeOffGet2Response> {
     return this._client.get(__scalarPath`/v1/time_off/policies/${id}`, options);
   }
 }
 
-export interface PolicyListParams {
+export interface PolicyTimeOffGetParams {
   /**
    * a number less than or equal to 100
    */
@@ -57,16 +57,16 @@ export interface PolicyListParams {
   beforeId?: string;
 }
 
-export interface PolicyListResponse {
+export interface PolicyTimeOffGetResponse {
   hasMore: boolean;
   /**
    * an integer
    */
   count: number;
-  data: Array<PolicyListResponse.Data>;
+  data: Array<PolicyTimeOffGetResponse.Data>;
 }
 
-export namespace PolicyListResponse {
+export namespace PolicyTimeOffGetResponse {
   export interface Data {
     /**
      * a string starting with "top_"
@@ -91,7 +91,7 @@ export namespace PolicyListResponse {
   }
 }
 
-export interface PolicyRetrieveResponse {
+export interface PolicyTimeOffGet2Response {
   /**
    * a string starting with "top_"
    * @pattern ^top_
@@ -115,8 +115,8 @@ export interface PolicyRetrieveResponse {
 }
 export declare namespace Policies {
   export {
-    type PolicyListResponse as PolicyListResponse,
-    type PolicyRetrieveResponse as PolicyRetrieveResponse,
-    type PolicyListParams as PolicyListParams,
+    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
+    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
+    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
   };
 }

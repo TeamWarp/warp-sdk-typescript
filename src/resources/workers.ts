@@ -5,6 +5,7 @@ import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { buildHeaders } from "../internal/headers";
 import { path as __scalarPath } from "../internal/utils/path";
+import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
 
 export class Workers extends APIResource {
   /**
@@ -129,6 +130,29 @@ export class Workers extends APIResource {
   invite(id: string, options?: RequestOptions): APIPromise<WorkerInviteResponse> {
     return this._client.post(__scalarPath`/v1/workers/${id}/invite`, options);
   }
+}
+
+/**
+ * Employee works from a company workplace.
+ */
+export interface OfficeWorkLocation {
+  type: "office";
+  /**
+   * Public workplace identifier
+   * @pattern ^wkp_
+   */
+  workplaceId: string;
+}
+
+/**
+ * Employee works remotely from a US state.
+ */
+export interface RemoteWorkLocation {
+  type: "remote";
+  /**
+   * The US state where the remote employee works. Required for tax purposes.
+   */
+  state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
 }
 
 export interface WorkerListParams {
@@ -281,17 +305,17 @@ export interface WorkerCreateEmployeeParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  firstName: string;
+  firstName: CustomWorkerFieldsAPI.Trimmed;
   /**
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  lastName: string;
+  lastName: CustomWorkerFieldsAPI.Trimmed;
   /**
    * The employee's job title.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  position: string;
+  position: CustomWorkerFieldsAPI.Trimmed;
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -315,7 +339,7 @@ export interface WorkerCreateEmployeeParams {
   /**
    * Where the employee will work. Either an existing company workplace or a remote US state.
    */
-  workLocation: WorkerCreateEmployeeParams.OfficeWorkLocation | WorkerCreateEmployeeParams.RemoteWorkLocation;
+  workLocation: OfficeWorkLocation | RemoteWorkLocation;
   /**
    * The employee's base compensation.
    */
@@ -345,23 +369,6 @@ export interface WorkerCreateEmployeeParams {
 }
 
 export namespace WorkerCreateEmployeeParams {
-  export interface OfficeWorkLocation {
-    type: "office";
-    /**
-     * Public workplace identifier
-     * @pattern ^wkp_
-     */
-    workplaceId: string;
-  }
-
-  export interface RemoteWorkLocation {
-    type: "remote";
-    /**
-     * The US state where the remote employee works. Required for tax purposes.
-     */
-    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
-  }
-
   export interface Compensation {
     /**
      * a positive number
@@ -440,17 +447,17 @@ export interface WorkerCreateContractorParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  firstName: string;
+  firstName: CustomWorkerFieldsAPI.Trimmed;
   /**
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  lastName: string;
+  lastName: CustomWorkerFieldsAPI.Trimmed;
   /**
    * The contractor's role or job title.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  position: string;
+  position: CustomWorkerFieldsAPI.Trimmed;
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -476,7 +483,7 @@ export interface WorkerCreateContractorParams {
    * Required when entityType is "business". The legal name of the contractor's business.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  businessName?: string;
+  businessName?: CustomWorkerFieldsAPI.Trimmed;
   /**
    * A description of the work the contractor will perform.
    */
@@ -625,6 +632,8 @@ export namespace WorkerInviteResponse {
 }
 export declare namespace Workers {
   export {
+    type OfficeWorkLocation as OfficeWorkLocation,
+    type RemoteWorkLocation as RemoteWorkLocation,
     type WorkerListResponse as WorkerListResponse,
     type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,

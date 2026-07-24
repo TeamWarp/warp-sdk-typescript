@@ -3,8 +3,9 @@
 import { APIResource } from "../../resource";
 import { APIPromise } from "../../api-promise";
 import type { RequestOptions } from "../../internal/request-options";
+import type * as OffersAPI from "../offers";
 import * as PoliciesAPI from "./policies";
-import { Policies, type PolicyListResponse, type PolicyRetrieveResponse, type PolicyListParams } from "./policies";
+import { Policies, type PolicyTimeOffGetResponse, type PolicyTimeOffGet2Response, type PolicyTimeOffGetParams } from "./policies";
 
 export class TimeOff extends APIResource {
   policies: PoliciesAPI.Policies = new PoliciesAPI.Policies(this._client);
@@ -97,7 +98,7 @@ export namespace TimeOffListAssignmentsResponse {
     /**
      * a string to be decoded into a Date
      */
-    assignedAt: string;
+    assignedAt: OffersAPI.Date;
   }
 }
 
@@ -113,11 +114,11 @@ export interface TimeOffListBalancesParams {
   /**
    * a string to be decoded into a Date
    */
-  startDate?: string;
+  startDate?: OffersAPI.Date;
   /**
    * a string to be decoded into a Date
    */
-  endDate?: string;
+  endDate?: OffersAPI.Date;
 }
 
 export interface TimeOffListBalancesResponse {
@@ -159,19 +160,19 @@ export interface TimeOffListRequestsParams {
   /**
    * a string to be decoded into a Date
    */
-  startsOnOrAfter?: string;
+  startsOnOrAfter?: OffersAPI.Date;
   /**
    * a string to be decoded into a Date
    */
-  startsBefore?: string;
+  startsBefore?: OffersAPI.Date;
   /**
    * a string to be decoded into a Date
    */
-  endsOnOrAfter?: string;
+  endsOnOrAfter?: OffersAPI.Date;
   /**
    * a string to be decoded into a Date
    */
-  endsBefore?: string;
+  endsBefore?: OffersAPI.Date;
 }
 
 export interface TimeOffListRequestsResponse {
@@ -200,16 +201,18 @@ export namespace TimeOffListRequestsResponse {
     /**
      * a string to be decoded into a Date
      */
-    startAt: string;
+    startAt: OffersAPI.Date;
+    startRangeType: "date" | "datetime";
     /**
      * a string to be decoded into a Date
      */
-    endAt: string;
+    endAt: OffersAPI.Date;
+    endRangeType: "date" | "datetime";
     reason: string | null;
     /**
      * a string to be decoded into a Date
      */
-    createdAt: string;
+    createdAt: OffersAPI.Date;
     requestedMinutes: number;
     /**
      * The time zone that the worker is requesting time off in.
@@ -231,8 +234,8 @@ export declare namespace TimeOff {
 
   export {
     Policies as Policies,
-    type PolicyListResponse as PolicyListResponse,
-    type PolicyRetrieveResponse as PolicyRetrieveResponse,
-    type PolicyListParams as PolicyListParams,
+    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
+    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
+    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
   };
 }

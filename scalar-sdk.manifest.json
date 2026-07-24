@@ -1,7 +1,7 @@
 {
-  "name": "Warp",
-  "slug": "warp",
-  "generatorVersion": "0.19.0",
+  "name": "WarpApi",
+  "slug": "warpApi",
+  "generatorVersion": "0.19.6",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -25,8 +25,8 @@
   "clientHeaderParams": [],
   "schemas": [
     {
-      "name": "Date",
-      "source": "Date",
+      "name": "date",
+      "source": "date",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -35,8 +35,8 @@
       }
     },
     {
-      "name": "HttpApiDecodeError",
-      "source": "HttpApiDecodeError",
+      "name": "http_api_decode_error",
+      "source": "http_api_decode_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -51,7 +51,7 @@
               "kind": "array",
               "items": {
                 "kind": "ref",
-                "name": "Issue"
+                "name": "issue"
               }
             }
           },
@@ -88,8 +88,8 @@
       }
     },
     {
-      "name": "Issue",
-      "source": "Issue",
+      "name": "issue",
+      "source": "issue",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -143,7 +143,7 @@
               "kind": "array",
               "items": {
                 "kind": "ref",
-                "name": "PropertyKey"
+                "name": "property_key"
               }
             }
           },
@@ -162,8 +162,8 @@
       }
     },
     {
-      "name": "PropertyKey",
-      "source": "PropertyKey",
+      "name": "property_key",
+      "source": "property_key",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -220,8 +220,8 @@
       }
     },
     {
-      "name": "InternalServerError",
-      "source": "InternalServerError",
+      "name": "internal_server_error",
+      "source": "internal_server_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -229,8 +229,8 @@
       }
     },
     {
-      "name": "ApiKeyUnauthorized",
-      "source": "ApiKeyUnauthorized",
+      "name": "api_key_unauthorized",
+      "source": "api_key_unauthorized",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -269,8 +269,8 @@
       }
     },
     {
-      "name": "RateLimitExceeded",
-      "source": "RateLimitExceeded",
+      "name": "rate_limit_exceeded",
+      "source": "rate_limit_exceeded",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -283,7 +283,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "DateTimeUtc"
+              "name": "date_time_utc"
             }
           },
           {
@@ -319,8 +319,8 @@
       }
     },
     {
-      "name": "DateTimeUtc",
-      "source": "DateTimeUtc",
+      "name": "date_time_utc",
+      "source": "date_time_utc",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -329,8 +329,8 @@
       }
     },
     {
-      "name": "MissingRequiredCompanyPermissions",
-      "source": "MissingRequiredCompanyPermissions",
+      "name": "missing_required_company_permissions",
+      "source": "missing_required_company_permissions",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -363,11 +363,13 @@
                         "workers:access",
                         "workers:dependents",
                         "workers:dependents:pii",
+                        "workers:custom_fields",
                         "payrolls:global",
                         "payrolls:us",
                         "pay_schedules",
                         "offers",
                         "departments",
+                        "levels",
                         "workplaces",
                         "time_off",
                         "time_tracking",
@@ -393,11 +395,13 @@
                         "WorkersAccess",
                         "WorkersDependents",
                         "WorkersDependentsPii",
+                        "WorkersCustomFields",
                         "PayrollsGlobal",
                         "PayrollsUs",
                         "PaySchedules",
                         "Offers",
                         "Departments",
+                        "Levels",
                         "Workplaces",
                         "TimeOff",
                         "TimeTracking",
@@ -414,6 +418,8 @@
                         "Developer"
                       ],
                       "deprecations": [
+                        false,
+                        false,
                         false,
                         false,
                         false,
@@ -507,8 +513,8 @@
       }
     },
     {
-      "name": "ApiNotEnabled",
-      "source": "ApiNotEnabled",
+      "name": "api_not_enabled",
+      "source": "api_not_enabled",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -547,8 +553,8 @@
       }
     },
     {
-      "name": "Trimmed",
-      "source": "Trimmed",
+      "name": "trimmed",
+      "source": "trimmed",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -560,8 +566,438 @@
       }
     },
     {
-      "name": "DepartmentAlreadyExists",
-      "source": "DepartmentAlreadyExists",
+      "name": "non_empty_trimmed_string",
+      "source": "non_empty_trimmed_string",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "primitive",
+        "type": "string",
+        "validation": {
+          "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
+          "minLength": 1
+        }
+      }
+    },
+    {
+      "name": "invalid_custom_worker_field_operation",
+      "source": "invalid_custom_worker_field_operation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidCustomWorkerFieldOperation"
+              ],
+              "names": [
+                "InvalidCustomWorkerFieldOperation"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "custom_worker_field_already_exists",
+      "source": "custom_worker_field_already_exists",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CustomWorkerFieldAlreadyExists"
+              ],
+              "names": [
+                "CustomWorkerFieldAlreadyExists"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "custom_worker_field_option_already_exists",
+      "source": "custom_worker_field_option_already_exists",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CustomWorkerFieldOptionAlreadyExists"
+              ],
+              "names": [
+                "CustomWorkerFieldOptionAlreadyExists"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "custom_worker_field_not_found",
+      "source": "custom_worker_field_not_found",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CustomWorkerFieldNotFound"
+              ],
+              "names": [
+                "CustomWorkerFieldNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "custom_worker_field_option_not_found",
+      "source": "custom_worker_field_option_not_found",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cfo_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cfo_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CustomWorkerFieldOptionNotFound"
+              ],
+              "names": [
+                "CustomWorkerFieldOptionNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "custom_worker_field_option_in_use",
+      "source": "custom_worker_field_option_in_use",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cfo_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cfo_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CustomWorkerFieldOptionInUse"
+              ],
+              "names": [
+                "CustomWorkerFieldOptionInUse"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "invalid_custom_worker_field_value",
+      "source": "invalid_custom_worker_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidCustomWorkerFieldValue"
+              ],
+              "names": [
+                "InvalidCustomWorkerFieldValue"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "custom_worker_field_worker_not_found",
+      "source": "custom_worker_field_worker_not_found",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CustomWorkerFieldWorkerNotFound"
+              ],
+              "names": [
+                "CustomWorkerFieldWorkerNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "department_already_exists",
+      "source": "department_already_exists",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -629,8 +1065,8 @@
       }
     },
     {
-      "name": "DepartmentNotFound",
-      "source": "DepartmentNotFound",
+      "name": "department_not_found",
+      "source": "department_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -688,8 +1124,48 @@
       }
     },
     {
-      "name": "ManagerNotFoundError",
-      "source": "ManagerNotFoundError",
+      "name": "invalid_expiration_time_error",
+      "source": "invalid_expiration_time_error",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidExpirationTimeError"
+              ],
+              "names": [
+                "InvalidExpirationTimeError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "manager_not_found_error",
+      "source": "manager_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -747,8 +1223,153 @@
       }
     },
     {
-      "name": "TimeOffPolicyNotFound",
-      "source": "TimeOffPolicyNotFound",
+      "name": "offer_not_found_error",
+      "source": "offer_not_found_error",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "offr_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^offr_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "OfferNotFoundError"
+              ],
+              "names": [
+                "OfferNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "invalid_offer_status_error",
+      "source": "invalid_offer_status_error",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "offr_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^offr_"
+              }
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "draft",
+                "sent",
+                "accepted",
+                "void"
+              ],
+              "names": [
+                "Draft",
+                "Sent",
+                "Accepted",
+                "Void"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidOfferStatusError"
+              ],
+              "names": [
+                "InvalidOfferStatusError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "time_off_policy_not_found",
+      "source": "time_off_policy_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -813,8 +1434,8 @@
       }
     },
     {
-      "name": "TimeOffRequestNotFoundError",
-      "source": "TimeOffRequestNotFoundError",
+      "name": "time_off_request_not_found_error",
+      "source": "time_off_request_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -876,8 +1497,8 @@
       }
     },
     {
-      "name": "WorkerNotFoundError",
-      "source": "WorkerNotFoundError",
+      "name": "worker_not_found_error",
+      "source": "worker_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -935,8 +1556,8 @@
       }
     },
     {
-      "name": "OfficeWorkLocation",
-      "source": "OfficeWorkLocation",
+      "name": "office_work_location",
+      "source": "office_work_location",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -984,8 +1605,8 @@
       }
     },
     {
-      "name": "RemoteWorkLocation",
-      "source": "RemoteWorkLocation",
+      "name": "remote_work_location",
+      "source": "remote_work_location",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1182,8 +1803,8 @@
       }
     },
     {
-      "name": "StateRegistrationRequired",
-      "source": "StateRegistrationRequired",
+      "name": "state_registration_required",
+      "source": "state_registration_required",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1232,8 +1853,8 @@
       }
     },
     {
-      "name": "WorkplaceNotFound",
-      "source": "WorkplaceNotFound",
+      "name": "workplace_not_found",
+      "source": "workplace_not_found",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1291,8 +1912,8 @@
       }
     },
     {
-      "name": "PayScheduleNotConfigured",
-      "source": "PayScheduleNotConfigured",
+      "name": "pay_schedule_not_configured",
+      "source": "pay_schedule_not_configured",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1364,8 +1985,8 @@
       }
     },
     {
-      "name": "SubscriptionLimitError",
-      "source": "SubscriptionLimitError",
+      "name": "subscription_limit_error",
+      "source": "subscription_limit_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1404,8 +2025,8 @@
       }
     },
     {
-      "name": "InvalidWorkerStatusError",
-      "source": "InvalidWorkerStatusError",
+      "name": "invalid_worker_status_error",
+      "source": "invalid_worker_status_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1463,8 +2084,8 @@
       }
     },
     {
-      "name": "WorkerAlreadyExistsError",
-      "source": "WorkerAlreadyExistsError",
+      "name": "worker_already_exists_error",
+      "source": "worker_already_exists_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1503,8 +2124,8 @@
       }
     },
     {
-      "name": "CannotDeleteWorker",
-      "source": "CannotDeleteWorker",
+      "name": "cannot_delete_worker",
+      "source": "cannot_delete_worker",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -1562,8 +2183,8 @@
       }
     },
     {
-      "name": "AddressInvalid",
-      "source": "AddressInvalid",
+      "name": "address_invalid",
+      "source": "address_invalid",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2448,8 +3069,8 @@
       }
     },
     {
-      "name": "WorkplaceAlreadyExists",
-      "source": "WorkplaceAlreadyExists",
+      "name": "workplace_already_exists",
+      "source": "workplace_already_exists",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2518,20 +3139,3344 @@
     }
   ],
   "resources": [
+    "customWorkerFields",
+    "departments",
+    "offers",
     "timeOff",
     "timeOff.policies",
     "workers",
-    "departments",
     "workplaces"
   ],
   "publicResources": [
+    "customWorkerFields",
+    "departments",
+    "offers",
     "timeOff",
     "timeOff.policies",
     "workers",
-    "departments",
     "workplaces"
   ],
   "operations": [
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/custom-worker-fields",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "create",
+      "publicOperation": "create",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/custom-worker-fields",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name",
+        "description",
+        "type",
+        "config",
+        "category",
+        "accessLevel",
+        "inputBy",
+        "required",
+        "options"
+      ],
+      "publicBodyParams": [
+        "name",
+        "description",
+        "type",
+        "config",
+        "category",
+        "accessLevel",
+        "inputBy",
+        "required",
+        "options"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "name",
+          "required": true
+        },
+        {
+          "name": "description",
+          "required": false
+        },
+        {
+          "name": "type",
+          "required": true
+        },
+        {
+          "name": "config",
+          "required": false
+        },
+        {
+          "name": "category",
+          "required": true
+        },
+        {
+          "name": "accessLevel",
+          "required": false
+        },
+        {
+          "name": "inputBy",
+          "required": false
+        },
+        {
+          "name": "required",
+          "required": false
+        },
+        {
+          "name": "options",
+          "required": false
+        }
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldCreateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "retrieve",
+      "publicOperation": "retrieve",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/custom-worker-fields/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldRetrieveParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "update",
+      "publicOperation": "update",
+      "deprecated": false,
+      "method": "PATCH",
+      "path": "/v1/custom-worker-fields/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name",
+        "description",
+        "config",
+        "category",
+        "accessLevel",
+        "inputBy",
+        "required"
+      ],
+      "publicBodyParams": [
+        "name",
+        "description",
+        "config",
+        "category",
+        "accessLevel",
+        "inputBy",
+        "required"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "name",
+          "required": false
+        },
+        {
+          "name": "description",
+          "required": false
+        },
+        {
+          "name": "config",
+          "required": false
+        },
+        {
+          "name": "category",
+          "required": false
+        },
+        {
+          "name": "accessLevel",
+          "required": false
+        },
+        {
+          "name": "inputBy",
+          "required": false
+        },
+        {
+          "name": "required",
+          "required": false
+        }
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldUpdateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_already_exists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "archive",
+      "publicOperation": "archive",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/custom-worker-fields/{id}/archive",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldArchiveParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "createOption",
+      "publicOperation": "createOption",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/custom-worker-fields/{id}/options",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "label",
+        "value",
+        "sortOrder"
+      ],
+      "publicBodyParams": [
+        "label",
+        "value",
+        "sortOrder"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "label",
+          "required": true
+        },
+        {
+          "name": "value",
+          "required": true
+        },
+        {
+          "name": "sortOrder",
+          "required": false
+        }
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldCreateOptionParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_option_already_exists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "updateOption",
+      "publicOperation": "updateOption",
+      "deprecated": false,
+      "method": "PATCH",
+      "path": "/v1/custom-worker-field-options/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "label",
+        "sortOrder"
+      ],
+      "publicBodyParams": [
+        "label",
+        "sortOrder"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "label",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "required": false
+        }
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldUpdateOptionParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_option_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_option_already_exists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "deleteOption",
+      "publicOperation": "deleteOption",
+      "deprecated": false,
+      "method": "DELETE",
+      "path": "/v1/custom-worker-field-options/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldDeleteOptionParams"
+      },
+      "result": {
+        "successStatus": "204",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_option_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_option_in_use",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "archiveOption",
+      "publicOperation": "archiveOption",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/custom-worker-field-options/{id}/archive",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldArchiveOptionParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "custom_worker_field_option_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "listValues",
+      "publicOperation": "listValues",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/worker-custom-field-values",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "workerIds",
+        "fieldIds"
+      ],
+      "publicQueryParams": [
+        "workerIds",
+        "fieldIds"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "fieldIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldListValuesParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "upsertValue",
+      "publicOperation": "upsertValue",
+      "deprecated": false,
+      "method": "PUT",
+      "path": "/v1/worker-custom-field-values",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "workerId",
+        "fieldId",
+        "value"
+      ],
+      "publicBodyParams": [
+        "workerId",
+        "fieldId",
+        "value"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "workerId",
+          "required": true
+        },
+        {
+          "name": "fieldId",
+          "required": true
+        },
+        {
+          "name": "value",
+          "required": true
+        }
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldUpsertValueParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customWorkerFields",
+      "publicResource": "customWorkerFields",
+      "operation": "clearValue",
+      "publicOperation": "clearValue",
+      "deprecated": false,
+      "method": "DELETE",
+      "path": "/v1/worker-custom-field-values",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "workerId",
+        "fieldId"
+      ],
+      "publicQueryParams": [
+        "workerId",
+        "fieldId"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "workerId",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "fieldId",
+          "required": true,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "CustomWorkerFieldClearValueParams"
+      },
+      "result": {
+        "successStatus": "204",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "departments",
+      "publicResource": "departments",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/departments",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DepartmentListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "departments",
+      "publicResource": "departments",
+      "operation": "create",
+      "publicOperation": "create",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/departments",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name"
+      ],
+      "publicBodyParams": [
+        "name"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "name",
+          "required": true
+        }
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DepartmentCreateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "department_already_exists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "departments",
+      "publicResource": "departments",
+      "operation": "update",
+      "publicOperation": "update",
+      "deprecated": false,
+      "method": "PATCH",
+      "path": "/v1/departments/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "name"
+      ],
+      "publicBodyParams": [
+        "name"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "name",
+          "required": false
+        }
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DepartmentUpdateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "department_not_found",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "department_already_exists",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "offers",
+      "publicResource": "offers",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/offers",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "statuses",
+        "workerTypes",
+        "candidateEmail"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "statuses",
+        "workerTypes",
+        "candidateEmail"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerTypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "candidateEmail",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "OfferListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "offers",
+      "publicResource": "offers",
+      "operation": "create",
+      "publicOperation": "create",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/offers",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "candidate",
+        "position",
+        "departmentId",
+        "managerId",
+        "workerType",
+        "compensation",
+        "expirationTime"
+      ],
+      "publicBodyParams": [
+        "candidate",
+        "position",
+        "departmentId",
+        "managerId",
+        "workerType",
+        "compensation",
+        "expirationTime"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "candidate",
+          "required": true
+        },
+        {
+          "name": "position",
+          "required": true
+        },
+        {
+          "name": "departmentId",
+          "required": false
+        },
+        {
+          "name": "managerId",
+          "required": false
+        },
+        {
+          "name": "workerType",
+          "required": true
+        },
+        {
+          "name": "compensation",
+          "required": true
+        },
+        {
+          "name": "expirationTime",
+          "required": false
+        }
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "OfferCreateParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "201",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "201",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "422",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "422",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_expiration_time_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "offers",
+      "publicResource": "offers",
+      "operation": "void",
+      "publicOperation": "void",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/offers/{id}/void",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "OfferVoidParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "offer_not_found_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_offer_status_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "offers",
+      "publicResource": "offers",
+      "operation": "extendDeadline",
+      "publicOperation": "extendDeadline",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/offers/{id}/extend-deadline",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "expirationTime"
+      ],
+      "publicBodyParams": [
+        "expirationTime"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "expirationTime",
+          "required": true
+        }
+      ],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "OfferExtendDeadlineParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "422",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "offer_not_found_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_offer_status_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "422",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_expiration_time_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "offers",
+      "publicResource": "offers",
+      "operation": "resend",
+      "publicOperation": "resend",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/offers/{id}/resend",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "OfferResendParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "409",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "offer_not_found_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "409",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_offer_status_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
     {
       "resource": "timeOff",
       "publicResource": "timeOff",
@@ -2634,7 +6579,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -2649,7 +6594,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -2675,7 +6620,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -2813,7 +6758,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -2828,7 +6773,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -2854,7 +6799,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffPolicyNotFound",
+            "name": "time_off_policy_not_found",
             "publicAliases": []
           }
         },
@@ -2869,7 +6814,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3031,7 +6976,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3046,7 +6991,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3072,7 +7017,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffRequestNotFoundError",
+            "name": "time_off_request_not_found_error",
             "publicAliases": []
           }
         },
@@ -3087,7 +7032,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3109,8 +7054,8 @@
     {
       "resource": "timeOff.policies",
       "publicResource": "timeOff.policies",
-      "operation": "list",
-      "publicOperation": "list",
+      "operation": "timeOffGet",
+      "publicOperation": "timeOffGet",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/time_off/policies",
@@ -3157,7 +7102,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PolicyListParams"
+        "publicName": "PolicyTimeOffGetParams"
       },
       "response": {
         "status": "200",
@@ -3193,7 +7138,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3208,7 +7153,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3234,7 +7179,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffPolicyNotFound",
+            "name": "time_off_policy_not_found",
             "publicAliases": []
           }
         },
@@ -3249,7 +7194,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3271,8 +7216,8 @@
     {
       "resource": "timeOff.policies",
       "publicResource": "timeOff.policies",
-      "operation": "retrieve",
-      "publicOperation": "retrieve",
+      "operation": "timeOffGet2",
+      "publicOperation": "timeOffGet2",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/time_off/policies/{id}",
@@ -3303,7 +7248,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PolicyRetrieveParams"
+        "publicName": "PolicyTimeOffGet2Params"
       },
       "response": {
         "status": "200",
@@ -3339,7 +7284,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3354,7 +7299,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3380,7 +7325,7 @@
             }
           ],
           "model": {
-            "name": "TimeOffPolicyNotFound",
+            "name": "time_off_policy_not_found",
             "publicAliases": []
           }
         },
@@ -3395,7 +7340,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3524,7 +7469,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3539,7 +7484,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3565,7 +7510,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3655,7 +7600,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3670,7 +7615,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3696,7 +7641,7 @@
             }
           ],
           "model": {
-            "name": "WorkerNotFoundError",
+            "name": "worker_not_found_error",
             "publicAliases": []
           }
         },
@@ -3711,7 +7656,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -3791,7 +7736,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -3806,7 +7751,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -3832,7 +7777,7 @@
             }
           ],
           "model": {
-            "name": "WorkerNotFoundError",
+            "name": "worker_not_found_error",
             "publicAliases": []
           }
         },
@@ -3847,7 +7792,7 @@
             }
           ],
           "model": {
-            "name": "CannotDeleteWorker",
+            "name": "cannot_delete_worker",
             "publicAliases": []
           }
         },
@@ -3862,7 +7807,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4052,7 +7997,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4089,7 +8034,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4268,7 +8213,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -4283,7 +8228,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4320,7 +8265,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -4411,7 +8356,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -4426,7 +8371,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -4452,7 +8397,7 @@
             }
           ],
           "model": {
-            "name": "WorkerNotFoundError",
+            "name": "worker_not_found_error",
             "publicAliases": []
           }
         },
@@ -4478,494 +8423,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "departments",
-      "publicResource": "departments",
-      "operation": "list",
-      "publicOperation": "list",
-      "deprecated": false,
-      "method": "GET",
-      "path": "/v1/departments",
-      "pathParams": [],
-      "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
-      "pathParamDetails": [],
-      "queryParamDetails": [
-        {
-          "name": "limit",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "afterId",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "beforeId",
-          "required": false,
-          "style": "form",
-          "explode": true
-        }
-      ],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "DepartmentListParams"
-      },
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "400",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "HttpApiDecodeError",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "ApiKeyUnauthorized",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "RateLimitExceeded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "departments",
-      "publicResource": "departments",
-      "operation": "create",
-      "publicOperation": "create",
-      "deprecated": false,
-      "method": "POST",
-      "path": "/v1/departments",
-      "pathParams": [],
-      "publicPathParams": [],
-      "queryParams": [],
-      "publicQueryParams": [],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [
-        "name"
-      ],
-      "publicBodyParams": [
-        "name"
-      ],
-      "bodyParamDetails": [
-        {
-          "name": "name",
-          "required": true
-        }
-      ],
-      "pathParamDetails": [],
-      "queryParamDetails": [],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "DepartmentCreateParams"
-      },
-      "requestBody": {
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ],
-        "required": true,
-        "publicName": "body",
-        "publicIdentifier": "body"
-      },
-      "response": {
-        "status": "201",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "result": {
-        "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "409",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "400",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "HttpApiDecodeError",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "ApiKeyUnauthorized",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "409",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "DepartmentAlreadyExists",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "RateLimitExceeded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "departments",
-      "publicResource": "departments",
-      "operation": "update",
-      "publicOperation": "update",
-      "deprecated": false,
-      "method": "PATCH",
-      "path": "/v1/departments/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
-      "queryParams": [],
-      "publicQueryParams": [],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [
-        "name"
-      ],
-      "publicBodyParams": [
-        "name"
-      ],
-      "bodyParamDetails": [
-        {
-          "name": "name",
-          "required": false
-        }
-      ],
-      "pathParamDetails": [
-        {
-          "name": "id",
-          "required": true,
-          "style": "simple",
-          "explode": false
-        }
-      ],
-      "queryParamDetails": [],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "DepartmentUpdateParams"
-      },
-      "requestBody": {
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ],
-        "required": true,
-        "publicName": "body",
-        "publicIdentifier": "body"
-      },
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "400",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "HttpApiDecodeError",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "ApiKeyUnauthorized",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "404",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "DepartmentNotFound",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "409",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "DepartmentAlreadyExists",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5070,7 +8528,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5085,7 +8543,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5111,7 +8569,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5235,7 +8693,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5261,7 +8719,7 @@
             }
           ],
           "model": {
-            "name": "WorkplaceAlreadyExists",
+            "name": "workplace_already_exists",
             "publicAliases": []
           }
         },
@@ -5276,7 +8734,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },
@@ -5389,7 +8847,7 @@
             }
           ],
           "model": {
-            "name": "HttpApiDecodeError",
+            "name": "http_api_decode_error",
             "publicAliases": []
           }
         },
@@ -5404,7 +8862,7 @@
             }
           ],
           "model": {
-            "name": "ApiKeyUnauthorized",
+            "name": "api_key_unauthorized",
             "publicAliases": []
           }
         },
@@ -5430,7 +8888,7 @@
             }
           ],
           "model": {
-            "name": "WorkplaceNotFound",
+            "name": "workplace_not_found",
             "publicAliases": []
           }
         },
@@ -5445,7 +8903,7 @@
             }
           ],
           "model": {
-            "name": "WorkplaceAlreadyExists",
+            "name": "workplace_already_exists",
             "publicAliases": []
           }
         },
@@ -5460,7 +8918,7 @@
             }
           ],
           "model": {
-            "name": "RateLimitExceeded",
+            "name": "rate_limit_exceeded",
             "publicAliases": []
           }
         },

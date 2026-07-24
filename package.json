@@ -1,6 +1,6 @@
 {
   "name": "warp-hr",
-  "version": "0.2.0-next",
+  "version": "0.2.0-next.1",
   "description": "Warp TypeScript SDK",
   "repository": {
     "type": "git",
@@ -44,7 +44,8 @@
   },
   "files": [
     "dist",
-    "api.md"
+    "api.md",
+    "SKILL.md"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/finalize-build.mjs",
