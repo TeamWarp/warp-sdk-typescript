@@ -217,14 +217,14 @@
         "summary": "List custom worker fields",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.customWorkerFields.list();\nconsole.log(list);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.list()\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.list()\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -560,14 +560,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.customWorkerFields.create({\n  name: \"\",\n  type: \"text\",\n  category: \"info\",\n});\nconsole.log(create);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.create(\n    name=\"\",\n    type=\"text\",\n    category=\"info\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.create(\n    name=\"\",\n    type=\"text\",\n    category=\"info\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -848,14 +848,14 @@
         "summary": "Get custom worker field",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst retrieve = await client.customWorkerFields.retrieve(\"cf_1234\");\nconsole.log(retrieve);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.retrieve(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.retrieve(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -1170,14 +1170,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst update = await client.customWorkerFields.update(\"cf_1234\", {});\nconsole.log(update);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.update(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.update(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -1412,14 +1412,14 @@
         "summary": "Archive custom worker field",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst archive = await client.customWorkerFields.archive(\"cf_1234\");\nconsole.log(archive);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.archive(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.archive(\n    id=\"cf_1234\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -1634,14 +1634,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst createOption = await client.customWorkerFields.createOption(\"cf_1234\", {\n  label: \"x\",\n  value: \"x\",\n});\nconsole.log(createOption);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.create_option(\n    id=\"cf_1234\",\n    label=\"x\",\n    value=\"x\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.create_option(\n    id=\"cf_1234\",\n    label=\"x\",\n    value=\"x\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -1850,14 +1850,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst updateOption = await client.customWorkerFields.updateOption(\"cfo_1234\", {});\nconsole.log(updateOption);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.update_option(\n    id=\"cfo_1234\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.update_option(\n    id=\"cfo_1234\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -1991,14 +1991,14 @@
         "summary": "Delete unused field option",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nawait client.customWorkerFields.deleteOption(\"cfo_1234\");"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.custom_worker_fields.delete_option(\n    id=\"cfo_1234\",\n)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.custom_worker_fields.delete_option(\n    id=\"cfo_1234\",\n)"
           },
           {
             "label": "Go",
@@ -2170,14 +2170,14 @@
         "summary": "Archive field option",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst archiveOption = await client.customWorkerFields.archiveOption(\"cfo_1234\");\nconsole.log(archiveOption);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.archive_option(\n    id=\"cfo_1234\",\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.archive_option(\n    id=\"cfo_1234\",\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -2673,14 +2673,14 @@
         "summary": "List worker custom field values",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst listValues = await client.customWorkerFields.listValues();\nconsole.log(listValues);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.list_values()\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.list_values()\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -3444,14 +3444,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst upsertValue = await client.customWorkerFields.upsertValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n  value: {\n    type: \"text\",\n    value: \"\",\n  },\n});\nconsole.log(upsertValue);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.upsert_value(\n    worker_id=\"wrk_1234\",\n    field_id=\"cf_1234\",\n    value={\"type\": \"text\", \"value\": \"\"},\n)\nprint(custom_worker_field)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ncustom_worker_field = client.custom_worker_fields.upsert_value(\n    worker_id=\"wrk_1234\",\n    field_id=\"cf_1234\",\n    value={\"type\": \"text\", \"value\": \"\"},\n)\nprint(custom_worker_field)"
           },
           {
             "label": "Go",
@@ -3597,14 +3597,14 @@
         "summary": "Clear worker custom field value",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nawait client.customWorkerFields.clearValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n});"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.custom_worker_fields.clear_value(\n    worker_id=\"wrk_1234\",\n    field_id=\"cf_1234\",\n)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.custom_worker_fields.clear_value(\n    worker_id=\"wrk_1234\",\n    field_id=\"cf_1234\",\n)"
           },
           {
             "label": "Go",
@@ -3810,7 +3810,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.list()\nprint(department)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.list()\nprint(department)"
           },
           {
             "lang": "Go",
@@ -3980,7 +3980,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.create(\n    name=\"\",\n)\nprint(department)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.create(\n    name=\"\",\n)\nprint(department)"
           },
           {
             "lang": "Go",
@@ -4175,7 +4175,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.update(\n    id=\"dpt_1234\",\n)\nprint(department)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ndepartment = client.departments.update(\n    id=\"dpt_1234\",\n)\nprint(department)"
           },
           {
             "lang": "Go",
@@ -5415,14 +5415,14 @@
         "summary": "List offers",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst list = await client.offers.list();\nconsole.log(list);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.list()\nprint(offer)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.list()\nprint(offer)"
           },
           {
             "label": "Go",
@@ -7181,14 +7181,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst create = await client.offers.create({\n  candidate: {\n    firstName: \"x\",\n    lastName: \"x\",\n    email: \"john@joinwarp.com\",\n  },\n  position: {\n    title: \"x\",\n    startDate: \"2000-01-01\",\n  },\n  workerType: \"employee\",\n  compensation: {\n    payBasis: \"year\",\n    payCurrency: \"USD\",\n    payRate: 0,\n  },\n});\nconsole.log(create);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.create(\n    candidate={\"first_name\": \"x\", \"last_name\": \"x\", \"email\": \"john@joinwarp.com\"},\n    position={\"title\": \"x\", \"start_date\": \"2000-01-01\"},\n    worker_type=\"employee\",\n    compensation={\"pay_basis\": \"year\", \"pay_currency\": \"USD\", \"pay_rate\": 0},\n)\nprint(offer)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.create(\n    candidate={\"first_name\": \"x\", \"last_name\": \"x\", \"email\": \"john@joinwarp.com\"},\n    position={\"title\": \"x\", \"start_date\": \"2000-01-01\"},\n    worker_type=\"employee\",\n    compensation={\"pay_basis\": \"year\", \"pay_currency\": \"USD\", \"pay_rate\": 0},\n)\nprint(offer)"
           },
           {
             "label": "Go",
@@ -8352,14 +8352,14 @@
         "summary": "Void offer",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst void_ = await client.offers.void(\"offr_1234\");\nconsole.log(void_);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.void(\n    id=\"offr_1234\",\n)\nprint(offer)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.void(\n    id=\"offr_1234\",\n)\nprint(offer)"
           },
           {
             "label": "Go",
@@ -9552,14 +9552,14 @@
         },
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst extendDeadline = await client.offers.extendDeadline(\"offr_1234\", {\n  expirationTime: \"\",\n});\nconsole.log(extendDeadline);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.extend_deadline(\n    id=\"offr_1234\",\n    expiration_time=\"\",\n)\nprint(offer)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.extend_deadline(\n    id=\"offr_1234\",\n    expiration_time=\"\",\n)\nprint(offer)"
           },
           {
             "label": "Go",
@@ -10723,14 +10723,14 @@
         "summary": "Resend offer",
         "x-codeSamples": [
           {
-            "lang": "TypeScript",
             "label": "TypeScript",
+            "lang": "TypeScript",
             "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"API_KEY\"], // defaults to the API_KEY env var\n});\n\nconst resend = await client.offers.resend(\"offr_1234\");\nconsole.log(resend);"
           },
           {
             "label": "Python",
             "lang": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.resend(\n    id=\"offr_1234\",\n)\nprint(offer)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\noffer = client.offers.resend(\n    id=\"offr_1234\",\n)\nprint(offer)"
           },
           {
             "label": "Go",
@@ -11035,7 +11035,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\npolicy = client.time_off.policies.time_off_get()\nprint(policy)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\npolicy = client.time_off.policies.time_off_get()\nprint(policy)"
           },
           {
             "lang": "Go",
@@ -11292,7 +11292,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\npolicy = client.time_off.policies.time_off_get2(\n    id=\"top_1234\",\n)\nprint(policy)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\npolicy = client.time_off.policies.time_off_get2(\n    id=\"top_1234\",\n)\nprint(policy)"
           },
           {
             "lang": "Go",
@@ -11523,7 +11523,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_assignments()\nprint(time_off)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_assignments()\nprint(time_off)"
           },
           {
             "lang": "Go",
@@ -11790,7 +11790,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_balances()\nprint(time_off)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_balances()\nprint(time_off)"
           },
           {
             "lang": "Go",
@@ -12142,7 +12142,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_requests()\nprint(time_off)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\ntime_off = client.time_off.list_requests()\nprint(time_off)"
           },
           {
             "lang": "Go",
@@ -12582,7 +12582,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.list()\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.list()\nprint(worker)"
           },
           {
             "lang": "Go",
@@ -12942,7 +12942,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.retrieve(\n    id=\"wrk_1234\",\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.retrieve(\n    id=\"wrk_1234\",\n)\nprint(worker)"
           },
           {
             "lang": "Go",
@@ -13083,7 +13083,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.workers.delete(\n    id=\"wrk_1234\",\n)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nclient.workers.delete(\n    id=\"wrk_1234\",\n)"
           },
           {
             "lang": "Go",
@@ -13621,7 +13621,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.create_employee(\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_location={\"type\": \"office\", \"workplace_id\": \"wkp_1234\"},\n    compensation={\"amount\": 0, \"per\": \"hour\"},\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.create_employee(\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_location={\"type\": \"office\", \"workplace_id\": \"wkp_1234\"},\n    compensation={\"amount\": 0, \"per\": \"hour\"},\n)\nprint(worker)"
           },
           {
             "lang": "Go",
@@ -14467,7 +14467,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.create_contractor(\n    entity_type=\"individual\",\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_country=\"AD\",\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.create_contractor(\n    entity_type=\"individual\",\n    first_name=\"\",\n    last_name=\"\",\n    position=\"\",\n    start_date=\"2000-01-01\",\n    email=\"john@joinwarp.com\",\n    department_id=\"dpt_1234\",\n    manager_id=\"wrk_1234\",\n    work_country=\"AD\",\n)\nprint(worker)"
           },
           {
             "lang": "Go",
@@ -14847,7 +14847,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.invite(\n    id=\"wrk_1234\",\n)\nprint(worker)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworker = client.workers.invite(\n    id=\"wrk_1234\",\n)\nprint(worker)"
           },
           {
             "lang": "Go",
@@ -15167,7 +15167,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.list()\nprint(workplace)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.list()\nprint(workplace)"
           },
           {
             "lang": "Go",
@@ -15565,7 +15565,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.create(\n    name=\"\",\n    type=\"remote\",\n    address={\"line1\": \"x\", \"city\": \"\", \"postal_code\": \"\", \"state\": \"AL\", \"country\": \"US\"},\n)\nprint(workplace)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.create(\n    name=\"\",\n    type=\"remote\",\n    address={\"line1\": \"x\", \"city\": \"\", \"postal_code\": \"\", \"state\": \"AL\", \"country\": \"US\"},\n)\nprint(workplace)"
           },
           {
             "lang": "Go",
@@ -15874,7 +15874,7 @@
           {
             "lang": "Python",
             "label": "Python",
-            "source": "import os\n\nfrom warp_warp_api import Warp\n\nclient = Warp(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.update(\n    id=\"wkp_1234\",\n)\nprint(workplace)"
+            "source": "import os\n\nfrom warp_warp_api import WarpAPI\n\nclient = WarpAPI(\n    api_key=os.environ.get(\"API_KEY\"),\n)\n\nworkplace = client.workplaces.update(\n    id=\"wkp_1234\",\n)\nprint(workplace)"
           },
           {
             "lang": "Go",
