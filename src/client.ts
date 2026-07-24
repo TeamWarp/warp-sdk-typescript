@@ -20,19 +20,21 @@ import { stringify as stringifyQuery } from './internal/qs/stringify';
 import type { StringifyOptions } from './internal/qs/types';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
-import { TimeOff, type TimeOffListAssignmentsResponse, type TimeOffListBalancesResponse, type TimeOffListRequestsResponse, type TimeOffListAssignmentsParams, type TimeOffListBalancesParams, type TimeOffListRequestsParams } from "./resources/time-off/time-off";
-import { Workers, type WorkerListResponse, type WorkerRetrieveResponse, type WorkerCreateEmployeeResponse, type WorkerCreateContractorResponse, type WorkerInviteResponse, type WorkerListParams, type WorkerCreateEmployeeParams, type WorkerCreateContractorParams } from "./resources/workers";
+import { CustomWorkerFields, type Trimmed, type NonEmptyTrimmedString, type CustomWorkerFieldListResponse, type CustomWorkerFieldCreateResponse, type CustomWorkerFieldRetrieveResponse, type CustomWorkerFieldUpdateResponse, type CustomWorkerFieldArchiveResponse, type CustomWorkerFieldCreateOptionResponse, type CustomWorkerFieldUpdateOptionResponse, type CustomWorkerFieldArchiveOptionResponse, type CustomWorkerFieldListValuesResponse, type CustomWorkerFieldUpsertValueResponse, type CustomWorkerFieldCreateParams, type CustomWorkerFieldUpdateParams, type CustomWorkerFieldCreateOptionParams, type CustomWorkerFieldUpdateOptionParams, type CustomWorkerFieldListValuesParams, type CustomWorkerFieldUpsertValueParams, type CustomWorkerFieldClearValueParams } from "./resources/custom-worker-fields";
 import { Departments, type DepartmentListResponse, type DepartmentCreateResponse, type DepartmentUpdateResponse, type DepartmentListParams, type DepartmentCreateParams, type DepartmentUpdateParams } from "./resources/departments";
+import { Offers, type Date, type OfferListResponse, type OfferCreateResponse, type OfferVoidResponse, type OfferExtendDeadlineResponse, type OfferResendResponse, type OfferListParams, type OfferCreateParams, type OfferExtendDeadlineParams } from "./resources/offers";
+import { TimeOff, type TimeOffListAssignmentsResponse, type TimeOffListBalancesResponse, type TimeOffListRequestsResponse, type TimeOffListAssignmentsParams, type TimeOffListBalancesParams, type TimeOffListRequestsParams } from "./resources/time-off/time-off";
+import { Workers, type OfficeWorkLocation, type RemoteWorkLocation, type WorkerListResponse, type WorkerRetrieveResponse, type WorkerCreateEmployeeResponse, type WorkerCreateContractorResponse, type WorkerInviteResponse, type WorkerListParams, type WorkerCreateEmployeeParams, type WorkerCreateContractorParams } from "./resources/workers";
 import { Workplaces, type WorkplaceListResponse, type WorkplaceCreateResponse, type WorkplaceUpdateResponse, type WorkplaceListParams, type WorkplaceCreateParams, type WorkplaceUpdateParams } from "./resources/workplaces";
 
 export type AuthTokenProvider = () => string | Promise<string>;
 
-const queryArrayFormat: NonNullable<StringifyOptions["arrayFormat"]> = "repeat";
+const queryArrayFormat: NonNullable<StringifyOptions["arrayFormat"]> = "indices";
 const queryAllowDots = false;
 
 export interface ClientOptions {
   /**
-   * Warp API key. Defaults to the WARP_API_KEY environment variable.
+   * The API key for header authorization.
    */
   apiKey?: string | AuthTokenProvider | undefined;
 
@@ -106,12 +108,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type WarpOptions = ClientOptions;
+export type WarpAPIOptions = ClientOptions;
 
 /**
- * API Client for interfacing with the Warp API.
+ * API Client for interfacing with the WarpApi API.
  */
-export class Warp {
+export class WarpAPI {
   apiKey: string | AuthTokenProvider | undefined;
 
   baseURL: string;
@@ -128,9 +130,9 @@ export class Warp {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Warp API.
+   * API Client for interfacing with the WarpApi API.
    *
-   * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
+   * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["API_KEY"] ?? undefined]
    * @param {string} [opts.baseURL=process.env["WARP_BASE_URL"] ?? https://api.joinwarp.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -141,7 +143,7 @@ export class Warp {
    */
   constructor({
     baseURL = readEnv("WARP_BASE_URL"),
-    apiKey = readEnv("WARP_API_KEY"),
+    apiKey = readEnv("API_KEY"),
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
@@ -152,7 +154,7 @@ export class Warp {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== "";
     const defaultBaseURL = "https://api.joinwarp.com";
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? WarpAPI.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -755,21 +757,21 @@ export class Warp {
   private async resolveAuthOption(optionName: string, value: string | AuthTokenProvider | null | undefined): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === "function" ? await value() : value;
-    if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
   private resolveAuthOptionSync(optionName: string, value: string | AuthTokenProvider | null | undefined): string | undefined {
     if (value == null) return undefined;
     const token = typeof value === "function" ? value() : value;
-    if (typeof token !== "string" || !token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (typeof token !== "string" || !token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static Warp = this;
+  static WarpAPI = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WarpError = Errors.WarpError;
+  static WarpAPIError = Errors.WarpAPIError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -785,19 +787,69 @@ export class Warp {
 
   static toFile = toFile;
 
+  customWorkerFields: CustomWorkerFields = new CustomWorkerFields(this);
+  departments: Departments = new Departments(this);
+  offers: Offers = new Offers(this);
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
-  departments: Departments = new Departments(this);
   workplaces: Workplaces = new Workplaces(this);
 }
 
-Warp.TimeOff = TimeOff;
-Warp.Workers = Workers;
-Warp.Departments = Departments;
-Warp.Workplaces = Workplaces;
+WarpAPI.CustomWorkerFields = CustomWorkerFields;
+WarpAPI.Departments = Departments;
+WarpAPI.Offers = Offers;
+WarpAPI.TimeOff = TimeOff;
+WarpAPI.Workers = Workers;
+WarpAPI.Workplaces = Workplaces;
 
-export declare namespace Warp {
+export declare namespace WarpAPI {
   export type RequestOptions = Opts.RequestOptions;
+  export {
+    CustomWorkerFields as CustomWorkerFields,
+    type Trimmed as Trimmed,
+    type NonEmptyTrimmedString as NonEmptyTrimmedString,
+    type CustomWorkerFieldListResponse as CustomWorkerFieldListResponse,
+    type CustomWorkerFieldCreateResponse as CustomWorkerFieldCreateResponse,
+    type CustomWorkerFieldRetrieveResponse as CustomWorkerFieldRetrieveResponse,
+    type CustomWorkerFieldUpdateResponse as CustomWorkerFieldUpdateResponse,
+    type CustomWorkerFieldArchiveResponse as CustomWorkerFieldArchiveResponse,
+    type CustomWorkerFieldCreateOptionResponse as CustomWorkerFieldCreateOptionResponse,
+    type CustomWorkerFieldUpdateOptionResponse as CustomWorkerFieldUpdateOptionResponse,
+    type CustomWorkerFieldArchiveOptionResponse as CustomWorkerFieldArchiveOptionResponse,
+    type CustomWorkerFieldListValuesResponse as CustomWorkerFieldListValuesResponse,
+    type CustomWorkerFieldUpsertValueResponse as CustomWorkerFieldUpsertValueResponse,
+    type CustomWorkerFieldCreateParams as CustomWorkerFieldCreateParams,
+    type CustomWorkerFieldUpdateParams as CustomWorkerFieldUpdateParams,
+    type CustomWorkerFieldCreateOptionParams as CustomWorkerFieldCreateOptionParams,
+    type CustomWorkerFieldUpdateOptionParams as CustomWorkerFieldUpdateOptionParams,
+    type CustomWorkerFieldListValuesParams as CustomWorkerFieldListValuesParams,
+    type CustomWorkerFieldUpsertValueParams as CustomWorkerFieldUpsertValueParams,
+    type CustomWorkerFieldClearValueParams as CustomWorkerFieldClearValueParams,
+  };
+
+  export {
+    Departments as Departments,
+    type DepartmentListResponse as DepartmentListResponse,
+    type DepartmentCreateResponse as DepartmentCreateResponse,
+    type DepartmentUpdateResponse as DepartmentUpdateResponse,
+    type DepartmentListParams as DepartmentListParams,
+    type DepartmentCreateParams as DepartmentCreateParams,
+    type DepartmentUpdateParams as DepartmentUpdateParams,
+  };
+
+  export {
+    Offers as Offers,
+    type Date as Date,
+    type OfferListResponse as OfferListResponse,
+    type OfferCreateResponse as OfferCreateResponse,
+    type OfferVoidResponse as OfferVoidResponse,
+    type OfferExtendDeadlineResponse as OfferExtendDeadlineResponse,
+    type OfferResendResponse as OfferResendResponse,
+    type OfferListParams as OfferListParams,
+    type OfferCreateParams as OfferCreateParams,
+    type OfferExtendDeadlineParams as OfferExtendDeadlineParams,
+  };
+
   export {
     TimeOff as TimeOff,
     type TimeOffListAssignmentsResponse as TimeOffListAssignmentsResponse,
@@ -810,6 +862,8 @@ export declare namespace Warp {
 
   export {
     Workers as Workers,
+    type OfficeWorkLocation as OfficeWorkLocation,
+    type RemoteWorkLocation as RemoteWorkLocation,
     type WorkerListResponse as WorkerListResponse,
     type WorkerRetrieveResponse as WorkerRetrieveResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
@@ -818,16 +872,6 @@ export declare namespace Warp {
     type WorkerListParams as WorkerListParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
     type WorkerCreateContractorParams as WorkerCreateContractorParams,
-  };
-
-  export {
-    Departments as Departments,
-    type DepartmentListResponse as DepartmentListResponse,
-    type DepartmentCreateResponse as DepartmentCreateResponse,
-    type DepartmentUpdateResponse as DepartmentUpdateResponse,
-    type DepartmentListParams as DepartmentListParams,
-    type DepartmentCreateParams as DepartmentCreateParams,
-    type DepartmentUpdateParams as DepartmentUpdateParams,
   };
 
   export {
