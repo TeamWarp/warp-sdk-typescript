@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.16.1 (2026-07-29)
+
+Full Changelog: [v0.16.0...v0.16.1](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.16.0...v0.16.1)
+
+### Chores
+
+* **ci:** escape input path in publish-npm workflow ([87c5bc0](https://github.com/TeamWarp/warp-sdk-typescript/commit/87c5bc096fcf5fbf0dbd1c8140b05a0cbc273e93))
+* **internal:** codegen related update ([9efaa58](https://github.com/TeamWarp/warp-sdk-typescript/commit/9efaa5838b42bf927d3a6ed7309168b218386615))
+* **internal:** fix MCP server import ordering ([25fe328](https://github.com/TeamWarp/warp-sdk-typescript/commit/25fe328e42890459e91f8e547d689fadfb518301))
+* **internal:** improve local docs search for MCP servers ([0bf4b8d](https://github.com/TeamWarp/warp-sdk-typescript/commit/0bf4b8d658d068b577023107412b68de6f5db96b))
+* **internal:** improve local docs search for MCP servers ([62200c8](https://github.com/TeamWarp/warp-sdk-typescript/commit/62200c8826fa41ec1e191c8377b0d9446f295c09))
+* **internal:** show error causes in MCP servers when running in local mode ([3e7468c](https://github.com/TeamWarp/warp-sdk-typescript/commit/3e7468c8bdfe3cbd52613a828cd6ebacc2b20fe3))
+* **internal:** support local docs search in MCP servers ([2fddf02](https://github.com/TeamWarp/warp-sdk-typescript/commit/2fddf02f7b97e1f7935cd8cd855dc3e92e39b9f5))
+* **internal:** support type annotations when running MCP in local execution mode ([97bf46d](https://github.com/TeamWarp/warp-sdk-typescript/commit/97bf46d8a5d9e3368f61f5a2efb2f1a1d7e024c7))
+* **mcp-server:** add support for session id, forward client info ([80c1eee](https://github.com/TeamWarp/warp-sdk-typescript/commit/80c1eee6dbaef1d8b0bfd041701fe970c67c5476))
+* **mcp-server:** increase local docs search result count from 5 to 10 ([37a50b5](https://github.com/TeamWarp/warp-sdk-typescript/commit/37a50b5da91f8bccedce0cc95ae2156a0e6df6f1))
+* **mcp-server:** log client info ([56e60a0](https://github.com/TeamWarp/warp-sdk-typescript/commit/56e60a074cde9d61f5e02e758fa9d28dd9a1ed92))
+
 ## [0.16.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.15.0...v0.16.0) (2026-07-29)
 
 
