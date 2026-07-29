@@ -9,7 +9,7 @@ export class Policies extends APIResource {
   /**
    * Get the time off policies for your company
    *
-   * @param {PolicyTimeOffGetParams} [params] - The parameters to send with the request.
+   * @param {PolicyTimeOffGetParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<PolicyTimeOffGetResponse>} Success
    *
@@ -18,9 +18,8 @@ export class Policies extends APIResource {
    * const timeOffGet = await client.timeOff.policies.timeOffGet();
    * ```
    */
-  timeOffGet(params: PolicyTimeOffGetParams | null | undefined = {}, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
-    const { limit, afterId, beforeId } = params ?? {};
-    return this._client.get("/v1/time_off/policies", { query: { limit: limit, afterId: afterId, beforeId: beforeId }, ...options });
+  timeOffGet(query: PolicyTimeOffGetParams | null | undefined = {}, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
+    return this._client.get("/v1/time_off/policies", { query, ...options });
   }
 
   /**

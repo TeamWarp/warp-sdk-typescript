@@ -11,7 +11,7 @@ export class Workers extends APIResource {
   /**
    * List all workers. Workers include anyone employed by the company, whether US or international, full-time employees or contractors.
    *
-   * @param {WorkerListParams} [params] - The parameters to send with the request.
+   * @param {WorkerListParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<WorkerListResponse>} Success
    *
@@ -20,9 +20,8 @@ export class Workers extends APIResource {
    * const list = await client.workers.list();
    * ```
    */
-  list(params: WorkerListParams | null | undefined = {}, options?: RequestOptions): APIPromise<WorkerListResponse> {
-    const { limit, afterId, beforeId, statuses, types, workEmail } = params ?? {};
-    return this._client.get("/v1/workers", { query: { limit: limit, afterId: afterId, beforeId: beforeId, statuses: statuses, types: types, workEmail: workEmail }, ...options });
+  list(query: WorkerListParams | null | undefined = {}, options?: RequestOptions): APIPromise<WorkerListResponse> {
+    return this._client.get("/v1/workers", { query, ...options });
   }
 
   /**
@@ -86,7 +85,7 @@ export class Workers extends APIResource {
    * ```
    */
   createEmployee(body: WorkerCreateEmployeeParams, options?: RequestOptions): APIPromise<WorkerCreateEmployeeResponse> {
-    return this._client.post("/v1/workers/employee", { body: body, ...options });
+    return this._client.post("/v1/workers/employee", { body, ...options });
   }
 
   /**
@@ -112,7 +111,7 @@ export class Workers extends APIResource {
    * ```
    */
   createContractor(body: WorkerCreateContractorParams, options?: RequestOptions): APIPromise<WorkerCreateContractorResponse> {
-    return this._client.post("/v1/workers/contractor", { body: body, ...options });
+    return this._client.post("/v1/workers/contractor", { body, ...options });
   }
 
   /**
