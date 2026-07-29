@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0-next.3](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.2.0-next.2...v0.2.0-next.3) (2026-07-29)
+
+
+### Chores
+
+* **api:** regenerate SDK ([71ea20a](https://github.com/TeamWarp/warp-sdk-typescript/commit/71ea20a0f9bcde2b85a3507d3b355facd5cbf1c7))
+
 ## [0.2.0-next.2](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.2.0-next.1...v0.2.0-next.2) (2026-07-24)
 
 

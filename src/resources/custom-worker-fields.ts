@@ -40,7 +40,7 @@ export class CustomWorkerFields extends APIResource {
    * ```
    */
   create(body: CustomWorkerFieldCreateParams, options?: RequestOptions): APIPromise<CustomWorkerFieldCreateResponse> {
-    return this._client.post("/v1/custom-worker-fields", { body: body, ...options });
+    return this._client.post("/v1/custom-worker-fields", { body, ...options });
   }
 
   /**
@@ -73,7 +73,7 @@ export class CustomWorkerFields extends APIResource {
    * ```
    */
   update(id: string, body: CustomWorkerFieldUpdateParams, options?: RequestOptions): APIPromise<CustomWorkerFieldUpdateResponse> {
-    return this._client.patch(__scalarPath`/v1/custom-worker-fields/${id}`, { body: body, ...options });
+    return this._client.patch(__scalarPath`/v1/custom-worker-fields/${id}`, { body, ...options });
   }
 
   /**
@@ -109,7 +109,7 @@ export class CustomWorkerFields extends APIResource {
    * ```
    */
   createOption(id: string, body: CustomWorkerFieldCreateOptionParams, options?: RequestOptions): APIPromise<CustomWorkerFieldCreateOptionResponse> {
-    return this._client.post(__scalarPath`/v1/custom-worker-fields/${id}/options`, { body: body, ...options });
+    return this._client.post(__scalarPath`/v1/custom-worker-fields/${id}/options`, { body, ...options });
   }
 
   /**
@@ -126,7 +126,7 @@ export class CustomWorkerFields extends APIResource {
    * ```
    */
   updateOption(id: string, body: CustomWorkerFieldUpdateOptionParams, options?: RequestOptions): APIPromise<CustomWorkerFieldUpdateOptionResponse> {
-    return this._client.patch(__scalarPath`/v1/custom-worker-field-options/${id}`, { body: body, ...options });
+    return this._client.patch(__scalarPath`/v1/custom-worker-field-options/${id}`, { body, ...options });
   }
 
   /**
@@ -164,7 +164,7 @@ export class CustomWorkerFields extends APIResource {
   /**
    * List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.
    *
-   * @param {CustomWorkerFieldListValuesParams} [params] - The parameters to send with the request.
+   * @param {CustomWorkerFieldListValuesParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<CustomWorkerFieldListValuesResponse>} Success
    *
@@ -173,9 +173,8 @@ export class CustomWorkerFields extends APIResource {
    * const listValues = await client.customWorkerFields.listValues();
    * ```
    */
-  listValues(params: CustomWorkerFieldListValuesParams | null | undefined = {}, options?: RequestOptions): APIPromise<CustomWorkerFieldListValuesResponse> {
-    const { workerIds, fieldIds } = params ?? {};
-    return this._client.get("/v1/worker-custom-field-values", { query: { workerIds: workerIds, fieldIds: fieldIds }, ...options });
+  listValues(query: CustomWorkerFieldListValuesParams | null | undefined = {}, options?: RequestOptions): APIPromise<CustomWorkerFieldListValuesResponse> {
+    return this._client.get("/v1/worker-custom-field-values", { query, ...options });
   }
 
   /**
@@ -198,7 +197,7 @@ export class CustomWorkerFields extends APIResource {
    * ```
    */
   upsertValue(body: CustomWorkerFieldUpsertValueParams, options?: RequestOptions): APIPromise<CustomWorkerFieldUpsertValueResponse> {
-    return this._client.put("/v1/worker-custom-field-values", { body: body, ...options });
+    return this._client.put("/v1/worker-custom-field-values", { body, ...options });
   }
 
   /**
@@ -217,8 +216,8 @@ export class CustomWorkerFields extends APIResource {
    * ```
    */
   clearValue(params: CustomWorkerFieldClearValueParams, options?: RequestOptions): APIPromise<void> {
-    const { workerId, fieldId } = params ?? {};
-    return this._client.delete("/v1/worker-custom-field-values", { query: { workerId: workerId, fieldId: fieldId }, ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
+    const { workerId, fieldId } = params;
+    return this._client.delete("/v1/worker-custom-field-values", { query: { workerId, fieldId }, ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
   }
 }
 
