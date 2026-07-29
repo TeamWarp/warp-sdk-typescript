@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.15.0...v0.16.0) (2026-07-29)
+
+
+### Features
+
+* **api:** initial SDK generation ([9bfb894](https://github.com/TeamWarp/warp-sdk-typescript/commit/9bfb894e6ed3d5eac532280bdc046b74af25cb53))
+
 ## 0.15.0 (2026-03-27)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.14.0...v0.15.0)
