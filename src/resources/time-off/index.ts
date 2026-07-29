@@ -1,21 +1,6 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-export {
-  Policies,
-  type PolicyRetrieveResponse,
-  type PolicyListResponse,
-  type PolicyListParams,
-  type PolicyListResponsesCursorPage,
-} from './policies';
-export {
-  TimeOff,
-  type TimeOffListAssignmentsResponse,
-  type TimeOffListBalancesResponse,
-  type TimeOffListRequestsResponse,
-  type TimeOffListAssignmentsParams,
-  type TimeOffListBalancesParams,
-  type TimeOffListRequestsParams,
-  type TimeOffListAssignmentsResponsesCursorPage,
-  type TimeOffListBalancesResponsesCursorPage,
-  type TimeOffListRequestsResponsesCursorPage,
-} from './time-off';
+export { TimeOff } from "./time-off";
+export type { TimeOffListAssignmentsParams, TimeOffListAssignmentsResponse, TimeOffListBalancesParams, TimeOffListBalancesResponse, TimeOffListRequestsParams, TimeOffListRequestsResponse } from "./time-off";
+export { Policies } from "./policies";
+export type { PolicyTimeOffGetParams, PolicyTimeOffGetResponse, PolicyTimeOffGet2Response } from "./policies";

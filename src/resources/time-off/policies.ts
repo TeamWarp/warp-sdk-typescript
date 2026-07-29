@@ -1,114 +1,121 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from '../../core/resource';
-import { APIPromise } from '../../core/api-promise';
-import { CursorPage, type CursorPageParams, PagePromise } from '../../core/pagination';
-import { RequestOptions } from '../../internal/request-options';
-import { path } from '../../internal/utils/path';
+import { APIResource } from "../../resource";
+import { APIPromise } from "../../api-promise";
+import type { RequestOptions } from "../../internal/request-options";
+import { path as __scalarPath } from "../../internal/utils/path";
 
-/**
- * Endpoints for worker time off management. See time off requests, which workers are assigned to which policies, or worker remaining balances.
- */
 export class Policies extends APIResource {
   /**
-   * Get a specific time off policy by id
-   */
-  retrieve(id: string, options?: RequestOptions): APIPromise<PolicyRetrieveResponse> {
-    return this._client.get(path`/v1/time_off/policies/${id}`, options);
-  }
-
-  /**
    * Get the time off policies for your company
+   *
+   * @param {PolicyTimeOffGetParams} [query] - The parameters to send with the request.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<PolicyTimeOffGetResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const timeOffGet = await client.timeOff.policies.timeOffGet();
+   * ```
    */
-  list(
-    query: PolicyListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<PolicyListResponsesCursorPage, PolicyListResponse> {
-    return this._client.getAPIList('/v1/time_off/policies', CursorPage<PolicyListResponse>, {
-      query,
-      ...options,
-    });
+  timeOffGet(query: PolicyTimeOffGetParams | null | undefined = {}, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
+    return this._client.get("/v1/time_off/policies", { query, ...options });
+  }
+
+  /**
+   * Get a specific time off policy by id
+   *
+   * @param {string} id - a string starting with "top_"
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<PolicyTimeOffGet2Response>} Success
+   *
+   * @example
+   * ```ts
+   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2("top_1234");
+   * ```
+   */
+  timeOffGet2(id: string, options?: RequestOptions): APIPromise<PolicyTimeOffGet2Response> {
+    return this._client.get(__scalarPath`/v1/time_off/policies/${id}`, options);
   }
 }
 
-export type PolicyListResponsesCursorPage = CursorPage<PolicyListResponse>;
-
-export interface PolicyRetrieveResponse {
-  /**
-   * a string starting with "top\_"
-   */
-  id: string;
-
-  description: string | null;
-
-  hoursWorkedPerChunk: number | null;
-
-  isUnlimited: boolean;
-
-  minutesPerChunk: number | null;
-
-  minutesPerPeriod: number | null;
-
-  name: string;
-
-  paid: boolean;
-
-  schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited';
-
-  /**
-   * a string starting with "tot\_"
-   */
-  timeOffTypeId: string;
-
-  timeOffTypeName: string;
-
-  unit: 'hour' | 'day';
-}
-
-export interface PolicyListResponse {
-  /**
-   * a string starting with "top\_"
-   */
-  id: string;
-
-  description: string | null;
-
-  hoursWorkedPerChunk: number | null;
-
-  isUnlimited: boolean;
-
-  minutesPerChunk: number | null;
-
-  minutesPerPeriod: number | null;
-
-  name: string;
-
-  paid: boolean;
-
-  schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited';
-
-  /**
-   * a string starting with "tot\_"
-   */
-  timeOffTypeId: string;
-
-  timeOffTypeName: string;
-
-  unit: 'hour' | 'day';
-}
-
-export interface PolicyListParams extends CursorPageParams {
+export interface PolicyTimeOffGetParams {
   /**
    * a number less than or equal to 100
    */
   limit?: string;
+  /**
+   * a string starting with "top_"
+   * @pattern ^top_
+   */
+  afterId?: string;
+  /**
+   * a string starting with "top_"
+   * @pattern ^top_
+   */
+  beforeId?: string;
 }
 
+export interface PolicyTimeOffGetResponse {
+  hasMore: boolean;
+  /**
+   * an integer
+   */
+  count: number;
+  data: Array<PolicyTimeOffGetResponse.Data>;
+}
+
+export namespace PolicyTimeOffGetResponse {
+  export interface Data {
+    /**
+     * a string starting with "top_"
+     * @pattern ^top_
+     */
+    id: string;
+    /**
+     * a string starting with "tot_"
+     * @pattern ^tot_
+     */
+    timeOffTypeId: string;
+    timeOffTypeName: string;
+    paid: boolean;
+    isUnlimited: boolean;
+    schedule: "per_hour_worked" | "monthly" | "yearly" | "unlimited";
+    unit: "hour" | "day";
+    name: string;
+    description: string | null;
+    hoursWorkedPerChunk: number | null;
+    minutesPerChunk: number | null;
+    minutesPerPeriod: number | null;
+  }
+}
+
+export interface PolicyTimeOffGet2Response {
+  /**
+   * a string starting with "top_"
+   * @pattern ^top_
+   */
+  id: string;
+  /**
+   * a string starting with "tot_"
+   * @pattern ^tot_
+   */
+  timeOffTypeId: string;
+  timeOffTypeName: string;
+  paid: boolean;
+  isUnlimited: boolean;
+  schedule: "per_hour_worked" | "monthly" | "yearly" | "unlimited";
+  unit: "hour" | "day";
+  name: string;
+  description: string | null;
+  hoursWorkedPerChunk: number | null;
+  minutesPerChunk: number | null;
+  minutesPerPeriod: number | null;
+}
 export declare namespace Policies {
   export {
-    type PolicyRetrieveResponse as PolicyRetrieveResponse,
-    type PolicyListResponse as PolicyListResponse,
-    type PolicyListResponsesCursorPage as PolicyListResponsesCursorPage,
-    type PolicyListParams as PolicyListParams,
+    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
+    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
+    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
   };
 }
