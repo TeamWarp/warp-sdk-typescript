@@ -1,117 +1,150 @@
-// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+// File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from '../core/resource';
-import { APIPromise } from '../core/api-promise';
-import { CursorPage, type CursorPageParams, PagePromise } from '../core/pagination';
-import { RequestOptions } from '../internal/request-options';
-import { path } from '../internal/utils/path';
+import { APIResource } from "../resource";
+import { APIPromise } from "../api-promise";
+import type { RequestOptions } from "../internal/request-options";
+import { path as __scalarPath } from "../internal/utils/path";
+import type * as OffersAPI from "./offers";
+import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
 
-/**
- * Endpoints for department management. Create, list, and update departments within your company.
- */
 export class Departments extends APIResource {
   /**
+   * List all departments for your company.
+   *
+   * @param {DepartmentListParams} [query] - The parameters to send with the request.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<DepartmentListResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const list = await client.departments.list();
+   * ```
+   */
+  list(query: DepartmentListParams | null | undefined = {}, options?: RequestOptions): APIPromise<DepartmentListResponse> {
+    return this._client.get("/v1/departments", { query, ...options });
+  }
+
+  /**
    * Create a new department.
+   *
+   * @param {DepartmentCreateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<DepartmentCreateResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const create = await client.departments.create({
+   *   name: "",
+   * });
+   * ```
    */
   create(body: DepartmentCreateParams, options?: RequestOptions): APIPromise<DepartmentCreateResponse> {
-    return this._client.post('/v1/departments', { body, ...options });
+    return this._client.post("/v1/departments", { body, ...options });
   }
 
   /**
    * Update an existing department.
+   *
+   * @param {string} id - The unique public id of the department
+   * @param {DepartmentUpdateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<DepartmentUpdateResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const update = await client.departments.update("dpt_1234", {});
+   * ```
    */
-  update(
-    id: string,
-    body: DepartmentUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<DepartmentUpdateResponse> {
-    return this._client.patch(path`/v1/departments/${id}`, { body, ...options });
-  }
-
-  /**
-   * List all departments for your company.
-   */
-  list(
-    query: DepartmentListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): PagePromise<DepartmentListResponsesCursorPage, DepartmentListResponse> {
-    return this._client.getAPIList('/v1/departments', CursorPage<DepartmentListResponse>, {
-      query,
-      ...options,
-    });
+  update(id: string, body: DepartmentUpdateParams, options?: RequestOptions): APIPromise<DepartmentUpdateResponse> {
+    return this._client.patch(__scalarPath`/v1/departments/${id}`, { body, ...options });
   }
 }
 
-export type DepartmentListResponsesCursorPage = CursorPage<DepartmentListResponse>;
-
-export interface DepartmentCreateResponse {
+export interface DepartmentListParams {
+  /**
+   * a number less than or equal to 100
+   */
+  limit?: string;
   /**
    * The unique public id of the department
+   * @pattern ^dpt_
    */
-  id: string;
-
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: string;
-
-  name: string;
-}
-
-export interface DepartmentUpdateResponse {
+  afterId?: string;
   /**
    * The unique public id of the department
+   * @pattern ^dpt_
    */
-  id: string;
-
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: string;
-
-  name: string;
+  beforeId?: string;
 }
 
 export interface DepartmentListResponse {
+  hasMore: boolean;
   /**
-   * The unique public id of the department
+   * an integer
    */
-  id: string;
+  count: number;
+  data: Array<DepartmentListResponse.Data>;
+}
 
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: string;
-
-  name: string;
+export namespace DepartmentListResponse {
+  export interface Data {
+    /**
+     * The unique public id of the department
+     * @pattern ^dpt_
+     */
+    id: string;
+    name: string;
+    /**
+     * a string to be decoded into a Date
+     */
+    createdAt: OffersAPI.Date;
+  }
 }
 
 export interface DepartmentCreateParams {
   /**
    * a non empty string
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
+  name: CustomWorkerFieldsAPI.Trimmed;
+}
+
+export interface DepartmentCreateResponse {
+  /**
+   * The unique public id of the department
+   * @pattern ^dpt_
+   */
+  id: string;
   name: string;
+  /**
+   * a string to be decoded into a Date
+   */
+  createdAt: OffersAPI.Date;
 }
 
 export interface DepartmentUpdateParams {
   name?: string;
 }
 
-export interface DepartmentListParams extends CursorPageParams {
+export interface DepartmentUpdateResponse {
   /**
-   * a number less than or equal to 100
+   * The unique public id of the department
+   * @pattern ^dpt_
    */
-  limit?: string;
+  id: string;
+  name: string;
+  /**
+   * a string to be decoded into a Date
+   */
+  createdAt: OffersAPI.Date;
 }
-
 export declare namespace Departments {
   export {
+    type DepartmentListResponse as DepartmentListResponse,
     type DepartmentCreateResponse as DepartmentCreateResponse,
     type DepartmentUpdateResponse as DepartmentUpdateResponse,
-    type DepartmentListResponse as DepartmentListResponse,
-    type DepartmentListResponsesCursorPage as DepartmentListResponsesCursorPage,
+    type DepartmentListParams as DepartmentListParams,
     type DepartmentCreateParams as DepartmentCreateParams,
     type DepartmentUpdateParams as DepartmentUpdateParams,
-    type DepartmentListParams as DepartmentListParams,
   };
 }
