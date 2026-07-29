@@ -10,7 +10,7 @@ export class Offers extends APIResource {
   /**
    * List the candidate offers for your company.
    *
-   * @param {OfferListParams} [params] - The parameters to send with the request.
+   * @param {OfferListParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferListResponse>} Success
    *
@@ -19,9 +19,8 @@ export class Offers extends APIResource {
    * const list = await client.offers.list();
    * ```
    */
-  list(params: OfferListParams | null | undefined = {}, options?: RequestOptions): APIPromise<OfferListResponse> {
-    const { limit, afterId, beforeId, statuses, workerTypes, candidateEmail } = params ?? {};
-    return this._client.get("/v1/offers", { query: { limit: limit, afterId: afterId, beforeId: beforeId, statuses: statuses, workerTypes: workerTypes, candidateEmail: candidateEmail }, ...options });
+  list(query: OfferListParams | null | undefined = {}, options?: RequestOptions): APIPromise<OfferListResponse> {
+    return this._client.get("/v1/offers", { query, ...options });
   }
 
   /**
@@ -53,7 +52,7 @@ export class Offers extends APIResource {
    * ```
    */
   create(body: OfferCreateParams, options?: RequestOptions): APIPromise<OfferCreateResponse> {
-    return this._client.post("/v1/offers", { body: body, ...options });
+    return this._client.post("/v1/offers", { body, ...options });
   }
 
   /**
@@ -88,7 +87,7 @@ export class Offers extends APIResource {
    * ```
    */
   extendDeadline(id: string, body: OfferExtendDeadlineParams, options?: RequestOptions): APIPromise<OfferExtendDeadlineResponse> {
-    return this._client.post(__scalarPath`/v1/offers/${id}/extend-deadline`, { body: body, ...options });
+    return this._client.post(__scalarPath`/v1/offers/${id}/extend-deadline`, { body, ...options });
   }
 
   /**

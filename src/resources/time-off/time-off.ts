@@ -13,7 +13,7 @@ export class TimeOff extends APIResource {
   /**
    * Time off assignments are mappings between workers and time off policies. Useful for finding out which policies a worker is assigned to, or which workers are assigned to a given policy.
    *
-   * @param {TimeOffListAssignmentsParams} [params] - The parameters to send with the request.
+   * @param {TimeOffListAssignmentsParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<TimeOffListAssignmentsResponse>} Success
    *
@@ -22,15 +22,14 @@ export class TimeOff extends APIResource {
    * const listAssignments = await client.timeOff.listAssignments();
    * ```
    */
-  listAssignments(params: TimeOffListAssignmentsParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListAssignmentsResponse> {
-    const { limit, afterId, beforeId, policyIds, workerIds } = params ?? {};
-    return this._client.get("/v1/time_off/assignments", { query: { limit: limit, afterId: afterId, beforeId: beforeId, policyIds: policyIds, workerIds: workerIds }, ...options });
+  listAssignments(query: TimeOffListAssignmentsParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListAssignmentsResponse> {
+    return this._client.get("/v1/time_off/assignments", { query, ...options });
   }
 
   /**
    * Get worker remaining time-off balances.
    *
-   * @param {TimeOffListBalancesParams} [params] - The parameters to send with the request.
+   * @param {TimeOffListBalancesParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<TimeOffListBalancesResponse>} Success
    *
@@ -39,15 +38,14 @@ export class TimeOff extends APIResource {
    * const listBalances = await client.timeOff.listBalances();
    * ```
    */
-  listBalances(params: TimeOffListBalancesParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListBalancesResponse> {
-    const { limit, afterId, beforeId, policyIds, workerIds, startDate, endDate } = params ?? {};
-    return this._client.get("/v1/time_off/balances", { query: { limit: limit, afterId: afterId, beforeId: beforeId, policyIds: policyIds, workerIds: workerIds, startDate: startDate, endDate: endDate }, ...options });
+  listBalances(query: TimeOffListBalancesParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListBalancesResponse> {
+    return this._client.get("/v1/time_off/balances", { query, ...options });
   }
 
   /**
    * Get the time off requests that workers in your company have made.
    *
-   * @param {TimeOffListRequestsParams} [params] - The parameters to send with the request.
+   * @param {TimeOffListRequestsParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<TimeOffListRequestsResponse>} Success
    *
@@ -56,9 +54,8 @@ export class TimeOff extends APIResource {
    * const listRequests = await client.timeOff.listRequests();
    * ```
    */
-  listRequests(params: TimeOffListRequestsParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListRequestsResponse> {
-    const { limit, afterId, beforeId, statuses, policyIds, workerIds, startsOnOrAfter, startsBefore, endsOnOrAfter, endsBefore } = params ?? {};
-    return this._client.get("/v1/time_off/requests", { query: { limit: limit, afterId: afterId, beforeId: beforeId, statuses: statuses, policyIds: policyIds, workerIds: workerIds, startsOnOrAfter: startsOnOrAfter, startsBefore: startsBefore, endsOnOrAfter: endsOnOrAfter, endsBefore: endsBefore }, ...options });
+  listRequests(query: TimeOffListRequestsParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListRequestsResponse> {
+    return this._client.get("/v1/time_off/requests", { query, ...options });
   }
 }
 
