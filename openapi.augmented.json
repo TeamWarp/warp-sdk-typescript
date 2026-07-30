@@ -17497,7 +17497,7 @@
         }
       }
     },
-    "employee:created": {
+    "worker:created": {
       "post": {
         "tags": [
           "Workers"
@@ -17550,7 +17550,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:created"
+                      "worker:created"
                     ],
                     "description": "The event type."
                   },
@@ -17797,7 +17797,7 @@
         }
       }
     },
-    "employee:updated": {
+    "worker:updated": {
       "post": {
         "tags": [
           "Workers"
@@ -17850,7 +17850,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:updated"
+                      "worker:updated"
                     ],
                     "description": "The event type."
                   },
@@ -18097,7 +18097,7 @@
         }
       }
     },
-    "employee:deleted": {
+    "worker:deleted": {
       "post": {
         "tags": [
           "Workers"
@@ -18150,7 +18150,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:deleted"
+                      "worker:deleted"
                     ],
                     "description": "The event type."
                   },
@@ -18397,7 +18397,7 @@
         }
       }
     },
-    "employee:invite_sent": {
+    "worker:invite_sent": {
       "post": {
         "tags": [
           "Workers"
@@ -18450,7 +18450,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:invite_sent"
+                      "worker:invite_sent"
                     ],
                     "description": "The event type."
                   },
@@ -18697,7 +18697,7 @@
         }
       }
     },
-    "employee:invite_accepted": {
+    "worker:invite_accepted": {
       "post": {
         "tags": [
           "Workers"
@@ -18750,7 +18750,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:invite_accepted"
+                      "worker:invite_accepted"
                     ],
                     "description": "The event type."
                   },
@@ -18997,7 +18997,7 @@
         }
       }
     },
-    "employee:onboarding_completed": {
+    "worker:onboarding_completed": {
       "post": {
         "tags": [
           "Workers"
@@ -19050,7 +19050,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:onboarding_completed"
+                      "worker:onboarding_completed"
                     ],
                     "description": "The event type."
                   },
@@ -19297,7 +19297,7 @@
         }
       }
     },
-    "employee:offboarding_started": {
+    "worker:offboarding_started": {
       "post": {
         "tags": [
           "Workers"
@@ -19350,7 +19350,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:offboarding_started"
+                      "worker:offboarding_started"
                     ],
                     "description": "The event type."
                   },
@@ -19597,7 +19597,7 @@
         }
       }
     },
-    "employee:offboarded": {
+    "worker:offboarded": {
       "post": {
         "tags": [
           "Workers"
@@ -19650,7 +19650,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:offboarded"
+                      "worker:offboarded"
                     ],
                     "description": "The event type."
                   },
@@ -19897,7 +19897,7 @@
         }
       }
     },
-    "employee:reactivated": {
+    "worker:reactivated": {
       "post": {
         "tags": [
           "Workers"
@@ -19950,7 +19950,7 @@
                   "event_type": {
                     "type": "string",
                     "enum": [
-                      "employee:reactivated"
+                      "worker:reactivated"
                     ],
                     "description": "The event type."
                   },
