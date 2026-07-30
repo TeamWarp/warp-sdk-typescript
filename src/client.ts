@@ -16,8 +16,7 @@ import type { RequestInit, RequestInfo, BodyInit, Fetch } from './internal/built
 import { buildHeaders, type HeadersLike } from './internal/headers';
 import type { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValue } from './internal/types';
-import { stringify as stringifyQuery } from './internal/qs/stringify';
-import type { StringifyOptions } from './internal/qs/types';
+import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
 import { CustomWorkerFields, type Trimmed, type NonEmptyTrimmedString, type CustomWorkerFieldListResponse, type CustomWorkerFieldCreateResponse, type CustomWorkerFieldRetrieveResponse, type CustomWorkerFieldUpdateResponse, type CustomWorkerFieldArchiveResponse, type CustomWorkerFieldCreateOptionResponse, type CustomWorkerFieldUpdateOptionResponse, type CustomWorkerFieldArchiveOptionResponse, type CustomWorkerFieldListValuesResponse, type CustomWorkerFieldUpsertValueResponse, type CustomWorkerFieldCreateParams, type CustomWorkerFieldUpdateParams, type CustomWorkerFieldCreateOptionParams, type CustomWorkerFieldUpdateOptionParams, type CustomWorkerFieldListValuesParams, type CustomWorkerFieldUpsertValueParams, type CustomWorkerFieldClearValueParams } from "./resources/custom-worker-fields";
@@ -28,9 +27,6 @@ import { Workers, type OfficeWorkLocation, type RemoteWorkLocation, type WorkerL
 import { Workplaces, type WorkplaceListResponse, type WorkplaceCreateResponse, type WorkplaceUpdateResponse, type WorkplaceListParams, type WorkplaceCreateParams, type WorkplaceUpdateParams } from "./resources/workplaces";
 
 export type AuthTokenProvider = () => string | Promise<string>;
-
-const queryArrayFormat: NonNullable<StringifyOptions["arrayFormat"]> = "indices";
-const queryAllowDots = false;
 
 export interface ClientOptions {
   /**
@@ -213,7 +209,7 @@ export class WarpAPI {
   }
 
   protected stringifyQuery(query: object | Record<string, unknown>): string {
-    return stringifyQuery(query, { arrayFormat: queryArrayFormat, allowDots: queryAllowDots });
+    return stringifyQuery(query);
   }
 
   private getUserAgent(): string {
