@@ -52,7 +52,7 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 import WarpAPI from "warp-hr";
 
 const client = new WarpAPI({
-  apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
+  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 ```
 
