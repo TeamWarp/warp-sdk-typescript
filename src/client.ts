@@ -19,7 +19,7 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
-import { CustomWorkerFields, type Trimmed, type NonEmptyTrimmedString, type CustomWorkerFieldListResponse, type CustomWorkerFieldCreateResponse, type CustomWorkerFieldRetrieveResponse, type CustomWorkerFieldUpdateResponse, type CustomWorkerFieldArchiveResponse, type CustomWorkerFieldCreateOptionResponse, type CustomWorkerFieldUpdateOptionResponse, type CustomWorkerFieldArchiveOptionResponse, type CustomWorkerFieldListValuesResponse, type CustomWorkerFieldUpsertValueResponse, type CustomWorkerFieldCreateParams, type CustomWorkerFieldUpdateParams, type CustomWorkerFieldCreateOptionParams, type CustomWorkerFieldUpdateOptionParams, type CustomWorkerFieldListValuesParams, type CustomWorkerFieldUpsertValueParams, type CustomWorkerFieldClearValueParams } from "./resources/custom-worker-fields";
+import { CustomWorkerFields, type Trimmed, type NonEmptyTrimmedString } from "./resources/custom-worker-fields";
 import { Departments, type DepartmentListResponse, type DepartmentCreateResponse, type DepartmentUpdateResponse, type DepartmentListParams, type DepartmentCreateParams, type DepartmentUpdateParams } from "./resources/departments";
 import { Offers, type Date, type OfferListResponse, type OfferCreateResponse, type OfferVoidResponse, type OfferExtendDeadlineResponse, type OfferResendResponse, type OfferListParams, type OfferCreateParams, type OfferExtendDeadlineParams } from "./resources/offers";
 import { TimeOff, type TimeOffListAssignmentsResponse, type TimeOffListBalancesResponse, type TimeOffListRequestsResponse, type TimeOffListAssignmentsParams, type TimeOffListBalancesParams, type TimeOffListRequestsParams } from "./resources/time-off/time-off";
@@ -804,23 +804,6 @@ export declare namespace WarpAPI {
     CustomWorkerFields as CustomWorkerFields,
     type Trimmed as Trimmed,
     type NonEmptyTrimmedString as NonEmptyTrimmedString,
-    type CustomWorkerFieldListResponse as CustomWorkerFieldListResponse,
-    type CustomWorkerFieldCreateResponse as CustomWorkerFieldCreateResponse,
-    type CustomWorkerFieldRetrieveResponse as CustomWorkerFieldRetrieveResponse,
-    type CustomWorkerFieldUpdateResponse as CustomWorkerFieldUpdateResponse,
-    type CustomWorkerFieldArchiveResponse as CustomWorkerFieldArchiveResponse,
-    type CustomWorkerFieldCreateOptionResponse as CustomWorkerFieldCreateOptionResponse,
-    type CustomWorkerFieldUpdateOptionResponse as CustomWorkerFieldUpdateOptionResponse,
-    type CustomWorkerFieldArchiveOptionResponse as CustomWorkerFieldArchiveOptionResponse,
-    type CustomWorkerFieldListValuesResponse as CustomWorkerFieldListValuesResponse,
-    type CustomWorkerFieldUpsertValueResponse as CustomWorkerFieldUpsertValueResponse,
-    type CustomWorkerFieldCreateParams as CustomWorkerFieldCreateParams,
-    type CustomWorkerFieldUpdateParams as CustomWorkerFieldUpdateParams,
-    type CustomWorkerFieldCreateOptionParams as CustomWorkerFieldCreateOptionParams,
-    type CustomWorkerFieldUpdateOptionParams as CustomWorkerFieldUpdateOptionParams,
-    type CustomWorkerFieldListValuesParams as CustomWorkerFieldListValuesParams,
-    type CustomWorkerFieldUpsertValueParams as CustomWorkerFieldUpsertValueParams,
-    type CustomWorkerFieldClearValueParams as CustomWorkerFieldClearValueParams,
   };
 
   export {
