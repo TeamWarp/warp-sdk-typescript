@@ -19,13 +19,13 @@ npm install warp-hr
 import WarpAPI from "warp-hr";
 
 const client = new WarpAPI({
-  apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
+  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 ```
 
 Provide credentials using the options below. Environment variables are read automatically when the target runtime supports them:
 
-- `apiKey` (env: `API_KEY`) — Credential for the apiKey scheme.
+- `apiKey` (env: `WARP_API_KEY`) — Credential for the apiKey scheme.
 
 ## Calling operations
 
@@ -33,7 +33,7 @@ Provide credentials using the options below. Environment variables are read auto
 import WarpAPI from "warp-hr";
 
 const client = new WarpAPI({
-  apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
+  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 
 const list = await client.customWorkerFields.list();

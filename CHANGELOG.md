@@ -1,11 +1,20 @@
 # Changelog
 
-## [0.16.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.15.0...v0.16.0) (2026-07-29)
+## [0.17.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.15.0...v0.17.0) (2026-07-30)
 
 
 ### Features
 
 * **api:** initial SDK generation ([9bfb894](https://github.com/TeamWarp/warp-sdk-typescript/commit/9bfb894e6ed3d5eac532280bdc046b74af25cb53))
+
+
+### Chores
+
+* **api:** regenerate SDK ([6e751c6](https://github.com/TeamWarp/warp-sdk-typescript/commit/6e751c6ba8a9d1722af6ef6ff53cb138334c25c8))
+* **api:** update generated SDK content ([9d7fd5d](https://github.com/TeamWarp/warp-sdk-typescript/commit/9d7fd5d778cfdcb4ae5a42860a18f1b4067e7747))
+* **api:** update generated SDK content ([2027aa2](https://github.com/TeamWarp/warp-sdk-typescript/commit/2027aa2d992ecd830a0bad2c1052e0fbf39ddd5c))
+* **api:** update generated SDK content ([807a58e](https://github.com/TeamWarp/warp-sdk-typescript/commit/807a58e492807486106b38541248544f0e95816a))
+* release 0.17.0 ([8d786e2](https://github.com/TeamWarp/warp-sdk-typescript/commit/8d786e2f390c6e3da93321b09c914ad103ba8e3b))
 
 ## 0.15.0 (2026-03-27)
 

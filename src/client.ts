@@ -16,8 +16,7 @@ import type { RequestInit, RequestInfo, BodyInit, Fetch } from './internal/built
 import { buildHeaders, type HeadersLike } from './internal/headers';
 import type { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValue } from './internal/types';
-import { stringify as stringifyQuery } from './internal/qs/stringify';
-import type { StringifyOptions } from './internal/qs/types';
+import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
 import { CustomWorkerFields, type Trimmed, type NonEmptyTrimmedString, type CustomWorkerFieldListResponse, type CustomWorkerFieldCreateResponse, type CustomWorkerFieldRetrieveResponse, type CustomWorkerFieldUpdateResponse, type CustomWorkerFieldArchiveResponse, type CustomWorkerFieldCreateOptionResponse, type CustomWorkerFieldUpdateOptionResponse, type CustomWorkerFieldArchiveOptionResponse, type CustomWorkerFieldListValuesResponse, type CustomWorkerFieldUpsertValueResponse, type CustomWorkerFieldCreateParams, type CustomWorkerFieldUpdateParams, type CustomWorkerFieldCreateOptionParams, type CustomWorkerFieldUpdateOptionParams, type CustomWorkerFieldListValuesParams, type CustomWorkerFieldUpsertValueParams, type CustomWorkerFieldClearValueParams } from "./resources/custom-worker-fields";
@@ -28,9 +27,6 @@ import { Workers, type OfficeWorkLocation, type RemoteWorkLocation, type WorkerL
 import { Workplaces, type WorkplaceListResponse, type WorkplaceCreateResponse, type WorkplaceUpdateResponse, type WorkplaceListParams, type WorkplaceCreateParams, type WorkplaceUpdateParams } from "./resources/workplaces";
 
 export type AuthTokenProvider = () => string | Promise<string>;
-
-const queryArrayFormat: NonNullable<StringifyOptions["arrayFormat"]> = "indices";
-const queryAllowDots = false;
 
 export interface ClientOptions {
   /**
@@ -132,7 +128,7 @@ export class WarpAPI {
   /**
    * API Client for interfacing with the WarpApi API.
    *
-   * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["API_KEY"] ?? undefined]
+   * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
    * @param {string} [opts.baseURL=process.env["WARP_BASE_URL"] ?? https://api.joinwarp.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -143,7 +139,7 @@ export class WarpAPI {
    */
   constructor({
     baseURL = readEnv("WARP_BASE_URL"),
-    apiKey = readEnv("API_KEY"),
+    apiKey = readEnv("WARP_API_KEY"),
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
@@ -213,7 +209,7 @@ export class WarpAPI {
   }
 
   protected stringifyQuery(query: object | Record<string, unknown>): string {
-    return stringifyQuery(query, { arrayFormat: queryArrayFormat, allowDots: queryAllowDots });
+    return stringifyQuery(query);
   }
 
   private getUserAgent(): string {

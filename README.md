@@ -36,7 +36,7 @@ npm install warp-hr
 import WarpAPI from "warp-hr";
 
 const client = new WarpAPI({
-  apiKey: process.env["API_KEY"], // defaults to the API_KEY env var
+  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 
 const list = await client.customWorkerFields.list();
@@ -55,7 +55,7 @@ Pass credentials to the generated client constructor. Environment variables are 
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string \| provider` | - | Credential for the apiKey scheme. Defaults to API_KEY. |
+| `apiKey` | `string \| provider` | - | Credential for the apiKey scheme. Defaults to WARP_API_KEY. |
 
 Declared schemes:
 
@@ -100,7 +100,7 @@ const client = new WarpAPI({
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `apiKey` | `string \| AuthTokenProvider` | `process.env["API_KEY"]` | Credential for the apiKey scheme. |
+| `apiKey` | `string \| AuthTokenProvider` | `process.env["WARP_API_KEY"]` | Credential for the apiKey scheme. |
 | `baseURL` | `string \| null` | `process.env["WARP_BASE_URL"]` | Override the default API base URL. Pass `null` when selecting a configured environment. |
 | `timeout` | `number` | `60000` | Maximum time in milliseconds to wait for a response before aborting a request. |
 | `maxRetries` | `number` | `2` | Number of retries for temporary failures. |
