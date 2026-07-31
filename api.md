@@ -4,6 +4,19 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 
 ## Contents
 
+- [`CustomFields`](#customfields)
+  - [List Fields](#list-fields)
+  - [Create Field](#create-field)
+  - [Get Field](#get-field)
+  - [Update Field](#update-field)
+  - [Archive Field](#archive-field)
+  - [Create Field Option](#create-field-option)
+  - [Update Field Option](#update-field-option)
+  - [Delete Unused Field Option](#delete-unused-field-option)
+  - [Archive Field Option](#archive-field-option)
+  - [List Field Values](#list-field-values)
+  - [Set Field Value](#set-field-value)
+  - [Clear Field Value](#clear-field-value)
 - [`Departments`](#departments)
   - [List Departments](#list-departments)
   - [Create Department](#create-department)
@@ -40,6 +53,171 @@ import WarpAPI from "warp-hr";
 
 const client = new WarpAPI({
   apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
+});
+```
+
+## `CustomFields`
+
+### List Fields
+
+List the custom worker field definitions your API key can read. Each field belongs to a worker-data category; fields whose category your key cannot read are omitted unless the key holds workers:custom_fields.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`CustomFieldListResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const list = await client.customFields.list();
+```
+
+### Create Field
+
+Create a custom worker field definition. The field type is immutable after creation. Select and multi_select fields can include their initial options. Access to values derives from the field category; requires the workers:custom_fields permission.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldCreateParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldCreateResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const create = await client.customFields.create({
+  name: "",
+  type: "text",
+  category: "info",
+});
+```
+
+### Get Field
+
+Get a custom worker field definition, including its select options. Archived options may appear on existing worker values but cannot be newly selected.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`CustomFieldRetrieveResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const retrieve = await client.customFields.retrieve("cf_1234");
+```
+
+### Update Field
+
+Update a custom worker field definition. The field type cannot be changed; create a new field instead. Requires the workers:custom_fields permission; changing the category, access level, or input source requires the manage level.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldUpdateParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldUpdateResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const update = await client.customFields.update("cf_1234", {});
+```
+
+### Archive Field
+
+Archive a custom worker field. Archived fields keep their existing worker values but cannot receive new ones. Requires the workers:custom_fields permission at the manage level.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`CustomFieldArchiveResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const archive = await client.customFields.archive("cf_1234");
+```
+
+### Create Field Option
+
+Add an option to a select or multi_select custom worker field. The option value should be treated as stable; the label can change. Requires the workers:custom_fields permission.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldCreateOptionParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldCreateOptionResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const createOption = await client.customFields.createOption("cf_1234", {
+  label: "x",
+  value: "x",
+});
+```
+
+### Update Field Option
+
+Update the label or sort order of a custom worker field option. Options of archived fields cannot be edited. Requires the workers:custom_fields permission.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldUpdateOptionParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldUpdateOptionResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const updateOption = await client.customFields.updateOption("cfo_1234", {});
+```
+
+### Delete Unused Field Option
+
+Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.
+
+```ts
+await client.customFields.deleteOption("cfo_1234");
+```
+
+### Archive Field Option
+
+Archive a custom worker field option. Archived options remain on existing worker values but cannot be newly selected. Requires the workers:custom_fields permission at the manage level.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`CustomFieldArchiveOptionResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const archiveOption = await client.customFields.archiveOption("cfo_1234");
+```
+
+### List Field Values
+
+List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldListValuesParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldListValuesResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const listValues = await client.customFields.listValues();
+```
+
+### Set Field Value
+
+Create or replace a worker's value for a custom field. The value shape must match the field type, and your API key must hold write on the field's category.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldUpsertValueParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldUpsertValueResponse`](./src/resources/custom-fields.ts) |
+
+```ts
+const upsertValue = await client.customFields.upsertValue({
+  workerId: "wrk_1234",
+  fieldId: "cf_1234",
+  value: {
+    type: "text",
+    value: "",
+  },
+});
+```
+
+### Clear Field Value
+
+Remove a worker's value for a custom field. Your API key must hold write on the field's category.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`CustomFieldClearValueParams`](./src/resources/custom-fields.ts) |
+
+```ts
+await client.customFields.clearValue({
+  workerId: "wrk_1234",
+  fieldId: "cf_1234",
 });
 ```
 

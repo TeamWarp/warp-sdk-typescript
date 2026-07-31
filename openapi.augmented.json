@@ -206,7 +206,14 @@
           }
         },
         "description": "List the custom worker field definitions your API key can read. Each field belongs to a worker-data category; fields whose category your key cannot read are omitted unless the key holds workers:custom_fields.",
-        "summary": "List Fields"
+        "summary": "List Fields",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.customFields.list();\nconsole.log(list);"
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -527,7 +534,14 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.customFields.create({\n  name: \"\",\n  type: \"text\",\n  category: \"info\",\n});\nconsole.log(create);"
+          }
+        ]
       }
     },
     "/v1/custom_fields/{id}": {
@@ -793,7 +807,14 @@
           }
         },
         "description": "Get a custom worker field definition, including its select options. Archived options may appear on existing worker values but cannot be newly selected.",
-        "summary": "Get Field"
+        "summary": "Get Field",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.customFields.retrieve(\"cf_1234\");\nconsole.log(retrieve);"
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -1093,7 +1114,14 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.customFields.update(\"cf_1234\", {});\nconsole.log(update);"
+          }
+        ]
       }
     },
     "/v1/custom_fields/{id}/archive": {
@@ -1313,7 +1341,14 @@
           }
         },
         "description": "Archive a custom worker field. Archived fields keep their existing worker values but cannot receive new ones. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Archive Field"
+        "summary": "Archive Field",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst archive = await client.customFields.archive(\"cf_1234\");\nconsole.log(archive);"
+          }
+        ]
       }
     },
     "/v1/custom_fields/{id}/options": {
@@ -1513,7 +1548,14 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst createOption = await client.customFields.createOption(\"cf_1234\", {\n  label: \"x\",\n  value: \"x\",\n});\nconsole.log(createOption);"
+          }
+        ]
       }
     },
     "/v1/custom_field_options/{id}": {
@@ -1707,7 +1749,14 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst updateOption = await client.customFields.updateOption(\"cfo_1234\", {});\nconsole.log(updateOption);"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1826,7 +1875,14 @@
           }
         },
         "description": "Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Delete Unused Field Option"
+        "summary": "Delete Unused Field Option",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customFields.deleteOption(\"cfo_1234\");"
+          }
+        ]
       }
     },
     "/v1/custom_field_options/{id}/archive": {
@@ -1983,7 +2039,14 @@
           }
         },
         "description": "Archive a custom worker field option. Archived options remain on existing worker values but cannot be newly selected. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Archive Field Option"
+        "summary": "Archive Field Option",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst archiveOption = await client.customFields.archiveOption(\"cfo_1234\");\nconsole.log(archiveOption);"
+          }
+        ]
       }
     },
     "/v1/custom_field_values": {
@@ -2464,7 +2527,14 @@
           }
         },
         "description": "List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.",
-        "summary": "List Field Values"
+        "summary": "List Field Values",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listValues = await client.customFields.listValues();\nconsole.log(listValues);"
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -3213,7 +3283,14 @@
             }
           },
           "required": true
-        }
+        },
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst upsertValue = await client.customFields.upsertValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n  value: {\n    type: \"text\",\n    value: \"\",\n  },\n});\nconsole.log(upsertValue);"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -3344,7 +3421,14 @@
           }
         },
         "description": "Remove a worker's value for a custom field. Your API key must hold write on the field's category.",
-        "summary": "Clear Field Value"
+        "summary": "Clear Field Value",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customFields.clearValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n});"
+          }
+        ]
       }
     },
     "/v1/departments": {

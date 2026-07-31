@@ -19,12 +19,13 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
-import { CustomWorkerFields, type Trimmed, type NonEmptyTrimmedString } from "./resources/custom-worker-fields";
+import { CustomFields, type Trimmed, type NonEmptyTrimmedString, type CustomFieldListResponse, type CustomFieldCreateResponse, type CustomFieldRetrieveResponse, type CustomFieldUpdateResponse, type CustomFieldArchiveResponse, type CustomFieldCreateOptionResponse, type CustomFieldUpdateOptionResponse, type CustomFieldArchiveOptionResponse, type CustomFieldListValuesResponse, type CustomFieldUpsertValueResponse, type CustomFieldCreateParams, type CustomFieldUpdateParams, type CustomFieldCreateOptionParams, type CustomFieldUpdateOptionParams, type CustomFieldListValuesParams, type CustomFieldUpsertValueParams, type CustomFieldClearValueParams } from "./resources/custom-fields";
 import { Departments, type DepartmentListResponse, type DepartmentCreateResponse, type DepartmentUpdateResponse, type DepartmentListParams, type DepartmentCreateParams, type DepartmentUpdateParams } from "./resources/departments";
 import { Offers, type Date, type OfferListResponse, type OfferCreateResponse, type OfferVoidResponse, type OfferExtendDeadlineResponse, type OfferResendResponse, type OfferListParams, type OfferCreateParams, type OfferExtendDeadlineParams } from "./resources/offers";
 import { TimeOff, type TimeOffListAssignmentsResponse, type TimeOffListBalancesResponse, type TimeOffListRequestsResponse, type TimeOffListAssignmentsParams, type TimeOffListBalancesParams, type TimeOffListRequestsParams } from "./resources/time-off/time-off";
 import { Workers, type OfficeWorkLocation, type RemoteWorkLocation, type WorkerListResponse, type WorkerRetrieveResponse, type WorkerCreateEmployeeResponse, type WorkerCreateContractorResponse, type WorkerInviteResponse, type WorkerListParams, type WorkerCreateEmployeeParams, type WorkerCreateContractorParams } from "./resources/workers";
 import { Workplaces, type WorkplaceListResponse, type WorkplaceCreateResponse, type WorkplaceUpdateResponse, type WorkplaceListParams, type WorkplaceCreateParams, type WorkplaceUpdateParams } from "./resources/workplaces";
+import { Webhooks, type TimeOffRequestCreatedWebhookEvent, type TimeOffRequestReviewedWebhookEvent, type TimeOffRequestDeletedWebhookEvent, type TimeOffBalanceAdjustedWebhookEvent, type WorkerCreatedWebhookEvent, type WorkerUpdatedWebhookEvent, type WorkerDeletedWebhookEvent, type WorkerInviteSentWebhookEvent, type WorkerInviteAcceptedWebhookEvent, type WorkerOnboardingCompletedWebhookEvent, type WorkerOffboardingStartedWebhookEvent, type WorkerOffboardedWebhookEvent, type WorkerReactivatedWebhookEvent, type OfferCreatedWebhookEvent, type OfferSentWebhookEvent, type OfferViewedWebhookEvent, type OfferAcceptedWebhookEvent, type OfferVoidedWebhookEvent, type ParsedWebhookEvent } from "./resources/webhooks";
 
 export type AuthTokenProvider = () => string | Promise<string>;
 
@@ -33,6 +34,11 @@ export interface ClientOptions {
    * The API key for header authorization.
    */
   apiKey?: string | AuthTokenProvider | undefined;
+
+  /**
+   * Secret used to verify incoming webhook signatures.
+   */
+  webhookSecret?: string | null | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -111,6 +117,7 @@ export type WarpAPIOptions = ClientOptions;
  */
 export class WarpAPI {
   apiKey: string | AuthTokenProvider | undefined;
+  webhookSecret: string | null;
 
   baseURL: string;
   maxRetries: number;
@@ -129,6 +136,7 @@ export class WarpAPI {
    * API Client for interfacing with the WarpApi API.
    *
    * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
+   * @param {string | null | undefined} [opts.webhookSecret=process.env["WARP_WEBHOOK_SECRET"] ?? null]
    * @param {string} [opts.baseURL=process.env["WARP_BASE_URL"] ?? https://api.joinwarp.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -140,10 +148,12 @@ export class WarpAPI {
   constructor({
     baseURL = readEnv("WARP_BASE_URL"),
     apiKey = readEnv("WARP_API_KEY"),
+    webhookSecret = readEnv("WARP_WEBHOOK_SECRET") ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
       apiKey,
+      webhookSecret,
       ...opts,
       baseURL: baseURL || "https://api.joinwarp.com",
     };
@@ -181,6 +191,7 @@ export class WarpAPI {
     this._defaultBaseURL = defaultBaseURL;
 
     this.apiKey = apiKey;
+    this.webhookSecret = webhookSecret;
   }
 
   withOptions(options: Partial<ClientOptions>): this {
@@ -194,6 +205,7 @@ export class WarpAPI {
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
       apiKey: this.apiKey,
+      webhookSecret: this.webhookSecret,
       ...options,
     });
     return client;
@@ -783,27 +795,46 @@ export class WarpAPI {
 
   static toFile = toFile;
 
-  customWorkerFields: CustomWorkerFields = new CustomWorkerFields(this);
+  customFields: CustomFields = new CustomFields(this);
   departments: Departments = new Departments(this);
   offers: Offers = new Offers(this);
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
+  webhooks: Webhooks = new Webhooks(this);
 }
 
-WarpAPI.CustomWorkerFields = CustomWorkerFields;
+WarpAPI.CustomFields = CustomFields;
 WarpAPI.Departments = Departments;
 WarpAPI.Offers = Offers;
 WarpAPI.TimeOff = TimeOff;
 WarpAPI.Workers = Workers;
 WarpAPI.Workplaces = Workplaces;
+WarpAPI.Webhooks = Webhooks;
 
 export declare namespace WarpAPI {
   export type RequestOptions = Opts.RequestOptions;
   export {
-    CustomWorkerFields as CustomWorkerFields,
+    CustomFields as CustomFields,
     type Trimmed as Trimmed,
     type NonEmptyTrimmedString as NonEmptyTrimmedString,
+    type CustomFieldListResponse as CustomFieldListResponse,
+    type CustomFieldCreateResponse as CustomFieldCreateResponse,
+    type CustomFieldRetrieveResponse as CustomFieldRetrieveResponse,
+    type CustomFieldUpdateResponse as CustomFieldUpdateResponse,
+    type CustomFieldArchiveResponse as CustomFieldArchiveResponse,
+    type CustomFieldCreateOptionResponse as CustomFieldCreateOptionResponse,
+    type CustomFieldUpdateOptionResponse as CustomFieldUpdateOptionResponse,
+    type CustomFieldArchiveOptionResponse as CustomFieldArchiveOptionResponse,
+    type CustomFieldListValuesResponse as CustomFieldListValuesResponse,
+    type CustomFieldUpsertValueResponse as CustomFieldUpsertValueResponse,
+    type CustomFieldCreateParams as CustomFieldCreateParams,
+    type CustomFieldUpdateParams as CustomFieldUpdateParams,
+    type CustomFieldCreateOptionParams as CustomFieldCreateOptionParams,
+    type CustomFieldUpdateOptionParams as CustomFieldUpdateOptionParams,
+    type CustomFieldListValuesParams as CustomFieldListValuesParams,
+    type CustomFieldUpsertValueParams as CustomFieldUpsertValueParams,
+    type CustomFieldClearValueParams as CustomFieldClearValueParams,
   };
 
   export {
@@ -861,6 +892,29 @@ export declare namespace WarpAPI {
     type WorkplaceListParams as WorkplaceListParams,
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
+  };
+
+  export {
+    Webhooks as Webhooks,
+    type TimeOffRequestCreatedWebhookEvent as TimeOffRequestCreatedWebhookEvent,
+    type TimeOffRequestReviewedWebhookEvent as TimeOffRequestReviewedWebhookEvent,
+    type TimeOffRequestDeletedWebhookEvent as TimeOffRequestDeletedWebhookEvent,
+    type TimeOffBalanceAdjustedWebhookEvent as TimeOffBalanceAdjustedWebhookEvent,
+    type WorkerCreatedWebhookEvent as WorkerCreatedWebhookEvent,
+    type WorkerUpdatedWebhookEvent as WorkerUpdatedWebhookEvent,
+    type WorkerDeletedWebhookEvent as WorkerDeletedWebhookEvent,
+    type WorkerInviteSentWebhookEvent as WorkerInviteSentWebhookEvent,
+    type WorkerInviteAcceptedWebhookEvent as WorkerInviteAcceptedWebhookEvent,
+    type WorkerOnboardingCompletedWebhookEvent as WorkerOnboardingCompletedWebhookEvent,
+    type WorkerOffboardingStartedWebhookEvent as WorkerOffboardingStartedWebhookEvent,
+    type WorkerOffboardedWebhookEvent as WorkerOffboardedWebhookEvent,
+    type WorkerReactivatedWebhookEvent as WorkerReactivatedWebhookEvent,
+    type OfferCreatedWebhookEvent as OfferCreatedWebhookEvent,
+    type OfferSentWebhookEvent as OfferSentWebhookEvent,
+    type OfferViewedWebhookEvent as OfferViewedWebhookEvent,
+    type OfferAcceptedWebhookEvent as OfferAcceptedWebhookEvent,
+    type OfferVoidedWebhookEvent as OfferVoidedWebhookEvent,
+    type ParsedWebhookEvent as ParsedWebhookEvent,
   };
 }
 

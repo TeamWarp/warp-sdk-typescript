@@ -5,7 +5,7 @@ import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { buildHeaders } from "../internal/headers";
 import { path as __scalarPath } from "../internal/utils/path";
-import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
+import type * as CustomFieldsAPI from "./custom-fields";
 
 export class Workers extends APIResource {
   /**
@@ -304,17 +304,17 @@ export interface WorkerCreateEmployeeParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  firstName: CustomWorkerFieldsAPI.Trimmed;
+  firstName: CustomFieldsAPI.Trimmed;
   /**
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  lastName: CustomWorkerFieldsAPI.Trimmed;
+  lastName: CustomFieldsAPI.Trimmed;
   /**
    * The employee's job title.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  position: CustomWorkerFieldsAPI.Trimmed;
+  position: CustomFieldsAPI.Trimmed;
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -446,17 +446,17 @@ export interface WorkerCreateContractorParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  firstName: CustomWorkerFieldsAPI.Trimmed;
+  firstName: CustomFieldsAPI.Trimmed;
   /**
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  lastName: CustomWorkerFieldsAPI.Trimmed;
+  lastName: CustomFieldsAPI.Trimmed;
   /**
    * The contractor's role or job title.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  position: CustomWorkerFieldsAPI.Trimmed;
+  position: CustomFieldsAPI.Trimmed;
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -482,7 +482,7 @@ export interface WorkerCreateContractorParams {
    * Required when entityType is "business". The legal name of the contractor's business.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  businessName?: CustomWorkerFieldsAPI.Trimmed;
+  businessName?: CustomFieldsAPI.Trimmed;
   /**
    * A description of the work the contractor will perform.
    */

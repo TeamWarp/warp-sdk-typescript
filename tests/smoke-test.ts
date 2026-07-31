@@ -35,6 +35,131 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   {
     operation: "list",
     method: "GET",
+    path: "/v1/custom_fields",
+    run: async () => {
+      const list = await client.customFields.list();
+    },
+  },
+
+  {
+    operation: "create",
+    method: "POST",
+    path: "/v1/custom_fields",
+    run: async () => {
+      const create = await client.customFields.create({
+        name: "",
+        type: "text",
+        category: "info",
+      });
+    },
+  },
+
+  {
+    operation: "retrieve",
+    method: "GET",
+    path: "/v1/custom_fields/{id}",
+    run: async () => {
+      const retrieve = await client.customFields.retrieve("cf_1234");
+    },
+  },
+
+  {
+    operation: "update",
+    method: "PATCH",
+    path: "/v1/custom_fields/{id}",
+    run: async () => {
+      const update = await client.customFields.update("cf_1234", {});
+    },
+  },
+
+  {
+    operation: "archive",
+    method: "POST",
+    path: "/v1/custom_fields/{id}/archive",
+    run: async () => {
+      const archive = await client.customFields.archive("cf_1234");
+    },
+  },
+
+  {
+    operation: "createOption",
+    method: "POST",
+    path: "/v1/custom_fields/{id}/options",
+    run: async () => {
+      const createOption = await client.customFields.createOption("cf_1234", {
+        label: "x",
+        value: "x",
+      });
+    },
+  },
+
+  {
+    operation: "updateOption",
+    method: "PATCH",
+    path: "/v1/custom_field_options/{id}",
+    run: async () => {
+      const updateOption = await client.customFields.updateOption("cfo_1234", {});
+    },
+  },
+
+  {
+    operation: "deleteOption",
+    method: "DELETE",
+    path: "/v1/custom_field_options/{id}",
+    run: async () => {
+      await client.customFields.deleteOption("cfo_1234");
+    },
+  },
+
+  {
+    operation: "archiveOption",
+    method: "POST",
+    path: "/v1/custom_field_options/{id}/archive",
+    run: async () => {
+      const archiveOption = await client.customFields.archiveOption("cfo_1234");
+    },
+  },
+
+  {
+    operation: "listValues",
+    method: "GET",
+    path: "/v1/custom_field_values",
+    run: async () => {
+      const listValues = await client.customFields.listValues();
+    },
+  },
+
+  {
+    operation: "upsertValue",
+    method: "PUT",
+    path: "/v1/custom_field_values",
+    run: async () => {
+      const upsertValue = await client.customFields.upsertValue({
+        workerId: "wrk_1234",
+        fieldId: "cf_1234",
+        value: {
+          type: "text",
+          value: "",
+        },
+      });
+    },
+  },
+
+  {
+    operation: "clearValue",
+    method: "DELETE",
+    path: "/v1/custom_field_values",
+    run: async () => {
+      await client.customFields.clearValue({
+        workerId: "wrk_1234",
+        fieldId: "cf_1234",
+      });
+    },
+  },
+
+  {
+    operation: "list",
+    method: "GET",
     path: "/v1/departments",
     run: async () => {
       const list = await client.departments.list();

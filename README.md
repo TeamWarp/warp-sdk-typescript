@@ -39,7 +39,7 @@ const client = new WarpAPI({
   apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 
-const list = await client.departments.list();
+const list = await client.customFields.list();
 console.log(list);
 ```
 
@@ -71,7 +71,7 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from "warp-hr";
 
 try {
-  const list = await client.departments.list();
+  const list = await client.customFields.list();
 } catch (err) {
   if (err instanceof APIError) {
     console.log(err.status, err.name, err.headers);

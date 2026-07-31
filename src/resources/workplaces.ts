@@ -5,7 +5,7 @@ import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { path as __scalarPath } from "../internal/utils/path";
 import type * as OffersAPI from "./offers";
-import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
+import type * as CustomFieldsAPI from "./custom-fields";
 
 export class Workplaces extends APIResource {
   /**
@@ -135,7 +135,7 @@ export interface WorkplaceCreateParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  name: CustomWorkerFieldsAPI.Trimmed;
+  name: CustomFieldsAPI.Trimmed;
   type: "remote" | "office";
   /**
    * A valid US address
