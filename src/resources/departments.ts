@@ -5,7 +5,7 @@ import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { path as __scalarPath } from "../internal/utils/path";
 import type * as OffersAPI from "./offers";
-import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
+import type * as CustomFieldsAPI from "./custom-fields";
 
 export class Departments extends APIResource {
   /**
@@ -106,7 +106,7 @@ export interface DepartmentCreateParams {
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  name: CustomWorkerFieldsAPI.Trimmed;
+  name: CustomFieldsAPI.Trimmed;
 }
 
 export interface DepartmentCreateResponse {
