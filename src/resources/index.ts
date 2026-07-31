@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 export { CustomWorkerFields } from "./custom-worker-fields";
-export type { Trimmed, NonEmptyTrimmedString, CustomWorkerFieldListResponse, CustomWorkerFieldCreateParams, CustomWorkerFieldCreateResponse, CustomWorkerFieldRetrieveResponse, CustomWorkerFieldUpdateParams, CustomWorkerFieldUpdateResponse, CustomWorkerFieldArchiveResponse, CustomWorkerFieldCreateOptionParams, CustomWorkerFieldCreateOptionResponse, CustomWorkerFieldUpdateOptionParams, CustomWorkerFieldUpdateOptionResponse, CustomWorkerFieldArchiveOptionResponse, CustomWorkerFieldListValuesParams, CustomWorkerFieldListValuesResponse, CustomWorkerFieldUpsertValueParams, CustomWorkerFieldUpsertValueResponse, CustomWorkerFieldClearValueParams } from "./custom-worker-fields";
+export type { Trimmed, NonEmptyTrimmedString } from "./custom-worker-fields";
 export { Departments } from "./departments";
 export type { DepartmentListParams, DepartmentListResponse, DepartmentCreateParams, DepartmentCreateResponse, DepartmentUpdateParams, DepartmentUpdateResponse } from "./departments";
 export { Offers } from "./offers";

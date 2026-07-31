@@ -12,7 +12,7 @@
     ]
   },
   "paths": {
-    "/v1/custom-worker-fields": {
+    "/v1/custom_fields": {
       "get": {
         "tags": [
           "Custom Fields"
@@ -206,14 +206,7 @@
           }
         },
         "description": "List the custom worker field definitions your API key can read. Each field belongs to a worker-data category; fields whose category your key cannot read are omitted unless the key holds workers:custom_fields.",
-        "summary": "List Fields",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.customWorkerFields.list();\nconsole.log(list);"
-          }
-        ]
+        "summary": "List Fields"
       },
       "post": {
         "tags": [
@@ -349,7 +342,7 @@
                       "$ref": "#/components/schemas/HttpApiDecodeError"
                     },
                     {
-                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                      "$ref": "#/components/schemas/InvalidCustomFieldOperationError"
                     }
                   ]
                 }
@@ -384,16 +377,16 @@
             }
           },
           "409": {
-            "description": "CustomWorkerFieldAlreadyExists",
+            "description": "CustomFieldAlreadyExistsError",
             "content": {
               "application/json": {
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CustomWorkerFieldAlreadyExists"
+                      "$ref": "#/components/schemas/CustomFieldAlreadyExistsError"
                     },
                     {
-                      "$ref": "#/components/schemas/CustomWorkerFieldOptionAlreadyExists"
+                      "$ref": "#/components/schemas/CustomFieldOptionAlreadyExistsError"
                     }
                   ]
                 }
@@ -534,17 +527,10 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.customWorkerFields.create({\n  name: \"\",\n  type: \"text\",\n  category: \"info\",\n});\nconsole.log(create);"
-          }
-        ]
+        }
       }
     },
-    "/v1/custom-worker-fields/{id}": {
+    "/v1/custom_fields/{id}": {
       "get": {
         "tags": [
           "Custom Fields"
@@ -769,11 +755,11 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldNotFound",
+            "description": "CustomFieldNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                  "$ref": "#/components/schemas/CustomFieldNotFoundError"
                 }
               }
             }
@@ -807,14 +793,7 @@
           }
         },
         "description": "Get a custom worker field definition, including its select options. Archived options may appear on existing worker values but cannot be newly selected.",
-        "summary": "Get Field",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.customWorkerFields.retrieve(\"cf_1234\");\nconsole.log(retrieve);"
-          }
-        ]
+        "summary": "Get Field"
       },
       "patch": {
         "tags": [
@@ -966,7 +945,7 @@
                       "$ref": "#/components/schemas/HttpApiDecodeError"
                     },
                     {
-                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                      "$ref": "#/components/schemas/InvalidCustomFieldOperationError"
                     }
                   ]
                 }
@@ -1001,21 +980,21 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldNotFound",
+            "description": "CustomFieldNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                  "$ref": "#/components/schemas/CustomFieldNotFoundError"
                 }
               }
             }
           },
           "409": {
-            "description": "CustomWorkerFieldAlreadyExists",
+            "description": "CustomFieldAlreadyExistsError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldAlreadyExists"
+                  "$ref": "#/components/schemas/CustomFieldAlreadyExistsError"
                 }
               }
             }
@@ -1114,17 +1093,10 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.customWorkerFields.update(\"cf_1234\", {});\nconsole.log(update);"
-          }
-        ]
+        }
       }
     },
-    "/v1/custom-worker-fields/{id}/archive": {
+    "/v1/custom_fields/{id}/archive": {
       "post": {
         "tags": [
           "Custom Fields"
@@ -1303,11 +1275,11 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldNotFound",
+            "description": "CustomFieldNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                  "$ref": "#/components/schemas/CustomFieldNotFoundError"
                 }
               }
             }
@@ -1341,17 +1313,10 @@
           }
         },
         "description": "Archive a custom worker field. Archived fields keep their existing worker values but cannot receive new ones. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Archive Field",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst archive = await client.customWorkerFields.archive(\"cf_1234\");\nconsole.log(archive);"
-          }
-        ]
+        "summary": "Archive Field"
       }
     },
-    "/v1/custom-worker-fields/{id}/options": {
+    "/v1/custom_fields/{id}/options": {
       "post": {
         "tags": [
           "Custom Fields"
@@ -1439,7 +1404,7 @@
                       "$ref": "#/components/schemas/HttpApiDecodeError"
                     },
                     {
-                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                      "$ref": "#/components/schemas/InvalidCustomFieldOperationError"
                     }
                   ]
                 }
@@ -1474,21 +1439,21 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldNotFound",
+            "description": "CustomFieldNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                  "$ref": "#/components/schemas/CustomFieldNotFoundError"
                 }
               }
             }
           },
           "409": {
-            "description": "CustomWorkerFieldOptionAlreadyExists",
+            "description": "CustomFieldOptionAlreadyExistsError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldOptionAlreadyExists"
+                  "$ref": "#/components/schemas/CustomFieldOptionAlreadyExistsError"
                 }
               }
             }
@@ -1548,17 +1513,10 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst createOption = await client.customWorkerFields.createOption(\"cf_1234\", {\n  label: \"x\",\n  value: \"x\",\n});\nconsole.log(createOption);"
-          }
-        ]
+        }
       }
     },
-    "/v1/custom-worker-field-options/{id}": {
+    "/v1/custom_field_options/{id}": {
       "patch": {
         "tags": [
           "Custom Fields"
@@ -1646,7 +1604,7 @@
                       "$ref": "#/components/schemas/HttpApiDecodeError"
                     },
                     {
-                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                      "$ref": "#/components/schemas/InvalidCustomFieldOperationError"
                     }
                   ]
                 }
@@ -1681,21 +1639,21 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldOptionNotFound",
+            "description": "CustomFieldOptionNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldOptionNotFound"
+                  "$ref": "#/components/schemas/CustomFieldOptionNotFoundError"
                 }
               }
             }
           },
           "409": {
-            "description": "CustomWorkerFieldOptionAlreadyExists",
+            "description": "CustomFieldOptionAlreadyExistsError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldOptionAlreadyExists"
+                  "$ref": "#/components/schemas/CustomFieldOptionAlreadyExistsError"
                 }
               }
             }
@@ -1749,14 +1707,7 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst updateOption = await client.customWorkerFields.updateOption(\"cfo_1234\", {});\nconsole.log(updateOption);"
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -1827,21 +1778,21 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldOptionNotFound",
+            "description": "CustomFieldOptionNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldOptionNotFound"
+                  "$ref": "#/components/schemas/CustomFieldOptionNotFoundError"
                 }
               }
             }
           },
           "409": {
-            "description": "CustomWorkerFieldOptionInUse",
+            "description": "CustomFieldOptionInUseError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldOptionInUse"
+                  "$ref": "#/components/schemas/CustomFieldOptionInUseError"
                 }
               }
             }
@@ -1875,17 +1826,10 @@
           }
         },
         "description": "Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Delete Unused Field Option",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customWorkerFields.deleteOption(\"cfo_1234\");"
-          }
-        ]
+        "summary": "Delete Unused Field Option"
       }
     },
-    "/v1/custom-worker-field-options/{id}/archive": {
+    "/v1/custom_field_options/{id}/archive": {
       "post": {
         "tags": [
           "Custom Fields"
@@ -2001,11 +1945,11 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldOptionNotFound",
+            "description": "CustomFieldOptionNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CustomWorkerFieldOptionNotFound"
+                  "$ref": "#/components/schemas/CustomFieldOptionNotFoundError"
                 }
               }
             }
@@ -2039,17 +1983,10 @@
           }
         },
         "description": "Archive a custom worker field option. Archived options remain on existing worker values but cannot be newly selected. Requires the workers:custom_fields permission at the manage level.",
-        "summary": "Archive Field Option",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst archiveOption = await client.customWorkerFields.archiveOption(\"cfo_1234\");\nconsole.log(archiveOption);"
-          }
-        ]
+        "summary": "Archive Field Option"
       }
     },
-    "/v1/worker-custom-field-values": {
+    "/v1/custom_field_values": {
       "get": {
         "tags": [
           "Custom Fields"
@@ -2527,14 +2464,7 @@
           }
         },
         "description": "List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.",
-        "summary": "List Field Values",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst listValues = await client.customWorkerFields.listValues();\nconsole.log(listValues);"
-          }
-        ]
+        "summary": "List Field Values"
       },
       "put": {
         "tags": [
@@ -2919,10 +2849,10 @@
                       "$ref": "#/components/schemas/HttpApiDecodeError"
                     },
                     {
-                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldValue"
+                      "$ref": "#/components/schemas/InvalidCustomFieldValueError"
                     },
                     {
-                      "$ref": "#/components/schemas/InvalidCustomWorkerFieldOperation"
+                      "$ref": "#/components/schemas/InvalidCustomFieldOperationError"
                     }
                   ]
                 }
@@ -2957,16 +2887,16 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldNotFound",
+            "description": "CustomFieldNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                      "$ref": "#/components/schemas/CustomFieldNotFoundError"
                     },
                     {
-                      "$ref": "#/components/schemas/CustomWorkerFieldWorkerNotFound"
+                      "$ref": "#/components/schemas/CustomFieldWorkerNotFoundError"
                     }
                   ]
                 }
@@ -3283,14 +3213,7 @@
             }
           },
           "required": true
-        },
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nconst upsertValue = await client.customWorkerFields.upsertValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n  value: {\n    type: \"text\",\n    value: \"\",\n  },\n});\nconsole.log(upsertValue);"
-          }
-        ]
+        }
       },
       "delete": {
         "tags": [
@@ -3376,16 +3299,16 @@
             }
           },
           "404": {
-            "description": "CustomWorkerFieldNotFound",
+            "description": "CustomFieldNotFoundError",
             "content": {
               "application/json": {
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/CustomWorkerFieldNotFound"
+                      "$ref": "#/components/schemas/CustomFieldNotFoundError"
                     },
                     {
-                      "$ref": "#/components/schemas/CustomWorkerFieldWorkerNotFound"
+                      "$ref": "#/components/schemas/CustomFieldWorkerNotFoundError"
                     }
                   ]
                 }
@@ -3421,14 +3344,7 @@
           }
         },
         "description": "Remove a worker's value for a custom field. Your API key must hold write on the field's category.",
-        "summary": "Clear Field Value",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import WarpAPI from \"warp-hr\";\n\nconst client = new WarpAPI({\n  apiKey: process.env[\"WARP_API_KEY\"], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customWorkerFields.clearValue({\n  workerId: \"wrk_1234\",\n  fieldId: \"cf_1234\",\n});"
-          }
-        ]
+        "summary": "Clear Field Value"
       }
     },
     "/v1/departments": {
@@ -15630,7 +15546,7 @@
         "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
         "minLength": 1
       },
-      "InvalidCustomWorkerFieldOperation": {
+      "InvalidCustomFieldOperationError": {
         "type": "object",
         "required": [
           "message",
@@ -15643,13 +15559,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "InvalidCustomWorkerFieldOperation"
+              "InvalidCustomFieldOperationError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "CustomWorkerFieldAlreadyExists": {
+      "CustomFieldAlreadyExistsError": {
         "type": "object",
         "required": [
           "name",
@@ -15666,13 +15582,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "CustomWorkerFieldAlreadyExists"
+              "CustomFieldAlreadyExistsError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "CustomWorkerFieldOptionAlreadyExists": {
+      "CustomFieldOptionAlreadyExistsError": {
         "type": "object",
         "required": [
           "value",
@@ -15689,13 +15605,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "CustomWorkerFieldOptionAlreadyExists"
+              "CustomFieldOptionAlreadyExistsError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "CustomWorkerFieldNotFound": {
+      "CustomFieldNotFoundError": {
         "type": "object",
         "required": [
           "id",
@@ -15718,13 +15634,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "CustomWorkerFieldNotFound"
+              "CustomFieldNotFoundError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "CustomWorkerFieldOptionNotFound": {
+      "CustomFieldOptionNotFoundError": {
         "type": "object",
         "required": [
           "id",
@@ -15747,13 +15663,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "CustomWorkerFieldOptionNotFound"
+              "CustomFieldOptionNotFoundError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "CustomWorkerFieldOptionInUse": {
+      "CustomFieldOptionInUseError": {
         "type": "object",
         "required": [
           "id",
@@ -15776,13 +15692,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "CustomWorkerFieldOptionInUse"
+              "CustomFieldOptionInUseError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "InvalidCustomWorkerFieldValue": {
+      "InvalidCustomFieldValueError": {
         "type": "object",
         "required": [
           "message",
@@ -15795,13 +15711,13 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "InvalidCustomWorkerFieldValue"
+              "InvalidCustomFieldValueError"
             ]
           }
         },
         "additionalProperties": false
       },
-      "CustomWorkerFieldWorkerNotFound": {
+      "CustomFieldWorkerNotFoundError": {
         "type": "object",
         "required": [
           "id",
@@ -15824,7 +15740,7 @@
           "_tag": {
             "type": "string",
             "enum": [
-              "CustomWorkerFieldWorkerNotFound"
+              "CustomFieldWorkerNotFoundError"
             ]
           }
         },
