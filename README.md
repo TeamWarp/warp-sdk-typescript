@@ -40,6 +40,7 @@ const client = new WarpAPI({
 });
 
 const list = await client.customFields.list();
+
 console.log(list);
 ```
 
