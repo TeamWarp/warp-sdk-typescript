@@ -13,10 +13,10 @@ import { writeFileSync } from 'node:fs'
 
 // The default export is the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
-import WarpAPI from "warp-hr"
+import Warp from "warp-hr"
 
 // One shared client runs every case.
-const client = new WarpAPI()
+const client = new Warp()
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {
@@ -32,6 +32,66 @@ type SmokeResult = {
 // metadata used for filtering and reporting. This list is generated, so it stays in sync with
 // the SDK surface.
 const cases: { operation: string; method: string; path: string; run: () => Promise<unknown> }[] = [
+  {
+    operation: "benefitsList",
+    method: "GET",
+    path: "/v1/benefits/health_plans",
+    run: async () => {
+      const benefitsList = await client.benefits.healthPlans.benefitsList({
+        statuses: ["active"],
+      });
+    },
+  },
+
+  {
+    operation: "benefitsGet",
+    method: "GET",
+    path: "/v1/benefits/health_plans/{id}",
+    run: async () => {
+      const benefitsGet = await client.benefits.healthPlans.benefitsGet("chpl_1234");
+    },
+  },
+
+  {
+    operation: "benefitsList",
+    method: "GET",
+    path: "/v1/benefits/retirement_plans",
+    run: async () => {
+      const benefitsList = await client.benefits.retirementPlans.benefitsList({
+        statuses: ["active"],
+      });
+    },
+  },
+
+  {
+    operation: "benefitsGet",
+    method: "GET",
+    path: "/v1/benefits/retirement_plans/{id}",
+    run: async () => {
+      const benefitsGet = await client.benefits.retirementPlans.benefitsGet("crpl_1234");
+    },
+  },
+
+  {
+    operation: "benefitsList",
+    method: "GET",
+    path: "/v1/benefits/deductions",
+    run: async () => {
+      const benefitsList = await client.benefits.deductions.benefitsList({
+        statuses: ["active"],
+      });
+    },
+  },
+
+  {
+    operation: "benefitsGet",
+    method: "GET",
+    path: "/v1/benefits/deductions/{id}",
+    run: async () => {
+      const benefitsGet = await client.benefits.deductions.benefitsGet("pbdg_1234");
+    },
+  },
+
   {
     operation: "list",
     method: "GET",
