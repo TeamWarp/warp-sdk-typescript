@@ -1,5 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
+export { Benefits } from "./benefits/benefits";
 export { CustomFields } from "./custom-fields";
 export type { Trimmed, NonEmptyTrimmedString, CustomFieldListResponse, CustomFieldCreateParams, CustomFieldCreateResponse, CustomFieldRetrieveResponse, CustomFieldUpdateParams, CustomFieldUpdateResponse, CustomFieldArchiveResponse, CustomFieldCreateOptionParams, CustomFieldCreateOptionResponse, CustomFieldUpdateOptionParams, CustomFieldUpdateOptionResponse, CustomFieldArchiveOptionResponse, CustomFieldListValuesParams, CustomFieldListValuesResponse, CustomFieldUpsertValueParams, CustomFieldUpsertValueResponse, CustomFieldClearValueParams } from "./custom-fields";
 export { Departments } from "./departments";
