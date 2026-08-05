@@ -19,6 +19,7 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
+import { Benefits } from "./resources/benefits/benefits";
 import { CustomFields, type Trimmed, type NonEmptyTrimmedString, type CustomFieldListResponse, type CustomFieldCreateResponse, type CustomFieldRetrieveResponse, type CustomFieldUpdateResponse, type CustomFieldArchiveResponse, type CustomFieldCreateOptionResponse, type CustomFieldUpdateOptionResponse, type CustomFieldArchiveOptionResponse, type CustomFieldListValuesResponse, type CustomFieldUpsertValueResponse, type CustomFieldCreateParams, type CustomFieldUpdateParams, type CustomFieldCreateOptionParams, type CustomFieldUpdateOptionParams, type CustomFieldListValuesParams, type CustomFieldUpsertValueParams, type CustomFieldClearValueParams } from "./resources/custom-fields";
 import { Departments, type DepartmentListResponse, type DepartmentCreateResponse, type DepartmentUpdateResponse, type DepartmentListParams, type DepartmentCreateParams, type DepartmentUpdateParams } from "./resources/departments";
 import { Offers, type Date, type OfferListResponse, type OfferCreateResponse, type OfferVoidResponse, type OfferExtendDeadlineResponse, type OfferResendResponse, type OfferListParams, type OfferCreateParams, type OfferExtendDeadlineParams } from "./resources/offers";
@@ -110,12 +111,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type WarpAPIOptions = ClientOptions;
+export type WarpOptions = ClientOptions;
 
 /**
- * API Client for interfacing with the WarpApi API.
+ * API Client for interfacing with the Warp API.
  */
-export class WarpAPI {
+export class Warp {
   apiKey: string | AuthTokenProvider | undefined;
   webhookSecret: string | null;
 
@@ -133,7 +134,7 @@ export class WarpAPI {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the WarpApi API.
+   * API Client for interfacing with the Warp API.
    *
    * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
    * @param {string | null | undefined} [opts.webhookSecret=process.env["WARP_WEBHOOK_SECRET"] ?? null]
@@ -160,7 +161,7 @@ export class WarpAPI {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== "";
     const defaultBaseURL = "https://api.joinwarp.com";
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? WarpAPI.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -765,21 +766,21 @@ export class WarpAPI {
   private async resolveAuthOption(optionName: string, value: string | AuthTokenProvider | null | undefined): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === "function" ? await value() : value;
-    if (!token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
   private resolveAuthOptionSync(optionName: string, value: string | AuthTokenProvider | null | undefined): string | undefined {
     if (value == null) return undefined;
     const token = typeof value === "function" ? value() : value;
-    if (typeof token !== "string" || !token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (typeof token !== "string" || !token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static WarpAPI = this;
+  static Warp = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WarpAPIError = Errors.WarpAPIError;
+  static WarpError = Errors.WarpError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -795,6 +796,7 @@ export class WarpAPI {
 
   static toFile = toFile;
 
+  benefits: Benefits = new Benefits(this);
   customFields: CustomFields = new CustomFields(this);
   departments: Departments = new Departments(this);
   offers: Offers = new Offers(this);
@@ -804,16 +806,21 @@ export class WarpAPI {
   webhooks: Webhooks = new Webhooks(this);
 }
 
-WarpAPI.CustomFields = CustomFields;
-WarpAPI.Departments = Departments;
-WarpAPI.Offers = Offers;
-WarpAPI.TimeOff = TimeOff;
-WarpAPI.Workers = Workers;
-WarpAPI.Workplaces = Workplaces;
-WarpAPI.Webhooks = Webhooks;
+Warp.Benefits = Benefits;
+Warp.CustomFields = CustomFields;
+Warp.Departments = Departments;
+Warp.Offers = Offers;
+Warp.TimeOff = TimeOff;
+Warp.Workers = Workers;
+Warp.Workplaces = Workplaces;
+Warp.Webhooks = Webhooks;
 
-export declare namespace WarpAPI {
+export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
+  export {
+    Benefits as Benefits,
+  };
+
   export {
     CustomFields as CustomFields,
     type Trimmed as Trimmed,

@@ -4,6 +4,16 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 
 ## Contents
 
+- [`Benefits`](#benefits)
+  - [`Benefits HealthPlans`](#benefits-healthplans)
+    - [List Health Plans](#list-health-plans)
+    - [Get Health Plan](#get-health-plan)
+  - [`Benefits RetirementPlans`](#benefits-retirementplans)
+    - [List Retirement Plans](#list-retirement-plans)
+    - [Get Retirement Plan](#get-retirement-plan)
+  - [`Benefits Deductions`](#benefits-deductions)
+    - [List Benefit Deductions](#list-benefit-deductions)
+    - [Get Benefit Deduction](#get-benefit-deduction)
 - [`CustomFields`](#customfields)
   - [List Fields](#list-fields)
   - [Create Field](#create-field)
@@ -49,11 +59,100 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import WarpAPI from "warp-hr";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
+```
+
+## `Benefits`
+
+### `Benefits HealthPlans`
+
+#### List Health Plans
+
+List company health plans. Defaults to active plans. A plan whose effectiveEndDate has elapsed is reported and filtered as terminated.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`HealthPlanBenefitsListParams`](./src/resources/benefits/health-plans.ts) |
+| Response | [`HealthPlanBenefitsListResponse`](./src/resources/benefits/health-plans.ts) |
+
+```ts
+const benefitsList = await client.benefits.healthPlans.benefitsList({
+  statuses: ["active"],
+});
+```
+
+#### Get Health Plan
+
+Get a publicly visible company health plan by id.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`HealthPlanBenefitsGetResponse`](./src/resources/benefits/health-plans.ts) |
+
+```ts
+const benefitsGet = await client.benefits.healthPlans.benefitsGet("chpl_1234");
+```
+
+### `Benefits RetirementPlans`
+
+#### List Retirement Plans
+
+List company retirement plans. Defaults to active plans. A plan whose effectiveEndDate has elapsed is reported and filtered as terminated.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`RetirementPlanBenefitsListParams`](./src/resources/benefits/retirement-plans.ts) |
+| Response | [`RetirementPlanBenefitsListResponse`](./src/resources/benefits/retirement-plans.ts) |
+
+```ts
+const benefitsList = await client.benefits.retirementPlans.benefitsList({
+  statuses: ["active"],
+});
+```
+
+#### Get Retirement Plan
+
+Get a company retirement plan by id, regardless of status.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`RetirementPlanBenefitsGetResponse`](./src/resources/benefits/retirement-plans.ts) |
+
+```ts
+const benefitsGet = await client.benefits.retirementPlans.benefitsGet("crpl_1234");
+```
+
+### `Benefits Deductions`
+
+#### List Benefit Deductions
+
+List current payroll benefit deductions. Defaults to active deductions. A deduction whose effectiveEndDate has elapsed is reported and filtered as terminated.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`DeductionBenefitsListParams`](./src/resources/benefits/deductions.ts) |
+| Response | [`DeductionBenefitsListResponse`](./src/resources/benefits/deductions.ts) |
+
+```ts
+const benefitsList = await client.benefits.deductions.benefitsList({
+  statuses: ["active"],
+});
+```
+
+#### Get Benefit Deduction
+
+Get the current version of a company benefit deduction by id.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`DeductionBenefitsGetResponse`](./src/resources/benefits/deductions.ts) |
+
+```ts
+const benefitsGet = await client.benefits.deductions.benefitsGet("pbdg_1234");
 ```
 
 ## `CustomFields`
