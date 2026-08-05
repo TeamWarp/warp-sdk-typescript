@@ -13,10 +13,10 @@ import { writeFileSync } from 'node:fs'
 
 // The default export is the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
-import WarpAPI from "warp-hr"
+import Warp from "warp-hr"
 
 // One shared client runs every case.
-const client = new WarpAPI()
+const client = new Warp()
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {
@@ -33,20 +33,80 @@ type SmokeResult = {
 // the SDK surface.
 const cases: { operation: string; method: string; path: string; run: () => Promise<unknown> }[] = [
   {
+    operation: "benefitsList",
+    method: "GET",
+    path: "/v1/benefits/health_plans",
+    run: async () => {
+      const benefitsList = await client.benefits.healthPlans.benefitsList({
+        statuses: ["active"],
+      });
+    },
+  },
+
+  {
+    operation: "benefitsGet",
+    method: "GET",
+    path: "/v1/benefits/health_plans/{id}",
+    run: async () => {
+      const benefitsGet = await client.benefits.healthPlans.benefitsGet("chpl_1234");
+    },
+  },
+
+  {
+    operation: "benefitsList",
+    method: "GET",
+    path: "/v1/benefits/retirement_plans",
+    run: async () => {
+      const benefitsList = await client.benefits.retirementPlans.benefitsList({
+        statuses: ["active"],
+      });
+    },
+  },
+
+  {
+    operation: "benefitsGet",
+    method: "GET",
+    path: "/v1/benefits/retirement_plans/{id}",
+    run: async () => {
+      const benefitsGet = await client.benefits.retirementPlans.benefitsGet("crpl_1234");
+    },
+  },
+
+  {
+    operation: "benefitsList",
+    method: "GET",
+    path: "/v1/benefits/deductions",
+    run: async () => {
+      const benefitsList = await client.benefits.deductions.benefitsList({
+        statuses: ["active"],
+      });
+    },
+  },
+
+  {
+    operation: "benefitsGet",
+    method: "GET",
+    path: "/v1/benefits/deductions/{id}",
+    run: async () => {
+      const benefitsGet = await client.benefits.deductions.benefitsGet("pbdg_1234");
+    },
+  },
+
+  {
     operation: "list",
     method: "GET",
-    path: "/v1/custom-worker-fields",
+    path: "/v1/custom_fields",
     run: async () => {
-      const list = await client.customWorkerFields.list();
+      const list = await client.customFields.list();
     },
   },
 
   {
     operation: "create",
     method: "POST",
-    path: "/v1/custom-worker-fields",
+    path: "/v1/custom_fields",
     run: async () => {
-      const create = await client.customWorkerFields.create({
+      const create = await client.customFields.create({
         name: "",
         type: "text",
         category: "info",
@@ -57,36 +117,36 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   {
     operation: "retrieve",
     method: "GET",
-    path: "/v1/custom-worker-fields/{id}",
+    path: "/v1/custom_fields/{id}",
     run: async () => {
-      const retrieve = await client.customWorkerFields.retrieve("cf_1234");
+      const retrieve = await client.customFields.retrieve("cf_1234");
     },
   },
 
   {
     operation: "update",
     method: "PATCH",
-    path: "/v1/custom-worker-fields/{id}",
+    path: "/v1/custom_fields/{id}",
     run: async () => {
-      const update = await client.customWorkerFields.update("cf_1234", {});
+      const update = await client.customFields.update("cf_1234", {});
     },
   },
 
   {
     operation: "archive",
     method: "POST",
-    path: "/v1/custom-worker-fields/{id}/archive",
+    path: "/v1/custom_fields/{id}/archive",
     run: async () => {
-      const archive = await client.customWorkerFields.archive("cf_1234");
+      const archive = await client.customFields.archive("cf_1234");
     },
   },
 
   {
     operation: "createOption",
     method: "POST",
-    path: "/v1/custom-worker-fields/{id}/options",
+    path: "/v1/custom_fields/{id}/options",
     run: async () => {
-      const createOption = await client.customWorkerFields.createOption("cf_1234", {
+      const createOption = await client.customFields.createOption("cf_1234", {
         label: "x",
         value: "x",
       });
@@ -96,45 +156,45 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   {
     operation: "updateOption",
     method: "PATCH",
-    path: "/v1/custom-worker-field-options/{id}",
+    path: "/v1/custom_field_options/{id}",
     run: async () => {
-      const updateOption = await client.customWorkerFields.updateOption("cfo_1234", {});
+      const updateOption = await client.customFields.updateOption("cfo_1234", {});
     },
   },
 
   {
     operation: "deleteOption",
     method: "DELETE",
-    path: "/v1/custom-worker-field-options/{id}",
+    path: "/v1/custom_field_options/{id}",
     run: async () => {
-      await client.customWorkerFields.deleteOption("cfo_1234");
+      await client.customFields.deleteOption("cfo_1234");
     },
   },
 
   {
     operation: "archiveOption",
     method: "POST",
-    path: "/v1/custom-worker-field-options/{id}/archive",
+    path: "/v1/custom_field_options/{id}/archive",
     run: async () => {
-      const archiveOption = await client.customWorkerFields.archiveOption("cfo_1234");
+      const archiveOption = await client.customFields.archiveOption("cfo_1234");
     },
   },
 
   {
     operation: "listValues",
     method: "GET",
-    path: "/v1/worker-custom-field-values",
+    path: "/v1/custom_field_values",
     run: async () => {
-      const listValues = await client.customWorkerFields.listValues();
+      const listValues = await client.customFields.listValues();
     },
   },
 
   {
     operation: "upsertValue",
     method: "PUT",
-    path: "/v1/worker-custom-field-values",
+    path: "/v1/custom_field_values",
     run: async () => {
-      const upsertValue = await client.customWorkerFields.upsertValue({
+      const upsertValue = await client.customFields.upsertValue({
         workerId: "wrk_1234",
         fieldId: "cf_1234",
         value: {
@@ -148,9 +208,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   {
     operation: "clearValue",
     method: "DELETE",
-    path: "/v1/worker-custom-field-values",
+    path: "/v1/custom_field_values",
     run: async () => {
-      await client.customWorkerFields.clearValue({
+      await client.customFields.clearValue({
         workerId: "wrk_1234",
         fieldId: "cf_1234",
       });

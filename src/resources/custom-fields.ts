@@ -7,40 +7,40 @@ import { buildHeaders } from "../internal/headers";
 import { path as __scalarPath } from "../internal/utils/path";
 import type * as OffersAPI from "./offers";
 
-export class CustomWorkerFields extends APIResource {
+export class CustomFields extends APIResource {
   /**
    * List the custom worker field definitions your API key can read. Each field belongs to a worker-data category; fields whose category your key cannot read are omitted unless the key holds workers:custom_fields.
    *
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldListResponse>} Success
+   * @returns {APIPromise<CustomFieldListResponse>} Success
    *
    * @example
    * ```ts
-   * const list = await client.customWorkerFields.list();
+   * const list = await client.customFields.list();
    * ```
    */
-  list(options?: RequestOptions): APIPromise<CustomWorkerFieldListResponse> {
-    return this._client.get("/v1/custom-worker-fields", options);
+  list(options?: RequestOptions): APIPromise<CustomFieldListResponse> {
+    return this._client.get("/v1/custom_fields", options);
   }
 
   /**
    * Create a custom worker field definition. The field type is immutable after creation. Select and multi_select fields can include their initial options. Access to values derives from the field category; requires the workers:custom_fields permission.
    *
-   * @param {CustomWorkerFieldCreateParams} body - The request body to send.
+   * @param {CustomFieldCreateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldCreateResponse>} Success
+   * @returns {APIPromise<CustomFieldCreateResponse>} Success
    *
    * @example
    * ```ts
-   * const create = await client.customWorkerFields.create({
+   * const create = await client.customFields.create({
    *   name: "",
    *   type: "text",
    *   category: "info",
    * });
    * ```
    */
-  create(body: CustomWorkerFieldCreateParams, options?: RequestOptions): APIPromise<CustomWorkerFieldCreateResponse> {
-    return this._client.post("/v1/custom-worker-fields", { body, ...options });
+  create(body: CustomFieldCreateParams, options?: RequestOptions): APIPromise<CustomFieldCreateResponse> {
+    return this._client.post("/v1/custom_fields", { body, ...options });
   }
 
   /**
@@ -48,32 +48,32 @@ export class CustomWorkerFields extends APIResource {
    *
    * @param {string} id - The tag of a company custom worker field.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldRetrieveResponse>} Success
+   * @returns {APIPromise<CustomFieldRetrieveResponse>} Success
    *
    * @example
    * ```ts
-   * const retrieve = await client.customWorkerFields.retrieve("cf_1234");
+   * const retrieve = await client.customFields.retrieve("cf_1234");
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<CustomWorkerFieldRetrieveResponse> {
-    return this._client.get(__scalarPath`/v1/custom-worker-fields/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<CustomFieldRetrieveResponse> {
+    return this._client.get(__scalarPath`/v1/custom_fields/${id}`, options);
   }
 
   /**
    * Update a custom worker field definition. The field type cannot be changed; create a new field instead. Requires the workers:custom_fields permission; changing the category, access level, or input source requires the manage level.
    *
    * @param {string} id - The tag of a company custom worker field.
-   * @param {CustomWorkerFieldUpdateParams} body - The request body to send.
+   * @param {CustomFieldUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldUpdateResponse>} Success
+   * @returns {APIPromise<CustomFieldUpdateResponse>} Success
    *
    * @example
    * ```ts
-   * const update = await client.customWorkerFields.update("cf_1234", {});
+   * const update = await client.customFields.update("cf_1234", {});
    * ```
    */
-  update(id: string, body: CustomWorkerFieldUpdateParams, options?: RequestOptions): APIPromise<CustomWorkerFieldUpdateResponse> {
-    return this._client.patch(__scalarPath`/v1/custom-worker-fields/${id}`, { body, ...options });
+  update(id: string, body: CustomFieldUpdateParams, options?: RequestOptions): APIPromise<CustomFieldUpdateResponse> {
+    return this._client.patch(__scalarPath`/v1/custom_fields/${id}`, { body, ...options });
   }
 
   /**
@@ -81,52 +81,52 @@ export class CustomWorkerFields extends APIResource {
    *
    * @param {string} id - The tag of a company custom worker field.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldArchiveResponse>} Success
+   * @returns {APIPromise<CustomFieldArchiveResponse>} Success
    *
    * @example
    * ```ts
-   * const archive = await client.customWorkerFields.archive("cf_1234");
+   * const archive = await client.customFields.archive("cf_1234");
    * ```
    */
-  archive(id: string, options?: RequestOptions): APIPromise<CustomWorkerFieldArchiveResponse> {
-    return this._client.post(__scalarPath`/v1/custom-worker-fields/${id}/archive`, options);
+  archive(id: string, options?: RequestOptions): APIPromise<CustomFieldArchiveResponse> {
+    return this._client.post(__scalarPath`/v1/custom_fields/${id}/archive`, options);
   }
 
   /**
    * Add an option to a select or multi_select custom worker field. The option value should be treated as stable; the label can change. Requires the workers:custom_fields permission.
    *
    * @param {string} id - The tag of a company custom worker field.
-   * @param {CustomWorkerFieldCreateOptionParams} body - The request body to send.
+   * @param {CustomFieldCreateOptionParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldCreateOptionResponse>} Success
+   * @returns {APIPromise<CustomFieldCreateOptionResponse>} Success
    *
    * @example
    * ```ts
-   * const createOption = await client.customWorkerFields.createOption("cf_1234", {
+   * const createOption = await client.customFields.createOption("cf_1234", {
    *   label: "x",
    *   value: "x",
    * });
    * ```
    */
-  createOption(id: string, body: CustomWorkerFieldCreateOptionParams, options?: RequestOptions): APIPromise<CustomWorkerFieldCreateOptionResponse> {
-    return this._client.post(__scalarPath`/v1/custom-worker-fields/${id}/options`, { body, ...options });
+  createOption(id: string, body: CustomFieldCreateOptionParams, options?: RequestOptions): APIPromise<CustomFieldCreateOptionResponse> {
+    return this._client.post(__scalarPath`/v1/custom_fields/${id}/options`, { body, ...options });
   }
 
   /**
    * Update the label or sort order of a custom worker field option. Options of archived fields cannot be edited. Requires the workers:custom_fields permission.
    *
    * @param {string} id - The tag of a company custom worker field option.
-   * @param {CustomWorkerFieldUpdateOptionParams} body - The request body to send.
+   * @param {CustomFieldUpdateOptionParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldUpdateOptionResponse>} Success
+   * @returns {APIPromise<CustomFieldUpdateOptionResponse>} Success
    *
    * @example
    * ```ts
-   * const updateOption = await client.customWorkerFields.updateOption("cfo_1234", {});
+   * const updateOption = await client.customFields.updateOption("cfo_1234", {});
    * ```
    */
-  updateOption(id: string, body: CustomWorkerFieldUpdateOptionParams, options?: RequestOptions): APIPromise<CustomWorkerFieldUpdateOptionResponse> {
-    return this._client.patch(__scalarPath`/v1/custom-worker-field-options/${id}`, { body, ...options });
+  updateOption(id: string, body: CustomFieldUpdateOptionParams, options?: RequestOptions): APIPromise<CustomFieldUpdateOptionResponse> {
+    return this._client.patch(__scalarPath`/v1/custom_field_options/${id}`, { body, ...options });
   }
 
   /**
@@ -138,11 +138,11 @@ export class CustomWorkerFields extends APIResource {
    *
    * @example
    * ```ts
-   * await client.customWorkerFields.deleteOption("cfo_1234");
+   * await client.customFields.deleteOption("cfo_1234");
    * ```
    */
   deleteOption(id: string, options?: RequestOptions): APIPromise<void> {
-    return this._client.delete(__scalarPath`/v1/custom-worker-field-options/${id}`, { ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
+    return this._client.delete(__scalarPath`/v1/custom_field_options/${id}`, { ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
   }
 
   /**
@@ -150,43 +150,43 @@ export class CustomWorkerFields extends APIResource {
    *
    * @param {string} id - The tag of a company custom worker field option.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldArchiveOptionResponse>} Success
+   * @returns {APIPromise<CustomFieldArchiveOptionResponse>} Success
    *
    * @example
    * ```ts
-   * const archiveOption = await client.customWorkerFields.archiveOption("cfo_1234");
+   * const archiveOption = await client.customFields.archiveOption("cfo_1234");
    * ```
    */
-  archiveOption(id: string, options?: RequestOptions): APIPromise<CustomWorkerFieldArchiveOptionResponse> {
-    return this._client.post(__scalarPath`/v1/custom-worker-field-options/${id}/archive`, options);
+  archiveOption(id: string, options?: RequestOptions): APIPromise<CustomFieldArchiveOptionResponse> {
+    return this._client.post(__scalarPath`/v1/custom_field_options/${id}/archive`, options);
   }
 
   /**
    * List custom field values for workers, optionally filtered by worker or field. Values are returned only for fields whose category your API key can read.
    *
-   * @param {CustomWorkerFieldListValuesParams} [query] - The parameters to send with the request.
+   * @param {CustomFieldListValuesParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldListValuesResponse>} Success
+   * @returns {APIPromise<CustomFieldListValuesResponse>} Success
    *
    * @example
    * ```ts
-   * const listValues = await client.customWorkerFields.listValues();
+   * const listValues = await client.customFields.listValues();
    * ```
    */
-  listValues(query: CustomWorkerFieldListValuesParams | null | undefined = {}, options?: RequestOptions): APIPromise<CustomWorkerFieldListValuesResponse> {
-    return this._client.get("/v1/worker-custom-field-values", { query, ...options });
+  listValues(query: CustomFieldListValuesParams | null | undefined = {}, options?: RequestOptions): APIPromise<CustomFieldListValuesResponse> {
+    return this._client.get("/v1/custom_field_values", { query, ...options });
   }
 
   /**
    * Create or replace a worker's value for a custom field. The value shape must match the field type, and your API key must hold write on the field's category.
    *
-   * @param {CustomWorkerFieldUpsertValueParams} body - The request body to send.
+   * @param {CustomFieldUpsertValueParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomWorkerFieldUpsertValueResponse>} Success
+   * @returns {APIPromise<CustomFieldUpsertValueResponse>} Success
    *
    * @example
    * ```ts
-   * const upsertValue = await client.customWorkerFields.upsertValue({
+   * const upsertValue = await client.customFields.upsertValue({
    *   workerId: "wrk_1234",
    *   fieldId: "cf_1234",
    *   value: {
@@ -196,28 +196,28 @@ export class CustomWorkerFields extends APIResource {
    * });
    * ```
    */
-  upsertValue(body: CustomWorkerFieldUpsertValueParams, options?: RequestOptions): APIPromise<CustomWorkerFieldUpsertValueResponse> {
-    return this._client.put("/v1/worker-custom-field-values", { body, ...options });
+  upsertValue(body: CustomFieldUpsertValueParams, options?: RequestOptions): APIPromise<CustomFieldUpsertValueResponse> {
+    return this._client.put("/v1/custom_field_values", { body, ...options });
   }
 
   /**
    * Remove a worker's value for a custom field. Your API key must hold write on the field's category.
    *
-   * @param {CustomWorkerFieldClearValueParams} params - The parameters to send with the request.
+   * @param {CustomFieldClearValueParams} params - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns Success
    *
    * @example
    * ```ts
-   * await client.customWorkerFields.clearValue({
+   * await client.customFields.clearValue({
    *   workerId: "wrk_1234",
    *   fieldId: "cf_1234",
    * });
    * ```
    */
-  clearValue(params: CustomWorkerFieldClearValueParams, options?: RequestOptions): APIPromise<void> {
+  clearValue(params: CustomFieldClearValueParams, options?: RequestOptions): APIPromise<void> {
     const { workerId, fieldId } = params;
-    return this._client.delete("/v1/worker-custom-field-values", { query: { workerId, fieldId }, ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
+    return this._client.delete("/v1/custom_field_values", { query: { workerId, fieldId }, ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
   }
 }
 
@@ -231,10 +231,10 @@ export type Trimmed = string;
  */
 export type NonEmptyTrimmedString = string;
 
-export type CustomWorkerFieldListResponse = Array<CustomWorkerFieldListResponse.CustomWorkerFieldListResponseItem>;
+export type CustomFieldListResponse = Array<CustomFieldListResponse.CustomFieldListResponseItem>;
 
-export namespace CustomWorkerFieldListResponse {
-  export interface CustomWorkerFieldListResponseItem {
+export namespace CustomFieldListResponse {
+  export interface CustomFieldListResponseItem {
     /**
      * The tag of a company custom worker field.
      * @pattern ^cf_
@@ -257,7 +257,7 @@ export namespace CustomWorkerFieldListResponse {
   }
 }
 
-export interface CustomWorkerFieldCreateParams {
+export interface CustomFieldCreateParams {
   /**
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
@@ -270,10 +270,10 @@ export interface CustomWorkerFieldCreateParams {
   accessLevel?: "admins" | "manager" | "worker";
   inputBy?: "admin" | "worker";
   required?: boolean;
-  options?: Array<CustomWorkerFieldCreateParams.Option>;
+  options?: Array<CustomFieldCreateParams.Option>;
 }
 
-export namespace CustomWorkerFieldCreateParams {
+export namespace CustomFieldCreateParams {
   export interface Option {
     /**
      * a non empty string
@@ -291,7 +291,7 @@ export namespace CustomWorkerFieldCreateParams {
   }
 }
 
-export interface CustomWorkerFieldCreateResponse {
+export interface CustomFieldCreateResponse {
   /**
    * The tag of a company custom worker field.
    * @pattern ^cf_
@@ -313,7 +313,7 @@ export interface CustomWorkerFieldCreateResponse {
   required?: boolean;
 }
 
-export interface CustomWorkerFieldRetrieveResponse {
+export interface CustomFieldRetrieveResponse {
   /**
    * The tag of a company custom worker field.
    * @pattern ^cf_
@@ -332,11 +332,11 @@ export interface CustomWorkerFieldRetrieveResponse {
    * a string to be decoded into a Date
    */
   createdAt: OffersAPI.Date;
-  options: Array<CustomWorkerFieldRetrieveResponse.Option>;
+  options: Array<CustomFieldRetrieveResponse.Option>;
   required?: boolean;
 }
 
-export namespace CustomWorkerFieldRetrieveResponse {
+export namespace CustomFieldRetrieveResponse {
   export interface Option {
     /**
      * The tag of a company custom worker field option.
@@ -354,7 +354,7 @@ export namespace CustomWorkerFieldRetrieveResponse {
   }
 }
 
-export interface CustomWorkerFieldUpdateParams {
+export interface CustomFieldUpdateParams {
   /**
    * a non empty string
    * @minLength 1
@@ -369,7 +369,7 @@ export interface CustomWorkerFieldUpdateParams {
   required?: boolean;
 }
 
-export interface CustomWorkerFieldUpdateResponse {
+export interface CustomFieldUpdateResponse {
   /**
    * The tag of a company custom worker field.
    * @pattern ^cf_
@@ -391,7 +391,7 @@ export interface CustomWorkerFieldUpdateResponse {
   required?: boolean;
 }
 
-export interface CustomWorkerFieldArchiveResponse {
+export interface CustomFieldArchiveResponse {
   /**
    * The tag of a company custom worker field.
    * @pattern ^cf_
@@ -413,7 +413,7 @@ export interface CustomWorkerFieldArchiveResponse {
   required?: boolean;
 }
 
-export interface CustomWorkerFieldCreateOptionParams {
+export interface CustomFieldCreateOptionParams {
   /**
    * a non empty string
    * @minLength 1
@@ -429,7 +429,7 @@ export interface CustomWorkerFieldCreateOptionParams {
   sortOrder?: number;
 }
 
-export interface CustomWorkerFieldCreateOptionResponse {
+export interface CustomFieldCreateOptionResponse {
   /**
    * The tag of a company custom worker field option.
    * @pattern ^cfo_
@@ -445,7 +445,7 @@ export interface CustomWorkerFieldCreateOptionResponse {
   createdAt: OffersAPI.Date;
 }
 
-export interface CustomWorkerFieldUpdateOptionParams {
+export interface CustomFieldUpdateOptionParams {
   /**
    * a non empty string
    * @minLength 1
@@ -455,7 +455,7 @@ export interface CustomWorkerFieldUpdateOptionParams {
   sortOrder?: number;
 }
 
-export interface CustomWorkerFieldUpdateOptionResponse {
+export interface CustomFieldUpdateOptionResponse {
   /**
    * The tag of a company custom worker field option.
    * @pattern ^cfo_
@@ -471,7 +471,7 @@ export interface CustomWorkerFieldUpdateOptionResponse {
   createdAt: OffersAPI.Date;
 }
 
-export interface CustomWorkerFieldArchiveOptionResponse {
+export interface CustomFieldArchiveOptionResponse {
   /**
    * The tag of a company custom worker field option.
    * @pattern ^cfo_
@@ -487,15 +487,15 @@ export interface CustomWorkerFieldArchiveOptionResponse {
   createdAt: OffersAPI.Date;
 }
 
-export interface CustomWorkerFieldListValuesParams {
+export interface CustomFieldListValuesParams {
   workerIds?: Array<string>;
   fieldIds?: Array<string>;
 }
 
-export type CustomWorkerFieldListValuesResponse = Array<CustomWorkerFieldListValuesResponse.CustomWorkerFieldListValuesResponseItem>;
+export type CustomFieldListValuesResponse = Array<CustomFieldListValuesResponse.CustomFieldListValuesResponseItem>;
 
-export namespace CustomWorkerFieldListValuesResponse {
-  export interface CustomWorkerFieldListValuesResponseItem {
+export namespace CustomFieldListValuesResponse {
+  export interface CustomFieldListValuesResponseItem {
     /**
      * The tag of a company custom worker field value.
      * @pattern ^cfv_
@@ -511,14 +511,14 @@ export namespace CustomWorkerFieldListValuesResponse {
      * @pattern ^cf_
      */
     fieldId: string;
-    value: CustomWorkerFieldListValuesResponseItem.Value | CustomWorkerFieldListValuesResponseItem.Value2 | CustomWorkerFieldListValuesResponseItem.Value3 | CustomWorkerFieldListValuesResponseItem.Value4 | CustomWorkerFieldListValuesResponseItem.Value5 | CustomWorkerFieldListValuesResponseItem.Value6 | CustomWorkerFieldListValuesResponseItem.Value7 | CustomWorkerFieldListValuesResponseItem.Value8;
+    value: CustomFieldListValuesResponseItem.Value | CustomFieldListValuesResponseItem.Value2 | CustomFieldListValuesResponseItem.Value3 | CustomFieldListValuesResponseItem.Value4 | CustomFieldListValuesResponseItem.Value5 | CustomFieldListValuesResponseItem.Value6 | CustomFieldListValuesResponseItem.Value7 | CustomFieldListValuesResponseItem.Value8;
     /**
      * a string to be decoded into a Date
      */
     updatedAt: OffersAPI.Date;
   }
 
-  export namespace CustomWorkerFieldListValuesResponseItem {
+  export namespace CustomFieldListValuesResponseItem {
     export interface Value {
       type: "text";
       value: string;
@@ -602,7 +602,7 @@ export namespace CustomWorkerFieldListValuesResponse {
   }
 }
 
-export interface CustomWorkerFieldUpsertValueParams {
+export interface CustomFieldUpsertValueParams {
   /**
    * The id of the worker.
    * @pattern ^wrk_
@@ -613,10 +613,10 @@ export interface CustomWorkerFieldUpsertValueParams {
    * @pattern ^cf_
    */
   fieldId: string;
-  value: CustomWorkerFieldUpsertValueParams.Value | CustomWorkerFieldUpsertValueParams.Value2 | CustomWorkerFieldUpsertValueParams.Value3 | CustomWorkerFieldUpsertValueParams.Value4 | CustomWorkerFieldUpsertValueParams.Value5 | CustomWorkerFieldUpsertValueParams.Value6 | CustomWorkerFieldUpsertValueParams.Value7 | CustomWorkerFieldUpsertValueParams.Value8;
+  value: CustomFieldUpsertValueParams.Value | CustomFieldUpsertValueParams.Value2 | CustomFieldUpsertValueParams.Value3 | CustomFieldUpsertValueParams.Value4 | CustomFieldUpsertValueParams.Value5 | CustomFieldUpsertValueParams.Value6 | CustomFieldUpsertValueParams.Value7 | CustomFieldUpsertValueParams.Value8;
 }
 
-export namespace CustomWorkerFieldUpsertValueParams {
+export namespace CustomFieldUpsertValueParams {
   export interface Value {
     type: "text";
     value: string;
@@ -667,7 +667,7 @@ export namespace CustomWorkerFieldUpsertValueParams {
   }
 }
 
-export interface CustomWorkerFieldUpsertValueResponse {
+export interface CustomFieldUpsertValueResponse {
   /**
    * The tag of a company custom worker field value.
    * @pattern ^cfv_
@@ -683,14 +683,14 @@ export interface CustomWorkerFieldUpsertValueResponse {
    * @pattern ^cf_
    */
   fieldId: string;
-  value: CustomWorkerFieldUpsertValueResponse.Value | CustomWorkerFieldUpsertValueResponse.Value2 | CustomWorkerFieldUpsertValueResponse.Value3 | CustomWorkerFieldUpsertValueResponse.Value4 | CustomWorkerFieldUpsertValueResponse.Value5 | CustomWorkerFieldUpsertValueResponse.Value6 | CustomWorkerFieldUpsertValueResponse.Value7 | CustomWorkerFieldUpsertValueResponse.Value8;
+  value: CustomFieldUpsertValueResponse.Value | CustomFieldUpsertValueResponse.Value2 | CustomFieldUpsertValueResponse.Value3 | CustomFieldUpsertValueResponse.Value4 | CustomFieldUpsertValueResponse.Value5 | CustomFieldUpsertValueResponse.Value6 | CustomFieldUpsertValueResponse.Value7 | CustomFieldUpsertValueResponse.Value8;
   /**
    * a string to be decoded into a Date
    */
   updatedAt: OffersAPI.Date;
 }
 
-export namespace CustomWorkerFieldUpsertValueResponse {
+export namespace CustomFieldUpsertValueResponse {
   export interface Value {
     type: "text";
     value: string;
@@ -773,7 +773,7 @@ export namespace CustomWorkerFieldUpsertValueResponse {
   }
 }
 
-export interface CustomWorkerFieldClearValueParams {
+export interface CustomFieldClearValueParams {
   /**
    * The id of the worker.
    * @pattern ^wrk_
@@ -785,26 +785,26 @@ export interface CustomWorkerFieldClearValueParams {
    */
   fieldId: string;
 }
-export declare namespace CustomWorkerFields {
+export declare namespace CustomFields {
   export {
     type Trimmed as Trimmed,
     type NonEmptyTrimmedString as NonEmptyTrimmedString,
-    type CustomWorkerFieldListResponse as CustomWorkerFieldListResponse,
-    type CustomWorkerFieldCreateResponse as CustomWorkerFieldCreateResponse,
-    type CustomWorkerFieldRetrieveResponse as CustomWorkerFieldRetrieveResponse,
-    type CustomWorkerFieldUpdateResponse as CustomWorkerFieldUpdateResponse,
-    type CustomWorkerFieldArchiveResponse as CustomWorkerFieldArchiveResponse,
-    type CustomWorkerFieldCreateOptionResponse as CustomWorkerFieldCreateOptionResponse,
-    type CustomWorkerFieldUpdateOptionResponse as CustomWorkerFieldUpdateOptionResponse,
-    type CustomWorkerFieldArchiveOptionResponse as CustomWorkerFieldArchiveOptionResponse,
-    type CustomWorkerFieldListValuesResponse as CustomWorkerFieldListValuesResponse,
-    type CustomWorkerFieldUpsertValueResponse as CustomWorkerFieldUpsertValueResponse,
-    type CustomWorkerFieldCreateParams as CustomWorkerFieldCreateParams,
-    type CustomWorkerFieldUpdateParams as CustomWorkerFieldUpdateParams,
-    type CustomWorkerFieldCreateOptionParams as CustomWorkerFieldCreateOptionParams,
-    type CustomWorkerFieldUpdateOptionParams as CustomWorkerFieldUpdateOptionParams,
-    type CustomWorkerFieldListValuesParams as CustomWorkerFieldListValuesParams,
-    type CustomWorkerFieldUpsertValueParams as CustomWorkerFieldUpsertValueParams,
-    type CustomWorkerFieldClearValueParams as CustomWorkerFieldClearValueParams,
+    type CustomFieldListResponse as CustomFieldListResponse,
+    type CustomFieldCreateResponse as CustomFieldCreateResponse,
+    type CustomFieldRetrieveResponse as CustomFieldRetrieveResponse,
+    type CustomFieldUpdateResponse as CustomFieldUpdateResponse,
+    type CustomFieldArchiveResponse as CustomFieldArchiveResponse,
+    type CustomFieldCreateOptionResponse as CustomFieldCreateOptionResponse,
+    type CustomFieldUpdateOptionResponse as CustomFieldUpdateOptionResponse,
+    type CustomFieldArchiveOptionResponse as CustomFieldArchiveOptionResponse,
+    type CustomFieldListValuesResponse as CustomFieldListValuesResponse,
+    type CustomFieldUpsertValueResponse as CustomFieldUpsertValueResponse,
+    type CustomFieldCreateParams as CustomFieldCreateParams,
+    type CustomFieldUpdateParams as CustomFieldUpdateParams,
+    type CustomFieldCreateOptionParams as CustomFieldCreateOptionParams,
+    type CustomFieldUpdateOptionParams as CustomFieldUpdateOptionParams,
+    type CustomFieldListValuesParams as CustomFieldListValuesParams,
+    type CustomFieldUpsertValueParams as CustomFieldUpsertValueParams,
+    type CustomFieldClearValueParams as CustomFieldClearValueParams,
   };
 }

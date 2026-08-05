@@ -1,9 +1,9 @@
 ---
-name: warp-api-typescript-sdk
+name: warp-typescript-sdk
 description: "TypeScript SDK for Warp API. Use when writing TypeScript code that calls Warp API with the warp-hr package: installing it, constructing and authenticating the client, and calling API operations."
 ---
 
-# Warp API TypeScript SDK
+# Warp TypeScript SDK
 
 Generated TypeScript client for Warp API, published as `warp-hr`. Use the generated client instead of hand-writing HTTP requests.
 
@@ -16,9 +16,9 @@ npm install warp-hr
 ## Client setup and authentication
 
 ```ts
-import WarpAPI from "warp-hr";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 ```
@@ -30,14 +30,17 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import WarpAPI from "warp-hr";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 
-const list = await client.customWorkerFields.list();
-console.log(list);
+const benefitsList = await client.benefits.healthPlans.benefitsList({
+  statuses: ["active"],
+});
+
+console.log(benefitsList);
 ```
 
 Method names, parameter shapes, and response types are generated from the API description — do not guess them. Look up the exact call signature in [api.md](./api.md) before writing a call.
@@ -50,7 +53,9 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from "warp-hr";
 
 try {
-  const list = await client.customWorkerFields.list();
+  const benefitsList = await client.benefits.healthPlans.benefitsList({
+    statuses: ["active"],
+  });
 } catch (err) {
   if (err instanceof APIError) {
     console.log(err.status, err.name, err.headers);

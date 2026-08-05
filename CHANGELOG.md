@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.18.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.17.0...v0.18.0) (2026-08-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** Renamed SDK from `WarpApi` to `Warp`.
+* **api:** 20 breaking changes to the SDK surface.
+    - Removed operation `customWorkerFields.list` (`GET /v1/custom-worker-fields`).
+    - Removed operation `customWorkerFields.create` (`POST /v1/custom-worker-fields`).
+    - Removed operation `customWorkerFields.retrieve` (`GET /v1/custom-worker-fields/{id}`).
+    - Removed operation `customWorkerFields.update` (`PATCH /v1/custom-worker-fields/{id}`).
+    - Removed operation `customWorkerFields.archive` (`POST /v1/custom-worker-fields/{id}/archive`).
+    - Removed operation `customWorkerFields.createOption` (`POST /v1/custom-worker-fields/{id}/options`).
+    - Removed operation `customWorkerFields.updateOption` (`PATCH /v1/custom-worker-field-options/{id}`).
+    - Removed operation `customWorkerFields.deleteOption` (`DELETE /v1/custom-worker-field-options/{id}`).
+    - Removed operation `customWorkerFields.archiveOption` (`POST /v1/custom-worker-field-options/{id}/archive`).
+    - Removed operation `customWorkerFields.listValues` (`GET /v1/worker-custom-field-values`).
+    - Removed operation `customWorkerFields.upsertValue` (`PUT /v1/worker-custom-field-values`).
+    - Removed operation `customWorkerFields.clearValue` (`DELETE /v1/worker-custom-field-values`).
+    - Removed schema `invalid_custom_worker_field_operation`.
+    - Removed schema `custom_worker_field_already_exists`.
+    - Removed schema `custom_worker_field_option_already_exists`.
+    - Removed schema `custom_worker_field_not_found`.
+    - Removed schema `custom_worker_field_option_not_found`.
+    - Removed schema `custom_worker_field_option_in_use`.
+    - Removed schema `invalid_custom_worker_field_value`.
+    - Removed schema `custom_worker_field_worker_not_found`.
+
+### Features
+
+* **api:** add operation customFields.list (+20 more changes) ([4e640a8](https://github.com/TeamWarp/warp-sdk-typescript/commit/4e640a8b94de3c3a098868a1dffe691d6b1ba98d))
+* **api:** add schema public_money_amount (+1 more change) ([a4d2383](https://github.com/TeamWarp/warp-sdk-typescript/commit/a4d238305d14b17b9b239a8393a4138a4931c14f))
+* **api:** remove operation customWorkerFields.list (+19 more changes) ([33ba285](https://github.com/TeamWarp/warp-sdk-typescript/commit/33ba285601f4a24ea49712d2dabdc8021707f942))
+* **api:** update SDK name (+27 more changes) ([6dc40aa](https://github.com/TeamWarp/warp-sdk-typescript/commit/6dc40aa24fcbbb294daa1077a65b8b3e52854db3))
+
+
+### Chores
+
+* **api:** regenerate SDK ([40c9f18](https://github.com/TeamWarp/warp-sdk-typescript/commit/40c9f18ddb53ca7d58a885d0b7d4fc318c169657))
+
 ## [0.17.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.15.0...v0.17.0) (2026-07-30)
 
 

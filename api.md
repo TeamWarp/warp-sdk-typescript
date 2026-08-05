@@ -4,7 +4,17 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 
 ## Contents
 
-- [`CustomWorkerFields`](#customworkerfields)
+- [`Benefits`](#benefits)
+  - [`Benefits HealthPlans`](#benefits-healthplans)
+    - [List Health Plans](#list-health-plans)
+    - [Get Health Plan](#get-health-plan)
+  - [`Benefits RetirementPlans`](#benefits-retirementplans)
+    - [List Retirement Plans](#list-retirement-plans)
+    - [Get Retirement Plan](#get-retirement-plan)
+  - [`Benefits Deductions`](#benefits-deductions)
+    - [List Benefit Deductions](#list-benefit-deductions)
+    - [Get Benefit Deduction](#get-benefit-deduction)
+- [`CustomFields`](#customfields)
   - [List Fields](#list-fields)
   - [Create Field](#create-field)
   - [Get Field](#get-field)
@@ -49,14 +59,103 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import WarpAPI from "warp-hr";
+import Warp from "warp-hr";
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
 });
 ```
 
-## `CustomWorkerFields`
+## `Benefits`
+
+### `Benefits HealthPlans`
+
+#### List Health Plans
+
+List company health plans. Defaults to active plans. A plan whose effectiveEndDate has elapsed is reported and filtered as terminated.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`HealthPlanBenefitsListParams`](./src/resources/benefits/health-plans.ts) |
+| Response | [`HealthPlanBenefitsListResponse`](./src/resources/benefits/health-plans.ts) |
+
+```ts
+const benefitsList = await client.benefits.healthPlans.benefitsList({
+  statuses: ["active"],
+});
+```
+
+#### Get Health Plan
+
+Get a publicly visible company health plan by id.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`HealthPlanBenefitsGetResponse`](./src/resources/benefits/health-plans.ts) |
+
+```ts
+const benefitsGet = await client.benefits.healthPlans.benefitsGet("chpl_1234");
+```
+
+### `Benefits RetirementPlans`
+
+#### List Retirement Plans
+
+List company retirement plans. Defaults to active plans. A plan whose effectiveEndDate has elapsed is reported and filtered as terminated.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`RetirementPlanBenefitsListParams`](./src/resources/benefits/retirement-plans.ts) |
+| Response | [`RetirementPlanBenefitsListResponse`](./src/resources/benefits/retirement-plans.ts) |
+
+```ts
+const benefitsList = await client.benefits.retirementPlans.benefitsList({
+  statuses: ["active"],
+});
+```
+
+#### Get Retirement Plan
+
+Get a company retirement plan by id, regardless of status.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`RetirementPlanBenefitsGetResponse`](./src/resources/benefits/retirement-plans.ts) |
+
+```ts
+const benefitsGet = await client.benefits.retirementPlans.benefitsGet("crpl_1234");
+```
+
+### `Benefits Deductions`
+
+#### List Benefit Deductions
+
+List current payroll benefit deductions. Defaults to active deductions. A deduction whose effectiveEndDate has elapsed is reported and filtered as terminated.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`DeductionBenefitsListParams`](./src/resources/benefits/deductions.ts) |
+| Response | [`DeductionBenefitsListResponse`](./src/resources/benefits/deductions.ts) |
+
+```ts
+const benefitsList = await client.benefits.deductions.benefitsList({
+  statuses: ["active"],
+});
+```
+
+#### Get Benefit Deduction
+
+Get the current version of a company benefit deduction by id.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`DeductionBenefitsGetResponse`](./src/resources/benefits/deductions.ts) |
+
+```ts
+const benefitsGet = await client.benefits.deductions.benefitsGet("pbdg_1234");
+```
+
+## `CustomFields`
 
 ### List Fields
 
@@ -64,10 +163,10 @@ List the custom worker field definitions your API key can read. Each field belon
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomWorkerFieldListResponse`](./src/resources/custom-worker-fields.ts) |
+| Response | [`CustomFieldListResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const list = await client.customWorkerFields.list();
+const list = await client.customFields.list();
 ```
 
 ### Create Field
@@ -76,11 +175,11 @@ Create a custom worker field definition. The field type is immutable after creat
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldCreateParams`](./src/resources/custom-worker-fields.ts) |
-| Response | [`CustomWorkerFieldCreateResponse`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldCreateParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldCreateResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const create = await client.customWorkerFields.create({
+const create = await client.customFields.create({
   name: "",
   type: "text",
   category: "info",
@@ -93,10 +192,10 @@ Get a custom worker field definition, including its select options. Archived opt
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomWorkerFieldRetrieveResponse`](./src/resources/custom-worker-fields.ts) |
+| Response | [`CustomFieldRetrieveResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const retrieve = await client.customWorkerFields.retrieve("cf_1234");
+const retrieve = await client.customFields.retrieve("cf_1234");
 ```
 
 ### Update Field
@@ -105,11 +204,11 @@ Update a custom worker field definition. The field type cannot be changed; creat
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldUpdateParams`](./src/resources/custom-worker-fields.ts) |
-| Response | [`CustomWorkerFieldUpdateResponse`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldUpdateParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldUpdateResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const update = await client.customWorkerFields.update("cf_1234", {});
+const update = await client.customFields.update("cf_1234", {});
 ```
 
 ### Archive Field
@@ -118,10 +217,10 @@ Archive a custom worker field. Archived fields keep their existing worker values
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomWorkerFieldArchiveResponse`](./src/resources/custom-worker-fields.ts) |
+| Response | [`CustomFieldArchiveResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const archive = await client.customWorkerFields.archive("cf_1234");
+const archive = await client.customFields.archive("cf_1234");
 ```
 
 ### Create Field Option
@@ -130,11 +229,11 @@ Add an option to a select or multi_select custom worker field. The option value 
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldCreateOptionParams`](./src/resources/custom-worker-fields.ts) |
-| Response | [`CustomWorkerFieldCreateOptionResponse`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldCreateOptionParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldCreateOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const createOption = await client.customWorkerFields.createOption("cf_1234", {
+const createOption = await client.customFields.createOption("cf_1234", {
   label: "x",
   value: "x",
 });
@@ -146,11 +245,11 @@ Update the label or sort order of a custom worker field option. Options of archi
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldUpdateOptionParams`](./src/resources/custom-worker-fields.ts) |
-| Response | [`CustomWorkerFieldUpdateOptionResponse`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldUpdateOptionParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldUpdateOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const updateOption = await client.customWorkerFields.updateOption("cfo_1234", {});
+const updateOption = await client.customFields.updateOption("cfo_1234", {});
 ```
 
 ### Delete Unused Field Option
@@ -158,7 +257,7 @@ const updateOption = await client.customWorkerFields.updateOption("cfo_1234", {}
 Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.
 
 ```ts
-await client.customWorkerFields.deleteOption("cfo_1234");
+await client.customFields.deleteOption("cfo_1234");
 ```
 
 ### Archive Field Option
@@ -167,10 +266,10 @@ Archive a custom worker field option. Archived options remain on existing worker
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomWorkerFieldArchiveOptionResponse`](./src/resources/custom-worker-fields.ts) |
+| Response | [`CustomFieldArchiveOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const archiveOption = await client.customWorkerFields.archiveOption("cfo_1234");
+const archiveOption = await client.customFields.archiveOption("cfo_1234");
 ```
 
 ### List Field Values
@@ -179,11 +278,11 @@ List custom field values for workers, optionally filtered by worker or field. Va
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldListValuesParams`](./src/resources/custom-worker-fields.ts) |
-| Response | [`CustomWorkerFieldListValuesResponse`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldListValuesParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldListValuesResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const listValues = await client.customWorkerFields.listValues();
+const listValues = await client.customFields.listValues();
 ```
 
 ### Set Field Value
@@ -192,11 +291,11 @@ Create or replace a worker's value for a custom field. The value shape must matc
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldUpsertValueParams`](./src/resources/custom-worker-fields.ts) |
-| Response | [`CustomWorkerFieldUpsertValueResponse`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldUpsertValueParams`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldUpsertValueResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const upsertValue = await client.customWorkerFields.upsertValue({
+const upsertValue = await client.customFields.upsertValue({
   workerId: "wrk_1234",
   fieldId: "cf_1234",
   value: {
@@ -212,10 +311,10 @@ Remove a worker's value for a custom field. Your API key must hold write on the 
 
 | Direction | Type |
 | --- | --- |
-| Request | [`CustomWorkerFieldClearValueParams`](./src/resources/custom-worker-fields.ts) |
+| Request | [`CustomFieldClearValueParams`](./src/resources/custom-fields.ts) |
 
 ```ts
-await client.customWorkerFields.clearValue({
+await client.customFields.clearValue({
   workerId: "wrk_1234",
   fieldId: "cf_1234",
 });

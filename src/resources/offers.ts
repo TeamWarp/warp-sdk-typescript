@@ -4,7 +4,7 @@ import { APIResource } from "../resource";
 import { APIPromise } from "../api-promise";
 import type { RequestOptions } from "../internal/request-options";
 import { path as __scalarPath } from "../internal/utils/path";
-import type * as CustomWorkerFieldsAPI from "./custom-worker-fields";
+import type * as CustomFieldsAPI from "./custom-fields";
 
 export class Offers extends APIResource {
   /**
@@ -232,6 +232,9 @@ export namespace OfferListResponse {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
@@ -334,13 +337,13 @@ export namespace OfferCreateParams {
      * @minLength 1
      * @pattern ^\S[\s\S]*\S$|^\S$|^$
      */
-    firstName: CustomWorkerFieldsAPI.NonEmptyTrimmedString;
+    firstName: CustomFieldsAPI.NonEmptyTrimmedString;
     /**
      * a non empty string
      * @minLength 1
      * @pattern ^\S[\s\S]*\S$|^\S$|^$
      */
-    lastName: CustomWorkerFieldsAPI.NonEmptyTrimmedString;
+    lastName: CustomFieldsAPI.NonEmptyTrimmedString;
     /**
      * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
@@ -362,7 +365,7 @@ export namespace OfferCreateParams {
      * @minLength 1
      * @pattern ^\S[\s\S]*\S$|^\S$|^$
      */
-    title: CustomWorkerFieldsAPI.NonEmptyTrimmedString;
+    title: CustomFieldsAPI.NonEmptyTrimmedString;
     /**
      * A date string in the form YYYY-MM-DD
      * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -487,6 +490,9 @@ export namespace OfferCreateResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;
@@ -651,6 +657,9 @@ export namespace OfferVoidResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;
@@ -822,6 +831,9 @@ export namespace OfferExtendDeadlineResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;
@@ -986,6 +998,9 @@ export namespace OfferResendResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;

@@ -1,7 +1,7 @@
 {
-  "name": "WarpApi",
-  "slug": "warpApi",
-  "generatorVersion": "0.21.1",
+  "name": "Warp",
+  "slug": "warp",
+  "generatorVersion": "0.22.5",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -32,6 +32,518 @@
       "type": {
         "kind": "primitive",
         "type": "string"
+      }
+    },
+    {
+      "name": "public_money_amount",
+      "source": "public_money_amount",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "USD",
+                "AUD",
+                "BGN",
+                "BRL",
+                "CAD",
+                "CHF",
+                "CZK",
+                "DKK",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HUF",
+                "IDR",
+                "INR",
+                "JPY",
+                "MYR",
+                "NOK",
+                "NZD",
+                "CNY",
+                "PLN",
+                "RON",
+                "TRY",
+                "SEK",
+                "SGD",
+                "AED",
+                "ARS",
+                "BDT",
+                "BWP",
+                "CLP",
+                "COP",
+                "CRC",
+                "EGP",
+                "FJD",
+                "GEL",
+                "GHS",
+                "ILS",
+                "KES",
+                "KRW",
+                "LKR",
+                "MAD",
+                "MXN",
+                "NPR",
+                "PHP",
+                "PKR",
+                "THB",
+                "UAH",
+                "UGX",
+                "UYU",
+                "VND",
+                "ZAR",
+                "ZMW",
+                "TND",
+                "NGN",
+                "RSD",
+                "TWD",
+                "GTQ",
+                "HNL",
+                "DOP",
+                "SAR",
+                "XAF",
+                "PEN"
+              ],
+              "names": [
+                "Usd",
+                "Aud",
+                "Bgn",
+                "Brl",
+                "Cad",
+                "Chf",
+                "Czk",
+                "Dkk",
+                "Eur",
+                "Gbp",
+                "Hkd",
+                "Huf",
+                "Idr",
+                "Inr",
+                "Jpy",
+                "Myr",
+                "Nok",
+                "Nzd",
+                "Cny",
+                "Pln",
+                "Ron",
+                "Try",
+                "Sek",
+                "Sgd",
+                "Aed",
+                "Ars",
+                "Bdt",
+                "Bwp",
+                "Clp",
+                "Cop",
+                "Crc",
+                "Egp",
+                "Fjd",
+                "Gel",
+                "Ghs",
+                "Ils",
+                "Kes",
+                "Krw",
+                "Lkr",
+                "Mad",
+                "Mxn",
+                "Npr",
+                "Php",
+                "Pkr",
+                "Thb",
+                "Uah",
+                "Ugx",
+                "Uyu",
+                "Vnd",
+                "Zar",
+                "Zmw",
+                "Tnd",
+                "Ngn",
+                "Rsd",
+                "Twd",
+                "Gtq",
+                "Hnl",
+                "Dop",
+                "Sar",
+                "Xaf",
+                "Pen"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_health_plan_status",
+      "source": "public_health_plan_status",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "active",
+          "terminated"
+        ],
+        "names": [
+          "Active",
+          "Terminated"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_health_plan",
+      "source": "public_health_plan",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "chpl_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^chpl_"
+              }
+            }
+          },
+          {
+            "name": "carrier",
+            "publicName": "carrier",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_health_plan_carrier"
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "medical",
+                "dental",
+                "vision",
+                "life",
+                "short_term_disability",
+                "long_term_disability"
+              ],
+              "names": [
+                "Medical",
+                "Dental",
+                "Vision",
+                "Life",
+                "ShortTermDisability",
+                "LongTermDisability"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupNumber",
+            "publicName": "groupNumber",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "networkType",
+            "publicName": "networkType",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "enum",
+                  "values": [
+                    "hmo",
+                    "ppo",
+                    "epo",
+                    "pos",
+                    "hdhp",
+                    "indemnity"
+                  ],
+                  "names": [
+                    "Hmo",
+                    "Ppo",
+                    "Epo",
+                    "Pos",
+                    "Hdhp",
+                    "Indemnity"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "effectiveStartDate",
+            "publicName": "effectiveStartDate",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2000-01-01"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "effectiveEndDate",
+            "publicName": "effectiveEndDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_health_plan_status"
+            }
+          },
+          {
+            "name": "createdAt",
+            "publicName": "createdAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "date"
+            }
+          },
+          {
+            "name": "updatedAt",
+            "publicName": "updatedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "date"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_health_plan_carrier",
+      "source": "public_health_plan_carrier",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "car_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^car_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
       }
     },
     {
@@ -553,6 +1065,1123 @@
       }
     },
     {
+      "name": "health_plan_not_found_error",
+      "source": "health_plan_not_found_error",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "chpl_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^chpl_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "HealthPlanNotFoundError"
+              ],
+              "names": [
+                "HealthPlanNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_retirement_plan_status",
+      "source": "public_retirement_plan_status",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "active",
+          "terminated"
+        ],
+        "names": [
+          "Active",
+          "Terminated"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_retirement_plan",
+      "source": "public_retirement_plan",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "crpl_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^crpl_"
+              }
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "401k",
+                "roth_401k",
+                "403b",
+                "roth_403b",
+                "457",
+                "roth_457",
+                "simple_ira",
+                "roth_simple_ira"
+              ],
+              "names": [
+                "_401k",
+                "Roth401k",
+                "_403b",
+                "Roth403b",
+                "_457",
+                "Roth457",
+                "SimpleIra",
+                "RothSimpleIra"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "provider",
+            "publicName": "provider",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_retirement_plan_provider"
+            }
+          },
+          {
+            "name": "effectiveStartDate",
+            "publicName": "effectiveStartDate",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2000-01-01"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "effectiveEndDate",
+            "publicName": "effectiveEndDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_retirement_plan_status"
+            }
+          },
+          {
+            "name": "createdAt",
+            "publicName": "createdAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "date"
+            }
+          },
+          {
+            "name": "updatedAt",
+            "publicName": "updatedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "date"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_retirement_plan_provider",
+      "source": "public_retirement_plan_provider",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "manual",
+          "human_interest",
+          "accrue"
+        ],
+        "names": [
+          "Manual",
+          "HumanInterest",
+          "Accrue"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "retirement_plan_not_found_error",
+      "source": "retirement_plan_not_found_error",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "crpl_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^crpl_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "RetirementPlanNotFoundError"
+              ],
+              "names": [
+                "RetirementPlanNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_benefit_deduction_category",
+      "source": "public_benefit_deduction_category",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "health",
+          "retirement",
+          "health_savings",
+          "commuter",
+          "voluntary",
+          "post_tax",
+          "other"
+        ],
+        "names": [
+          "Health",
+          "Retirement",
+          "HealthSavings",
+          "Commuter",
+          "Voluntary",
+          "PostTax",
+          "Other"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_benefit_deduction_status",
+      "source": "public_benefit_deduction_status",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "active",
+          "pending",
+          "suspended",
+          "terminated"
+        ],
+        "names": [
+          "Active",
+          "Pending",
+          "Suspended",
+          "Terminated"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_benefit_deduction",
+      "source": "public_benefit_deduction",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pbdg_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pbdg_"
+              }
+            }
+          },
+          {
+            "name": "worker",
+            "publicName": "worker",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_worker_reference"
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "publicName": "category",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_benefit_deduction_category"
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "medical",
+                "dental",
+                "vision",
+                "life",
+                "short_term_disability",
+                "long_term_disability",
+                "401k",
+                "roth_401k",
+                "403b",
+                "roth_403b",
+                "457",
+                "roth_457",
+                "hsa",
+                "fsa_medical",
+                "fsa_dependent_care",
+                "transit",
+                "parking",
+                "accident",
+                "cancer",
+                "critical_illness",
+                "hospital",
+                "medical_other",
+                "simple_ira",
+                "roth_simple_ira",
+                "nqdc",
+                "nontaxable_fringe",
+                "pucc",
+                "voluntary",
+                "post_tax",
+                "other"
+              ],
+              "names": [
+                "Medical",
+                "Dental",
+                "Vision",
+                "Life",
+                "ShortTermDisability",
+                "LongTermDisability",
+                "_401k",
+                "Roth401k",
+                "_403b",
+                "Roth403b",
+                "_457",
+                "Roth457",
+                "Hsa",
+                "FsaMedical",
+                "FsaDependentCare",
+                "Transit",
+                "Parking",
+                "Accident",
+                "Cancer",
+                "CriticalIllness",
+                "Hospital",
+                "MedicalOther",
+                "SimpleIra",
+                "RothSimpleIra",
+                "Nqdc",
+                "NontaxableFringe",
+                "Pucc",
+                "Voluntary",
+                "PostTax",
+                "Other"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "recurrence",
+            "publicName": "recurrence",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "recurring",
+                "one_time"
+              ],
+              "names": [
+                "Recurring",
+                "OneTime"
+              ],
+              "deprecations": [
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "plan",
+            "publicName": "plan",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_benefit_deduction_plan"
+            }
+          },
+          {
+            "name": "calculation",
+            "publicName": "calculation",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_benefit_deduction_calculation"
+            }
+          },
+          {
+            "name": "effectiveStartDate",
+            "publicName": "effectiveStartDate",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2000-01-01"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "effectiveEndDate",
+            "publicName": "effectiveEndDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_benefit_deduction_status"
+            }
+          },
+          {
+            "name": "createdAt",
+            "publicName": "createdAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "date_from_string"
+            }
+          },
+          {
+            "name": "updatedAt",
+            "publicName": "updatedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "date_from_string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_worker_reference",
+      "source": "public_worker_reference",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "firstName",
+            "publicName": "firstName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "publicName": "lastName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_benefit_deduction_plan",
+      "source": "public_benefit_deduction_plan",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "union",
+            "variants": [
+              {
+                "kind": "ref",
+                "name": "health_plan_reference"
+              },
+              {
+                "kind": "ref",
+                "name": "retirement_plan_reference"
+              }
+            ],
+            "variantNames": [
+              null,
+              null
+            ]
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "health_plan_reference",
+      "source": "health_plan_reference",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "health_plan"
+              ],
+              "names": [
+                "HealthPlan"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "chpl_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^chpl_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "retirement_plan_reference",
+      "source": "retirement_plan_reference",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "retirement_plan"
+              ],
+              "names": [
+                "RetirementPlan"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "crpl_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^crpl_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_benefit_deduction_calculation",
+      "source": "public_benefit_deduction_calculation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "ref",
+            "name": "fixed_amount_benefit_calculation"
+          },
+          {
+            "kind": "ref",
+            "name": "percentage_benefit_calculation"
+          }
+        ],
+        "variantNames": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "name": "fixed_amount_benefit_calculation",
+      "source": "fixed_amount_benefit_calculation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "fixed_amount"
+              ],
+              "names": [
+                "FixedAmount"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "frequency",
+            "publicName": "frequency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "enum",
+                  "values": [
+                    "per_paycheck",
+                    "monthly"
+                  ],
+                  "names": [
+                    "PerPaycheck",
+                    "Monthly"
+                  ],
+                  "deprecations": [
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "employeeContribution",
+            "publicName": "employeeContribution",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_money_amount"
+            }
+          },
+          {
+            "name": "employerContribution",
+            "publicName": "employerContribution",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_money_amount"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "percentage_benefit_calculation",
+      "source": "percentage_benefit_calculation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "percentage"
+              ],
+              "names": [
+                "Percentage"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "employeeContribution",
+            "publicName": "employeeContribution",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "percentage_contribution"
+            }
+          },
+          {
+            "name": "employerContribution",
+            "publicName": "employerContribution",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "percentage_contribution"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "percentage_contribution",
+      "source": "percentage_contribution",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "percentage",
+            "publicName": "percentage",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "number",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "date_from_string",
+      "source": "date_from_string",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "primitive",
+        "type": "string"
+      }
+    },
+    {
+      "name": "benefit_deduction_not_found_error",
+      "source": "benefit_deduction_not_found_error",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pbdg_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pbdg_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "BenefitDeductionNotFoundError"
+              ],
+              "names": [
+                "BenefitDeductionNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "trimmed",
       "source": "trimmed",
       "publicAliases": [],
@@ -580,8 +2209,8 @@
       }
     },
     {
-      "name": "invalid_custom_worker_field_operation",
-      "source": "invalid_custom_worker_field_operation",
+      "name": "invalid_custom_field_operation_error",
+      "source": "invalid_custom_field_operation_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -605,10 +2234,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "InvalidCustomWorkerFieldOperation"
+                "InvalidCustomFieldOperationError"
               ],
               "names": [
-                "InvalidCustomWorkerFieldOperation"
+                "InvalidCustomFieldOperationError"
               ],
               "deprecations": [
                 false
@@ -620,8 +2249,8 @@
       }
     },
     {
-      "name": "custom_worker_field_already_exists",
-      "source": "custom_worker_field_already_exists",
+      "name": "custom_field_already_exists_error",
+      "source": "custom_field_already_exists_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -655,10 +2284,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "CustomWorkerFieldAlreadyExists"
+                "CustomFieldAlreadyExistsError"
               ],
               "names": [
-                "CustomWorkerFieldAlreadyExists"
+                "CustomFieldAlreadyExistsError"
               ],
               "deprecations": [
                 false
@@ -670,8 +2299,8 @@
       }
     },
     {
-      "name": "custom_worker_field_option_already_exists",
-      "source": "custom_worker_field_option_already_exists",
+      "name": "custom_field_option_already_exists_error",
+      "source": "custom_field_option_already_exists_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -705,10 +2334,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "CustomWorkerFieldOptionAlreadyExists"
+                "CustomFieldOptionAlreadyExistsError"
               ],
               "names": [
-                "CustomWorkerFieldOptionAlreadyExists"
+                "CustomFieldOptionAlreadyExistsError"
               ],
               "deprecations": [
                 false
@@ -720,8 +2349,8 @@
       }
     },
     {
-      "name": "custom_worker_field_not_found",
-      "source": "custom_worker_field_not_found",
+      "name": "custom_field_not_found_error",
+      "source": "custom_field_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -764,10 +2393,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "CustomWorkerFieldNotFound"
+                "CustomFieldNotFoundError"
               ],
               "names": [
-                "CustomWorkerFieldNotFound"
+                "CustomFieldNotFoundError"
               ],
               "deprecations": [
                 false
@@ -779,8 +2408,8 @@
       }
     },
     {
-      "name": "custom_worker_field_option_not_found",
-      "source": "custom_worker_field_option_not_found",
+      "name": "custom_field_option_not_found_error",
+      "source": "custom_field_option_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -823,10 +2452,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "CustomWorkerFieldOptionNotFound"
+                "CustomFieldOptionNotFoundError"
               ],
               "names": [
-                "CustomWorkerFieldOptionNotFound"
+                "CustomFieldOptionNotFoundError"
               ],
               "deprecations": [
                 false
@@ -838,8 +2467,8 @@
       }
     },
     {
-      "name": "custom_worker_field_option_in_use",
-      "source": "custom_worker_field_option_in_use",
+      "name": "custom_field_option_in_use_error",
+      "source": "custom_field_option_in_use_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -882,10 +2511,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "CustomWorkerFieldOptionInUse"
+                "CustomFieldOptionInUseError"
               ],
               "names": [
-                "CustomWorkerFieldOptionInUse"
+                "CustomFieldOptionInUseError"
               ],
               "deprecations": [
                 false
@@ -897,8 +2526,8 @@
       }
     },
     {
-      "name": "invalid_custom_worker_field_value",
-      "source": "invalid_custom_worker_field_value",
+      "name": "invalid_custom_field_value_error",
+      "source": "invalid_custom_field_value_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -922,10 +2551,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "InvalidCustomWorkerFieldValue"
+                "InvalidCustomFieldValueError"
               ],
               "names": [
-                "InvalidCustomWorkerFieldValue"
+                "InvalidCustomFieldValueError"
               ],
               "deprecations": [
                 false
@@ -937,8 +2566,8 @@
       }
     },
     {
-      "name": "custom_worker_field_worker_not_found",
-      "source": "custom_worker_field_worker_not_found",
+      "name": "custom_field_worker_not_found_error",
+      "source": "custom_field_worker_not_found_error",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -981,10 +2610,10 @@
             "type": {
               "kind": "enum",
               "values": [
-                "CustomWorkerFieldWorkerNotFound"
+                "CustomFieldWorkerNotFoundError"
               ],
               "names": [
-                "CustomWorkerFieldWorkerNotFound"
+                "CustomFieldWorkerNotFoundError"
               ],
               "deprecations": [
                 false
@@ -3139,7 +4768,11 @@
     }
   ],
   "resources": [
-    "customWorkerFields",
+    "benefits",
+    "benefits.healthPlans",
+    "benefits.retirementPlans",
+    "benefits.deductions",
+    "customFields",
     "departments",
     "offers",
     "timeOff",
@@ -3148,7 +4781,11 @@
     "workplaces"
   ],
   "publicResources": [
-    "customWorkerFields",
+    "benefits",
+    "benefits.healthPlans",
+    "benefits.retirementPlans",
+    "benefits.deductions",
+    "customFields",
     "departments",
     "offers",
     "timeOff",
@@ -3158,13 +4795,998 @@
   ],
   "operations": [
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "benefits.healthPlans",
+      "publicResource": "benefits.healthPlans",
+      "operation": "benefitsList",
+      "publicOperation": "benefitsList",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/benefits/health_plans",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "statuses",
+        "carrierIds"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "statuses",
+        "carrierIds"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "defaultValue": [
+            "active"
+          ]
+        },
+        {
+          "name": "carrierIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "HealthPlanBenefitsListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "benefits.healthPlans",
+      "publicResource": "benefits.healthPlans",
+      "operation": "benefitsGet",
+      "publicOperation": "benefitsGet",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/benefits/health_plans/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "HealthPlanBenefitsGetParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_health_plan",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "health_plan_not_found_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "benefits.retirementPlans",
+      "publicResource": "benefits.retirementPlans",
+      "operation": "benefitsList",
+      "publicOperation": "benefitsList",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/benefits/retirement_plans",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "statuses"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "statuses"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "defaultValue": [
+            "active"
+          ]
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "RetirementPlanBenefitsListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "benefits.retirementPlans",
+      "publicResource": "benefits.retirementPlans",
+      "operation": "benefitsGet",
+      "publicOperation": "benefitsGet",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/benefits/retirement_plans/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "RetirementPlanBenefitsGetParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_retirement_plan",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "retirement_plan_not_found_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "benefits.deductions",
+      "publicResource": "benefits.deductions",
+      "operation": "benefitsList",
+      "publicOperation": "benefitsList",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/benefits/deductions",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "workerIds",
+        "categories",
+        "types",
+        "statuses",
+        "healthPlanIds",
+        "retirementPlanIds"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "workerIds",
+        "categories",
+        "types",
+        "statuses",
+        "healthPlanIds",
+        "retirementPlanIds"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "categories",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true,
+          "defaultValue": [
+            "active"
+          ]
+        },
+        {
+          "name": "healthPlanIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "retirementPlanIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DeductionBenefitsListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "benefits.deductions",
+      "publicResource": "benefits.deductions",
+      "operation": "benefitsGet",
+      "publicOperation": "benefitsGet",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/benefits/deductions/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "DeductionBenefitsGetParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_benefit_deduction",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "http_api_decode_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "benefit_deduction_not_found_error",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "list",
       "publicOperation": "list",
       "deprecated": false,
       "method": "GET",
-      "path": "/v1/custom-worker-fields",
+      "path": "/v1/custom_fields",
       "pathParams": [],
       "publicPathParams": [],
       "queryParams": [],
@@ -3274,13 +5896,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "create",
       "publicOperation": "create",
       "deprecated": false,
       "method": "POST",
-      "path": "/v1/custom-worker-fields",
+      "path": "/v1/custom_fields",
       "pathParams": [],
       "publicPathParams": [],
       "queryParams": [],
@@ -3354,7 +5976,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldCreateParams"
+        "publicName": "CustomFieldCreateParams"
       },
       "requestBody": {
         "contentType": "application/json",
@@ -3471,13 +6093,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "retrieve",
       "publicOperation": "retrieve",
       "deprecated": false,
       "method": "GET",
-      "path": "/v1/custom-worker-fields/{id}",
+      "path": "/v1/custom_fields/{id}",
       "pathParams": [
         "id"
       ],
@@ -3505,7 +6127,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldRetrieveParams"
+        "publicName": "CustomFieldRetrieveParams"
       },
       "response": {
         "status": "200",
@@ -3582,7 +6204,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_not_found",
+            "name": "custom_field_not_found_error",
             "publicAliases": []
           }
         },
@@ -3617,13 +6239,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "update",
       "publicOperation": "update",
       "deprecated": false,
       "method": "PATCH",
-      "path": "/v1/custom-worker-fields/{id}",
+      "path": "/v1/custom_fields/{id}",
       "pathParams": [
         "id"
       ],
@@ -3696,7 +6318,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldUpdateParams"
+        "publicName": "CustomFieldUpdateParams"
       },
       "requestBody": {
         "contentType": "application/json",
@@ -3783,7 +6405,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_not_found",
+            "name": "custom_field_not_found_error",
             "publicAliases": []
           }
         },
@@ -3798,7 +6420,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_already_exists",
+            "name": "custom_field_already_exists_error",
             "publicAliases": []
           }
         },
@@ -3833,13 +6455,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "archive",
       "publicOperation": "archive",
       "deprecated": false,
       "method": "POST",
-      "path": "/v1/custom-worker-fields/{id}/archive",
+      "path": "/v1/custom_fields/{id}/archive",
       "pathParams": [
         "id"
       ],
@@ -3867,7 +6489,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldArchiveParams"
+        "publicName": "CustomFieldArchiveParams"
       },
       "response": {
         "status": "200",
@@ -3944,7 +6566,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_not_found",
+            "name": "custom_field_not_found_error",
             "publicAliases": []
           }
         },
@@ -3979,13 +6601,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "createOption",
       "publicOperation": "createOption",
       "deprecated": false,
       "method": "POST",
-      "path": "/v1/custom-worker-fields/{id}/options",
+      "path": "/v1/custom_fields/{id}/options",
       "pathParams": [
         "id"
       ],
@@ -4034,7 +6656,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldCreateOptionParams"
+        "publicName": "CustomFieldCreateOptionParams"
       },
       "requestBody": {
         "contentType": "application/json",
@@ -4121,7 +6743,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_not_found",
+            "name": "custom_field_not_found_error",
             "publicAliases": []
           }
         },
@@ -4136,7 +6758,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_option_already_exists",
+            "name": "custom_field_option_already_exists_error",
             "publicAliases": []
           }
         },
@@ -4171,13 +6793,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "updateOption",
       "publicOperation": "updateOption",
       "deprecated": false,
       "method": "PATCH",
-      "path": "/v1/custom-worker-field-options/{id}",
+      "path": "/v1/custom_field_options/{id}",
       "pathParams": [
         "id"
       ],
@@ -4220,7 +6842,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldUpdateOptionParams"
+        "publicName": "CustomFieldUpdateOptionParams"
       },
       "requestBody": {
         "contentType": "application/json",
@@ -4307,7 +6929,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_option_not_found",
+            "name": "custom_field_option_not_found_error",
             "publicAliases": []
           }
         },
@@ -4322,7 +6944,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_option_already_exists",
+            "name": "custom_field_option_already_exists_error",
             "publicAliases": []
           }
         },
@@ -4357,13 +6979,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "deleteOption",
       "publicOperation": "deleteOption",
       "deprecated": false,
       "method": "DELETE",
-      "path": "/v1/custom-worker-field-options/{id}",
+      "path": "/v1/custom_field_options/{id}",
       "pathParams": [
         "id"
       ],
@@ -4391,7 +7013,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldDeleteOptionParams"
+        "publicName": "CustomFieldDeleteOptionParams"
       },
       "result": {
         "successStatus": "204",
@@ -4458,7 +7080,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_option_not_found",
+            "name": "custom_field_option_not_found_error",
             "publicAliases": []
           }
         },
@@ -4473,7 +7095,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_option_in_use",
+            "name": "custom_field_option_in_use_error",
             "publicAliases": []
           }
         },
@@ -4508,13 +7130,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "archiveOption",
       "publicOperation": "archiveOption",
       "deprecated": false,
       "method": "POST",
-      "path": "/v1/custom-worker-field-options/{id}/archive",
+      "path": "/v1/custom_field_options/{id}/archive",
       "pathParams": [
         "id"
       ],
@@ -4542,7 +7164,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldArchiveOptionParams"
+        "publicName": "CustomFieldArchiveOptionParams"
       },
       "response": {
         "status": "200",
@@ -4619,7 +7241,7 @@
             }
           ],
           "model": {
-            "name": "custom_worker_field_option_not_found",
+            "name": "custom_field_option_not_found_error",
             "publicAliases": []
           }
         },
@@ -4654,13 +7276,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "listValues",
       "publicOperation": "listValues",
       "deprecated": false,
       "method": "GET",
-      "path": "/v1/worker-custom-field-values",
+      "path": "/v1/custom_field_values",
       "pathParams": [],
       "publicPathParams": [],
       "queryParams": [
@@ -4696,7 +7318,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldListValuesParams"
+        "publicName": "CustomFieldListValuesParams"
       },
       "response": {
         "status": "200",
@@ -4792,13 +7414,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "upsertValue",
       "publicOperation": "upsertValue",
       "deprecated": false,
       "method": "PUT",
-      "path": "/v1/worker-custom-field-values",
+      "path": "/v1/custom_field_values",
       "pathParams": [],
       "publicPathParams": [],
       "queryParams": [],
@@ -4836,7 +7458,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldUpsertValueParams"
+        "publicName": "CustomFieldUpsertValueParams"
       },
       "requestBody": {
         "contentType": "application/json",
@@ -4953,13 +7575,13 @@
       "transport": "http"
     },
     {
-      "resource": "customWorkerFields",
-      "publicResource": "customWorkerFields",
+      "resource": "customFields",
+      "publicResource": "customFields",
       "operation": "clearValue",
       "publicOperation": "clearValue",
       "deprecated": false,
       "method": "DELETE",
-      "path": "/v1/worker-custom-field-values",
+      "path": "/v1/custom_field_values",
       "pathParams": [],
       "publicPathParams": [],
       "queryParams": [
@@ -4995,7 +7617,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomWorkerFieldClearValueParams"
+        "publicName": "CustomFieldClearValueParams"
       },
       "result": {
         "successStatus": "204",
@@ -8938,5 +11560,132 @@
       "transport": "http"
     }
   ],
-  "webhooks": []
+  "webhooks": [
+    {
+      "event": "time_off:request:created",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "time_off:request:created"
+    },
+    {
+      "event": "time_off:request:reviewed",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "time_off:request:reviewed"
+    },
+    {
+      "event": "time_off:request:deleted",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "time_off:request:deleted"
+    },
+    {
+      "event": "time_off:balance:adjusted",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "time_off:balance:adjusted"
+    },
+    {
+      "event": "worker:created",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:created"
+    },
+    {
+      "event": "worker:updated",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:updated"
+    },
+    {
+      "event": "worker:deleted",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:deleted"
+    },
+    {
+      "event": "worker:invite_sent",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:invite_sent"
+    },
+    {
+      "event": "worker:invite_accepted",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:invite_accepted"
+    },
+    {
+      "event": "worker:onboarding_completed",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:onboarding_completed"
+    },
+    {
+      "event": "worker:offboarding_started",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:offboarding_started"
+    },
+    {
+      "event": "worker:offboarded",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:offboarded"
+    },
+    {
+      "event": "worker:reactivated",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "worker:reactivated"
+    },
+    {
+      "event": "offer:created",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer:created"
+    },
+    {
+      "event": "offer:sent",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer:sent"
+    },
+    {
+      "event": "offer:viewed",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer:viewed"
+    },
+    {
+      "event": "offer:accepted",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer:accepted"
+    },
+    {
+      "event": "offer:voided",
+      "name": "Unwrap",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer:voided"
+    }
+  ]
 }

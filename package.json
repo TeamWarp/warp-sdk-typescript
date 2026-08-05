@@ -1,7 +1,7 @@
 {
   "name": "warp-hr",
-  "version": "0.17.0",
-  "description": "WarpApi TypeScript SDK",
+  "version": "0.18.0",
+  "description": "Warp TypeScript SDK",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TeamWarp/warp-sdk-typescript.git"
@@ -17,12 +17,6 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js",
       "default": "./dist/esm/index.js"
-    },
-    "./resources/*": {
-      "types": "./dist/esm/resources/*.d.ts",
-      "import": "./dist/esm/resources/*.js",
-      "require": "./dist/cjs/resources/*.js",
-      "default": "./dist/esm/resources/*.js"
     },
     "./*.mjs": {
       "types": "./dist/esm/*.d.ts",
@@ -52,7 +46,9 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.cjs.json --noEmit",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "standardwebhooks": "^1.0.0"
+  },
   "devDependencies": {
     "typescript": "^6.0.0"
   },
