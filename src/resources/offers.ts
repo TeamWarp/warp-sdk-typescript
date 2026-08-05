@@ -232,6 +232,9 @@ export namespace OfferListResponse {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
@@ -487,6 +490,9 @@ export namespace OfferCreateResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;
@@ -651,6 +657,9 @@ export namespace OfferVoidResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;
@@ -822,6 +831,9 @@ export namespace OfferExtendDeadlineResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;
@@ -986,6 +998,9 @@ export namespace OfferResendResponse {
 
   export namespace Compensation {
     export interface BasePay {
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       amount: BasePay.Amount;
       basis: "year" | "month" | "week" | "hour" | "variable";
       type: "fixed" | "pay_as_you_go" | null;

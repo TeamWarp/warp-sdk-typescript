@@ -1016,6 +1016,9 @@ export namespace OfferCreatedWebhookEvent {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
@@ -1198,6 +1201,9 @@ export namespace OfferSentWebhookEvent {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
@@ -1380,6 +1386,9 @@ export namespace OfferViewedWebhookEvent {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
@@ -1562,6 +1571,9 @@ export namespace OfferAcceptedWebhookEvent {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
@@ -1744,6 +1756,9 @@ export namespace OfferVoidedWebhookEvent {
 
     export namespace Compensation {
       export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         amount: BasePay.Amount;
         basis: "year" | "month" | "week" | "hour" | "variable";
         type: "fixed" | "pay_as_you_go" | null;
