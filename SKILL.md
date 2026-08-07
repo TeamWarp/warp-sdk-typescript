@@ -16,10 +16,10 @@ npm install warp-hr
 ## Client setup and authentication
 
 ```ts
-import Warp from "warp-hr";
+import Warp from 'warp-hr';
 
 const client = new Warp({
-  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
+  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 ```
 
@@ -30,17 +30,17 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import Warp from "warp-hr";
+import Warp from 'warp-hr';
 
 const client = new Warp({
-  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
+  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 
-const benefitsList = await client.benefits.healthPlans.benefitsList({
-  statuses: ["active"],
+const list = await client.benefits.healthPlans.list({
+  statuses: ['active'],
 });
 
-console.log(benefitsList);
+console.log(list);
 ```
 
 Method names, parameter shapes, and response types are generated from the API description — do not guess them. Look up the exact call signature in [api.md](./api.md) before writing a call.
@@ -50,11 +50,11 @@ Method names, parameter shapes, and response types are generated from the API de
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "warp-hr";
+import { APIError } from 'warp-hr';
 
 try {
-  const benefitsList = await client.benefits.healthPlans.benefitsList({
-    statuses: ["active"],
+  const list = await client.benefits.healthPlans.list({
+    statuses: ['active'],
   });
 } catch (err) {
   if (err instanceof APIError) {

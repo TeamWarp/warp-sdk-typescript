@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import { APIPromise } from "../api-promise";
-import type { RequestOptions } from "../internal/request-options";
-import { path as __scalarPath } from "../internal/utils/path";
-import type * as OffersAPI from "./offers";
-import type * as CustomFieldsAPI from "./custom-fields";
+import { APIResource } from '../resource';
+import { APIPromise } from '../api-promise';
+import type { RequestOptions } from '../internal/request-options';
+import { path as __scalarPath } from '../internal/utils/path';
+import type * as OffersAPI from './offers';
+import type * as CustomFieldsAPI from './custom-fields';
 
 export class Departments extends APIResource {
   /**
@@ -20,8 +20,11 @@ export class Departments extends APIResource {
    * const list = await client.departments.list();
    * ```
    */
-  list(query: DepartmentListParams | null | undefined = {}, options?: RequestOptions): APIPromise<DepartmentListResponse> {
-    return this._client.get("/v1/departments", { query, ...options });
+  list(
+    query: DepartmentListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<DepartmentListResponse> {
+    return this._client.get('/v1/departments', { query, ...options });
   }
 
   /**
@@ -34,12 +37,12 @@ export class Departments extends APIResource {
    * @example
    * ```ts
    * const create = await client.departments.create({
-   *   name: "",
+   *   name: '',
    * });
    * ```
    */
   create(body: DepartmentCreateParams, options?: RequestOptions): APIPromise<DepartmentCreateResponse> {
-    return this._client.post("/v1/departments", { body, ...options });
+    return this._client.post('/v1/departments', { body, ...options });
   }
 
   /**
@@ -52,10 +55,14 @@ export class Departments extends APIResource {
    *
    * @example
    * ```ts
-   * const update = await client.departments.update("dpt_1234", {});
+   * const update = await client.departments.update('dpt_1234', {});
    * ```
    */
-  update(id: string, body: DepartmentUpdateParams, options?: RequestOptions): APIPromise<DepartmentUpdateResponse> {
+  update(
+    id: string,
+    body: DepartmentUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<DepartmentUpdateResponse> {
     return this._client.patch(__scalarPath`/v1/departments/${id}`, { body, ...options });
   }
 }

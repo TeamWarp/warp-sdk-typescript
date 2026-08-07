@@ -1,27 +1,30 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../../resource";
-import { APIPromise } from "../../api-promise";
-import type { RequestOptions } from "../../internal/request-options";
-import { path as __scalarPath } from "../../internal/utils/path";
+import { APIResource } from '../../resource';
+import { APIPromise } from '../../api-promise';
+import type { RequestOptions } from '../../internal/request-options';
+import { path as __scalarPath } from '../../internal/utils/path';
 
 export class Deductions extends APIResource {
   /**
    * List current payroll benefit deductions. Defaults to active deductions. A deduction whose effectiveEndDate has elapsed is reported and filtered as terminated.
    *
-   * @param {DeductionBenefitsListParams} [query] - The parameters to send with the request.
+   * @param {DeductionListParams} [query] - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<DeductionBenefitsListResponse>} Success
+   * @returns {APIPromise<DeductionListResponse>} Success
    *
    * @example
    * ```ts
-   * const benefitsList = await client.benefits.deductions.benefitsList({
-   *   statuses: ["active"],
+   * const list = await client.benefits.deductions.list({
+   *   statuses: ['active'],
    * });
    * ```
    */
-  benefitsList(query: DeductionBenefitsListParams | null | undefined = {}, options?: RequestOptions): APIPromise<DeductionBenefitsListResponse> {
-    return this._client.get("/v1/benefits/deductions", { query, ...options });
+  list(
+    query: DeductionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<DeductionListResponse> {
+    return this._client.get('/v1/benefits/deductions', { query, ...options });
   }
 
   /**
@@ -29,19 +32,19 @@ export class Deductions extends APIResource {
    *
    * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<DeductionBenefitsGetResponse>} The current version of a stable payroll benefit deduction.
+   * @returns {APIPromise<DeductionGetResponse>} The current version of a stable payroll benefit deduction.
    *
    * @example
    * ```ts
-   * const benefitsGet = await client.benefits.deductions.benefitsGet("pbdg_1234");
+   * const get_ = await client.benefits.deductions.get('pbdg_1234');
    * ```
    */
-  benefitsGet(id: string, options?: RequestOptions): APIPromise<DeductionBenefitsGetResponse> {
+  get(id: string, options?: RequestOptions): APIPromise<DeductionGetResponse> {
     return this._client.get(__scalarPath`/v1/benefits/deductions/${id}`, options);
   }
 }
 
-export interface DeductionBenefitsListParams {
+export interface DeductionListParams {
   /**
    * a number less than or equal to 100
    */
@@ -57,27 +60,60 @@ export interface DeductionBenefitsListParams {
    */
   beforeId?: string;
   workerIds?: Array<string>;
-  categories?: Array<"health" | "retirement" | "health_savings" | "commuter" | "voluntary" | "post_tax" | "other">;
-  types?: Array<"medical" | "dental" | "vision" | "life" | "short_term_disability" | "long_term_disability" | "401k" | "roth_401k" | "403b" | "roth_403b" | "457" | "roth_457" | "hsa" | "fsa_medical" | "fsa_dependent_care" | "transit" | "parking" | "accident" | "cancer" | "critical_illness" | "hospital" | "medical_other" | "simple_ira" | "roth_simple_ira" | "nqdc" | "nontaxable_fringe" | "pucc" | "voluntary" | "post_tax" | "other">;
+  categories?: Array<
+    'health' | 'retirement' | 'health_savings' | 'commuter' | 'voluntary' | 'post_tax' | 'other'
+  >;
+  types?: Array<
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | '401k'
+    | 'roth_401k'
+    | '403b'
+    | 'roth_403b'
+    | '457'
+    | 'roth_457'
+    | 'hsa'
+    | 'fsa_medical'
+    | 'fsa_dependent_care'
+    | 'transit'
+    | 'parking'
+    | 'accident'
+    | 'cancer'
+    | 'critical_illness'
+    | 'hospital'
+    | 'medical_other'
+    | 'simple_ira'
+    | 'roth_simple_ira'
+    | 'nqdc'
+    | 'nontaxable_fringe'
+    | 'pucc'
+    | 'voluntary'
+    | 'post_tax'
+    | 'other'
+  >;
   /**
    * Statuses to include. Defaults to ["active"]. An elapsed effectiveEndDate is reported and filtered as "terminated".
    * @default ["active"]
    */
-  statuses?: Array<"active" | "pending" | "suspended" | "terminated">;
+  statuses?: Array<'active' | 'pending' | 'suspended' | 'terminated'>;
   healthPlanIds?: Array<string>;
   retirementPlanIds?: Array<string>;
 }
 
-export interface DeductionBenefitsListResponse {
+export interface DeductionListResponse {
   hasMore: boolean;
   /**
    * an integer
    */
   count: number;
-  data: Array<DeductionBenefitsListResponse.Data>;
+  data: Array<DeductionListResponse.Data>;
 }
 
-export namespace DeductionBenefitsListResponse {
+export namespace DeductionListResponse {
   export interface Data {
     /**
      * Stable identifier shared by every internal version of this deduction.
@@ -95,15 +131,45 @@ export namespace DeductionBenefitsListResponse {
     /**
      * The broad reporting category. The type field identifies the specific payroll deduction.
      */
-    category: "health" | "retirement" | "health_savings" | "commuter" | "voluntary" | "post_tax" | "other";
+    category: 'health' | 'retirement' | 'health_savings' | 'commuter' | 'voluntary' | 'post_tax' | 'other';
     /**
      * The specific payroll deduction type within the broader category.
      */
-    type: "medical" | "dental" | "vision" | "life" | "short_term_disability" | "long_term_disability" | "401k" | "roth_401k" | "403b" | "roth_403b" | "457" | "roth_457" | "hsa" | "fsa_medical" | "fsa_dependent_care" | "transit" | "parking" | "accident" | "cancer" | "critical_illness" | "hospital" | "medical_other" | "simple_ira" | "roth_simple_ira" | "nqdc" | "nontaxable_fringe" | "pucc" | "voluntary" | "post_tax" | "other";
+    type:
+      | 'medical'
+      | 'dental'
+      | 'vision'
+      | 'life'
+      | 'short_term_disability'
+      | 'long_term_disability'
+      | '401k'
+      | 'roth_401k'
+      | '403b'
+      | 'roth_403b'
+      | '457'
+      | 'roth_457'
+      | 'hsa'
+      | 'fsa_medical'
+      | 'fsa_dependent_care'
+      | 'transit'
+      | 'parking'
+      | 'accident'
+      | 'cancer'
+      | 'critical_illness'
+      | 'hospital'
+      | 'medical_other'
+      | 'simple_ira'
+      | 'roth_simple_ira'
+      | 'nqdc'
+      | 'nontaxable_fringe'
+      | 'pucc'
+      | 'voluntary'
+      | 'post_tax'
+      | 'other';
     /**
      * Whether the deduction recurs or applies once.
      */
-    recurrence: "recurring" | "one_time";
+    recurrence: 'recurring' | 'one_time';
     /**
      * The associated benefit plan, or null for a planless payroll deduction.
      */
@@ -124,7 +190,7 @@ export namespace DeductionBenefitsListResponse {
     /**
      * The public lifecycle status of the current deduction version.
      */
-    status: "active" | "pending" | "suspended" | "terminated";
+    status: 'active' | 'pending' | 'suspended' | 'terminated';
     /**
      * a string to be decoded into a Date
      */
@@ -153,7 +219,7 @@ export namespace DeductionBenefitsListResponse {
     }
 
     export interface HealthPlanReference {
-      type: "health_plan";
+      type: 'health_plan';
       /**
        * The tag of a company health plan.
        * @pattern ^chpl_
@@ -166,7 +232,7 @@ export namespace DeductionBenefitsListResponse {
     }
 
     export interface RetirementPlanReference {
-      type: "retirement_plan";
+      type: 'retirement_plan';
       /**
        * The tag of a company retirement plan.
        * @pattern ^crpl_
@@ -179,11 +245,11 @@ export namespace DeductionBenefitsListResponse {
     }
 
     export interface FixedAmountBenefitCalculation {
-      type: "fixed_amount";
+      type: 'fixed_amount';
       /**
        * The fixed-amount expression frequency. Null for a one-time deduction.
        */
-      frequency: "per_paycheck" | "monthly" | null;
+      frequency: 'per_paycheck' | 'monthly' | null;
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
@@ -201,7 +267,68 @@ export namespace DeductionBenefitsListResponse {
          * @minimum 0
          */
         amount: number;
-        currency: "USD" | "AUD" | "BGN" | "BRL" | "CAD" | "CHF" | "CZK" | "DKK" | "EUR" | "GBP" | "HKD" | "HUF" | "IDR" | "INR" | "JPY" | "MYR" | "NOK" | "NZD" | "CNY" | "PLN" | "RON" | "TRY" | "SEK" | "SGD" | "AED" | "ARS" | "BDT" | "BWP" | "CLP" | "COP" | "CRC" | "EGP" | "FJD" | "GEL" | "GHS" | "ILS" | "KES" | "KRW" | "LKR" | "MAD" | "MXN" | "NPR" | "PHP" | "PKR" | "THB" | "UAH" | "UGX" | "UYU" | "VND" | "ZAR" | "ZMW" | "TND" | "NGN" | "RSD" | "TWD" | "GTQ" | "HNL" | "DOP" | "SAR" | "XAF" | "PEN";
+        currency:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
         /**
          * The server-formatted display string for the amount in its currency.
          */
@@ -214,7 +341,68 @@ export namespace DeductionBenefitsListResponse {
          * @minimum 0
          */
         amount: number;
-        currency: "USD" | "AUD" | "BGN" | "BRL" | "CAD" | "CHF" | "CZK" | "DKK" | "EUR" | "GBP" | "HKD" | "HUF" | "IDR" | "INR" | "JPY" | "MYR" | "NOK" | "NZD" | "CNY" | "PLN" | "RON" | "TRY" | "SEK" | "SGD" | "AED" | "ARS" | "BDT" | "BWP" | "CLP" | "COP" | "CRC" | "EGP" | "FJD" | "GEL" | "GHS" | "ILS" | "KES" | "KRW" | "LKR" | "MAD" | "MXN" | "NPR" | "PHP" | "PKR" | "THB" | "UAH" | "UGX" | "UYU" | "VND" | "ZAR" | "ZMW" | "TND" | "NGN" | "RSD" | "TWD" | "GTQ" | "HNL" | "DOP" | "SAR" | "XAF" | "PEN";
+        currency:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
         /**
          * The server-formatted display string for the amount in its currency.
          */
@@ -223,7 +411,7 @@ export namespace DeductionBenefitsListResponse {
     }
 
     export interface PercentageBenefitCalculation {
-      type: "percentage";
+      type: 'percentage';
       /**
        * A contribution expressed as a percentage of eligible earnings.
        */
@@ -264,7 +452,7 @@ export namespace DeductionBenefitsListResponse {
   }
 }
 
-export interface DeductionBenefitsGetResponse {
+export interface DeductionGetResponse {
   /**
    * Stable identifier shared by every internal version of this deduction.
    * @pattern ^pbdg_
@@ -273,7 +461,7 @@ export interface DeductionBenefitsGetResponse {
   /**
    * Basic identifying information for a worker associated with another resource.
    */
-  worker: DeductionBenefitsGetResponse.Worker;
+  worker: DeductionGetResponse.Worker;
   /**
    * The deduction name shown in payroll and benefits surfaces.
    */
@@ -281,23 +469,55 @@ export interface DeductionBenefitsGetResponse {
   /**
    * The broad reporting category. The type field identifies the specific payroll deduction.
    */
-  category: "health" | "retirement" | "health_savings" | "commuter" | "voluntary" | "post_tax" | "other";
+  category: 'health' | 'retirement' | 'health_savings' | 'commuter' | 'voluntary' | 'post_tax' | 'other';
   /**
    * The specific payroll deduction type within the broader category.
    */
-  type: "medical" | "dental" | "vision" | "life" | "short_term_disability" | "long_term_disability" | "401k" | "roth_401k" | "403b" | "roth_403b" | "457" | "roth_457" | "hsa" | "fsa_medical" | "fsa_dependent_care" | "transit" | "parking" | "accident" | "cancer" | "critical_illness" | "hospital" | "medical_other" | "simple_ira" | "roth_simple_ira" | "nqdc" | "nontaxable_fringe" | "pucc" | "voluntary" | "post_tax" | "other";
+  type:
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | '401k'
+    | 'roth_401k'
+    | '403b'
+    | 'roth_403b'
+    | '457'
+    | 'roth_457'
+    | 'hsa'
+    | 'fsa_medical'
+    | 'fsa_dependent_care'
+    | 'transit'
+    | 'parking'
+    | 'accident'
+    | 'cancer'
+    | 'critical_illness'
+    | 'hospital'
+    | 'medical_other'
+    | 'simple_ira'
+    | 'roth_simple_ira'
+    | 'nqdc'
+    | 'nontaxable_fringe'
+    | 'pucc'
+    | 'voluntary'
+    | 'post_tax'
+    | 'other';
   /**
    * Whether the deduction recurs or applies once.
    */
-  recurrence: "recurring" | "one_time";
+  recurrence: 'recurring' | 'one_time';
   /**
    * The associated benefit plan, or null for a planless payroll deduction.
    */
-  plan: DeductionBenefitsGetResponse.HealthPlanReference | DeductionBenefitsGetResponse.RetirementPlanReference | null;
+  plan: DeductionGetResponse.HealthPlanReference | DeductionGetResponse.RetirementPlanReference | null;
   /**
    * How the employee and employer contributions are calculated.
    */
-  calculation: DeductionBenefitsGetResponse.FixedAmountBenefitCalculation | DeductionBenefitsGetResponse.PercentageBenefitCalculation;
+  calculation:
+    | DeductionGetResponse.FixedAmountBenefitCalculation
+    | DeductionGetResponse.PercentageBenefitCalculation;
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -310,7 +530,7 @@ export interface DeductionBenefitsGetResponse {
   /**
    * The public lifecycle status of the current deduction version.
    */
-  status: "active" | "pending" | "suspended" | "terminated";
+  status: 'active' | 'pending' | 'suspended' | 'terminated';
   /**
    * a string to be decoded into a Date
    */
@@ -321,7 +541,7 @@ export interface DeductionBenefitsGetResponse {
   updatedAt: string;
 }
 
-export namespace DeductionBenefitsGetResponse {
+export namespace DeductionGetResponse {
   export interface Worker {
     /**
      * The worker id.
@@ -339,7 +559,7 @@ export namespace DeductionBenefitsGetResponse {
   }
 
   export interface HealthPlanReference {
-    type: "health_plan";
+    type: 'health_plan';
     /**
      * The tag of a company health plan.
      * @pattern ^chpl_
@@ -352,7 +572,7 @@ export namespace DeductionBenefitsGetResponse {
   }
 
   export interface RetirementPlanReference {
-    type: "retirement_plan";
+    type: 'retirement_plan';
     /**
      * The tag of a company retirement plan.
      * @pattern ^crpl_
@@ -365,11 +585,11 @@ export namespace DeductionBenefitsGetResponse {
   }
 
   export interface FixedAmountBenefitCalculation {
-    type: "fixed_amount";
+    type: 'fixed_amount';
     /**
      * The fixed-amount expression frequency. Null for a one-time deduction.
      */
-    frequency: "per_paycheck" | "monthly" | null;
+    frequency: 'per_paycheck' | 'monthly' | null;
     /**
      * A monetary amount with its currency and server-formatted display value.
      */
@@ -387,7 +607,68 @@ export namespace DeductionBenefitsGetResponse {
        * @minimum 0
        */
       amount: number;
-      currency: "USD" | "AUD" | "BGN" | "BRL" | "CAD" | "CHF" | "CZK" | "DKK" | "EUR" | "GBP" | "HKD" | "HUF" | "IDR" | "INR" | "JPY" | "MYR" | "NOK" | "NZD" | "CNY" | "PLN" | "RON" | "TRY" | "SEK" | "SGD" | "AED" | "ARS" | "BDT" | "BWP" | "CLP" | "COP" | "CRC" | "EGP" | "FJD" | "GEL" | "GHS" | "ILS" | "KES" | "KRW" | "LKR" | "MAD" | "MXN" | "NPR" | "PHP" | "PKR" | "THB" | "UAH" | "UGX" | "UYU" | "VND" | "ZAR" | "ZMW" | "TND" | "NGN" | "RSD" | "TWD" | "GTQ" | "HNL" | "DOP" | "SAR" | "XAF" | "PEN";
+      currency:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       /**
        * The server-formatted display string for the amount in its currency.
        */
@@ -400,7 +681,68 @@ export namespace DeductionBenefitsGetResponse {
        * @minimum 0
        */
       amount: number;
-      currency: "USD" | "AUD" | "BGN" | "BRL" | "CAD" | "CHF" | "CZK" | "DKK" | "EUR" | "GBP" | "HKD" | "HUF" | "IDR" | "INR" | "JPY" | "MYR" | "NOK" | "NZD" | "CNY" | "PLN" | "RON" | "TRY" | "SEK" | "SGD" | "AED" | "ARS" | "BDT" | "BWP" | "CLP" | "COP" | "CRC" | "EGP" | "FJD" | "GEL" | "GHS" | "ILS" | "KES" | "KRW" | "LKR" | "MAD" | "MXN" | "NPR" | "PHP" | "PKR" | "THB" | "UAH" | "UGX" | "UYU" | "VND" | "ZAR" | "ZMW" | "TND" | "NGN" | "RSD" | "TWD" | "GTQ" | "HNL" | "DOP" | "SAR" | "XAF" | "PEN";
+      currency:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       /**
        * The server-formatted display string for the amount in its currency.
        */
@@ -409,7 +751,7 @@ export namespace DeductionBenefitsGetResponse {
   }
 
   export interface PercentageBenefitCalculation {
-    type: "percentage";
+    type: 'percentage';
     /**
      * A contribution expressed as a percentage of eligible earnings.
      */
@@ -450,8 +792,8 @@ export namespace DeductionBenefitsGetResponse {
 }
 export declare namespace Deductions {
   export {
-    type DeductionBenefitsListResponse as DeductionBenefitsListResponse,
-    type DeductionBenefitsGetResponse as DeductionBenefitsGetResponse,
-    type DeductionBenefitsListParams as DeductionBenefitsListParams,
+    type DeductionListResponse as DeductionListResponse,
+    type DeductionGetResponse as DeductionGetResponse,
+    type DeductionListParams as DeductionListParams,
   };
 }
