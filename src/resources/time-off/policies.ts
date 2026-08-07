@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../../resource";
-import { APIPromise } from "../../api-promise";
-import type { RequestOptions } from "../../internal/request-options";
-import { path as __scalarPath } from "../../internal/utils/path";
+import { APIResource } from '../../resource';
+import { APIPromise } from '../../api-promise';
+import type { RequestOptions } from '../../internal/request-options';
+import { path as __scalarPath } from '../../internal/utils/path';
 
 export class Policies extends APIResource {
   /**
@@ -18,8 +18,11 @@ export class Policies extends APIResource {
    * const timeOffGet = await client.timeOff.policies.timeOffGet();
    * ```
    */
-  timeOffGet(query: PolicyTimeOffGetParams | null | undefined = {}, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
-    return this._client.get("/v1/time_off/policies", { query, ...options });
+  timeOffGet(
+    query: PolicyTimeOffGetParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<PolicyTimeOffGetResponse> {
+    return this._client.get('/v1/time_off/policies', { query, ...options });
   }
 
   /**
@@ -31,7 +34,7 @@ export class Policies extends APIResource {
    *
    * @example
    * ```ts
-   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2("top_1234");
+   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2('top_1234');
    * ```
    */
   timeOffGet2(id: string, options?: RequestOptions): APIPromise<PolicyTimeOffGet2Response> {
@@ -80,8 +83,8 @@ export namespace PolicyTimeOffGetResponse {
     timeOffTypeName: string;
     paid: boolean;
     isUnlimited: boolean;
-    schedule: "per_hour_worked" | "monthly" | "yearly" | "unlimited";
-    unit: "hour" | "day";
+    schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited';
+    unit: 'hour' | 'day';
     name: string;
     description: string | null;
     hoursWorkedPerChunk: number | null;
@@ -104,8 +107,8 @@ export interface PolicyTimeOffGet2Response {
   timeOffTypeName: string;
   paid: boolean;
   isUnlimited: boolean;
-  schedule: "per_hour_worked" | "monthly" | "yearly" | "unlimited";
-  unit: "hour" | "day";
+  schedule: 'per_hour_worked' | 'monthly' | 'yearly' | 'unlimited';
+  unit: 'hour' | 'day';
   name: string;
   description: string | null;
   hoursWorkedPerChunk: number | null;

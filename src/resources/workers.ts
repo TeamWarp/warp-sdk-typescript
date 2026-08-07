@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import { APIPromise } from "../api-promise";
-import type { RequestOptions } from "../internal/request-options";
-import { buildHeaders } from "../internal/headers";
-import { path as __scalarPath } from "../internal/utils/path";
-import type * as CustomFieldsAPI from "./custom-fields";
+import { APIResource } from '../resource';
+import { APIPromise } from '../api-promise';
+import type { RequestOptions } from '../internal/request-options';
+import { buildHeaders } from '../internal/headers';
+import { path as __scalarPath } from '../internal/utils/path';
+import type * as CustomFieldsAPI from './custom-fields';
 
 export class Workers extends APIResource {
   /**
@@ -20,8 +20,11 @@ export class Workers extends APIResource {
    * const list = await client.workers.list();
    * ```
    */
-  list(query: WorkerListParams | null | undefined = {}, options?: RequestOptions): APIPromise<WorkerListResponse> {
-    return this._client.get("/v1/workers", { query, ...options });
+  list(
+    query: WorkerListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<WorkerListResponse> {
+    return this._client.get('/v1/workers', { query, ...options });
   }
 
   /**
@@ -33,7 +36,7 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const retrieve = await client.workers.retrieve("wrk_1234");
+   * const retrieve = await client.workers.retrieve('wrk_1234');
    * ```
    */
   retrieve(id: string, options?: RequestOptions): APIPromise<WorkerRetrieveResponse> {
@@ -49,11 +52,14 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * await client.workers.delete("wrk_1234");
+   * await client.workers.delete('wrk_1234');
    * ```
    */
   delete(id: string, options?: RequestOptions): APIPromise<void> {
-    return this._client.delete(__scalarPath`/v1/workers/${id}`, { ...options, headers: buildHeaders([{ Accept: "*/*" }, options?.headers]) });
+    return this._client.delete(__scalarPath`/v1/workers/${id}`, {
+      ...options,
+      headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
+    });
   }
 
   /**
@@ -66,26 +72,29 @@ export class Workers extends APIResource {
    * @example
    * ```ts
    * const createEmployee = await client.workers.createEmployee({
-   *   firstName: "",
-   *   lastName: "",
-   *   position: "",
-   *   startDate: "2000-01-01",
-   *   email: "john@joinwarp.com",
-   *   departmentId: "dpt_1234",
-   *   managerId: "wrk_1234",
+   *   firstName: '',
+   *   lastName: '',
+   *   position: '',
+   *   startDate: '2000-01-01',
+   *   email: 'john@joinwarp.com',
+   *   departmentId: 'dpt_1234',
+   *   managerId: 'wrk_1234',
    *   workLocation: {
-   *     type: "office",
-   *     workplaceId: "wkp_1234",
+   *     type: 'office',
+   *     workplaceId: 'wkp_1234',
    *   },
    *   compensation: {
    *     amount: 0,
-   *     per: "hour",
+   *     per: 'hour',
    *   },
    * });
    * ```
    */
-  createEmployee(body: WorkerCreateEmployeeParams, options?: RequestOptions): APIPromise<WorkerCreateEmployeeResponse> {
-    return this._client.post("/v1/workers/employee", { body, ...options });
+  createEmployee(
+    body: WorkerCreateEmployeeParams,
+    options?: RequestOptions,
+  ): APIPromise<WorkerCreateEmployeeResponse> {
+    return this._client.post('/v1/workers/employee', { body, ...options });
   }
 
   /**
@@ -98,20 +107,23 @@ export class Workers extends APIResource {
    * @example
    * ```ts
    * const createContractor = await client.workers.createContractor({
-   *   entityType: "individual",
-   *   firstName: "",
-   *   lastName: "",
-   *   position: "",
-   *   startDate: "2000-01-01",
-   *   email: "john@joinwarp.com",
-   *   departmentId: "dpt_1234",
-   *   managerId: "wrk_1234",
-   *   workCountry: "AD",
+   *   entityType: 'individual',
+   *   firstName: '',
+   *   lastName: '',
+   *   position: '',
+   *   startDate: '2000-01-01',
+   *   email: 'john@joinwarp.com',
+   *   departmentId: 'dpt_1234',
+   *   managerId: 'wrk_1234',
+   *   workCountry: 'AD',
    * });
    * ```
    */
-  createContractor(body: WorkerCreateContractorParams, options?: RequestOptions): APIPromise<WorkerCreateContractorResponse> {
-    return this._client.post("/v1/workers/contractor", { body, ...options });
+  createContractor(
+    body: WorkerCreateContractorParams,
+    options?: RequestOptions,
+  ): APIPromise<WorkerCreateContractorResponse> {
+    return this._client.post('/v1/workers/contractor', { body, ...options });
   }
 
   /**
@@ -123,7 +135,7 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const invite = await client.workers.invite("wrk_1234");
+   * const invite = await client.workers.invite('wrk_1234');
    * ```
    */
   invite(id: string, options?: RequestOptions): APIPromise<WorkerInviteResponse> {
@@ -135,7 +147,7 @@ export class Workers extends APIResource {
  * Employee works from a company workplace.
  */
 export interface OfficeWorkLocation {
-  type: "office";
+  type: 'office';
   /**
    * Public workplace identifier
    * @pattern ^wkp_
@@ -147,11 +159,62 @@ export interface OfficeWorkLocation {
  * Employee works remotely from a US state.
  */
 export interface RemoteWorkLocation {
-  type: "remote";
+  type: 'remote';
   /**
    * The US state where the remote employee works. Required for tax purposes.
    */
-  state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
+  state:
+    | 'AL'
+    | 'AK'
+    | 'AZ'
+    | 'AR'
+    | 'CA'
+    | 'CO'
+    | 'CT'
+    | 'DC'
+    | 'DE'
+    | 'FL'
+    | 'GA'
+    | 'HI'
+    | 'ID'
+    | 'IL'
+    | 'IN'
+    | 'IA'
+    | 'KS'
+    | 'KY'
+    | 'LA'
+    | 'ME'
+    | 'MD'
+    | 'MA'
+    | 'MI'
+    | 'MN'
+    | 'MS'
+    | 'MO'
+    | 'MT'
+    | 'NE'
+    | 'NV'
+    | 'NH'
+    | 'NJ'
+    | 'NM'
+    | 'NY'
+    | 'NC'
+    | 'ND'
+    | 'OH'
+    | 'OK'
+    | 'OR'
+    | 'PA'
+    | 'RI'
+    | 'SC'
+    | 'SD'
+    | 'TN'
+    | 'TX'
+    | 'UT'
+    | 'VT'
+    | 'VA'
+    | 'WA'
+    | 'WV'
+    | 'WI'
+    | 'WY';
 }
 
 export interface WorkerListParams {
@@ -169,8 +232,8 @@ export interface WorkerListParams {
    * @pattern ^wrk_
    */
   beforeId?: string;
-  statuses?: Array<"draft" | "invited" | "onboarding" | "active" | "offboarding" | "inactive">;
-  types?: Array<"employee" | "contractor">;
+  statuses?: Array<'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'>;
+  types?: Array<'employee' | 'contractor'>;
   workEmail?: string;
 }
 
@@ -191,8 +254,8 @@ export namespace WorkerListResponse {
      */
     id: string;
     position: string;
-    type: "employee" | "contractor";
-    status: "draft" | "invited" | "onboarding" | "active" | "offboarding" | "inactive";
+    type: 'employee' | 'contractor';
+    status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
     /**
      * A date string in the form YYYY-MM-DD
      * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -249,8 +312,8 @@ export interface WorkerRetrieveResponse {
    */
   id: string;
   position: string;
-  type: "employee" | "contractor";
-  status: "draft" | "invited" | "onboarding" | "active" | "offboarding" | "inactive";
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -355,7 +418,7 @@ export interface WorkerCreateEmployeeParams {
   /**
    * How state tax registration is handled for this employee's work state. Required when hiring in a state where your company doesn't have an existing registration. Use 'self_managed' if you've already registered in this state, or 'warp_managed' for Warp to handle registration on your behalf.
    */
-  stateRegistration?: "self_managed" | "warp_managed";
+  stateRegistration?: 'self_managed' | 'warp_managed';
   /**
    * Number of stock options granted to this employee.
    * @minimum 0
@@ -364,7 +427,7 @@ export interface WorkerCreateEmployeeParams {
   /**
    * The employee's pay schedule. Must be a pay schedule that the company has configured.
    */
-  paySchedule?: "weekly" | "biweekly" | "monthly" | "semimonthly" | "quarterly" | "annually" | null;
+  paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
 export namespace WorkerCreateEmployeeParams {
@@ -376,7 +439,7 @@ export namespace WorkerCreateEmployeeParams {
     /**
      * Whether the amount is per hour or per year.
      */
-    per: "hour" | "year";
+    per: 'hour' | 'year';
   }
 }
 
@@ -387,8 +450,8 @@ export interface WorkerCreateEmployeeResponse {
    */
   id: string;
   position: string;
-  type: "employee" | "contractor";
-  status: "draft" | "invited" | "onboarding" | "active" | "offboarding" | "inactive";
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -441,7 +504,7 @@ export interface WorkerCreateContractorParams {
   /**
    * Whether the contractor is an individual person or a business entity.
    */
-  entityType: "individual" | "business";
+  entityType: 'individual' | 'business';
   /**
    * a non empty string
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
@@ -477,7 +540,257 @@ export interface WorkerCreateContractorParams {
    * @pattern ^wrk_
    */
   managerId: string;
-  workCountry: "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BV" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HM" | "HN" | "HR" | "HT" | "HU" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "XK" | "YE" | "YT" | "ZA" | "ZM" | "ZW";
+  workCountry:
+    | 'AD'
+    | 'AE'
+    | 'AF'
+    | 'AG'
+    | 'AI'
+    | 'AL'
+    | 'AM'
+    | 'AO'
+    | 'AQ'
+    | 'AR'
+    | 'AS'
+    | 'AT'
+    | 'AU'
+    | 'AW'
+    | 'AX'
+    | 'AZ'
+    | 'BA'
+    | 'BB'
+    | 'BD'
+    | 'BE'
+    | 'BF'
+    | 'BG'
+    | 'BH'
+    | 'BI'
+    | 'BJ'
+    | 'BL'
+    | 'BM'
+    | 'BN'
+    | 'BO'
+    | 'BQ'
+    | 'BR'
+    | 'BS'
+    | 'BT'
+    | 'BV'
+    | 'BW'
+    | 'BY'
+    | 'BZ'
+    | 'CA'
+    | 'CC'
+    | 'CD'
+    | 'CF'
+    | 'CG'
+    | 'CH'
+    | 'CI'
+    | 'CK'
+    | 'CL'
+    | 'CM'
+    | 'CN'
+    | 'CO'
+    | 'CR'
+    | 'CU'
+    | 'CV'
+    | 'CW'
+    | 'CX'
+    | 'CY'
+    | 'CZ'
+    | 'DE'
+    | 'DJ'
+    | 'DK'
+    | 'DM'
+    | 'DO'
+    | 'DZ'
+    | 'EC'
+    | 'EE'
+    | 'EG'
+    | 'EH'
+    | 'ER'
+    | 'ES'
+    | 'ET'
+    | 'FI'
+    | 'FJ'
+    | 'FK'
+    | 'FM'
+    | 'FO'
+    | 'FR'
+    | 'GA'
+    | 'GB'
+    | 'GD'
+    | 'GE'
+    | 'GF'
+    | 'GG'
+    | 'GH'
+    | 'GI'
+    | 'GL'
+    | 'GM'
+    | 'GN'
+    | 'GP'
+    | 'GQ'
+    | 'GR'
+    | 'GS'
+    | 'GT'
+    | 'GU'
+    | 'GW'
+    | 'GY'
+    | 'HK'
+    | 'HM'
+    | 'HN'
+    | 'HR'
+    | 'HT'
+    | 'HU'
+    | 'ID'
+    | 'IE'
+    | 'IL'
+    | 'IM'
+    | 'IN'
+    | 'IO'
+    | 'IQ'
+    | 'IR'
+    | 'IS'
+    | 'IT'
+    | 'JE'
+    | 'JM'
+    | 'JO'
+    | 'JP'
+    | 'KE'
+    | 'KG'
+    | 'KH'
+    | 'KI'
+    | 'KM'
+    | 'KN'
+    | 'KP'
+    | 'KR'
+    | 'KW'
+    | 'KY'
+    | 'KZ'
+    | 'LA'
+    | 'LB'
+    | 'LC'
+    | 'LI'
+    | 'LK'
+    | 'LR'
+    | 'LS'
+    | 'LT'
+    | 'LU'
+    | 'LV'
+    | 'LY'
+    | 'MA'
+    | 'MC'
+    | 'MD'
+    | 'ME'
+    | 'MF'
+    | 'MG'
+    | 'MH'
+    | 'MK'
+    | 'ML'
+    | 'MM'
+    | 'MN'
+    | 'MO'
+    | 'MP'
+    | 'MQ'
+    | 'MR'
+    | 'MS'
+    | 'MT'
+    | 'MU'
+    | 'MV'
+    | 'MW'
+    | 'MX'
+    | 'MY'
+    | 'MZ'
+    | 'NA'
+    | 'NC'
+    | 'NE'
+    | 'NF'
+    | 'NG'
+    | 'NI'
+    | 'NL'
+    | 'NO'
+    | 'NP'
+    | 'NR'
+    | 'NU'
+    | 'NZ'
+    | 'OM'
+    | 'PA'
+    | 'PE'
+    | 'PF'
+    | 'PG'
+    | 'PH'
+    | 'PK'
+    | 'PL'
+    | 'PM'
+    | 'PN'
+    | 'PR'
+    | 'PS'
+    | 'PT'
+    | 'PW'
+    | 'PY'
+    | 'QA'
+    | 'RE'
+    | 'RO'
+    | 'RS'
+    | 'RU'
+    | 'RW'
+    | 'SA'
+    | 'SB'
+    | 'SC'
+    | 'SD'
+    | 'SE'
+    | 'SG'
+    | 'SH'
+    | 'SI'
+    | 'SJ'
+    | 'SK'
+    | 'SL'
+    | 'SM'
+    | 'SN'
+    | 'SO'
+    | 'SR'
+    | 'SS'
+    | 'ST'
+    | 'SV'
+    | 'SX'
+    | 'SY'
+    | 'SZ'
+    | 'TC'
+    | 'TD'
+    | 'TF'
+    | 'TG'
+    | 'TH'
+    | 'TJ'
+    | 'TK'
+    | 'TL'
+    | 'TM'
+    | 'TN'
+    | 'TO'
+    | 'TR'
+    | 'TT'
+    | 'TV'
+    | 'TW'
+    | 'TZ'
+    | 'UA'
+    | 'UG'
+    | 'UM'
+    | 'US'
+    | 'UY'
+    | 'UZ'
+    | 'VA'
+    | 'VC'
+    | 'VE'
+    | 'VG'
+    | 'VI'
+    | 'VN'
+    | 'VU'
+    | 'WF'
+    | 'WS'
+    | 'XK'
+    | 'YE'
+    | 'YT'
+    | 'ZA'
+    | 'ZM'
+    | 'ZW';
   /**
    * Required when entityType is "business". The legal name of the contractor's business.
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
@@ -499,12 +812,73 @@ export interface WorkerCreateContractorParams {
   /**
    * The contractor's pay schedule. Must be a pay schedule that the company has configured.
    */
-  paySchedule?: "weekly" | "biweekly" | "monthly" | "semimonthly" | "quarterly" | "annually" | null;
+  paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
 export namespace WorkerCreateContractorParams {
   export interface Compensation {
-    currency: "USD" | "AUD" | "BGN" | "BRL" | "CAD" | "CHF" | "CZK" | "DKK" | "EUR" | "GBP" | "HKD" | "HUF" | "IDR" | "INR" | "JPY" | "MYR" | "NOK" | "NZD" | "CNY" | "PLN" | "RON" | "TRY" | "SEK" | "SGD" | "AED" | "ARS" | "BDT" | "BWP" | "CLP" | "COP" | "CRC" | "EGP" | "FJD" | "GEL" | "GHS" | "ILS" | "KES" | "KRW" | "LKR" | "MAD" | "MXN" | "NPR" | "PHP" | "PKR" | "THB" | "UAH" | "UGX" | "UYU" | "VND" | "ZAR" | "ZMW" | "TND" | "NGN" | "RSD" | "TWD" | "GTQ" | "HNL" | "DOP" | "SAR" | "XAF" | "PEN";
+    currency:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN';
     /**
      * a positive number
      */
@@ -512,7 +886,7 @@ export namespace WorkerCreateContractorParams {
     /**
      * The pay period for the compensation amount.
      */
-    per: "hour" | "year" | "month" | "week";
+    per: 'hour' | 'year' | 'month' | 'week';
   }
 }
 
@@ -523,8 +897,8 @@ export interface WorkerCreateContractorResponse {
    */
   id: string;
   position: string;
-  type: "employee" | "contractor";
-  status: "draft" | "invited" | "onboarding" | "active" | "offboarding" | "inactive";
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -580,8 +954,8 @@ export interface WorkerInviteResponse {
    */
   id: string;
   position: string;
-  type: "employee" | "contractor";
-  status: "draft" | "invited" | "onboarding" | "active" | "offboarding" | "inactive";
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * A date string in the form YYYY-MM-DD
    * @pattern ^\d{4}-\d{2}-\d{2}$
