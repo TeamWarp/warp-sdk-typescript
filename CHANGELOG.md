@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.19.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.18.0...v0.19.0) (2026-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** 6 breaking changes to the SDK surface.
+    - Removed operation `benefits.healthPlans.benefitsList` (`GET /v1/benefits/health_plans`).
+    - Removed operation `benefits.healthPlans.benefitsGet` (`GET /v1/benefits/health_plans/{id}`).
+    - Removed operation `benefits.retirementPlans.benefitsList` (`GET /v1/benefits/retirement_plans`).
+    - Removed operation `benefits.retirementPlans.benefitsGet` (`GET /v1/benefits/retirement_plans/{id}`).
+    - Removed operation `benefits.deductions.benefitsList` (`GET /v1/benefits/deductions`).
+    - Removed operation `benefits.deductions.benefitsGet` (`GET /v1/benefits/deductions/{id}`).
+
+### Features
+
+* **api:** update SDK surface (14 changes) ([97b8a7d](https://github.com/TeamWarp/warp-sdk-typescript/commit/97b8a7d9ca6f4a45b7a8507a24ca5a511e570608))
+
 ## [0.18.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.17.0...v0.18.0) (2026-08-05)
 
 
