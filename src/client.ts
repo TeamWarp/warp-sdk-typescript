@@ -10,7 +10,13 @@ import { getPlatformHeaders } from './internal/detect-platform';
 import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
 import { readEnv } from './internal/utils/env';
-import { formatRequestDetails, loggerFor, parseLogLevel, type LogLevel, type Logger } from './internal/utils/log';
+import {
+  formatRequestDetails,
+  loggerFor,
+  parseLogLevel,
+  type LogLevel,
+  type Logger,
+} from './internal/utils/log';
 export type { Logger, LogLevel } from './internal/utils/log';
 import type { RequestInit, RequestInfo, BodyInit, Fetch } from './internal/builtin-types';
 import { buildHeaders, type HeadersLike } from './internal/headers';
@@ -19,14 +25,103 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
-import { Benefits } from "./resources/benefits/benefits";
-import { CustomFields, type Trimmed, type NonEmptyTrimmedString, type CustomFieldListResponse, type CustomFieldCreateResponse, type CustomFieldRetrieveResponse, type CustomFieldUpdateResponse, type CustomFieldArchiveResponse, type CustomFieldCreateOptionResponse, type CustomFieldUpdateOptionResponse, type CustomFieldArchiveOptionResponse, type CustomFieldListValuesResponse, type CustomFieldUpsertValueResponse, type CustomFieldCreateParams, type CustomFieldUpdateParams, type CustomFieldCreateOptionParams, type CustomFieldUpdateOptionParams, type CustomFieldListValuesParams, type CustomFieldUpsertValueParams, type CustomFieldClearValueParams } from "./resources/custom-fields";
-import { Departments, type DepartmentListResponse, type DepartmentCreateResponse, type DepartmentUpdateResponse, type DepartmentListParams, type DepartmentCreateParams, type DepartmentUpdateParams } from "./resources/departments";
-import { Offers, type Date, type OfferListResponse, type OfferCreateResponse, type OfferVoidResponse, type OfferExtendDeadlineResponse, type OfferResendResponse, type OfferListParams, type OfferCreateParams, type OfferExtendDeadlineParams } from "./resources/offers";
-import { TimeOff, type TimeOffListAssignmentsResponse, type TimeOffListBalancesResponse, type TimeOffListRequestsResponse, type TimeOffListAssignmentsParams, type TimeOffListBalancesParams, type TimeOffListRequestsParams } from "./resources/time-off/time-off";
-import { Workers, type OfficeWorkLocation, type RemoteWorkLocation, type WorkerListResponse, type WorkerRetrieveResponse, type WorkerCreateEmployeeResponse, type WorkerCreateContractorResponse, type WorkerInviteResponse, type WorkerListParams, type WorkerCreateEmployeeParams, type WorkerCreateContractorParams } from "./resources/workers";
-import { Workplaces, type WorkplaceListResponse, type WorkplaceCreateResponse, type WorkplaceUpdateResponse, type WorkplaceListParams, type WorkplaceCreateParams, type WorkplaceUpdateParams } from "./resources/workplaces";
-import { Webhooks, type TimeOffRequestCreatedWebhookEvent, type TimeOffRequestReviewedWebhookEvent, type TimeOffRequestDeletedWebhookEvent, type TimeOffBalanceAdjustedWebhookEvent, type WorkerCreatedWebhookEvent, type WorkerUpdatedWebhookEvent, type WorkerDeletedWebhookEvent, type WorkerInviteSentWebhookEvent, type WorkerInviteAcceptedWebhookEvent, type WorkerOnboardingCompletedWebhookEvent, type WorkerOffboardingStartedWebhookEvent, type WorkerOffboardedWebhookEvent, type WorkerReactivatedWebhookEvent, type OfferCreatedWebhookEvent, type OfferSentWebhookEvent, type OfferViewedWebhookEvent, type OfferAcceptedWebhookEvent, type OfferVoidedWebhookEvent, type ParsedWebhookEvent } from "./resources/webhooks";
+import { Benefits } from './resources/benefits/benefits';
+import {
+  CustomFields,
+  type Trimmed,
+  type NonEmptyTrimmedString,
+  type CustomFieldListResponse,
+  type CustomFieldCreateResponse,
+  type CustomFieldRetrieveResponse,
+  type CustomFieldUpdateResponse,
+  type CustomFieldArchiveResponse,
+  type CustomFieldCreateOptionResponse,
+  type CustomFieldUpdateOptionResponse,
+  type CustomFieldArchiveOptionResponse,
+  type CustomFieldListValuesResponse,
+  type CustomFieldUpsertValueResponse,
+  type CustomFieldCreateParams,
+  type CustomFieldUpdateParams,
+  type CustomFieldCreateOptionParams,
+  type CustomFieldUpdateOptionParams,
+  type CustomFieldListValuesParams,
+  type CustomFieldUpsertValueParams,
+  type CustomFieldClearValueParams,
+} from './resources/custom-fields';
+import {
+  Departments,
+  type DepartmentListResponse,
+  type DepartmentCreateResponse,
+  type DepartmentUpdateResponse,
+  type DepartmentListParams,
+  type DepartmentCreateParams,
+  type DepartmentUpdateParams,
+} from './resources/departments';
+import {
+  Offers,
+  type Date,
+  type OfferListResponse,
+  type OfferCreateResponse,
+  type OfferVoidResponse,
+  type OfferExtendDeadlineResponse,
+  type OfferResendResponse,
+  type OfferListParams,
+  type OfferCreateParams,
+  type OfferExtendDeadlineParams,
+} from './resources/offers';
+import {
+  TimeOff,
+  type TimeOffListAssignmentsResponse,
+  type TimeOffListBalancesResponse,
+  type TimeOffListRequestsResponse,
+  type TimeOffListAssignmentsParams,
+  type TimeOffListBalancesParams,
+  type TimeOffListRequestsParams,
+} from './resources/time-off/time-off';
+import {
+  Workers,
+  type OfficeWorkLocation,
+  type RemoteWorkLocation,
+  type WorkerListResponse,
+  type WorkerRetrieveResponse,
+  type WorkerCreateEmployeeResponse,
+  type WorkerCreateContractorResponse,
+  type WorkerInviteResponse,
+  type WorkerListParams,
+  type WorkerCreateEmployeeParams,
+  type WorkerCreateContractorParams,
+} from './resources/workers';
+import {
+  Workplaces,
+  type WorkplaceListResponse,
+  type WorkplaceCreateResponse,
+  type WorkplaceUpdateResponse,
+  type WorkplaceListParams,
+  type WorkplaceCreateParams,
+  type WorkplaceUpdateParams,
+} from './resources/workplaces';
+import {
+  Webhooks,
+  type TimeOffRequestCreatedWebhookEvent,
+  type TimeOffRequestReviewedWebhookEvent,
+  type TimeOffRequestDeletedWebhookEvent,
+  type TimeOffBalanceAdjustedWebhookEvent,
+  type WorkerCreatedWebhookEvent,
+  type WorkerUpdatedWebhookEvent,
+  type WorkerDeletedWebhookEvent,
+  type WorkerInviteSentWebhookEvent,
+  type WorkerInviteAcceptedWebhookEvent,
+  type WorkerOnboardingCompletedWebhookEvent,
+  type WorkerOffboardingStartedWebhookEvent,
+  type WorkerOffboardedWebhookEvent,
+  type WorkerReactivatedWebhookEvent,
+  type OfferCreatedWebhookEvent,
+  type OfferSentWebhookEvent,
+  type OfferViewedWebhookEvent,
+  type OfferAcceptedWebhookEvent,
+  type OfferVoidedWebhookEvent,
+  type ParsedWebhookEvent,
+} from './resources/webhooks';
 
 export type AuthTokenProvider = () => string | Promise<string>;
 
@@ -147,19 +242,19 @@ export class Warp {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv("WARP_BASE_URL"),
-    apiKey = readEnv("WARP_API_KEY"),
-    webhookSecret = readEnv("WARP_WEBHOOK_SECRET") ?? null,
+    baseURL = readEnv('WARP_BASE_URL'),
+    apiKey = readEnv('WARP_API_KEY'),
+    webhookSecret = readEnv('WARP_WEBHOOK_SECRET') ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
       apiKey,
       webhookSecret,
       ...opts,
-      baseURL: baseURL || "https://api.joinwarp.com",
+      baseURL: baseURL || 'https://api.joinwarp.com',
     };
-    const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== "";
-    const defaultBaseURL = "https://api.joinwarp.com";
+    const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== '';
+    const defaultBaseURL = 'https://api.joinwarp.com';
     this.baseURL = options.baseURL || defaultBaseURL;
     this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
@@ -168,14 +263,14 @@ export class Warp {
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv("WARP_LOG"), "process.env[\"WARP_LOG\"]", this) ??
+      parseLogLevel(readEnv('WARP_LOG'), 'process.env["WARP_LOG"]', this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
     this.#encoder = Opts.FallbackEncoder;
 
-    const customHeadersEnv = readEnv("WARP_CUSTOM_HEADERS");
+    const customHeadersEnv = readEnv('WARP_CUSTOM_HEADERS');
     if (customHeadersEnv) {
       const parsed: Record<string, string> = {};
       for (const line of customHeadersEnv.split('\n')) {
@@ -250,10 +345,11 @@ export class Warp {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
     // Guarantee exactly one "/" between baseURL and path so that bases without a trailing slash
     // and paths without a leading slash do not fuse into a malformed URL (e.g. ".../v1" + "widgets").
-    const url =
-      isAbsoluteURL(path) ?
-        new URL(path)
-      : new URL((baseURL.endsWith('/') ? baseURL : baseURL + '/') + (path.startsWith('/') ? path.slice(1) : path));
+    const url = isAbsoluteURL(path)
+      ? new URL(path)
+      : new URL(
+          (baseURL.endsWith('/') ? baseURL : baseURL + '/') + (path.startsWith('/') ? path.slice(1) : path),
+        );
 
     const defaultQuery = this.defaultQuery();
     const pathQuery = Object.fromEntries(url.searchParams);
@@ -261,7 +357,7 @@ export class Warp {
       query = { ...pathQuery, ...defaultQuery, ...query };
     }
 
-    if (typeof query === "object" && query && !Array.isArray(query)) {
+    if (typeof query === 'object' && query && !Array.isArray(query)) {
       url.search = this.stringifyQuery(query);
     }
 
@@ -480,7 +576,12 @@ export class Warp {
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
 
-  async fetchWithTimeout(url: RequestInfo, init: RequestInit | undefined, ms: number, controller: AbortController): Promise<Response> {
+  async fetchWithTimeout(
+    url: RequestInfo,
+    init: RequestInit | undefined,
+    ms: number,
+    controller: AbortController,
+  ): Promise<Response> {
     const { signal, method, ...options } = init || {};
     const abort = this._makeAbort(controller);
     if (signal) signal.addEventListener('abort', abort, { once: true });
@@ -724,21 +825,26 @@ export class Warp {
   }
 
   private validateAuth(url: string, headers: Headers, options: FinalRequestOptions): void {
-    if (headers.has("x-api-key")) return;
-    if (headerExplicitlyOmitted(options.headers, "x-api-key")) return;
-    throw new Errors.AuthenticationError(401, {}, "Could not resolve authentication method. Expected x-api-key to be set.", headers);
+    if (headers.has('x-api-key')) return;
+    if (headerExplicitlyOmitted(options.headers, 'x-api-key')) return;
+    throw new Errors.AuthenticationError(
+      401,
+      {},
+      'Could not resolve authentication method. Expected x-api-key to be set.',
+      headers,
+    );
   }
 
   authHeadersSync(): Record<string, string> {
     const headers: Record<string, string> = {};
-    const apiKey = this.resolveAuthOptionSync("apiKey", this.apiKey);
-    if (apiKey) headers["x-api-key"] = apiKey;
+    const apiKey = this.resolveAuthOptionSync('apiKey', this.apiKey);
+    if (apiKey) headers['x-api-key'] = apiKey;
     return headers;
   }
 
   webSocketAuthHeaders(): Record<string, string> {
-    const apiKey = this.resolveAuthOptionSync("apiKey", this.apiKey);
-    if (apiKey) return { "x-api-key": apiKey };
+    const apiKey = this.resolveAuthOptionSync('apiKey', this.apiKey);
+    if (apiKey) return { 'x-api-key': apiKey };
     return {};
   }
 
@@ -758,22 +864,29 @@ export class Warp {
 
   private async authHeadersAsync(): Promise<Record<string, string>> {
     const headers: Record<string, string> = {};
-    const apiKey = await this.resolveAuthOption("apiKey", this.apiKey);
-    if (apiKey) headers["x-api-key"] = apiKey;
+    const apiKey = await this.resolveAuthOption('apiKey', this.apiKey);
+    if (apiKey) headers['x-api-key'] = apiKey;
     return headers;
   }
 
-  private async resolveAuthOption(optionName: string, value: string | AuthTokenProvider | null | undefined): Promise<string | undefined> {
+  private async resolveAuthOption(
+    optionName: string,
+    value: string | AuthTokenProvider | null | undefined,
+  ): Promise<string | undefined> {
     if (value == null) return undefined;
-    const token = typeof value === "function" ? await value() : value;
+    const token = typeof value === 'function' ? await value() : value;
     if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  private resolveAuthOptionSync(optionName: string, value: string | AuthTokenProvider | null | undefined): string | undefined {
+  private resolveAuthOptionSync(
+    optionName: string,
+    value: string | AuthTokenProvider | null | undefined,
+  ): string | undefined {
     if (value == null) return undefined;
-    const token = typeof value === "function" ? value() : value;
-    if (typeof token !== "string" || !token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    const token = typeof value === 'function' ? value() : value;
+    if (typeof token !== 'string' || !token)
+      throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
@@ -817,9 +930,7 @@ Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
-  export {
-    Benefits as Benefits,
-  };
+  export { Benefits as Benefits };
 
   export {
     CustomFields as CustomFields,
@@ -925,7 +1036,6 @@ export declare namespace Warp {
   };
 }
 
-
 const headerExplicitlyOmitted = (source: HeadersLike | undefined, name: string): boolean => {
   if (!source || Array.isArray(source) || source instanceof Headers) return false;
   const target = name.toLowerCase();
@@ -934,16 +1044,15 @@ const headerExplicitlyOmitted = (source: HeadersLike | undefined, name: string):
 
 const appendAuthCookies = (headers: Headers, cookies: Record<string, string>): void => {
   for (const [name, value] of Object.entries(cookies)) {
-    if (cookieHeaderHas(headers.get("Cookie"), name)) continue;
-    const cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
-    const existing = headers.get("Cookie");
-    headers.set("Cookie", existing ? existing + "; " + cookie : cookie);
+    if (cookieHeaderHas(headers.get('Cookie'), name)) continue;
+    const cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+    const existing = headers.get('Cookie');
+    headers.set('Cookie', existing ? existing + '; ' + cookie : cookie);
   }
 };
 
 const cookieHeaderHas = (value: string | null, name: string): boolean => {
   if (!value) return false;
-  const target = encodeURIComponent(name) + "=";
-  return value.split(";").some((cookie) => cookie.trim().startsWith(target));
+  const target = encodeURIComponent(name) + '=';
+  return value.split(';').some((cookie) => cookie.trim().startsWith(target));
 };
-

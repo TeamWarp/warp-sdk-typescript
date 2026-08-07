@@ -1,11 +1,16 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../../resource";
-import { APIPromise } from "../../api-promise";
-import type { RequestOptions } from "../../internal/request-options";
-import type * as OffersAPI from "../offers";
-import * as PoliciesAPI from "./policies";
-import { Policies, type PolicyTimeOffGetResponse, type PolicyTimeOffGet2Response, type PolicyTimeOffGetParams } from "./policies";
+import { APIResource } from '../../resource';
+import { APIPromise } from '../../api-promise';
+import type { RequestOptions } from '../../internal/request-options';
+import type * as OffersAPI from '../offers';
+import * as PoliciesAPI from './policies';
+import {
+  Policies,
+  type PolicyTimeOffGetResponse,
+  type PolicyTimeOffGet2Response,
+  type PolicyTimeOffGetParams,
+} from './policies';
 
 export class TimeOff extends APIResource {
   policies: PoliciesAPI.Policies = new PoliciesAPI.Policies(this._client);
@@ -22,8 +27,11 @@ export class TimeOff extends APIResource {
    * const listAssignments = await client.timeOff.listAssignments();
    * ```
    */
-  listAssignments(query: TimeOffListAssignmentsParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListAssignmentsResponse> {
-    return this._client.get("/v1/time_off/assignments", { query, ...options });
+  listAssignments(
+    query: TimeOffListAssignmentsParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<TimeOffListAssignmentsResponse> {
+    return this._client.get('/v1/time_off/assignments', { query, ...options });
   }
 
   /**
@@ -38,8 +46,11 @@ export class TimeOff extends APIResource {
    * const listBalances = await client.timeOff.listBalances();
    * ```
    */
-  listBalances(query: TimeOffListBalancesParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListBalancesResponse> {
-    return this._client.get("/v1/time_off/balances", { query, ...options });
+  listBalances(
+    query: TimeOffListBalancesParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<TimeOffListBalancesResponse> {
+    return this._client.get('/v1/time_off/balances', { query, ...options });
   }
 
   /**
@@ -54,8 +65,11 @@ export class TimeOff extends APIResource {
    * const listRequests = await client.timeOff.listRequests();
    * ```
    */
-  listRequests(query: TimeOffListRequestsParams | null | undefined = {}, options?: RequestOptions): APIPromise<TimeOffListRequestsResponse> {
-    return this._client.get("/v1/time_off/requests", { query, ...options });
+  listRequests(
+    query: TimeOffListRequestsParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<TimeOffListRequestsResponse> {
+    return this._client.get('/v1/time_off/requests', { query, ...options });
   }
 }
 
@@ -151,7 +165,7 @@ export interface TimeOffListRequestsParams {
   limit?: string;
   afterId?: string;
   beforeId?: string;
-  statuses?: Array<"pending" | "approved" | "denied">;
+  statuses?: Array<'pending' | 'approved' | 'denied'>;
   policyIds?: Array<string>;
   workerIds?: Array<string>;
   /**
@@ -194,17 +208,17 @@ export namespace TimeOffListRequestsResponse {
      * @pattern ^wrk_
      */
     workerId: string;
-    status: "pending" | "approved" | "denied";
+    status: 'pending' | 'approved' | 'denied';
     /**
      * a string to be decoded into a Date
      */
     startAt: OffersAPI.Date;
-    startRangeType: "date" | "datetime";
+    startRangeType: 'date' | 'datetime';
     /**
      * a string to be decoded into a Date
      */
     endAt: OffersAPI.Date;
-    endRangeType: "date" | "datetime";
+    endRangeType: 'date' | 'datetime';
     reason: string | null;
     /**
      * a string to be decoded into a Date

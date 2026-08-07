@@ -1,19 +1,13 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.22.5",
-  "servers": [
-    "https://api.joinwarp.com"
-  ],
+  "generatorVersion": "0.22.10",
+  "servers": ["https://api.joinwarp.com"],
   "environments": {
     "production": "https://api.joinwarp.com"
   },
-  "environmentOrder": [
-    "production"
-  ],
-  "auth": [
-    "apiKey"
-  ],
+  "environmentOrder": ["production"],
+  "auth": ["apiKey"],
   "authDetails": [
     {
       "kind": "apiKey",
@@ -257,9 +251,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "$150,000.00"
             },
             "type": {
@@ -278,18 +270,9 @@
       "deprecated": false,
       "type": {
         "kind": "enum",
-        "values": [
-          "active",
-          "terminated"
-        ],
-        "names": [
-          "Active",
-          "Terminated"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
+        "values": ["active", "terminated"],
+        "names": ["Active", "Terminated"],
+        "deprecations": [false, false]
       }
     },
     {
@@ -306,9 +289,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "chpl_1234"
             },
             "type": {
@@ -344,22 +325,8 @@
                 "short_term_disability",
                 "long_term_disability"
               ],
-              "names": [
-                "Medical",
-                "Dental",
-                "Vision",
-                "Life",
-                "ShortTermDisability",
-                "LongTermDisability"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
+              "names": ["Medical", "Dental", "Vision", "Life", "ShortTermDisability", "LongTermDisability"],
+              "deprecations": [false, false, false, false, false, false]
             }
           },
           {
@@ -400,30 +367,9 @@
               "variants": [
                 {
                   "kind": "enum",
-                  "values": [
-                    "hmo",
-                    "ppo",
-                    "epo",
-                    "pos",
-                    "hdhp",
-                    "indemnity"
-                  ],
-                  "names": [
-                    "Hmo",
-                    "Ppo",
-                    "Epo",
-                    "Pos",
-                    "Hdhp",
-                    "Indemnity"
-                  ],
-                  "deprecations": [
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false
-                  ]
+                  "values": ["hmo", "ppo", "epo", "pos", "hdhp", "indemnity"],
+                  "names": ["Hmo", "Ppo", "Epo", "Pos", "Hdhp", "Indemnity"],
+                  "deprecations": [false, false, false, false, false, false]
                 },
                 {
                   "kind": "null"
@@ -437,9 +383,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "2000-01-01"
             },
             "type": {
@@ -519,9 +463,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "car_1234"
             },
             "type": {
@@ -584,15 +526,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "HttpApiDecodeError"
-              ],
-              "names": [
-                "HttpApiDecodeError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["HttpApiDecodeError"],
+              "names": ["HttpApiDecodeError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -634,16 +570,7 @@
                 "Type",
                 "Forbidden"
               ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
+              "deprecations": [false, false, false, false, false, false, false, false]
             }
           },
           {
@@ -699,15 +626,9 @@
                 "deprecated": false,
                 "type": {
                   "kind": "enum",
-                  "values": [
-                    "symbol"
-                  ],
-                  "names": [
-                    "Symbol"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
+                  "values": ["symbol"],
+                  "names": ["Symbol"],
+                  "deprecations": [false]
                 }
               },
               {
@@ -724,11 +645,7 @@
             "additionalProperties": false
           }
         ],
-        "variantNames": [
-          null,
-          null,
-          null
-        ]
+        "variantNames": [null, null, null]
       }
     },
     {
@@ -765,15 +682,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "ApiKeyUnauthorized"
-              ],
-              "names": [
-                "ApiKeyUnauthorized"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["ApiKeyUnauthorized"],
+              "names": ["ApiKeyUnauthorized"],
+              "deprecations": [false]
             }
           }
         ],
@@ -815,15 +726,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "RateLimitExceeded"
-              ],
-              "names": [
-                "RateLimitExceeded"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["RateLimitExceeded"],
+              "names": ["RateLimitExceeded"],
+              "deprecations": [false]
             }
           }
         ],
@@ -970,21 +875,9 @@
                     "deprecated": false,
                     "type": {
                       "kind": "enum",
-                      "values": [
-                        "read",
-                        "write",
-                        "manage"
-                      ],
-                      "names": [
-                        "Read",
-                        "Write",
-                        "Manage"
-                      ],
-                      "deprecations": [
-                        false,
-                        false,
-                        false
-                      ]
+                      "values": ["read", "write", "manage"],
+                      "names": ["Read", "Write", "Manage"],
+                      "deprecations": [false, false, false]
                     }
                   }
                 ],
@@ -1009,15 +902,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "MissingRequiredCompanyPermissions"
-              ],
-              "names": [
-                "MissingRequiredCompanyPermissions"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["MissingRequiredCompanyPermissions"],
+              "names": ["MissingRequiredCompanyPermissions"],
+              "deprecations": [false]
             }
           }
         ],
@@ -1049,15 +936,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "ApiNotEnabled"
-              ],
-              "names": [
-                "ApiNotEnabled"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["ApiNotEnabled"],
+              "names": ["ApiNotEnabled"],
+              "deprecations": [false]
             }
           }
         ],
@@ -1078,9 +959,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "chpl_1234"
             },
             "type": {
@@ -1108,15 +987,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "HealthPlanNotFoundError"
-              ],
-              "names": [
-                "HealthPlanNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["HealthPlanNotFoundError"],
+              "names": ["HealthPlanNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -1130,18 +1003,9 @@
       "deprecated": false,
       "type": {
         "kind": "enum",
-        "values": [
-          "active",
-          "terminated"
-        ],
-        "names": [
-          "Active",
-          "Terminated"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
+        "values": ["active", "terminated"],
+        "names": ["Active", "Terminated"],
+        "deprecations": [false, false]
       }
     },
     {
@@ -1158,9 +1022,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "crpl_1234"
             },
             "type": {
@@ -1198,16 +1060,7 @@
                 "SimpleIra",
                 "RothSimpleIra"
               ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
+              "deprecations": [false, false, false, false, false, false, false, false]
             }
           },
           {
@@ -1236,9 +1089,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "2000-01-01"
             },
             "type": {
@@ -1311,21 +1162,9 @@
       "deprecated": false,
       "type": {
         "kind": "enum",
-        "values": [
-          "manual",
-          "human_interest",
-          "accrue"
-        ],
-        "names": [
-          "Manual",
-          "HumanInterest",
-          "Accrue"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
+        "values": ["manual", "human_interest", "accrue"],
+        "names": ["Manual", "HumanInterest", "Accrue"],
+        "deprecations": [false, false, false]
       }
     },
     {
@@ -1342,9 +1181,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "crpl_1234"
             },
             "type": {
@@ -1372,15 +1209,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "RetirementPlanNotFoundError"
-              ],
-              "names": [
-                "RetirementPlanNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["RetirementPlanNotFoundError"],
+              "names": ["RetirementPlanNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -1394,33 +1225,9 @@
       "deprecated": false,
       "type": {
         "kind": "enum",
-        "values": [
-          "health",
-          "retirement",
-          "health_savings",
-          "commuter",
-          "voluntary",
-          "post_tax",
-          "other"
-        ],
-        "names": [
-          "Health",
-          "Retirement",
-          "HealthSavings",
-          "Commuter",
-          "Voluntary",
-          "PostTax",
-          "Other"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
+        "values": ["health", "retirement", "health_savings", "commuter", "voluntary", "post_tax", "other"],
+        "names": ["Health", "Retirement", "HealthSavings", "Commuter", "Voluntary", "PostTax", "Other"],
+        "deprecations": [false, false, false, false, false, false, false]
       }
     },
     {
@@ -1430,24 +1237,9 @@
       "deprecated": false,
       "type": {
         "kind": "enum",
-        "values": [
-          "active",
-          "pending",
-          "suspended",
-          "terminated"
-        ],
-        "names": [
-          "Active",
-          "Pending",
-          "Suspended",
-          "Terminated"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false
-        ]
+        "values": ["active", "pending", "suspended", "terminated"],
+        "names": ["Active", "Pending", "Suspended", "Terminated"],
+        "deprecations": [false, false, false, false]
       }
     },
     {
@@ -1464,9 +1256,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "pbdg_1234"
             },
             "type": {
@@ -1619,18 +1409,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "recurring",
-                "one_time"
-              ],
-              "names": [
-                "Recurring",
-                "OneTime"
-              ],
-              "deprecations": [
-                false,
-                false
-              ]
+              "values": ["recurring", "one_time"],
+              "names": ["Recurring", "OneTime"],
+              "deprecations": [false, false]
             }
           },
           {
@@ -1659,9 +1440,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "2000-01-01"
             },
             "type": {
@@ -1741,9 +1520,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wrk_1234"
             },
             "type": {
@@ -1798,10 +1575,7 @@
                 "name": "retirement_plan_reference"
               }
             ],
-            "variantNames": [
-              null,
-              null
-            ]
+            "variantNames": [null, null]
           },
           {
             "kind": "null"
@@ -1824,15 +1598,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "health_plan"
-              ],
-              "names": [
-                "HealthPlan"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["health_plan"],
+              "names": ["HealthPlan"],
+              "deprecations": [false]
             }
           },
           {
@@ -1841,9 +1609,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "chpl_1234"
             },
             "type": {
@@ -1883,15 +1649,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "retirement_plan"
-              ],
-              "names": [
-                "RetirementPlan"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["retirement_plan"],
+              "names": ["RetirementPlan"],
+              "deprecations": [false]
             }
           },
           {
@@ -1900,9 +1660,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "crpl_1234"
             },
             "type": {
@@ -1944,10 +1702,7 @@
             "name": "percentage_benefit_calculation"
           }
         ],
-        "variantNames": [
-          null,
-          null
-        ]
+        "variantNames": [null, null]
       }
     },
     {
@@ -1965,15 +1720,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "fixed_amount"
-              ],
-              "names": [
-                "FixedAmount"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["fixed_amount"],
+              "names": ["FixedAmount"],
+              "deprecations": [false]
             }
           },
           {
@@ -1986,18 +1735,9 @@
               "variants": [
                 {
                   "kind": "enum",
-                  "values": [
-                    "per_paycheck",
-                    "monthly"
-                  ],
-                  "names": [
-                    "PerPaycheck",
-                    "Monthly"
-                  ],
-                  "deprecations": [
-                    false,
-                    false
-                  ]
+                  "values": ["per_paycheck", "monthly"],
+                  "names": ["PerPaycheck", "Monthly"],
+                  "deprecations": [false, false]
                 },
                 {
                   "kind": "null"
@@ -2044,15 +1784,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "percentage"
-              ],
-              "names": [
-                "Percentage"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["percentage"],
+              "names": ["Percentage"],
+              "deprecations": [false]
             }
           },
           {
@@ -2136,9 +1870,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "pbdg_1234"
             },
             "type": {
@@ -2166,15 +1898,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "BenefitDeductionNotFoundError"
-              ],
-              "names": [
-                "BenefitDeductionNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["BenefitDeductionNotFoundError"],
+              "names": ["BenefitDeductionNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2233,15 +1959,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "InvalidCustomFieldOperationError"
-              ],
-              "names": [
-                "InvalidCustomFieldOperationError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["InvalidCustomFieldOperationError"],
+              "names": ["InvalidCustomFieldOperationError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2283,15 +2003,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CustomFieldAlreadyExistsError"
-              ],
-              "names": [
-                "CustomFieldAlreadyExistsError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CustomFieldAlreadyExistsError"],
+              "names": ["CustomFieldAlreadyExistsError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2333,15 +2047,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CustomFieldOptionAlreadyExistsError"
-              ],
-              "names": [
-                "CustomFieldOptionAlreadyExistsError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CustomFieldOptionAlreadyExistsError"],
+              "names": ["CustomFieldOptionAlreadyExistsError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2362,9 +2070,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "cf_1234"
             },
             "type": {
@@ -2392,15 +2098,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CustomFieldNotFoundError"
-              ],
-              "names": [
-                "CustomFieldNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CustomFieldNotFoundError"],
+              "names": ["CustomFieldNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2421,9 +2121,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "cfo_1234"
             },
             "type": {
@@ -2451,15 +2149,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CustomFieldOptionNotFoundError"
-              ],
-              "names": [
-                "CustomFieldOptionNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CustomFieldOptionNotFoundError"],
+              "names": ["CustomFieldOptionNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2480,9 +2172,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "cfo_1234"
             },
             "type": {
@@ -2510,15 +2200,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CustomFieldOptionInUseError"
-              ],
-              "names": [
-                "CustomFieldOptionInUseError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CustomFieldOptionInUseError"],
+              "names": ["CustomFieldOptionInUseError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2550,15 +2234,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "InvalidCustomFieldValueError"
-              ],
-              "names": [
-                "InvalidCustomFieldValueError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["InvalidCustomFieldValueError"],
+              "names": ["InvalidCustomFieldValueError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2579,9 +2257,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wrk_1234"
             },
             "type": {
@@ -2609,15 +2285,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CustomFieldWorkerNotFoundError"
-              ],
-              "names": [
-                "CustomFieldWorkerNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CustomFieldWorkerNotFoundError"],
+              "names": ["CustomFieldWorkerNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2638,9 +2308,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "dpt_1234"
             },
             "type": {
@@ -2678,15 +2346,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "DepartmentAlreadyExists"
-              ],
-              "names": [
-                "DepartmentAlreadyExists"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["DepartmentAlreadyExists"],
+              "names": ["DepartmentAlreadyExists"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2707,9 +2369,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "dpt_1234"
             },
             "type": {
@@ -2737,15 +2397,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "DepartmentNotFound"
-              ],
-              "names": [
-                "DepartmentNotFound"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["DepartmentNotFound"],
+              "names": ["DepartmentNotFound"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2777,15 +2431,60 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "InvalidExpirationTimeError"
-              ],
-              "names": [
-                "InvalidExpirationTimeError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["InvalidExpirationTimeError"],
+              "names": ["InvalidExpirationTimeError"],
+              "deprecations": [false]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "workplace_not_found",
+      "source": "workplace_not_found",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": ["examples"],
+              "examples": "wkp_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": ["WorkplaceNotFound"],
+              "names": ["WorkplaceNotFound"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2806,9 +2505,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wrk_1234"
             },
             "type": {
@@ -2836,15 +2533,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "ManagerNotFoundError"
-              ],
-              "names": [
-                "ManagerNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["ManagerNotFoundError"],
+              "names": ["ManagerNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2865,9 +2556,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "offr_1234"
             },
             "type": {
@@ -2895,15 +2584,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "OfferNotFoundError"
-              ],
-              "names": [
-                "OfferNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["OfferNotFoundError"],
+              "names": ["OfferNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -2924,9 +2607,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "offr_1234"
             },
             "type": {
@@ -2944,24 +2625,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "draft",
-                "sent",
-                "accepted",
-                "void"
-              ],
-              "names": [
-                "Draft",
-                "Sent",
-                "Accepted",
-                "Void"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false
-              ]
+              "values": ["draft", "sent", "accepted", "void"],
+              "names": ["Draft", "Sent", "Accepted", "Void"],
+              "deprecations": [false, false, false, false]
             }
           },
           {
@@ -2981,15 +2647,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "InvalidOfferStatusError"
-              ],
-              "names": [
-                "InvalidOfferStatusError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["InvalidOfferStatusError"],
+              "names": ["InvalidOfferStatusError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3024,10 +2684,7 @@
                   "type": "number"
                 }
               ],
-              "variantNames": [
-                "startsWith(\"top_\")",
-                null
-              ]
+              "variantNames": ["startsWith(\"top_\")", null]
             }
           },
           {
@@ -3047,15 +2704,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "TimeOffPolicyNotFound"
-              ],
-              "names": [
-                "TimeOffPolicyNotFound"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["TimeOffPolicyNotFound"],
+              "names": ["TimeOffPolicyNotFound"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3087,10 +2738,7 @@
                   "type": "number"
                 }
               ],
-              "variantNames": [
-                null,
-                null
-              ]
+              "variantNames": [null, null]
             }
           },
           {
@@ -3110,15 +2758,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "TimeOffRequestNotFoundError"
-              ],
-              "names": [
-                "TimeOffRequestNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["TimeOffRequestNotFoundError"],
+              "names": ["TimeOffRequestNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3139,9 +2781,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wrk_1234"
             },
             "type": {
@@ -3169,15 +2809,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "WorkerNotFoundError"
-              ],
-              "names": [
-                "WorkerNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["WorkerNotFoundError"],
+              "names": ["WorkerNotFoundError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3199,15 +2833,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "office"
-              ],
-              "names": [
-                "Office"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["office"],
+              "names": ["Office"],
+              "deprecations": [false]
             }
           },
           {
@@ -3216,9 +2844,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wkp_1234"
             },
             "type": {
@@ -3248,15 +2874,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "remote"
-              ],
-              "names": [
-                "Remote"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["remote"],
+              "names": ["Remote"],
+              "deprecations": [false]
             }
           },
           {
@@ -3466,74 +3086,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "StateRegistrationRequired"
-              ],
-              "names": [
-                "StateRegistrationRequired"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "workplace_not_found",
-      "source": "workplace_not_found",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wkp_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wkp_"
-              }
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "WorkplaceNotFound"
-              ],
-              "names": [
-                "WorkplaceNotFound"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["StateRegistrationRequired"],
+              "names": ["StateRegistrationRequired"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3555,30 +3110,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "weekly",
-                "biweekly",
-                "monthly",
-                "semimonthly",
-                "quarterly",
-                "annually"
-              ],
-              "names": [
-                "Weekly",
-                "Biweekly",
-                "Monthly",
-                "Semimonthly",
-                "Quarterly",
-                "Annually"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
+              "values": ["weekly", "biweekly", "monthly", "semimonthly", "quarterly", "annually"],
+              "names": ["Weekly", "Biweekly", "Monthly", "Semimonthly", "Quarterly", "Annually"],
+              "deprecations": [false, false, false, false, false, false]
             }
           },
           {
@@ -3598,15 +3132,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "PayScheduleNotConfigured"
-              ],
-              "names": [
-                "PayScheduleNotConfigured"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["PayScheduleNotConfigured"],
+              "names": ["PayScheduleNotConfigured"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3638,15 +3166,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "SubscriptionLimitError"
-              ],
-              "names": [
-                "SubscriptionLimitError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["SubscriptionLimitError"],
+              "names": ["SubscriptionLimitError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3667,9 +3189,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wrk_1234"
             },
             "type": {
@@ -3697,15 +3217,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "InvalidWorkerStatusError"
-              ],
-              "names": [
-                "InvalidWorkerStatusError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["InvalidWorkerStatusError"],
+              "names": ["InvalidWorkerStatusError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3737,15 +3251,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "WorkerAlreadyExistsError"
-              ],
-              "names": [
-                "WorkerAlreadyExistsError"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["WorkerAlreadyExistsError"],
+              "names": ["WorkerAlreadyExistsError"],
+              "deprecations": [false]
             }
           }
         ],
@@ -3766,9 +3274,7 @@
             "required": true,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wrk_1234"
             },
             "type": {
@@ -3796,15 +3302,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "CannotDeleteWorker"
-              ],
-              "names": [
-                "CannotDeleteWorker"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["CannotDeleteWorker"],
+              "names": ["CannotDeleteWorker"],
+              "deprecations": [false]
             }
           }
         ],
@@ -4682,15 +4182,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "AddressInvalid"
-              ],
-              "names": [
-                "AddressInvalid"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["AddressInvalid"],
+              "names": ["AddressInvalid"],
+              "deprecations": [false]
             }
           }
         ],
@@ -4711,9 +4205,7 @@
             "required": false,
             "deprecated": false,
             "extensions": {
-              "source": [
-                "examples"
-              ],
+              "source": ["examples"],
               "examples": "wkp_1234"
             },
             "type": {
@@ -4751,15 +4243,9 @@
             "deprecated": false,
             "type": {
               "kind": "enum",
-              "values": [
-                "WorkplaceAlreadyExists"
-              ],
-              "names": [
-                "WorkplaceAlreadyExists"
-              ],
-              "deprecations": [
-                false
-              ]
+              "values": ["WorkplaceAlreadyExists"],
+              "names": ["WorkplaceAlreadyExists"],
+              "deprecations": [false]
             }
           }
         ],
@@ -4797,29 +4283,15 @@
     {
       "resource": "benefits.healthPlans",
       "publicResource": "benefits.healthPlans",
-      "operation": "benefitsList",
-      "publicOperation": "benefitsList",
+      "operation": "list",
+      "publicOperation": "list",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/health_plans",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "types",
-        "statuses",
-        "carrierIds"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "types",
-        "statuses",
-        "carrierIds"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId", "types", "statuses", "carrierIds"],
+      "publicQueryParams": ["limit", "afterId", "beforeId", "types", "statuses", "carrierIds"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -4856,9 +4328,7 @@
           "required": false,
           "style": "form",
           "explode": true,
-          "defaultValue": [
-            "active"
-          ]
+          "defaultValue": ["active"]
         },
         {
           "name": "carrierIds",
@@ -4872,7 +4342,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "HealthPlanBenefitsListParams"
+        "publicName": "HealthPlanListParams"
       },
       "response": {
         "status": "200",
@@ -4887,13 +4357,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -4970,17 +4434,13 @@
     {
       "resource": "benefits.healthPlans",
       "publicResource": "benefits.healthPlans",
-      "operation": "benefitsGet",
-      "publicOperation": "benefitsGet",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/health_plans/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -5002,7 +4462,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "HealthPlanBenefitsGetParams"
+        "publicName": "HealthPlanGetParams"
       },
       "response": {
         "status": "200",
@@ -5021,14 +4481,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -5120,27 +4573,15 @@
     {
       "resource": "benefits.retirementPlans",
       "publicResource": "benefits.retirementPlans",
-      "operation": "benefitsList",
-      "publicOperation": "benefitsList",
+      "operation": "list",
+      "publicOperation": "list",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/retirement_plans",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "types",
-        "statuses"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "types",
-        "statuses"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId", "types", "statuses"],
+      "publicQueryParams": ["limit", "afterId", "beforeId", "types", "statuses"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -5177,9 +4618,7 @@
           "required": false,
           "style": "form",
           "explode": true,
-          "defaultValue": [
-            "active"
-          ]
+          "defaultValue": ["active"]
         }
       ],
       "headerParamDetails": [],
@@ -5187,7 +4626,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "RetirementPlanBenefitsListParams"
+        "publicName": "RetirementPlanListParams"
       },
       "response": {
         "status": "200",
@@ -5202,13 +4641,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -5285,17 +4718,13 @@
     {
       "resource": "benefits.retirementPlans",
       "publicResource": "benefits.retirementPlans",
-      "operation": "benefitsGet",
-      "publicOperation": "benefitsGet",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/retirement_plans/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -5317,7 +4746,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "RetirementPlanBenefitsGetParams"
+        "publicName": "RetirementPlanGetParams"
       },
       "response": {
         "status": "200",
@@ -5336,14 +4765,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -5435,8 +4857,8 @@
     {
       "resource": "benefits.deductions",
       "publicResource": "benefits.deductions",
-      "operation": "benefitsList",
-      "publicOperation": "benefitsList",
+      "operation": "list",
+      "publicOperation": "list",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/deductions",
@@ -5512,9 +4934,7 @@
           "required": false,
           "style": "form",
           "explode": true,
-          "defaultValue": [
-            "active"
-          ]
+          "defaultValue": ["active"]
         },
         {
           "name": "healthPlanIds",
@@ -5534,7 +4954,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "DeductionBenefitsListParams"
+        "publicName": "DeductionListParams"
       },
       "response": {
         "status": "200",
@@ -5549,13 +4969,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -5632,17 +5046,13 @@
     {
       "resource": "benefits.deductions",
       "publicResource": "benefits.deductions",
-      "operation": "benefitsGet",
-      "publicOperation": "benefitsGet",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/deductions/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -5664,7 +5074,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "DeductionBenefitsGetParams"
+        "publicName": "DeductionGetParams"
       },
       "response": {
         "status": "200",
@@ -5683,14 +5093,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -5815,13 +5218,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6004,14 +5401,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6100,12 +5490,8 @@
       "deprecated": false,
       "method": "GET",
       "path": "/v1/custom_fields/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -6142,14 +5528,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6246,34 +5625,14 @@
       "deprecated": false,
       "method": "PATCH",
       "path": "/v1/custom_fields/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "name",
-        "description",
-        "config",
-        "category",
-        "accessLevel",
-        "inputBy",
-        "required"
-      ],
-      "publicBodyParams": [
-        "name",
-        "description",
-        "config",
-        "category",
-        "accessLevel",
-        "inputBy",
-        "required"
-      ],
+      "bodyParams": ["name", "description", "config", "category", "accessLevel", "inputBy", "required"],
+      "publicBodyParams": ["name", "description", "config", "category", "accessLevel", "inputBy", "required"],
       "bodyParamDetails": [
         {
           "name": "name",
@@ -6346,15 +5705,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6462,12 +5813,8 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/custom_fields/{id}/archive",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -6504,14 +5851,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6608,26 +5948,14 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/custom_fields/{id}/options",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "label",
-        "value",
-        "sortOrder"
-      ],
-      "publicBodyParams": [
-        "label",
-        "value",
-        "sortOrder"
-      ],
+      "bodyParams": ["label", "value", "sortOrder"],
+      "publicBodyParams": ["label", "value", "sortOrder"],
       "bodyParamDetails": [
         {
           "name": "label",
@@ -6684,15 +6012,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6800,24 +6120,14 @@
       "deprecated": false,
       "method": "PATCH",
       "path": "/v1/custom_field_options/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "label",
-        "sortOrder"
-      ],
-      "publicBodyParams": [
-        "label",
-        "sortOrder"
-      ],
+      "bodyParams": ["label", "sortOrder"],
+      "publicBodyParams": ["label", "sortOrder"],
       "bodyParamDetails": [
         {
           "name": "label",
@@ -6870,15 +6180,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -6986,12 +6288,8 @@
       "deprecated": false,
       "method": "DELETE",
       "path": "/v1/custom_field_options/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -7017,15 +6315,7 @@
       },
       "result": {
         "successStatus": "204",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -7137,12 +6427,8 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/custom_field_options/{id}/archive",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -7179,14 +6465,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -7285,14 +6564,8 @@
       "path": "/v1/custom_field_values",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "workerIds",
-        "fieldIds"
-      ],
-      "publicQueryParams": [
-        "workerIds",
-        "fieldIds"
-      ],
+      "queryParams": ["workerIds", "fieldIds"],
+      "publicQueryParams": ["workerIds", "fieldIds"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -7333,13 +6606,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -7427,16 +6694,8 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "workerId",
-        "fieldId",
-        "value"
-      ],
-      "publicBodyParams": [
-        "workerId",
-        "fieldId",
-        "value"
-      ],
+      "bodyParams": ["workerId", "fieldId", "value"],
+      "publicBodyParams": ["workerId", "fieldId", "value"],
       "bodyParamDetails": [
         {
           "name": "workerId",
@@ -7486,14 +6745,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -7584,14 +6836,8 @@
       "path": "/v1/custom_field_values",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "workerId",
-        "fieldId"
-      ],
-      "publicQueryParams": [
-        "workerId",
-        "fieldId"
-      ],
+      "queryParams": ["workerId", "fieldId"],
+      "publicQueryParams": ["workerId", "fieldId"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -7621,14 +6867,7 @@
       },
       "result": {
         "successStatus": "204",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -7723,16 +6962,8 @@
       "path": "/v1/departments",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId"],
+      "publicQueryParams": ["limit", "afterId", "beforeId"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -7779,13 +7010,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -7873,12 +7098,8 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "name"
-      ],
-      "publicBodyParams": [
-        "name"
-      ],
+      "bodyParams": ["name"],
+      "publicBodyParams": ["name"],
       "bodyParamDetails": [
         {
           "name": "name",
@@ -7920,14 +7141,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -8024,22 +7238,14 @@
       "deprecated": false,
       "method": "PATCH",
       "path": "/v1/departments/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "name"
-      ],
-      "publicBodyParams": [
-        "name"
-      ],
+      "bodyParams": ["name"],
+      "publicBodyParams": ["name"],
       "bodyParamDetails": [
         {
           "name": "name",
@@ -8088,15 +7294,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -8210,22 +7408,8 @@
       "path": "/v1/offers",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "statuses",
-        "workerTypes",
-        "candidateEmail"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "statuses",
-        "workerTypes",
-        "candidateEmail"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId", "statuses", "workerTypes", "candidateEmail"],
+      "publicQueryParams": ["limit", "afterId", "beforeId", "statuses", "workerTypes", "candidateEmail"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -8290,13 +7474,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -8388,6 +7566,7 @@
         "candidate",
         "position",
         "departmentId",
+        "workplaceId",
         "managerId",
         "workerType",
         "compensation",
@@ -8397,6 +7576,7 @@
         "candidate",
         "position",
         "departmentId",
+        "workplaceId",
         "managerId",
         "workerType",
         "compensation",
@@ -8413,6 +7593,10 @@
         },
         {
           "name": "departmentId",
+          "required": false
+        },
+        {
+          "name": "workplaceId",
           "required": false
         },
         {
@@ -8467,15 +7651,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "422",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "422", "429", "500"]
       },
       "errorResponses": [
         {
@@ -8583,12 +7759,8 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/offers/{id}/void",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -8625,15 +7797,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -8745,22 +7909,14 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/offers/{id}/extend-deadline",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "expirationTime"
-      ],
-      "publicBodyParams": [
-        "expirationTime"
-      ],
+      "bodyParams": ["expirationTime"],
+      "publicBodyParams": ["expirationTime"],
       "bodyParamDetails": [
         {
           "name": "expirationTime",
@@ -8809,16 +7965,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "422",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "422", "429", "500"]
       },
       "errorResponses": [
         {
@@ -8945,12 +8092,8 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/offers/{id}/resend",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -8987,15 +8130,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -9109,20 +8244,8 @@
       "path": "/v1/time_off/assignments",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "policyIds",
-        "workerIds"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "policyIds",
-        "workerIds"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId", "policyIds", "workerIds"],
+      "publicQueryParams": ["limit", "afterId", "beforeId", "policyIds", "workerIds"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -9181,13 +8304,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -9271,24 +8388,8 @@
       "path": "/v1/time_off/balances",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "policyIds",
-        "workerIds",
-        "startDate",
-        "endDate"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "policyIds",
-        "workerIds",
-        "startDate",
-        "endDate"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId", "policyIds", "workerIds", "startDate", "endDate"],
+      "publicQueryParams": ["limit", "afterId", "beforeId", "policyIds", "workerIds", "startDate", "endDate"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -9359,14 +8460,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -9577,14 +8671,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -9683,16 +8770,8 @@
       "path": "/v1/time_off/policies",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId"],
+      "publicQueryParams": ["limit", "afterId", "beforeId"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -9739,14 +8818,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -9843,12 +8915,8 @@
       "deprecated": false,
       "method": "GET",
       "path": "/v1/time_off/policies/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -9885,14 +8953,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -9991,22 +9052,8 @@
       "path": "/v1/workers",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "statuses",
-        "types",
-        "workEmail"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "statuses",
-        "types",
-        "workEmail"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId", "statuses", "types", "workEmail"],
+      "publicQueryParams": ["limit", "afterId", "beforeId", "statuses", "types", "workEmail"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -10071,13 +9118,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -10159,12 +9200,8 @@
       "deprecated": false,
       "method": "GET",
       "path": "/v1/workers/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -10201,14 +9238,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -10305,12 +9335,8 @@
       "deprecated": false,
       "method": "DELETE",
       "path": "/v1/workers/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -10336,15 +9362,7 @@
       },
       "result": {
         "successStatus": "204",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -10587,14 +9605,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -10814,14 +9825,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "429", "500"]
       },
       "errorResponses": [
         {
@@ -10914,12 +9918,8 @@
       "deprecated": false,
       "method": "POST",
       "path": "/v1/workers/{id}/invite",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
@@ -10956,15 +9956,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -11074,16 +10066,8 @@
       "path": "/v1/workplaces",
       "pathParams": [],
       "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId"
-      ],
+      "queryParams": ["limit", "afterId", "beforeId"],
+      "publicQueryParams": ["limit", "afterId", "beforeId"],
       "headerParams": [],
       "publicHeaderParams": [],
       "bodyParams": [],
@@ -11130,13 +10114,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "429", "500"]
       },
       "errorResponses": [
         {
@@ -11224,16 +10202,8 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "name",
-        "type",
-        "address"
-      ],
-      "publicBodyParams": [
-        "name",
-        "type",
-        "address"
-      ],
+      "bodyParams": ["name", "type", "address"],
+      "publicBodyParams": ["name", "type", "address"],
       "bodyParamDetails": [
         {
           "name": "name",
@@ -11283,14 +10253,7 @@
       },
       "result": {
         "successStatus": "201",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "409", "429", "500"]
       },
       "errorResponses": [
         {
@@ -11383,22 +10346,14 @@
       "deprecated": false,
       "method": "PATCH",
       "path": "/v1/workplaces/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
+      "pathParams": ["id"],
+      "publicPathParams": ["id"],
       "queryParams": [],
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [
-        "name"
-      ],
-      "publicBodyParams": [
-        "name"
-      ],
+      "bodyParams": ["name"],
+      "publicBodyParams": ["name"],
       "bodyParamDetails": [
         {
           "name": "name",
@@ -11447,15 +10402,7 @@
       },
       "result": {
         "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "404",
-          "409",
-          "429",
-          "500"
-        ]
+        "errorStatuses": ["400", "401", "403", "404", "409", "429", "500"]
       },
       "errorResponses": [
         {

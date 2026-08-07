@@ -33,17 +33,17 @@ npm install warp-hr
 ## Usage
 
 ```ts
-import Warp from "warp-hr";
+import Warp from 'warp-hr';
 
 const client = new Warp({
-  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
+  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 
-const benefitsList = await client.benefits.healthPlans.benefitsList({
-  statuses: ["active"],
+const list = await client.benefits.healthPlans.list({
+  statuses: ['active'],
 });
 
-console.log(benefitsList);
+console.log(list);
 ```
 
 The examples in the following sections assume a `client` configured as shown above.
@@ -71,11 +71,11 @@ Declared schemes:
 Non-success responses throw generated API errors. Error objects expose status, headers, response body, and request metadata where the target runtime supports it.
 
 ```ts
-import { APIError } from "warp-hr";
+import { APIError } from 'warp-hr';
 
 try {
-  const benefitsList = await client.benefits.healthPlans.benefitsList({
-    statuses: ["active"],
+  const list = await client.benefits.healthPlans.list({
+    statuses: ['active'],
   });
 } catch (err) {
   if (err instanceof APIError) {
@@ -94,12 +94,12 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`, `500
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import Warp from "warp-hr";
+import Warp from 'warp-hr';
 
 const client = new Warp({
   timeout: 60000,
   maxRetries: 2,
-  logLevel: "debug",
+  logLevel: 'debug',
 });
 ```
 

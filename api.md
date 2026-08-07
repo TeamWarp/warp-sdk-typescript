@@ -59,10 +59,10 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import Warp from "warp-hr";
+import Warp from 'warp-hr';
 
 const client = new Warp({
-  apiKey: process.env["WARP_API_KEY"], // defaults to the WARP_API_KEY env var
+  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 ```
 
@@ -76,12 +76,12 @@ List company health plans. Defaults to active plans. A plan whose effectiveEndDa
 
 | Direction | Type |
 | --- | --- |
-| Request | [`HealthPlanBenefitsListParams`](./src/resources/benefits/health-plans.ts) |
-| Response | [`HealthPlanBenefitsListResponse`](./src/resources/benefits/health-plans.ts) |
+| Request | [`HealthPlanListParams`](./src/resources/benefits/health-plans.ts) |
+| Response | [`HealthPlanListResponse`](./src/resources/benefits/health-plans.ts) |
 
 ```ts
-const benefitsList = await client.benefits.healthPlans.benefitsList({
-  statuses: ["active"],
+const list = await client.benefits.healthPlans.list({
+  statuses: ['active'],
 });
 ```
 
@@ -91,10 +91,10 @@ Get a publicly visible company health plan by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`HealthPlanBenefitsGetResponse`](./src/resources/benefits/health-plans.ts) |
+| Response | [`HealthPlanGetResponse`](./src/resources/benefits/health-plans.ts) |
 
 ```ts
-const benefitsGet = await client.benefits.healthPlans.benefitsGet("chpl_1234");
+const get_ = await client.benefits.healthPlans.get('chpl_1234');
 ```
 
 ### `Benefits RetirementPlans`
@@ -105,12 +105,12 @@ List company retirement plans. Defaults to active plans. A plan whose effectiveE
 
 | Direction | Type |
 | --- | --- |
-| Request | [`RetirementPlanBenefitsListParams`](./src/resources/benefits/retirement-plans.ts) |
-| Response | [`RetirementPlanBenefitsListResponse`](./src/resources/benefits/retirement-plans.ts) |
+| Request | [`RetirementPlanListParams`](./src/resources/benefits/retirement-plans.ts) |
+| Response | [`RetirementPlanListResponse`](./src/resources/benefits/retirement-plans.ts) |
 
 ```ts
-const benefitsList = await client.benefits.retirementPlans.benefitsList({
-  statuses: ["active"],
+const list = await client.benefits.retirementPlans.list({
+  statuses: ['active'],
 });
 ```
 
@@ -120,10 +120,10 @@ Get a company retirement plan by id, regardless of status.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`RetirementPlanBenefitsGetResponse`](./src/resources/benefits/retirement-plans.ts) |
+| Response | [`RetirementPlanGetResponse`](./src/resources/benefits/retirement-plans.ts) |
 
 ```ts
-const benefitsGet = await client.benefits.retirementPlans.benefitsGet("crpl_1234");
+const get_ = await client.benefits.retirementPlans.get('crpl_1234');
 ```
 
 ### `Benefits Deductions`
@@ -134,12 +134,12 @@ List current payroll benefit deductions. Defaults to active deductions. A deduct
 
 | Direction | Type |
 | --- | --- |
-| Request | [`DeductionBenefitsListParams`](./src/resources/benefits/deductions.ts) |
-| Response | [`DeductionBenefitsListResponse`](./src/resources/benefits/deductions.ts) |
+| Request | [`DeductionListParams`](./src/resources/benefits/deductions.ts) |
+| Response | [`DeductionListResponse`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const benefitsList = await client.benefits.deductions.benefitsList({
-  statuses: ["active"],
+const list = await client.benefits.deductions.list({
+  statuses: ['active'],
 });
 ```
 
@@ -149,10 +149,10 @@ Get the current version of a company benefit deduction by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`DeductionBenefitsGetResponse`](./src/resources/benefits/deductions.ts) |
+| Response | [`DeductionGetResponse`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const benefitsGet = await client.benefits.deductions.benefitsGet("pbdg_1234");
+const get_ = await client.benefits.deductions.get('pbdg_1234');
 ```
 
 ## `CustomFields`
@@ -180,9 +180,9 @@ Create a custom worker field definition. The field type is immutable after creat
 
 ```ts
 const create = await client.customFields.create({
-  name: "",
-  type: "text",
-  category: "info",
+  name: '',
+  type: 'text',
+  category: 'info',
 });
 ```
 
@@ -195,7 +195,7 @@ Get a custom worker field definition, including its select options. Archived opt
 | Response | [`CustomFieldRetrieveResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const retrieve = await client.customFields.retrieve("cf_1234");
+const retrieve = await client.customFields.retrieve('cf_1234');
 ```
 
 ### Update Field
@@ -208,7 +208,7 @@ Update a custom worker field definition. The field type cannot be changed; creat
 | Response | [`CustomFieldUpdateResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const update = await client.customFields.update("cf_1234", {});
+const update = await client.customFields.update('cf_1234', {});
 ```
 
 ### Archive Field
@@ -220,7 +220,7 @@ Archive a custom worker field. Archived fields keep their existing worker values
 | Response | [`CustomFieldArchiveResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const archive = await client.customFields.archive("cf_1234");
+const archive = await client.customFields.archive('cf_1234');
 ```
 
 ### Create Field Option
@@ -233,9 +233,9 @@ Add an option to a select or multi_select custom worker field. The option value 
 | Response | [`CustomFieldCreateOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const createOption = await client.customFields.createOption("cf_1234", {
-  label: "x",
-  value: "x",
+const createOption = await client.customFields.createOption('cf_1234', {
+  label: 'x',
+  value: 'x',
 });
 ```
 
@@ -249,7 +249,7 @@ Update the label or sort order of a custom worker field option. Options of archi
 | Response | [`CustomFieldUpdateOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const updateOption = await client.customFields.updateOption("cfo_1234", {});
+const updateOption = await client.customFields.updateOption('cfo_1234', {});
 ```
 
 ### Delete Unused Field Option
@@ -257,7 +257,7 @@ const updateOption = await client.customFields.updateOption("cfo_1234", {});
 Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.
 
 ```ts
-await client.customFields.deleteOption("cfo_1234");
+await client.customFields.deleteOption('cfo_1234');
 ```
 
 ### Archive Field Option
@@ -269,7 +269,7 @@ Archive a custom worker field option. Archived options remain on existing worker
 | Response | [`CustomFieldArchiveOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const archiveOption = await client.customFields.archiveOption("cfo_1234");
+const archiveOption = await client.customFields.archiveOption('cfo_1234');
 ```
 
 ### List Field Values
@@ -296,11 +296,11 @@ Create or replace a worker's value for a custom field. The value shape must matc
 
 ```ts
 const upsertValue = await client.customFields.upsertValue({
-  workerId: "wrk_1234",
-  fieldId: "cf_1234",
+  workerId: 'wrk_1234',
+  fieldId: 'cf_1234',
   value: {
-    type: "text",
-    value: "",
+    type: 'text',
+    value: '',
   },
 });
 ```
@@ -315,8 +315,8 @@ Remove a worker's value for a custom field. Your API key must hold write on the 
 
 ```ts
 await client.customFields.clearValue({
-  workerId: "wrk_1234",
-  fieldId: "cf_1234",
+  workerId: 'wrk_1234',
+  fieldId: 'cf_1234',
 });
 ```
 
@@ -346,7 +346,7 @@ Create a new department.
 
 ```ts
 const create = await client.departments.create({
-  name: "",
+  name: '',
 });
 ```
 
@@ -360,7 +360,7 @@ Update an existing department.
 | Response | [`DepartmentUpdateResponse`](./src/resources/departments.ts) |
 
 ```ts
-const update = await client.departments.update("dpt_1234", {});
+const update = await client.departments.update('dpt_1234', {});
 ```
 
 ## `Offers`
@@ -390,18 +390,18 @@ Create and send a candidate offer. The candidate receives an email with a link t
 ```ts
 const create = await client.offers.create({
   candidate: {
-    firstName: "x",
-    lastName: "x",
-    email: "john@joinwarp.com",
+    firstName: 'x',
+    lastName: 'x',
+    email: 'john@joinwarp.com',
   },
   position: {
-    title: "x",
-    startDate: "2000-01-01",
+    title: 'x',
+    startDate: '2000-01-01',
   },
-  workerType: "employee",
+  workerType: 'employee',
   compensation: {
-    payBasis: "year",
-    payCurrency: "USD",
+    payBasis: 'year',
+    payCurrency: 'USD',
     payRate: 0,
   },
 });
@@ -416,7 +416,7 @@ Void a previously sent offer. Only sent offers can be voided.
 | Response | [`OfferVoidResponse`](./src/resources/offers.ts) |
 
 ```ts
-const void_ = await client.offers.void("offr_1234");
+const void_ = await client.offers.void('offr_1234');
 ```
 
 ### Extend Offer Deadline
@@ -429,8 +429,8 @@ Extend the expiration deadline of a sent offer.
 | Response | [`OfferExtendDeadlineResponse`](./src/resources/offers.ts) |
 
 ```ts
-const extendDeadline = await client.offers.extendDeadline("offr_1234", {
-  expirationTime: "",
+const extendDeadline = await client.offers.extendDeadline('offr_1234', {
+  expirationTime: '',
 });
 ```
 
@@ -443,7 +443,7 @@ Resend the offer email to the candidate for a sent offer.
 | Response | [`OfferResendResponse`](./src/resources/offers.ts) |
 
 ```ts
-const resend = await client.offers.resend("offr_1234");
+const resend = await client.offers.resend('offr_1234');
 ```
 
 ## `TimeOff`
@@ -511,7 +511,7 @@ Get a specific time off policy by id
 | Response | [`PolicyTimeOffGet2Response`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const timeOffGet2 = await client.timeOff.policies.timeOffGet2("top_1234");
+const timeOffGet2 = await client.timeOff.policies.timeOffGet2('top_1234');
 ```
 
 ## `Workers`
@@ -538,7 +538,7 @@ Get a specific worker by id.
 | Response | [`WorkerRetrieveResponse`](./src/resources/workers.ts) |
 
 ```ts
-const retrieve = await client.workers.retrieve("wrk_1234");
+const retrieve = await client.workers.retrieve('wrk_1234');
 ```
 
 ### Delete Worker
@@ -546,7 +546,7 @@ const retrieve = await client.workers.retrieve("wrk_1234");
 Delete a worker. Only workers who have not yet completed onboarding can be deleted. Active workers must be properly offboarded.
 
 ```ts
-await client.workers.delete("wrk_1234");
+await client.workers.delete('wrk_1234');
 ```
 
 ### Create Employee
@@ -560,20 +560,20 @@ Create a new US employee. The worker will be created in draft status and must be
 
 ```ts
 const createEmployee = await client.workers.createEmployee({
-  firstName: "",
-  lastName: "",
-  position: "",
-  startDate: "2000-01-01",
-  email: "john@joinwarp.com",
-  departmentId: "dpt_1234",
-  managerId: "wrk_1234",
+  firstName: '',
+  lastName: '',
+  position: '',
+  startDate: '2000-01-01',
+  email: 'john@joinwarp.com',
+  departmentId: 'dpt_1234',
+  managerId: 'wrk_1234',
   workLocation: {
-    type: "office",
-    workplaceId: "wkp_1234",
+    type: 'office',
+    workplaceId: 'wkp_1234',
   },
   compensation: {
     amount: 0,
-    per: "hour",
+    per: 'hour',
   },
 });
 ```
@@ -589,15 +589,15 @@ Create a new contractor. The worker will be created in draft status and must be 
 
 ```ts
 const createContractor = await client.workers.createContractor({
-  entityType: "individual",
-  firstName: "",
-  lastName: "",
-  position: "",
-  startDate: "2000-01-01",
-  email: "john@joinwarp.com",
-  departmentId: "dpt_1234",
-  managerId: "wrk_1234",
-  workCountry: "AD",
+  entityType: 'individual',
+  firstName: '',
+  lastName: '',
+  position: '',
+  startDate: '2000-01-01',
+  email: 'john@joinwarp.com',
+  departmentId: 'dpt_1234',
+  managerId: 'wrk_1234',
+  workCountry: 'AD',
 });
 ```
 
@@ -610,7 +610,7 @@ Send or resend the worker invite so they can accept and complete onboarding to W
 | Response | [`WorkerInviteResponse`](./src/resources/workers.ts) |
 
 ```ts
-const invite = await client.workers.invite("wrk_1234");
+const invite = await client.workers.invite('wrk_1234');
 ```
 
 ## `Workplaces`
@@ -639,14 +639,14 @@ Create a new workplace.
 
 ```ts
 const create = await client.workplaces.create({
-  name: "",
-  type: "remote",
+  name: '',
+  type: 'remote',
   address: {
-    line1: "x",
-    city: "",
-    postalCode: "",
-    state: "AL",
-    country: "US",
+    line1: 'x',
+    city: '',
+    postalCode: '',
+    state: 'AL',
+    country: 'US',
   },
 });
 ```
@@ -661,5 +661,5 @@ Update an existing workplace.
 | Response | [`WorkplaceUpdateResponse`](./src/resources/workplaces.ts) |
 
 ```ts
-const update = await client.workplaces.update("wkp_1234", {});
+const update = await client.workplaces.update('wkp_1234', {});
 ```
