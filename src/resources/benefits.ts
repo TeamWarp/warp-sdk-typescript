@@ -1,3 +1,3 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-export * from "./benefits/index";
+export * from './benefits/index';

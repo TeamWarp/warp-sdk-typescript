@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIResource } from "../resource";
-import { APIPromise } from "../api-promise";
-import type { RequestOptions } from "../internal/request-options";
-import { path as __scalarPath } from "../internal/utils/path";
-import type * as OffersAPI from "./offers";
-import type * as CustomFieldsAPI from "./custom-fields";
+import { APIResource } from '../resource';
+import { APIPromise } from '../api-promise';
+import type { RequestOptions } from '../internal/request-options';
+import { path as __scalarPath } from '../internal/utils/path';
+import type * as OffersAPI from './offers';
+import type * as CustomFieldsAPI from './custom-fields';
 
 export class Workplaces extends APIResource {
   /**
@@ -20,8 +20,11 @@ export class Workplaces extends APIResource {
    * const list = await client.workplaces.list();
    * ```
    */
-  list(query: WorkplaceListParams | null | undefined = {}, options?: RequestOptions): APIPromise<WorkplaceListResponse> {
-    return this._client.get("/v1/workplaces", { query, ...options });
+  list(
+    query: WorkplaceListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<WorkplaceListResponse> {
+    return this._client.get('/v1/workplaces', { query, ...options });
   }
 
   /**
@@ -34,20 +37,20 @@ export class Workplaces extends APIResource {
    * @example
    * ```ts
    * const create = await client.workplaces.create({
-   *   name: "",
-   *   type: "remote",
+   *   name: '',
+   *   type: 'remote',
    *   address: {
-   *     line1: "x",
-   *     city: "",
-   *     postalCode: "",
-   *     state: "AL",
-   *     country: "US",
+   *     line1: 'x',
+   *     city: '',
+   *     postalCode: '',
+   *     state: 'AL',
+   *     country: 'US',
    *   },
    * });
    * ```
    */
   create(body: WorkplaceCreateParams, options?: RequestOptions): APIPromise<WorkplaceCreateResponse> {
-    return this._client.post("/v1/workplaces", { body, ...options });
+    return this._client.post('/v1/workplaces', { body, ...options });
   }
 
   /**
@@ -60,10 +63,14 @@ export class Workplaces extends APIResource {
    *
    * @example
    * ```ts
-   * const update = await client.workplaces.update("wkp_1234", {});
+   * const update = await client.workplaces.update('wkp_1234', {});
    * ```
    */
-  update(id: string, body: WorkplaceUpdateParams, options?: RequestOptions): APIPromise<WorkplaceUpdateResponse> {
+  update(
+    id: string,
+    body: WorkplaceUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<WorkplaceUpdateResponse> {
     return this._client.patch(__scalarPath`/v1/workplaces/${id}`, { body, ...options });
   }
 }
@@ -102,8 +109,8 @@ export namespace WorkplaceListResponse {
      */
     id: string;
     name: string;
-    type: "remote" | "office";
-    status: "active" | "archived";
+    type: 'remote' | 'office';
+    status: 'active' | 'archived';
     /**
      * A valid US address
      */
@@ -123,8 +130,59 @@ export namespace WorkplaceListResponse {
       line1: string;
       city: string;
       postalCode: string;
-      state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
-      country: "US";
+      state:
+        | 'AL'
+        | 'AK'
+        | 'AZ'
+        | 'AR'
+        | 'CA'
+        | 'CO'
+        | 'CT'
+        | 'DC'
+        | 'DE'
+        | 'FL'
+        | 'GA'
+        | 'HI'
+        | 'ID'
+        | 'IL'
+        | 'IN'
+        | 'IA'
+        | 'KS'
+        | 'KY'
+        | 'LA'
+        | 'ME'
+        | 'MD'
+        | 'MA'
+        | 'MI'
+        | 'MN'
+        | 'MS'
+        | 'MO'
+        | 'MT'
+        | 'NE'
+        | 'NV'
+        | 'NH'
+        | 'NJ'
+        | 'NM'
+        | 'NY'
+        | 'NC'
+        | 'ND'
+        | 'OH'
+        | 'OK'
+        | 'OR'
+        | 'PA'
+        | 'RI'
+        | 'SC'
+        | 'SD'
+        | 'TN'
+        | 'TX'
+        | 'UT'
+        | 'VT'
+        | 'VA'
+        | 'WA'
+        | 'WV'
+        | 'WI'
+        | 'WY';
+      country: 'US';
       line2?: string | null;
     }
   }
@@ -136,7 +194,7 @@ export interface WorkplaceCreateParams {
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
   name: CustomFieldsAPI.Trimmed;
-  type: "remote" | "office";
+  type: 'remote' | 'office';
   /**
    * A valid US address
    */
@@ -152,8 +210,59 @@ export namespace WorkplaceCreateParams {
     line1: string;
     city: string;
     postalCode: string;
-    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
-    country: "US";
+    state:
+      | 'AL'
+      | 'AK'
+      | 'AZ'
+      | 'AR'
+      | 'CA'
+      | 'CO'
+      | 'CT'
+      | 'DC'
+      | 'DE'
+      | 'FL'
+      | 'GA'
+      | 'HI'
+      | 'ID'
+      | 'IL'
+      | 'IN'
+      | 'IA'
+      | 'KS'
+      | 'KY'
+      | 'LA'
+      | 'ME'
+      | 'MD'
+      | 'MA'
+      | 'MI'
+      | 'MN'
+      | 'MS'
+      | 'MO'
+      | 'MT'
+      | 'NE'
+      | 'NV'
+      | 'NH'
+      | 'NJ'
+      | 'NM'
+      | 'NY'
+      | 'NC'
+      | 'ND'
+      | 'OH'
+      | 'OK'
+      | 'OR'
+      | 'PA'
+      | 'RI'
+      | 'SC'
+      | 'SD'
+      | 'TN'
+      | 'TX'
+      | 'UT'
+      | 'VT'
+      | 'VA'
+      | 'WA'
+      | 'WV'
+      | 'WI'
+      | 'WY';
+    country: 'US';
     line2?: string | null;
   }
 }
@@ -165,8 +274,8 @@ export interface WorkplaceCreateResponse {
    */
   id: string;
   name: string;
-  type: "remote" | "office";
-  status: "active" | "archived";
+  type: 'remote' | 'office';
+  status: 'active' | 'archived';
   /**
    * A valid US address
    */
@@ -186,8 +295,59 @@ export namespace WorkplaceCreateResponse {
     line1: string;
     city: string;
     postalCode: string;
-    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
-    country: "US";
+    state:
+      | 'AL'
+      | 'AK'
+      | 'AZ'
+      | 'AR'
+      | 'CA'
+      | 'CO'
+      | 'CT'
+      | 'DC'
+      | 'DE'
+      | 'FL'
+      | 'GA'
+      | 'HI'
+      | 'ID'
+      | 'IL'
+      | 'IN'
+      | 'IA'
+      | 'KS'
+      | 'KY'
+      | 'LA'
+      | 'ME'
+      | 'MD'
+      | 'MA'
+      | 'MI'
+      | 'MN'
+      | 'MS'
+      | 'MO'
+      | 'MT'
+      | 'NE'
+      | 'NV'
+      | 'NH'
+      | 'NJ'
+      | 'NM'
+      | 'NY'
+      | 'NC'
+      | 'ND'
+      | 'OH'
+      | 'OK'
+      | 'OR'
+      | 'PA'
+      | 'RI'
+      | 'SC'
+      | 'SD'
+      | 'TN'
+      | 'TX'
+      | 'UT'
+      | 'VT'
+      | 'VA'
+      | 'WA'
+      | 'WV'
+      | 'WI'
+      | 'WY';
+    country: 'US';
     line2?: string | null;
   }
 }
@@ -203,8 +363,8 @@ export interface WorkplaceUpdateResponse {
    */
   id: string;
   name: string;
-  type: "remote" | "office";
-  status: "active" | "archived";
+  type: 'remote' | 'office';
+  status: 'active' | 'archived';
   /**
    * A valid US address
    */
@@ -224,8 +384,59 @@ export namespace WorkplaceUpdateResponse {
     line1: string;
     city: string;
     postalCode: string;
-    state: "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DC" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
-    country: "US";
+    state:
+      | 'AL'
+      | 'AK'
+      | 'AZ'
+      | 'AR'
+      | 'CA'
+      | 'CO'
+      | 'CT'
+      | 'DC'
+      | 'DE'
+      | 'FL'
+      | 'GA'
+      | 'HI'
+      | 'ID'
+      | 'IL'
+      | 'IN'
+      | 'IA'
+      | 'KS'
+      | 'KY'
+      | 'LA'
+      | 'ME'
+      | 'MD'
+      | 'MA'
+      | 'MI'
+      | 'MN'
+      | 'MS'
+      | 'MO'
+      | 'MT'
+      | 'NE'
+      | 'NV'
+      | 'NH'
+      | 'NJ'
+      | 'NM'
+      | 'NY'
+      | 'NC'
+      | 'ND'
+      | 'OH'
+      | 'OK'
+      | 'OR'
+      | 'PA'
+      | 'RI'
+      | 'SC'
+      | 'SD'
+      | 'TN'
+      | 'TX'
+      | 'UT'
+      | 'VT'
+      | 'VA'
+      | 'WA'
+      | 'WV'
+      | 'WI'
+      | 'WY';
+    country: 'US';
     line2?: string | null;
   }
 }
