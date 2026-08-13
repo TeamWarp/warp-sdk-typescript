@@ -217,6 +217,7 @@ export namespace TimeOffBalanceAdjustedWebhookEvent {
     effectiveDate?: string;
     previousBalance?: Payload.PreviousBalance;
     newBalance?: Payload.NewBalance;
+    [k: string]: unknown;
   }
 
   export namespace Payload {

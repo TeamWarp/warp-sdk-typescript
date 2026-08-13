@@ -129,7 +129,7 @@ const client = new Warp({
 | `maxRetries` | `number` | - | Per-request retry count. |
 | `signal` | `AbortSignal` | - | Abort an in-flight request. |
 | `fetchOptions` | `RequestInit` | - | Per-request fetch options. |
-| `idempotencyKey` | `string` | - | Idempotency key for retry-safe operations. |
+| `idempotencyKey` | `string` | - | Idempotency key for retry-safe operations. Applies to this request and its retries. |
 
 <br />
 

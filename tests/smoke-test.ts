@@ -11,7 +11,7 @@
 //     printing a table. The generator uses this to collect per-operation results.
 import { writeFileSync } from 'node:fs';
 
-// The default export is the client class. The client reads auth and the base URL from the
+// The package exports the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
 import Warp from 'warp-hr';
 
