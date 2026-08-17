@@ -38,6 +38,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/benefits/health_plans',
     run: async () => {
       const list = await client.benefits.healthPlans.list({
+        limit: 'limit',
         statuses: ['active'],
       });
     },
@@ -48,7 +49,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/benefits/health_plans/{id}',
     run: async () => {
-      const get_ = await client.benefits.healthPlans.get('chpl_1234');
+      const get_ = await client.benefits.healthPlans.get('id');
     },
   },
 
@@ -58,6 +59,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/benefits/retirement_plans',
     run: async () => {
       const list = await client.benefits.retirementPlans.list({
+        limit: 'limit',
         statuses: ['active'],
       });
     },
@@ -68,7 +70,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/benefits/retirement_plans/{id}',
     run: async () => {
-      const get_ = await client.benefits.retirementPlans.get('crpl_1234');
+      const get_ = await client.benefits.retirementPlans.get('id');
     },
   },
 
@@ -78,6 +80,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/benefits/deductions',
     run: async () => {
       const list = await client.benefits.deductions.list({
+        limit: 'limit',
         statuses: ['active'],
       });
     },
@@ -88,7 +91,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/benefits/deductions/{id}',
     run: async () => {
-      const get_ = await client.benefits.deductions.get('pbdg_1234');
+      const get_ = await client.benefits.deductions.get('id');
     },
   },
 
@@ -107,7 +110,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/custom_fields',
     run: async () => {
       const create = await client.customFields.create({
-        name: '',
+        name: {},
         type: 'text',
         category: 'info',
       });
@@ -119,7 +122,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/custom_fields/{id}',
     run: async () => {
-      const retrieve = await client.customFields.retrieve('cf_1234');
+      const retrieve = await client.customFields.retrieve('id');
     },
   },
 
@@ -128,7 +131,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PATCH',
     path: '/v1/custom_fields/{id}',
     run: async () => {
-      const update = await client.customFields.update('cf_1234', {});
+      const update = await client.customFields.update('id', {});
     },
   },
 
@@ -137,7 +140,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_fields/{id}/archive',
     run: async () => {
-      const archive = await client.customFields.archive('cf_1234');
+      const archive = await client.customFields.archive('id');
     },
   },
 
@@ -146,9 +149,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_fields/{id}/options',
     run: async () => {
-      const createOption = await client.customFields.createOption('cf_1234', {
-        label: 'x',
-        value: 'x',
+      const createOption = await client.customFields.createOption('id', {
+        label: {},
+        value: {},
       });
     },
   },
@@ -158,7 +161,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PATCH',
     path: '/v1/custom_field_options/{id}',
     run: async () => {
-      const updateOption = await client.customFields.updateOption('cfo_1234', {});
+      const updateOption = await client.customFields.updateOption('id', {});
     },
   },
 
@@ -167,7 +170,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'DELETE',
     path: '/v1/custom_field_options/{id}',
     run: async () => {
-      await client.customFields.deleteOption('cfo_1234');
+      await client.customFields.deleteOption('id');
     },
   },
 
@@ -176,7 +179,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_field_options/{id}/archive',
     run: async () => {
-      const archiveOption = await client.customFields.archiveOption('cfo_1234');
+      const archiveOption = await client.customFields.archiveOption('id');
     },
   },
 
@@ -195,8 +198,8 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/custom_field_values',
     run: async () => {
       const upsertValue = await client.customFields.upsertValue({
-        workerId: 'wrk_1234',
-        fieldId: 'cf_1234',
+        workerId: {},
+        fieldId: {},
         value: {
           type: 'text',
           value: '',
@@ -211,8 +214,8 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/custom_field_values',
     run: async () => {
       await client.customFields.clearValue({
-        workerId: 'wrk_1234',
-        fieldId: 'cf_1234',
+        workerId: {},
+        fieldId: {},
       });
     },
   },
@@ -222,7 +225,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/departments',
     run: async () => {
-      const list = await client.departments.list();
+      const list = await client.departments.list({
+        limit: 'limit',
+      });
     },
   },
 
@@ -232,7 +237,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/departments',
     run: async () => {
       const create = await client.departments.create({
-        name: '',
+        name: {},
       });
     },
   },
@@ -242,7 +247,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PATCH',
     path: '/v1/departments/{id}',
     run: async () => {
-      const update = await client.departments.update('dpt_1234', {});
+      const update = await client.departments.update('id', {});
     },
   },
 
@@ -251,7 +256,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/offers',
     run: async () => {
-      const list = await client.offers.list();
+      const list = await client.offers.list({
+        limit: 'limit',
+      });
     },
   },
 
@@ -262,19 +269,19 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     run: async () => {
       const create = await client.offers.create({
         candidate: {
-          firstName: 'x',
-          lastName: 'x',
-          email: 'john@joinwarp.com',
+          firstName: {},
+          lastName: {},
+          email: {},
         },
         position: {
-          title: 'x',
-          startDate: '2000-01-01',
+          title: {},
+          startDate: {},
         },
         workerType: 'employee',
         compensation: {
           payBasis: 'year',
           payCurrency: 'USD',
-          payRate: 0,
+          payRate: {},
         },
       });
     },
@@ -285,7 +292,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/void',
     run: async () => {
-      const void_ = await client.offers.void('offr_1234');
+      const void_ = await client.offers.void('id');
     },
   },
 
@@ -294,7 +301,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/extend-deadline',
     run: async () => {
-      const extendDeadline = await client.offers.extendDeadline('offr_1234', {
+      const extendDeadline = await client.offers.extendDeadline('id', {
         expirationTime: '',
       });
     },
@@ -305,7 +312,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/resend',
     run: async () => {
-      const resend = await client.offers.resend('offr_1234');
+      const resend = await client.offers.resend('id');
     },
   },
 
@@ -314,7 +321,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/time_off/assignments',
     run: async () => {
-      const listAssignments = await client.timeOff.listAssignments();
+      const listAssignments = await client.timeOff.listAssignments({
+        limit: 'limit',
+      });
     },
   },
 
@@ -323,7 +332,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/time_off/balances',
     run: async () => {
-      const listBalances = await client.timeOff.listBalances();
+      const listBalances = await client.timeOff.listBalances({
+        limit: 'limit',
+      });
     },
   },
 
@@ -332,7 +343,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/time_off/requests',
     run: async () => {
-      const listRequests = await client.timeOff.listRequests();
+      const listRequests = await client.timeOff.listRequests({
+        limit: 'limit',
+      });
     },
   },
 
@@ -341,7 +354,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/time_off/policies',
     run: async () => {
-      const timeOffGet = await client.timeOff.policies.timeOffGet();
+      const timeOffGet = await client.timeOff.policies.timeOffGet({
+        limit: 'limit',
+      });
     },
   },
 
@@ -350,7 +365,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/time_off/policies/{id}',
     run: async () => {
-      const timeOffGet2 = await client.timeOff.policies.timeOffGet2('top_1234');
+      const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
     },
   },
 
@@ -359,7 +374,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/workers',
     run: async () => {
-      const list = await client.workers.list();
+      const list = await client.workers.list({
+        limit: 'limit',
+      });
     },
   },
 
@@ -368,7 +385,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/workers/{id}',
     run: async () => {
-      const retrieve = await client.workers.retrieve('wrk_1234');
+      const retrieve = await client.workers.retrieve('id');
     },
   },
 
@@ -377,7 +394,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'DELETE',
     path: '/v1/workers/{id}',
     run: async () => {
-      await client.workers.delete('wrk_1234');
+      await client.workers.delete('id');
     },
   },
 
@@ -387,19 +404,19 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/workers/employee',
     run: async () => {
       const createEmployee = await client.workers.createEmployee({
-        firstName: '',
-        lastName: '',
-        position: '',
-        startDate: '2000-01-01',
-        email: 'john@joinwarp.com',
-        departmentId: 'dpt_1234',
-        managerId: 'wrk_1234',
+        firstName: {},
+        lastName: {},
+        position: {},
+        startDate: {},
+        email: {},
+        departmentId: {},
+        managerId: {},
         workLocation: {
           type: 'office',
-          workplaceId: 'wkp_1234',
+          workplaceId: {},
         },
         compensation: {
-          amount: 0,
+          amount: {},
           per: 'hour',
         },
       });
@@ -413,13 +430,13 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     run: async () => {
       const createContractor = await client.workers.createContractor({
         entityType: 'individual',
-        firstName: '',
-        lastName: '',
-        position: '',
-        startDate: '2000-01-01',
-        email: 'john@joinwarp.com',
-        departmentId: 'dpt_1234',
-        managerId: 'wrk_1234',
+        firstName: {},
+        lastName: {},
+        position: {},
+        startDate: {},
+        email: {},
+        departmentId: {},
+        managerId: {},
         workCountry: 'AD',
       });
     },
@@ -430,7 +447,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/workers/{id}/invite',
     run: async () => {
-      const invite = await client.workers.invite('wrk_1234');
+      const invite = await client.workers.invite('id');
     },
   },
 
@@ -439,7 +456,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/workplaces',
     run: async () => {
-      const list = await client.workplaces.list();
+      const list = await client.workplaces.list({
+        limit: 'limit',
+      });
     },
   },
 
@@ -449,10 +468,10 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     path: '/v1/workplaces',
     run: async () => {
       const create = await client.workplaces.create({
-        name: '',
+        name: {},
         type: 'remote',
         address: {
-          line1: 'x',
+          line1: {},
           city: '',
           postalCode: '',
           state: 'AL',
@@ -467,7 +486,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PATCH',
     path: '/v1/workplaces/{id}',
     run: async () => {
-      const update = await client.workplaces.update('wkp_1234', {});
+      const update = await client.workplaces.update('id', {});
     },
   },
 ];

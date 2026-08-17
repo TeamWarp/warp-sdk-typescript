@@ -40,6 +40,7 @@ const client = new Warp({
 });
 
 const list = await client.benefits.healthPlans.list({
+  limit: 'limit',
   statuses: ['active'],
 });
 
@@ -75,6 +76,7 @@ import { APIError } from 'warp-hr';
 
 try {
   const list = await client.benefits.healthPlans.list({
+    limit: 'limit',
     statuses: ['active'],
   });
 } catch (err) {

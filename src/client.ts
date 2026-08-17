@@ -28,8 +28,6 @@ import { VERSION } from './version';
 import { Benefits } from './resources/benefits/benefits';
 import {
   CustomFields,
-  type Trimmed,
-  type NonEmptyTrimmedString,
   type CustomFieldListResponse,
   type CustomFieldCreateResponse,
   type CustomFieldRetrieveResponse,
@@ -59,7 +57,6 @@ import {
 } from './resources/departments';
 import {
   Offers,
-  type Date,
   type OfferListResponse,
   type OfferCreateResponse,
   type OfferVoidResponse,
@@ -946,8 +943,6 @@ export declare namespace Warp {
 
   export {
     CustomFields as CustomFields,
-    type Trimmed as Trimmed,
-    type NonEmptyTrimmedString as NonEmptyTrimmedString,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldRetrieveResponse as CustomFieldRetrieveResponse,
@@ -979,7 +974,6 @@ export declare namespace Warp {
 
   export {
     Offers as Offers,
-    type Date as Date,
     type OfferListResponse as OfferListResponse,
     type OfferCreateResponse as OfferCreateResponse,
     type OfferVoidResponse as OfferVoidResponse,

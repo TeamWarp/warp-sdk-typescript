@@ -4,25 +4,23 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as CustomFieldsAPI from './custom-fields';
 
 export class Offers extends APIResource {
   /**
    * List the candidate offers for your company.
    *
-   * @param {OfferListParams} [query] - The parameters to send with the request.
+   * @param {OfferListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferListResponse>} Success
    *
    * @example
    * ```ts
-   * const list = await client.offers.list();
+   * const list = await client.offers.list({
+   *   limit: 'limit',
+   * });
    * ```
    */
-  list(
-    query: OfferListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<OfferListResponse> {
+  list(query: OfferListParams, options?: RequestOptions): APIPromise<OfferListResponse> {
     return this._client.get('/v1/offers', { query, ...options });
   }
 
@@ -37,19 +35,19 @@ export class Offers extends APIResource {
    * ```ts
    * const create = await client.offers.create({
    *   candidate: {
-   *     firstName: 'x',
-   *     lastName: 'x',
-   *     email: 'john@joinwarp.com',
+   *     firstName: {},
+   *     lastName: {},
+   *     email: {},
    *   },
    *   position: {
-   *     title: 'x',
-   *     startDate: '2000-01-01',
+   *     title: {},
+   *     startDate: {},
    *   },
    *   workerType: 'employee',
    *   compensation: {
    *     payBasis: 'year',
    *     payCurrency: 'USD',
-   *     payRate: 0,
+   *     payRate: {},
    *   },
    * });
    * ```
@@ -61,13 +59,13 @@ export class Offers extends APIResource {
   /**
    * Void a previously sent offer. Only sent offers can be voided.
    *
-   * @param {string} id - The tag of the offer.
+   * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferVoidResponse>} Success
    *
    * @example
    * ```ts
-   * const void_ = await client.offers.void('offr_1234');
+   * const void_ = await client.offers.void('id');
    * ```
    */
   void(id: string, options?: RequestOptions): APIPromise<OfferVoidResponse> {
@@ -77,14 +75,14 @@ export class Offers extends APIResource {
   /**
    * Extend the expiration deadline of a sent offer.
    *
-   * @param {string} id - The tag of the offer.
+   * @param {string} id
    * @param {OfferExtendDeadlineParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferExtendDeadlineResponse>} Success
    *
    * @example
    * ```ts
-   * const extendDeadline = await client.offers.extendDeadline('offr_1234', {
+   * const extendDeadline = await client.offers.extendDeadline('id', {
    *   expirationTime: '',
    * });
    * ```
@@ -100,13 +98,13 @@ export class Offers extends APIResource {
   /**
    * Resend the offer email to the candidate for a sent offer.
    *
-   * @param {string} id - The tag of the offer.
+   * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferResendResponse>} Success
    *
    * @example
    * ```ts
-   * const resend = await client.offers.resend('offr_1234');
+   * const resend = await client.offers.resend('id');
    * ```
    */
   resend(id: string, options?: RequestOptions): APIPromise<OfferResendResponse> {
@@ -114,50 +112,23 @@ export class Offers extends APIResource {
   }
 }
 
-/**
- * a string to be decoded into a Date
- */
-export type Date = string;
-
 export interface OfferListParams {
-  /**
-   * a number less than or equal to 100
-   */
-  limit?: string;
-  /**
-   * The tag of the offer.
-   * @pattern ^offr_
-   */
-  afterId?: string;
-  /**
-   * The tag of the offer.
-   * @pattern ^offr_
-   */
-  beforeId?: string;
-  statuses?: Array<'draft' | 'sent' | 'accepted' | 'void'>;
-  workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'>;
-  /**
-   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-   * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-   */
-  candidateEmail?: string;
+  limit: string | null;
+  afterId?: string | null;
+  beforeId?: string | null;
+  statuses?: Array<'draft' | 'sent' | 'accepted' | 'void'> | null;
+  workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'> | null;
+  candidateEmail?: string | null;
 }
 
 export interface OfferListResponse {
   hasMore: boolean;
-  /**
-   * an integer
-   */
   count: number;
   data: Array<OfferListResponse.Data>;
 }
 
 export namespace OfferListResponse {
   export interface Data {
-    /**
-     * The tag of the offer.
-     * @pattern ^offr_
-     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -175,22 +146,15 @@ export namespace OfferListResponse {
      * The candidate-facing offer portal URL. Null for offers that have not been sent.
      */
     offerUrl: string | null;
-    expirationTime: Date | null;
-    lastViewedAt: Date | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: Date;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
   }
 
   export namespace Data {
     export interface Candidate {
       firstName: string;
       lastName: string;
-      /**
-       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-       * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -204,10 +168,6 @@ export namespace OfferListResponse {
 
     export interface Position {
       title: string;
-      /**
-       * A date string in the form YYYY-MM-DD
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
       startDate: string;
       country:
         | 'AD'
@@ -464,28 +424,16 @@ export namespace OfferListResponse {
     }
 
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
-      /**
-       * Public workplace identifier
-       * @pattern ^wkp_
-       */
       id: string;
       name: string;
     }
 
     export interface Manager {
-      /**
-       * The id of the worker.
-       * @pattern ^wrk_
-       */
       id: string;
       name: string | null;
     }
@@ -510,11 +458,7 @@ export namespace OfferListResponse {
 
       export namespace BasePay {
         export interface Amount {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -584,11 +528,7 @@ export namespace OfferListResponse {
         }
 
         export interface VariableRate {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -659,11 +599,7 @@ export namespace OfferListResponse {
       }
 
       export interface SignOnBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -733,11 +669,7 @@ export namespace OfferListResponse {
       }
 
       export interface RelocationBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -807,19 +739,9 @@ export namespace OfferListResponse {
       }
 
       export interface Stock {
-        /**
-         * a non-negative number
-         * @minimum 0
-         */
-        options: number;
-        /**
-         * @minimum 0
-         */
-        vestingScheduleMonths: number | null;
-        /**
-         * @minimum 0
-         */
-        cliffMonths: number | null;
+        options: string;
+        vestingScheduleMonths: string | null;
+        cliffMonths: string | null;
       }
     }
   }
@@ -830,39 +752,16 @@ export interface OfferCreateParams {
   position: OfferCreateParams.Position;
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   compensation: OfferCreateParams.Compensation;
-  /**
-   * @pattern ^dpt_
-   */
   departmentId?: string | null;
-  /**
-   * @pattern ^wkp_
-   */
   workplaceId?: string | null;
-  /**
-   * @pattern ^wrk_
-   */
   managerId?: string | null;
-  expirationTime?: Date | null;
+  expirationTime?: string | null;
 }
 
 export namespace OfferCreateParams {
   export interface Candidate {
-    /**
-     * a non empty string
-     * @minLength 1
-     * @pattern ^\S[\s\S]*\S$|^\S$|^$
-     */
-    firstName: CustomFieldsAPI.NonEmptyTrimmedString;
-    /**
-     * a non empty string
-     * @minLength 1
-     * @pattern ^\S[\s\S]*\S$|^\S$|^$
-     */
-    lastName: CustomFieldsAPI.NonEmptyTrimmedString;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
+    firstName: string;
+    lastName: string;
     email: string;
     contractorDetails?: Candidate.ContractorDetails | null;
   }
@@ -875,20 +774,8 @@ export namespace OfferCreateParams {
   }
 
   export interface Position {
-    /**
-     * a non empty string
-     * @minLength 1
-     * @pattern ^\S[\s\S]*\S$|^\S$|^$
-     */
-    title: CustomFieldsAPI.NonEmptyTrimmedString;
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
+    title: string;
     startDate: string;
-    /**
-     * Required when workerType is global_contractor. Ignored for employee and us_contractor offers.
-     */
     country?:
       | 'AD'
       | 'AE'
@@ -1208,34 +1095,18 @@ export namespace OfferCreateParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
-    /**
-     * a positive number
-     */
-    payRate: number;
+    payRate: unknown;
     payType?: 'fixed' | 'pay_as_you_go' | null;
-    payVariableRate?: number | null;
-    signOnBonus?: number | null;
-    relocationBonus?: number | null;
-    /**
-     * @minimum 0
-     */
-    stockOptions?: number | null;
-    /**
-     * @minimum 0
-     */
-    vestingScheduleMonths?: number | null;
-    /**
-     * @minimum 0
-     */
-    cliffMonths?: number | null;
+    payVariableRate?: unknown | null;
+    signOnBonus?: unknown | null;
+    relocationBonus?: unknown | null;
+    stockOptions?: string | null;
+    vestingScheduleMonths?: string | null;
+    cliffMonths?: string | null;
   }
 }
 
 export interface OfferCreateResponse {
-  /**
-   * The tag of the offer.
-   * @pattern ^offr_
-   */
   id: string;
   status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -1253,22 +1124,15 @@ export interface OfferCreateResponse {
    * The candidate-facing offer portal URL. Null for offers that have not been sent.
    */
   offerUrl: string | null;
-  expirationTime: Date | null;
-  lastViewedAt: Date | null;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: Date;
+  expirationTime: string | null;
+  lastViewedAt: string | null;
+  createdAt: string;
 }
 
 export namespace OfferCreateResponse {
   export interface Candidate {
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
     contractorDetails: Candidate.ContractorDetails | null;
   }
@@ -1282,10 +1146,6 @@ export namespace OfferCreateResponse {
 
   export interface Position {
     title: string;
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
     country:
       | 'AD'
@@ -1542,28 +1402,16 @@ export namespace OfferCreateResponse {
   }
 
   export interface Department {
-    /**
-     * The unique public id of the department
-     * @pattern ^dpt_
-     */
     id: string;
     name: string;
   }
 
   export interface Workplace {
-    /**
-     * Public workplace identifier
-     * @pattern ^wkp_
-     */
     id: string;
     name: string;
   }
 
   export interface Manager {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     name: string | null;
   }
@@ -1588,11 +1436,7 @@ export namespace OfferCreateResponse {
 
     export namespace BasePay {
       export interface Amount {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -1662,11 +1506,7 @@ export namespace OfferCreateResponse {
       }
 
       export interface VariableRate {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -1737,11 +1577,7 @@ export namespace OfferCreateResponse {
     }
 
     export interface SignOnBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -1811,11 +1647,7 @@ export namespace OfferCreateResponse {
     }
 
     export interface RelocationBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -1885,28 +1717,14 @@ export namespace OfferCreateResponse {
     }
 
     export interface Stock {
-      /**
-       * a non-negative number
-       * @minimum 0
-       */
-      options: number;
-      /**
-       * @minimum 0
-       */
-      vestingScheduleMonths: number | null;
-      /**
-       * @minimum 0
-       */
-      cliffMonths: number | null;
+      options: string;
+      vestingScheduleMonths: string | null;
+      cliffMonths: string | null;
     }
   }
 }
 
 export interface OfferVoidResponse {
-  /**
-   * The tag of the offer.
-   * @pattern ^offr_
-   */
   id: string;
   status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -1924,22 +1742,15 @@ export interface OfferVoidResponse {
    * The candidate-facing offer portal URL. Null for offers that have not been sent.
    */
   offerUrl: string | null;
-  expirationTime: Date | null;
-  lastViewedAt: Date | null;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: Date;
+  expirationTime: string | null;
+  lastViewedAt: string | null;
+  createdAt: string;
 }
 
 export namespace OfferVoidResponse {
   export interface Candidate {
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
     contractorDetails: Candidate.ContractorDetails | null;
   }
@@ -1953,10 +1764,6 @@ export namespace OfferVoidResponse {
 
   export interface Position {
     title: string;
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
     country:
       | 'AD'
@@ -2213,28 +2020,16 @@ export namespace OfferVoidResponse {
   }
 
   export interface Department {
-    /**
-     * The unique public id of the department
-     * @pattern ^dpt_
-     */
     id: string;
     name: string;
   }
 
   export interface Workplace {
-    /**
-     * Public workplace identifier
-     * @pattern ^wkp_
-     */
     id: string;
     name: string;
   }
 
   export interface Manager {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     name: string | null;
   }
@@ -2259,11 +2054,7 @@ export namespace OfferVoidResponse {
 
     export namespace BasePay {
       export interface Amount {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -2333,11 +2124,7 @@ export namespace OfferVoidResponse {
       }
 
       export interface VariableRate {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -2408,11 +2195,7 @@ export namespace OfferVoidResponse {
     }
 
     export interface SignOnBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -2482,11 +2265,7 @@ export namespace OfferVoidResponse {
     }
 
     export interface RelocationBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -2556,35 +2335,18 @@ export namespace OfferVoidResponse {
     }
 
     export interface Stock {
-      /**
-       * a non-negative number
-       * @minimum 0
-       */
-      options: number;
-      /**
-       * @minimum 0
-       */
-      vestingScheduleMonths: number | null;
-      /**
-       * @minimum 0
-       */
-      cliffMonths: number | null;
+      options: string;
+      vestingScheduleMonths: string | null;
+      cliffMonths: string | null;
     }
   }
 }
 
 export interface OfferExtendDeadlineParams {
-  /**
-   * a string to be decoded into a Date
-   */
-  expirationTime: Date;
+  expirationTime: string;
 }
 
 export interface OfferExtendDeadlineResponse {
-  /**
-   * The tag of the offer.
-   * @pattern ^offr_
-   */
   id: string;
   status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -2602,22 +2364,15 @@ export interface OfferExtendDeadlineResponse {
    * The candidate-facing offer portal URL. Null for offers that have not been sent.
    */
   offerUrl: string | null;
-  expirationTime: Date | null;
-  lastViewedAt: Date | null;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: Date;
+  expirationTime: string | null;
+  lastViewedAt: string | null;
+  createdAt: string;
 }
 
 export namespace OfferExtendDeadlineResponse {
   export interface Candidate {
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
     contractorDetails: Candidate.ContractorDetails | null;
   }
@@ -2631,10 +2386,6 @@ export namespace OfferExtendDeadlineResponse {
 
   export interface Position {
     title: string;
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
     country:
       | 'AD'
@@ -2891,28 +2642,16 @@ export namespace OfferExtendDeadlineResponse {
   }
 
   export interface Department {
-    /**
-     * The unique public id of the department
-     * @pattern ^dpt_
-     */
     id: string;
     name: string;
   }
 
   export interface Workplace {
-    /**
-     * Public workplace identifier
-     * @pattern ^wkp_
-     */
     id: string;
     name: string;
   }
 
   export interface Manager {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     name: string | null;
   }
@@ -2937,11 +2676,7 @@ export namespace OfferExtendDeadlineResponse {
 
     export namespace BasePay {
       export interface Amount {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -3011,11 +2746,7 @@ export namespace OfferExtendDeadlineResponse {
       }
 
       export interface VariableRate {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -3086,11 +2817,7 @@ export namespace OfferExtendDeadlineResponse {
     }
 
     export interface SignOnBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -3160,11 +2887,7 @@ export namespace OfferExtendDeadlineResponse {
     }
 
     export interface RelocationBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -3234,28 +2957,14 @@ export namespace OfferExtendDeadlineResponse {
     }
 
     export interface Stock {
-      /**
-       * a non-negative number
-       * @minimum 0
-       */
-      options: number;
-      /**
-       * @minimum 0
-       */
-      vestingScheduleMonths: number | null;
-      /**
-       * @minimum 0
-       */
-      cliffMonths: number | null;
+      options: string;
+      vestingScheduleMonths: string | null;
+      cliffMonths: string | null;
     }
   }
 }
 
 export interface OfferResendResponse {
-  /**
-   * The tag of the offer.
-   * @pattern ^offr_
-   */
   id: string;
   status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -3273,22 +2982,15 @@ export interface OfferResendResponse {
    * The candidate-facing offer portal URL. Null for offers that have not been sent.
    */
   offerUrl: string | null;
-  expirationTime: Date | null;
-  lastViewedAt: Date | null;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: Date;
+  expirationTime: string | null;
+  lastViewedAt: string | null;
+  createdAt: string;
 }
 
 export namespace OfferResendResponse {
   export interface Candidate {
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
     contractorDetails: Candidate.ContractorDetails | null;
   }
@@ -3302,10 +3004,6 @@ export namespace OfferResendResponse {
 
   export interface Position {
     title: string;
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
     country:
       | 'AD'
@@ -3562,28 +3260,16 @@ export namespace OfferResendResponse {
   }
 
   export interface Department {
-    /**
-     * The unique public id of the department
-     * @pattern ^dpt_
-     */
     id: string;
     name: string;
   }
 
   export interface Workplace {
-    /**
-     * Public workplace identifier
-     * @pattern ^wkp_
-     */
     id: string;
     name: string;
   }
 
   export interface Manager {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     name: string | null;
   }
@@ -3608,11 +3294,7 @@ export namespace OfferResendResponse {
 
     export namespace BasePay {
       export interface Amount {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -3682,11 +3364,7 @@ export namespace OfferResendResponse {
       }
 
       export interface VariableRate {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -3757,11 +3435,7 @@ export namespace OfferResendResponse {
     }
 
     export interface SignOnBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -3831,11 +3505,7 @@ export namespace OfferResendResponse {
     }
 
     export interface RelocationBonus {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -3905,25 +3575,14 @@ export namespace OfferResendResponse {
     }
 
     export interface Stock {
-      /**
-       * a non-negative number
-       * @minimum 0
-       */
-      options: number;
-      /**
-       * @minimum 0
-       */
-      vestingScheduleMonths: number | null;
-      /**
-       * @minimum 0
-       */
-      cliffMonths: number | null;
+      options: string;
+      vestingScheduleMonths: string | null;
+      cliffMonths: string | null;
     }
   }
 }
 export declare namespace Offers {
   export {
-    type Date as Date,
     type OfferListResponse as OfferListResponse,
     type OfferCreateResponse as OfferCreateResponse,
     type OfferVoidResponse as OfferVoidResponse,

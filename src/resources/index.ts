@@ -3,8 +3,6 @@
 export { Benefits } from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
-  Trimmed,
-  NonEmptyTrimmedString,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,
@@ -34,7 +32,6 @@ export type {
 } from './departments';
 export { Offers } from './offers';
 export type {
-  Date,
   OfferListParams,
   OfferListResponse,
   OfferCreateParams,

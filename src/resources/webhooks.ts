@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 import { APIResource } from '../resource';
-import * as DateAPI from './offers';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -38,33 +37,16 @@ export interface TimeOffRequestCreatedWebhookEvent {
 export namespace TimeOffRequestCreatedWebhookEvent {
   export interface Payload {
     id: string;
-    /**
-     * a string starting with "top_"
-     * @pattern ^top_
-     */
     timeOffPolicyId: string;
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     workerId: string;
     status: 'pending' | 'approved' | 'denied';
-    /**
-     * a string to be decoded into a Date
-     */
-    startAt: DateAPI.Date;
+    startAt: string;
     startRangeType: 'date' | 'datetime';
-    /**
-     * a string to be decoded into a Date
-     */
-    endAt: DateAPI.Date;
+    endAt: string;
     endRangeType: 'date' | 'datetime';
     reason: string | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
-    requestedMinutes: number;
+    createdAt: string;
+    requestedMinutes: number | 'Infinity' | '-Infinity' | 'NaN';
     /**
      * The time zone that the worker is requesting time off in.
      */
@@ -91,33 +73,16 @@ export interface TimeOffRequestReviewedWebhookEvent {
 export namespace TimeOffRequestReviewedWebhookEvent {
   export interface Payload {
     id: string;
-    /**
-     * a string starting with "top_"
-     * @pattern ^top_
-     */
     timeOffPolicyId: string;
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     workerId: string;
     status: 'pending' | 'approved' | 'denied';
-    /**
-     * a string to be decoded into a Date
-     */
-    startAt: DateAPI.Date;
+    startAt: string;
     startRangeType: 'date' | 'datetime';
-    /**
-     * a string to be decoded into a Date
-     */
-    endAt: DateAPI.Date;
+    endAt: string;
     endRangeType: 'date' | 'datetime';
     reason: string | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
-    requestedMinutes: number;
+    createdAt: string;
+    requestedMinutes: number | 'Infinity' | '-Infinity' | 'NaN';
     /**
      * The time zone that the worker is requesting time off in.
      */
@@ -144,33 +109,16 @@ export interface TimeOffRequestDeletedWebhookEvent {
 export namespace TimeOffRequestDeletedWebhookEvent {
   export interface Payload {
     id: string;
-    /**
-     * a string starting with "top_"
-     * @pattern ^top_
-     */
     timeOffPolicyId: string;
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     workerId: string;
     status: 'pending' | 'approved' | 'denied';
-    /**
-     * a string to be decoded into a Date
-     */
-    startAt: DateAPI.Date;
+    startAt: string;
     startRangeType: 'date' | 'datetime';
-    /**
-     * a string to be decoded into a Date
-     */
-    endAt: DateAPI.Date;
+    endAt: string;
     endRangeType: 'date' | 'datetime';
     reason: string | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
-    requestedMinutes: number;
+    createdAt: string;
+    requestedMinutes: number | 'Infinity' | '-Infinity' | 'NaN';
     /**
      * The time zone that the worker is requesting time off in.
      */
@@ -196,46 +144,80 @@ export interface TimeOffBalanceAdjustedWebhookEvent {
 
 export namespace TimeOffBalanceAdjustedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     workerId: string;
-    /**
-     * a string starting with "top_"
-     * @pattern ^top_
-     */
     policyId: string;
     /**
      * Signed adjustment applied to the balance, in minutes. Omitted when no balance snapshot was captured.
      */
-    adjustmentMinutes?: number;
+    adjustmentMinutes?:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN'
+      | null;
     /**
      * The date the adjustment takes effect. Omitted when no balance snapshot was captured.
-     * @pattern ^\d{4}-\d{2}-\d{2}$
      */
-    effectiveDate?: string;
-    previousBalance?: Payload.PreviousBalance;
-    newBalance?: Payload.NewBalance;
-    [k: string]: unknown;
-  }
-
-  export namespace Payload {
-    export interface PreviousBalance {
-      accruedUnlocked: number;
-      accruedLocked: number;
-      used: number;
-      holds: number;
-      available: number;
-    }
-
-    export interface NewBalance {
-      accruedUnlocked: number;
-      accruedLocked: number;
-      used: number;
-      holds: number;
-      available: number;
-    }
+    effectiveDate?: string | null;
+    previousBalance?: 'Infinity' | '-Infinity' | 'NaN';
+    newBalance?: 'Infinity' | '-Infinity' | 'NaN';
   }
 }
 
@@ -257,35 +239,17 @@ export interface WorkerCreatedWebhookEvent {
 
 export namespace WorkerCreatedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -304,10 +268,6 @@ export namespace WorkerCreatedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -332,35 +292,17 @@ export interface WorkerUpdatedWebhookEvent {
 
 export namespace WorkerUpdatedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -379,10 +321,6 @@ export namespace WorkerUpdatedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -407,35 +345,17 @@ export interface WorkerDeletedWebhookEvent {
 
 export namespace WorkerDeletedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -454,10 +374,6 @@ export namespace WorkerDeletedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -482,35 +398,17 @@ export interface WorkerInviteSentWebhookEvent {
 
 export namespace WorkerInviteSentWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -529,10 +427,6 @@ export namespace WorkerInviteSentWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -557,35 +451,17 @@ export interface WorkerInviteAcceptedWebhookEvent {
 
 export namespace WorkerInviteAcceptedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -604,10 +480,6 @@ export namespace WorkerInviteAcceptedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -632,35 +504,17 @@ export interface WorkerOnboardingCompletedWebhookEvent {
 
 export namespace WorkerOnboardingCompletedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -679,10 +533,6 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -707,35 +557,17 @@ export interface WorkerOffboardingStartedWebhookEvent {
 
 export namespace WorkerOffboardingStartedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -754,10 +586,6 @@ export namespace WorkerOffboardingStartedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -782,35 +610,17 @@ export interface WorkerOffboardedWebhookEvent {
 
 export namespace WorkerOffboardedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -829,10 +639,6 @@ export namespace WorkerOffboardedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -857,35 +663,17 @@ export interface WorkerReactivatedWebhookEvent {
 
 export namespace WorkerReactivatedWebhookEvent {
   export interface Payload {
-    /**
-     * The id of the worker.
-     * @pattern ^wrk_
-     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     startDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
-    /**
-     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     email: string;
-    /**
-     * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -904,10 +692,6 @@ export namespace WorkerReactivatedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
@@ -932,10 +716,6 @@ export interface OfferCreatedWebhookEvent {
 
 export namespace OfferCreatedWebhookEvent {
   export interface Payload {
-    /**
-     * The tag of the offer.
-     * @pattern ^offr_
-     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -953,22 +733,15 @@ export namespace OfferCreatedWebhookEvent {
      * The candidate-facing offer portal URL. Null for offers that have not been sent.
      */
     offerUrl: string | null;
-    expirationTime: DateAPI.Date | null;
-    lastViewedAt: DateAPI.Date | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
   }
 
   export namespace Payload {
     export interface Candidate {
       firstName: string;
       lastName: string;
-      /**
-       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-       * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -982,10 +755,6 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Position {
       title: string;
-      /**
-       * A date string in the form YYYY-MM-DD
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
       startDate: string;
       country:
         | 'AD'
@@ -1242,36 +1011,146 @@ export namespace OfferCreatedWebhookEvent {
     }
 
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
-      /**
-       * Public workplace identifier
-       * @pattern ^wkp_
-       */
       id: string;
       name: string;
     }
 
     export interface Manager {
-      /**
-       * The id of the worker.
-       * @pattern ^wrk_
-       */
       id: string;
       name: string | null;
     }
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Compensation.SignOnBonus | null;
-      relocationBonus: Compensation.RelocationBonus | null;
+      signOnBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+      relocationBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       stock: Compensation.Stock | null;
     }
 
@@ -1283,16 +1162,73 @@ export namespace OfferCreatedWebhookEvent {
         amount: BasePay.Amount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: BasePay.VariableRate | null;
+        variableRate:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
       }
 
       export namespace BasePay {
         export interface Amount {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -1360,244 +1296,12 @@ export namespace OfferCreatedWebhookEvent {
            */
           display: string;
         }
-
-        export interface VariableRate {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
-      }
-
-      export interface SignOnBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
-
-      export interface RelocationBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
       }
 
       export interface Stock {
-        /**
-         * a non-negative number
-         * @minimum 0
-         */
-        options: number;
-        /**
-         * @minimum 0
-         */
-        vestingScheduleMonths: number | null;
-        /**
-         * @minimum 0
-         */
-        cliffMonths: number | null;
+        options: string;
+        vestingScheduleMonths: string | null;
+        cliffMonths: string | null;
       }
     }
   }
@@ -1621,10 +1325,6 @@ export interface OfferSentWebhookEvent {
 
 export namespace OfferSentWebhookEvent {
   export interface Payload {
-    /**
-     * The tag of the offer.
-     * @pattern ^offr_
-     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -1642,22 +1342,15 @@ export namespace OfferSentWebhookEvent {
      * The candidate-facing offer portal URL. Null for offers that have not been sent.
      */
     offerUrl: string | null;
-    expirationTime: DateAPI.Date | null;
-    lastViewedAt: DateAPI.Date | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
   }
 
   export namespace Payload {
     export interface Candidate {
       firstName: string;
       lastName: string;
-      /**
-       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-       * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -1671,10 +1364,6 @@ export namespace OfferSentWebhookEvent {
 
     export interface Position {
       title: string;
-      /**
-       * A date string in the form YYYY-MM-DD
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
       startDate: string;
       country:
         | 'AD'
@@ -1931,36 +1620,146 @@ export namespace OfferSentWebhookEvent {
     }
 
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
-      /**
-       * Public workplace identifier
-       * @pattern ^wkp_
-       */
       id: string;
       name: string;
     }
 
     export interface Manager {
-      /**
-       * The id of the worker.
-       * @pattern ^wrk_
-       */
       id: string;
       name: string | null;
     }
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Compensation.SignOnBonus | null;
-      relocationBonus: Compensation.RelocationBonus | null;
+      signOnBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+      relocationBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       stock: Compensation.Stock | null;
     }
 
@@ -1972,16 +1771,73 @@ export namespace OfferSentWebhookEvent {
         amount: BasePay.Amount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: BasePay.VariableRate | null;
+        variableRate:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
       }
 
       export namespace BasePay {
         export interface Amount {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -2049,244 +1905,12 @@ export namespace OfferSentWebhookEvent {
            */
           display: string;
         }
-
-        export interface VariableRate {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
-      }
-
-      export interface SignOnBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
-
-      export interface RelocationBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
       }
 
       export interface Stock {
-        /**
-         * a non-negative number
-         * @minimum 0
-         */
-        options: number;
-        /**
-         * @minimum 0
-         */
-        vestingScheduleMonths: number | null;
-        /**
-         * @minimum 0
-         */
-        cliffMonths: number | null;
+        options: string;
+        vestingScheduleMonths: string | null;
+        cliffMonths: string | null;
       }
     }
   }
@@ -2310,10 +1934,6 @@ export interface OfferViewedWebhookEvent {
 
 export namespace OfferViewedWebhookEvent {
   export interface Payload {
-    /**
-     * The tag of the offer.
-     * @pattern ^offr_
-     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -2331,22 +1951,15 @@ export namespace OfferViewedWebhookEvent {
      * The candidate-facing offer portal URL. Null for offers that have not been sent.
      */
     offerUrl: string | null;
-    expirationTime: DateAPI.Date | null;
-    lastViewedAt: DateAPI.Date | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
   }
 
   export namespace Payload {
     export interface Candidate {
       firstName: string;
       lastName: string;
-      /**
-       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-       * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -2360,10 +1973,6 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Position {
       title: string;
-      /**
-       * A date string in the form YYYY-MM-DD
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
       startDate: string;
       country:
         | 'AD'
@@ -2620,36 +2229,146 @@ export namespace OfferViewedWebhookEvent {
     }
 
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
-      /**
-       * Public workplace identifier
-       * @pattern ^wkp_
-       */
       id: string;
       name: string;
     }
 
     export interface Manager {
-      /**
-       * The id of the worker.
-       * @pattern ^wrk_
-       */
       id: string;
       name: string | null;
     }
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Compensation.SignOnBonus | null;
-      relocationBonus: Compensation.RelocationBonus | null;
+      signOnBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+      relocationBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       stock: Compensation.Stock | null;
     }
 
@@ -2661,16 +2380,73 @@ export namespace OfferViewedWebhookEvent {
         amount: BasePay.Amount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: BasePay.VariableRate | null;
+        variableRate:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
       }
 
       export namespace BasePay {
         export interface Amount {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -2738,244 +2514,12 @@ export namespace OfferViewedWebhookEvent {
            */
           display: string;
         }
-
-        export interface VariableRate {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
-      }
-
-      export interface SignOnBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
-
-      export interface RelocationBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
       }
 
       export interface Stock {
-        /**
-         * a non-negative number
-         * @minimum 0
-         */
-        options: number;
-        /**
-         * @minimum 0
-         */
-        vestingScheduleMonths: number | null;
-        /**
-         * @minimum 0
-         */
-        cliffMonths: number | null;
+        options: string;
+        vestingScheduleMonths: string | null;
+        cliffMonths: string | null;
       }
     }
   }
@@ -2999,10 +2543,6 @@ export interface OfferAcceptedWebhookEvent {
 
 export namespace OfferAcceptedWebhookEvent {
   export interface Payload {
-    /**
-     * The tag of the offer.
-     * @pattern ^offr_
-     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -3020,22 +2560,15 @@ export namespace OfferAcceptedWebhookEvent {
      * The candidate-facing offer portal URL. Null for offers that have not been sent.
      */
     offerUrl: string | null;
-    expirationTime: DateAPI.Date | null;
-    lastViewedAt: DateAPI.Date | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
   }
 
   export namespace Payload {
     export interface Candidate {
       firstName: string;
       lastName: string;
-      /**
-       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-       * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -3049,10 +2582,6 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Position {
       title: string;
-      /**
-       * A date string in the form YYYY-MM-DD
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
       startDate: string;
       country:
         | 'AD'
@@ -3309,36 +2838,146 @@ export namespace OfferAcceptedWebhookEvent {
     }
 
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
-      /**
-       * Public workplace identifier
-       * @pattern ^wkp_
-       */
       id: string;
       name: string;
     }
 
     export interface Manager {
-      /**
-       * The id of the worker.
-       * @pattern ^wrk_
-       */
       id: string;
       name: string | null;
     }
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Compensation.SignOnBonus | null;
-      relocationBonus: Compensation.RelocationBonus | null;
+      signOnBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+      relocationBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       stock: Compensation.Stock | null;
     }
 
@@ -3350,16 +2989,73 @@ export namespace OfferAcceptedWebhookEvent {
         amount: BasePay.Amount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: BasePay.VariableRate | null;
+        variableRate:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
       }
 
       export namespace BasePay {
         export interface Amount {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -3427,244 +3123,12 @@ export namespace OfferAcceptedWebhookEvent {
            */
           display: string;
         }
-
-        export interface VariableRate {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
-      }
-
-      export interface SignOnBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
-
-      export interface RelocationBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
       }
 
       export interface Stock {
-        /**
-         * a non-negative number
-         * @minimum 0
-         */
-        options: number;
-        /**
-         * @minimum 0
-         */
-        vestingScheduleMonths: number | null;
-        /**
-         * @minimum 0
-         */
-        cliffMonths: number | null;
+        options: string;
+        vestingScheduleMonths: string | null;
+        cliffMonths: string | null;
       }
     }
   }
@@ -3688,10 +3152,6 @@ export interface OfferVoidedWebhookEvent {
 
 export namespace OfferVoidedWebhookEvent {
   export interface Payload {
-    /**
-     * The tag of the offer.
-     * @pattern ^offr_
-     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -3709,22 +3169,15 @@ export namespace OfferVoidedWebhookEvent {
      * The candidate-facing offer portal URL. Null for offers that have not been sent.
      */
     offerUrl: string | null;
-    expirationTime: DateAPI.Date | null;
-    lastViewedAt: DateAPI.Date | null;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: DateAPI.Date;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
   }
 
   export namespace Payload {
     export interface Candidate {
       firstName: string;
       lastName: string;
-      /**
-       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
-       * @pattern ^(?!\.)(?!.*\.\.)([a-z0-9!#$%&'*+/=?^_`{|}~\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$
-       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -3738,10 +3191,6 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Position {
       title: string;
-      /**
-       * A date string in the form YYYY-MM-DD
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
       startDate: string;
       country:
         | 'AD'
@@ -3998,36 +3447,146 @@ export namespace OfferVoidedWebhookEvent {
     }
 
     export interface Department {
-      /**
-       * The unique public id of the department
-       * @pattern ^dpt_
-       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
-      /**
-       * Public workplace identifier
-       * @pattern ^wkp_
-       */
       id: string;
       name: string;
     }
 
     export interface Manager {
-      /**
-       * The id of the worker.
-       * @pattern ^wrk_
-       */
       id: string;
       name: string | null;
     }
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Compensation.SignOnBonus | null;
-      relocationBonus: Compensation.RelocationBonus | null;
+      signOnBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+      relocationBonus:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
       stock: Compensation.Stock | null;
     }
 
@@ -4039,16 +3598,73 @@ export namespace OfferVoidedWebhookEvent {
         amount: BasePay.Amount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: BasePay.VariableRate | null;
+        variableRate:
+          | 'USD'
+          | 'AUD'
+          | 'BGN'
+          | 'BRL'
+          | 'CAD'
+          | 'CHF'
+          | 'CZK'
+          | 'DKK'
+          | 'EUR'
+          | 'GBP'
+          | 'HKD'
+          | 'HUF'
+          | 'IDR'
+          | 'INR'
+          | 'JPY'
+          | 'MYR'
+          | 'NOK'
+          | 'NZD'
+          | 'CNY'
+          | 'PLN'
+          | 'RON'
+          | 'TRY'
+          | 'SEK'
+          | 'SGD'
+          | 'AED'
+          | 'ARS'
+          | 'BDT'
+          | 'BWP'
+          | 'CLP'
+          | 'COP'
+          | 'CRC'
+          | 'EGP'
+          | 'FJD'
+          | 'GEL'
+          | 'GHS'
+          | 'ILS'
+          | 'KES'
+          | 'KRW'
+          | 'LKR'
+          | 'MAD'
+          | 'MXN'
+          | 'NPR'
+          | 'PHP'
+          | 'PKR'
+          | 'THB'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'VND'
+          | 'ZAR'
+          | 'ZMW'
+          | 'TND'
+          | 'NGN'
+          | 'RSD'
+          | 'TWD'
+          | 'GTQ'
+          | 'HNL'
+          | 'DOP'
+          | 'SAR'
+          | 'XAF'
+          | 'PEN';
       }
 
       export namespace BasePay {
         export interface Amount {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
+          amount: string;
           currency:
             | 'USD'
             | 'AUD'
@@ -4116,244 +3732,12 @@ export namespace OfferVoidedWebhookEvent {
            */
           display: string;
         }
-
-        export interface VariableRate {
-          /**
-           * Amount in the currency base unit, e.g. cents for USD.
-           * @minimum 0
-           */
-          amount: number;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
-      }
-
-      export interface SignOnBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
-
-      export interface RelocationBonus {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
       }
 
       export interface Stock {
-        /**
-         * a non-negative number
-         * @minimum 0
-         */
-        options: number;
-        /**
-         * @minimum 0
-         */
-        vestingScheduleMonths: number | null;
-        /**
-         * @minimum 0
-         */
-        cliffMonths: number | null;
+        options: string;
+        vestingScheduleMonths: string | null;
+        cliffMonths: string | null;
       }
     }
   }

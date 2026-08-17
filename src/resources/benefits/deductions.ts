@@ -9,34 +9,32 @@ export class Deductions extends APIResource {
   /**
    * List current payroll benefit deductions. Defaults to active deductions. A deduction whose effectiveEndDate has elapsed is reported and filtered as terminated.
    *
-   * @param {DeductionListParams} [query] - The parameters to send with the request.
+   * @param {DeductionListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<DeductionListResponse>} Success
    *
    * @example
    * ```ts
    * const list = await client.benefits.deductions.list({
+   *   limit: 'limit',
    *   statuses: ['active'],
    * });
    * ```
    */
-  list(
-    query: DeductionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<DeductionListResponse> {
+  list(query: DeductionListParams, options?: RequestOptions): APIPromise<DeductionListResponse> {
     return this._client.get('/v1/benefits/deductions', { query, ...options });
   }
 
   /**
    * Get the current version of a company benefit deduction by id.
    *
-   * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
+   * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<DeductionGetResponse>} The current version of a stable payroll benefit deduction.
    *
    * @example
    * ```ts
-   * const get_ = await client.benefits.deductions.get('pbdg_1234');
+   * const get_ = await client.benefits.deductions.get('id');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<DeductionGetResponse> {
@@ -45,24 +43,13 @@ export class Deductions extends APIResource {
 }
 
 export interface DeductionListParams {
-  /**
-   * a number less than or equal to 100
-   */
-  limit?: string;
-  /**
-   * The version-group tag of a payroll benefit deduction. Stable across edits.
-   * @pattern ^pbdg_
-   */
-  afterId?: string;
-  /**
-   * The version-group tag of a payroll benefit deduction. Stable across edits.
-   * @pattern ^pbdg_
-   */
-  beforeId?: string;
-  workerIds?: Array<string>;
+  limit: string | null;
+  afterId?: string | null;
+  beforeId?: string | null;
+  workerIds?: Array<string> | null;
   categories?: Array<
     'health' | 'retirement' | 'health_savings' | 'commuter' | 'voluntary' | 'post_tax' | 'other'
-  >;
+  > | null;
   types?: Array<
     | 'medical'
     | 'dental'
@@ -94,31 +81,20 @@ export interface DeductionListParams {
     | 'voluntary'
     | 'post_tax'
     | 'other'
-  >;
-  /**
-   * Statuses to include. Defaults to ["active"]. An elapsed effectiveEndDate is reported and filtered as "terminated".
-   * @default ["active"]
-   */
-  statuses?: Array<'active' | 'pending' | 'suspended' | 'terminated'>;
-  healthPlanIds?: Array<string>;
-  retirementPlanIds?: Array<string>;
+  > | null;
+  statuses: Array<'active' | 'pending' | 'suspended' | 'terminated'> | null;
+  healthPlanIds?: Array<string> | null;
+  retirementPlanIds?: Array<string> | null;
 }
 
 export interface DeductionListResponse {
   hasMore: boolean;
-  /**
-   * an integer
-   */
   count: number;
   data: Array<DeductionListResponse.Data>;
 }
 
 export namespace DeductionListResponse {
   export interface Data {
-    /**
-     * Stable identifier shared by every internal version of this deduction.
-     * @pattern ^pbdg_
-     */
     id: string;
     /**
      * Basic identifying information for a worker associated with another resource.
@@ -178,35 +154,18 @@ export namespace DeductionListResponse {
      * How the employee and employer contributions are calculated.
      */
     calculation: Data.FixedAmountBenefitCalculation | Data.PercentageBenefitCalculation;
-    /**
-     * A date string in the form YYYY-MM-DD
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     effectiveStartDate: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
     effectiveEndDate: string | null;
     /**
      * The public lifecycle status of the current deduction version.
      */
     status: 'active' | 'pending' | 'suspended' | 'terminated';
-    /**
-     * a string to be decoded into a Date
-     */
     createdAt: string;
-    /**
-     * a string to be decoded into a Date
-     */
     updatedAt: string;
   }
 
   export namespace Data {
     export interface Worker {
-      /**
-       * The worker id.
-       * @pattern ^wrk_
-       */
       id: string;
       /**
        * The worker first name.
@@ -220,10 +179,6 @@ export namespace DeductionListResponse {
 
     export interface HealthPlanReference {
       type: 'health_plan';
-      /**
-       * The tag of a company health plan.
-       * @pattern ^chpl_
-       */
       id: string;
       /**
        * The associated health plan name.
@@ -233,10 +188,6 @@ export namespace DeductionListResponse {
 
     export interface RetirementPlanReference {
       type: 'retirement_plan';
-      /**
-       * The tag of a company retirement plan.
-       * @pattern ^crpl_
-       */
       id: string;
       /**
        * The associated retirement plan name.
@@ -262,11 +213,7 @@ export namespace DeductionListResponse {
 
     export namespace FixedAmountBenefitCalculation {
       export interface EmployeeContribution {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -336,11 +283,7 @@ export namespace DeductionListResponse {
       }
 
       export interface EmployerContribution {
-        /**
-         * Amount in the currency base unit, e.g. cents for USD.
-         * @minimum 0
-         */
-        amount: number;
+        amount: string;
         currency:
           | 'USD'
           | 'AUD'
@@ -424,12 +367,7 @@ export namespace DeductionListResponse {
 
     export namespace PercentageBenefitCalculation {
       export interface EmployeeContribution {
-        /**
-         * a number between 0 and 100
-         * @minimum 0
-         * @maximum 100
-         */
-        percentage: number;
+        percentage: string | 'Infinity' | '-Infinity' | 'NaN';
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -437,12 +375,7 @@ export namespace DeductionListResponse {
       }
 
       export interface EmployerContribution {
-        /**
-         * a number between 0 and 100
-         * @minimum 0
-         * @maximum 100
-         */
-        percentage: number;
+        percentage: string | 'Infinity' | '-Infinity' | 'NaN';
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -453,10 +386,6 @@ export namespace DeductionListResponse {
 }
 
 export interface DeductionGetResponse {
-  /**
-   * Stable identifier shared by every internal version of this deduction.
-   * @pattern ^pbdg_
-   */
   id: string;
   /**
    * Basic identifying information for a worker associated with another resource.
@@ -518,35 +447,18 @@ export interface DeductionGetResponse {
   calculation:
     | DeductionGetResponse.FixedAmountBenefitCalculation
     | DeductionGetResponse.PercentageBenefitCalculation;
-  /**
-   * A date string in the form YYYY-MM-DD
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
   effectiveStartDate: string;
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
   effectiveEndDate: string | null;
   /**
    * The public lifecycle status of the current deduction version.
    */
   status: 'active' | 'pending' | 'suspended' | 'terminated';
-  /**
-   * a string to be decoded into a Date
-   */
   createdAt: string;
-  /**
-   * a string to be decoded into a Date
-   */
   updatedAt: string;
 }
 
 export namespace DeductionGetResponse {
   export interface Worker {
-    /**
-     * The worker id.
-     * @pattern ^wrk_
-     */
     id: string;
     /**
      * The worker first name.
@@ -560,10 +472,6 @@ export namespace DeductionGetResponse {
 
   export interface HealthPlanReference {
     type: 'health_plan';
-    /**
-     * The tag of a company health plan.
-     * @pattern ^chpl_
-     */
     id: string;
     /**
      * The associated health plan name.
@@ -573,10 +481,6 @@ export namespace DeductionGetResponse {
 
   export interface RetirementPlanReference {
     type: 'retirement_plan';
-    /**
-     * The tag of a company retirement plan.
-     * @pattern ^crpl_
-     */
     id: string;
     /**
      * The associated retirement plan name.
@@ -602,11 +506,7 @@ export namespace DeductionGetResponse {
 
   export namespace FixedAmountBenefitCalculation {
     export interface EmployeeContribution {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -676,11 +576,7 @@ export namespace DeductionGetResponse {
     }
 
     export interface EmployerContribution {
-      /**
-       * Amount in the currency base unit, e.g. cents for USD.
-       * @minimum 0
-       */
-      amount: number;
+      amount: string;
       currency:
         | 'USD'
         | 'AUD'
@@ -764,12 +660,7 @@ export namespace DeductionGetResponse {
 
   export namespace PercentageBenefitCalculation {
     export interface EmployeeContribution {
-      /**
-       * a number between 0 and 100
-       * @minimum 0
-       * @maximum 100
-       */
-      percentage: number;
+      percentage: string | 'Infinity' | '-Infinity' | 'NaN';
       /**
        * The server-formatted percentage, for example "3%".
        */
@@ -777,12 +668,7 @@ export namespace DeductionGetResponse {
     }
 
     export interface EmployerContribution {
-      /**
-       * a number between 0 and 100
-       * @minimum 0
-       * @maximum 100
-       */
-      percentage: number;
+      percentage: string | 'Infinity' | '-Infinity' | 'NaN';
       /**
        * The server-formatted percentage, for example "3%".
        */
