@@ -4047,7 +4047,7 @@
                   "type": "string",
                   "allOf": [
                     {
-                      "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                      "format": "email",
                       "title": "Email",
                       "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                       "examples": [
@@ -4414,7 +4414,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -7263,7 +7263,7 @@
                       "type": "string",
                       "allOf": [
                         {
-                          "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                          "format": "email",
                           "title": "Email",
                           "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                           "examples": [
@@ -7467,7 +7467,7 @@
                     "type": "string",
                     "allOf": [
                       {
-                        "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                        "format": "email",
                         "title": "Email",
                         "description": "Personal email address. The invite will be sent here.",
                         "examples": [
@@ -7484,7 +7484,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -7757,7 +7757,7 @@
                       "type": "string",
                       "allOf": [
                         {
-                          "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                          "format": "email",
                           "title": "Email",
                           "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                           "examples": [
@@ -7999,7 +7999,7 @@
                     "type": "string",
                     "allOf": [
                       {
-                        "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                        "format": "email",
                         "title": "Email",
                         "description": "Personal email address. The invite will be sent here.",
                         "examples": [
@@ -8016,7 +8016,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -8576,7 +8576,7 @@
                       "type": "string",
                       "allOf": [
                         {
-                          "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                          "format": "email",
                           "title": "Email",
                           "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                           "examples": [
@@ -11061,7 +11061,7 @@
             "type": "string",
             "allOf": [
               {
-                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                "format": "email",
                 "title": "Email",
                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                 "examples": [
@@ -12208,7 +12208,7 @@
             "type": "string",
             "allOf": [
               {
-                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                "format": "email",
                 "title": "Email",
                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                 "examples": [
@@ -12353,7 +12353,7 @@
             "type": "string",
             "allOf": [
               {
-                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                "format": "email",
                 "title": "Email",
                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                 "examples": [
@@ -13869,7 +13869,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -13884,7 +13884,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -14179,7 +14179,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -14194,7 +14194,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -14489,7 +14489,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -14504,7 +14504,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -14799,7 +14799,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -14814,7 +14814,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -15109,7 +15109,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -15124,7 +15124,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -15419,7 +15419,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -15434,7 +15434,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -15729,7 +15729,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -15744,7 +15744,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -16039,7 +16039,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -16054,7 +16054,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -16349,7 +16349,7 @@
                         "type": "string",
                         "allOf": [
                           {
-                            "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                            "format": "email",
                             "title": "Email",
                             "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                             "examples": [
@@ -16364,7 +16364,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -16603,7 +16603,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -17372,7 +17372,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -18141,7 +18141,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -18910,7 +18910,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
@@ -19679,7 +19679,7 @@
                             "type": "string",
                             "allOf": [
                               {
-                                "pattern": "^(?!\\.)(?!.*\\.\\.)([a-z0-9!#$%&'*+/=?^_`{|}~\\-.]*)[a-z0-9!#$%&'*+/=?^_`{|}~-]@([a-z0-9][a-z0-9-]*\\.)+[a-z]{2,}$",
+                                "format": "email",
                                 "title": "Email",
                                 "description": "An email with a reasonably valid regex (based on RFC 5321 atext characters)",
                                 "examples": [
