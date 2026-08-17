@@ -9,32 +9,31 @@ export class Policies extends APIResource {
   /**
    * Get the time off policies for your company
    *
-   * @param {PolicyTimeOffGetParams} [query] - The parameters to send with the request.
+   * @param {PolicyTimeOffGetParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<PolicyTimeOffGetResponse>} Success
    *
    * @example
    * ```ts
-   * const timeOffGet = await client.timeOff.policies.timeOffGet();
+   * const timeOffGet = await client.timeOff.policies.timeOffGet({
+   *   limit: 'limit',
+   * });
    * ```
    */
-  timeOffGet(
-    query: PolicyTimeOffGetParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<PolicyTimeOffGetResponse> {
+  timeOffGet(query: PolicyTimeOffGetParams, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
     return this._client.get('/v1/time_off/policies', { query, ...options });
   }
 
   /**
    * Get a specific time off policy by id
    *
-   * @param {string} id - a string starting with "top_"
+   * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<PolicyTimeOffGet2Response>} Success
    *
    * @example
    * ```ts
-   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2('top_1234');
+   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
    * ```
    */
   timeOffGet2(id: string, options?: RequestOptions): APIPromise<PolicyTimeOffGet2Response> {
@@ -43,42 +42,20 @@ export class Policies extends APIResource {
 }
 
 export interface PolicyTimeOffGetParams {
-  /**
-   * a number less than or equal to 100
-   */
-  limit?: string;
-  /**
-   * a string starting with "top_"
-   * @pattern ^top_
-   */
-  afterId?: string;
-  /**
-   * a string starting with "top_"
-   * @pattern ^top_
-   */
-  beforeId?: string;
+  limit: string | null;
+  afterId?: string | null;
+  beforeId?: string | null;
 }
 
 export interface PolicyTimeOffGetResponse {
   hasMore: boolean;
-  /**
-   * an integer
-   */
   count: number;
   data: Array<PolicyTimeOffGetResponse.Data>;
 }
 
 export namespace PolicyTimeOffGetResponse {
   export interface Data {
-    /**
-     * a string starting with "top_"
-     * @pattern ^top_
-     */
     id: string;
-    /**
-     * a string starting with "tot_"
-     * @pattern ^tot_
-     */
     timeOffTypeId: string;
     timeOffTypeName: string;
     paid: boolean;
@@ -87,22 +64,14 @@ export namespace PolicyTimeOffGetResponse {
     unit: 'hour' | 'day';
     name: string;
     description: string | null;
-    hoursWorkedPerChunk: number | null;
-    minutesPerChunk: number | null;
-    minutesPerPeriod: number | null;
+    hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 }
 
 export interface PolicyTimeOffGet2Response {
-  /**
-   * a string starting with "top_"
-   * @pattern ^top_
-   */
   id: string;
-  /**
-   * a string starting with "tot_"
-   * @pattern ^tot_
-   */
   timeOffTypeId: string;
   timeOffTypeName: string;
   paid: boolean;
@@ -111,9 +80,9 @@ export interface PolicyTimeOffGet2Response {
   unit: 'hour' | 'day';
   name: string;
   description: string | null;
-  hoursWorkedPerChunk: number | null;
-  minutesPerChunk: number | null;
-  minutesPerPeriod: number | null;
+  hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
 }
 export declare namespace Policies {
   export {

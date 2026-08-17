@@ -11,8 +11,6 @@ export {
   Webhooks,
 } from './resources/index';
 export type {
-  Trimmed,
-  NonEmptyTrimmedString,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,
@@ -36,7 +34,6 @@ export type {
   DepartmentCreateResponse,
   DepartmentUpdateParams,
   DepartmentUpdateResponse,
-  Date,
   OfferListParams,
   OfferListResponse,
   OfferCreateParams,
