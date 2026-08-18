@@ -12369,17 +12369,8 @@
               }
             ]
           },
-          "workerId": {
-            "type": "string",
-            "allOf": [
-              {
-                "pattern": "^wrk_",
-                "description": "The id of the worker assigned this pay rate.",
-                "examples": [
-                  "wrk_1234"
-                ]
-              }
-            ]
+          "worker": {
+            "$ref": "#/components/schemas/PublicWorkerReference"
           },
           "type": {
             "$ref": "#/components/schemas/PublicPayRateType"
@@ -12453,7 +12444,7 @@
         },
         "required": [
           "id",
-          "workerId",
+          "worker",
           "type",
           "basis",
           "amount",
