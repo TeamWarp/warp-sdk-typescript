@@ -98,6 +98,12 @@ import {
   type WorkplaceUpdateParams,
 } from './resources/workplaces';
 import {
+  PayRates,
+  type PayRateListResponse,
+  type PayRateGetResponse,
+  type PayRateListParams,
+} from './resources/pay-rates';
+import {
   Webhooks,
   type TimeOffRequestCreatedWebhookEvent,
   type TimeOffRequestReviewedWebhookEvent,
@@ -925,6 +931,7 @@ export class Warp {
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
+  payRates: PayRates = new PayRates(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
@@ -935,6 +942,7 @@ Warp.Offers = Offers;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
+Warp.PayRates = PayRates;
 Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
@@ -1016,6 +1024,13 @@ export declare namespace Warp {
     type WorkplaceListParams as WorkplaceListParams,
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
+  };
+
+  export {
+    PayRates as PayRates,
+    type PayRateListResponse as PayRateListResponse,
+    type PayRateGetResponse as PayRateGetResponse,
+    type PayRateListParams as PayRateListParams,
   };
 
   export {

@@ -5813,7 +5813,14 @@
           }
         },
         "description": "List pay rates visible to the API key. Results may be filtered by worker, effective start date, or regular/additional type. US and global worker rates require their corresponding compensation read scopes.",
-        "summary": "List Pay Rates"
+        "summary": "List Pay Rates",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.payRates.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+          }
+        ]
       }
     },
     "/v1/pay_rates/{id}": {
@@ -5923,7 +5930,14 @@
           }
         },
         "description": "Get a specific pay rate by id. The API key must have the compensation read scope corresponding to the worker.",
-        "summary": "Get Pay Rate"
+        "summary": "Get Pay Rate",
+        "x-codeSamples": [
+          {
+            "lang": "TypeScript",
+            "label": "TypeScript",
+            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.payRates.get('id');\n\nconsole.log(get_);"
+          }
+        ]
       }
     },
     "/v1/time_off/policies": {
