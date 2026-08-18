@@ -72,7 +72,10 @@ export interface PayRateListResponse {
 export namespace PayRateListResponse {
   export interface Data {
     id: string;
-    workerId: string;
+    /**
+     * Basic identifying information for a worker associated with another resource.
+     */
+    worker: Data.Worker;
     /**
      * Whether the rate is the worker's regular base compensation or an additional rate such as a bonus, commission, or stipend.
      */
@@ -161,11 +164,28 @@ export namespace PayRateListResponse {
      */
     description: string | null;
   }
+
+  export namespace Data {
+    export interface Worker {
+      id: string;
+      /**
+       * The worker first name.
+       */
+      firstName: string;
+      /**
+       * The worker last name.
+       */
+      lastName: string;
+    }
+  }
 }
 
 export interface PayRateGetResponse {
   id: string;
-  workerId: string;
+  /**
+   * Basic identifying information for a worker associated with another resource.
+   */
+  worker: PayRateGetResponse.Worker;
   /**
    * Whether the rate is the worker's regular base compensation or an additional rate such as a bonus, commission, or stipend.
    */
@@ -253,6 +273,20 @@ export interface PayRateGetResponse {
    * A human-readable label for the pay rate, when one is configured.
    */
   description: string | null;
+}
+
+export namespace PayRateGetResponse {
+  export interface Worker {
+    id: string;
+    /**
+     * The worker first name.
+     */
+    firstName: string;
+    /**
+     * The worker last name.
+     */
+    lastName: string;
+  }
 }
 export declare namespace PayRates {
   export {
