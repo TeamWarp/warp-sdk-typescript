@@ -267,6 +267,10 @@ export namespace WorkerListResponse {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -331,7 +335,7 @@ export namespace WorkerListResponse {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -378,6 +382,10 @@ export namespace WorkerGetResponse {
 
   export interface Compensation {
     payRateId: string;
+    /**
+     * The period for the pay rate.
+     */
+    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
     amount: string;
     currency:
       | 'USD'
@@ -442,7 +450,7 @@ export namespace WorkerGetResponse {
       | 'XAF'
       | 'PEN';
     /**
-     * The server-formatted display string for the amount in its currency.
+     * The server-formatted pay rate, including its period.
      */
     display: string;
   }
@@ -521,6 +529,10 @@ export namespace WorkerCreateEmployeeResponse {
 
   export interface Compensation {
     payRateId: string;
+    /**
+     * The period for the pay rate.
+     */
+    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
     amount: string;
     currency:
       | 'USD'
@@ -585,7 +597,7 @@ export namespace WorkerCreateEmployeeResponse {
       | 'XAF'
       | 'PEN';
     /**
-     * The server-formatted display string for the amount in its currency.
+     * The server-formatted pay rate, including its period.
      */
     display: string;
   }
@@ -973,6 +985,10 @@ export namespace WorkerCreateContractorResponse {
 
   export interface Compensation {
     payRateId: string;
+    /**
+     * The period for the pay rate.
+     */
+    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
     amount: string;
     currency:
       | 'USD'
@@ -1037,7 +1053,7 @@ export namespace WorkerCreateContractorResponse {
       | 'XAF'
       | 'PEN';
     /**
-     * The server-formatted display string for the amount in its currency.
+     * The server-formatted pay rate, including its period.
      */
     display: string;
   }
@@ -1083,6 +1099,10 @@ export namespace WorkerInviteResponse {
 
   export interface Compensation {
     payRateId: string;
+    /**
+     * The period for the pay rate.
+     */
+    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
     amount: string;
     currency:
       | 'USD'
@@ -1147,7 +1167,7 @@ export namespace WorkerInviteResponse {
       | 'XAF'
       | 'PEN';
     /**
-     * The server-formatted display string for the amount in its currency.
+     * The server-formatted pay rate, including its period.
      */
     display: string;
   }

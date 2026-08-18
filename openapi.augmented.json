@@ -9749,6 +9749,16 @@
           "NaN"
         ]
       },
+      "PublicPayRateBasis": {
+        "type": "string",
+        "enum": [
+          "yearly",
+          "monthly",
+          "weekly",
+          "hourly"
+        ],
+        "description": "The period for the pay rate."
+      },
       "PublicWorkerCompensation": {
         "type": "object",
         "properties": {
@@ -9764,6 +9774,9 @@
               }
             ]
           },
+          "basis": {
+            "$ref": "#/components/schemas/PublicPayRateBasis"
+          },
           "amount": {
             "type": "integer",
             "allOf": [
@@ -9778,15 +9791,17 @@
           },
           "display": {
             "type": "string",
-            "description": "The server-formatted display string for the amount in its currency.",
+            "description": "The server-formatted pay rate, including its period.",
             "examples": [
-              "$150,000.00",
-              "$85.50"
+              "$150,000.00 / yr",
+              "$10,000.00 / month",
+              "$50.00 / hr"
             ]
           }
         },
         "required": [
           "payRateId",
+          "basis",
           "amount",
           "currency",
           "display"
@@ -12343,17 +12358,6 @@
         ],
         "description": "Whether the rate is the worker's regular base compensation or an additional rate such as a bonus, commission, or stipend."
       },
-      "PublicPayRateBasis": {
-        "type": "string",
-        "enum": [
-          "salary",
-          "monthly",
-          "weekly",
-          "hourly",
-          "variable"
-        ],
-        "description": "The period or calculation basis for the pay rate."
-      },
       "PublicPayRate": {
         "type": "object",
         "properties": {
@@ -12392,10 +12396,11 @@
           },
           "display": {
             "type": "string",
-            "description": "The server-formatted display string for the amount in its currency.",
+            "description": "The server-formatted pay rate, including its period.",
             "examples": [
-              "$150,000.00",
-              "$85.50"
+              "$150,000.00 / yr",
+              "$10,000.00 / month",
+              "$50.00 / hr"
             ]
           },
           "effectiveStartDate": {

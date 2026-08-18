@@ -247,6 +247,33 @@
       }
     },
     {
+      "name": "public_pay_rate_basis",
+      "source": "public_pay_rate_basis",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "yearly",
+          "monthly",
+          "weekly",
+          "hourly"
+        ],
+        "names": [
+          "Yearly",
+          "Monthly",
+          "Weekly",
+          "Hourly"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
       "name": "public_worker_compensation",
       "source": "public_worker_compensation",
       "publicAliases": [],
@@ -270,6 +297,16 @@
                   }
                 }
               ]
+            }
+          },
+          {
+            "name": "basis",
+            "publicName": "basis",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_pay_rate_basis"
             }
           },
           {
@@ -307,7 +344,7 @@
               "source": [
                 "examples"
               ],
-              "examples": "$150,000.00"
+              "examples": "$150,000.00 / yr"
             },
             "type": {
               "kind": "primitive",
@@ -5515,36 +5552,6 @@
       }
     },
     {
-      "name": "public_pay_rate_basis",
-      "source": "public_pay_rate_basis",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "salary",
-          "monthly",
-          "weekly",
-          "hourly",
-          "variable"
-        ],
-        "names": [
-          "Salary",
-          "Monthly",
-          "Weekly",
-          "Hourly",
-          "Variable"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
       "name": "public_pay_rate",
       "source": "public_pay_rate",
       "publicAliases": [],
@@ -5635,7 +5642,7 @@
               "source": [
                 "examples"
               ],
-              "examples": "$150,000.00"
+              "examples": "$150,000.00 / yr"
             },
             "type": {
               "kind": "primitive",

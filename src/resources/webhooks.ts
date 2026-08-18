@@ -278,6 +278,10 @@ export namespace WorkerCreatedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -342,7 +346,7 @@ export namespace WorkerCreatedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -406,6 +410,10 @@ export namespace WorkerUpdatedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -470,7 +478,7 @@ export namespace WorkerUpdatedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -534,6 +542,10 @@ export namespace WorkerDeletedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -598,7 +610,7 @@ export namespace WorkerDeletedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -662,6 +674,10 @@ export namespace WorkerInviteSentWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -726,7 +742,7 @@ export namespace WorkerInviteSentWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -790,6 +806,10 @@ export namespace WorkerInviteAcceptedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -854,7 +874,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -918,6 +938,10 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -982,7 +1006,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -1046,6 +1070,10 @@ export namespace WorkerOffboardingStartedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -1110,7 +1138,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -1174,6 +1202,10 @@ export namespace WorkerOffboardedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -1238,7 +1270,7 @@ export namespace WorkerOffboardedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
@@ -1302,6 +1334,10 @@ export namespace WorkerReactivatedWebhookEvent {
 
     export interface Compensation {
       payRateId: string;
+      /**
+       * The period for the pay rate.
+       */
+      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
       amount: string;
       currency:
         | 'USD'
@@ -1366,7 +1402,7 @@ export namespace WorkerReactivatedWebhookEvent {
         | 'XAF'
         | 'PEN';
       /**
-       * The server-formatted display string for the amount in its currency.
+       * The server-formatted pay rate, including its period.
        */
       display: string;
     }
