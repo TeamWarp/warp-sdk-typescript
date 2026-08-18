@@ -489,6 +489,26 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
       const update = await client.workplaces.update('id', {});
     },
   },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/pay_rates',
+    run: async () => {
+      const list = await client.payRates.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/pay_rates/{id}',
+    run: async () => {
+      const get_ = await client.payRates.get('id');
+    },
+  },
 ];
 
 const main = async (): Promise<void> => {

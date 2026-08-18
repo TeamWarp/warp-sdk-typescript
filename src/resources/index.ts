@@ -72,6 +72,8 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
+export { PayRates } from './pay-rates';
+export type { PayRateListParams, PayRateListResponse, PayRateGetResponse } from './pay-rates';
 export { Webhooks } from './webhooks';
 export type {
   TimeOffRequestCreatedWebhookEvent,

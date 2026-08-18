@@ -8,6 +8,7 @@ export {
   TimeOff,
   Workers,
   Workplaces,
+  PayRates,
   Webhooks,
 } from './resources/index';
 export type {
@@ -64,6 +65,9 @@ export type {
   WorkplaceCreateResponse,
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
+  PayRateListParams,
+  PayRateListResponse,
+  PayRateGetResponse,
   TimeOffRequestCreatedWebhookEvent,
   TimeOffRequestReviewedWebhookEvent,
   TimeOffRequestDeletedWebhookEvent,
