@@ -72,6 +72,69 @@ export class Workplaces extends APIResource {
   }
 }
 
+/**
+ * A valid US address
+ */
+export interface Objects11 {
+  line1: string;
+  city: string;
+  postalCode: string;
+  state:
+    | 'AL'
+    | 'AK'
+    | 'AZ'
+    | 'AR'
+    | 'CA'
+    | 'CO'
+    | 'CT'
+    | 'DC'
+    | 'DE'
+    | 'FL'
+    | 'GA'
+    | 'HI'
+    | 'ID'
+    | 'IL'
+    | 'IN'
+    | 'IA'
+    | 'KS'
+    | 'KY'
+    | 'LA'
+    | 'ME'
+    | 'MD'
+    | 'MA'
+    | 'MI'
+    | 'MN'
+    | 'MS'
+    | 'MO'
+    | 'MT'
+    | 'NE'
+    | 'NV'
+    | 'NH'
+    | 'NJ'
+    | 'NM'
+    | 'NY'
+    | 'NC'
+    | 'ND'
+    | 'OH'
+    | 'OK'
+    | 'OR'
+    | 'PA'
+    | 'RI'
+    | 'SC'
+    | 'SD'
+    | 'TN'
+    | 'TX'
+    | 'UT'
+    | 'VT'
+    | 'VA'
+    | 'WA'
+    | 'WV'
+    | 'WI'
+    | 'WY';
+  country: 'US';
+  line2?: string | null;
+}
+
 export interface WorkplaceListParams {
   limit: string | null;
   afterId?: string | null;
@@ -93,70 +156,8 @@ export namespace WorkplaceListResponse {
     /**
      * A valid US address
      */
-    address: Data.Address;
+    address: Objects11;
     createdAt: string;
-  }
-
-  export namespace Data {
-    export interface Address {
-      line1: string;
-      city: string;
-      postalCode: string;
-      state:
-        | 'AL'
-        | 'AK'
-        | 'AZ'
-        | 'AR'
-        | 'CA'
-        | 'CO'
-        | 'CT'
-        | 'DC'
-        | 'DE'
-        | 'FL'
-        | 'GA'
-        | 'HI'
-        | 'ID'
-        | 'IL'
-        | 'IN'
-        | 'IA'
-        | 'KS'
-        | 'KY'
-        | 'LA'
-        | 'ME'
-        | 'MD'
-        | 'MA'
-        | 'MI'
-        | 'MN'
-        | 'MS'
-        | 'MO'
-        | 'MT'
-        | 'NE'
-        | 'NV'
-        | 'NH'
-        | 'NJ'
-        | 'NM'
-        | 'NY'
-        | 'NC'
-        | 'ND'
-        | 'OH'
-        | 'OK'
-        | 'OR'
-        | 'PA'
-        | 'RI'
-        | 'SC'
-        | 'SD'
-        | 'TN'
-        | 'TX'
-        | 'UT'
-        | 'VT'
-        | 'VA'
-        | 'WA'
-        | 'WV'
-        | 'WI'
-        | 'WY';
-      country: 'US';
-      line2?: string | null;
-    }
   }
 }
 
@@ -166,69 +167,7 @@ export interface WorkplaceCreateParams {
   /**
    * A valid US address
    */
-  address: WorkplaceCreateParams.Address;
-}
-
-export namespace WorkplaceCreateParams {
-  export interface Address {
-    line1: string;
-    city: string;
-    postalCode: string;
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-    country: 'US';
-    line2?: string | null;
-  }
+  address: Objects11;
 }
 
 export interface WorkplaceCreateResponse {
@@ -239,70 +178,8 @@ export interface WorkplaceCreateResponse {
   /**
    * A valid US address
    */
-  address: WorkplaceCreateResponse.Address;
+  address: Objects11;
   createdAt: string;
-}
-
-export namespace WorkplaceCreateResponse {
-  export interface Address {
-    line1: string;
-    city: string;
-    postalCode: string;
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-    country: 'US';
-    line2?: string | null;
-  }
 }
 
 export interface WorkplaceUpdateParams {
@@ -317,73 +194,12 @@ export interface WorkplaceUpdateResponse {
   /**
    * A valid US address
    */
-  address: WorkplaceUpdateResponse.Address;
+  address: Objects11;
   createdAt: string;
-}
-
-export namespace WorkplaceUpdateResponse {
-  export interface Address {
-    line1: string;
-    city: string;
-    postalCode: string;
-    state:
-      | 'AL'
-      | 'AK'
-      | 'AZ'
-      | 'AR'
-      | 'CA'
-      | 'CO'
-      | 'CT'
-      | 'DC'
-      | 'DE'
-      | 'FL'
-      | 'GA'
-      | 'HI'
-      | 'ID'
-      | 'IL'
-      | 'IN'
-      | 'IA'
-      | 'KS'
-      | 'KY'
-      | 'LA'
-      | 'ME'
-      | 'MD'
-      | 'MA'
-      | 'MI'
-      | 'MN'
-      | 'MS'
-      | 'MO'
-      | 'MT'
-      | 'NE'
-      | 'NV'
-      | 'NH'
-      | 'NJ'
-      | 'NM'
-      | 'NY'
-      | 'NC'
-      | 'ND'
-      | 'OH'
-      | 'OK'
-      | 'OR'
-      | 'PA'
-      | 'RI'
-      | 'SC'
-      | 'SD'
-      | 'TN'
-      | 'TX'
-      | 'UT'
-      | 'VT'
-      | 'VA'
-      | 'WA'
-      | 'WV'
-      | 'WI'
-      | 'WY';
-    country: 'US';
-    line2?: string | null;
-  }
 }
 export declare namespace Workplaces {
   export {
+    type Objects11 as Objects11,
     type WorkplaceListResponse as WorkplaceListResponse,
     type WorkplaceCreateResponse as WorkplaceCreateResponse,
     type WorkplaceUpdateResponse as WorkplaceUpdateResponse,

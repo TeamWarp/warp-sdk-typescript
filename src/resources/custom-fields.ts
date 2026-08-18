@@ -245,6 +245,16 @@ export class CustomFields extends APIResource {
   }
 }
 
+export type Union9 = Record<string, unknown> | null;
+
+export interface Objects2 {
+  label: string;
+  value: string;
+  sortOrder?: number | Union1 | null;
+}
+
+export type Union1 = 'Infinity' | '-Infinity' | 'NaN';
+
 export type CustomFieldListResponse = Array<CustomFieldListResponse.CustomFieldListResponseItem>;
 
 export namespace CustomFieldListResponse {
@@ -273,15 +283,7 @@ export interface CustomFieldCreateParams {
   accessLevel?: 'admins' | 'manager' | 'worker' | null;
   inputBy?: 'admin' | 'worker' | null;
   required?: boolean | null;
-  options?: Array<CustomFieldCreateParams.Option> | null;
-}
-
-export namespace CustomFieldCreateParams {
-  export interface Option {
-    label: string;
-    value: string;
-    sortOrder?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-  }
+  options?: Array<Objects2> | null;
 }
 
 export interface CustomFieldCreateResponse {
@@ -320,7 +322,7 @@ export namespace CustomFieldRetrieveResponse {
     id: string;
     label: string;
     value: string;
-    sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+    sortOrder: number | Union1;
     status: 'active' | 'archived';
     createdAt: string;
   }
@@ -369,28 +371,28 @@ export interface CustomFieldArchiveResponse {
 export interface CustomFieldCreateOptionParams {
   label: string;
   value: string;
-  sortOrder?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  sortOrder?: number | Union1 | null;
 }
 
 export interface CustomFieldCreateOptionResponse {
   id: string;
   label: string;
   value: string;
-  sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+  sortOrder: number | Union1;
   status: 'active' | 'archived';
   createdAt: string;
 }
 
 export interface CustomFieldUpdateOptionParams {
   label?: string | null;
-  sortOrder?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  sortOrder?: number | Union1 | null;
 }
 
 export interface CustomFieldUpdateOptionResponse {
   id: string;
   label: string;
   value: string;
-  sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+  sortOrder: number | Union1;
   status: 'active' | 'archived';
   createdAt: string;
 }
@@ -399,7 +401,7 @@ export interface CustomFieldArchiveOptionResponse {
   id: string;
   label: string;
   value: string;
-  sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+  sortOrder: number | Union1;
   status: 'active' | 'archived';
   createdAt: string;
 }
@@ -437,7 +439,7 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value2 {
       type: 'number';
-      value: number | 'Infinity' | '-Infinity' | 'NaN';
+      value: number | Union1;
     }
 
     export interface Value3 {
@@ -452,7 +454,7 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value5 {
       type: 'currency';
-      amount: number | 'Infinity' | '-Infinity' | 'NaN';
+      amount: number | Union1;
       currencyCode:
         | 'USD'
         | 'AUD'
@@ -519,7 +521,7 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value6 {
       type: 'percentage';
-      value: number | 'Infinity' | '-Infinity' | 'NaN';
+      value: number | Union1;
     }
 
     export interface Value7 {
@@ -532,7 +534,7 @@ export namespace CustomFieldListValuesResponse {
         id: string;
         label: string;
         value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        sortOrder: number | Union1;
         status: 'active' | 'archived';
         createdAt: string;
       }
@@ -548,7 +550,7 @@ export namespace CustomFieldListValuesResponse {
         id: string;
         label: string;
         value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        sortOrder: number | Union1;
         status: 'active' | 'archived';
         createdAt: string;
       }
@@ -578,7 +580,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value2 {
     type: 'number';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: number | Union1;
   }
 
   export interface Value3 {
@@ -593,7 +595,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | 'Infinity' | '-Infinity' | 'NaN';
+    amount: number | Union1;
     currencyCode:
       | 'USD'
       | 'AUD'
@@ -660,7 +662,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value6 {
     type: 'percentage';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: number | Union1;
   }
 
   export interface Value7 {
@@ -698,7 +700,7 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value2 {
     type: 'number';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: number | Union1;
   }
 
   export interface Value3 {
@@ -713,7 +715,7 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | 'Infinity' | '-Infinity' | 'NaN';
+    amount: number | Union1;
     currencyCode:
       | 'USD'
       | 'AUD'
@@ -780,7 +782,7 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value6 {
     type: 'percentage';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: number | Union1;
   }
 
   export interface Value7 {
@@ -793,7 +795,7 @@ export namespace CustomFieldUpsertValueResponse {
       id: string;
       label: string;
       value: string;
-      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      sortOrder: number | Union1;
       status: 'active' | 'archived';
       createdAt: string;
     }
@@ -809,7 +811,7 @@ export namespace CustomFieldUpsertValueResponse {
       id: string;
       label: string;
       value: string;
-      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      sortOrder: number | Union1;
       status: 'active' | 'archived';
       createdAt: string;
     }
@@ -822,6 +824,9 @@ export interface CustomFieldClearValueParams {
 }
 export declare namespace CustomFields {
   export {
+    type Union9 as Union9,
+    type Objects2 as Objects2,
+    type Union1 as Union1,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldRetrieveResponse as CustomFieldRetrieveResponse,

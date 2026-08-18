@@ -37,6 +37,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [Void Offer](#void-offer)
   - [Extend Offer Deadline](#extend-offer-deadline)
   - [Resend Offer](#resend-offer)
+- [`PayRates`](#payrates)
+  - [List Pay Rates](#list-pay-rates)
+  - [Get Pay Rate](#get-pay-rate)
 - [`TimeOff`](#timeoff)
   - [List Time Off Assignments](#list-time-off-assignments)
   - [List Time Off Balances](#list-time-off-balances)
@@ -453,6 +456,35 @@ Resend the offer email to the candidate for a sent offer.
 const resend = await client.offers.resend('id');
 ```
 
+## `PayRates`
+
+### List Pay Rates
+
+List pay rates visible to the API key. Results may be filtered by worker, effective start date, or regular/additional type. US and global worker rates require their corresponding compensation read scopes.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PayRateListParams`](./src/resources/pay-rates.ts) |
+| Response | [`PayRateListResponse`](./src/resources/pay-rates.ts) |
+
+```ts
+const list = await client.payRates.list({
+  limit: 'limit',
+});
+```
+
+### Get Pay Rate
+
+Get a specific pay rate by id. The API key must have the compensation read scope corresponding to the worker.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PayRateRetrieveResponse`](./src/resources/pay-rates.ts) |
+
+```ts
+const retrieve = await client.payRates.retrieve('id');
+```
+
 ## `TimeOff`
 
 ### List Time Off Assignments
@@ -508,11 +540,11 @@ Get the time off policies for your company
 
 | Direction | Type |
 | --- | --- |
-| Request | [`PolicyTimeOffGetParams`](./src/resources/time-off/policies.ts) |
-| Response | [`PolicyTimeOffGetResponse`](./src/resources/time-off/policies.ts) |
+| Request | [`PolicyListParams`](./src/resources/time-off/policies.ts) |
+| Response | [`PolicyListResponse`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const timeOffGet = await client.timeOff.policies.timeOffGet({
+const list = await client.timeOff.policies.list({
   limit: 'limit',
 });
 ```
@@ -523,10 +555,10 @@ Get a specific time off policy by id
 
 | Direction | Type |
 | --- | --- |
-| Response | [`PolicyTimeOffGet2Response`](./src/resources/time-off/policies.ts) |
+| Response | [`PolicyGetResponse`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
+const get_ = await client.timeOff.policies.get('id');
 ```
 
 ## `Workers`

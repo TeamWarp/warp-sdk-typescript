@@ -10,4 +10,4 @@ export type {
   TimeOffListRequestsResponse,
 } from './time-off';
 export { Policies } from './policies';
-export type { PolicyTimeOffGetParams, PolicyTimeOffGetResponse, PolicyTimeOffGet2Response } from './policies';
+export type { PolicyListParams, PolicyListResponse, PolicyGetResponse } from './policies';

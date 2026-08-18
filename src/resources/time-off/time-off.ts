@@ -3,13 +3,9 @@
 import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
+import type * as CustomFieldsAPI from '../custom-fields';
 import * as PoliciesAPI from './policies';
-import {
-  Policies,
-  type PolicyTimeOffGetResponse,
-  type PolicyTimeOffGet2Response,
-  type PolicyTimeOffGetParams,
-} from './policies';
+import { Policies, type PolicyListResponse, type PolicyGetResponse, type PolicyListParams } from './policies';
 
 export class TimeOff extends APIResource {
   policies: PoliciesAPI.Policies = new PoliciesAPI.Policies(this._client);
@@ -122,11 +118,11 @@ export namespace TimeOffListBalancesResponse {
     id: string;
     policyId: string;
     legacyWorkerId: string;
-    accruedUnlocked: number | 'Infinity' | '-Infinity' | 'NaN';
-    accruedLocked: number | 'Infinity' | '-Infinity' | 'NaN';
-    used: number | 'Infinity' | '-Infinity' | 'NaN';
-    holds: number | 'Infinity' | '-Infinity' | 'NaN';
-    available: number | 'Infinity' | '-Infinity' | 'NaN';
+    accruedUnlocked: number | CustomFieldsAPI.Union1;
+    accruedLocked: number | CustomFieldsAPI.Union1;
+    used: number | CustomFieldsAPI.Union1;
+    holds: number | CustomFieldsAPI.Union1;
+    available: number | CustomFieldsAPI.Union1;
   }
 }
 
@@ -161,7 +157,7 @@ export namespace TimeOffListRequestsResponse {
     endRangeType: 'date' | 'datetime';
     reason: string | null;
     createdAt: string;
-    requestedMinutes: number | 'Infinity' | '-Infinity' | 'NaN';
+    requestedMinutes: number | CustomFieldsAPI.Union1;
     /**
      * The time zone that the worker is requesting time off in.
      */
@@ -182,8 +178,8 @@ export declare namespace TimeOff {
 
   export {
     Policies as Policies,
-    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
-    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
-    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
+    type PolicyListResponse as PolicyListResponse,
+    type PolicyGetResponse as PolicyGetResponse,
+    type PolicyListParams as PolicyListParams,
   };
 }
