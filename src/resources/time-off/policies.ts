@@ -9,18 +9,18 @@ export class Policies extends APIResource {
   /**
    * Get the time off policies for your company
    *
-   * @param {PolicyTimeOffGetParams} query - The parameters to send with the request.
+   * @param {PolicyListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PolicyTimeOffGetResponse>} Success
+   * @returns {APIPromise<PolicyListResponse>} Success
    *
    * @example
    * ```ts
-   * const timeOffGet = await client.timeOff.policies.timeOffGet({
+   * const list = await client.timeOff.policies.list({
    *   limit: 'limit',
    * });
    * ```
    */
-  timeOffGet(query: PolicyTimeOffGetParams, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
+  list(query: PolicyListParams, options?: RequestOptions): APIPromise<PolicyListResponse> {
     return this._client.get('/v1/time_off/policies', { query, ...options });
   }
 
@@ -29,31 +29,31 @@ export class Policies extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PolicyTimeOffGet2Response>} Success
+   * @returns {APIPromise<PolicyGetResponse>} Success
    *
    * @example
    * ```ts
-   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
+   * const get_ = await client.timeOff.policies.get('id');
    * ```
    */
-  timeOffGet2(id: string, options?: RequestOptions): APIPromise<PolicyTimeOffGet2Response> {
+  get(id: string, options?: RequestOptions): APIPromise<PolicyGetResponse> {
     return this._client.get(__scalarPath`/v1/time_off/policies/${id}`, options);
   }
 }
 
-export interface PolicyTimeOffGetParams {
+export interface PolicyListParams {
   limit: string | null;
   afterId?: string | null;
   beforeId?: string | null;
 }
 
-export interface PolicyTimeOffGetResponse {
+export interface PolicyListResponse {
   hasMore: boolean;
   count: number;
-  data: Array<PolicyTimeOffGetResponse.Data>;
+  data: Array<PolicyListResponse.Data>;
 }
 
-export namespace PolicyTimeOffGetResponse {
+export namespace PolicyListResponse {
   export interface Data {
     id: string;
     timeOffTypeId: string;
@@ -70,7 +70,7 @@ export namespace PolicyTimeOffGetResponse {
   }
 }
 
-export interface PolicyTimeOffGet2Response {
+export interface PolicyGetResponse {
   id: string;
   timeOffTypeId: string;
   timeOffTypeName: string;
@@ -86,8 +86,8 @@ export interface PolicyTimeOffGet2Response {
 }
 export declare namespace Policies {
   export {
-    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
-    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
-    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
+    type PolicyListResponse as PolicyListResponse,
+    type PolicyGetResponse as PolicyGetResponse,
+    type PolicyListParams as PolicyListParams,
   };
 }

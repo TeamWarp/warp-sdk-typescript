@@ -4,12 +4,7 @@ import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import * as PoliciesAPI from './policies';
-import {
-  Policies,
-  type PolicyTimeOffGetResponse,
-  type PolicyTimeOffGet2Response,
-  type PolicyTimeOffGetParams,
-} from './policies';
+import { Policies, type PolicyListResponse, type PolicyGetResponse, type PolicyListParams } from './policies';
 
 export class TimeOff extends APIResource {
   policies: PoliciesAPI.Policies = new PoliciesAPI.Policies(this._client);
@@ -182,8 +177,8 @@ export declare namespace TimeOff {
 
   export {
     Policies as Policies,
-    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
-    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
-    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
+    type PolicyListResponse as PolicyListResponse,
+    type PolicyGetResponse as PolicyGetResponse,
+    type PolicyListParams as PolicyListParams,
   };
 }
