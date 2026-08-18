@@ -41,6 +41,8 @@ export type {
   OfferExtendDeadlineResponse,
   OfferResendResponse,
 } from './offers';
+export { PayRates } from './pay-rates';
+export type { PayRateListParams, PayRateListResponse, PayRateGetResponse } from './pay-rates';
 export { TimeOff } from './time-off/time-off';
 export type {
   TimeOffListAssignmentsParams,
@@ -65,6 +67,7 @@ export type {
 } from './workers';
 export { Workplaces } from './workplaces';
 export type {
+  Objects11,
   WorkplaceListParams,
   WorkplaceListResponse,
   WorkplaceCreateParams,
@@ -72,8 +75,6 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
-export { PayRates } from './pay-rates';
-export type { PayRateListParams, PayRateListResponse, PayRateGetResponse } from './pay-rates';
 export { Webhooks } from './webhooks';
 export type {
   TimeOffRequestCreatedWebhookEvent,

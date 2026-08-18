@@ -37,6 +37,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [Void Offer](#void-offer)
   - [Extend Offer Deadline](#extend-offer-deadline)
   - [Resend Offer](#resend-offer)
+- [`PayRates`](#payrates)
+  - [List Pay Rates](#list-pay-rates)
+  - [Get Pay Rate](#get-pay-rate)
 - [`TimeOff`](#timeoff)
   - [List Time Off Assignments](#list-time-off-assignments)
   - [List Time Off Balances](#list-time-off-balances)
@@ -55,9 +58,6 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [List Workplaces](#list-workplaces)
   - [Create Workplace](#create-workplace)
   - [Update Workplace](#update-workplace)
-- [`PayRates`](#payrates)
-  - [List Pay Rates](#list-pay-rates)
-  - [Get Pay Rate](#get-pay-rate)
 
 ## Setup
 
@@ -456,6 +456,35 @@ Resend the offer email to the candidate for a sent offer.
 const resend = await client.offers.resend('id');
 ```
 
+## `PayRates`
+
+### List Pay Rates
+
+List pay rates visible to the API key. Results may be filtered by worker, effective start date, or regular/additional type. US and global worker rates require their corresponding compensation read scopes.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PayRateListParams`](./src/resources/pay-rates.ts) |
+| Response | [`PayRateListResponse`](./src/resources/pay-rates.ts) |
+
+```ts
+const list = await client.payRates.list({
+  limit: 'limit',
+});
+```
+
+### Get Pay Rate
+
+Get a specific pay rate by id. The API key must have the compensation read scope corresponding to the worker.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PayRateGetResponse`](./src/resources/pay-rates.ts) |
+
+```ts
+const get_ = await client.payRates.get('id');
+```
+
 ## `TimeOff`
 
 ### List Time Off Assignments
@@ -684,33 +713,4 @@ Update an existing workplace.
 
 ```ts
 const update = await client.workplaces.update('id', {});
-```
-
-## `PayRates`
-
-### List Pay Rates
-
-List pay rates visible to the API key. Results may be filtered by worker, effective start date, or regular/additional type. US and global worker rates require their corresponding compensation read scopes.
-
-| Direction | Type |
-| --- | --- |
-| Request | [`PayRateListParams`](./src/resources/pay-rates.ts) |
-| Response | [`PayRateListResponse`](./src/resources/pay-rates.ts) |
-
-```ts
-const list = await client.payRates.list({
-  limit: 'limit',
-});
-```
-
-### Get Pay Rate
-
-Get a specific pay rate by id. The API key must have the compensation read scope corresponding to the worker.
-
-| Direction | Type |
-| --- | --- |
-| Response | [`PayRateGetResponse`](./src/resources/pay-rates.ts) |
-
-```ts
-const get_ = await client.payRates.get('id');
 ```
