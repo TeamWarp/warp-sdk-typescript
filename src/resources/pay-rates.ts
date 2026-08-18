@@ -81,9 +81,9 @@ export namespace PayRateListResponse {
      */
     type: 'regular' | 'additional';
     /**
-     * The period or calculation basis for the pay rate.
+     * The period for the pay rate.
      */
-    basis: 'salary' | 'monthly' | 'weekly' | 'hourly' | 'variable';
+    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
     amount: string;
     currency:
       | 'USD'
@@ -148,7 +148,7 @@ export namespace PayRateListResponse {
       | 'XAF'
       | 'PEN';
     /**
-     * The server-formatted display string for the amount in its currency.
+     * The server-formatted pay rate, including its period.
      */
     display: string;
     /**
@@ -191,9 +191,9 @@ export interface PayRateGetResponse {
    */
   type: 'regular' | 'additional';
   /**
-   * The period or calculation basis for the pay rate.
+   * The period for the pay rate.
    */
-  basis: 'salary' | 'monthly' | 'weekly' | 'hourly' | 'variable';
+  basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
   amount: string;
   currency:
     | 'USD'
@@ -258,7 +258,7 @@ export interface PayRateGetResponse {
     | 'XAF'
     | 'PEN';
   /**
-   * The server-formatted display string for the amount in its currency.
+   * The server-formatted pay rate, including its period.
    */
   display: string;
   /**
