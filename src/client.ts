@@ -28,9 +28,6 @@ import { VERSION } from './version';
 import { Benefits } from './resources/benefits/benefits';
 import {
   CustomFields,
-  type Union9,
-  type Objects2,
-  type Union1,
   type CustomFieldListResponse,
   type CustomFieldCreateResponse,
   type CustomFieldRetrieveResponse,
@@ -70,12 +67,6 @@ import {
   type OfferExtendDeadlineParams,
 } from './resources/offers';
 import {
-  PayRates,
-  type PayRateListResponse,
-  type PayRateRetrieveResponse,
-  type PayRateListParams,
-} from './resources/pay-rates';
-import {
   TimeOff,
   type TimeOffListAssignmentsResponse,
   type TimeOffListBalancesResponse,
@@ -99,7 +90,6 @@ import {
 } from './resources/workers';
 import {
   Workplaces,
-  type Objects11,
   type WorkplaceListResponse,
   type WorkplaceCreateResponse,
   type WorkplaceUpdateResponse,
@@ -932,7 +922,6 @@ export class Warp {
   customFields: CustomFields = new CustomFields(this);
   departments: Departments = new Departments(this);
   offers: Offers = new Offers(this);
-  payRates: PayRates = new PayRates(this);
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
@@ -943,7 +932,6 @@ Warp.Benefits = Benefits;
 Warp.CustomFields = CustomFields;
 Warp.Departments = Departments;
 Warp.Offers = Offers;
-Warp.PayRates = PayRates;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
@@ -955,9 +943,6 @@ export declare namespace Warp {
 
   export {
     CustomFields as CustomFields,
-    type Union9 as Union9,
-    type Objects2 as Objects2,
-    type Union1 as Union1,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldRetrieveResponse as CustomFieldRetrieveResponse,
@@ -1000,13 +985,6 @@ export declare namespace Warp {
   };
 
   export {
-    PayRates as PayRates,
-    type PayRateListResponse as PayRateListResponse,
-    type PayRateRetrieveResponse as PayRateRetrieveResponse,
-    type PayRateListParams as PayRateListParams,
-  };
-
-  export {
     TimeOff as TimeOff,
     type TimeOffListAssignmentsResponse as TimeOffListAssignmentsResponse,
     type TimeOffListBalancesResponse as TimeOffListBalancesResponse,
@@ -1032,7 +1010,6 @@ export declare namespace Warp {
 
   export {
     Workplaces as Workplaces,
-    type Objects11 as Objects11,
     type WorkplaceListResponse as WorkplaceListResponse,
     type WorkplaceCreateResponse as WorkplaceCreateResponse,
     type WorkplaceUpdateResponse as WorkplaceUpdateResponse,

@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 import { APIResource } from '../resource';
-import * as Union1API from './custom-fields';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -217,8 +216,8 @@ export namespace TimeOffBalanceAdjustedWebhookEvent {
      * The date the adjustment takes effect. Omitted when no balance snapshot was captured.
      */
     effectiveDate?: string | null;
-    previousBalance?: Union1API.Union1;
-    newBalance?: Union1API.Union1;
+    previousBalance?: 'Infinity' | '-Infinity' | 'NaN';
+    newBalance?: 'Infinity' | '-Infinity' | 'NaN';
   }
 }
 

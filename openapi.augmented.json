@@ -5813,14 +5813,7 @@
           }
         },
         "description": "List pay rates visible to the API key. Results may be filtered by worker, effective start date, or regular/additional type. US and global worker rates require their corresponding compensation read scopes.",
-        "summary": "List Pay Rates",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.payRates.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
-          }
-        ]
+        "summary": "List Pay Rates"
       }
     },
     "/v1/pay_rates/{id}": {
@@ -5930,14 +5923,7 @@
           }
         },
         "description": "Get a specific pay rate by id. The API key must have the compensation read scope corresponding to the worker.",
-        "summary": "Get Pay Rate",
-        "x-codeSamples": [
-          {
-            "lang": "TypeScript",
-            "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.payRates.retrieve('id');\n\nconsole.log(retrieve);"
-          }
-        ]
+        "summary": "Get Pay Rate"
       }
     },
     "/v1/time_off/policies": {
@@ -6116,7 +6102,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.timeOff.policies.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst timeOffGet = await client.timeOff.policies.timeOffGet({\n  limit: 'limit',\n});\n\nconsole.log(timeOffGet);"
           }
         ]
       }
@@ -6232,7 +6218,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.timeOff.policies.get('id');\n\nconsole.log(get_);"
+            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');\n\nconsole.log(timeOffGet2);"
           }
         ]
       }
