@@ -1,5 +1,259 @@
 # Changelog
 
+## [0.20.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.19.0...v0.20.0) (2026-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** 8 breaking changes to the SDK surface.
+    - Removed operation `payRates.list` (`GET /v1/pay_rates`).
+    - Removed operation `payRates.retrieve` (`GET /v1/pay_rates/{id}`).
+    - Removed operation `timeOff.policies.list` (`GET /v1/time_off/policies`).
+    - Removed operation `timeOff.policies.get` (`GET /v1/time_off/policies/{id}`).
+    - Removed schema `public_pay_rate_type`.
+    - Removed schema `public_pay_rate_basis`.
+    - Removed schema `public_pay_rate`.
+    - Removed schema `pay_rate_not_found_error_encoded`.
+* **api:** 7 breaking changes to the SDK surface.
+    - Removed operation `timeOff.policies.timeOffGet` (`GET /v1/time_off/policies`).
+    - Removed operation `timeOff.policies.timeOffGet2` (`GET /v1/time_off/policies/{id}`).
+    - Schema `union_32` shape changed.
+    - Added required property `objects_10.compensation`.
+    - Schema `union_33` changed from `enum(remote | office)` to `string | null`.
+    - Schema `union_34` shape changed.
+    - Property `workplace_already_exists_encoded.id` type changed from `union_32` to `union_33`.
+* **api:** 3 breaking changes to the SDK surface.
+    - Property `objects_6.email` type changed from `string` to `string<email>`.
+    - Schema `union_28` shape changed.
+    - Property `objects_10.email` type changed from `string` to `string<email>`.
+* **api:** 214 breaking changes to the SDK surface.
+    - query param `limit` on `benefits.healthPlans.list` is now required.
+    - query param `statuses` on `benefits.healthPlans.list` is now required.
+    - Serialization or defaults of query param `statuses` on `benefits.healthPlans.list` changed.
+    - `401` error response of `benefits.healthPlans.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `benefits.healthPlans.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `benefits.healthPlans.get` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `benefits.healthPlans.get` changed from `health_plan_not_found_error` to `health_plan_not_found_error_encoded`.
+    - `429` error response of `benefits.healthPlans.get` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `benefits.retirementPlans.list` is now required.
+    - query param `statuses` on `benefits.retirementPlans.list` is now required.
+    - Serialization or defaults of query param `statuses` on `benefits.retirementPlans.list` changed.
+    - `401` error response of `benefits.retirementPlans.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `benefits.retirementPlans.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `benefits.retirementPlans.get` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `benefits.retirementPlans.get` changed from `retirement_plan_not_found_error` to `retirement_plan_not_found_error_encoded`.
+    - `429` error response of `benefits.retirementPlans.get` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `benefits.deductions.list` is now required.
+    - query param `statuses` on `benefits.deductions.list` is now required.
+    - Serialization or defaults of query param `statuses` on `benefits.deductions.list` changed.
+    - `401` error response of `benefits.deductions.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `benefits.deductions.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `benefits.deductions.get` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `benefits.deductions.get` changed from `benefit_deduction_not_found_error` to `benefit_deduction_not_found_error_encoded`.
+    - `429` error response of `benefits.deductions.get` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `customFields.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `customFields.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `400` error response of `customFields.create` changed from `application/json` to `invalid_custom_field_operation_error_encoded`.
+    - `401` error response of `customFields.create` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `customFields.create` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `customFields.retrieve` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.retrieve` changed from `custom_field_not_found_error` to `custom_field_not_found_error_encoded`.
+    - `429` error response of `customFields.retrieve` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `customFields.update` changed from `none` to `objects`.
+    - `400` error response of `customFields.update` changed from `application/json` to `invalid_custom_field_operation_error_encoded`.
+    - `401` error response of `customFields.update` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.update` changed from `custom_field_not_found_error` to `custom_field_not_found_error_encoded`.
+    - `409` error response of `customFields.update` changed from `custom_field_already_exists_error` to `custom_field_already_exists_error_encoded`.
+    - `429` error response of `customFields.update` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `customFields.archive` changed from `none` to `objects`.
+    - `401` error response of `customFields.archive` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.archive` changed from `custom_field_not_found_error` to `custom_field_not_found_error_encoded`.
+    - `429` error response of `customFields.archive` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `400` error response of `customFields.createOption` changed from `application/json` to `invalid_custom_field_operation_error_encoded`.
+    - `401` error response of `customFields.createOption` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.createOption` changed from `custom_field_not_found_error` to `custom_field_not_found_error_encoded`.
+    - `409` error response of `customFields.createOption` changed from `custom_field_option_already_exists_error` to `custom_field_option_already_exists_error_encoded`.
+    - `429` error response of `customFields.createOption` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `customFields.updateOption` changed from `none` to `objects_3`.
+    - `400` error response of `customFields.updateOption` changed from `application/json` to `invalid_custom_field_operation_error_encoded`.
+    - `401` error response of `customFields.updateOption` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.updateOption` changed from `custom_field_option_not_found_error` to `custom_field_option_not_found_error_encoded`.
+    - `409` error response of `customFields.updateOption` changed from `custom_field_option_already_exists_error` to `custom_field_option_already_exists_error_encoded`.
+    - `429` error response of `customFields.updateOption` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `customFields.deleteOption` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.deleteOption` changed from `custom_field_option_not_found_error` to `custom_field_option_not_found_error_encoded`.
+    - `409` error response of `customFields.deleteOption` changed from `custom_field_option_in_use_error` to `custom_field_option_in_use_error_encoded`.
+    - `429` error response of `customFields.deleteOption` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `customFields.archiveOption` changed from `none` to `objects_3`.
+    - `401` error response of `customFields.archiveOption` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `customFields.archiveOption` changed from `custom_field_option_not_found_error` to `custom_field_option_not_found_error_encoded`.
+    - `429` error response of `customFields.archiveOption` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `customFields.listValues` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `customFields.listValues` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `customFields.upsertValue` changed from `none` to `objects_4`.
+    - `401` error response of `customFields.upsertValue` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `customFields.upsertValue` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `customFields.clearValue` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `customFields.clearValue` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `departments.list` is now required.
+    - `401` error response of `departments.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `departments.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `departments.create` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `409` error response of `departments.create` changed from `department_already_exists` to `department_already_exists_encoded`.
+    - `429` error response of `departments.create` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `departments.update` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `departments.update` changed from `department_not_found` to `department_not_found_encoded`.
+    - `409` error response of `departments.update` changed from `department_already_exists` to `department_already_exists_encoded`.
+    - `429` error response of `departments.update` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `offers.list` is now required.
+    - `401` error response of `offers.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `offers.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `offers.create` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `422` error response of `offers.create` changed from `invalid_expiration_time_error` to `invalid_expiration_time_error_encoded`.
+    - `429` error response of `offers.create` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `offers.void` changed from `none` to `objects_5`.
+    - `401` error response of `offers.void` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `offers.void` changed from `offer_not_found_error` to `offer_not_found_error_encoded`.
+    - `409` error response of `offers.void` changed from `invalid_offer_status_error` to `invalid_offer_status_error_encoded`.
+    - `429` error response of `offers.void` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `offers.extendDeadline` changed from `none` to `objects_5`.
+    - `401` error response of `offers.extendDeadline` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `offers.extendDeadline` changed from `offer_not_found_error` to `offer_not_found_error_encoded`.
+    - `409` error response of `offers.extendDeadline` changed from `invalid_offer_status_error` to `invalid_offer_status_error_encoded`.
+    - `422` error response of `offers.extendDeadline` changed from `invalid_expiration_time_error` to `invalid_expiration_time_error_encoded`.
+    - `429` error response of `offers.extendDeadline` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `offers.resend` changed from `none` to `objects_5`.
+    - `401` error response of `offers.resend` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `offers.resend` changed from `offer_not_found_error` to `offer_not_found_error_encoded`.
+    - `409` error response of `offers.resend` changed from `invalid_offer_status_error` to `invalid_offer_status_error_encoded`.
+    - `429` error response of `offers.resend` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `timeOff.listAssignments` is now required.
+    - `401` error response of `timeOff.listAssignments` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `timeOff.listAssignments` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `timeOff.listBalances` is now required.
+    - `401` error response of `timeOff.listBalances` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `timeOff.listBalances` changed from `time_off_policy_not_found` to `time_off_policy_not_found_encoded`.
+    - `429` error response of `timeOff.listBalances` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `timeOff.listRequests` is now required.
+    - `401` error response of `timeOff.listRequests` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `timeOff.listRequests` changed from `time_off_request_not_found_error` to `time_off_request_not_found_error_encoded`.
+    - `429` error response of `timeOff.listRequests` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `timeOff.policies.timeOffGet` is now required.
+    - `401` error response of `timeOff.policies.timeOffGet` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `timeOff.policies.timeOffGet` changed from `time_off_policy_not_found` to `time_off_policy_not_found_encoded`.
+    - `429` error response of `timeOff.policies.timeOffGet` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `timeOff.policies.timeOffGet2` changed from `none` to `objects_9`.
+    - `401` error response of `timeOff.policies.timeOffGet2` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `timeOff.policies.timeOffGet2` changed from `time_off_policy_not_found` to `time_off_policy_not_found_encoded`.
+    - `429` error response of `timeOff.policies.timeOffGet2` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `workers.list` is now required.
+    - `401` error response of `workers.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `workers.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Response of `workers.retrieve` changed from `none` to `objects_10`.
+    - `401` error response of `workers.retrieve` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `workers.retrieve` changed from `worker_not_found_error` to `worker_not_found_error_encoded`.
+    - `429` error response of `workers.retrieve` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `workers.delete` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `workers.delete` changed from `worker_not_found_error` to `worker_not_found_error_encoded`.
+    - `409` error response of `workers.delete` changed from `cannot_delete_worker` to `cannot_delete_worker_encoded`.
+    - `429` error response of `workers.delete` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `400` error response of `workers.createEmployee` changed from `application/json` to `state_registration_required_encoded`.
+    - `401` error response of `workers.createEmployee` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `workers.createEmployee` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `workers.createContractor` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `workers.createContractor` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `workers.invite` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `workers.invite` changed from `worker_not_found_error` to `worker_not_found_error_encoded`.
+    - `429` error response of `workers.invite` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - query param `limit` on `workplaces.list` is now required.
+    - `401` error response of `workplaces.list` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `429` error response of `workplaces.list` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `400` error response of `workplaces.create` changed from `application/json` to `address_invalid_encoded`.
+    - `401` error response of `workplaces.create` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `409` error response of `workplaces.create` changed from `workplace_already_exists` to `workplace_already_exists_encoded`.
+    - `429` error response of `workplaces.create` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - `401` error response of `workplaces.update` changed from `api_key_unauthorized` to `api_key_unauthorized_encoded`.
+    - `404` error response of `workplaces.update` changed from `workplace_not_found` to `workplace_not_found_encoded`.
+    - `409` error response of `workplaces.update` changed from `workplace_already_exists` to `workplace_already_exists_encoded`.
+    - `429` error response of `workplaces.update` changed from `rate_limit_exceeded` to `rate_limit_exceeded_encoded`.
+    - Property `public_money_amount.amount` type changed from `integer` to `string`.
+    - Property `public_money_amount.currency` type changed from `enum(USD | AUD | BGN | …)` to `union`.
+    - Property `public_health_plan_carrier.id` type changed from `string` to `string`.
+    - Property `public_health_plan.id` type changed from `string` to `string`.
+    - Property `public_health_plan.effectiveStartDate` type changed from `string` to `string`.
+    - Property `public_health_plan.effectiveEndDate` type changed from `string | null` to `string | null`.
+    - Property `public_health_plan.createdAt` type changed from `date` to `string`.
+    - Property `public_health_plan.updatedAt` type changed from `date` to `string`.
+    - Property `public_retirement_plan.id` type changed from `string` to `string`.
+    - Property `public_retirement_plan.effectiveStartDate` type changed from `string` to `string`.
+    - Property `public_retirement_plan.effectiveEndDate` type changed from `string | null` to `string | null`.
+    - Property `public_retirement_plan.createdAt` type changed from `date` to `string`.
+    - Property `public_retirement_plan.updatedAt` type changed from `date` to `string`.
+    - Property `public_worker_reference.id` type changed from `string` to `string`.
+    - Property `health_plan_reference.id` type changed from `string` to `string`.
+    - Property `retirement_plan_reference.id` type changed from `string` to `string`.
+    - Property `percentage_contribution.percentage` type changed from `number` to `string | union_1`.
+    - Property `public_benefit_deduction.id` type changed from `string` to `string`.
+    - Property `public_benefit_deduction.effectiveStartDate` type changed from `string` to `string`.
+    - Property `public_benefit_deduction.effectiveEndDate` type changed from `string | null` to `string | null`.
+    - Property `public_benefit_deduction.createdAt` type changed from `date_from_string` to `string`.
+    - Property `public_benefit_deduction.updatedAt` type changed from `date_from_string` to `string`.
+    - Property `office_work_location.workplaceId` type changed from `string` to `string`.
+    - Removed schema `date`.
+    - Removed schema `http_api_decode_error`.
+    - Removed schema `issue`.
+    - Removed schema `property_key`.
+    - Removed schema `internal_server_error`.
+    - Removed schema `api_key_unauthorized`.
+    - Removed schema `rate_limit_exceeded`.
+    - Removed schema `date_time_utc`.
+    - Removed schema `missing_required_company_permissions`.
+    - Removed schema `api_not_enabled`.
+    - Removed schema `health_plan_not_found_error`.
+    - Removed schema `retirement_plan_not_found_error`.
+    - Removed schema `date_from_string`.
+    - Removed schema `benefit_deduction_not_found_error`.
+    - Removed schema `trimmed`.
+    - Removed schema `non_empty_trimmed_string`.
+    - Removed schema `invalid_custom_field_operation_error`.
+    - Removed schema `custom_field_already_exists_error`.
+    - Removed schema `custom_field_option_already_exists_error`.
+    - Removed schema `custom_field_not_found_error`.
+    - Removed schema `custom_field_option_not_found_error`.
+    - Removed schema `custom_field_option_in_use_error`.
+    - Removed schema `invalid_custom_field_value_error`.
+    - Removed schema `custom_field_worker_not_found_error`.
+    - Removed schema `department_already_exists`.
+    - Removed schema `department_not_found`.
+    - Removed schema `invalid_expiration_time_error`.
+    - Removed schema `workplace_not_found`.
+    - Removed schema `manager_not_found_error`.
+    - Removed schema `offer_not_found_error`.
+    - Removed schema `invalid_offer_status_error`.
+    - Removed schema `time_off_policy_not_found`.
+    - Removed schema `time_off_request_not_found_error`.
+    - Removed schema `worker_not_found_error`.
+    - Removed schema `state_registration_required`.
+    - Removed schema `pay_schedule_not_configured`.
+    - Removed schema `subscription_limit_error`.
+    - Removed schema `invalid_worker_status_error`.
+    - Removed schema `worker_already_exists_error`.
+    - Removed schema `cannot_delete_worker`.
+    - Removed schema `address_invalid`.
+    - Removed schema `workplace_already_exists`.
+
+### Features
+
+* **api:** remove operation payRates.list (+9 more changes) ([0d8482e](https://github.com/TeamWarp/warp-sdk-typescript/commit/0d8482e7748e3fa00b393a4c88c1484ae76245ed))
+* **api:** update property objects_6.email (+2 more changes) ([73e502f](https://github.com/TeamWarp/warp-sdk-typescript/commit/73e502f5361eef7cf20b4a6209f4bd1b486dfc22))
+* **api:** update SDK surface (18 changes) ([98642df](https://github.com/TeamWarp/warp-sdk-typescript/commit/98642df617867fec61e3a4cbb6d8ed024cde6dab))
+* **api:** update SDK surface (329 changes) ([53cb8a7](https://github.com/TeamWarp/warp-sdk-typescript/commit/53cb8a7a499046a16810558e058d21ec83926ffc))
+
+
+### Chores
+
+* **api:** regenerate SDK ([834e878](https://github.com/TeamWarp/warp-sdk-typescript/commit/834e87874b89b6868c2762954f43e66dc08fed55))
+
 ## [0.19.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.18.0...v0.19.0) (2026-08-07)
 
 
