@@ -3,6 +3,9 @@
 export { Benefits } from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
+  Union9,
+  Objects2,
+  Union1,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,
@@ -41,6 +44,8 @@ export type {
   OfferExtendDeadlineResponse,
   OfferResendResponse,
 } from './offers';
+export { PayRates } from './pay-rates';
+export type { PayRateListParams, PayRateListResponse, PayRateRetrieveResponse } from './pay-rates';
 export { TimeOff } from './time-off/time-off';
 export type {
   TimeOffListAssignmentsParams,
@@ -65,6 +70,7 @@ export type {
 } from './workers';
 export { Workplaces } from './workplaces';
 export type {
+  Objects11,
   WorkplaceListParams,
   WorkplaceListResponse,
   WorkplaceCreateParams,
