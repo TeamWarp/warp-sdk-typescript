@@ -47,14 +47,14 @@ export class CustomFields extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomFieldRetrieveResponse>} Success
+   * @returns {APIPromise<CustomFieldGetResponse>} Success
    *
    * @example
    * ```ts
-   * const retrieve = await client.customFields.retrieve('id');
+   * const get_ = await client.customFields.get('id');
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<CustomFieldRetrieveResponse> {
+  get(id: string, options?: RequestOptions): APIPromise<CustomFieldGetResponse> {
     return this._client.get(__scalarPath`/v1/custom_fields/${id}`, options);
   }
 
@@ -299,7 +299,7 @@ export interface CustomFieldCreateResponse {
   required?: boolean | null;
 }
 
-export interface CustomFieldRetrieveResponse {
+export interface CustomFieldGetResponse {
   id: string;
   name: string;
   description: string | null;
@@ -311,11 +311,11 @@ export interface CustomFieldRetrieveResponse {
   inputBy: 'admin' | 'worker';
   canWrite: boolean;
   createdAt: string;
-  options: Array<CustomFieldRetrieveResponse.Option>;
+  options: Array<CustomFieldGetResponse.Option>;
   required?: boolean | null;
 }
 
-export namespace CustomFieldRetrieveResponse {
+export namespace CustomFieldGetResponse {
   export interface Option {
     id: string;
     label: string;
@@ -824,7 +824,7 @@ export declare namespace CustomFields {
   export {
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
-    type CustomFieldRetrieveResponse as CustomFieldRetrieveResponse,
+    type CustomFieldGetResponse as CustomFieldGetResponse,
     type CustomFieldUpdateResponse as CustomFieldUpdateResponse,
     type CustomFieldArchiveResponse as CustomFieldArchiveResponse,
     type CustomFieldCreateOptionResponse as CustomFieldCreateOptionResponse,

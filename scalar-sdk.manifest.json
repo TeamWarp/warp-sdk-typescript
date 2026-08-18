@@ -9093,8 +9093,8 @@
     {
       "resource": "customFields",
       "publicResource": "customFields",
-      "operation": "retrieve",
-      "publicOperation": "retrieve",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/custom_fields/{id}",
@@ -9125,7 +9125,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "CustomFieldRetrieveParams"
+        "publicName": "CustomFieldGetParams"
       },
       "response": {
         "status": "200",
@@ -12452,8 +12452,8 @@
     {
       "resource": "timeOff.policies",
       "publicResource": "timeOff.policies",
-      "operation": "timeOffGet",
-      "publicOperation": "timeOffGet",
+      "operation": "list",
+      "publicOperation": "list",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/time_off/policies",
@@ -12500,7 +12500,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PolicyTimeOffGetParams"
+        "publicName": "PolicyListParams"
       },
       "response": {
         "status": "200",
@@ -12598,8 +12598,8 @@
     {
       "resource": "timeOff.policies",
       "publicResource": "timeOff.policies",
-      "operation": "timeOffGet2",
-      "publicOperation": "timeOffGet2",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/time_off/policies/{id}",
@@ -12630,7 +12630,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PolicyTimeOffGet2Params"
+        "publicName": "PolicyGetParams"
       },
       "response": {
         "status": "200",
@@ -12886,8 +12886,8 @@
     {
       "resource": "workers",
       "publicResource": "workers",
-      "operation": "retrieve",
-      "publicOperation": "retrieve",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/workers/{id}",
@@ -12918,7 +12918,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "WorkerRetrieveParams"
+        "publicName": "WorkerGetParams"
       },
       "response": {
         "status": "200",

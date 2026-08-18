@@ -30,14 +30,14 @@ export class Workers extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkerRetrieveResponse>} Success
+   * @returns {APIPromise<WorkerGetResponse>} Success
    *
    * @example
    * ```ts
-   * const retrieve = await client.workers.retrieve('id');
+   * const get_ = await client.workers.get('id');
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<WorkerRetrieveResponse> {
+  get(id: string, options?: RequestOptions): APIPromise<WorkerGetResponse> {
     return this._client.get(__scalarPath`/v1/workers/${id}`, options);
   }
 
@@ -338,7 +338,7 @@ export namespace WorkerListResponse {
   }
 }
 
-export interface WorkerRetrieveResponse {
+export interface WorkerGetResponse {
   id: string;
   position: string;
   type: 'employee' | 'contractor';
@@ -363,14 +363,14 @@ export interface WorkerRetrieveResponse {
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: WorkerRetrieveResponse.Department | null;
+  department: WorkerGetResponse.Department | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
-  compensation: WorkerRetrieveResponse.Compensation | null;
+  compensation: WorkerGetResponse.Compensation | null;
 }
 
-export namespace WorkerRetrieveResponse {
+export namespace WorkerGetResponse {
   export interface Department {
     id: string;
     name: string;
@@ -1157,7 +1157,7 @@ export declare namespace Workers {
     type OfficeWorkLocation as OfficeWorkLocation,
     type RemoteWorkLocation as RemoteWorkLocation,
     type WorkerListResponse as WorkerListResponse,
-    type WorkerRetrieveResponse as WorkerRetrieveResponse,
+    type WorkerGetResponse as WorkerGetResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,

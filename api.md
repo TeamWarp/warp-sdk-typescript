@@ -198,10 +198,10 @@ Get a custom worker field definition, including its select options. Archived opt
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomFieldRetrieveResponse`](./src/resources/custom-fields.ts) |
+| Response | [`CustomFieldGetResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const retrieve = await client.customFields.retrieve('id');
+const get_ = await client.customFields.get('id');
 ```
 
 ### Update Field
@@ -511,11 +511,11 @@ Get the time off policies for your company
 
 | Direction | Type |
 | --- | --- |
-| Request | [`PolicyTimeOffGetParams`](./src/resources/time-off/policies.ts) |
-| Response | [`PolicyTimeOffGetResponse`](./src/resources/time-off/policies.ts) |
+| Request | [`PolicyListParams`](./src/resources/time-off/policies.ts) |
+| Response | [`PolicyListResponse`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const timeOffGet = await client.timeOff.policies.timeOffGet({
+const list = await client.timeOff.policies.list({
   limit: 'limit',
 });
 ```
@@ -526,10 +526,10 @@ Get a specific time off policy by id
 
 | Direction | Type |
 | --- | --- |
-| Response | [`PolicyTimeOffGet2Response`](./src/resources/time-off/policies.ts) |
+| Response | [`PolicyGetResponse`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
+const get_ = await client.timeOff.policies.get('id');
 ```
 
 ## `Workers`
@@ -555,10 +555,10 @@ Get a specific worker by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`WorkerRetrieveResponse`](./src/resources/workers.ts) |
+| Response | [`WorkerGetResponse`](./src/resources/workers.ts) |
 
 ```ts
-const retrieve = await client.workers.retrieve('id');
+const get_ = await client.workers.get('id');
 ```
 
 ### Delete Worker

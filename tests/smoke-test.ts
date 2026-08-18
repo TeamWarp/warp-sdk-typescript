@@ -118,11 +118,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'retrieve',
+    operation: 'get',
     method: 'GET',
     path: '/v1/custom_fields/{id}',
     run: async () => {
-      const retrieve = await client.customFields.retrieve('id');
+      const get_ = await client.customFields.get('id');
     },
   },
 
@@ -350,22 +350,22 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'timeOffGet',
+    operation: 'list',
     method: 'GET',
     path: '/v1/time_off/policies',
     run: async () => {
-      const timeOffGet = await client.timeOff.policies.timeOffGet({
+      const list = await client.timeOff.policies.list({
         limit: 'limit',
       });
     },
   },
 
   {
-    operation: 'timeOffGet2',
+    operation: 'get',
     method: 'GET',
     path: '/v1/time_off/policies/{id}',
     run: async () => {
-      const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
+      const get_ = await client.timeOff.policies.get('id');
     },
   },
 
@@ -381,11 +381,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'retrieve',
+    operation: 'get',
     method: 'GET',
     path: '/v1/workers/{id}',
     run: async () => {
-      const retrieve = await client.workers.retrieve('id');
+      const get_ = await client.workers.get('id');
     },
   },
 
