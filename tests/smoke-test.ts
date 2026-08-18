@@ -317,26 +317,6 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/pay_rates',
-    run: async () => {
-      const list = await client.payRates.list({
-        limit: 'limit',
-      });
-    },
-  },
-
-  {
-    operation: 'retrieve',
-    method: 'GET',
-    path: '/v1/pay_rates/{id}',
-    run: async () => {
-      const retrieve = await client.payRates.retrieve('id');
-    },
-  },
-
-  {
     operation: 'listAssignments',
     method: 'GET',
     path: '/v1/time_off/assignments',
@@ -370,22 +350,22 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'list',
+    operation: 'timeOffGet',
     method: 'GET',
     path: '/v1/time_off/policies',
     run: async () => {
-      const list = await client.timeOff.policies.list({
+      const timeOffGet = await client.timeOff.policies.timeOffGet({
         limit: 'limit',
       });
     },
   },
 
   {
-    operation: 'get',
+    operation: 'timeOffGet2',
     method: 'GET',
     path: '/v1/time_off/policies/{id}',
     run: async () => {
-      const get_ = await client.timeOff.policies.get('id');
+      const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
     },
   },
 

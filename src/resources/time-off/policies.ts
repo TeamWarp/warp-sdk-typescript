@@ -4,24 +4,23 @@ import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
-import type * as CustomFieldsAPI from '../custom-fields';
 
 export class Policies extends APIResource {
   /**
    * Get the time off policies for your company
    *
-   * @param {PolicyListParams} query - The parameters to send with the request.
+   * @param {PolicyTimeOffGetParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PolicyListResponse>} Success
+   * @returns {APIPromise<PolicyTimeOffGetResponse>} Success
    *
    * @example
    * ```ts
-   * const list = await client.timeOff.policies.list({
+   * const timeOffGet = await client.timeOff.policies.timeOffGet({
    *   limit: 'limit',
    * });
    * ```
    */
-  list(query: PolicyListParams, options?: RequestOptions): APIPromise<PolicyListResponse> {
+  timeOffGet(query: PolicyTimeOffGetParams, options?: RequestOptions): APIPromise<PolicyTimeOffGetResponse> {
     return this._client.get('/v1/time_off/policies', { query, ...options });
   }
 
@@ -30,31 +29,31 @@ export class Policies extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PolicyGetResponse>} Success
+   * @returns {APIPromise<PolicyTimeOffGet2Response>} Success
    *
    * @example
    * ```ts
-   * const get_ = await client.timeOff.policies.get('id');
+   * const timeOffGet2 = await client.timeOff.policies.timeOffGet2('id');
    * ```
    */
-  get(id: string, options?: RequestOptions): APIPromise<PolicyGetResponse> {
+  timeOffGet2(id: string, options?: RequestOptions): APIPromise<PolicyTimeOffGet2Response> {
     return this._client.get(__scalarPath`/v1/time_off/policies/${id}`, options);
   }
 }
 
-export interface PolicyListParams {
+export interface PolicyTimeOffGetParams {
   limit: string | null;
   afterId?: string | null;
   beforeId?: string | null;
 }
 
-export interface PolicyListResponse {
+export interface PolicyTimeOffGetResponse {
   hasMore: boolean;
   count: number;
-  data: Array<PolicyListResponse.Data>;
+  data: Array<PolicyTimeOffGetResponse.Data>;
 }
 
-export namespace PolicyListResponse {
+export namespace PolicyTimeOffGetResponse {
   export interface Data {
     id: string;
     timeOffTypeId: string;
@@ -65,13 +64,13 @@ export namespace PolicyListResponse {
     unit: 'hour' | 'day';
     name: string;
     description: string | null;
-    hoursWorkedPerChunk: number | CustomFieldsAPI.Union1 | null;
-    minutesPerChunk: number | CustomFieldsAPI.Union1 | null;
-    minutesPerPeriod: number | CustomFieldsAPI.Union1 | null;
+    hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 }
 
-export interface PolicyGetResponse {
+export interface PolicyTimeOffGet2Response {
   id: string;
   timeOffTypeId: string;
   timeOffTypeName: string;
@@ -81,14 +80,14 @@ export interface PolicyGetResponse {
   unit: 'hour' | 'day';
   name: string;
   description: string | null;
-  hoursWorkedPerChunk: number | CustomFieldsAPI.Union1 | null;
-  minutesPerChunk: number | CustomFieldsAPI.Union1 | null;
-  minutesPerPeriod: number | CustomFieldsAPI.Union1 | null;
+  hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
 }
 export declare namespace Policies {
   export {
-    type PolicyListResponse as PolicyListResponse,
-    type PolicyGetResponse as PolicyGetResponse,
-    type PolicyListParams as PolicyListParams,
+    type PolicyTimeOffGetResponse as PolicyTimeOffGetResponse,
+    type PolicyTimeOffGet2Response as PolicyTimeOffGet2Response,
+    type PolicyTimeOffGetParams as PolicyTimeOffGetParams,
   };
 }

@@ -5,7 +5,6 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { buildHeaders } from '../internal/headers';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as CustomFieldsAPI from './custom-fields';
 
 export class Workers extends APIResource {
   /**
@@ -468,7 +467,7 @@ export interface WorkerCreateEmployeeParams {
   workEmail?: string | null;
   requireI9?: boolean | null;
   stateRegistration?: 'self_managed' | 'warp_managed' | null;
-  stockOptions?: string | CustomFieldsAPI.Union1 | null;
+  stockOptions?: string | 'Infinity' | '-Infinity' | 'NaN' | null;
   paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
