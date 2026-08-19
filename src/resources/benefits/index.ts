@@ -10,4 +10,4 @@ export type {
   RetirementPlanGetResponse,
 } from './retirement-plans';
 export { Deductions } from './deductions';
-export type { DeductionListParams, DeductionListResponse, DeductionRetrieveResponse } from './deductions';
+export type { DeductionListParams, DeductionListResponse, DeductionGetResponse } from './deductions';

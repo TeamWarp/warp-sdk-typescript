@@ -251,7 +251,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.benefits.healthPlans.list({\n  limit: 'limit',\n  statuses: ['active'],\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.benefits.healthPlans.list({\n  limit: 'limit',\n  statuses: ['active'],\n});\n\nconsole.log(list);"
           }
         ]
       }
@@ -368,7 +368,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.benefits.healthPlans.get('id');\n\nconsole.log(get_);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.benefits.healthPlans.get('id');\n\nconsole.log(get_);"
           }
         ]
       }
@@ -587,7 +587,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.benefits.retirementPlans.list({\n  limit: 'limit',\n  statuses: ['active'],\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.benefits.retirementPlans.list({\n  limit: 'limit',\n  statuses: ['active'],\n});\n\nconsole.log(list);"
           }
         ]
       }
@@ -704,7 +704,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.benefits.retirementPlans.get('id');\n\nconsole.log(get_);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.benefits.retirementPlans.get('id');\n\nconsole.log(get_);"
           }
         ]
       }
@@ -1044,7 +1044,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.benefits.deductions.list({\n  limit: 'limit',\n  statuses: ['active'],\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.benefits.deductions.list({\n  limit: 'limit',\n  statuses: ['active'],\n});\n\nconsole.log(list);"
           }
         ]
       }
@@ -1161,7 +1161,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.benefits.deductions.retrieve('id');\n\nconsole.log(retrieve);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.benefits.deductions.get('id');\n\nconsole.log(get_);"
           }
         ]
       }
@@ -1253,7 +1253,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.customFields.list();\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.customFields.list();\n\nconsole.log(list);"
           }
         ]
       },
@@ -1553,7 +1553,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.customFields.create({\n  name: {},\n  type: 'text',\n  category: 'info',\n});\n\nconsole.log(create);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.customFields.create({\n  name: {},\n  type: 'text',\n  category: 'info',\n});\n\nconsole.log(create);"
           }
         ]
       }
@@ -1738,7 +1738,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.customFields.get('id');\n\nconsole.log(get_);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.customFields.get('id');\n\nconsole.log(get_);"
           }
         ]
       },
@@ -1981,7 +1981,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects = await client.customFields.update('id', {});\n\nconsole.log(objects);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects = await client.customFields.update('id', {});\n\nconsole.log(objects);"
           }
         ]
       }
@@ -2098,7 +2098,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects = await client.customFields.archive('id');\n\nconsole.log(objects);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects = await client.customFields.archive('id');\n\nconsole.log(objects);"
           }
         ]
       }
@@ -2287,7 +2287,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst createOption = await client.customFields.createOption('id', {\n  label: {},\n  value: {},\n});\n\nconsole.log(createOption);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst createOption = await client.customFields.createOption('id', {\n  label: {},\n  value: {},\n});\n\nconsole.log(createOption);"
           }
         ]
       }
@@ -2472,7 +2472,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects3 = await client.customFields.updateOption('id', {});\n\nconsole.log(objects3);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects3 = await client.customFields.updateOption('id', {});\n\nconsole.log(objects3);"
           }
         ]
       },
@@ -2590,7 +2590,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customFields.deleteOption('id');"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customFields.deleteOption('id');"
           }
         ]
       }
@@ -2707,7 +2707,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects3 = await client.customFields.archiveOption('id');\n\nconsole.log(objects3);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects3 = await client.customFields.archiveOption('id');\n\nconsole.log(objects3);"
           }
         ]
       }
@@ -2854,7 +2854,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listValues = await client.customFields.listValues();\n\nconsole.log(listValues);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listValues = await client.customFields.listValues();\n\nconsole.log(listValues);"
           }
         ]
       },
@@ -3287,7 +3287,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst upsertValue = await client.customFields.upsertValue({\n  workerId: {},\n  fieldId: {},\n  value: {\n    type: 'text',\n    value: '',\n  },\n});\n\nconsole.log(upsertValue);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst upsertValue = await client.customFields.upsertValue({\n  workerId: {},\n  fieldId: {},\n  value: {\n    type: 'text',\n    value: '',\n  },\n});\n\nconsole.log(upsertValue);"
           }
         ]
       },
@@ -3419,7 +3419,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customFields.clearValue({\n  workerId: {},\n  fieldId: {},\n});"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nawait client.customFields.clearValue({\n  workerId: {},\n  fieldId: {},\n});"
           }
         ]
       }
@@ -3591,7 +3591,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.departments.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.departments.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
           }
         ]
       },
@@ -3746,7 +3746,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.departments.create({\n  name: {},\n});\n\nconsole.log(create);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.departments.create({\n  name: {},\n});\n\nconsole.log(create);"
           }
         ]
       }
@@ -3927,7 +3927,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.departments.update('id', {});\n\nconsole.log(update);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.departments.update('id', {});\n\nconsole.log(update);"
           }
         ]
       }
@@ -4161,7 +4161,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.offers.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.offers.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
           }
         ]
       },
@@ -5152,7 +5152,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.offers.create({\n  candidate: {\n    firstName: {},\n    lastName: {},\n    email: {},\n  },\n  position: {\n    title: {},\n    startDate: {},\n  },\n  workerType: 'employee',\n  compensation: {\n    payBasis: 'year',\n    payCurrency: 'USD',\n    payRate: {},\n  },\n});\n\nconsole.log(create);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.offers.create({\n  candidate: {\n    firstName: {},\n    lastName: {},\n    email: {},\n  },\n  position: {\n    title: {},\n    startDate: {},\n  },\n  workerType: 'employee',\n  compensation: {\n    payBasis: 'year',\n    payCurrency: 'USD',\n    payRate: {},\n  },\n});\n\nconsole.log(create);"
           }
         ]
       }
@@ -5279,7 +5279,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.void('id');\n\nconsole.log(objects5);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.void('id');\n\nconsole.log(objects5);"
           }
         ]
       }
@@ -5435,7 +5435,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.extendDeadline('id', {\n  expirationTime: '',\n});\n\nconsole.log(objects5);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.extendDeadline('id', {\n  expirationTime: '',\n});\n\nconsole.log(objects5);"
           }
         ]
       }
@@ -5562,7 +5562,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.resend('id');\n\nconsole.log(objects5);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.resend('id');\n\nconsole.log(objects5);"
           }
         ]
       }
@@ -5818,7 +5818,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.payRates.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.payRates.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
           }
         ]
       }
@@ -5935,7 +5935,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.payRates.get('id');\n\nconsole.log(get_);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.payRates.get('id');\n\nconsole.log(get_);"
           }
         ]
       }
@@ -6116,7 +6116,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.timeOff.policies.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.timeOff.policies.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
           }
         ]
       }
@@ -6232,7 +6232,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.timeOff.policies.get('id');\n\nconsole.log(get_);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.timeOff.policies.get('id');\n\nconsole.log(get_);"
           }
         ]
       }
@@ -6464,7 +6464,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listAssignments = await client.timeOff.listAssignments({\n  limit: 'limit',\n});\n\nconsole.log(listAssignments);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listAssignments = await client.timeOff.listAssignments({\n  limit: 'limit',\n});\n\nconsole.log(listAssignments);"
           }
         ]
       }
@@ -6729,7 +6729,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listBalances = await client.timeOff.listBalances({\n  limit: 'limit',\n});\n\nconsole.log(listBalances);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listBalances = await client.timeOff.listBalances({\n  limit: 'limit',\n});\n\nconsole.log(listBalances);"
           }
         ]
       }
@@ -7093,7 +7093,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listRequests = await client.timeOff.listRequests({\n  limit: 'limit',\n});\n\nconsole.log(listRequests);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst listRequests = await client.timeOff.listRequests({\n  limit: 'limit',\n});\n\nconsole.log(listRequests);"
           }
         ]
       }
@@ -7317,7 +7317,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workers.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workers.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
           }
         ]
       }
@@ -7434,7 +7434,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.workers.get('id');\n\nconsole.log(get_);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.workers.get('id');\n\nconsole.log(get_);"
           }
         ]
       },
@@ -7552,7 +7552,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nawait client.workers.delete('id');"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nawait client.workers.delete('id');"
           }
         ]
       }
@@ -8050,7 +8050,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst createEmployee = await client.workers.createEmployee({\n  firstName: {},\n  lastName: {},\n  position: {},\n  startDate: {},\n  email: {},\n  departmentId: {},\n  managerId: {},\n  workLocation: {\n    type: 'office',\n    workplaceId: {},\n  },\n  compensation: {\n    amount: {},\n    per: 'hour',\n  },\n});\n\nconsole.log(createEmployee);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst createEmployee = await client.workers.createEmployee({\n  firstName: {},\n  lastName: {},\n  position: {},\n  startDate: {},\n  email: {},\n  departmentId: {},\n  managerId: {},\n  workLocation: {\n    type: 'office',\n    workplaceId: {},\n  },\n  compensation: {\n    amount: {},\n    per: 'hour',\n  },\n});\n\nconsole.log(createEmployee);"
           }
         ]
       }
@@ -8855,7 +8855,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst createContractor = await client.workers.createContractor({\n  entityType: 'individual',\n  firstName: {},\n  lastName: {},\n  position: {},\n  startDate: {},\n  email: {},\n  departmentId: {},\n  managerId: {},\n  workCountry: 'AD',\n});\n\nconsole.log(createContractor);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst createContractor = await client.workers.createContractor({\n  entityType: 'individual',\n  firstName: {},\n  lastName: {},\n  position: {},\n  startDate: {},\n  email: {},\n  departmentId: {},\n  managerId: {},\n  workCountry: 'AD',\n});\n\nconsole.log(createContractor);"
           }
         ]
       }
@@ -9104,7 +9104,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst invite = await client.workers.invite('id');\n\nconsole.log(invite);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst invite = await client.workers.invite('id');\n\nconsole.log(invite);"
           }
         ]
       }
@@ -9287,7 +9287,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workplaces.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst list = await client.workplaces.list({\n  limit: 'limit',\n});\n\nconsole.log(list);"
           }
         ]
       },
@@ -9475,7 +9475,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.workplaces.create({\n  name: {},\n  type: 'remote',\n  address: {\n    line1: {},\n    city: '',\n    postalCode: '',\n    state: 'AL',\n    country: 'US',\n  },\n});\n\nconsole.log(create);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst create = await client.workplaces.create({\n  name: {},\n  type: 'remote',\n  address: {\n    line1: {},\n    city: '',\n    postalCode: '',\n    state: 'AL',\n    country: 'US',\n  },\n});\n\nconsole.log(create);"
           }
         ]
       }
@@ -9667,7 +9667,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.workplaces.update('id', {});\n\nconsole.log(update);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst update = await client.workplaces.update('id', {});\n\nconsole.log(update);"
           }
         ]
       }

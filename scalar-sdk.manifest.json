@@ -1,6 +1,6 @@
 {
-  "name": "Warp",
-  "slug": "warp",
+  "name": "WarpApi",
+  "slug": "warpApi",
   "generatorVersion": "0.27.0",
   "servers": [
     "https://api.joinwarp.com"
@@ -8665,8 +8665,8 @@
     {
       "resource": "benefits.deductions",
       "publicResource": "benefits.deductions",
-      "operation": "retrieve",
-      "publicOperation": "retrieve",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/deductions/{id}",
@@ -8697,7 +8697,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "DeductionRetrieveParams"
+        "publicName": "DeductionGetParams"
       },
       "response": {
         "status": "200",

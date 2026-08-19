@@ -1,9 +1,9 @@
 ---
-name: warp-typescript-sdk
+name: warp-api-typescript-sdk
 description: "TypeScript SDK for Warp API. Use when writing TypeScript code that calls Warp API with the warp-hr package: installing it, constructing and authenticating the client, and calling API operations."
 ---
 
-# Warp TypeScript SDK
+# Warp API TypeScript SDK
 
 Generated TypeScript client for Warp API, published as `warp-hr`. Use the generated client instead of hand-writing HTTP requests.
 
@@ -16,9 +16,9 @@ npm install warp-hr
 ## Client setup and authentication
 
 ```ts
-import Warp from 'warp-hr';
+import WarpAPI from 'warp-hr';
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 ```
@@ -30,9 +30,9 @@ Provide credentials using the options below. Environment variables are read auto
 ## Calling operations
 
 ```ts
-import Warp from 'warp-hr';
+import WarpAPI from 'warp-hr';
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 

@@ -62,9 +62,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import Warp from 'warp-hr';
+import WarpAPI from 'warp-hr';
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 ```
@@ -155,10 +155,10 @@ Get the current version of a company benefit deduction by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`DeductionRetrieveResponse`](./src/resources/benefits/deductions.ts) |
+| Response | [`DeductionGetResponse`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const retrieve = await client.benefits.deductions.retrieve('id');
+const get_ = await client.benefits.deductions.get('id');
 ```
 
 ## `CustomFields`

@@ -13,10 +13,10 @@ import { writeFileSync } from 'node:fs';
 
 // The package exports the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
-import Warp from 'warp-hr';
+import WarpAPI from 'warp-hr';
 
 // One shared client runs every case.
-const client = new Warp();
+const client = new WarpAPI();
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {
@@ -87,11 +87,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'retrieve',
+    operation: 'get',
     method: 'GET',
     path: '/v1/benefits/deductions/{id}',
     run: async () => {
-      const retrieve = await client.benefits.deductions.retrieve('id');
+      const get_ = await client.benefits.deductions.get('id');
     },
   },
 
