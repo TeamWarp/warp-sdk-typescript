@@ -28,6 +28,9 @@ import { VERSION } from './version';
 import { Benefits } from './resources/benefits/benefits';
 import {
   CustomFields,
+  type Union9,
+  type Objects2,
+  type Union1,
   type CustomFieldListResponse,
   type CustomFieldCreateResponse,
   type CustomFieldGetResponse,
@@ -946,6 +949,9 @@ export declare namespace Warp {
 
   export {
     CustomFields as CustomFields,
+    type Union9 as Union9,
+    type Objects2 as Objects2,
+    type Union1 as Union1,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldGetResponse as CustomFieldGetResponse,
@@ -1068,7 +1074,6 @@ export declare namespace Warp {
   export type RateLimitExceededEncoded = SharedAPI.RateLimitExceededEncoded;
   export type TimeOffPolicyNotFoundEncoded = SharedAPI.TimeOffPolicyNotFoundEncoded;
   export type Union = SharedAPI.Union;
-  export type Union1 = SharedAPI.Union1;
   export type Union10 = SharedAPI.Union10;
   export type Union11 = SharedAPI.Union11;
   export type Union12 = SharedAPI.Union12;

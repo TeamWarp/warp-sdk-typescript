@@ -2,6 +2,7 @@
 
 import { APIResource } from '../resource';
 import * as Shared from './shared';
+import * as Union1API from './custom-fields';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -155,8 +156,8 @@ export namespace TimeOffBalanceAdjustedWebhookEvent {
      * The date the adjustment takes effect. Omitted when no balance snapshot was captured.
      */
     effectiveDate?: string | null;
-    previousBalance?: Shared.Union1;
-    newBalance?: Shared.Union1;
+    previousBalance?: Union1API.Union1;
+    newBalance?: Union1API.Union1;
   }
 }
 

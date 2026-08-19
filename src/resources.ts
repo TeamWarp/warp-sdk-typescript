@@ -13,6 +13,9 @@ export {
   Webhooks,
 } from './resources/index';
 export type {
+  Union9,
+  Objects2,
+  Union1,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,
