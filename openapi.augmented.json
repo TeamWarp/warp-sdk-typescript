@@ -9250,7 +9250,7 @@
             }
           },
           "409": {
-            "description": "The worker's current status does not allow this action. For example, only draft or invited workers can be invited, and only draft or invited workers can be deleted. | A user with this email already exists and is linked to another worker.",
+            "description": "The worker's current status does not allow this action. For example, only draft or invited workers can be invited, and only draft or invited workers can be deleted. | A worker with this email already exists in this organization.",
             "content": {
               "application/json": {
                 "schema": {
