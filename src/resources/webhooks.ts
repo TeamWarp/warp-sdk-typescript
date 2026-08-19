@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 import { APIResource } from '../resource';
+import * as Shared from './shared';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -149,75 +150,13 @@ export namespace TimeOffBalanceAdjustedWebhookEvent {
     /**
      * Signed adjustment applied to the balance, in minutes. Omitted when no balance snapshot was captured.
      */
-    adjustmentMinutes?:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN'
-      | null;
+    adjustmentMinutes?: Shared.Union | null;
     /**
      * The date the adjustment takes effect. Omitted when no balance snapshot was captured.
      */
     effectiveDate?: string | null;
-    previousBalance?: 'Infinity' | '-Infinity' | 'NaN';
-    newBalance?: 'Infinity' | '-Infinity' | 'NaN';
+    previousBalance?: Shared.Union1;
+    newBalance?: Shared.Union1;
   }
 }
 
@@ -267,88 +206,13 @@ export namespace WorkerCreatedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -399,88 +263,13 @@ export namespace WorkerUpdatedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -531,88 +320,13 @@ export namespace WorkerDeletedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -663,88 +377,13 @@ export namespace WorkerInviteSentWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -795,88 +434,13 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -927,88 +491,13 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -1059,88 +548,13 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -1191,88 +605,13 @@ export namespace WorkerOffboardedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -1323,88 +662,13 @@ export namespace WorkerReactivatedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Payload.Compensation | null;
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 
   export namespace Payload {
     export interface Department {
       id: string;
       name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
     }
   }
 }
@@ -1738,130 +1002,8 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      relocationBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
+      signOnBonus: Shared.Union;
+      relocationBonus: Shared.Union;
       stock: Compensation.Stock | null;
     }
 
@@ -1870,143 +1012,10 @@ export namespace OfferCreatedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: BasePay.Amount;
+        amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-      }
-
-      export namespace BasePay {
-        export interface Amount {
-          amount: string;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
+        variableRate: Shared.Union;
       }
 
       export interface Stock {
@@ -2347,130 +1356,8 @@ export namespace OfferSentWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      relocationBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
+      signOnBonus: Shared.Union;
+      relocationBonus: Shared.Union;
       stock: Compensation.Stock | null;
     }
 
@@ -2479,143 +1366,10 @@ export namespace OfferSentWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: BasePay.Amount;
+        amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-      }
-
-      export namespace BasePay {
-        export interface Amount {
-          amount: string;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
+        variableRate: Shared.Union;
       }
 
       export interface Stock {
@@ -2956,130 +1710,8 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      relocationBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
+      signOnBonus: Shared.Union;
+      relocationBonus: Shared.Union;
       stock: Compensation.Stock | null;
     }
 
@@ -3088,143 +1720,10 @@ export namespace OfferViewedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: BasePay.Amount;
+        amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-      }
-
-      export namespace BasePay {
-        export interface Amount {
-          amount: string;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
+        variableRate: Shared.Union;
       }
 
       export interface Stock {
@@ -3565,130 +2064,8 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      relocationBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
+      signOnBonus: Shared.Union;
+      relocationBonus: Shared.Union;
       stock: Compensation.Stock | null;
     }
 
@@ -3697,143 +2074,10 @@ export namespace OfferAcceptedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: BasePay.Amount;
+        amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-      }
-
-      export namespace BasePay {
-        export interface Amount {
-          amount: string;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
+        variableRate: Shared.Union;
       }
 
       export interface Stock {
@@ -4174,130 +2418,8 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      relocationBonus:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
+      signOnBonus: Shared.Union;
+      relocationBonus: Shared.Union;
       stock: Compensation.Stock | null;
     }
 
@@ -4306,143 +2428,10 @@ export namespace OfferVoidedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: BasePay.Amount;
+        amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-      }
-
-      export namespace BasePay {
-        export interface Amount {
-          amount: string;
-          currency:
-            | 'USD'
-            | 'AUD'
-            | 'BGN'
-            | 'BRL'
-            | 'CAD'
-            | 'CHF'
-            | 'CZK'
-            | 'DKK'
-            | 'EUR'
-            | 'GBP'
-            | 'HKD'
-            | 'HUF'
-            | 'IDR'
-            | 'INR'
-            | 'JPY'
-            | 'MYR'
-            | 'NOK'
-            | 'NZD'
-            | 'CNY'
-            | 'PLN'
-            | 'RON'
-            | 'TRY'
-            | 'SEK'
-            | 'SGD'
-            | 'AED'
-            | 'ARS'
-            | 'BDT'
-            | 'BWP'
-            | 'CLP'
-            | 'COP'
-            | 'CRC'
-            | 'EGP'
-            | 'FJD'
-            | 'GEL'
-            | 'GHS'
-            | 'ILS'
-            | 'KES'
-            | 'KRW'
-            | 'LKR'
-            | 'MAD'
-            | 'MXN'
-            | 'NPR'
-            | 'PHP'
-            | 'PKR'
-            | 'THB'
-            | 'UAH'
-            | 'UGX'
-            | 'UYU'
-            | 'VND'
-            | 'ZAR'
-            | 'ZMW'
-            | 'TND'
-            | 'NGN'
-            | 'RSD'
-            | 'TWD'
-            | 'GTQ'
-            | 'HNL'
-            | 'DOP'
-            | 'SAR'
-            | 'XAF'
-            | 'PEN';
-          /**
-           * The server-formatted display string for the amount in its currency.
-           */
-          display: string;
-        }
+        variableRate: Shared.Union;
       }
 
       export interface Stock {

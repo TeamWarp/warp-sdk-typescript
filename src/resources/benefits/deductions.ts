@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
+import type * as Shared from '../shared';
 
 export class Deductions extends APIResource {
   /**
@@ -204,153 +205,11 @@ export namespace DeductionListResponse {
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
-      employeeContribution: FixedAmountBenefitCalculation.EmployeeContribution;
+      employeeContribution: Shared.PublicMoneyAmount;
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
-      employerContribution: FixedAmountBenefitCalculation.EmployerContribution;
-    }
-
-    export namespace FixedAmountBenefitCalculation {
-      export interface EmployeeContribution {
-        amount: string;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
-
-      export interface EmployerContribution {
-        amount: string;
-        currency:
-          | 'USD'
-          | 'AUD'
-          | 'BGN'
-          | 'BRL'
-          | 'CAD'
-          | 'CHF'
-          | 'CZK'
-          | 'DKK'
-          | 'EUR'
-          | 'GBP'
-          | 'HKD'
-          | 'HUF'
-          | 'IDR'
-          | 'INR'
-          | 'JPY'
-          | 'MYR'
-          | 'NOK'
-          | 'NZD'
-          | 'CNY'
-          | 'PLN'
-          | 'RON'
-          | 'TRY'
-          | 'SEK'
-          | 'SGD'
-          | 'AED'
-          | 'ARS'
-          | 'BDT'
-          | 'BWP'
-          | 'CLP'
-          | 'COP'
-          | 'CRC'
-          | 'EGP'
-          | 'FJD'
-          | 'GEL'
-          | 'GHS'
-          | 'ILS'
-          | 'KES'
-          | 'KRW'
-          | 'LKR'
-          | 'MAD'
-          | 'MXN'
-          | 'NPR'
-          | 'PHP'
-          | 'PKR'
-          | 'THB'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'VND'
-          | 'ZAR'
-          | 'ZMW'
-          | 'TND'
-          | 'NGN'
-          | 'RSD'
-          | 'TWD'
-          | 'GTQ'
-          | 'HNL'
-          | 'DOP'
-          | 'SAR'
-          | 'XAF'
-          | 'PEN';
-        /**
-         * The server-formatted display string for the amount in its currency.
-         */
-        display: string;
-      }
+      employerContribution: Shared.PublicMoneyAmount;
     }
 
     export interface PercentageBenefitCalculation {
@@ -367,7 +226,7 @@ export namespace DeductionListResponse {
 
     export namespace PercentageBenefitCalculation {
       export interface EmployeeContribution {
-        percentage: string | 'Infinity' | '-Infinity' | 'NaN';
+        percentage: string | Shared.Union1;
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -375,7 +234,7 @@ export namespace DeductionListResponse {
       }
 
       export interface EmployerContribution {
-        percentage: string | 'Infinity' | '-Infinity' | 'NaN';
+        percentage: string | Shared.Union1;
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -500,153 +359,11 @@ export namespace DeductionRetrieveResponse {
     /**
      * A monetary amount with its currency and server-formatted display value.
      */
-    employeeContribution: FixedAmountBenefitCalculation.EmployeeContribution;
+    employeeContribution: Shared.PublicMoneyAmount;
     /**
      * A monetary amount with its currency and server-formatted display value.
      */
-    employerContribution: FixedAmountBenefitCalculation.EmployerContribution;
-  }
-
-  export namespace FixedAmountBenefitCalculation {
-    export interface EmployeeContribution {
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted display string for the amount in its currency.
-       */
-      display: string;
-    }
-
-    export interface EmployerContribution {
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted display string for the amount in its currency.
-       */
-      display: string;
-    }
+    employerContribution: Shared.PublicMoneyAmount;
   }
 
   export interface PercentageBenefitCalculation {
@@ -663,7 +380,7 @@ export namespace DeductionRetrieveResponse {
 
   export namespace PercentageBenefitCalculation {
     export interface EmployeeContribution {
-      percentage: string | 'Infinity' | '-Infinity' | 'NaN';
+      percentage: string | Shared.Union1;
       /**
        * The server-formatted percentage, for example "3%".
        */
@@ -671,7 +388,7 @@ export namespace DeductionRetrieveResponse {
     }
 
     export interface EmployerContribution {
-      percentage: string | 'Infinity' | '-Infinity' | 'NaN';
+      percentage: string | Shared.Union1;
       /**
        * The server-formatted percentage, for example "3%".
        */

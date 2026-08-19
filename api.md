@@ -211,10 +211,10 @@ Update a custom worker field definition. The field type cannot be changed; creat
 | Direction | Type |
 | --- | --- |
 | Request | [`CustomFieldUpdateParams`](./src/resources/custom-fields.ts) |
-| Response | [`CustomFieldUpdateResponse`](./src/resources/custom-fields.ts) |
+| Response | [`Objects`](./src/resources/shared.ts) |
 
 ```ts
-const update = await client.customFields.update('id', {});
+const objects = await client.customFields.update('id', {});
 ```
 
 ### Archive Field
@@ -223,10 +223,10 @@ Archive a custom worker field. Archived fields keep their existing worker values
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomFieldArchiveResponse`](./src/resources/custom-fields.ts) |
+| Response | [`Objects`](./src/resources/shared.ts) |
 
 ```ts
-const archive = await client.customFields.archive('id');
+const objects = await client.customFields.archive('id');
 ```
 
 ### Create Field Option
@@ -252,10 +252,10 @@ Update the label or sort order of a custom worker field option. Options of archi
 | Direction | Type |
 | --- | --- |
 | Request | [`CustomFieldUpdateOptionParams`](./src/resources/custom-fields.ts) |
-| Response | [`CustomFieldUpdateOptionResponse`](./src/resources/custom-fields.ts) |
+| Response | [`Objects3`](./src/resources/shared.ts) |
 
 ```ts
-const updateOption = await client.customFields.updateOption('id', {});
+const objects3 = await client.customFields.updateOption('id', {});
 ```
 
 ### Delete Unused Field Option
@@ -272,10 +272,10 @@ Archive a custom worker field option. Archived options remain on existing worker
 
 | Direction | Type |
 | --- | --- |
-| Response | [`CustomFieldArchiveOptionResponse`](./src/resources/custom-fields.ts) |
+| Response | [`Objects3`](./src/resources/shared.ts) |
 
 ```ts
-const archiveOption = await client.customFields.archiveOption('id');
+const objects3 = await client.customFields.archiveOption('id');
 ```
 
 ### List Field Values
@@ -423,10 +423,10 @@ Void a previously sent offer. Only sent offers can be voided.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`OfferVoidResponse`](./src/resources/offers.ts) |
+| Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const void_ = await client.offers.void('id');
+const objects5 = await client.offers.void('id');
 ```
 
 ### Extend Offer Deadline
@@ -436,10 +436,10 @@ Extend the expiration deadline of a sent offer.
 | Direction | Type |
 | --- | --- |
 | Request | [`OfferExtendDeadlineParams`](./src/resources/offers.ts) |
-| Response | [`OfferExtendDeadlineResponse`](./src/resources/offers.ts) |
+| Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const extendDeadline = await client.offers.extendDeadline('id', {
+const objects5 = await client.offers.extendDeadline('id', {
   expirationTime: '',
 });
 ```
@@ -450,10 +450,10 @@ Resend the offer email to the candidate for a sent offer.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`OfferResendResponse`](./src/resources/offers.ts) |
+| Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const resend = await client.offers.resend('id');
+const objects5 = await client.offers.resend('id');
 ```
 
 ## `PayRates`

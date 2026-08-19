@@ -4,6 +4,7 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
+import type * as Shared from './shared';
 
 export class Workplaces extends APIResource {
   /**
@@ -137,8 +138,8 @@ export interface Objects11 {
 
 export interface WorkplaceListParams {
   limit: string | null;
-  afterId?: string | null;
-  beforeId?: string | null;
+  afterId?: Shared.Union33 | null;
+  beforeId?: Shared.Union33 | null;
 }
 
 export interface WorkplaceListResponse {
@@ -151,8 +152,8 @@ export namespace WorkplaceListResponse {
   export interface Data {
     id: string;
     name: string;
-    type: 'remote' | 'office';
-    status: 'active' | 'archived';
+    type: Shared.Union34;
+    status: Shared.Union35;
     /**
      * A valid US address
      */
@@ -173,8 +174,8 @@ export interface WorkplaceCreateParams {
 export interface WorkplaceCreateResponse {
   id: string;
   name: string;
-  type: 'remote' | 'office';
-  status: 'active' | 'archived';
+  type: Shared.Union34;
+  status: Shared.Union35;
   /**
    * A valid US address
    */
@@ -189,8 +190,8 @@ export interface WorkplaceUpdateParams {
 export interface WorkplaceUpdateResponse {
   id: string;
   name: string;
-  type: 'remote' | 'office';
-  status: 'active' | 'archived';
+  type: Shared.Union34;
+  status: Shared.Union35;
   /**
    * A valid US address
    */

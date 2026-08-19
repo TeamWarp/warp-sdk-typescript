@@ -5,6 +5,7 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { buildHeaders } from '../internal/headers';
 import { path as __scalarPath } from '../internal/utils/path';
+import type * as Shared from './shared';
 
 export class Workers extends APIResource {
   /**
@@ -215,8 +216,8 @@ export interface WorkerListParams {
   limit: string | null;
   afterId?: string | null;
   beforeId?: string | null;
-  statuses?: Array<'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'> | null;
-  types?: Array<'employee' | 'contractor'> | null;
+  statuses?: Array<Shared.Union23> | null;
+  types?: Array<Shared.Union24> | null;
   workEmail?: string | null;
 }
 
@@ -230,17 +231,17 @@ export namespace WorkerListResponse {
   export interface Data {
     id: string;
     position: string;
-    type: 'employee' | 'contractor';
-    status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    type: Shared.Union24;
+    status: Shared.Union23;
     startDate: string;
-    endDate: string | null;
-    isBusiness: boolean | null;
-    businessName: string | null;
+    endDate: Shared.Union25 | null;
+    isBusiness: Shared.Union26 | null;
+    businessName: Shared.Union27 | null;
     firstName: string;
     lastName: string;
     email: string;
-    workEmail: string | null;
-    preferredName: string | null;
+    workEmail: Shared.Union28 | null;
+    preferredName: Shared.Union29 | null;
     /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
@@ -248,114 +249,32 @@ export namespace WorkerListResponse {
     /**
      * The IANA timezone of the worker (e.g., America/New_York).
      */
-    timeZone: string | null;
+    timeZone: Shared.Union30 | null;
     /**
      * The department the worker belongs to, or null if unassigned.
      */
-    department: Data.Department | null;
+    department: Shared.Union31 | null;
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Data.Compensation | null;
-  }
-
-  export namespace Data {
-    export interface Department {
-      id: string;
-      name: string;
-    }
-
-    export interface Compensation {
-      payRateId: string;
-      /**
-       * The period for the pay rate.
-       */
-      basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-      amount: string;
-      currency:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-      /**
-       * The server-formatted pay rate, including its period.
-       */
-      display: string;
-    }
+    compensation: Shared.PublicWorkerCompensation | null;
   }
 }
 
 export interface WorkerGetResponse {
   id: string;
   position: string;
-  type: 'employee' | 'contractor';
-  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  type: Shared.Union24;
+  status: Shared.Union23;
   startDate: string;
-  endDate: string | null;
-  isBusiness: boolean | null;
-  businessName: string | null;
+  endDate: Shared.Union25 | null;
+  isBusiness: Shared.Union26 | null;
+  businessName: Shared.Union27 | null;
   firstName: string;
   lastName: string;
   email: string;
-  workEmail: string | null;
-  preferredName: string | null;
+  workEmail: Shared.Union28 | null;
+  preferredName: Shared.Union29 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -363,97 +282,15 @@ export interface WorkerGetResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: string | null;
+  timeZone: Shared.Union30 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: WorkerGetResponse.Department | null;
+  department: Shared.Union31 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
-  compensation: WorkerGetResponse.Compensation | null;
-}
-
-export namespace WorkerGetResponse {
-  export interface Department {
-    id: string;
-    name: string;
-  }
-
-  export interface Compensation {
-    payRateId: string;
-    /**
-     * The period for the pay rate.
-     */
-    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-    amount: string;
-    currency:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN';
-    /**
-     * The server-formatted pay rate, including its period.
-     */
-    display: string;
-  }
+  compensation: Shared.PublicWorkerCompensation | null;
 }
 
 export interface WorkerCreateEmployeeParams {
@@ -475,7 +312,7 @@ export interface WorkerCreateEmployeeParams {
   workEmail?: string | null;
   requireI9?: boolean | null;
   stateRegistration?: 'self_managed' | 'warp_managed' | null;
-  stockOptions?: string | 'Infinity' | '-Infinity' | 'NaN' | null;
+  stockOptions?: string | Shared.Union1 | null;
   paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
@@ -492,17 +329,17 @@ export namespace WorkerCreateEmployeeParams {
 export interface WorkerCreateEmployeeResponse {
   id: string;
   position: string;
-  type: 'employee' | 'contractor';
-  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  type: Shared.Union24;
+  status: Shared.Union23;
   startDate: string;
-  endDate: string | null;
-  isBusiness: boolean | null;
-  businessName: string | null;
+  endDate: Shared.Union25 | null;
+  isBusiness: Shared.Union26 | null;
+  businessName: Shared.Union27 | null;
   firstName: string;
   lastName: string;
   email: string;
-  workEmail: string | null;
-  preferredName: string | null;
+  workEmail: Shared.Union28 | null;
+  preferredName: Shared.Union29 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -510,97 +347,15 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: string | null;
+  timeZone: Shared.Union30 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: WorkerCreateEmployeeResponse.Department | null;
+  department: Shared.Union31 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
-  compensation: WorkerCreateEmployeeResponse.Compensation | null;
-}
-
-export namespace WorkerCreateEmployeeResponse {
-  export interface Department {
-    id: string;
-    name: string;
-  }
-
-  export interface Compensation {
-    payRateId: string;
-    /**
-     * The period for the pay rate.
-     */
-    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-    amount: string;
-    currency:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN';
-    /**
-     * The server-formatted pay rate, including its period.
-     */
-    display: string;
-  }
+  compensation: Shared.PublicWorkerCompensation | null;
 }
 
 export interface WorkerCreateContractorParams {
@@ -948,17 +703,17 @@ export namespace WorkerCreateContractorParams {
 export interface WorkerCreateContractorResponse {
   id: string;
   position: string;
-  type: 'employee' | 'contractor';
-  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  type: Shared.Union24;
+  status: Shared.Union23;
   startDate: string;
-  endDate: string | null;
-  isBusiness: boolean | null;
-  businessName: string | null;
+  endDate: Shared.Union25 | null;
+  isBusiness: Shared.Union26 | null;
+  businessName: Shared.Union27 | null;
   firstName: string;
   lastName: string;
   email: string;
-  workEmail: string | null;
-  preferredName: string | null;
+  workEmail: Shared.Union28 | null;
+  preferredName: Shared.Union29 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -966,113 +721,31 @@ export interface WorkerCreateContractorResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: string | null;
+  timeZone: Shared.Union30 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: WorkerCreateContractorResponse.Department | null;
+  department: Shared.Union31 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
-  compensation: WorkerCreateContractorResponse.Compensation | null;
-}
-
-export namespace WorkerCreateContractorResponse {
-  export interface Department {
-    id: string;
-    name: string;
-  }
-
-  export interface Compensation {
-    payRateId: string;
-    /**
-     * The period for the pay rate.
-     */
-    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-    amount: string;
-    currency:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN';
-    /**
-     * The server-formatted pay rate, including its period.
-     */
-    display: string;
-  }
+  compensation: Shared.PublicWorkerCompensation | null;
 }
 
 export interface WorkerInviteResponse {
   id: string;
   position: string;
-  type: 'employee' | 'contractor';
-  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  type: Shared.Union24;
+  status: Shared.Union23;
   startDate: string;
-  endDate: string | null;
-  isBusiness: boolean | null;
-  businessName: string | null;
+  endDate: Shared.Union25 | null;
+  isBusiness: Shared.Union26 | null;
+  businessName: Shared.Union27 | null;
   firstName: string;
   lastName: string;
   email: string;
-  workEmail: string | null;
-  preferredName: string | null;
+  workEmail: Shared.Union28 | null;
+  preferredName: Shared.Union29 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -1080,97 +753,15 @@ export interface WorkerInviteResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: string | null;
+  timeZone: Shared.Union30 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: WorkerInviteResponse.Department | null;
+  department: Shared.Union31 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
-  compensation: WorkerInviteResponse.Compensation | null;
-}
-
-export namespace WorkerInviteResponse {
-  export interface Department {
-    id: string;
-    name: string;
-  }
-
-  export interface Compensation {
-    payRateId: string;
-    /**
-     * The period for the pay rate.
-     */
-    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
-    amount: string;
-    currency:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN';
-    /**
-     * The server-formatted pay rate, including its period.
-     */
-    display: string;
-  }
+  compensation: Shared.PublicWorkerCompensation | null;
 }
 export declare namespace Workers {
   export {

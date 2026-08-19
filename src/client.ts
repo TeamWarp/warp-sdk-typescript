@@ -31,11 +31,7 @@ import {
   type CustomFieldListResponse,
   type CustomFieldCreateResponse,
   type CustomFieldGetResponse,
-  type CustomFieldUpdateResponse,
-  type CustomFieldArchiveResponse,
   type CustomFieldCreateOptionResponse,
-  type CustomFieldUpdateOptionResponse,
-  type CustomFieldArchiveOptionResponse,
   type CustomFieldListValuesResponse,
   type CustomFieldUpsertValueResponse,
   type CustomFieldCreateParams,
@@ -59,9 +55,6 @@ import {
   Offers,
   type OfferListResponse,
   type OfferCreateResponse,
-  type OfferVoidResponse,
-  type OfferExtendDeadlineResponse,
-  type OfferResendResponse,
   type OfferListParams,
   type OfferCreateParams,
   type OfferExtendDeadlineParams,
@@ -126,6 +119,7 @@ import {
   type OfferVoidedWebhookEvent,
   type ParsedWebhookEvent,
 } from './resources/webhooks';
+import * as SharedAPI from './resources/shared';
 
 export type AuthTokenProvider = () => string | Promise<string>;
 
@@ -955,11 +949,7 @@ export declare namespace Warp {
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldGetResponse as CustomFieldGetResponse,
-    type CustomFieldUpdateResponse as CustomFieldUpdateResponse,
-    type CustomFieldArchiveResponse as CustomFieldArchiveResponse,
     type CustomFieldCreateOptionResponse as CustomFieldCreateOptionResponse,
-    type CustomFieldUpdateOptionResponse as CustomFieldUpdateOptionResponse,
-    type CustomFieldArchiveOptionResponse as CustomFieldArchiveOptionResponse,
     type CustomFieldListValuesResponse as CustomFieldListValuesResponse,
     type CustomFieldUpsertValueResponse as CustomFieldUpsertValueResponse,
     type CustomFieldCreateParams as CustomFieldCreateParams,
@@ -985,9 +975,6 @@ export declare namespace Warp {
     Offers as Offers,
     type OfferListResponse as OfferListResponse,
     type OfferCreateResponse as OfferCreateResponse,
-    type OfferVoidResponse as OfferVoidResponse,
-    type OfferExtendDeadlineResponse as OfferExtendDeadlineResponse,
-    type OfferResendResponse as OfferResendResponse,
     type OfferListParams as OfferListParams,
     type OfferCreateParams as OfferCreateParams,
     type OfferExtendDeadlineParams as OfferExtendDeadlineParams,
@@ -1057,6 +1044,60 @@ export declare namespace Warp {
     type OfferVoidedWebhookEvent as OfferVoidedWebhookEvent,
     type ParsedWebhookEvent as ParsedWebhookEvent,
   };
+
+  export type APIKeyUnauthorizedEncoded = SharedAPI.APIKeyUnauthorizedEncoded;
+  export type APINotEnabledEncoded = SharedAPI.APINotEnabledEncoded;
+  export type CustomFieldNotFoundErrorEncoded = SharedAPI.CustomFieldNotFoundErrorEncoded;
+  export type CustomFieldOptionAlreadyExistsErrorEncoded =
+    SharedAPI.CustomFieldOptionAlreadyExistsErrorEncoded;
+  export type CustomFieldOptionNotFoundErrorEncoded = SharedAPI.CustomFieldOptionNotFoundErrorEncoded;
+  export type DepartmentNotFoundEncoded = SharedAPI.DepartmentNotFoundEncoded;
+  export type EffectHTTPAPIErrorInternalServerErrorEncoded =
+    SharedAPI.EffectHTTPAPIErrorInternalServerErrorEncoded;
+  export type InvalidCustomFieldOperationErrorEncoded = SharedAPI.InvalidCustomFieldOperationErrorEncoded;
+  export type InvalidOfferStatusErrorEncoded = SharedAPI.InvalidOfferStatusErrorEncoded;
+  export type ManagerNotFoundErrorEncoded = SharedAPI.ManagerNotFoundErrorEncoded;
+  export type MissingRequiredCompanyPermissionsEncoded = SharedAPI.MissingRequiredCompanyPermissionsEncoded;
+  export type Objects = SharedAPI.Objects;
+  export type Objects1 = SharedAPI.Objects1;
+  export type Objects3 = SharedAPI.Objects3;
+  export type Objects5 = SharedAPI.Objects5;
+  export type OfferNotFoundErrorEncoded = SharedAPI.OfferNotFoundErrorEncoded;
+  export type PublicMoneyAmount = SharedAPI.PublicMoneyAmount;
+  export type PublicWorkerCompensation = SharedAPI.PublicWorkerCompensation;
+  export type RateLimitExceededEncoded = SharedAPI.RateLimitExceededEncoded;
+  export type TimeOffPolicyNotFoundEncoded = SharedAPI.TimeOffPolicyNotFoundEncoded;
+  export type Union = SharedAPI.Union;
+  export type Union1 = SharedAPI.Union1;
+  export type Union10 = SharedAPI.Union10;
+  export type Union11 = SharedAPI.Union11;
+  export type Union12 = SharedAPI.Union12;
+  export type Union13 = SharedAPI.Union13;
+  export type Union18 = SharedAPI.Union18;
+  export type Union2 = SharedAPI.Union2;
+  export type Union20 = SharedAPI.Union20;
+  export type Union21 = SharedAPI.Union21;
+  export type Union23 = SharedAPI.Union23;
+  export type Union24 = SharedAPI.Union24;
+  export type Union25 = SharedAPI.Union25;
+  export type Union26 = SharedAPI.Union26;
+  export type Union27 = SharedAPI.Union27;
+  export type Union28 = SharedAPI.Union28;
+  export type Union29 = SharedAPI.Union29;
+  export type Union3 = SharedAPI.Union3;
+  export type Union30 = SharedAPI.Union30;
+  export type Union31 = SharedAPI.Union31;
+  export type Union32 = SharedAPI.Union32;
+  export type Union33 = SharedAPI.Union33;
+  export type Union34 = SharedAPI.Union34;
+  export type Union35 = SharedAPI.Union35;
+  export type Union4 = SharedAPI.Union4;
+  export type Union5 = SharedAPI.Union5;
+  export type Union6 = SharedAPI.Union6;
+  export type Union7 = SharedAPI.Union7;
+  export type Union8 = SharedAPI.Union8;
+  export type WorkerNotFoundErrorEncoded = SharedAPI.WorkerNotFoundErrorEncoded;
+  export type WorkplaceNotFoundEncoded = SharedAPI.WorkplaceNotFoundEncoded;
 }
 
 const headerExplicitlyOmitted = (source: HeadersLike | undefined, name: string): boolean => {

@@ -131,7 +131,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PATCH',
     path: '/v1/custom_fields/{id}',
     run: async () => {
-      const update = await client.customFields.update('id', {});
+      const objects = await client.customFields.update('id', {});
     },
   },
 
@@ -140,7 +140,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_fields/{id}/archive',
     run: async () => {
-      const archive = await client.customFields.archive('id');
+      const objects = await client.customFields.archive('id');
     },
   },
 
@@ -161,7 +161,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PATCH',
     path: '/v1/custom_field_options/{id}',
     run: async () => {
-      const updateOption = await client.customFields.updateOption('id', {});
+      const objects3 = await client.customFields.updateOption('id', {});
     },
   },
 
@@ -179,7 +179,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_field_options/{id}/archive',
     run: async () => {
-      const archiveOption = await client.customFields.archiveOption('id');
+      const objects3 = await client.customFields.archiveOption('id');
     },
   },
 
@@ -292,7 +292,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/void',
     run: async () => {
-      const void_ = await client.offers.void('id');
+      const objects5 = await client.offers.void('id');
     },
   },
 
@@ -301,7 +301,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/extend-deadline',
     run: async () => {
-      const extendDeadline = await client.offers.extendDeadline('id', {
+      const objects5 = await client.offers.extendDeadline('id', {
         expirationTime: '',
       });
     },
@@ -312,7 +312,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/resend',
     run: async () => {
-      const resend = await client.offers.resend('id');
+      const objects5 = await client.offers.resend('id');
     },
   },
 

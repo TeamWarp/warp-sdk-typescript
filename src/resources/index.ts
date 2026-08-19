@@ -1,5 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
+export * from './shared';
 export { Benefits } from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
@@ -8,13 +9,9 @@ export type {
   CustomFieldCreateResponse,
   CustomFieldGetResponse,
   CustomFieldUpdateParams,
-  CustomFieldUpdateResponse,
-  CustomFieldArchiveResponse,
   CustomFieldCreateOptionParams,
   CustomFieldCreateOptionResponse,
   CustomFieldUpdateOptionParams,
-  CustomFieldUpdateOptionResponse,
-  CustomFieldArchiveOptionResponse,
   CustomFieldListValuesParams,
   CustomFieldListValuesResponse,
   CustomFieldUpsertValueParams,
@@ -36,10 +33,7 @@ export type {
   OfferListResponse,
   OfferCreateParams,
   OfferCreateResponse,
-  OfferVoidResponse,
   OfferExtendDeadlineParams,
-  OfferExtendDeadlineResponse,
-  OfferResendResponse,
 } from './offers';
 export { PayRates } from './pay-rates';
 export type { PayRateListParams, PayRateListResponse, PayRateGetResponse } from './pay-rates';
