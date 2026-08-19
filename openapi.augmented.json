@@ -5359,7 +5359,8 @@
                     "enum": [
                       "candidate_declined",
                       "other"
-                    ]
+                    ],
+                    "example": "candidate_declined"
                   },
                   "voidNotes": {
                     "anyOf": [
