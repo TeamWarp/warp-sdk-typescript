@@ -12155,9 +12155,24 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
+      "bodyParams": [
+        "voidReason",
+        "voidNotes"
+      ],
+      "publicBodyParams": [
+        "voidReason",
+        "voidNotes"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "voidReason",
+          "required": true
+        },
+        {
+          "name": "voidNotes",
+          "required": false
+        }
+      ],
       "pathParamDetails": [
         {
           "name": "id",
@@ -12173,6 +12188,19 @@
       "cookieParamDetails": [],
       "paramsModel": {
         "publicName": "OfferVoidParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
       },
       "response": {
         "status": "200",

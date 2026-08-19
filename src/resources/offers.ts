@@ -61,16 +61,19 @@ export class Offers extends APIResource {
    * Void a previously sent offer. Only sent offers can be voided.
    *
    * @param {string} id
+   * @param {OfferVoidParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<Shared.Objects5>} Success
    *
    * @example
    * ```ts
-   * const objects5 = await client.offers.void('id');
+   * const objects5 = await client.offers.void('id', {
+   *   voidReason: 'candidate_declined',
+   * });
    * ```
    */
-  void(id: string, options?: RequestOptions): APIPromise<Shared.Objects5> {
-    return this._client.post(__scalarPath`/v1/offers/${id}/void`, options);
+  void(id: string, body: OfferVoidParams, options?: RequestOptions): APIPromise<Shared.Objects5> {
+    return this._client.post(__scalarPath`/v1/offers/${id}/void`, { body, ...options });
   }
 
   /**
@@ -823,6 +826,11 @@ export namespace OfferCreateResponse {
   }
 }
 
+export interface OfferVoidParams {
+  voidReason: 'candidate_declined' | 'other';
+  voidNotes?: string | null;
+}
+
 export interface OfferExtendDeadlineParams {
   expirationTime: string;
 }
@@ -832,6 +840,7 @@ export declare namespace Offers {
     type OfferCreateResponse as OfferCreateResponse,
     type OfferListParams as OfferListParams,
     type OfferCreateParams as OfferCreateParams,
+    type OfferVoidParams as OfferVoidParams,
     type OfferExtendDeadlineParams as OfferExtendDeadlineParams,
   };
 }

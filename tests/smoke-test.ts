@@ -292,7 +292,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/void',
     run: async () => {
-      const objects5 = await client.offers.void('id');
+      const objects5 = await client.offers.void('id', {
+        voidReason: 'candidate_declined',
+      });
     },
   },
 

@@ -5348,11 +5348,51 @@
         },
         "description": "Void a previously sent offer. Only sent offers can be voided.",
         "summary": "Void Offer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "voidReason": {
+                    "type": "string",
+                    "enum": [
+                      "candidate_declined",
+                      "other"
+                    ]
+                  },
+                  "voidNotes": {
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "voidReason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        },
         "x-codeSamples": [
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.void('id');\n\nconsole.log(objects5);"
+            "source": "import WarpAPI from 'warp-hr';\n\nconst client = new WarpAPI({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst objects5 = await client.offers.void('id', {\n  voidReason: 'candidate_declined',\n});\n\nconsole.log(objects5);"
           }
         ]
       }

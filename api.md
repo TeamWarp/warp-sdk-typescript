@@ -423,10 +423,13 @@ Void a previously sent offer. Only sent offers can be voided.
 
 | Direction | Type |
 | --- | --- |
+| Request | [`OfferVoidParams`](./src/resources/offers.ts) |
 | Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const objects5 = await client.offers.void('id');
+const objects5 = await client.offers.void('id', {
+  voidReason: 'candidate_declined',
+});
 ```
 
 ### Extend Offer Deadline

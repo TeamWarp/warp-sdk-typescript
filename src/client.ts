@@ -60,6 +60,7 @@ import {
   type OfferCreateResponse,
   type OfferListParams,
   type OfferCreateParams,
+  type OfferVoidParams,
   type OfferExtendDeadlineParams,
 } from './resources/offers';
 import {
@@ -983,6 +984,7 @@ export declare namespace WarpAPI {
     type OfferCreateResponse as OfferCreateResponse,
     type OfferListParams as OfferListParams,
     type OfferCreateParams as OfferCreateParams,
+    type OfferVoidParams as OfferVoidParams,
     type OfferExtendDeadlineParams as OfferExtendDeadlineParams,
   };
 

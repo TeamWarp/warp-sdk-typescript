@@ -36,6 +36,7 @@ export type {
   OfferListResponse,
   OfferCreateParams,
   OfferCreateResponse,
+  OfferVoidParams,
   OfferExtendDeadlineParams,
 } from './offers';
 export { PayRates } from './pay-rates';
