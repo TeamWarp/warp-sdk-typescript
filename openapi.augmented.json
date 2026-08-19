@@ -8778,14 +8778,7 @@
                                 ]
                               },
                               "per": {
-                                "type": "string",
-                                "enum": [
-                                  "hour",
-                                  "year",
-                                  "month",
-                                  "week"
-                                ],
-                                "description": "The pay period for the compensation amount."
+                                "$ref": "#/components/schemas/PublicPayRatePer_1"
                               }
                             },
                             "required": [
@@ -9749,15 +9742,15 @@
           "NaN"
         ]
       },
-      "PublicPayRateBasis": {
+      "PublicPayRatePer": {
         "type": "string",
         "enum": [
-          "yearly",
-          "monthly",
-          "weekly",
-          "hourly"
+          "year",
+          "month",
+          "week",
+          "hour"
         ],
-        "description": "The period for the pay rate."
+        "description": "The period represented by the pay rate amount."
       },
       "PublicWorkerCompensation": {
         "type": "object",
@@ -9774,8 +9767,8 @@
               }
             ]
           },
-          "basis": {
-            "$ref": "#/components/schemas/PublicPayRateBasis"
+          "per": {
+            "$ref": "#/components/schemas/PublicPayRatePer"
           },
           "amount": {
             "type": "integer",
@@ -9801,7 +9794,7 @@
         },
         "required": [
           "payRateId",
-          "basis",
+          "per",
           "amount",
           "currency",
           "display"
@@ -12379,8 +12372,8 @@
           "type": {
             "$ref": "#/components/schemas/PublicPayRateType"
           },
-          "basis": {
-            "$ref": "#/components/schemas/PublicPayRateBasis"
+          "per": {
+            "$ref": "#/components/schemas/PublicPayRatePer"
           },
           "amount": {
             "type": "integer",
@@ -12451,7 +12444,7 @@
           "id",
           "worker",
           "type",
-          "basis",
+          "per",
           "amount",
           "currency",
           "display",
@@ -13194,6 +13187,16 @@
           "message"
         ],
         "additionalProperties": false
+      },
+      "PublicPayRatePer_1": {
+        "type": "string",
+        "enum": [
+          "year",
+          "month",
+          "week",
+          "hour"
+        ],
+        "description": "The pay period for the compensation amount."
       },
       "InvalidWorkerStatusErrorEncoded": {
         "type": "object",

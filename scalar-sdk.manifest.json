@@ -247,23 +247,23 @@
       }
     },
     {
-      "name": "public_pay_rate_basis",
-      "source": "public_pay_rate_basis",
+      "name": "public_pay_rate_per",
+      "source": "public_pay_rate_per",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "enum",
         "values": [
-          "yearly",
-          "monthly",
-          "weekly",
-          "hourly"
+          "year",
+          "month",
+          "week",
+          "hour"
         ],
         "names": [
-          "Yearly",
-          "Monthly",
-          "Weekly",
-          "Hourly"
+          "Year",
+          "Month",
+          "Week",
+          "Hour"
         ],
         "deprecations": [
           false,
@@ -300,13 +300,13 @@
             }
           },
           {
-            "name": "basis",
-            "publicName": "basis",
+            "name": "per",
+            "publicName": "per",
             "required": true,
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "public_pay_rate_basis"
+              "name": "public_pay_rate_per"
             }
           },
           {
@@ -5598,13 +5598,13 @@
             }
           },
           {
-            "name": "basis",
-            "publicName": "basis",
+            "name": "per",
+            "publicName": "per",
             "required": true,
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "public_pay_rate_basis"
+              "name": "public_pay_rate_per"
             }
           },
           {
@@ -7170,6 +7170,33 @@
           }
         ],
         "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_rate_per_1",
+      "source": "public_pay_rate_per_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "year",
+          "month",
+          "week",
+          "hour"
+        ],
+        "names": [
+          "Year",
+          "Month",
+          "Week",
+          "Hour"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false
+        ]
       }
     },
     {
