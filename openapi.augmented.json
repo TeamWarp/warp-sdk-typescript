@@ -1161,7 +1161,7 @@
           {
             "lang": "TypeScript",
             "label": "TypeScript",
-            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst get_ = await client.benefits.deductions.get('id');\n\nconsole.log(get_);"
+            "source": "import Warp from 'warp-hr';\n\nconst client = new Warp({\n  apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var\n});\n\nconst retrieve = await client.benefits.deductions.retrieve('id');\n\nconsole.log(retrieve);"
           }
         ]
       }

@@ -8665,8 +8665,8 @@
     {
       "resource": "benefits.deductions",
       "publicResource": "benefits.deductions",
-      "operation": "get",
-      "publicOperation": "get",
+      "operation": "retrieve",
+      "publicOperation": "retrieve",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/deductions/{id}",
@@ -8697,7 +8697,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "DeductionGetParams"
+        "publicName": "DeductionRetrieveParams"
       },
       "response": {
         "status": "200",

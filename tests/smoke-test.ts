@@ -87,11 +87,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'get',
+    operation: 'retrieve',
     method: 'GET',
     path: '/v1/benefits/deductions/{id}',
     run: async () => {
-      const get_ = await client.benefits.deductions.get('id');
+      const retrieve = await client.benefits.deductions.retrieve('id');
     },
   },
 

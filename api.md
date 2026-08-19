@@ -155,10 +155,10 @@ Get the current version of a company benefit deduction by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`DeductionGetResponse`](./src/resources/benefits/deductions.ts) |
+| Response | [`DeductionRetrieveResponse`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const get_ = await client.benefits.deductions.get('id');
+const retrieve = await client.benefits.deductions.retrieve('id');
 ```
 
 ## `CustomFields`
