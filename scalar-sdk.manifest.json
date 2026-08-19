@@ -6102,8 +6102,16 @@
         "kind": "union",
         "variants": [
           {
-            "kind": "primitive",
-            "type": "string"
+            "kind": "intersection",
+            "parts": [
+              {
+                "kind": "primitive",
+                "type": "string",
+                "validation": {
+                  "pattern": "^wrkasn_"
+                }
+              }
+            ]
           },
           {
             "kind": "null"

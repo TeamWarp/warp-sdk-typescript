@@ -6354,7 +6354,16 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string"
+                            "type": "string",
+                            "allOf": [
+                              {
+                                "pattern": "^wrkasn_",
+                                "description": "The external-facing id of the worker assignment.",
+                                "examples": [
+                                  "wrkasn_1234"
+                                ]
+                              }
+                            ]
                           },
                           "policyId": {
                             "type": "string",
@@ -6602,7 +6611,16 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "type": "string"
+                            "type": "string",
+                            "allOf": [
+                              {
+                                "pattern": "^wrkasn_",
+                                "description": "The external-facing id of the worker assignment.",
+                                "examples": [
+                                  "wrkasn_1234"
+                                ]
+                              }
+                            ]
                           },
                           "policyId": {
                             "type": "string",
@@ -12662,7 +12680,16 @@
       "Union_20": {
         "anyOf": [
           {
-            "type": "string"
+            "type": "string",
+            "allOf": [
+              {
+                "pattern": "^wrkasn_",
+                "description": "The external-facing id of the worker assignment.",
+                "examples": [
+                  "wrkasn_1234"
+                ]
+              }
+            ]
           },
           {
             "type": "null"
