@@ -5,6 +5,7 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { buildHeaders } from '../internal/headers';
 import { path as __scalarPath } from '../internal/utils/path';
+import type * as Shared from './shared';
 
 export class CustomFields extends APIResource {
   /**
@@ -64,18 +65,14 @@ export class CustomFields extends APIResource {
    * @param {string} id
    * @param {CustomFieldUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomFieldUpdateResponse>} Success
+   * @returns {APIPromise<Shared.Objects>} Success
    *
    * @example
    * ```ts
-   * const update = await client.customFields.update('id', {});
+   * const objects = await client.customFields.update('id', {});
    * ```
    */
-  update(
-    id: string,
-    body: CustomFieldUpdateParams,
-    options?: RequestOptions,
-  ): APIPromise<CustomFieldUpdateResponse> {
+  update(id: string, body: CustomFieldUpdateParams, options?: RequestOptions): APIPromise<Shared.Objects> {
     return this._client.patch(__scalarPath`/v1/custom_fields/${id}`, { body, ...options });
   }
 
@@ -84,14 +81,14 @@ export class CustomFields extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomFieldArchiveResponse>} Success
+   * @returns {APIPromise<Shared.Objects>} Success
    *
    * @example
    * ```ts
-   * const archive = await client.customFields.archive('id');
+   * const objects = await client.customFields.archive('id');
    * ```
    */
-  archive(id: string, options?: RequestOptions): APIPromise<CustomFieldArchiveResponse> {
+  archive(id: string, options?: RequestOptions): APIPromise<Shared.Objects> {
     return this._client.post(__scalarPath`/v1/custom_fields/${id}/archive`, options);
   }
 
@@ -125,18 +122,18 @@ export class CustomFields extends APIResource {
    * @param {string} id
    * @param {CustomFieldUpdateOptionParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomFieldUpdateOptionResponse>} Success
+   * @returns {APIPromise<Shared.Objects3>} Success
    *
    * @example
    * ```ts
-   * const updateOption = await client.customFields.updateOption('id', {});
+   * const objects3 = await client.customFields.updateOption('id', {});
    * ```
    */
   updateOption(
     id: string,
     body: CustomFieldUpdateOptionParams,
     options?: RequestOptions,
-  ): APIPromise<CustomFieldUpdateOptionResponse> {
+  ): APIPromise<Shared.Objects3> {
     return this._client.patch(__scalarPath`/v1/custom_field_options/${id}`, { body, ...options });
   }
 
@@ -164,14 +161,14 @@ export class CustomFields extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<CustomFieldArchiveOptionResponse>} Success
+   * @returns {APIPromise<Shared.Objects3>} Success
    *
    * @example
    * ```ts
-   * const archiveOption = await client.customFields.archiveOption('id');
+   * const objects3 = await client.customFields.archiveOption('id');
    * ```
    */
-  archiveOption(id: string, options?: RequestOptions): APIPromise<CustomFieldArchiveOptionResponse> {
+  archiveOption(id: string, options?: RequestOptions): APIPromise<Shared.Objects3> {
     return this._client.post(__scalarPath`/v1/custom_field_options/${id}/archive`, options);
   }
 
@@ -245,31 +242,14 @@ export class CustomFields extends APIResource {
   }
 }
 
-export type CustomFieldListResponse = Array<CustomFieldListResponse.CustomFieldListResponseItem>;
-
-export namespace CustomFieldListResponse {
-  export interface CustomFieldListResponseItem {
-    id: string;
-    name: string;
-    description: string | null;
-    type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
-    config: Record<string, unknown>;
-    status: 'active' | 'archived';
-    category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-    accessLevel: 'admins' | 'manager' | 'worker';
-    inputBy: 'admin' | 'worker';
-    canWrite: boolean;
-    createdAt: string;
-    required?: boolean | null;
-  }
-}
+export type CustomFieldListResponse = Array<Shared.Objects>;
 
 export interface CustomFieldCreateParams {
   name: string;
   type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
   category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
   description?: string | null;
-  config?: Record<string, unknown> | null;
+  config?: Shared.Objects1 | null;
   accessLevel?: 'admins' | 'manager' | 'worker' | null;
   inputBy?: 'admin' | 'worker' | null;
   required?: boolean | null;
@@ -280,128 +260,69 @@ export namespace CustomFieldCreateParams {
   export interface Option {
     label: string;
     value: string;
-    sortOrder?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    sortOrder?: number | Shared.Union1 | null;
   }
 }
 
 export interface CustomFieldCreateResponse {
   id: string;
   name: string;
-  description: string | null;
-  type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
-  config: Record<string, unknown>;
-  status: 'active' | 'archived';
-  category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-  accessLevel: 'admins' | 'manager' | 'worker';
-  inputBy: 'admin' | 'worker';
+  description: Shared.Union2 | null;
+  type: Shared.Union3;
+  config: Shared.Objects1;
+  status: Shared.Union4;
+  category: Shared.Union5;
+  accessLevel: Shared.Union6;
+  inputBy: Shared.Union7;
   canWrite: boolean;
   createdAt: string;
-  required?: boolean | null;
+  required?: Shared.Union8 | null;
 }
 
 export interface CustomFieldGetResponse {
   id: string;
   name: string;
-  description: string | null;
-  type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
-  config: Record<string, unknown>;
-  status: 'active' | 'archived';
-  category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-  accessLevel: 'admins' | 'manager' | 'worker';
-  inputBy: 'admin' | 'worker';
+  description: Shared.Union2 | null;
+  type: Shared.Union3;
+  config: Shared.Objects1;
+  status: Shared.Union4;
+  category: Shared.Union5;
+  accessLevel: Shared.Union6;
+  inputBy: Shared.Union7;
   canWrite: boolean;
   createdAt: string;
-  options: Array<CustomFieldGetResponse.Option>;
-  required?: boolean | null;
-}
-
-export namespace CustomFieldGetResponse {
-  export interface Option {
-    id: string;
-    label: string;
-    value: string;
-    sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-    status: 'active' | 'archived';
-    createdAt: string;
-  }
+  options: Array<Shared.Objects3>;
+  required?: Shared.Union8 | null;
 }
 
 export interface CustomFieldUpdateParams {
   name?: string | null;
   description?: string | null;
-  config?: Record<string, unknown> | null;
+  config?: Shared.Objects1 | null;
   category?: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance' | null;
   accessLevel?: 'admins' | 'manager' | 'worker' | null;
   inputBy?: 'admin' | 'worker' | null;
   required?: boolean | null;
 }
 
-export interface CustomFieldUpdateResponse {
-  id: string;
-  name: string;
-  description: string | null;
-  type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
-  config: Record<string, unknown>;
-  status: 'active' | 'archived';
-  category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-  accessLevel: 'admins' | 'manager' | 'worker';
-  inputBy: 'admin' | 'worker';
-  canWrite: boolean;
-  createdAt: string;
-  required?: boolean | null;
-}
-
-export interface CustomFieldArchiveResponse {
-  id: string;
-  name: string;
-  description: string | null;
-  type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
-  config: Record<string, unknown>;
-  status: 'active' | 'archived';
-  category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-  accessLevel: 'admins' | 'manager' | 'worker';
-  inputBy: 'admin' | 'worker';
-  canWrite: boolean;
-  createdAt: string;
-  required?: boolean | null;
-}
-
 export interface CustomFieldCreateOptionParams {
   label: string;
   value: string;
-  sortOrder?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  sortOrder?: number | Shared.Union1 | null;
 }
 
 export interface CustomFieldCreateOptionResponse {
   id: string;
   label: string;
   value: string;
-  sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+  sortOrder: Shared.Union10;
   status: 'active' | 'archived';
   createdAt: string;
 }
 
 export interface CustomFieldUpdateOptionParams {
   label?: string | null;
-  sortOrder?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-}
-
-export interface CustomFieldUpdateOptionResponse {
-  id: string;
-  label: string;
-  value: string;
-  sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-  status: 'active' | 'archived';
-  createdAt: string;
-}
-
-export interface CustomFieldArchiveOptionResponse {
-  id: string;
-  label: string;
-  value: string;
-  sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-  status: 'active' | 'archived';
-  createdAt: string;
+  sortOrder?: number | Shared.Union1 | null;
 }
 
 export interface CustomFieldListValuesParams {
@@ -437,7 +358,7 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value2 {
       type: 'number';
-      value: number | 'Infinity' | '-Infinity' | 'NaN';
+      value: Shared.Union10;
     }
 
     export interface Value3 {
@@ -452,106 +373,23 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value5 {
       type: 'currency';
-      amount: number | 'Infinity' | '-Infinity' | 'NaN';
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
+      amount: Shared.Union10;
+      currencyCode: Shared.Union;
     }
 
     export interface Value6 {
       type: 'percentage';
-      value: number | 'Infinity' | '-Infinity' | 'NaN';
+      value: Shared.Union10;
     }
 
     export interface Value7 {
       type: 'select';
-      option: Value7.Option;
-    }
-
-    export namespace Value7 {
-      export interface Option {
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
+      option: Shared.Objects3;
     }
 
     export interface Value8 {
       type: 'multi_select';
-      options: Array<Value8.Option>;
-    }
-
-    export namespace Value8 {
-      export interface Option {
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
+      options: Array<Shared.Objects3>;
     }
   }
 }
@@ -578,7 +416,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value2 {
     type: 'number';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: number | Shared.Union1;
   }
 
   export interface Value3 {
@@ -593,7 +431,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | 'Infinity' | '-Infinity' | 'NaN';
+    amount: number | Shared.Union1;
     currencyCode:
       | 'USD'
       | 'AUD'
@@ -660,7 +498,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value6 {
     type: 'percentage';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: number | Shared.Union1;
   }
 
   export interface Value7 {
@@ -698,7 +536,7 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value2 {
     type: 'number';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: Shared.Union10;
   }
 
   export interface Value3 {
@@ -713,106 +551,23 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | 'Infinity' | '-Infinity' | 'NaN';
-    currencyCode:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN';
+    amount: Shared.Union10;
+    currencyCode: Shared.Union;
   }
 
   export interface Value6 {
     type: 'percentage';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
+    value: Shared.Union10;
   }
 
   export interface Value7 {
     type: 'select';
-    option: Value7.Option;
-  }
-
-  export namespace Value7 {
-    export interface Option {
-      id: string;
-      label: string;
-      value: string;
-      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-      status: 'active' | 'archived';
-      createdAt: string;
-    }
+    option: Shared.Objects3;
   }
 
   export interface Value8 {
     type: 'multi_select';
-    options: Array<Value8.Option>;
-  }
-
-  export namespace Value8 {
-    export interface Option {
-      id: string;
-      label: string;
-      value: string;
-      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-      status: 'active' | 'archived';
-      createdAt: string;
-    }
+    options: Array<Shared.Objects3>;
   }
 }
 
@@ -825,11 +580,7 @@ export declare namespace CustomFields {
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldGetResponse as CustomFieldGetResponse,
-    type CustomFieldUpdateResponse as CustomFieldUpdateResponse,
-    type CustomFieldArchiveResponse as CustomFieldArchiveResponse,
     type CustomFieldCreateOptionResponse as CustomFieldCreateOptionResponse,
-    type CustomFieldUpdateOptionResponse as CustomFieldUpdateOptionResponse,
-    type CustomFieldArchiveOptionResponse as CustomFieldArchiveOptionResponse,
     type CustomFieldListValuesResponse as CustomFieldListValuesResponse,
     type CustomFieldUpsertValueResponse as CustomFieldUpsertValueResponse,
     type CustomFieldCreateParams as CustomFieldCreateParams,

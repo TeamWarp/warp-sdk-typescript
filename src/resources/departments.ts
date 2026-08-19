@@ -4,6 +4,7 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
+import type * as Shared from './shared';
 
 export class Departments extends APIResource {
   /**
@@ -66,8 +67,8 @@ export class Departments extends APIResource {
 
 export interface DepartmentListParams {
   limit: string | null;
-  afterId?: string | null;
-  beforeId?: string | null;
+  afterId?: Shared.Union11 | null;
+  beforeId?: Shared.Union11 | null;
 }
 
 export interface DepartmentListResponse {

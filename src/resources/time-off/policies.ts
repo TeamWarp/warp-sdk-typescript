@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
+import type * as Shared from '../shared';
 
 export class Policies extends APIResource {
   /**
@@ -64,9 +65,9 @@ export namespace PolicyListResponse {
     unit: 'hour' | 'day';
     name: string;
     description: string | null;
-    hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    hoursWorkedPerChunk: Shared.Union10 | null;
+    minutesPerChunk: Shared.Union10 | null;
+    minutesPerPeriod: Shared.Union10 | null;
   }
 }
 
@@ -80,9 +81,9 @@ export interface PolicyGetResponse {
   unit: 'hour' | 'day';
   name: string;
   description: string | null;
-  hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-  minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-  minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  hoursWorkedPerChunk: Shared.Union10 | null;
+  minutesPerChunk: Shared.Union10 | null;
+  minutesPerPeriod: Shared.Union10 | null;
 }
 export declare namespace Policies {
   export {
