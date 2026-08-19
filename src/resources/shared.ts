@@ -1,5 +1,7 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
+import type * as CustomFieldsAPI from './custom-fields';
+
 export interface APIKeyUnauthorizedEncoded {
   _tag: 'ApiKeyUnauthorized';
   message: string;
@@ -485,7 +487,7 @@ export interface RateLimitExceededEncoded {
 }
 export interface TimeOffPolicyNotFoundEncoded {
   _tag: 'TimeOffPolicyNotFound';
-  id: string | number | Union1;
+  id: string | number | CustomFieldsAPI.Union1;
   message: string;
 }
 export type Union =
@@ -550,8 +552,7 @@ export type Union =
   | 'SAR'
   | 'XAF'
   | 'PEN';
-export type Union1 = 'Infinity' | '-Infinity' | 'NaN';
-export type Union10 = number | Union1;
+export type Union10 = number | CustomFieldsAPI.Union1;
 export type Union11 = string | null;
 export type Union12 = 'draft' | 'sent' | 'accepted' | 'void';
 export type Union13 = 'employee' | 'us_contractor' | 'global_contractor';

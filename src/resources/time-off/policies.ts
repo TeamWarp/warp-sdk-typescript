@@ -5,6 +5,7 @@ import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
 import type * as Shared from '../shared';
+import type * as CustomFieldsAPI from '../custom-fields';
 
 export class Policies extends APIResource {
   /**

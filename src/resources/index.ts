@@ -4,6 +4,9 @@ export * from './shared';
 export { Benefits } from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
+  Union9,
+  Objects2,
+  Union1,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,

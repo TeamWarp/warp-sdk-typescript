@@ -5,6 +5,7 @@ import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
 import type * as Shared from '../shared';
+import type * as CustomFieldsAPI from '../custom-fields';
 
 export class Deductions extends APIResource {
   /**
@@ -226,7 +227,7 @@ export namespace DeductionListResponse {
 
     export namespace PercentageBenefitCalculation {
       export interface EmployeeContribution {
-        percentage: string | Shared.Union1;
+        percentage: string | CustomFieldsAPI.Union1;
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -234,7 +235,7 @@ export namespace DeductionListResponse {
       }
 
       export interface EmployerContribution {
-        percentage: string | Shared.Union1;
+        percentage: string | CustomFieldsAPI.Union1;
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -380,7 +381,7 @@ export namespace DeductionRetrieveResponse {
 
   export namespace PercentageBenefitCalculation {
     export interface EmployeeContribution {
-      percentage: string | Shared.Union1;
+      percentage: string | CustomFieldsAPI.Union1;
       /**
        * The server-formatted percentage, for example "3%".
        */
@@ -388,7 +389,7 @@ export namespace DeductionRetrieveResponse {
     }
 
     export interface EmployerContribution {
-      percentage: string | Shared.Union1;
+      percentage: string | CustomFieldsAPI.Union1;
       /**
        * The server-formatted percentage, for example "3%".
        */

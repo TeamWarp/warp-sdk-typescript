@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import type * as Shared from '../shared';
+import type * as CustomFieldsAPI from '../custom-fields';
 import * as PoliciesAPI from './policies';
 import { Policies, type PolicyListResponse, type PolicyGetResponse, type PolicyListParams } from './policies';
 

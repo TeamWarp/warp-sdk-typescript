@@ -242,6 +242,16 @@ export class CustomFields extends APIResource {
   }
 }
 
+export type Union9 = Record<string, unknown> | null;
+
+export interface Objects2 {
+  label: string;
+  value: string;
+  sortOrder?: number | Union1 | null;
+}
+
+export type Union1 = 'Infinity' | '-Infinity' | 'NaN';
+
 export type CustomFieldListResponse = Array<Shared.Objects>;
 
 export interface CustomFieldCreateParams {
@@ -253,15 +263,7 @@ export interface CustomFieldCreateParams {
   accessLevel?: 'admins' | 'manager' | 'worker' | null;
   inputBy?: 'admin' | 'worker' | null;
   required?: boolean | null;
-  options?: Array<CustomFieldCreateParams.Option> | null;
-}
-
-export namespace CustomFieldCreateParams {
-  export interface Option {
-    label: string;
-    value: string;
-    sortOrder?: number | Shared.Union1 | null;
-  }
+  options?: Array<Objects2> | null;
 }
 
 export interface CustomFieldCreateResponse {
@@ -308,7 +310,7 @@ export interface CustomFieldUpdateParams {
 export interface CustomFieldCreateOptionParams {
   label: string;
   value: string;
-  sortOrder?: number | Shared.Union1 | null;
+  sortOrder?: number | Union1 | null;
 }
 
 export interface CustomFieldCreateOptionResponse {
@@ -322,7 +324,7 @@ export interface CustomFieldCreateOptionResponse {
 
 export interface CustomFieldUpdateOptionParams {
   label?: string | null;
-  sortOrder?: number | Shared.Union1 | null;
+  sortOrder?: number | Union1 | null;
 }
 
 export interface CustomFieldListValuesParams {
@@ -416,7 +418,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value2 {
     type: 'number';
-    value: number | Shared.Union1;
+    value: number | Union1;
   }
 
   export interface Value3 {
@@ -431,7 +433,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | Shared.Union1;
+    amount: number | Union1;
     currencyCode:
       | 'USD'
       | 'AUD'
@@ -498,7 +500,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value6 {
     type: 'percentage';
-    value: number | Shared.Union1;
+    value: number | Union1;
   }
 
   export interface Value7 {
@@ -577,6 +579,9 @@ export interface CustomFieldClearValueParams {
 }
 export declare namespace CustomFields {
   export {
+    type Union9 as Union9,
+    type Objects2 as Objects2,
+    type Union1 as Union1,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldGetResponse as CustomFieldGetResponse,
