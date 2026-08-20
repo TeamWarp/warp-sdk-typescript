@@ -140,6 +140,7 @@ export interface OfferCreateParams {
   workplaceId?: string | null;
   managerId?: string | null;
   expirationTime?: string | null;
+  backgroundCheckWorkLocation?: OfferCreateParams.BackgroundCheckWorkLocation | null;
 }
 
 export namespace OfferCreateParams {
@@ -487,6 +488,12 @@ export namespace OfferCreateParams {
     stockOptions?: string | null;
     vestingScheduleMonths?: string | null;
     cliffMonths?: string | null;
+  }
+
+  export interface BackgroundCheckWorkLocation {
+    country: string;
+    state: string;
+    city: string;
   }
 }
 

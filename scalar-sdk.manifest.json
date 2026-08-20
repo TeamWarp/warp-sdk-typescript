@@ -5721,6 +5721,52 @@
       }
     },
     {
+      "name": "offer_background_check_work_location_required_encoded",
+      "source": "offer_background_check_work_location_required_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "example"
+              ],
+              "examples": "OfferBackgroundCheckWorkLocationRequired"
+            },
+            "type": {
+              "kind": "enum",
+              "values": [
+                "OfferBackgroundCheckWorkLocationRequired"
+              ],
+              "names": [
+                "OfferBackgroundCheckWorkLocationRequired"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "workplace_not_found_encoded",
       "source": "workplace_not_found_encoded",
       "publicAliases": [],
@@ -11964,7 +12010,8 @@
         "managerId",
         "workerType",
         "compensation",
-        "expirationTime"
+        "expirationTime",
+        "backgroundCheckWorkLocation"
       ],
       "publicBodyParams": [
         "candidate",
@@ -11974,7 +12021,8 @@
         "managerId",
         "workerType",
         "compensation",
-        "expirationTime"
+        "expirationTime",
+        "backgroundCheckWorkLocation"
       ],
       "bodyParamDetails": [
         {
@@ -12007,6 +12055,10 @@
         },
         {
           "name": "expirationTime",
+          "required": false
+        },
+        {
+          "name": "backgroundCheckWorkLocation",
           "required": false
         }
       ],
@@ -12101,11 +12153,7 @@
               "contentType": "application/json",
               "encoding": "json"
             }
-          ],
-          "model": {
-            "name": "invalid_expiration_time_error_encoded",
-            "publicAliases": []
-          }
+          ]
         },
         {
           "status": "429",
