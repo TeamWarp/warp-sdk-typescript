@@ -32,14 +32,14 @@ export class Deductions extends APIResource {
    *
    * @param {string} id
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<DeductionRetrieveResponse>} The current version of a stable payroll benefit deduction.
+   * @returns {APIPromise<DeductionGetResponse>} The current version of a stable payroll benefit deduction.
    *
    * @example
    * ```ts
-   * const retrieve = await client.benefits.deductions.retrieve('id');
+   * const get_ = await client.benefits.deductions.get('id');
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<DeductionRetrieveResponse> {
+  get(id: string, options?: RequestOptions): APIPromise<DeductionGetResponse> {
     return this._client.get(__scalarPath`/v1/benefits/deductions/${id}`, options);
   }
 }
@@ -245,12 +245,12 @@ export namespace DeductionListResponse {
   }
 }
 
-export interface DeductionRetrieveResponse {
+export interface DeductionGetResponse {
   id: string;
   /**
    * Basic identifying information for a worker associated with another resource.
    */
-  worker: DeductionRetrieveResponse.Worker;
+  worker: DeductionGetResponse.Worker;
   /**
    * The deduction name shown in payroll and benefits surfaces.
    */
@@ -300,16 +300,13 @@ export interface DeductionRetrieveResponse {
   /**
    * The associated benefit plan, or null for a planless payroll deduction.
    */
-  plan:
-    | DeductionRetrieveResponse.HealthPlanReference
-    | DeductionRetrieveResponse.RetirementPlanReference
-    | null;
+  plan: DeductionGetResponse.HealthPlanReference | DeductionGetResponse.RetirementPlanReference | null;
   /**
    * How the employee and employer contributions are calculated.
    */
   calculation:
-    | DeductionRetrieveResponse.FixedAmountBenefitCalculation
-    | DeductionRetrieveResponse.PercentageBenefitCalculation;
+    | DeductionGetResponse.FixedAmountBenefitCalculation
+    | DeductionGetResponse.PercentageBenefitCalculation;
   effectiveStartDate: string;
   effectiveEndDate: string | null;
   /**
@@ -320,7 +317,7 @@ export interface DeductionRetrieveResponse {
   updatedAt: string;
 }
 
-export namespace DeductionRetrieveResponse {
+export namespace DeductionGetResponse {
   export interface Worker {
     id: string;
     /**
@@ -400,7 +397,7 @@ export namespace DeductionRetrieveResponse {
 export declare namespace Deductions {
   export {
     type DeductionListResponse as DeductionListResponse,
-    type DeductionRetrieveResponse as DeductionRetrieveResponse,
+    type DeductionGetResponse as DeductionGetResponse,
     type DeductionListParams as DeductionListParams,
   };
 }

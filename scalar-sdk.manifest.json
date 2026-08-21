@@ -1,7 +1,7 @@
 {
-  "name": "Warp",
-  "slug": "warp",
-  "generatorVersion": "0.27.0",
+  "name": "WarpApi",
+  "slug": "warpApi",
+  "generatorVersion": "0.27.2",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -247,23 +247,23 @@
       }
     },
     {
-      "name": "public_pay_rate_basis",
-      "source": "public_pay_rate_basis",
+      "name": "public_pay_rate_per",
+      "source": "public_pay_rate_per",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "enum",
         "values": [
-          "yearly",
-          "monthly",
-          "weekly",
-          "hourly"
+          "year",
+          "month",
+          "week",
+          "hour"
         ],
         "names": [
-          "Yearly",
-          "Monthly",
-          "Weekly",
-          "Hourly"
+          "Year",
+          "Month",
+          "Week",
+          "Hour"
         ],
         "deprecations": [
           false,
@@ -300,13 +300,13 @@
             }
           },
           {
-            "name": "basis",
-            "publicName": "basis",
+            "name": "per",
+            "publicName": "per",
             "required": true,
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "public_pay_rate_basis"
+              "name": "public_pay_rate_per"
             }
           },
           {
@@ -5289,6 +5289,46 @@
       }
     },
     {
+      "name": "offer_background_check_work_location_required_encoded",
+      "source": "offer_background_check_work_location_required_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "OfferBackgroundCheckWorkLocationRequired"
+              ],
+              "names": [
+                "OfferBackgroundCheckWorkLocationRequired"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "workplace_not_found_encoded",
       "source": "workplace_not_found_encoded",
       "publicAliases": [],
@@ -5598,13 +5638,13 @@
             }
           },
           {
-            "name": "basis",
-            "publicName": "basis",
+            "name": "per",
+            "publicName": "per",
             "required": true,
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "public_pay_rate_basis"
+              "name": "public_pay_rate_per"
             }
           },
           {
@@ -6102,8 +6142,16 @@
         "kind": "union",
         "variants": [
           {
-            "kind": "primitive",
-            "type": "string"
+            "kind": "intersection",
+            "parts": [
+              {
+                "kind": "primitive",
+                "type": "string",
+                "validation": {
+                  "pattern": "^wrkasn_"
+                }
+              }
+            ]
           },
           {
             "kind": "null"
@@ -7170,6 +7218,33 @@
           }
         ],
         "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_rate_per_1",
+      "source": "public_pay_rate_per_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "year",
+          "month",
+          "week",
+          "hour"
+        ],
+        "names": [
+          "Year",
+          "Month",
+          "Week",
+          "Hour"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false
+        ]
       }
     },
     {
@@ -8665,8 +8740,8 @@
     {
       "resource": "benefits.deductions",
       "publicResource": "benefits.deductions",
-      "operation": "retrieve",
-      "publicOperation": "retrieve",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/benefits/deductions/{id}",
@@ -8697,7 +8772,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "DeductionRetrieveParams"
+        "publicName": "DeductionGetParams"
       },
       "response": {
         "status": "200",
@@ -11269,7 +11344,8 @@
         "managerId",
         "workerType",
         "compensation",
-        "expirationTime"
+        "expirationTime",
+        "backgroundCheckWorkLocation"
       ],
       "publicBodyParams": [
         "candidate",
@@ -11279,7 +11355,8 @@
         "managerId",
         "workerType",
         "compensation",
-        "expirationTime"
+        "expirationTime",
+        "backgroundCheckWorkLocation"
       ],
       "bodyParamDetails": [
         {
@@ -11312,6 +11389,10 @@
         },
         {
           "name": "expirationTime",
+          "required": false
+        },
+        {
+          "name": "backgroundCheckWorkLocation",
           "required": false
         }
       ],
@@ -11406,11 +11487,7 @@
               "contentType": "application/json",
               "encoding": "json"
             }
-          ],
-          "model": {
-            "name": "invalid_expiration_time_error_encoded",
-            "publicAliases": []
-          }
+          ]
         },
         {
           "status": "429",
@@ -11460,9 +11537,24 @@
       "publicQueryParams": [],
       "headerParams": [],
       "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
+      "bodyParams": [
+        "voidReason",
+        "voidNotes"
+      ],
+      "publicBodyParams": [
+        "voidReason",
+        "voidNotes"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "voidReason",
+          "required": true
+        },
+        {
+          "name": "voidNotes",
+          "required": false
+        }
+      ],
       "pathParamDetails": [
         {
           "name": "id",
@@ -11478,6 +11570,19 @@
       "cookieParamDetails": [],
       "paramsModel": {
         "publicName": "OfferVoidParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
       },
       "response": {
         "status": "200",

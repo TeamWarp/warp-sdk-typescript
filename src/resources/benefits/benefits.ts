@@ -21,7 +21,7 @@ import * as DeductionsAPI from './deductions';
 import {
   Deductions,
   type DeductionListResponse,
-  type DeductionRetrieveResponse,
+  type DeductionGetResponse,
   type DeductionListParams,
 } from './deductions';
 
@@ -53,7 +53,7 @@ export declare namespace Benefits {
   export {
     Deductions as Deductions,
     type DeductionListResponse as DeductionListResponse,
-    type DeductionRetrieveResponse as DeductionRetrieveResponse,
+    type DeductionGetResponse as DeductionGetResponse,
     type DeductionListParams as DeductionListParams,
   };
 }

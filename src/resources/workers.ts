@@ -697,7 +697,7 @@ export namespace WorkerCreateContractorParams {
     /**
      * The pay period for the compensation amount.
      */
-    per: 'hour' | 'year' | 'month' | 'week';
+    per: 'year' | 'month' | 'week' | 'hour';
   }
 }
 

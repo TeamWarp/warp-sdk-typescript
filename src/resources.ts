@@ -39,6 +39,7 @@ export type {
   OfferListResponse,
   OfferCreateParams,
   OfferCreateResponse,
+  OfferVoidParams,
   OfferExtendDeadlineParams,
   PayRateListParams,
   PayRateListResponse,

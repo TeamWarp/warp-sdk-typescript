@@ -82,9 +82,9 @@ export namespace PayRateListResponse {
      */
     type: 'regular' | 'additional';
     /**
-     * The period for the pay rate.
+     * The period represented by the pay rate amount.
      */
-    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
+    per: 'year' | 'month' | 'week' | 'hour';
     amount: string;
     currency: Shared.Union;
     /**
@@ -131,9 +131,9 @@ export interface PayRateGetResponse {
    */
   type: 'regular' | 'additional';
   /**
-   * The period for the pay rate.
+   * The period represented by the pay rate amount.
    */
-  basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
+  per: 'year' | 'month' | 'week' | 'hour';
   amount: string;
   currency: Shared.Union;
   /**

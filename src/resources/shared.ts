@@ -470,9 +470,9 @@ export interface PublicMoneyAmount {
 export interface PublicWorkerCompensation {
   payRateId: string;
   /**
-   * The period for the pay rate.
+   * The period represented by the pay rate amount.
    */
-  basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
+  per: 'year' | 'month' | 'week' | 'hour';
   amount: string;
   currency: Union;
   /**
@@ -600,9 +600,9 @@ export interface Union31 {
 export interface Union32 {
   payRateId: string;
   /**
-   * The period for the pay rate.
+   * The period represented by the pay rate amount.
    */
-  basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
+  per: 'year' | 'month' | 'week' | 'hour';
   amount: string;
   currency: Union;
   /**

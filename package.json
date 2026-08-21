@@ -1,8 +1,14 @@
 {
   "name": "warp-hr",
+<<<<<<< HEAD
   "version": "0.19.0",
   "description": "Warp TypeScript SDK",
   "author": "Warp",
+=======
+  "version": "0.1.0",
+  "description": "WarpApi TypeScript SDK",
+  "author": "Warp API",
+>>>>>>> ed00f1efd83e9baf552e8e1e453d087e77b289a1
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TeamWarp/warp-sdk-typescript.git"
