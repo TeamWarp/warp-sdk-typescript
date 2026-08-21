@@ -73,6 +73,8 @@ const client = new WarpAPI({
 
 ### `Benefits HealthPlans`
 
+Read-only health plans, retirement plans, and payroll benefit deductions.
+
 #### List Health Plans
 
 List company health plans. Defaults to active plans. A plan whose effectiveEndDate has elapsed is reported and filtered as terminated.
@@ -102,6 +104,8 @@ const get_ = await client.benefits.healthPlans.get('id');
 ```
 
 ### `Benefits RetirementPlans`
+
+Read-only health plans, retirement plans, and payroll benefit deductions.
 
 #### List Retirement Plans
 
@@ -133,6 +137,8 @@ const get_ = await client.benefits.retirementPlans.get('id');
 
 ### `Benefits Deductions`
 
+Read-only health plans, retirement plans, and payroll benefit deductions.
+
 #### List Benefit Deductions
 
 List current payroll benefit deductions. Defaults to active deductions. A deduction whose effectiveEndDate has elapsed is reported and filtered as terminated.
@@ -162,6 +168,8 @@ const get_ = await client.benefits.deductions.get('id');
 ```
 
 ## `CustomFields`
+
+Company-defined custom fields for workers. Field definitions are administered with the workers:custom_fields permission; each field belongs to a worker-data category whose read/write grants govern its values.
 
 ### List Fields
 
@@ -328,6 +336,8 @@ await client.customFields.clearValue({
 
 ## `Departments`
 
+Endpoints for department management. Create, list, and update departments within your company.
+
 ### List Departments
 
 List all departments for your company.
@@ -372,6 +382,8 @@ const update = await client.departments.update('id', {});
 ```
 
 ## `Offers`
+
+Endpoints for managing candidate offers. Create and send offers, list existing offers, and manage their lifecycle.
 
 ### List Offers
 
@@ -461,6 +473,8 @@ const objects5 = await client.offers.resend('id');
 
 ## `PayRates`
 
+Read regular and additional worker pay rates.
+
 ### List Pay Rates
 
 List pay rates visible to the API key. Results may be filtered by worker, effective start date, or regular/additional type. US and global worker rates require their corresponding compensation read scopes.
@@ -489,6 +503,8 @@ const get_ = await client.payRates.get('id');
 ```
 
 ## `TimeOff`
+
+Endpoints for worker time off management. See time off requests, which workers are assigned to which policies, or worker remaining balances.
 
 ### List Time Off Assignments
 
@@ -537,6 +553,8 @@ const listRequests = await client.timeOff.listRequests({
 
 ### `TimeOff Policies`
 
+Endpoints for worker time off management. See time off requests, which workers are assigned to which policies, or worker remaining balances.
+
 #### List Time Off Policies
 
 Get the time off policies for your company
@@ -565,6 +583,8 @@ const get_ = await client.timeOff.policies.get('id');
 ```
 
 ## `Workers`
+
+Endpoints for worker management. "Workers" include anyone employed by your company, whether US or international, full-time employees or contractors.
 
 ### List Workers
 
@@ -666,6 +686,8 @@ const invite = await client.workers.invite('id');
 ```
 
 ## `Workplaces`
+
+Endpoints for workplace management. Create, list, and update workplaces within your company.
 
 ### List Workplaces
 

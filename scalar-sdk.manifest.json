@@ -1,7 +1,7 @@
 {
   "name": "WarpApi",
   "slug": "warpApi",
-  "generatorVersion": "0.27.0",
+  "generatorVersion": "0.27.2",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -29,12 +29,6 @@
       "source": "union",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "USD"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -233,12 +227,6 @@
       "source": "union_1",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "Infinity"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -263,12 +251,6 @@
       "source": "public_pay_rate_per",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "year"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -322,12 +304,6 @@
             "publicName": "per",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "year"
-            },
             "type": {
               "kind": "ref",
               "name": "public_pay_rate_per"
@@ -354,12 +330,6 @@
             "publicName": "currency",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "USD"
-            },
             "type": {
               "kind": "ref",
               "name": "union"
@@ -372,7 +342,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "$150,000.00 / yr"
             },
@@ -414,12 +384,6 @@
             "publicName": "currency",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "USD"
-            },
             "type": {
               "kind": "ref",
               "name": "union"
@@ -432,7 +396,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "$150,000.00"
             },
@@ -450,12 +414,6 @@
       "source": "public_health_plan_status",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "active"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -553,12 +511,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "medical"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -705,12 +657,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "active"
-            },
             "type": {
               "kind": "ref",
               "name": "public_health_plan_status"
@@ -753,12 +699,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "InternalServerError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -789,12 +729,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "ApiKeyUnauthorized"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -835,12 +769,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "RateLimitExceeded"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -891,12 +819,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "MissingRequiredCompanyPermissions"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -925,12 +847,6 @@
                     "publicName": "scope",
                     "required": true,
                     "deprecated": false,
-                    "extensions": {
-                      "source": [
-                        "example"
-                      ],
-                      "examples": "workers:profile"
-                    },
                     "type": {
                       "kind": "enum",
                       "values": [
@@ -1036,12 +952,6 @@
                     "publicName": "level",
                     "required": true,
                     "deprecated": false,
-                    "extensions": {
-                      "source": [
-                        "example"
-                      ],
-                      "examples": "read"
-                    },
                     "type": {
                       "kind": "enum",
                       "values": [
@@ -1093,12 +1003,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "ApiNotEnabled"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1139,12 +1043,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "HealthPlanNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1195,12 +1093,6 @@
       "source": "public_retirement_plan_status",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "active"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -1222,12 +1114,6 @@
       "source": "public_retirement_plan_provider",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "manual"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -1278,12 +1164,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "401k"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1333,12 +1213,6 @@
             "publicName": "provider",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "manual"
-            },
             "type": {
               "kind": "ref",
               "name": "public_retirement_plan_provider"
@@ -1393,12 +1267,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "active"
-            },
             "type": {
               "kind": "ref",
               "name": "public_retirement_plan_status"
@@ -1441,12 +1309,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "RetirementPlanNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1497,12 +1359,6 @@
       "source": "public_benefit_deduction_category",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "health"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -1539,12 +1395,6 @@
       "source": "public_benefit_deduction_status",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "active"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -1630,12 +1480,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "health_plan"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1694,12 +1538,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "retirement_plan"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1789,12 +1627,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "fixed_amount"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -1925,12 +1757,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "percentage"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -2042,12 +1868,6 @@
             "publicName": "category",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "health"
-            },
             "type": {
               "kind": "ref",
               "name": "public_benefit_deduction_category"
@@ -2058,12 +1878,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "medical"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -2169,12 +1983,6 @@
             "publicName": "recurrence",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "recurring"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -2260,12 +2068,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "active"
-            },
             "type": {
               "kind": "ref",
               "name": "public_benefit_deduction_status"
@@ -2308,12 +2110,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "BenefitDeductionNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -2382,12 +2178,6 @@
       "source": "union_3",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "text"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -2438,12 +2228,6 @@
       "source": "union_4",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "active"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -2465,12 +2249,6 @@
       "source": "union_5",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "info"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -2504,12 +2282,6 @@
       "source": "union_6",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "admins"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -2534,12 +2306,6 @@
       "source": "union_7",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "admin"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -2625,12 +2391,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "text"
-            },
             "type": {
               "kind": "ref",
               "name": "union_3"
@@ -2651,12 +2411,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "active"
-            },
             "type": {
               "kind": "ref",
               "name": "union_4"
@@ -2667,12 +2421,6 @@
             "publicName": "category",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "info"
-            },
             "type": {
               "kind": "ref",
               "name": "union_5"
@@ -2683,12 +2431,6 @@
             "publicName": "accessLevel",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "admins"
-            },
             "type": {
               "kind": "ref",
               "name": "union_6"
@@ -2699,12 +2441,6 @@
             "publicName": "inputBy",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "admin"
-            },
             "type": {
               "kind": "ref",
               "name": "union_7"
@@ -2868,12 +2604,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CustomFieldAlreadyExistsError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -2924,12 +2654,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CustomFieldOptionAlreadyExistsError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -2980,12 +2704,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "InvalidCustomFieldOperationError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3097,12 +2815,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "active"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3146,12 +2858,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CustomFieldNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3210,12 +2916,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CustomFieldOptionNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3274,12 +2974,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CustomFieldOptionInUseError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3403,12 +3097,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "text"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3443,12 +3131,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "number"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3483,12 +3165,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "date"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3531,12 +3207,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "boolean"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3571,12 +3241,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "currency"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3605,12 +3269,6 @@
                       "publicName": "currencyCode",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "USD"
-                      },
                       "type": {
                         "kind": "ref",
                         "name": "union"
@@ -3627,12 +3285,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "percentage"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3667,12 +3319,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "select"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3707,12 +3353,6 @@
                       "publicName": "type",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "multi_select"
-                      },
                       "type": {
                         "kind": "enum",
                         "values": [
@@ -3782,12 +3422,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CustomFieldWorkerNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3846,12 +3480,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "InvalidCustomFieldValueError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3918,12 +3546,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "DepartmentAlreadyExists"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -3984,12 +3606,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "DepartmentNotFound"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -4040,12 +3656,6 @@
       "source": "union_12",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "draft"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -4073,12 +3683,6 @@
       "source": "union_13",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "employee"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -4113,7 +3717,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Jonathan"
             },
@@ -4129,7 +3733,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Galt"
             },
@@ -4182,9 +3786,9 @@
                       "deprecated": false,
                       "extensions": {
                         "source": [
-                          "example"
+                          "examples"
                         ],
-                        "examples": "Galt Enterprises, LLC"
+                        "examples": null
                       },
                       "type": {
                         "kind": "union",
@@ -4217,12 +3821,6 @@
       "source": "union_14",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "AD"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -4998,7 +4596,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Research Engineer"
             },
@@ -5030,12 +4628,6 @@
             "publicName": "country",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "AD"
-            },
             "type": {
               "kind": "ref",
               "name": "union_14"
@@ -5099,7 +4691,7 @@
                 "deprecated": false,
                 "extensions": {
                   "source": [
-                    "example"
+                    "examples"
                   ],
                   "examples": "Engineering"
                 },
@@ -5153,7 +4745,7 @@
                 "deprecated": false,
                 "extensions": {
                   "source": [
-                    "example"
+                    "examples"
                   ],
                   "examples": "New York Office"
                 },
@@ -5207,9 +4799,9 @@
                 "deprecated": false,
                 "extensions": {
                   "source": [
-                    "example"
+                    "examples"
                   ],
-                  "examples": "Dagny Taggart"
+                  "examples": null
                 },
                 "type": {
                   "kind": "union",
@@ -5282,12 +4874,6 @@
                   "publicName": "basis",
                   "required": true,
                   "deprecated": false,
-                  "extensions": {
-                    "source": [
-                      "example"
-                    ],
-                    "examples": "year"
-                  },
                   "type": {
                     "kind": "enum",
                     "values": [
@@ -5495,12 +5081,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "draft"
-            },
             "type": {
               "kind": "ref",
               "name": "union_12"
@@ -5511,12 +5091,6 @@
             "publicName": "workerType",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "employee"
-            },
             "type": {
               "kind": "ref",
               "name": "union_13"
@@ -5579,9 +5153,9 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
-              "examples": "Dagny Taggart"
+              "examples": null
             },
             "type": {
               "kind": "union",
@@ -5687,12 +5261,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "InvalidExpirationTimeError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -5733,12 +5301,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "OfferBackgroundCheckWorkLocationRequired"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -5779,12 +5341,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "WorkplaceNotFound"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -5843,12 +5399,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "ManagerNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -5907,12 +5457,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "OfferNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -5971,12 +5515,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "InvalidOfferStatusError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -6013,12 +5551,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "draft"
-            },
             "type": {
               "kind": "ref",
               "name": "union_12"
@@ -6043,12 +5575,6 @@
       "source": "public_pay_rate_type",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "regular"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -6106,12 +5632,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "regular"
-            },
             "type": {
               "kind": "ref",
               "name": "public_pay_rate_type"
@@ -6122,12 +5642,6 @@
             "publicName": "per",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "year"
-            },
             "type": {
               "kind": "ref",
               "name": "public_pay_rate_per"
@@ -6154,12 +5668,6 @@
             "publicName": "currency",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "USD"
-            },
             "type": {
               "kind": "ref",
               "name": "union"
@@ -6172,7 +5680,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "$150,000.00 / yr"
             },
@@ -6268,12 +5776,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "PayRateNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -6370,7 +5872,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Vacation"
             },
@@ -6404,12 +5906,6 @@
             "publicName": "schedule",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "per_hour_worked"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -6437,12 +5933,6 @@
             "publicName": "unit",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "hour"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -6466,7 +5956,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Company-Wide Vacation Policy"
             },
@@ -6482,7 +5972,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Vacation policy for the whole company"
             },
@@ -6606,12 +6096,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "TimeOffPolicyNotFound"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -6698,12 +6182,6 @@
       "source": "union_22",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "pending"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -6736,12 +6214,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "TimeOffRequestNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -6802,12 +6274,6 @@
       "source": "union_23",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "draft"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -6841,12 +6307,6 @@
       "source": "union_24",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "employee"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -6896,7 +6356,7 @@
       "deprecated": false,
       "extensions": {
         "source": [
-          "example"
+          "examples"
         ],
         "examples": false
       },
@@ -6920,9 +6380,9 @@
       "deprecated": false,
       "extensions": {
         "source": [
-          "example"
+          "examples"
         ],
-        "examples": "Galt Enterprises, LLC"
+        "examples": null
       },
       "type": {
         "kind": "union",
@@ -6986,7 +6446,7 @@
       "deprecated": false,
       "extensions": {
         "source": [
-          "example"
+          "examples"
         ],
         "examples": "America/New_York"
       },
@@ -7010,7 +6470,7 @@
       "deprecated": false,
       "extensions": {
         "source": [
-          "example"
+          "examples"
         ],
         "examples": {
           "id": "dpt_1234",
@@ -7111,7 +6571,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Research Engineer"
             },
@@ -7125,12 +6585,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "employee"
-            },
             "type": {
               "kind": "ref",
               "name": "union_24"
@@ -7141,12 +6595,6 @@
             "publicName": "status",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "draft"
-            },
             "type": {
               "kind": "ref",
               "name": "union_23"
@@ -7187,7 +6635,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": false
             },
@@ -7203,9 +6651,9 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
-              "examples": "Galt Enterprises, LLC"
+              "examples": null
             },
             "type": {
               "kind": "ref",
@@ -7219,7 +6667,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Jonathan"
             },
@@ -7235,7 +6683,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Galt"
             },
@@ -7287,7 +6735,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "Jack Galt"
             },
@@ -7303,7 +6751,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": "America/New_York"
             },
@@ -7319,7 +6767,7 @@
             "deprecated": false,
             "extensions": {
               "source": [
-                "example"
+                "examples"
               ],
               "examples": {
                 "id": "dpt_1234",
@@ -7358,12 +6806,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "WorkerNotFoundError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7422,12 +6864,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "office"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7476,12 +6912,6 @@
             "publicName": "type",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "remote"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7500,12 +6930,6 @@
             "publicName": "state",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "AL"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7686,12 +7110,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "PayScheduleNotConfigured"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7710,12 +7128,6 @@
             "publicName": "paySchedule",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "weekly"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7771,12 +7183,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "StateRegistrationRequired"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7819,12 +7225,6 @@
       "source": "public_pay_rate_per_1",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "year"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -7860,12 +7260,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "InvalidWorkerStatusError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7924,12 +7318,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "WorkerAlreadyExistsError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -7970,12 +7358,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "SubscriptionLimitError"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -8016,12 +7398,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "CannotDeleteWorker"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -8098,12 +7474,6 @@
       "source": "union_34",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "remote"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -8125,12 +7495,6 @@
       "source": "union_35",
       "publicAliases": [],
       "deprecated": false,
-      "extensions": {
-        "source": [
-          "example"
-        ],
-        "examples": "active"
-      },
       "type": {
         "kind": "enum",
         "values": [
@@ -8216,12 +7580,6 @@
             "publicName": "state",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "AL"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -8390,12 +7748,6 @@
             "publicName": "country",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "US"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -8426,12 +7778,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "WorkplaceAlreadyExists"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -8492,12 +7838,6 @@
             "publicName": "_tag",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "example"
-              ],
-              "examples": "AddressInvalid"
-            },
             "type": {
               "kind": "enum",
               "values": [
@@ -8593,12 +7933,6 @@
                       "publicName": "country",
                       "required": true,
                       "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "example"
-                        ],
-                        "examples": "AD"
-                      },
                       "type": {
                         "kind": "ref",
                         "name": "union_14"
