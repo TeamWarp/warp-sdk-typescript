@@ -73,6 +73,15 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
+export { Payroll } from './payroll';
+export type {
+  PayrollListPaychecksParams,
+  PayrollListPaychecksResponse,
+  PayrollRetrievePaycheckResponse,
+  PayrollListParams,
+  PayrollListResponse,
+  PayrollRetrieveResponse,
+} from './payroll';
 export { Webhooks } from './webhooks';
 export type {
   TimeOffRequestCreatedWebhookEvent,

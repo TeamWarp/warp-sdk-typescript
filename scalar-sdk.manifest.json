@@ -5655,6 +5655,159 @@
       }
     },
     {
+      "name": "public_payroll_type",
+      "source": "public_payroll_type",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "us"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "us",
+          "global"
+        ],
+        "names": [
+          "Us",
+          "Global"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_payroll_subtype",
+      "source": "public_payroll_subtype",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "regular"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "regular",
+          "off_cycle",
+          "bonus",
+          "invoice",
+          "contractor",
+          "dismissal",
+          "reimbursement",
+          "manual"
+        ],
+        "names": [
+          "Regular",
+          "OffCycle",
+          "Bonus",
+          "Invoice",
+          "Contractor",
+          "Dismissal",
+          "Reimbursement",
+          "Manual"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_payroll_status",
+      "source": "public_payroll_status",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "processing"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "draft",
+          "pending",
+          "processing",
+          "partially_paid",
+          "processed",
+          "failed",
+          "voided"
+        ],
+        "names": [
+          "Draft",
+          "Pending",
+          "Processing",
+          "PartiallyPaid",
+          "Processed",
+          "Failed",
+          "Voided"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_pay_frequency",
+      "source": "public_pay_frequency",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "semimonthly"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "weekly",
+          "biweekly",
+          "monthly",
+          "semimonthly",
+          "quarterly",
+          "annually"
+        ],
+        "names": [
+          "Weekly",
+          "Biweekly",
+          "Monthly",
+          "Semimonthly",
+          "Quarterly",
+          "Annually"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
       "name": "union_20",
       "source": "union_20",
       "publicAliases": [],
@@ -5673,6 +5826,1824 @@
             "kind": "null"
           }
         ]
+      }
+    },
+    {
+      "name": "public_payroll_currency",
+      "source": "public_payroll_currency",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "USD"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "USD",
+          "AUD",
+          "BGN",
+          "BRL",
+          "CAD",
+          "CHF",
+          "CZK",
+          "DKK",
+          "EUR",
+          "GBP",
+          "HKD",
+          "HUF",
+          "IDR",
+          "INR",
+          "JPY",
+          "MYR",
+          "NOK",
+          "NZD",
+          "CNY",
+          "PLN",
+          "RON",
+          "TRY",
+          "SEK",
+          "SGD",
+          "AED",
+          "ARS",
+          "BDT",
+          "BWP",
+          "CLP",
+          "COP",
+          "CRC",
+          "EGP",
+          "FJD",
+          "GEL",
+          "GHS",
+          "ILS",
+          "KES",
+          "KRW",
+          "LKR",
+          "MAD",
+          "MXN",
+          "NPR",
+          "PHP",
+          "PKR",
+          "THB",
+          "UAH",
+          "UGX",
+          "UYU",
+          "VND",
+          "ZAR",
+          "ZMW",
+          "TND",
+          "NGN",
+          "RSD",
+          "TWD",
+          "GTQ",
+          "HNL",
+          "DOP",
+          "SAR",
+          "XAF",
+          "PEN",
+          "BOB"
+        ],
+        "names": [
+          "Usd",
+          "Aud",
+          "Bgn",
+          "Brl",
+          "Cad",
+          "Chf",
+          "Czk",
+          "Dkk",
+          "Eur",
+          "Gbp",
+          "Hkd",
+          "Huf",
+          "Idr",
+          "Inr",
+          "Jpy",
+          "Myr",
+          "Nok",
+          "Nzd",
+          "Cny",
+          "Pln",
+          "Ron",
+          "Try",
+          "Sek",
+          "Sgd",
+          "Aed",
+          "Ars",
+          "Bdt",
+          "Bwp",
+          "Clp",
+          "Cop",
+          "Crc",
+          "Egp",
+          "Fjd",
+          "Gel",
+          "Ghs",
+          "Ils",
+          "Kes",
+          "Krw",
+          "Lkr",
+          "Mad",
+          "Mxn",
+          "Npr",
+          "Php",
+          "Pkr",
+          "Thb",
+          "Uah",
+          "Ugx",
+          "Uyu",
+          "Vnd",
+          "Zar",
+          "Zmw",
+          "Tnd",
+          "Ngn",
+          "Rsd",
+          "Twd",
+          "Gtq",
+          "Hnl",
+          "Dop",
+          "Sar",
+          "Xaf",
+          "Pen",
+          "Bob"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_pay_period",
+      "source": "public_pay_period",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "startDate": "2026-08-16",
+          "endDate": "2026-08-31"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "startDate",
+            "publicName": "startDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "endDate",
+            "publicName": "endDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount",
+      "source": "public_currency_money_amount",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 300000,
+          "display": "$3,000.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_1",
+      "source": "public_currency_money_amount_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 230000,
+          "display": "$2,300.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_2",
+      "source": "public_currency_money_amount_2",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 15000,
+          "display": "$150.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_3",
+      "source": "public_currency_money_amount_3",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 50000,
+          "display": "$500.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_4",
+      "source": "public_currency_money_amount_4",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 25000,
+          "display": "$250.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_5",
+      "source": "public_currency_money_amount_5",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 10000,
+          "display": "$100.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_6",
+      "source": "public_currency_money_amount_6",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 5000,
+          "display": "$50.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_7",
+      "source": "public_currency_money_amount_7",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 20000,
+          "display": "$200.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_8",
+      "source": "public_currency_money_amount_8",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 15000,
+          "display": "$150.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_9",
+      "source": "public_currency_money_amount_9",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 500,
+          "display": "$5.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_10",
+      "source": "public_currency_money_amount_10",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 355500,
+          "display": "$3,555.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_list_response",
+      "source": "public_payroll_list_response",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "hasMore": false,
+          "count": 1,
+          "data": [
+            {
+              "id": "pay_1234",
+              "type": "us",
+              "subtype": "regular",
+              "status": "processing",
+              "fundingCurrency": "USD",
+              "payday": "2026-08-31",
+              "payPeriod": {
+                "startDate": "2026-08-16",
+                "endDate": "2026-08-31"
+              },
+              "payFrequency": "semimonthly",
+              "description": "August 16–31, 2026 semimonthly payroll",
+              "approvalDeadline": "2026-08-27T17:00:00.000Z",
+              "paycheckCount": 1,
+              "totals": {
+                "grossPay": {
+                  "amount": 300000,
+                  "display": "$3,000.00"
+                },
+                "netPay": {
+                  "amount": 230000,
+                  "display": "$2,300.00"
+                },
+                "reimbursements": {
+                  "amount": 15000,
+                  "display": "$150.00"
+                },
+                "workerTaxes": {
+                  "amount": 50000,
+                  "display": "$500.00"
+                },
+                "employerTaxes": {
+                  "amount": 25000,
+                  "display": "$250.00"
+                },
+                "preTaxDeductions": {
+                  "amount": 10000,
+                  "display": "$100.00"
+                },
+                "postTaxDeductions": {
+                  "amount": 5000,
+                  "display": "$50.00"
+                },
+                "workerBenefitContributions": {
+                  "amount": 20000,
+                  "display": "$200.00"
+                },
+                "employerBenefitContributions": {
+                  "amount": 15000,
+                  "display": "$150.00"
+                },
+                "transactionFees": {
+                  "amount": 500,
+                  "display": "$5.00"
+                },
+                "totalCost": {
+                  "amount": 355500,
+                  "display": "$3,555.00"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "hasMore",
+            "publicName": "hasMore",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count",
+            "publicName": "count",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "data",
+            "publicName": "data",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": [
+                {
+                  "id": "pay_1234",
+                  "type": "us",
+                  "subtype": "regular",
+                  "status": "processing",
+                  "fundingCurrency": "USD",
+                  "payday": "2026-08-31",
+                  "payPeriod": {
+                    "startDate": "2026-08-16",
+                    "endDate": "2026-08-31"
+                  },
+                  "payFrequency": "semimonthly",
+                  "description": "August 16–31, 2026 semimonthly payroll",
+                  "approvalDeadline": "2026-08-27T17:00:00.000Z",
+                  "paycheckCount": 1,
+                  "totals": {
+                    "grossPay": {
+                      "amount": 300000,
+                      "display": "$3,000.00"
+                    },
+                    "netPay": {
+                      "amount": 230000,
+                      "display": "$2,300.00"
+                    },
+                    "reimbursements": {
+                      "amount": 15000,
+                      "display": "$150.00"
+                    },
+                    "workerTaxes": {
+                      "amount": 50000,
+                      "display": "$500.00"
+                    },
+                    "employerTaxes": {
+                      "amount": 25000,
+                      "display": "$250.00"
+                    },
+                    "preTaxDeductions": {
+                      "amount": 10000,
+                      "display": "$100.00"
+                    },
+                    "postTaxDeductions": {
+                      "amount": 5000,
+                      "display": "$50.00"
+                    },
+                    "workerBenefitContributions": {
+                      "amount": 20000,
+                      "display": "$200.00"
+                    },
+                    "employerBenefitContributions": {
+                      "amount": 15000,
+                      "display": "$150.00"
+                    },
+                    "transactionFees": {
+                      "amount": 500,
+                      "display": "$5.00"
+                    },
+                    "totalCost": {
+                      "amount": 355500,
+                      "display": "$3,555.00"
+                    }
+                  }
+                }
+              ]
+            },
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "invalid_payroll_query_error_encoded",
+      "source": "invalid_payroll_query_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidPayrollQueryError"
+              ],
+              "names": [
+                "InvalidPayrollQueryError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_11",
+      "source": "public_currency_money_amount_11",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 355500,
+          "display": "$3,555.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_detail_totals",
+      "source": "public_payroll_detail_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "cashRequirement": {
+            "amount": 355500,
+            "display": "$3,555.00"
+          },
+          "grossPay": {
+            "amount": 300000,
+            "display": "$3,000.00"
+          },
+          "netPay": {
+            "amount": 230000,
+            "display": "$2,300.00"
+          },
+          "reimbursements": {
+            "amount": 15000,
+            "display": "$150.00"
+          },
+          "workerTaxes": {
+            "amount": 50000,
+            "display": "$500.00"
+          },
+          "employerTaxes": {
+            "amount": 25000,
+            "display": "$250.00"
+          },
+          "preTaxDeductions": {
+            "amount": 10000,
+            "display": "$100.00"
+          },
+          "postTaxDeductions": {
+            "amount": 5000,
+            "display": "$50.00"
+          },
+          "workerBenefitContributions": {
+            "amount": 20000,
+            "display": "$200.00"
+          },
+          "employerBenefitContributions": {
+            "amount": 15000,
+            "display": "$150.00"
+          },
+          "transactionFees": {
+            "amount": 500,
+            "display": "$5.00"
+          },
+          "totalCost": {
+            "amount": 355500,
+            "display": "$3,555.00"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "cashRequirement",
+            "publicName": "cashRequirement",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_currency_money_amount_11"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "grossPay",
+            "publicName": "grossPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 300000,
+                "display": "$3,000.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount"
+            }
+          },
+          {
+            "name": "netPay",
+            "publicName": "netPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_1"
+            }
+          },
+          {
+            "name": "reimbursements",
+            "publicName": "reimbursements",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_2"
+            }
+          },
+          {
+            "name": "workerTaxes",
+            "publicName": "workerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 50000,
+                "display": "$500.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_3"
+            }
+          },
+          {
+            "name": "employerTaxes",
+            "publicName": "employerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 25000,
+                "display": "$250.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_4"
+            }
+          },
+          {
+            "name": "preTaxDeductions",
+            "publicName": "preTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 10000,
+                "display": "$100.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_5"
+            }
+          },
+          {
+            "name": "postTaxDeductions",
+            "publicName": "postTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 5000,
+                "display": "$50.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_6"
+            }
+          },
+          {
+            "name": "workerBenefitContributions",
+            "publicName": "workerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 20000,
+                "display": "$200.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_7"
+            }
+          },
+          {
+            "name": "employerBenefitContributions",
+            "publicName": "employerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_8"
+            }
+          },
+          {
+            "name": "transactionFees",
+            "publicName": "transactionFees",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 500,
+                "display": "$5.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_9"
+            }
+          },
+          {
+            "name": "totalCost",
+            "publicName": "totalCost",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 355500,
+                "display": "$3,555.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_10"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_funding_method",
+      "source": "public_payroll_funding_method",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "ach"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "ach",
+          "wire"
+        ],
+        "names": [
+          "Ach",
+          "Wire"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_payroll_timeline",
+      "source": "public_payroll_timeline",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "approvedAt": "2026-08-27T16:42:00.000Z"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "approvedAt",
+            "publicName": "approvedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_detail",
+      "source": "public_payroll_detail",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "pay_1234",
+          "type": "us",
+          "subtype": "regular",
+          "status": "processing",
+          "fundingCurrency": "USD",
+          "payday": "2026-08-31",
+          "payPeriod": {
+            "startDate": "2026-08-16",
+            "endDate": "2026-08-31"
+          },
+          "payFrequency": "semimonthly",
+          "description": "August 16–31, 2026 semimonthly payroll",
+          "approvalDeadline": "2026-08-27T17:00:00.000Z",
+          "paycheckCount": 1,
+          "totals": {
+            "cashRequirement": {
+              "amount": 355500,
+              "display": "$3,555.00"
+            },
+            "grossPay": {
+              "amount": 300000,
+              "display": "$3,000.00"
+            },
+            "netPay": {
+              "amount": 230000,
+              "display": "$2,300.00"
+            },
+            "reimbursements": {
+              "amount": 15000,
+              "display": "$150.00"
+            },
+            "workerTaxes": {
+              "amount": 50000,
+              "display": "$500.00"
+            },
+            "employerTaxes": {
+              "amount": 25000,
+              "display": "$250.00"
+            },
+            "preTaxDeductions": {
+              "amount": 10000,
+              "display": "$100.00"
+            },
+            "postTaxDeductions": {
+              "amount": 5000,
+              "display": "$50.00"
+            },
+            "workerBenefitContributions": {
+              "amount": 20000,
+              "display": "$200.00"
+            },
+            "employerBenefitContributions": {
+              "amount": 15000,
+              "display": "$150.00"
+            },
+            "transactionFees": {
+              "amount": 500,
+              "display": "$5.00"
+            },
+            "totalCost": {
+              "amount": 355500,
+              "display": "$3,555.00"
+            }
+          },
+          "fundingMethod": "ach",
+          "reopenDeadline": "2026-08-28T17:00:00.000Z",
+          "timeline": {
+            "approvedAt": "2026-08-27T16:42:00.000Z"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pay_"
+              }
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_type"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "subtype",
+            "publicName": "subtype",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_subtype"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_status"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "fundingCurrency",
+            "publicName": "fundingCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payday",
+            "publicName": "payday",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "payPeriod",
+            "publicName": "payPeriod",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_period"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payFrequency",
+            "publicName": "payFrequency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_frequency"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "approvalDeadline",
+            "publicName": "approvalDeadline",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "paycheckCount",
+            "publicName": "paycheckCount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "totals",
+            "publicName": "totals",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_detail_totals"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "fundingMethod",
+            "publicName": "fundingMethod",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_funding_method"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "reopenDeadline",
+            "publicName": "reopenDeadline",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "timeline",
+            "publicName": "timeline",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_timeline"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "payroll_not_found_error_encoded",
+      "source": "payroll_not_found_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "PayrollNotFoundError"
+              ],
+              "names": [
+                "PayrollNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pay_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
       }
     },
     {
@@ -5697,6 +7668,1755 @@
           false,
           false
         ]
+      }
+    },
+    {
+      "name": "public_paycheck_status",
+      "source": "public_paycheck_status",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "processing"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "draft",
+          "pending",
+          "processing",
+          "debited",
+          "credited",
+          "partially_paid",
+          "processed",
+          "failed",
+          "voided"
+        ],
+        "names": [
+          "Draft",
+          "Pending",
+          "Processing",
+          "Debited",
+          "Credited",
+          "PartiallyPaid",
+          "Processed",
+          "Failed",
+          "Voided"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_paycheck_payment_method",
+      "source": "public_paycheck_payment_method",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "direct_deposit"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "direct_deposit",
+          "manual"
+        ],
+        "names": [
+          "DirectDeposit",
+          "Manual"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_paycheck_payroll",
+      "source": "public_paycheck_payroll",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "pay_1234",
+          "type": "us",
+          "subtype": "regular",
+          "status": "processing",
+          "fundingCurrency": "USD",
+          "payPeriod": {
+            "startDate": "2026-08-16",
+            "endDate": "2026-08-31"
+          },
+          "payFrequency": "semimonthly"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pay_"
+              }
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_type"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "subtype",
+            "publicName": "subtype",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_subtype"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_status"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "fundingCurrency",
+            "publicName": "fundingCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payPeriod",
+            "publicName": "payPeriod",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_period"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payFrequency",
+            "publicName": "payFrequency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_frequency"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_worker",
+      "source": "public_paycheck_worker",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "wrk_1234",
+          "firstName": "John",
+          "lastName": "Galt",
+          "displayName": "Jack Galt",
+          "workerType": "us_w2"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "firstName",
+            "publicName": "firstName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "publicName": "lastName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "displayName",
+            "publicName": "displayName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "workerType",
+            "publicName": "workerType",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "union_21"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_12",
+      "source": "public_currency_money_amount_12",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 230000,
+          "display": "$2,300.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_list_response",
+      "source": "public_paycheck_list_response",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "hasMore": false,
+          "count": 1,
+          "data": [
+            {
+              "id": "pyc_1234",
+              "payroll": {
+                "id": "pay_1234",
+                "type": "us",
+                "subtype": "regular",
+                "status": "processing",
+                "fundingCurrency": "USD",
+                "payPeriod": {
+                  "startDate": "2026-08-16",
+                  "endDate": "2026-08-31"
+                },
+                "payFrequency": "semimonthly"
+              },
+              "worker": {
+                "id": "wrk_1234",
+                "firstName": "John",
+                "lastName": "Galt",
+                "displayName": "Jack Galt",
+                "workerType": "us_w2"
+              },
+              "status": "processing",
+              "payday": "2026-08-31",
+              "paymentMethod": "direct_deposit",
+              "totals": {
+                "byCurrency": [
+                  {
+                    "currency": "USD",
+                    "netPay": {
+                      "amount": 230000,
+                      "display": "$2,300.00"
+                    }
+                  }
+                ],
+                "inFundingCurrency": {
+                  "currency": "USD",
+                  "netPay": {
+                    "amount": 230000,
+                    "display": "$2,300.00"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "hasMore",
+            "publicName": "hasMore",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "count",
+            "publicName": "count",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "data",
+            "publicName": "data",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_13",
+      "source": "public_currency_money_amount_13",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 300000,
+          "display": "$3,000.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_14",
+      "source": "public_currency_money_amount_14",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 15000,
+          "display": "$150.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_15",
+      "source": "public_currency_money_amount_15",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 50000,
+          "display": "$500.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_16",
+      "source": "public_currency_money_amount_16",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 25000,
+          "display": "$250.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_17",
+      "source": "public_currency_money_amount_17",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 10000,
+          "display": "$100.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_18",
+      "source": "public_currency_money_amount_18",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 5000,
+          "display": "$50.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_19",
+      "source": "public_currency_money_amount_19",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 20000,
+          "display": "$200.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_money_amount_20",
+      "source": "public_currency_money_amount_20",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 15000,
+          "display": "$150.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_currency_totals",
+      "source": "public_paycheck_currency_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "currency": "USD",
+          "grossPay": {
+            "amount": 300000,
+            "display": "$3,000.00"
+          },
+          "netPay": {
+            "amount": 230000,
+            "display": "$2,300.00"
+          },
+          "reimbursements": {
+            "amount": 15000,
+            "display": "$150.00"
+          },
+          "workerTaxes": {
+            "amount": 50000,
+            "display": "$500.00"
+          },
+          "employerTaxes": {
+            "amount": 25000,
+            "display": "$250.00"
+          },
+          "preTaxDeductions": {
+            "amount": 10000,
+            "display": "$100.00"
+          },
+          "postTaxDeductions": {
+            "amount": 5000,
+            "display": "$50.00"
+          },
+          "workerBenefitContributions": {
+            "amount": 20000,
+            "display": "$200.00"
+          },
+          "employerBenefitContributions": {
+            "amount": 15000,
+            "display": "$150.00"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "grossPay",
+            "publicName": "grossPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 300000,
+                "display": "$3,000.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_13"
+            }
+          },
+          {
+            "name": "netPay",
+            "publicName": "netPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_12"
+            }
+          },
+          {
+            "name": "reimbursements",
+            "publicName": "reimbursements",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_14"
+            }
+          },
+          {
+            "name": "workerTaxes",
+            "publicName": "workerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 50000,
+                "display": "$500.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_15"
+            }
+          },
+          {
+            "name": "employerTaxes",
+            "publicName": "employerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 25000,
+                "display": "$250.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_16"
+            }
+          },
+          {
+            "name": "preTaxDeductions",
+            "publicName": "preTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 10000,
+                "display": "$100.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_17"
+            }
+          },
+          {
+            "name": "postTaxDeductions",
+            "publicName": "postTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 5000,
+                "display": "$50.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_18"
+            }
+          },
+          {
+            "name": "workerBenefitContributions",
+            "publicName": "workerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 20000,
+                "display": "$200.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_19"
+            }
+          },
+          {
+            "name": "employerBenefitContributions",
+            "publicName": "employerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_20"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_detail_totals",
+      "source": "public_paycheck_detail_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "byCurrency": [
+            {
+              "currency": "USD",
+              "grossPay": {
+                "amount": 300000,
+                "display": "$3,000.00"
+              },
+              "netPay": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              },
+              "reimbursements": {
+                "amount": 15000,
+                "display": "$150.00"
+              },
+              "workerTaxes": {
+                "amount": 50000,
+                "display": "$500.00"
+              },
+              "employerTaxes": {
+                "amount": 25000,
+                "display": "$250.00"
+              },
+              "preTaxDeductions": {
+                "amount": 10000,
+                "display": "$100.00"
+              },
+              "postTaxDeductions": {
+                "amount": 5000,
+                "display": "$50.00"
+              },
+              "workerBenefitContributions": {
+                "amount": 20000,
+                "display": "$200.00"
+              },
+              "employerBenefitContributions": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            }
+          ],
+          "inFundingCurrency": {
+            "currency": "USD",
+            "grossPay": {
+              "amount": 300000,
+              "display": "$3,000.00"
+            },
+            "netPay": {
+              "amount": 230000,
+              "display": "$2,300.00"
+            },
+            "reimbursements": {
+              "amount": 15000,
+              "display": "$150.00"
+            },
+            "workerTaxes": {
+              "amount": 50000,
+              "display": "$500.00"
+            },
+            "employerTaxes": {
+              "amount": 25000,
+              "display": "$250.00"
+            },
+            "preTaxDeductions": {
+              "amount": 10000,
+              "display": "$100.00"
+            },
+            "postTaxDeductions": {
+              "amount": 5000,
+              "display": "$50.00"
+            },
+            "workerBenefitContributions": {
+              "amount": 20000,
+              "display": "$200.00"
+            },
+            "employerBenefitContributions": {
+              "amount": 15000,
+              "display": "$150.00"
+            }
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "byCurrency",
+            "publicName": "byCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "minItems": 1
+                  }
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "inFundingCurrency",
+            "publicName": "inFundingCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_currency_totals"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_detail",
+      "source": "public_paycheck_detail",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "pyc_1234",
+          "payroll": {
+            "id": "pay_1234",
+            "type": "us",
+            "subtype": "regular",
+            "status": "processing",
+            "fundingCurrency": "USD",
+            "payPeriod": {
+              "startDate": "2026-08-16",
+              "endDate": "2026-08-31"
+            },
+            "payFrequency": "semimonthly"
+          },
+          "worker": {
+            "id": "wrk_1234",
+            "firstName": "John",
+            "lastName": "Galt",
+            "displayName": "Jack Galt",
+            "workerType": "us_w2"
+          },
+          "status": "processing",
+          "payday": "2026-08-31",
+          "paymentMethod": "direct_deposit",
+          "totals": {
+            "byCurrency": [
+              {
+                "currency": "USD",
+                "grossPay": {
+                  "amount": 300000,
+                  "display": "$3,000.00"
+                },
+                "netPay": {
+                  "amount": 230000,
+                  "display": "$2,300.00"
+                },
+                "reimbursements": {
+                  "amount": 15000,
+                  "display": "$150.00"
+                },
+                "workerTaxes": {
+                  "amount": 50000,
+                  "display": "$500.00"
+                },
+                "employerTaxes": {
+                  "amount": 25000,
+                  "display": "$250.00"
+                },
+                "preTaxDeductions": {
+                  "amount": 10000,
+                  "display": "$100.00"
+                },
+                "postTaxDeductions": {
+                  "amount": 5000,
+                  "display": "$50.00"
+                },
+                "workerBenefitContributions": {
+                  "amount": 20000,
+                  "display": "$200.00"
+                },
+                "employerBenefitContributions": {
+                  "amount": 15000,
+                  "display": "$150.00"
+                }
+              }
+            ],
+            "inFundingCurrency": {
+              "currency": "USD",
+              "grossPay": {
+                "amount": 300000,
+                "display": "$3,000.00"
+              },
+              "netPay": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              },
+              "reimbursements": {
+                "amount": 15000,
+                "display": "$150.00"
+              },
+              "workerTaxes": {
+                "amount": 50000,
+                "display": "$500.00"
+              },
+              "employerTaxes": {
+                "amount": 25000,
+                "display": "$250.00"
+              },
+              "preTaxDeductions": {
+                "amount": 10000,
+                "display": "$100.00"
+              },
+              "postTaxDeductions": {
+                "amount": 5000,
+                "display": "$50.00"
+              },
+              "workerBenefitContributions": {
+                "amount": 20000,
+                "display": "$200.00"
+              },
+              "employerBenefitContributions": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            }
+          },
+          "description": "Semimonthly pay for August 16–31, 2026",
+          "exchangeRates": [],
+          "reportedHours": 60,
+          "earnings": [
+            {
+              "type": "hourly",
+              "workplaceId": "wkp_1234",
+              "amount": {
+                "amount": 300000,
+                "currency": "USD",
+                "display": "$3,000.00"
+              },
+              "hours": 60,
+              "hourlyRate": {
+                "amount": "50.00",
+                "currency": "USD",
+                "per": "hour"
+              },
+              "description": "Regular hours"
+            }
+          ],
+          "reimbursements": [
+            {
+              "amount": {
+                "amount": 15000,
+                "currency": "USD",
+                "display": "$150.00"
+              },
+              "description": "Client travel reimbursement"
+            }
+          ],
+          "deductions": [
+            {
+              "taxTreatment": "pre_tax",
+              "amount": {
+                "amount": 10000,
+                "currency": "USD",
+                "display": "$100.00"
+              },
+              "description": "Pre-tax commuter deduction"
+            },
+            {
+              "taxTreatment": "post_tax",
+              "amount": {
+                "amount": 5000,
+                "currency": "USD",
+                "display": "$50.00"
+              },
+              "description": "Wage garnishment"
+            }
+          ],
+          "benefits": [
+            {
+              "name": "Medical insurance",
+              "benefitDeductionId": "pbdg_1234",
+              "category": "health",
+              "type": "medical",
+              "workerContribution": {
+                "amount": 20000,
+                "currency": "USD",
+                "display": "$200.00"
+              },
+              "employerContribution": {
+                "amount": 15000,
+                "currency": "USD",
+                "display": "$150.00"
+              }
+            }
+          ],
+          "taxes": [
+            {
+              "payer": "worker",
+              "amount": {
+                "amount": 50000,
+                "currency": "USD",
+                "display": "$500.00"
+              },
+              "description": "Federal income tax withholding"
+            },
+            {
+              "payer": "employer",
+              "amount": {
+                "amount": 25000,
+                "currency": "USD",
+                "display": "$250.00"
+              },
+              "description": "Employer payroll tax"
+            }
+          ]
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pyc_"
+              }
+            }
+          },
+          {
+            "name": "payroll",
+            "publicName": "payroll",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_payroll"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "worker",
+            "publicName": "worker",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_worker"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_status"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payday",
+            "publicName": "payday",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "paymentMethod",
+            "publicName": "paymentMethod",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_payment_method"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "totals",
+            "publicName": "totals",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_detail_totals"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "exchangeRates",
+            "publicName": "exchangeRates",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "reportedHours",
+            "publicName": "reportedHours",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "number",
+                  "validation": {}
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "earnings",
+            "publicName": "earnings",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "reimbursements",
+            "publicName": "reimbursements",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "deductions",
+            "publicName": "deductions",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "benefits",
+            "publicName": "benefits",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "taxes",
+            "publicName": "taxes",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "paycheck_not_found_error_encoded",
+      "source": "paycheck_not_found_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "PaycheckNotFoundError"
+              ],
+              "names": [
+                "PaycheckNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pyc_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
       }
     },
     {
@@ -7767,7 +11487,8 @@
     "timeOff",
     "timeOff.policies",
     "workers",
-    "workplaces"
+    "workplaces",
+    "payroll"
   ],
   "publicResources": [
     "benefits",
@@ -7781,7 +11502,8 @@
     "timeOff",
     "timeOff.policies",
     "workers",
-    "workplaces"
+    "workplaces",
+    "payroll"
   ],
   "operations": [
     {
@@ -14375,6 +18097,718 @@
           ],
           "model": {
             "name": "workplace_already_exists_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "listPaychecks",
+      "publicOperation": "listPaychecks",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/paychecks",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "payrollIds",
+        "workerIds",
+        "workerTypes",
+        "payrollTypes",
+        "statuses",
+        "paymentMethods",
+        "compensationCurrencies",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "payrollIds",
+        "workerIds",
+        "workerTypes",
+        "payrollTypes",
+        "statuses",
+        "paymentMethods",
+        "compensationCurrencies",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payrollIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerTypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payrollTypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paymentMethods",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "compensationCurrencies",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payFrequencies",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollListPaychecksParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_paycheck_list_response",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_payroll_query_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "retrievePaycheck",
+      "publicOperation": "retrievePaycheck",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/paychecks/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollRetrievePaycheckParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_paycheck_detail",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "paycheck_not_found_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/payrolls",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "subtypes",
+        "statuses",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore",
+        "payPeriodEndOnOrAfter",
+        "payPeriodEndBefore"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "subtypes",
+        "statuses",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore",
+        "payPeriodEndOnOrAfter",
+        "payPeriodEndBefore"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "subtypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payFrequencies",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payPeriodEndOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payPeriodEndBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_payroll_list_response",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_payroll_query_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "retrieve",
+      "publicOperation": "retrieve",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/payrolls/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollRetrieveParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_payroll_detail",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "payroll_not_found_error_encoded",
             "publicAliases": []
           }
         },

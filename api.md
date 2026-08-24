@@ -58,6 +58,11 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [List Workplaces](#list-workplaces)
   - [Create Workplace](#create-workplace)
   - [Update Workplace](#update-workplace)
+- [`Payroll`](#payroll)
+  - [List Paychecks](#list-paychecks)
+  - [Get Paycheck](#get-paycheck)
+  - [List Payrolls](#list-payrolls)
+  - [Get Payroll](#get-payroll)
 
 ## Setup
 
@@ -738,4 +743,62 @@ Update an existing workplace.
 
 ```ts
 const workplace = await client.workplaces.update('wkp_1234', {});
+```
+
+## `Payroll`
+
+Read-only payrolls and worker-level payroll calculations. Paycheck endpoints use one consistent resource for every worker type; payment execution is outside this API.
+
+### List Paychecks
+
+List per-worker paycheck summaries newest first with stable cursor ordering. By default, the response includes every worker type visible to the API key, including US W-2 employees, US 1099 contractors, and global contractors; use workerTypes to narrow the results. Payroll type visibility follows the API key permissions. All lifecycle statuses are included unless statuses are provided.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PayrollListPaychecksParams`](./src/resources/payroll.ts) |
+| Response | [`PayrollListPaychecksResponse`](./src/resources/payroll.ts) |
+
+```ts
+const payroll = await client.payroll.listPaychecks({
+  limit: 'limit',
+});
+```
+
+### Get Paycheck
+
+Get a paycheck by id. All worker types use the same paycheck schema. Categories that do not apply to a worker are represented by zero-valued totals and empty line-item arrays. For example, a US 1099 contractor with no applicable payroll taxes returns zero `workerTaxes` and `employerTaxes` totals and an empty `taxes` array. Missing, foreign, unauthorized, or unavailable paychecks return 404.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PayrollRetrievePaycheckResponse`](./src/resources/payroll.ts) |
+
+```ts
+const payroll = await client.payroll.retrievePaycheck('pyc_1234');
+```
+
+### List Payrolls
+
+List payroll summaries newest first with stable cursor ordering. Every amount in totals is expressed in fundingCurrency, the currency the employer uses to fund the payroll. Line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative. Payroll type visibility follows the API key permissions. All lifecycle statuses are included unless statuses are provided.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PayrollListParams`](./src/resources/payroll.ts) |
+| Response | [`PayrollListResponse`](./src/resources/payroll.ts) |
+
+```ts
+const payroll = await client.payroll.list({
+  limit: 'limit',
+});
+```
+
+### Get Payroll
+
+Get a payroll by id. Every amount in totals is expressed in fundingCurrency, the currency the employer uses to fund the payroll. Line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative. Missing, foreign, unauthorized, or unavailable payrolls return 404.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PayrollRetrieveResponse`](./src/resources/payroll.ts) |
+
+```ts
+const payroll = await client.payroll.retrieve('pay_1234');
 ```

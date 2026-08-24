@@ -511,6 +511,46 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
       const workplace = await client.workplaces.update('wkp_1234', {});
     },
   },
+
+  {
+    operation: 'listPaychecks',
+    method: 'GET',
+    path: '/v1/paychecks',
+    run: async () => {
+      const payroll = await client.payroll.listPaychecks({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'retrievePaycheck',
+    method: 'GET',
+    path: '/v1/paychecks/{id}',
+    run: async () => {
+      const payroll = await client.payroll.retrievePaycheck('pyc_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/payrolls',
+    run: async () => {
+      const payroll = await client.payroll.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'retrieve',
+    method: 'GET',
+    path: '/v1/payrolls/{id}',
+    run: async () => {
+      const payroll = await client.payroll.retrieve('pay_1234');
+    },
+  },
 ];
 
 const main = async (): Promise<void> => {
