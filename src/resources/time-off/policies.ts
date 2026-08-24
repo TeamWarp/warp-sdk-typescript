@@ -5,7 +5,6 @@ import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
 import type * as Shared from '../shared';
-import type * as CustomFieldsAPI from '../custom-fields';
 
 export class Policies extends APIResource {
   /**
@@ -17,7 +16,7 @@ export class Policies extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.timeOff.policies.list({
+   * const policy = await client.timeOff.policies.list({
    *   limit: 'limit',
    * });
    * ```
@@ -35,7 +34,7 @@ export class Policies extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.timeOff.policies.get('id');
+   * const policy = await client.timeOff.policies.get('top_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<PolicyGetResponse> {
@@ -45,7 +44,13 @@ export class Policies extends APIResource {
 
 export interface PolicyListParams {
   limit: string | null;
+  /**
+   * @pattern ^top_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^top_
+   */
   beforeId?: string | null;
 }
 
@@ -57,7 +62,13 @@ export interface PolicyListResponse {
 
 export namespace PolicyListResponse {
   export interface Data {
+    /**
+     * @pattern ^top_
+     */
     id: string;
+    /**
+     * @pattern ^tot_
+     */
     timeOffTypeId: string;
     timeOffTypeName: string;
     paid: boolean;
@@ -66,14 +77,20 @@ export namespace PolicyListResponse {
     unit: 'hour' | 'day';
     name: string;
     description: string | null;
-    hoursWorkedPerChunk: Shared.Union10 | null;
-    minutesPerChunk: Shared.Union10 | null;
-    minutesPerPeriod: Shared.Union10 | null;
+    hoursWorkedPerChunk: Shared.Union11 | null;
+    minutesPerChunk: Shared.Union11 | null;
+    minutesPerPeriod: Shared.Union11 | null;
   }
 }
 
 export interface PolicyGetResponse {
+  /**
+   * @pattern ^top_
+   */
   id: string;
+  /**
+   * @pattern ^tot_
+   */
   timeOffTypeId: string;
   timeOffTypeName: string;
   paid: boolean;
@@ -82,9 +99,9 @@ export interface PolicyGetResponse {
   unit: 'hour' | 'day';
   name: string;
   description: string | null;
-  hoursWorkedPerChunk: Shared.Union10 | null;
-  minutesPerChunk: Shared.Union10 | null;
-  minutesPerPeriod: Shared.Union10 | null;
+  hoursWorkedPerChunk: Shared.Union11 | null;
+  minutesPerChunk: Shared.Union11 | null;
+  minutesPerPeriod: Shared.Union11 | null;
 }
 export declare namespace Policies {
   export {

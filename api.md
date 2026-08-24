@@ -85,7 +85,7 @@ List company health plans. Defaults to active plans. A plan whose effectiveEndDa
 | Response | [`HealthPlanListResponse`](./src/resources/benefits/health-plans.ts) |
 
 ```ts
-const list = await client.benefits.healthPlans.list({
+const healthPlan = await client.benefits.healthPlans.list({
   limit: 'limit',
   statuses: ['active'],
 });
@@ -100,7 +100,7 @@ Get a publicly visible company health plan by id.
 | Response | [`HealthPlanGetResponse`](./src/resources/benefits/health-plans.ts) |
 
 ```ts
-const get_ = await client.benefits.healthPlans.get('id');
+const healthPlan = await client.benefits.healthPlans.get('chpl_1234');
 ```
 
 ### `Benefits RetirementPlans`
@@ -117,7 +117,7 @@ List company retirement plans. Defaults to active plans. A plan whose effectiveE
 | Response | [`RetirementPlanListResponse`](./src/resources/benefits/retirement-plans.ts) |
 
 ```ts
-const list = await client.benefits.retirementPlans.list({
+const retirementPlan = await client.benefits.retirementPlans.list({
   limit: 'limit',
   statuses: ['active'],
 });
@@ -132,7 +132,7 @@ Get a company retirement plan by id, regardless of status.
 | Response | [`RetirementPlanGetResponse`](./src/resources/benefits/retirement-plans.ts) |
 
 ```ts
-const get_ = await client.benefits.retirementPlans.get('id');
+const retirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
 ```
 
 ### `Benefits Deductions`
@@ -149,7 +149,7 @@ List current payroll benefit deductions. Defaults to active deductions. A deduct
 | Response | [`DeductionListResponse`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const list = await client.benefits.deductions.list({
+const deduction = await client.benefits.deductions.list({
   limit: 'limit',
   statuses: ['active'],
 });
@@ -164,7 +164,7 @@ Get the current version of a company benefit deduction by id.
 | Response | [`DeductionGetResponse`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const get_ = await client.benefits.deductions.get('id');
+const deduction = await client.benefits.deductions.get('pbdg_1234');
 ```
 
 ## `CustomFields`
@@ -180,7 +180,7 @@ List the custom worker field definitions your API key can read. Each field belon
 | Response | [`CustomFieldListResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const list = await client.customFields.list();
+const customField = await client.customFields.list();
 ```
 
 ### Create Field
@@ -193,8 +193,8 @@ Create a custom worker field definition. The field type is immutable after creat
 | Response | [`CustomFieldCreateResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const create = await client.customFields.create({
-  name: {},
+const customField = await client.customFields.create({
+  name: 'x',
   type: 'text',
   category: 'info',
 });
@@ -209,7 +209,7 @@ Get a custom worker field definition, including its select options. Archived opt
 | Response | [`CustomFieldGetResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const get_ = await client.customFields.get('id');
+const customField = await client.customFields.get('cf_1234');
 ```
 
 ### Update Field
@@ -222,7 +222,7 @@ Update a custom worker field definition. The field type cannot be changed; creat
 | Response | [`Objects`](./src/resources/shared.ts) |
 
 ```ts
-const objects = await client.customFields.update('id', {});
+const objects = await client.customFields.update('cf_1234', {});
 ```
 
 ### Archive Field
@@ -234,7 +234,7 @@ Archive a custom worker field. Archived fields keep their existing worker values
 | Response | [`Objects`](./src/resources/shared.ts) |
 
 ```ts
-const objects = await client.customFields.archive('id');
+const objects = await client.customFields.archive('cf_1234');
 ```
 
 ### Create Field Option
@@ -247,9 +247,9 @@ Add an option to a select or multi_select custom worker field. The option value 
 | Response | [`CustomFieldCreateOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const createOption = await client.customFields.createOption('id', {
-  label: {},
-  value: {},
+const customField = await client.customFields.createOption('cf_1234', {
+  label: 'x',
+  value: 'x',
 });
 ```
 
@@ -263,7 +263,7 @@ Update the label or sort order of a custom worker field option. Options of archi
 | Response | [`Objects3`](./src/resources/shared.ts) |
 
 ```ts
-const objects3 = await client.customFields.updateOption('id', {});
+const objects3 = await client.customFields.updateOption('cfo_1234', {});
 ```
 
 ### Delete Unused Field Option
@@ -271,7 +271,7 @@ const objects3 = await client.customFields.updateOption('id', {});
 Delete a custom worker field option that is not applied to any worker. Options in use must be archived instead. Requires the workers:custom_fields permission at the manage level.
 
 ```ts
-await client.customFields.deleteOption('id');
+await client.customFields.deleteOption('cfo_1234');
 ```
 
 ### Archive Field Option
@@ -283,7 +283,7 @@ Archive a custom worker field option. Archived options remain on existing worker
 | Response | [`Objects3`](./src/resources/shared.ts) |
 
 ```ts
-const objects3 = await client.customFields.archiveOption('id');
+const objects3 = await client.customFields.archiveOption('cfo_1234');
 ```
 
 ### List Field Values
@@ -296,7 +296,7 @@ List custom field values for workers, optionally filtered by worker or field. Va
 | Response | [`CustomFieldListValuesResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const listValues = await client.customFields.listValues();
+const customField = await client.customFields.listValues();
 ```
 
 ### Set Field Value
@@ -309,9 +309,9 @@ Create or replace a worker's value for a custom field. The value shape must matc
 | Response | [`CustomFieldUpsertValueResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const upsertValue = await client.customFields.upsertValue({
-  workerId: {},
-  fieldId: {},
+const customField = await client.customFields.upsertValue({
+  workerId: 'wrk_1234',
+  fieldId: 'cf_1234',
   value: {
     type: 'text',
     value: '',
@@ -329,8 +329,8 @@ Remove a worker's value for a custom field. Your API key must hold write on the 
 
 ```ts
 await client.customFields.clearValue({
-  workerId: {},
-  fieldId: {},
+  workerId: 'wrk_1234',
+  fieldId: 'cf_1234',
 });
 ```
 
@@ -348,7 +348,7 @@ List all departments for your company.
 | Response | [`DepartmentListResponse`](./src/resources/departments.ts) |
 
 ```ts
-const list = await client.departments.list({
+const department = await client.departments.list({
   limit: 'limit',
 });
 ```
@@ -363,8 +363,8 @@ Create a new department.
 | Response | [`DepartmentCreateResponse`](./src/resources/departments.ts) |
 
 ```ts
-const create = await client.departments.create({
-  name: {},
+const department = await client.departments.create({
+  name: 'x',
 });
 ```
 
@@ -378,7 +378,7 @@ Update an existing department.
 | Response | [`DepartmentUpdateResponse`](./src/resources/departments.ts) |
 
 ```ts
-const update = await client.departments.update('id', {});
+const department = await client.departments.update('dpt_1234', {});
 ```
 
 ## `Offers`
@@ -395,7 +395,7 @@ List the candidate offers for your company.
 | Response | [`OfferListResponse`](./src/resources/offers.ts) |
 
 ```ts
-const list = await client.offers.list({
+const offer = await client.offers.list({
   limit: 'limit',
 });
 ```
@@ -410,21 +410,21 @@ Create and send a candidate offer. The candidate receives an email with a link t
 | Response | [`OfferCreateResponse`](./src/resources/offers.ts) |
 
 ```ts
-const create = await client.offers.create({
+const offer = await client.offers.create({
   candidate: {
-    firstName: {},
-    lastName: {},
-    email: {},
+    firstName: 'x',
+    lastName: 'x',
+    email: 'john@joinwarp.com',
   },
   position: {
-    title: {},
-    startDate: {},
+    title: 'x',
+    startDate: '',
   },
   workerType: 'employee',
   compensation: {
     payBasis: 'year',
     payCurrency: 'USD',
-    payRate: {},
+    payRate: 0,
   },
 });
 ```
@@ -439,7 +439,7 @@ Void a previously sent offer. Only sent offers can be voided.
 | Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const objects5 = await client.offers.void('id', {
+const objects5 = await client.offers.void('offr_1234', {
   voidReason: 'candidate_declined',
 });
 ```
@@ -454,7 +454,7 @@ Extend the expiration deadline of a sent offer.
 | Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const objects5 = await client.offers.extendDeadline('id', {
+const objects5 = await client.offers.extendDeadline('offr_1234', {
   expirationTime: '',
 });
 ```
@@ -468,7 +468,7 @@ Resend the offer email to the candidate for a sent offer.
 | Response | [`Objects5`](./src/resources/shared.ts) |
 
 ```ts
-const objects5 = await client.offers.resend('id');
+const objects5 = await client.offers.resend('offr_1234');
 ```
 
 ## `PayRates`
@@ -485,7 +485,7 @@ List pay rates visible to the API key. Results may be filtered by worker, effect
 | Response | [`PayRateListResponse`](./src/resources/pay-rates.ts) |
 
 ```ts
-const list = await client.payRates.list({
+const payRate = await client.payRates.list({
   limit: 'limit',
 });
 ```
@@ -499,7 +499,7 @@ Get a specific pay rate by id. The API key must have the compensation read scope
 | Response | [`PayRateGetResponse`](./src/resources/pay-rates.ts) |
 
 ```ts
-const get_ = await client.payRates.get('id');
+const payRate = await client.payRates.get('pyr_1234');
 ```
 
 ## `TimeOff`
@@ -516,7 +516,7 @@ Time off assignments are mappings between workers and time off policies. Useful 
 | Response | [`TimeOffListAssignmentsResponse`](./src/resources/time-off/time-off.ts) |
 
 ```ts
-const listAssignments = await client.timeOff.listAssignments({
+const timeOff = await client.timeOff.listAssignments({
   limit: 'limit',
 });
 ```
@@ -531,7 +531,7 @@ Get worker remaining time-off balances.
 | Response | [`TimeOffListBalancesResponse`](./src/resources/time-off/time-off.ts) |
 
 ```ts
-const listBalances = await client.timeOff.listBalances({
+const timeOff = await client.timeOff.listBalances({
   limit: 'limit',
 });
 ```
@@ -546,7 +546,7 @@ Get the time off requests that workers in your company have made.
 | Response | [`TimeOffListRequestsResponse`](./src/resources/time-off/time-off.ts) |
 
 ```ts
-const listRequests = await client.timeOff.listRequests({
+const timeOff = await client.timeOff.listRequests({
   limit: 'limit',
 });
 ```
@@ -565,7 +565,7 @@ Get the time off policies for your company
 | Response | [`PolicyListResponse`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const list = await client.timeOff.policies.list({
+const policy = await client.timeOff.policies.list({
   limit: 'limit',
 });
 ```
@@ -579,7 +579,7 @@ Get a specific time off policy by id
 | Response | [`PolicyGetResponse`](./src/resources/time-off/policies.ts) |
 
 ```ts
-const get_ = await client.timeOff.policies.get('id');
+const policy = await client.timeOff.policies.get('top_1234');
 ```
 
 ## `Workers`
@@ -596,7 +596,7 @@ List all workers. Workers include anyone employed by the company, whether US or 
 | Response | [`WorkerListResponse`](./src/resources/workers.ts) |
 
 ```ts
-const list = await client.workers.list({
+const worker = await client.workers.list({
   limit: 'limit',
 });
 ```
@@ -610,7 +610,7 @@ Get a specific worker by id.
 | Response | [`WorkerGetResponse`](./src/resources/workers.ts) |
 
 ```ts
-const get_ = await client.workers.get('id');
+const worker = await client.workers.get('wrk_1234');
 ```
 
 ### Delete Worker
@@ -618,7 +618,7 @@ const get_ = await client.workers.get('id');
 Delete a worker. Only workers who have not yet completed onboarding can be deleted. Active workers must be properly offboarded.
 
 ```ts
-await client.workers.delete('id');
+await client.workers.delete('wrk_1234');
 ```
 
 ### Create Employee
@@ -631,20 +631,20 @@ Create a new US employee. The worker will be created in draft status and must be
 | Response | [`WorkerCreateEmployeeResponse`](./src/resources/workers.ts) |
 
 ```ts
-const createEmployee = await client.workers.createEmployee({
-  firstName: {},
-  lastName: {},
-  position: {},
-  startDate: {},
-  email: {},
-  departmentId: {},
-  managerId: {},
+const worker = await client.workers.createEmployee({
+  firstName: 'Jonathan',
+  lastName: 'Galt',
+  position: 'Software Engineer',
+  startDate: '',
+  email: 'john@joinwarp.com',
+  departmentId: 'dpt_1234',
+  managerId: 'wrk_1234',
   workLocation: {
     type: 'office',
-    workplaceId: {},
+    workplaceId: 'wkp_1234',
   },
   compensation: {
-    amount: {},
+    amount: 0,
     per: 'hour',
   },
 });
@@ -660,15 +660,15 @@ Create a new contractor. The worker will be created in draft status and must be 
 | Response | [`WorkerCreateContractorResponse`](./src/resources/workers.ts) |
 
 ```ts
-const createContractor = await client.workers.createContractor({
+const worker = await client.workers.createContractor({
   entityType: 'individual',
-  firstName: {},
-  lastName: {},
-  position: {},
-  startDate: {},
-  email: {},
-  departmentId: {},
-  managerId: {},
+  firstName: 'Melissa',
+  lastName: 'Jones',
+  position: 'Design Consultant',
+  startDate: '',
+  email: 'john@joinwarp.com',
+  departmentId: 'dpt_1234',
+  managerId: 'wrk_1234',
   workCountry: 'AD',
 });
 ```
@@ -682,7 +682,7 @@ Send or resend the worker invite so they can accept and complete onboarding to W
 | Response | [`WorkerInviteResponse`](./src/resources/workers.ts) |
 
 ```ts
-const invite = await client.workers.invite('id');
+const worker = await client.workers.invite('wrk_1234');
 ```
 
 ## `Workplaces`
@@ -699,7 +699,7 @@ List all workplaces for your company.
 | Response | [`WorkplaceListResponse`](./src/resources/workplaces.ts) |
 
 ```ts
-const list = await client.workplaces.list({
+const workplace = await client.workplaces.list({
   limit: 'limit',
 });
 ```
@@ -714,11 +714,11 @@ Create a new workplace.
 | Response | [`WorkplaceCreateResponse`](./src/resources/workplaces.ts) |
 
 ```ts
-const create = await client.workplaces.create({
-  name: {},
+const workplace = await client.workplaces.create({
+  name: 'x',
   type: 'remote',
   address: {
-    line1: {},
+    line1: 'x',
     city: '',
     postalCode: '',
     state: 'AL',
@@ -737,5 +737,5 @@ Update an existing workplace.
 | Response | [`WorkplaceUpdateResponse`](./src/resources/workplaces.ts) |
 
 ```ts
-const update = await client.workplaces.update('id', {});
+const workplace = await client.workplaces.update('wkp_1234', {});
 ```

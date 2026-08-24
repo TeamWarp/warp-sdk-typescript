@@ -4,7 +4,6 @@ import { APIResource } from '../../resource';
 import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import type * as Shared from '../shared';
-import type * as CustomFieldsAPI from '../custom-fields';
 import * as PoliciesAPI from './policies';
 import { Policies, type PolicyListResponse, type PolicyGetResponse, type PolicyListParams } from './policies';
 
@@ -20,7 +19,7 @@ export class TimeOff extends APIResource {
    *
    * @example
    * ```ts
-   * const listAssignments = await client.timeOff.listAssignments({
+   * const timeOff = await client.timeOff.listAssignments({
    *   limit: 'limit',
    * });
    * ```
@@ -41,7 +40,7 @@ export class TimeOff extends APIResource {
    *
    * @example
    * ```ts
-   * const listBalances = await client.timeOff.listBalances({
+   * const timeOff = await client.timeOff.listBalances({
    *   limit: 'limit',
    * });
    * ```
@@ -62,7 +61,7 @@ export class TimeOff extends APIResource {
    *
    * @example
    * ```ts
-   * const listRequests = await client.timeOff.listRequests({
+   * const timeOff = await client.timeOff.listRequests({
    *   limit: 'limit',
    * });
    * ```
@@ -77,8 +76,14 @@ export class TimeOff extends APIResource {
 
 export interface TimeOffListAssignmentsParams {
   limit: string | null;
-  afterId?: Shared.Union20 | null;
-  beforeId?: Shared.Union20 | null;
+  /**
+   * @pattern ^wrkasn_
+   */
+  afterId?: Shared.Union23 | null;
+  /**
+   * @pattern ^wrkasn_
+   */
+  beforeId?: Shared.Union23 | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
 }
@@ -91,8 +96,17 @@ export interface TimeOffListAssignmentsResponse {
 
 export namespace TimeOffListAssignmentsResponse {
   export interface Data {
+    /**
+     * @pattern ^wrkasn_
+     */
     id: string;
+    /**
+     * @pattern ^top_
+     */
     policyId: string;
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
     assignedAt: string;
   }
@@ -100,12 +114,18 @@ export namespace TimeOffListAssignmentsResponse {
 
 export interface TimeOffListBalancesParams {
   limit: string | null;
-  afterId?: Shared.Union20 | null;
-  beforeId?: Shared.Union20 | null;
+  /**
+   * @pattern ^wrkasn_
+   */
+  afterId?: Shared.Union23 | null;
+  /**
+   * @pattern ^wrkasn_
+   */
+  beforeId?: Shared.Union23 | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
-  startDate?: Shared.Union21 | null;
-  endDate?: Shared.Union21 | null;
+  startDate?: Shared.Union24 | null;
+  endDate?: Shared.Union24 | null;
 }
 
 export interface TimeOffListBalancesResponse {
@@ -116,14 +136,20 @@ export interface TimeOffListBalancesResponse {
 
 export namespace TimeOffListBalancesResponse {
   export interface Data {
+    /**
+     * @pattern ^wrkasn_
+     */
     id: string;
+    /**
+     * @pattern ^top_
+     */
     policyId: string;
     legacyWorkerId: string;
-    accruedUnlocked: Shared.Union10;
-    accruedLocked: Shared.Union10;
-    used: Shared.Union10;
-    holds: Shared.Union10;
-    available: Shared.Union10;
+    accruedUnlocked: Shared.Union11;
+    accruedLocked: Shared.Union11;
+    used: Shared.Union11;
+    holds: Shared.Union11;
+    available: Shared.Union11;
   }
 }
 
@@ -131,13 +157,13 @@ export interface TimeOffListRequestsParams {
   limit: string | null;
   afterId?: string | null;
   beforeId?: string | null;
-  statuses?: Array<'pending' | 'approved' | 'denied'> | null;
+  statuses?: Array<Shared.Union25> | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
-  startsOnOrAfter?: Shared.Union21 | null;
-  startsBefore?: Shared.Union21 | null;
-  endsOnOrAfter?: Shared.Union21 | null;
-  endsBefore?: Shared.Union21 | null;
+  startsOnOrAfter?: Shared.Union24 | null;
+  startsBefore?: Shared.Union24 | null;
+  endsOnOrAfter?: Shared.Union24 | null;
+  endsBefore?: Shared.Union24 | null;
 }
 
 export interface TimeOffListRequestsResponse {
@@ -149,16 +175,22 @@ export interface TimeOffListRequestsResponse {
 export namespace TimeOffListRequestsResponse {
   export interface Data {
     id: string;
+    /**
+     * @pattern ^top_
+     */
     timeOffPolicyId: string;
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
-    status: 'pending' | 'approved' | 'denied';
+    status: Shared.Union25;
     startAt: string;
     startRangeType: 'date' | 'datetime';
     endAt: string;
     endRangeType: 'date' | 'datetime';
     reason: string | null;
     createdAt: string;
-    requestedMinutes: Shared.Union10;
+    requestedMinutes: Shared.Union11;
     /**
      * The time zone that the worker is requesting time off in.
      */

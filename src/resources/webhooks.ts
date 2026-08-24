@@ -39,7 +39,13 @@ export interface TimeOffRequestCreatedWebhookEvent {
 export namespace TimeOffRequestCreatedWebhookEvent {
   export interface Payload {
     id: string;
+    /**
+     * @pattern ^top_
+     */
     timeOffPolicyId: string;
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
     status: 'pending' | 'approved' | 'denied';
     startAt: string;
@@ -75,7 +81,13 @@ export interface TimeOffRequestReviewedWebhookEvent {
 export namespace TimeOffRequestReviewedWebhookEvent {
   export interface Payload {
     id: string;
+    /**
+     * @pattern ^top_
+     */
     timeOffPolicyId: string;
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
     status: 'pending' | 'approved' | 'denied';
     startAt: string;
@@ -111,7 +123,13 @@ export interface TimeOffRequestDeletedWebhookEvent {
 export namespace TimeOffRequestDeletedWebhookEvent {
   export interface Payload {
     id: string;
+    /**
+     * @pattern ^top_
+     */
     timeOffPolicyId: string;
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
     status: 'pending' | 'approved' | 'denied';
     startAt: string;
@@ -146,7 +164,13 @@ export interface TimeOffBalanceAdjustedWebhookEvent {
 
 export namespace TimeOffBalanceAdjustedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
+    /**
+     * @pattern ^top_
+     */
     policyId: string;
     /**
      * Signed adjustment applied to the balance, in minutes. Omitted when no balance snapshot was captured.
@@ -154,6 +178,7 @@ export namespace TimeOffBalanceAdjustedWebhookEvent {
     adjustmentMinutes?: Shared.Union | null;
     /**
      * The date the adjustment takes effect. Omitted when no balance snapshot was captured.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
      */
     effectiveDate?: string | null;
     previousBalance?: Union1API.Union1;
@@ -179,17 +204,32 @@ export interface WorkerCreatedWebhookEvent {
 
 export namespace WorkerCreatedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -212,6 +252,9 @@ export namespace WorkerCreatedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -236,17 +279,32 @@ export interface WorkerUpdatedWebhookEvent {
 
 export namespace WorkerUpdatedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -269,6 +327,9 @@ export namespace WorkerUpdatedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -293,17 +354,32 @@ export interface WorkerDeletedWebhookEvent {
 
 export namespace WorkerDeletedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -326,6 +402,9 @@ export namespace WorkerDeletedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -350,17 +429,32 @@ export interface WorkerInviteSentWebhookEvent {
 
 export namespace WorkerInviteSentWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -383,6 +477,9 @@ export namespace WorkerInviteSentWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -407,17 +504,32 @@ export interface WorkerInviteAcceptedWebhookEvent {
 
 export namespace WorkerInviteAcceptedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -440,6 +552,9 @@ export namespace WorkerInviteAcceptedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -464,17 +579,32 @@ export interface WorkerOnboardingCompletedWebhookEvent {
 
 export namespace WorkerOnboardingCompletedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -497,6 +627,9 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -521,17 +654,32 @@ export interface WorkerOffboardingStartedWebhookEvent {
 
 export namespace WorkerOffboardingStartedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -554,6 +702,9 @@ export namespace WorkerOffboardingStartedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -578,17 +729,32 @@ export interface WorkerOffboardedWebhookEvent {
 
 export namespace WorkerOffboardedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -611,6 +777,9 @@ export namespace WorkerOffboardedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -635,17 +804,32 @@ export interface WorkerReactivatedWebhookEvent {
 
 export namespace WorkerReactivatedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     endDate: string | null;
     isBusiness: boolean | null;
     businessName: string | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
+    /**
+     * @format email
+     */
     workEmail: string | null;
     preferredName: string | null;
     /**
@@ -668,6 +852,9 @@ export namespace WorkerReactivatedWebhookEvent {
 
   export namespace Payload {
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
@@ -692,6 +879,9 @@ export interface OfferCreatedWebhookEvent {
 
 export namespace OfferCreatedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^offr_
+     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -718,6 +908,9 @@ export namespace OfferCreatedWebhookEvent {
     export interface Candidate {
       firstName: string;
       lastName: string;
+      /**
+       * @format email
+       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -731,6 +924,9 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Position {
       title: string;
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
       startDate: string;
       country:
         | 'AD'
@@ -987,16 +1183,25 @@ export namespace OfferCreatedWebhookEvent {
     }
 
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
+      /**
+       * @pattern ^wkp_
+       */
       id: string;
       name: string;
     }
 
     export interface Manager {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       name: string | null;
     }
@@ -1020,9 +1225,18 @@ export namespace OfferCreatedWebhookEvent {
       }
 
       export interface Stock {
-        options: string;
-        vestingScheduleMonths: string | null;
-        cliffMonths: string | null;
+        /**
+         * @minimum 0
+         */
+        options: number;
+        /**
+         * @minimum 0
+         */
+        vestingScheduleMonths: number | null;
+        /**
+         * @minimum 0
+         */
+        cliffMonths: number | null;
       }
     }
   }
@@ -1046,6 +1260,9 @@ export interface OfferSentWebhookEvent {
 
 export namespace OfferSentWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^offr_
+     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -1072,6 +1289,9 @@ export namespace OfferSentWebhookEvent {
     export interface Candidate {
       firstName: string;
       lastName: string;
+      /**
+       * @format email
+       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -1085,6 +1305,9 @@ export namespace OfferSentWebhookEvent {
 
     export interface Position {
       title: string;
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
       startDate: string;
       country:
         | 'AD'
@@ -1341,16 +1564,25 @@ export namespace OfferSentWebhookEvent {
     }
 
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
+      /**
+       * @pattern ^wkp_
+       */
       id: string;
       name: string;
     }
 
     export interface Manager {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       name: string | null;
     }
@@ -1374,9 +1606,18 @@ export namespace OfferSentWebhookEvent {
       }
 
       export interface Stock {
-        options: string;
-        vestingScheduleMonths: string | null;
-        cliffMonths: string | null;
+        /**
+         * @minimum 0
+         */
+        options: number;
+        /**
+         * @minimum 0
+         */
+        vestingScheduleMonths: number | null;
+        /**
+         * @minimum 0
+         */
+        cliffMonths: number | null;
       }
     }
   }
@@ -1400,6 +1641,9 @@ export interface OfferViewedWebhookEvent {
 
 export namespace OfferViewedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^offr_
+     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -1426,6 +1670,9 @@ export namespace OfferViewedWebhookEvent {
     export interface Candidate {
       firstName: string;
       lastName: string;
+      /**
+       * @format email
+       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -1439,6 +1686,9 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Position {
       title: string;
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
       startDate: string;
       country:
         | 'AD'
@@ -1695,16 +1945,25 @@ export namespace OfferViewedWebhookEvent {
     }
 
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
+      /**
+       * @pattern ^wkp_
+       */
       id: string;
       name: string;
     }
 
     export interface Manager {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       name: string | null;
     }
@@ -1728,9 +1987,18 @@ export namespace OfferViewedWebhookEvent {
       }
 
       export interface Stock {
-        options: string;
-        vestingScheduleMonths: string | null;
-        cliffMonths: string | null;
+        /**
+         * @minimum 0
+         */
+        options: number;
+        /**
+         * @minimum 0
+         */
+        vestingScheduleMonths: number | null;
+        /**
+         * @minimum 0
+         */
+        cliffMonths: number | null;
       }
     }
   }
@@ -1754,6 +2022,9 @@ export interface OfferAcceptedWebhookEvent {
 
 export namespace OfferAcceptedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^offr_
+     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -1780,6 +2051,9 @@ export namespace OfferAcceptedWebhookEvent {
     export interface Candidate {
       firstName: string;
       lastName: string;
+      /**
+       * @format email
+       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -1793,6 +2067,9 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Position {
       title: string;
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
       startDate: string;
       country:
         | 'AD'
@@ -2049,16 +2326,25 @@ export namespace OfferAcceptedWebhookEvent {
     }
 
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
+      /**
+       * @pattern ^wkp_
+       */
       id: string;
       name: string;
     }
 
     export interface Manager {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       name: string | null;
     }
@@ -2082,9 +2368,18 @@ export namespace OfferAcceptedWebhookEvent {
       }
 
       export interface Stock {
-        options: string;
-        vestingScheduleMonths: string | null;
-        cliffMonths: string | null;
+        /**
+         * @minimum 0
+         */
+        options: number;
+        /**
+         * @minimum 0
+         */
+        vestingScheduleMonths: number | null;
+        /**
+         * @minimum 0
+         */
+        cliffMonths: number | null;
       }
     }
   }
@@ -2108,6 +2403,9 @@ export interface OfferVoidedWebhookEvent {
 
 export namespace OfferVoidedWebhookEvent {
   export interface Payload {
+    /**
+     * @pattern ^offr_
+     */
     id: string;
     status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
@@ -2134,6 +2432,9 @@ export namespace OfferVoidedWebhookEvent {
     export interface Candidate {
       firstName: string;
       lastName: string;
+      /**
+       * @format email
+       */
       email: string;
       contractorDetails: Candidate.ContractorDetails | null;
     }
@@ -2147,6 +2448,9 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Position {
       title: string;
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
       startDate: string;
       country:
         | 'AD'
@@ -2403,16 +2707,25 @@ export namespace OfferVoidedWebhookEvent {
     }
 
     export interface Department {
+      /**
+       * @pattern ^dpt_
+       */
       id: string;
       name: string;
     }
 
     export interface Workplace {
+      /**
+       * @pattern ^wkp_
+       */
       id: string;
       name: string;
     }
 
     export interface Manager {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       name: string | null;
     }
@@ -2436,9 +2749,18 @@ export namespace OfferVoidedWebhookEvent {
       }
 
       export interface Stock {
-        options: string;
-        vestingScheduleMonths: string | null;
-        cliffMonths: string | null;
+        /**
+         * @minimum 0
+         */
+        options: number;
+        /**
+         * @minimum 0
+         */
+        vestingScheduleMonths: number | null;
+        /**
+         * @minimum 0
+         */
+        cliffMonths: number | null;
       }
     }
   }

@@ -16,7 +16,7 @@ export class Departments extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.departments.list({
+   * const department = await client.departments.list({
    *   limit: 'limit',
    * });
    * ```
@@ -34,8 +34,8 @@ export class Departments extends APIResource {
    *
    * @example
    * ```ts
-   * const create = await client.departments.create({
-   *   name: {},
+   * const department = await client.departments.create({
+   *   name: 'x',
    * });
    * ```
    */
@@ -53,7 +53,7 @@ export class Departments extends APIResource {
    *
    * @example
    * ```ts
-   * const update = await client.departments.update('id', {});
+   * const department = await client.departments.update('dpt_1234', {});
    * ```
    */
   update(
@@ -67,8 +67,14 @@ export class Departments extends APIResource {
 
 export interface DepartmentListParams {
   limit: string | null;
-  afterId?: Shared.Union11 | null;
-  beforeId?: Shared.Union11 | null;
+  /**
+   * @pattern ^dpt_
+   */
+  afterId?: Shared.Union12 | null;
+  /**
+   * @pattern ^dpt_
+   */
+  beforeId?: Shared.Union12 | null;
 }
 
 export interface DepartmentListResponse {
@@ -79,6 +85,9 @@ export interface DepartmentListResponse {
 
 export namespace DepartmentListResponse {
   export interface Data {
+    /**
+     * @pattern ^dpt_
+     */
     id: string;
     name: string;
     createdAt: string;
@@ -86,10 +95,17 @@ export namespace DepartmentListResponse {
 }
 
 export interface DepartmentCreateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   name: string;
 }
 
 export interface DepartmentCreateResponse {
+  /**
+   * @pattern ^dpt_
+   */
   id: string;
   name: string;
   createdAt: string;
@@ -100,6 +116,9 @@ export interface DepartmentUpdateParams {
 }
 
 export interface DepartmentUpdateResponse {
+  /**
+   * @pattern ^dpt_
+   */
   id: string;
   name: string;
   createdAt: string;

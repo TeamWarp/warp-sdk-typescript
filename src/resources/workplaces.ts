@@ -16,7 +16,7 @@ export class Workplaces extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.workplaces.list({
+   * const workplace = await client.workplaces.list({
    *   limit: 'limit',
    * });
    * ```
@@ -34,11 +34,11 @@ export class Workplaces extends APIResource {
    *
    * @example
    * ```ts
-   * const create = await client.workplaces.create({
-   *   name: {},
+   * const workplace = await client.workplaces.create({
+   *   name: 'x',
    *   type: 'remote',
    *   address: {
-   *     line1: {},
+   *     line1: 'x',
    *     city: '',
    *     postalCode: '',
    *     state: 'AL',
@@ -61,7 +61,7 @@ export class Workplaces extends APIResource {
    *
    * @example
    * ```ts
-   * const update = await client.workplaces.update('id', {});
+   * const workplace = await client.workplaces.update('wkp_1234', {});
    * ```
    */
   update(
@@ -77,6 +77,9 @@ export class Workplaces extends APIResource {
  * A valid US address
  */
 export interface Objects11 {
+  /**
+   * @minLength 1
+   */
   line1: string;
   city: string;
   postalCode: string;
@@ -138,8 +141,14 @@ export interface Objects11 {
 
 export interface WorkplaceListParams {
   limit: string | null;
-  afterId?: Shared.Union33 | null;
-  beforeId?: Shared.Union33 | null;
+  /**
+   * @pattern ^wkp_
+   */
+  afterId?: string | null;
+  /**
+   * @pattern ^wkp_
+   */
+  beforeId?: string | null;
 }
 
 export interface WorkplaceListResponse {
@@ -150,10 +159,13 @@ export interface WorkplaceListResponse {
 
 export namespace WorkplaceListResponse {
   export interface Data {
+    /**
+     * @pattern ^wkp_
+     */
     id: string;
     name: string;
-    type: Shared.Union34;
-    status: Shared.Union35;
+    type: 'remote' | 'office';
+    status: 'active' | 'archived';
     /**
      * A valid US address
      */
@@ -163,6 +175,10 @@ export namespace WorkplaceListResponse {
 }
 
 export interface WorkplaceCreateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   name: string;
   type: 'remote' | 'office';
   /**
@@ -172,10 +188,13 @@ export interface WorkplaceCreateParams {
 }
 
 export interface WorkplaceCreateResponse {
+  /**
+   * @pattern ^wkp_
+   */
   id: string;
   name: string;
-  type: Shared.Union34;
-  status: Shared.Union35;
+  type: 'remote' | 'office';
+  status: 'active' | 'archived';
   /**
    * A valid US address
    */
@@ -188,10 +207,13 @@ export interface WorkplaceUpdateParams {
 }
 
 export interface WorkplaceUpdateResponse {
+  /**
+   * @pattern ^wkp_
+   */
   id: string;
   name: string;
-  type: Shared.Union34;
-  status: Shared.Union35;
+  type: 'remote' | 'office';
+  status: 'active' | 'archived';
   /**
    * A valid US address
    */

@@ -18,7 +18,7 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.workers.list({
+   * const worker = await client.workers.list({
    *   limit: 'limit',
    * });
    * ```
@@ -36,7 +36,7 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.workers.get('id');
+   * const worker = await client.workers.get('wrk_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<WorkerGetResponse> {
@@ -52,7 +52,7 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * await client.workers.delete('id');
+   * await client.workers.delete('wrk_1234');
    * ```
    */
   delete(id: string, options?: RequestOptions): APIPromise<void> {
@@ -71,20 +71,20 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const createEmployee = await client.workers.createEmployee({
-   *   firstName: {},
-   *   lastName: {},
-   *   position: {},
-   *   startDate: {},
-   *   email: {},
-   *   departmentId: {},
-   *   managerId: {},
+   * const worker = await client.workers.createEmployee({
+   *   firstName: 'Jonathan',
+   *   lastName: 'Galt',
+   *   position: 'Software Engineer',
+   *   startDate: '',
+   *   email: 'john@joinwarp.com',
+   *   departmentId: 'dpt_1234',
+   *   managerId: 'wrk_1234',
    *   workLocation: {
    *     type: 'office',
-   *     workplaceId: {},
+   *     workplaceId: 'wkp_1234',
    *   },
    *   compensation: {
-   *     amount: {},
+   *     amount: 0,
    *     per: 'hour',
    *   },
    * });
@@ -106,15 +106,15 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const createContractor = await client.workers.createContractor({
+   * const worker = await client.workers.createContractor({
    *   entityType: 'individual',
-   *   firstName: {},
-   *   lastName: {},
-   *   position: {},
-   *   startDate: {},
-   *   email: {},
-   *   departmentId: {},
-   *   managerId: {},
+   *   firstName: 'Melissa',
+   *   lastName: 'Jones',
+   *   position: 'Design Consultant',
+   *   startDate: '',
+   *   email: 'john@joinwarp.com',
+   *   departmentId: 'dpt_1234',
+   *   managerId: 'wrk_1234',
    *   workCountry: 'AD',
    * });
    * ```
@@ -135,7 +135,7 @@ export class Workers extends APIResource {
    *
    * @example
    * ```ts
-   * const invite = await client.workers.invite('id');
+   * const worker = await client.workers.invite('wrk_1234');
    * ```
    */
   invite(id: string, options?: RequestOptions): APIPromise<WorkerInviteResponse> {
@@ -148,6 +148,9 @@ export class Workers extends APIResource {
  */
 export interface OfficeWorkLocation {
   type: 'office';
+  /**
+   * @pattern ^wkp_
+   */
   workplaceId: string;
 }
 
@@ -215,10 +218,16 @@ export interface RemoteWorkLocation {
 
 export interface WorkerListParams {
   limit: string | null;
+  /**
+   * @pattern ^wrk_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^wrk_
+   */
   beforeId?: string | null;
-  statuses?: Array<Shared.Union23> | null;
-  types?: Array<Shared.Union24> | null;
+  statuses?: Array<Shared.Union26> | null;
+  types?: Array<Shared.Union27> | null;
   workEmail?: string | null;
 }
 
@@ -230,19 +239,34 @@ export interface WorkerListResponse {
 
 export namespace WorkerListResponse {
   export interface Data {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     position: string;
-    type: Shared.Union24;
-    status: Shared.Union23;
+    type: Shared.Union27;
+    status: Shared.Union26;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
-    endDate: Shared.Union25 | null;
-    isBusiness: Shared.Union26 | null;
-    businessName: Shared.Union27 | null;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    endDate: Shared.Union28 | null;
+    isBusiness: Shared.Union29 | null;
+    businessName: Shared.Union30 | null;
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
-    workEmail: Shared.Union28 | null;
-    preferredName: Shared.Union29 | null;
+    /**
+     * @format email
+     */
+    workEmail: Shared.Union31 | null;
+    preferredName: Shared.Union32 | null;
     /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
@@ -250,11 +274,11 @@ export namespace WorkerListResponse {
     /**
      * The IANA timezone of the worker (e.g., America/New_York).
      */
-    timeZone: Shared.Union30 | null;
+    timeZone: Shared.Union33 | null;
     /**
      * The department the worker belongs to, or null if unassigned.
      */
-    department: Shared.Union31 | null;
+    department: Shared.Union34 | null;
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
@@ -263,19 +287,34 @@ export namespace WorkerListResponse {
 }
 
 export interface WorkerGetResponse {
+  /**
+   * @pattern ^wrk_
+   */
   id: string;
   position: string;
-  type: Shared.Union24;
-  status: Shared.Union23;
+  type: Shared.Union27;
+  status: Shared.Union26;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   startDate: string;
-  endDate: Shared.Union25 | null;
-  isBusiness: Shared.Union26 | null;
-  businessName: Shared.Union27 | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  endDate: Shared.Union28 | null;
+  isBusiness: Shared.Union29 | null;
+  businessName: Shared.Union30 | null;
   firstName: string;
   lastName: string;
+  /**
+   * @format email
+   */
   email: string;
-  workEmail: Shared.Union28 | null;
-  preferredName: Shared.Union29 | null;
+  /**
+   * @format email
+   */
+  workEmail: Shared.Union31 | null;
+  preferredName: Shared.Union32 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -283,11 +322,11 @@ export interface WorkerGetResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union30 | null;
+  timeZone: Shared.Union33 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union31 | null;
+  department: Shared.Union34 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
@@ -295,12 +334,36 @@ export interface WorkerGetResponse {
 }
 
 export interface WorkerCreateEmployeeParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   firstName: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   lastName: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   position: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   startDate: string;
+  /**
+   * @format email
+   */
   email: string;
+  /**
+   * @pattern ^dpt_
+   */
   departmentId: string;
+  /**
+   * @pattern ^wrk_
+   */
   managerId: string;
   /**
    * Where the employee will work. Either an existing company workplace or a remote US state.
@@ -310,16 +373,19 @@ export interface WorkerCreateEmployeeParams {
    * The employee's base compensation.
    */
   compensation: WorkerCreateEmployeeParams.Compensation;
+  /**
+   * @format email
+   */
   workEmail?: string | null;
   requireI9?: boolean | null;
   stateRegistration?: 'self_managed' | 'warp_managed' | null;
-  stockOptions?: string | CustomFieldsAPI.Union1 | null;
+  stockOptions?: number | Shared.Union2 | null;
   paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
 export namespace WorkerCreateEmployeeParams {
   export interface Compensation {
-    amount: unknown;
+    amount: number;
     /**
      * Whether the amount is per hour or per year.
      */
@@ -328,19 +394,34 @@ export namespace WorkerCreateEmployeeParams {
 }
 
 export interface WorkerCreateEmployeeResponse {
+  /**
+   * @pattern ^wrk_
+   */
   id: string;
   position: string;
-  type: Shared.Union24;
-  status: Shared.Union23;
+  type: Shared.Union27;
+  status: Shared.Union26;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   startDate: string;
-  endDate: Shared.Union25 | null;
-  isBusiness: Shared.Union26 | null;
-  businessName: Shared.Union27 | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  endDate: Shared.Union28 | null;
+  isBusiness: Shared.Union29 | null;
+  businessName: Shared.Union30 | null;
   firstName: string;
   lastName: string;
+  /**
+   * @format email
+   */
   email: string;
-  workEmail: Shared.Union28 | null;
-  preferredName: Shared.Union29 | null;
+  /**
+   * @format email
+   */
+  workEmail: Shared.Union31 | null;
+  preferredName: Shared.Union32 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -348,11 +429,11 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union30 | null;
+  timeZone: Shared.Union33 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union31 | null;
+  department: Shared.Union34 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
@@ -364,12 +445,36 @@ export interface WorkerCreateContractorParams {
    * Whether the contractor is an individual person or a business entity.
    */
   entityType: 'individual' | 'business';
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   firstName: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   lastName: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   position: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   startDate: string;
+  /**
+   * @format email
+   */
   email: string;
+  /**
+   * @pattern ^dpt_
+   */
   departmentId: string;
+  /**
+   * @pattern ^wrk_
+   */
   managerId: string;
   workCountry:
     | 'AD'
@@ -622,8 +727,15 @@ export interface WorkerCreateContractorParams {
     | 'ZA'
     | 'ZM'
     | 'ZW';
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   businessName?: string | null;
   scopeOfWork?: string | null;
+  /**
+   * @format email
+   */
   workEmail?: string | null;
   compensation?: WorkerCreateContractorParams.Compensation | null;
   paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
@@ -693,7 +805,7 @@ export namespace WorkerCreateContractorParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
-    amount: unknown;
+    amount: number;
     /**
      * The pay period for the compensation amount.
      */
@@ -702,19 +814,34 @@ export namespace WorkerCreateContractorParams {
 }
 
 export interface WorkerCreateContractorResponse {
+  /**
+   * @pattern ^wrk_
+   */
   id: string;
   position: string;
-  type: Shared.Union24;
-  status: Shared.Union23;
+  type: Shared.Union27;
+  status: Shared.Union26;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   startDate: string;
-  endDate: Shared.Union25 | null;
-  isBusiness: Shared.Union26 | null;
-  businessName: Shared.Union27 | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  endDate: Shared.Union28 | null;
+  isBusiness: Shared.Union29 | null;
+  businessName: Shared.Union30 | null;
   firstName: string;
   lastName: string;
+  /**
+   * @format email
+   */
   email: string;
-  workEmail: Shared.Union28 | null;
-  preferredName: Shared.Union29 | null;
+  /**
+   * @format email
+   */
+  workEmail: Shared.Union31 | null;
+  preferredName: Shared.Union32 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -722,11 +849,11 @@ export interface WorkerCreateContractorResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union30 | null;
+  timeZone: Shared.Union33 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union31 | null;
+  department: Shared.Union34 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
@@ -734,19 +861,34 @@ export interface WorkerCreateContractorResponse {
 }
 
 export interface WorkerInviteResponse {
+  /**
+   * @pattern ^wrk_
+   */
   id: string;
   position: string;
-  type: Shared.Union24;
-  status: Shared.Union23;
+  type: Shared.Union27;
+  status: Shared.Union26;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   startDate: string;
-  endDate: Shared.Union25 | null;
-  isBusiness: Shared.Union26 | null;
-  businessName: Shared.Union27 | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  endDate: Shared.Union28 | null;
+  isBusiness: Shared.Union29 | null;
+  businessName: Shared.Union30 | null;
   firstName: string;
   lastName: string;
+  /**
+   * @format email
+   */
   email: string;
-  workEmail: Shared.Union28 | null;
-  preferredName: Shared.Union29 | null;
+  /**
+   * @format email
+   */
+  workEmail: Shared.Union31 | null;
+  preferredName: Shared.Union32 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -754,11 +896,11 @@ export interface WorkerInviteResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union30 | null;
+  timeZone: Shared.Union33 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union31 | null;
+  department: Shared.Union34 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */

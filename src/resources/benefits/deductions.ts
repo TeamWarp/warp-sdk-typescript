@@ -17,7 +17,7 @@ export class Deductions extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.benefits.deductions.list({
+   * const deduction = await client.benefits.deductions.list({
    *   limit: 'limit',
    *   statuses: ['active'],
    * });
@@ -36,7 +36,7 @@ export class Deductions extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.benefits.deductions.get('id');
+   * const deduction = await client.benefits.deductions.get('pbdg_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<DeductionGetResponse> {
@@ -46,44 +46,19 @@ export class Deductions extends APIResource {
 
 export interface DeductionListParams {
   limit: string | null;
+  /**
+   * @pattern ^pbdg_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^pbdg_
+   */
   beforeId?: string | null;
   workerIds?: Array<string> | null;
   categories?: Array<
     'health' | 'retirement' | 'health_savings' | 'commuter' | 'voluntary' | 'post_tax' | 'other'
   > | null;
-  types?: Array<
-    | 'medical'
-    | 'dental'
-    | 'vision'
-    | 'life'
-    | 'short_term_disability'
-    | 'long_term_disability'
-    | '401k'
-    | 'roth_401k'
-    | '403b'
-    | 'roth_403b'
-    | '457'
-    | 'roth_457'
-    | 'hsa'
-    | 'fsa_medical'
-    | 'fsa_dependent_care'
-    | 'transit'
-    | 'parking'
-    | 'accident'
-    | 'cancer'
-    | 'critical_illness'
-    | 'hospital'
-    | 'medical_other'
-    | 'simple_ira'
-    | 'roth_simple_ira'
-    | 'nqdc'
-    | 'nontaxable_fringe'
-    | 'pucc'
-    | 'voluntary'
-    | 'post_tax'
-    | 'other'
-  > | null;
+  types?: Array<Shared.Union> | null;
   statuses: Array<'active' | 'pending' | 'suspended' | 'terminated'> | null;
   healthPlanIds?: Array<string> | null;
   retirementPlanIds?: Array<string> | null;
@@ -97,6 +72,9 @@ export interface DeductionListResponse {
 
 export namespace DeductionListResponse {
   export interface Data {
+    /**
+     * @pattern ^pbdg_
+     */
     id: string;
     /**
      * Basic identifying information for a worker associated with another resource.
@@ -156,7 +134,13 @@ export namespace DeductionListResponse {
      * How the employee and employer contributions are calculated.
      */
     calculation: Data.FixedAmountBenefitCalculation | Data.PercentageBenefitCalculation;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     effectiveStartDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     effectiveEndDate: string | null;
     /**
      * The public lifecycle status of the current deduction version.
@@ -168,6 +152,9 @@ export namespace DeductionListResponse {
 
   export namespace Data {
     export interface Worker {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       /**
        * The worker first name.
@@ -181,6 +168,9 @@ export namespace DeductionListResponse {
 
     export interface HealthPlanReference {
       type: 'health_plan';
+      /**
+       * @pattern ^chpl_
+       */
       id: string;
       /**
        * The associated health plan name.
@@ -190,6 +180,9 @@ export namespace DeductionListResponse {
 
     export interface RetirementPlanReference {
       type: 'retirement_plan';
+      /**
+       * @pattern ^crpl_
+       */
       id: string;
       /**
        * The associated retirement plan name.
@@ -227,7 +220,7 @@ export namespace DeductionListResponse {
 
     export namespace PercentageBenefitCalculation {
       export interface EmployeeContribution {
-        percentage: string | CustomFieldsAPI.Union1;
+        percentage: number | Shared.Union2;
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -235,7 +228,7 @@ export namespace DeductionListResponse {
       }
 
       export interface EmployerContribution {
-        percentage: string | CustomFieldsAPI.Union1;
+        percentage: number | Shared.Union2;
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -246,6 +239,9 @@ export namespace DeductionListResponse {
 }
 
 export interface DeductionGetResponse {
+  /**
+   * @pattern ^pbdg_
+   */
   id: string;
   /**
    * Basic identifying information for a worker associated with another resource.
@@ -307,7 +303,13 @@ export interface DeductionGetResponse {
   calculation:
     | DeductionGetResponse.FixedAmountBenefitCalculation
     | DeductionGetResponse.PercentageBenefitCalculation;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   effectiveStartDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   effectiveEndDate: string | null;
   /**
    * The public lifecycle status of the current deduction version.
@@ -319,6 +321,9 @@ export interface DeductionGetResponse {
 
 export namespace DeductionGetResponse {
   export interface Worker {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     /**
      * The worker first name.
@@ -332,6 +337,9 @@ export namespace DeductionGetResponse {
 
   export interface HealthPlanReference {
     type: 'health_plan';
+    /**
+     * @pattern ^chpl_
+     */
     id: string;
     /**
      * The associated health plan name.
@@ -341,6 +349,9 @@ export namespace DeductionGetResponse {
 
   export interface RetirementPlanReference {
     type: 'retirement_plan';
+    /**
+     * @pattern ^crpl_
+     */
     id: string;
     /**
      * The associated retirement plan name.
@@ -378,7 +389,7 @@ export namespace DeductionGetResponse {
 
   export namespace PercentageBenefitCalculation {
     export interface EmployeeContribution {
-      percentage: string | CustomFieldsAPI.Union1;
+      percentage: number | Shared.Union2;
       /**
        * The server-formatted percentage, for example "3%".
        */
@@ -386,7 +397,7 @@ export namespace DeductionGetResponse {
     }
 
     export interface EmployerContribution {
-      percentage: string | CustomFieldsAPI.Union1;
+      percentage: number | Shared.Union2;
       /**
        * The server-formatted percentage, for example "3%".
        */

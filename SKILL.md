@@ -36,12 +36,12 @@ const client = new WarpAPI({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 
-const list = await client.benefits.healthPlans.list({
+const healthPlan = await client.benefits.healthPlans.list({
   limit: 'limit',
   statuses: ['active'],
 });
 
-console.log(list);
+console.log(healthPlan);
 ```
 
 Method names, parameter shapes, and response types are generated from the API description — do not guess them. Look up the exact call signature in [api.md](./api.md) before writing a call.
@@ -54,7 +54,7 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from 'warp-hr';
 
 try {
-  const list = await client.benefits.healthPlans.list({
+  const healthPlan = await client.benefits.healthPlans.list({
     limit: 'limit',
     statuses: ['active'],
   });

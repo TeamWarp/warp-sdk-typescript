@@ -4,6 +4,7 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
+import type * as CustomFieldsAPI from './custom-fields';
 import type * as Shared from './shared';
 
 export class PayRates extends APIResource {
@@ -16,7 +17,7 @@ export class PayRates extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.payRates.list({
+   * const payRate = await client.payRates.list({
    *   limit: 'limit',
    * });
    * ```
@@ -34,7 +35,7 @@ export class PayRates extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.payRates.get('id');
+   * const payRate = await client.payRates.get('pyr_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<PayRateGetResponse> {
@@ -44,18 +45,27 @@ export class PayRates extends APIResource {
 
 export interface PayRateListParams {
   limit: string | null;
+  /**
+   * @pattern ^pyr_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^pyr_
+   */
   beforeId?: string | null;
   /**
    * Only return pay rates assigned to this worker.
+   * @pattern ^wrk_
    */
   workerId?: string | null;
   /**
    * Only return pay rates whose effective start date is on or after this date.
+   * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   effectiveOnOrAfter?: string | null;
   /**
    * Only return pay rates whose effective start date is before this date.
+   * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   effectiveBefore?: string | null;
   /**
@@ -72,6 +82,9 @@ export interface PayRateListResponse {
 
 export namespace PayRateListResponse {
   export interface Data {
+    /**
+     * @pattern ^pyr_
+     */
     id: string;
     /**
      * Basic identifying information for a worker associated with another resource.
@@ -85,18 +98,23 @@ export namespace PayRateListResponse {
      * The period represented by the pay rate amount.
      */
     per: 'year' | 'month' | 'week' | 'hour';
-    amount: string;
-    currency: Shared.Union;
+    /**
+     * @minimum 0
+     */
+    amount: number;
+    currency: CustomFieldsAPI.Union1;
     /**
      * The server-formatted pay rate, including its period.
      */
     display: string;
     /**
      * The first date on which the rate applies. Additional rates may have no start date.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
      */
     effectiveStartDate: string | null;
     /**
      * The first date on which the rate no longer applies, or null when it is open-ended.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
      */
     effectiveEndDate: string | null;
     /**
@@ -107,6 +125,9 @@ export namespace PayRateListResponse {
 
   export namespace Data {
     export interface Worker {
+      /**
+       * @pattern ^wrk_
+       */
       id: string;
       /**
        * The worker first name.
@@ -121,6 +142,9 @@ export namespace PayRateListResponse {
 }
 
 export interface PayRateGetResponse {
+  /**
+   * @pattern ^pyr_
+   */
   id: string;
   /**
    * Basic identifying information for a worker associated with another resource.
@@ -134,18 +158,23 @@ export interface PayRateGetResponse {
    * The period represented by the pay rate amount.
    */
   per: 'year' | 'month' | 'week' | 'hour';
-  amount: string;
-  currency: Shared.Union;
+  /**
+   * @minimum 0
+   */
+  amount: number;
+  currency: CustomFieldsAPI.Union1;
   /**
    * The server-formatted pay rate, including its period.
    */
   display: string;
   /**
    * The first date on which the rate applies. Additional rates may have no start date.
+   * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   effectiveStartDate: string | null;
   /**
    * The first date on which the rate no longer applies, or null when it is open-ended.
+   * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   effectiveEndDate: string | null;
   /**
@@ -156,6 +185,9 @@ export interface PayRateGetResponse {
 
 export namespace PayRateGetResponse {
   export interface Worker {
+    /**
+     * @pattern ^wrk_
+     */
     id: string;
     /**
      * The worker first name.

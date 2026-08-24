@@ -1,7 +1,7 @@
 {
   "name": "WarpApi",
   "slug": "warpApi",
-  "generatorVersion": "0.27.2",
+  "generatorVersion": "0.28.0",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -27,6 +27,111 @@
     {
       "name": "union",
       "source": "union",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "medical",
+          "dental",
+          "vision",
+          "life",
+          "short_term_disability",
+          "long_term_disability",
+          "401k",
+          "roth_401k",
+          "403b",
+          "roth_403b",
+          "457",
+          "roth_457",
+          "hsa",
+          "fsa_medical",
+          "fsa_dependent_care",
+          "transit",
+          "parking",
+          "accident",
+          "cancer",
+          "critical_illness",
+          "hospital",
+          "medical_other",
+          "simple_ira",
+          "roth_simple_ira",
+          "nqdc",
+          "nontaxable_fringe",
+          "pucc",
+          "voluntary",
+          "post_tax",
+          "other"
+        ],
+        "names": [
+          "Medical",
+          "Dental",
+          "Vision",
+          "Life",
+          "ShortTermDisability",
+          "LongTermDisability",
+          "_401k",
+          "Roth401k",
+          "_403b",
+          "Roth403b",
+          "_457",
+          "Roth457",
+          "Hsa",
+          "FsaMedical",
+          "FsaDependentCare",
+          "Transit",
+          "Parking",
+          "Accident",
+          "Cancer",
+          "CriticalIllness",
+          "Hospital",
+          "MedicalOther",
+          "SimpleIra",
+          "RothSimpleIra",
+          "Nqdc",
+          "NontaxableFringe",
+          "Pucc",
+          "Voluntary",
+          "PostTax",
+          "Other"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "union_1",
+      "source": "union_1",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -223,30 +328,6 @@
       }
     },
     {
-      "name": "union_1",
-      "source": "union_1",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "Infinity",
-          "-Infinity",
-          "NaN"
-        ],
-        "names": [
-          "Infinity",
-          "Infinity",
-          "NaN"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
       "name": "public_pay_rate_per",
       "source": "public_pay_rate_per",
       "publicAliases": [],
@@ -287,16 +368,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^pyr_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pyr_"
+              }
             }
           },
           {
@@ -315,14 +391,9 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {}
-                }
-              ]
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
             }
           },
           {
@@ -332,7 +403,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union"
+              "name": "union_1"
             }
           },
           {
@@ -369,14 +440,9 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {}
-                }
-              ]
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
             }
           },
           {
@@ -386,7 +452,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union"
+              "name": "union_1"
             }
           },
           {
@@ -444,16 +510,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^car_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^car_"
+              }
             }
           },
           {
@@ -484,16 +545,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^chpl_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^chpl_"
+              }
             }
           },
           {
@@ -614,16 +670,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
             }
           },
           {
@@ -635,16 +686,11 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
                 },
                 {
                   "kind": "null"
@@ -1062,16 +1108,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^chpl_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^chpl_"
+              }
             }
           },
           {
@@ -1147,16 +1188,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^crpl_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^crpl_"
+              }
             }
           },
           {
@@ -1224,16 +1260,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
             }
           },
           {
@@ -1245,16 +1276,11 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
                 },
                 {
                   "kind": "null"
@@ -1328,16 +1354,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^crpl_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^crpl_"
+              }
             }
           },
           {
@@ -1431,16 +1452,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -1499,16 +1515,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^chpl_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^chpl_"
+              }
             }
           },
           {
@@ -1557,16 +1568,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^crpl_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^crpl_"
+              }
             }
           },
           {
@@ -1694,6 +1700,30 @@
       }
     },
     {
+      "name": "union_2",
+      "source": "union_2",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "Infinity",
+          "-Infinity",
+          "NaN"
+        ],
+        "names": [
+          "Infinity",
+          "Infinity",
+          "NaN"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
       "name": "percentage_contribution",
       "source": "percentage_contribution",
       "publicAliases": [],
@@ -1710,18 +1740,13 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {}
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "number",
+                  "validation": {}
                 },
                 {
                   "kind": "ref",
-                  "name": "union_1"
+                  "name": "union_2"
                 }
               ],
               "variantNames": [
@@ -1831,16 +1856,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^pbdg_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pbdg_"
+              }
             }
           },
           {
@@ -2025,16 +2045,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
             }
           },
           {
@@ -2046,16 +2061,11 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
                 },
                 {
                   "kind": "null"
@@ -2129,16 +2139,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^pbdg_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pbdg_"
+              }
             }
           },
           {
@@ -2156,8 +2161,8 @@
       }
     },
     {
-      "name": "union_2",
-      "source": "union_2",
+      "name": "union_3",
+      "source": "union_3",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2174,8 +2179,8 @@
       }
     },
     {
-      "name": "union_3",
-      "source": "union_3",
+      "name": "union_4",
+      "source": "union_4",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2224,8 +2229,8 @@
       }
     },
     {
-      "name": "union_4",
-      "source": "union_4",
+      "name": "union_5",
+      "source": "union_5",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2245,8 +2250,8 @@
       }
     },
     {
-      "name": "union_5",
-      "source": "union_5",
+      "name": "union_6",
+      "source": "union_6",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2278,8 +2283,8 @@
       }
     },
     {
-      "name": "union_6",
-      "source": "union_6",
+      "name": "union_7",
+      "source": "union_7",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2302,8 +2307,8 @@
       }
     },
     {
-      "name": "union_7",
-      "source": "union_7",
+      "name": "union_8",
+      "source": "union_8",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2323,8 +2328,8 @@
       }
     },
     {
-      "name": "union_8",
-      "source": "union_8",
+      "name": "union_9",
+      "source": "union_9",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2354,16 +2359,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cf_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
             }
           },
           {
@@ -2383,7 +2383,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_2"
+              "name": "union_3"
             }
           },
           {
@@ -2393,7 +2393,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_3"
+              "name": "union_4"
             }
           },
           {
@@ -2413,7 +2413,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_4"
+              "name": "union_5"
             }
           },
           {
@@ -2423,7 +2423,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_5"
+              "name": "union_6"
             }
           },
           {
@@ -2433,7 +2433,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_6"
+              "name": "union_7"
             }
           },
           {
@@ -2443,7 +2443,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_7"
+              "name": "union_8"
             }
           },
           {
@@ -2453,7 +2453,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_8"
+              "name": "union_9"
             }
           },
           {
@@ -2481,8 +2481,8 @@
       }
     },
     {
-      "name": "union_9",
-      "source": "union_9",
+      "name": "union_10",
+      "source": "union_10",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2512,23 +2512,12 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$"
-                  }
-                },
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "minLength": 1
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
+                "minLength": 1
+              }
             }
           },
           {
@@ -2537,23 +2526,12 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$"
-                  }
-                },
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "minLength": 1
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
+                "minLength": 1
+              }
             }
           },
           {
@@ -2573,7 +2551,7 @@
                     },
                     {
                       "kind": "ref",
-                      "name": "union_1"
+                      "name": "union_2"
                     }
                   ],
                   "variantNames": [
@@ -2732,8 +2710,8 @@
       }
     },
     {
-      "name": "union_10",
-      "source": "union_10",
+      "name": "union_11",
+      "source": "union_11",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -2745,7 +2723,7 @@
           },
           {
             "kind": "ref",
-            "name": "union_1"
+            "name": "union_2"
           }
         ],
         "variantNames": [
@@ -2768,16 +2746,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cfo_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cfo_"
+              }
             }
           },
           {
@@ -2807,7 +2780,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_10"
+              "name": "union_11"
             }
           },
           {
@@ -2877,16 +2850,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cf_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
             }
           },
           {
@@ -2935,16 +2903,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cfo_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cfo_"
+              }
             }
           },
           {
@@ -2993,16 +2956,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cfo_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cfo_"
+              }
             }
           },
           {
@@ -3033,16 +2991,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cfv_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cfv_"
+              }
             }
           },
           {
@@ -3051,16 +3004,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -3069,16 +3017,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^cf_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
             }
           },
           {
@@ -3151,7 +3094,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union_10"
+                        "name": "union_11"
                       }
                     }
                   ],
@@ -3184,16 +3127,11 @@
                       "required": true,
                       "deprecated": false,
                       "type": {
-                        "kind": "intersection",
-                        "parts": [
-                          {
-                            "kind": "primitive",
-                            "type": "string",
-                            "validation": {
-                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                            }
-                          }
-                        ]
+                        "kind": "primitive",
+                        "type": "string",
+                        "validation": {
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                        }
                       }
                     }
                   ],
@@ -3261,7 +3199,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union_10"
+                        "name": "union_11"
                       }
                     },
                     {
@@ -3271,7 +3209,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union"
+                        "name": "union_1"
                       }
                     }
                   ],
@@ -3305,7 +3243,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union_10"
+                        "name": "union_11"
                       }
                     }
                   ],
@@ -3441,16 +3379,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -3508,24 +3441,19 @@
       }
     },
     {
-      "name": "union_11",
-      "source": "union_11",
+      "name": "union_12",
+      "source": "union_12",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "intersection",
-            "parts": [
-              {
-                "kind": "primitive",
-                "type": "string",
-                "validation": {
-                  "pattern": "^dpt_"
-                }
-              }
-            ]
+            "kind": "primitive",
+            "type": "string",
+            "validation": {
+              "pattern": "^dpt_"
+            }
           },
           {
             "kind": "null"
@@ -3566,7 +3494,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_11"
+              "name": "union_12"
             }
           },
           {
@@ -3625,16 +3553,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^dpt_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^dpt_"
+              }
             }
           },
           {
@@ -3652,8 +3575,8 @@
       }
     },
     {
-      "name": "union_12",
-      "source": "union_12",
+      "name": "union_13",
+      "source": "union_13",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3679,8 +3602,8 @@
       }
     },
     {
-      "name": "union_13",
-      "source": "union_13",
+      "name": "union_14",
+      "source": "union_14",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3748,14 +3671,9 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "format": "email"
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "format": "email"
             }
           },
           {
@@ -3817,8 +3735,8 @@
       }
     },
     {
-      "name": "union_14",
-      "source": "union_14",
+      "name": "union_15",
+      "source": "union_15",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4611,16 +4529,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
             }
           },
           {
@@ -4630,7 +4543,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_14"
+              "name": "union_15"
             }
           },
           {
@@ -4656,60 +4569,6 @@
       }
     },
     {
-      "name": "union_15",
-      "source": "union_15",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "id",
-                "publicName": "id",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^dpt_"
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "name": "name",
-                "publicName": "name",
-                "required": true,
-                "deprecated": false,
-                "extensions": {
-                  "source": [
-                    "examples"
-                  ],
-                  "examples": "Engineering"
-                },
-                "type": {
-                  "kind": "primitive",
-                  "type": "string"
-                }
-              }
-            ],
-            "additionalProperties": false
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
       "name": "union_16",
       "source": "union_16",
       "publicAliases": [],
@@ -4726,16 +4585,11 @@
                 "required": true,
                 "deprecated": false,
                 "type": {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^wkp_"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^dpt_"
+                  }
                 }
               },
               {
@@ -4747,7 +4601,7 @@
                   "source": [
                     "examples"
                   ],
-                  "examples": "New York Office"
+                  "examples": "Engineering"
                 },
                 "type": {
                   "kind": "primitive",
@@ -4780,16 +4634,60 @@
                 "required": true,
                 "deprecated": false,
                 "type": {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^wrk_"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^wkp_"
+                  }
+                }
+              },
+              {
+                "name": "name",
+                "publicName": "name",
+                "required": true,
+                "deprecated": false,
+                "extensions": {
+                  "source": [
+                    "examples"
+                  ],
+                  "examples": "New York Office"
+                },
+                "type": {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "union_18",
+      "source": "union_18",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "id",
+                "publicName": "id",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^wrk_"
+                  }
                 }
               },
               {
@@ -4826,8 +4724,8 @@
       }
     },
     {
-      "name": "union_18",
-      "source": "union_18",
+      "name": "union_19",
+      "source": "union_19",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4935,7 +4833,7 @@
                   "deprecated": false,
                   "type": {
                     "kind": "ref",
-                    "name": "union_18"
+                    "name": "union_19"
                   }
                 }
               ],
@@ -4949,7 +4847,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_18"
+              "name": "union_19"
             }
           },
           {
@@ -4959,7 +4857,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_18"
+              "name": "union_19"
             }
           },
           {
@@ -4979,14 +4877,9 @@
                       "required": true,
                       "deprecated": false,
                       "type": {
-                        "kind": "intersection",
-                        "parts": [
-                          {
-                            "kind": "primitive",
-                            "type": "string",
-                            "validation": {}
-                          }
-                        ]
+                        "kind": "primitive",
+                        "type": "integer",
+                        "validation": {}
                       }
                     },
                     {
@@ -4998,14 +4891,9 @@
                         "kind": "union",
                         "variants": [
                           {
-                            "kind": "intersection",
-                            "parts": [
-                              {
-                                "kind": "primitive",
-                                "type": "string",
-                                "validation": {}
-                              }
-                            ]
+                            "kind": "primitive",
+                            "type": "integer",
+                            "validation": {}
                           },
                           {
                             "kind": "null"
@@ -5022,14 +4910,9 @@
                         "kind": "union",
                         "variants": [
                           {
-                            "kind": "intersection",
-                            "parts": [
-                              {
-                                "kind": "primitive",
-                                "type": "string",
-                                "validation": {}
-                              }
-                            ]
+                            "kind": "primitive",
+                            "type": "integer",
+                            "validation": {}
                           },
                           {
                             "kind": "null"
@@ -5064,16 +4947,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^offr_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^offr_"
+              }
             }
           },
           {
@@ -5083,7 +4961,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_12"
+              "name": "union_13"
             }
           },
           {
@@ -5093,7 +4971,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_13"
+              "name": "union_14"
             }
           },
           {
@@ -5123,7 +5001,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_15"
+              "name": "union_16"
             }
           },
           {
@@ -5133,7 +5011,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_16"
+              "name": "union_17"
             }
           },
           {
@@ -5143,7 +5021,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_17"
+              "name": "union_18"
             }
           },
           {
@@ -5360,16 +5238,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wkp_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
             }
           },
           {
@@ -5418,16 +5291,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -5476,16 +5344,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^offr_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^offr_"
+              }
             }
           },
           {
@@ -5534,16 +5397,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^offr_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^offr_"
+              }
             }
           },
           {
@@ -5553,7 +5411,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_12"
+              "name": "union_13"
             }
           },
           {
@@ -5605,16 +5463,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^pyr_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pyr_"
+              }
             }
           },
           {
@@ -5653,14 +5506,9 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {}
-                }
-              ]
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
             }
           },
           {
@@ -5670,7 +5518,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union"
+              "name": "union_1"
             }
           },
           {
@@ -5698,16 +5546,11 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
                 },
                 {
                   "kind": "null"
@@ -5724,16 +5567,11 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
                 },
                 {
                   "kind": "null"
@@ -5795,16 +5633,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^pyr_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pyr_"
+              }
             }
           },
           {
@@ -5822,6 +5655,51 @@
       }
     },
     {
+      "name": "union_20",
+      "source": "union_20",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "primitive",
+            "type": "string",
+            "validation": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "union_21",
+      "source": "union_21",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "us_w2",
+          "us_1099",
+          "global_contractor"
+        ],
+        "names": [
+          "UsW2",
+          "Us1099",
+          "GlobalContractor"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
       "name": "objects_9",
       "source": "objects_9",
       "publicAliases": [],
@@ -5835,16 +5713,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^top_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^top_"
+              }
             }
           },
           {
@@ -5853,16 +5726,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^tot_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^tot_"
+              }
             }
           },
           {
@@ -5999,7 +5867,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "union_10"
+                  "name": "union_11"
                 },
                 {
                   "kind": "null"
@@ -6017,7 +5885,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "union_10"
+                  "name": "union_11"
                 },
                 {
                   "kind": "null"
@@ -6035,7 +5903,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "union_10"
+                  "name": "union_11"
                 },
                 {
                   "kind": "null"
@@ -6048,24 +5916,19 @@
       }
     },
     {
-      "name": "union_19",
-      "source": "union_19",
+      "name": "union_22",
+      "source": "union_22",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "intersection",
-            "parts": [
-              {
-                "kind": "primitive",
-                "type": "string",
-                "validation": {
-                  "pattern": "^top_"
-                }
-              }
-            ]
+            "kind": "primitive",
+            "type": "string",
+            "validation": {
+              "pattern": "^top_"
+            }
           },
           {
             "kind": "primitive",
@@ -6073,7 +5936,7 @@
           },
           {
             "kind": "ref",
-            "name": "union_1"
+            "name": "union_2"
           }
         ],
         "variantNames": [
@@ -6116,7 +5979,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_19"
+              "name": "union_22"
             }
           },
           {
@@ -6134,24 +5997,19 @@
       }
     },
     {
-      "name": "union_20",
-      "source": "union_20",
+      "name": "union_23",
+      "source": "union_23",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "intersection",
-            "parts": [
-              {
-                "kind": "primitive",
-                "type": "string",
-                "validation": {
-                  "pattern": "^wrkasn_"
-                }
-              }
-            ]
+            "kind": "primitive",
+            "type": "string",
+            "validation": {
+              "pattern": "^wrkasn_"
+            }
           },
           {
             "kind": "null"
@@ -6160,8 +6018,8 @@
       }
     },
     {
-      "name": "union_21",
-      "source": "union_21",
+      "name": "union_24",
+      "source": "union_24",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -6178,8 +6036,8 @@
       }
     },
     {
-      "name": "union_22",
-      "source": "union_22",
+      "name": "union_25",
+      "source": "union_25",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -6245,7 +6103,7 @@
                 },
                 {
                   "kind": "ref",
-                  "name": "union_1"
+                  "name": "union_2"
                 }
               ],
               "variantNames": [
@@ -6270,8 +6128,8 @@
       }
     },
     {
-      "name": "union_23",
-      "source": "union_23",
+      "name": "union_26",
+      "source": "union_26",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -6303,8 +6161,8 @@
       }
     },
     {
-      "name": "union_24",
-      "source": "union_24",
+      "name": "union_27",
+      "source": "union_27",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -6324,24 +6182,19 @@
       }
     },
     {
-      "name": "union_25",
-      "source": "union_25",
+      "name": "union_28",
+      "source": "union_28",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "intersection",
-            "parts": [
-              {
-                "kind": "primitive",
-                "type": "string",
-                "validation": {
-                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                }
-              }
-            ]
+            "kind": "primitive",
+            "type": "string",
+            "validation": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
           },
           {
             "kind": "null"
@@ -6350,8 +6203,8 @@
       }
     },
     {
-      "name": "union_26",
-      "source": "union_26",
+      "name": "union_29",
+      "source": "union_29",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -6374,8 +6227,8 @@
       }
     },
     {
-      "name": "union_27",
-      "source": "union_27",
+      "name": "union_30",
+      "source": "union_30",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -6398,22 +6251,17 @@
       }
     },
     {
-      "name": "union_28",
-      "source": "union_28",
+      "name": "union_31",
+      "source": "union_31",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "intersection",
-            "parts": [
-              {
-                "kind": "primitive",
-                "type": "string",
-                "format": "email"
-              }
-            ]
+            "kind": "primitive",
+            "type": "string",
+            "format": "email"
           },
           {
             "kind": "null"
@@ -6422,8 +6270,8 @@
       }
     },
     {
-      "name": "union_29",
-      "source": "union_29",
+      "name": "union_32",
+      "source": "union_32",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -6440,8 +6288,8 @@
       }
     },
     {
-      "name": "union_30",
-      "source": "union_30",
+      "name": "union_33",
+      "source": "union_33",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -6464,8 +6312,8 @@
       }
     },
     {
-      "name": "union_31",
-      "source": "union_31",
+      "name": "union_34",
+      "source": "union_34",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -6489,16 +6337,11 @@
                 "required": true,
                 "deprecated": false,
                 "type": {
-                  "kind": "intersection",
-                  "parts": [
-                    {
-                      "kind": "primitive",
-                      "type": "string",
-                      "validation": {
-                        "pattern": "^dpt_"
-                      }
-                    }
-                  ]
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^dpt_"
+                  }
                 }
               },
               {
@@ -6521,8 +6364,8 @@
       }
     },
     {
-      "name": "union_32",
-      "source": "union_32",
+      "name": "union_35",
+      "source": "union_35",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -6552,16 +6395,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -6587,7 +6425,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_24"
+              "name": "union_27"
             }
           },
           {
@@ -6597,7 +6435,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_23"
+              "name": "union_26"
             }
           },
           {
@@ -6606,16 +6444,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
             }
           },
           {
@@ -6625,7 +6458,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_25"
+              "name": "union_28"
             }
           },
           {
@@ -6641,7 +6474,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_26"
+              "name": "union_29"
             }
           },
           {
@@ -6657,7 +6490,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_27"
+              "name": "union_30"
             }
           },
           {
@@ -6698,14 +6531,9 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "format": "email"
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "format": "email"
             }
           },
           {
@@ -6715,7 +6543,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_28"
+              "name": "union_31"
             }
           },
           {
@@ -6725,7 +6553,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_29"
+              "name": "union_32"
             }
           },
           {
@@ -6757,7 +6585,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_30"
+              "name": "union_33"
             }
           },
           {
@@ -6776,7 +6604,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_31"
+              "name": "union_34"
             }
           },
           {
@@ -6786,7 +6614,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_32"
+              "name": "union_35"
             }
           }
         ],
@@ -6825,16 +6653,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -6883,16 +6706,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wkp_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
             }
           }
         ],
@@ -7279,16 +7097,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -7417,16 +7230,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
@@ -7444,24 +7252,19 @@
       }
     },
     {
-      "name": "union_33",
-      "source": "union_33",
+      "name": "union_36",
+      "source": "union_36",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "intersection",
-            "parts": [
-              {
-                "kind": "primitive",
-                "type": "string",
-                "validation": {
-                  "pattern": "^wkp_"
-                }
-              }
-            ]
+            "kind": "primitive",
+            "type": "string",
+            "validation": {
+              "pattern": "^wkp_"
+            }
           },
           {
             "kind": "null"
@@ -7470,8 +7273,8 @@
       }
     },
     {
-      "name": "union_34",
-      "source": "union_34",
+      "name": "union_37",
+      "source": "union_37",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -7491,8 +7294,8 @@
       }
     },
     {
-      "name": "union_35",
-      "source": "union_35",
+      "name": "union_38",
+      "source": "union_38",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -7525,16 +7328,11 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "minLength": 1
-                  }
-                }
-              ]
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "minLength": 1
+              }
             }
           },
           {
@@ -7798,7 +7596,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_33"
+              "name": "union_36"
             }
           },
           {
@@ -7868,16 +7666,11 @@
                       "required": true,
                       "deprecated": false,
                       "type": {
-                        "kind": "intersection",
-                        "parts": [
-                          {
-                            "kind": "primitive",
-                            "type": "string",
-                            "validation": {
-                              "minLength": 1
-                            }
-                          }
-                        ]
+                        "kind": "primitive",
+                        "type": "string",
+                        "validation": {
+                          "minLength": 1
+                        }
                       }
                     },
                     {
@@ -7935,7 +7728,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union_14"
+                        "name": "union_15"
                       }
                     }
                   ],

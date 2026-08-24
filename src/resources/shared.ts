@@ -12,6 +12,9 @@ export interface APINotEnabledEncoded {
 }
 export interface CustomFieldNotFoundErrorEncoded {
   _tag: 'CustomFieldNotFoundError';
+  /**
+   * @pattern ^cf_
+   */
   id: string;
   message: string;
 }
@@ -22,11 +25,17 @@ export interface CustomFieldOptionAlreadyExistsErrorEncoded {
 }
 export interface CustomFieldOptionNotFoundErrorEncoded {
   _tag: 'CustomFieldOptionNotFoundError';
+  /**
+   * @pattern ^cfo_
+   */
   id: string;
   message: string;
 }
 export interface DepartmentNotFoundEncoded {
   _tag: 'DepartmentNotFound';
+  /**
+   * @pattern ^dpt_
+   */
   id: string;
   message: string;
 }
@@ -39,12 +48,18 @@ export interface InvalidCustomFieldOperationErrorEncoded {
 }
 export interface InvalidOfferStatusErrorEncoded {
   _tag: 'InvalidOfferStatusError';
+  /**
+   * @pattern ^offr_
+   */
   id: string;
-  status: Union12;
+  status: Union13;
   message: string;
 }
 export interface ManagerNotFoundErrorEncoded {
   _tag: 'ManagerNotFoundError';
+  /**
+   * @pattern ^wrk_
+   */
   id: string;
   message: string;
 }
@@ -91,37 +106,46 @@ export namespace MissingRequiredCompanyPermissionsEncoded {
   }
 }
 export interface Objects {
+  /**
+   * @pattern ^cf_
+   */
   id: string;
   name: string;
-  description: Union2 | null;
-  type: Union3;
+  description: Union3 | null;
+  type: Union4;
   config: Objects1;
-  status: Union4;
-  category: Union5;
-  accessLevel: Union6;
-  inputBy: Union7;
+  status: Union5;
+  category: Union6;
+  accessLevel: Union7;
+  inputBy: Union8;
   canWrite: boolean;
   createdAt: string;
-  required?: Union8 | null;
+  required?: CustomFieldsAPI.Union9 | null;
 }
 export type Objects1 = Record<string, unknown>;
 export interface Objects3 {
+  /**
+   * @pattern ^cfo_
+   */
   id: string;
   label: string;
   value: string;
-  sortOrder: Union10;
+  sortOrder: Union11;
   status: 'active' | 'archived';
   createdAt: string;
 }
 export interface Objects5 {
+  /**
+   * @pattern ^offr_
+   */
   id: string;
-  status: Union12;
-  workerType: Union13;
+  status: Union13;
+  workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: Objects5.Candidate;
   position: Objects5.Position;
   department: Objects5.Department | null;
   workplace: Objects5.Workplace | null;
-  manager: Objects5.Manager | null;
+  manager: Union18 | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -140,6 +164,9 @@ export namespace Objects5 {
   export interface Candidate {
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
     contractorDetails: Candidate.ContractorDetails | null;
   }
@@ -153,6 +180,9 @@ export namespace Objects5 {
 
   export interface Position {
     title: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
     country:
       | 'AD'
@@ -409,18 +439,19 @@ export namespace Objects5 {
   }
 
   export interface Department {
+    /**
+     * @pattern ^dpt_
+     */
     id: string;
     name: string;
   }
 
   export interface Workplace {
+    /**
+     * @pattern ^wkp_
+     */
     id: string;
     name: string;
-  }
-
-  export interface Manager {
-    id: string;
-    name: string | null;
   }
 
   export interface Compensation {
@@ -442,14 +473,26 @@ export namespace Objects5 {
     }
 
     export interface Stock {
-      options: string;
-      vestingScheduleMonths: string | null;
-      cliffMonths: string | null;
+      /**
+       * @minimum 0
+       */
+      options: number;
+      /**
+       * @minimum 0
+       */
+      vestingScheduleMonths: number | null;
+      /**
+       * @minimum 0
+       */
+      cliffMonths: number | null;
     }
   }
 }
 export interface OfferNotFoundErrorEncoded {
   _tag: 'OfferNotFoundError';
+  /**
+   * @pattern ^offr_
+   */
   id: string;
   message: string;
 }
@@ -457,8 +500,11 @@ export interface OfferNotFoundErrorEncoded {
  * A monetary amount with its currency and server-formatted display value.
  */
 export interface PublicMoneyAmount {
-  amount: string;
-  currency: Union;
+  /**
+   * @minimum 0
+   */
+  amount: number;
+  currency: CustomFieldsAPI.Union1;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -468,13 +514,19 @@ export interface PublicMoneyAmount {
  * The worker's current regular pay rate. For a worker whose start date is in the future, this is the regular rate effective on their start date. Null when no regular rate applies or when the API key lacks the corresponding US or global compensation read scope.
  */
 export interface PublicWorkerCompensation {
+  /**
+   * @pattern ^pyr_
+   */
   payRateId: string;
   /**
    * The period represented by the pay rate amount.
    */
   per: 'year' | 'month' | 'week' | 'hour';
-  amount: string;
-  currency: Union;
+  /**
+   * @minimum 0
+   */
+  amount: number;
+  currency: CustomFieldsAPI.Union1;
   /**
    * The server-formatted pay rate, including its period.
    */
@@ -487,94 +539,102 @@ export interface RateLimitExceededEncoded {
 }
 export interface TimeOffPolicyNotFoundEncoded {
   _tag: 'TimeOffPolicyNotFound';
-  id: string | number | CustomFieldsAPI.Union1;
+  id: number | Union2 | (string & {});
   message: string;
 }
 export type Union =
-  | 'USD'
-  | 'AUD'
-  | 'BGN'
-  | 'BRL'
-  | 'CAD'
-  | 'CHF'
-  | 'CZK'
-  | 'DKK'
-  | 'EUR'
-  | 'GBP'
-  | 'HKD'
-  | 'HUF'
-  | 'IDR'
-  | 'INR'
-  | 'JPY'
-  | 'MYR'
-  | 'NOK'
-  | 'NZD'
-  | 'CNY'
-  | 'PLN'
-  | 'RON'
-  | 'TRY'
-  | 'SEK'
-  | 'SGD'
-  | 'AED'
-  | 'ARS'
-  | 'BDT'
-  | 'BWP'
-  | 'CLP'
-  | 'COP'
-  | 'CRC'
-  | 'EGP'
-  | 'FJD'
-  | 'GEL'
-  | 'GHS'
-  | 'ILS'
-  | 'KES'
-  | 'KRW'
-  | 'LKR'
-  | 'MAD'
-  | 'MXN'
-  | 'NPR'
-  | 'PHP'
-  | 'PKR'
-  | 'THB'
-  | 'UAH'
-  | 'UGX'
-  | 'UYU'
-  | 'VND'
-  | 'ZAR'
-  | 'ZMW'
-  | 'TND'
-  | 'NGN'
-  | 'RSD'
-  | 'TWD'
-  | 'GTQ'
-  | 'HNL'
-  | 'DOP'
-  | 'SAR'
-  | 'XAF'
-  | 'PEN';
-export type Union10 = number | CustomFieldsAPI.Union1;
-export type Union11 = string | null;
-export type Union12 = 'draft' | 'sent' | 'accepted' | 'void';
-export type Union13 = 'employee' | 'us_contractor' | 'global_contractor';
+  | 'medical'
+  | 'dental'
+  | 'vision'
+  | 'life'
+  | 'short_term_disability'
+  | 'long_term_disability'
+  | '401k'
+  | 'roth_401k'
+  | '403b'
+  | 'roth_403b'
+  | '457'
+  | 'roth_457'
+  | 'hsa'
+  | 'fsa_medical'
+  | 'fsa_dependent_care'
+  | 'transit'
+  | 'parking'
+  | 'accident'
+  | 'cancer'
+  | 'critical_illness'
+  | 'hospital'
+  | 'medical_other'
+  | 'simple_ira'
+  | 'roth_simple_ira'
+  | 'nqdc'
+  | 'nontaxable_fringe'
+  | 'pucc'
+  | 'voluntary'
+  | 'post_tax'
+  | 'other';
+export type Union10 = Record<string, unknown> | null;
+export type Union11 = number | Union2;
+export type Union12 = string | null;
+export type Union13 = 'draft' | 'sent' | 'accepted' | 'void';
 export interface Union18 {
-  amount: string;
-  currency: Union;
   /**
-   * The server-formatted display string for the amount in its currency.
+   * @pattern ^wrk_
+   */
+  id: string;
+  name: string | null;
+}
+export type Union2 = 'Infinity' | '-Infinity' | 'NaN';
+export type Union20 = string | null;
+export type Union21 = 'us_w2' | 'us_1099' | 'global_contractor';
+export type Union23 = string | null;
+export type Union24 = string | null;
+export type Union25 = 'pending' | 'approved' | 'denied';
+export type Union26 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+export type Union27 = 'employee' | 'contractor';
+export type Union28 = string | null;
+export type Union29 = boolean | null;
+export type Union3 = string | null;
+export type Union30 = string | null;
+export type Union31 = string | null;
+export type Union32 = string | null;
+/**
+ * The IANA timezone of the worker (e.g., America/New_York).
+ */
+export type Union33 = string | null;
+/**
+ * The department the worker belongs to, or null if unassigned.
+ */
+export interface Union34 {
+  /**
+   * @pattern ^dpt_
+   */
+  id: string;
+  name: string;
+}
+/**
+ * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
+ */
+export interface Union35 {
+  /**
+   * @pattern ^pyr_
+   */
+  payRateId: string;
+  /**
+   * The period represented by the pay rate amount.
+   */
+  per: 'year' | 'month' | 'week' | 'hour';
+  /**
+   * @minimum 0
+   */
+  amount: number;
+  currency: CustomFieldsAPI.Union1;
+  /**
+   * The server-formatted pay rate, including its period.
    */
   display: string;
 }
-export type Union2 = string | null;
-export type Union20 = string | null;
-export type Union21 = string | null;
-export type Union23 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-export type Union24 = 'employee' | 'contractor';
-export type Union25 = string | null;
-export type Union26 = boolean | null;
-export type Union27 = string | null;
-export type Union28 = string | null;
-export type Union29 = string | null;
-export type Union3 =
+export type Union4 =
   | 'text'
   | 'number'
   | 'date'
@@ -583,48 +643,23 @@ export type Union3 =
   | 'percentage'
   | 'select'
   | 'multi_select';
-/**
- * The IANA timezone of the worker (e.g., America/New_York).
- */
-export type Union30 = string | null;
-/**
- * The department the worker belongs to, or null if unassigned.
- */
-export interface Union31 {
-  id: string;
-  name: string;
-}
-/**
- * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
- */
-export interface Union32 {
-  payRateId: string;
-  /**
-   * The period represented by the pay rate amount.
-   */
-  per: 'year' | 'month' | 'week' | 'hour';
-  amount: string;
-  currency: Union;
-  /**
-   * The server-formatted pay rate, including its period.
-   */
-  display: string;
-}
-export type Union33 = string | null;
-export type Union34 = 'remote' | 'office';
-export type Union35 = 'active' | 'archived';
-export type Union4 = 'active' | 'archived';
-export type Union5 = 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-export type Union6 = 'admins' | 'manager' | 'worker';
-export type Union7 = 'admin' | 'worker';
-export type Union8 = boolean | null;
+export type Union5 = 'active' | 'archived';
+export type Union6 = 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
+export type Union7 = 'admins' | 'manager' | 'worker';
+export type Union8 = 'admin' | 'worker';
 export interface WorkerNotFoundErrorEncoded {
   _tag: 'WorkerNotFoundError';
+  /**
+   * @pattern ^wrk_
+   */
   id: string;
   message: string;
 }
 export interface WorkplaceNotFoundEncoded {
   _tag: 'WorkplaceNotFound';
+  /**
+   * @pattern ^wkp_
+   */
   id: string;
   message: string;
 }
