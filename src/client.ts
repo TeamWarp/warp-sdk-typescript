@@ -102,6 +102,15 @@ import {
   type WorkplaceUpdateParams,
 } from './resources/workplaces';
 import {
+  Payroll,
+  type PayrollListPaychecksResponse,
+  type PayrollRetrievePaycheckResponse,
+  type PayrollListResponse,
+  type PayrollRetrieveResponse,
+  type PayrollListPaychecksParams,
+  type PayrollListParams,
+} from './resources/payroll';
+import {
   Webhooks,
   type TimeOffRequestCreatedWebhookEvent,
   type TimeOffRequestReviewedWebhookEvent,
@@ -931,6 +940,7 @@ export class WarpAPI {
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
+  payroll: Payroll = new Payroll(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
@@ -942,6 +952,7 @@ WarpAPI.PayRates = PayRates;
 WarpAPI.TimeOff = TimeOff;
 WarpAPI.Workers = Workers;
 WarpAPI.Workplaces = Workplaces;
+WarpAPI.Payroll = Payroll;
 WarpAPI.Webhooks = Webhooks;
 
 export declare namespace WarpAPI {
@@ -1031,6 +1042,16 @@ export declare namespace WarpAPI {
   };
 
   export {
+    Payroll as Payroll,
+    type PayrollListPaychecksResponse as PayrollListPaychecksResponse,
+    type PayrollRetrievePaycheckResponse as PayrollRetrievePaycheckResponse,
+    type PayrollListResponse as PayrollListResponse,
+    type PayrollRetrieveResponse as PayrollRetrieveResponse,
+    type PayrollListPaychecksParams as PayrollListPaychecksParams,
+    type PayrollListParams as PayrollListParams,
+  };
+
+  export {
     Webhooks as Webhooks,
     type TimeOffRequestCreatedWebhookEvent as TimeOffRequestCreatedWebhookEvent,
     type TimeOffRequestReviewedWebhookEvent as TimeOffRequestReviewedWebhookEvent,
@@ -1072,6 +1093,14 @@ export declare namespace WarpAPI {
   export type Objects5 = SharedAPI.Objects5;
   export type OfferNotFoundErrorEncoded = SharedAPI.OfferNotFoundErrorEncoded;
   export type PublicMoneyAmount = SharedAPI.PublicMoneyAmount;
+  export type PublicPaycheckPaymentMethod = SharedAPI.PublicPaycheckPaymentMethod;
+  export type PublicPaycheckStatus = SharedAPI.PublicPaycheckStatus;
+  export type PublicPayFrequency = SharedAPI.PublicPayFrequency;
+  export type PublicPayPeriod = SharedAPI.PublicPayPeriod;
+  export type PublicPayrollCurrency = SharedAPI.PublicPayrollCurrency;
+  export type PublicPayrollStatus = SharedAPI.PublicPayrollStatus;
+  export type PublicPayrollSubtype = SharedAPI.PublicPayrollSubtype;
+  export type PublicPayrollType = SharedAPI.PublicPayrollType;
   export type PublicWorkerCompensation = SharedAPI.PublicWorkerCompensation;
   export type RateLimitExceededEncoded = SharedAPI.RateLimitExceededEncoded;
   export type TimeOffPolicyNotFoundEncoded = SharedAPI.TimeOffPolicyNotFoundEncoded;
