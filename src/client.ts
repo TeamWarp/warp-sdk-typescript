@@ -60,6 +60,7 @@ import {
   type OfferCreateResponse,
   type OfferListParams,
   type OfferCreateParams,
+  type OfferVoidParams,
   type OfferExtendDeadlineParams,
 } from './resources/offers';
 import {
@@ -207,12 +208,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type WarpOptions = ClientOptions;
+export type WarpAPIOptions = ClientOptions;
 
 /**
- * API Client for interfacing with the Warp API.
+ * API Client for interfacing with the WarpApi API.
  */
-export class Warp {
+export class WarpAPI {
   apiKey: string | AuthTokenProvider;
   webhookSecret: string | null;
 
@@ -230,7 +231,7 @@ export class Warp {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Warp API.
+   * API Client for interfacing with the WarpApi API.
    *
    * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
    * @param {string | null | undefined} [opts.webhookSecret=process.env["WARP_WEBHOOK_SECRET"] ?? null]
@@ -249,8 +250,8 @@ export class Warp {
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.WarpError(
-        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the Warp client with an apiKey option, like new Warp({ apiKey: 'My API Key' }).",
+      throw new Errors.WarpAPIError(
+        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the WarpAPI client with an apiKey option, like new WarpAPI({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -263,7 +264,7 @@ export class Warp {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== '';
     const defaultBaseURL = 'https://api.joinwarp.com';
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? WarpAPI.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -888,7 +889,7 @@ export class Warp {
   ): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? await value() : value;
-    if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
@@ -899,14 +900,14 @@ export class Warp {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? value() : value;
     if (typeof token !== 'string' || !token)
-      throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
+      throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static Warp = this;
+  static WarpAPI = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WarpError = Errors.WarpError;
+  static WarpAPIError = Errors.WarpAPIError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -933,17 +934,17 @@ export class Warp {
   webhooks: Webhooks = new Webhooks(this);
 }
 
-Warp.Benefits = Benefits;
-Warp.CustomFields = CustomFields;
-Warp.Departments = Departments;
-Warp.Offers = Offers;
-Warp.PayRates = PayRates;
-Warp.TimeOff = TimeOff;
-Warp.Workers = Workers;
-Warp.Workplaces = Workplaces;
-Warp.Webhooks = Webhooks;
+WarpAPI.Benefits = Benefits;
+WarpAPI.CustomFields = CustomFields;
+WarpAPI.Departments = Departments;
+WarpAPI.Offers = Offers;
+WarpAPI.PayRates = PayRates;
+WarpAPI.TimeOff = TimeOff;
+WarpAPI.Workers = Workers;
+WarpAPI.Workplaces = Workplaces;
+WarpAPI.Webhooks = Webhooks;
 
-export declare namespace Warp {
+export declare namespace WarpAPI {
   export type RequestOptions = Opts.RequestOptions;
   export { Benefits as Benefits };
 
@@ -983,6 +984,7 @@ export declare namespace Warp {
     type OfferCreateResponse as OfferCreateResponse,
     type OfferListParams as OfferListParams,
     type OfferCreateParams as OfferCreateParams,
+    type OfferVoidParams as OfferVoidParams,
     type OfferExtendDeadlineParams as OfferExtendDeadlineParams,
   };
 

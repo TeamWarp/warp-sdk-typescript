@@ -1,6 +1,6 @@
-# Warp
+# Warp API
 
-This library provides convenient access to the Warp REST API from TypeScript or JavaScript.
+This library provides convenient access to the Warp API from TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](./api.md).
 
@@ -33,18 +33,18 @@ npm install warp-hr
 ## Usage
 
 ```ts
-import Warp from 'warp-hr';
+import WarpAPI from 'warp-hr';
 
-const client = new Warp({
+const client = new WarpAPI({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 
-const list = await client.benefits.healthPlans.list({
+const healthPlan = await client.benefits.healthPlans.list({
   limit: 'limit',
   statuses: ['active'],
 });
 
-console.log(list);
+console.log(healthPlan);
 ```
 
 The examples in the following sections assume a `client` configured as shown above.
@@ -75,7 +75,7 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from 'warp-hr';
 
 try {
-  const list = await client.benefits.healthPlans.list({
+  const healthPlan = await client.benefits.healthPlans.list({
     limit: 'limit',
     statuses: ['active'],
   });
@@ -96,9 +96,9 @@ Documented error statuses: `400`, `401`, `403`, `404`, `409`, `422`, `429`, `500
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import Warp from 'warp-hr';
+import WarpAPI from 'warp-hr';
 
-const client = new Warp({
+const client = new WarpAPI({
   timeout: 60000,
   maxRetries: 2,
   logLevel: 'debug',

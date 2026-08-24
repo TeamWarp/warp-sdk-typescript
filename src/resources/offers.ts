@@ -5,6 +5,7 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
 import type * as Shared from './shared';
+import type * as CustomFieldsAPI from './custom-fields';
 
 export class Offers extends APIResource {
   /**
@@ -16,7 +17,7 @@ export class Offers extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.offers.list({
+   * const offer = await client.offers.list({
    *   limit: 'limit',
    * });
    * ```
@@ -34,21 +35,21 @@ export class Offers extends APIResource {
    *
    * @example
    * ```ts
-   * const create = await client.offers.create({
+   * const offer = await client.offers.create({
    *   candidate: {
-   *     firstName: {},
-   *     lastName: {},
-   *     email: {},
+   *     firstName: 'x',
+   *     lastName: 'x',
+   *     email: 'john@joinwarp.com',
    *   },
    *   position: {
-   *     title: {},
-   *     startDate: {},
+   *     title: 'x',
+   *     startDate: '',
    *   },
    *   workerType: 'employee',
    *   compensation: {
    *     payBasis: 'year',
    *     payCurrency: 'USD',
-   *     payRate: {},
+   *     payRate: 0,
    *   },
    * });
    * ```
@@ -61,16 +62,19 @@ export class Offers extends APIResource {
    * Void a previously sent offer. Only sent offers can be voided.
    *
    * @param {string} id
+   * @param {OfferVoidParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<Shared.Objects5>} Success
    *
    * @example
    * ```ts
-   * const objects5 = await client.offers.void('id');
+   * const objects5 = await client.offers.void('offr_1234', {
+   *   voidReason: 'candidate_declined',
+   * });
    * ```
    */
-  void(id: string, options?: RequestOptions): APIPromise<Shared.Objects5> {
-    return this._client.post(__scalarPath`/v1/offers/${id}/void`, options);
+  void(id: string, body: OfferVoidParams, options?: RequestOptions): APIPromise<Shared.Objects5> {
+    return this._client.post(__scalarPath`/v1/offers/${id}/void`, { body, ...options });
   }
 
   /**
@@ -83,7 +87,7 @@ export class Offers extends APIResource {
    *
    * @example
    * ```ts
-   * const objects5 = await client.offers.extendDeadline('id', {
+   * const objects5 = await client.offers.extendDeadline('offr_1234', {
    *   expirationTime: '',
    * });
    * ```
@@ -105,7 +109,7 @@ export class Offers extends APIResource {
    *
    * @example
    * ```ts
-   * const objects5 = await client.offers.resend('id');
+   * const objects5 = await client.offers.resend('offr_1234');
    * ```
    */
   resend(id: string, options?: RequestOptions): APIPromise<Shared.Objects5> {
@@ -115,10 +119,19 @@ export class Offers extends APIResource {
 
 export interface OfferListParams {
   limit: string | null;
+  /**
+   * @pattern ^offr_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^offr_
+   */
   beforeId?: string | null;
-  statuses?: Array<Shared.Union12> | null;
-  workerTypes?: Array<Shared.Union13> | null;
+  statuses?: Array<Shared.Union13> | null;
+  workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'> | null;
+  /**
+   * @format email
+   */
   candidateEmail?: string | null;
 }
 
@@ -133,16 +146,37 @@ export interface OfferCreateParams {
   position: OfferCreateParams.Position;
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   compensation: OfferCreateParams.Compensation;
+  /**
+   * @pattern ^dpt_
+   */
   departmentId?: string | null;
+  /**
+   * @pattern ^wkp_
+   */
   workplaceId?: string | null;
+  /**
+   * @pattern ^wrk_
+   */
   managerId?: string | null;
   expirationTime?: string | null;
+  backgroundCheckWorkLocation?: OfferCreateParams.BackgroundCheckWorkLocation | null;
 }
 
 export namespace OfferCreateParams {
   export interface Candidate {
+    /**
+     * @minLength 1
+     * @pattern ^\S[\s\S]*\S$|^\S$|^$
+     */
     firstName: string;
+    /**
+     * @minLength 1
+     * @pattern ^\S[\s\S]*\S$|^\S$|^$
+     */
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
     contractorDetails?: Candidate.ContractorDetails | null;
   }
@@ -155,7 +189,14 @@ export namespace OfferCreateParams {
   }
 
   export interface Position {
+    /**
+     * @minLength 1
+     * @pattern ^\S[\s\S]*\S$|^\S$|^$
+     */
     title: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
     country?:
       | 'AD'
@@ -476,26 +517,44 @@ export namespace OfferCreateParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
-    payRate: unknown;
+    payRate: number;
     payType?: 'fixed' | 'pay_as_you_go' | null;
-    payVariableRate?: unknown | null;
-    signOnBonus?: unknown | null;
-    relocationBonus?: unknown | null;
-    stockOptions?: string | null;
-    vestingScheduleMonths?: string | null;
-    cliffMonths?: string | null;
+    payVariableRate?: number | null;
+    signOnBonus?: number | null;
+    relocationBonus?: number | null;
+    /**
+     * @minimum 0
+     */
+    stockOptions?: number | null;
+    /**
+     * @minimum 0
+     */
+    vestingScheduleMonths?: number | null;
+    /**
+     * @minimum 0
+     */
+    cliffMonths?: number | null;
+  }
+
+  export interface BackgroundCheckWorkLocation {
+    country: string;
+    state: string;
+    city: string;
   }
 }
 
 export interface OfferCreateResponse {
+  /**
+   * @pattern ^offr_
+   */
   id: string;
-  status: Shared.Union12;
-  workerType: Shared.Union13;
+  status: Shared.Union13;
+  workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferCreateResponse.Candidate;
   position: OfferCreateResponse.Position;
   department: OfferCreateResponse.Department | null;
   workplace: OfferCreateResponse.Workplace | null;
-  manager: OfferCreateResponse.Manager | null;
+  manager: Shared.Union18 | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -514,6 +573,9 @@ export namespace OfferCreateResponse {
   export interface Candidate {
     firstName: string;
     lastName: string;
+    /**
+     * @format email
+     */
     email: string;
     contractorDetails: Candidate.ContractorDetails | null;
   }
@@ -527,6 +589,9 @@ export namespace OfferCreateResponse {
 
   export interface Position {
     title: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     startDate: string;
     country:
       | 'AD'
@@ -783,18 +848,19 @@ export namespace OfferCreateResponse {
   }
 
   export interface Department {
+    /**
+     * @pattern ^dpt_
+     */
     id: string;
     name: string;
   }
 
   export interface Workplace {
+    /**
+     * @pattern ^wkp_
+     */
     id: string;
     name: string;
-  }
-
-  export interface Manager {
-    id: string;
-    name: string | null;
   }
 
   export interface Compensation {
@@ -816,11 +882,25 @@ export namespace OfferCreateResponse {
     }
 
     export interface Stock {
-      options: string;
-      vestingScheduleMonths: string | null;
-      cliffMonths: string | null;
+      /**
+       * @minimum 0
+       */
+      options: number;
+      /**
+       * @minimum 0
+       */
+      vestingScheduleMonths: number | null;
+      /**
+       * @minimum 0
+       */
+      cliffMonths: number | null;
     }
   }
+}
+
+export interface OfferVoidParams {
+  voidReason: 'candidate_declined' | 'other';
+  voidNotes?: string | null;
 }
 
 export interface OfferExtendDeadlineParams {
@@ -832,6 +912,7 @@ export declare namespace Offers {
     type OfferCreateResponse as OfferCreateResponse,
     type OfferListParams as OfferListParams,
     type OfferCreateParams as OfferCreateParams,
+    type OfferVoidParams as OfferVoidParams,
     type OfferExtendDeadlineParams as OfferExtendDeadlineParams,
   };
 }

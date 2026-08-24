@@ -16,7 +16,7 @@ export class HealthPlans extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.benefits.healthPlans.list({
+   * const healthPlan = await client.benefits.healthPlans.list({
    *   limit: 'limit',
    *   statuses: ['active'],
    * });
@@ -35,7 +35,7 @@ export class HealthPlans extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.benefits.healthPlans.get('id');
+   * const healthPlan = await client.benefits.healthPlans.get('chpl_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<HealthPlanGetResponse> {
@@ -45,7 +45,13 @@ export class HealthPlans extends APIResource {
 
 export interface HealthPlanListParams {
   limit: string | null;
+  /**
+   * @pattern ^chpl_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^chpl_
+   */
   beforeId?: string | null;
   types?: Array<
     'medical' | 'dental' | 'vision' | 'life' | 'short_term_disability' | 'long_term_disability'
@@ -62,6 +68,9 @@ export interface HealthPlanListResponse {
 
 export namespace HealthPlanListResponse {
   export interface Data {
+    /**
+     * @pattern ^chpl_
+     */
     id: string;
     /**
      * The insurance carrier underwriting the health plan.
@@ -83,7 +92,13 @@ export namespace HealthPlanListResponse {
      * The plan network structure.
      */
     networkType: 'hmo' | 'ppo' | 'epo' | 'pos' | 'hdhp' | 'indemnity' | null;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     effectiveStartDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     effectiveEndDate: string | null;
     /**
      * The public lifecycle status of a health plan.
@@ -95,6 +110,9 @@ export namespace HealthPlanListResponse {
 
   export namespace Data {
     export interface Carrier {
+      /**
+       * @pattern ^car_
+       */
       id: string;
       /**
        * The carrier name.
@@ -105,6 +123,9 @@ export namespace HealthPlanListResponse {
 }
 
 export interface HealthPlanGetResponse {
+  /**
+   * @pattern ^chpl_
+   */
   id: string;
   /**
    * The insurance carrier underwriting the health plan.
@@ -126,7 +147,13 @@ export interface HealthPlanGetResponse {
    * The plan network structure.
    */
   networkType: 'hmo' | 'ppo' | 'epo' | 'pos' | 'hdhp' | 'indemnity' | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   effectiveStartDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   effectiveEndDate: string | null;
   /**
    * The public lifecycle status of a health plan.
@@ -138,6 +165,9 @@ export interface HealthPlanGetResponse {
 
 export namespace HealthPlanGetResponse {
   export interface Carrier {
+    /**
+     * @pattern ^car_
+     */
     id: string;
     /**
      * The carrier name.

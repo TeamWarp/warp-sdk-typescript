@@ -16,7 +16,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.customFields.list();
+   * const customField = await client.customFields.list();
    * ```
    */
   list(options?: RequestOptions): APIPromise<CustomFieldListResponse> {
@@ -32,8 +32,8 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const create = await client.customFields.create({
-   *   name: {},
+   * const customField = await client.customFields.create({
+   *   name: 'x',
    *   type: 'text',
    *   category: 'info',
    * });
@@ -52,7 +52,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.customFields.get('id');
+   * const customField = await client.customFields.get('cf_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<CustomFieldGetResponse> {
@@ -69,7 +69,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const objects = await client.customFields.update('id', {});
+   * const objects = await client.customFields.update('cf_1234', {});
    * ```
    */
   update(id: string, body: CustomFieldUpdateParams, options?: RequestOptions): APIPromise<Shared.Objects> {
@@ -85,7 +85,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const objects = await client.customFields.archive('id');
+   * const objects = await client.customFields.archive('cf_1234');
    * ```
    */
   archive(id: string, options?: RequestOptions): APIPromise<Shared.Objects> {
@@ -102,9 +102,9 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const createOption = await client.customFields.createOption('id', {
-   *   label: {},
-   *   value: {},
+   * const customField = await client.customFields.createOption('cf_1234', {
+   *   label: 'x',
+   *   value: 'x',
    * });
    * ```
    */
@@ -126,7 +126,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const objects3 = await client.customFields.updateOption('id', {});
+   * const objects3 = await client.customFields.updateOption('cfo_1234', {});
    * ```
    */
   updateOption(
@@ -146,7 +146,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * await client.customFields.deleteOption('id');
+   * await client.customFields.deleteOption('cfo_1234');
    * ```
    */
   deleteOption(id: string, options?: RequestOptions): APIPromise<void> {
@@ -165,7 +165,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const objects3 = await client.customFields.archiveOption('id');
+   * const objects3 = await client.customFields.archiveOption('cfo_1234');
    * ```
    */
   archiveOption(id: string, options?: RequestOptions): APIPromise<Shared.Objects3> {
@@ -181,7 +181,7 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const listValues = await client.customFields.listValues();
+   * const customField = await client.customFields.listValues();
    * ```
    */
   listValues(
@@ -200,9 +200,9 @@ export class CustomFields extends APIResource {
    *
    * @example
    * ```ts
-   * const upsertValue = await client.customFields.upsertValue({
-   *   workerId: {},
-   *   fieldId: {},
+   * const customField = await client.customFields.upsertValue({
+   *   workerId: 'wrk_1234',
+   *   fieldId: 'cf_1234',
    *   value: {
    *     type: 'text',
    *     value: '',
@@ -227,8 +227,8 @@ export class CustomFields extends APIResource {
    * @example
    * ```ts
    * await client.customFields.clearValue({
-   *   workerId: {},
-   *   fieldId: {},
+   *   workerId: 'wrk_1234',
+   *   fieldId: 'cf_1234',
    * });
    * ```
    */
@@ -242,19 +242,92 @@ export class CustomFields extends APIResource {
   }
 }
 
-export type Union9 = Record<string, unknown> | null;
+export type Union9 = boolean | null;
 
 export interface Objects2 {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   label: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   value: string;
-  sortOrder?: number | Union1 | null;
+  sortOrder?: number | Shared.Union2 | null;
 }
 
-export type Union1 = 'Infinity' | '-Infinity' | 'NaN';
+export type Union1 =
+  | 'USD'
+  | 'AUD'
+  | 'BGN'
+  | 'BRL'
+  | 'CAD'
+  | 'CHF'
+  | 'CZK'
+  | 'DKK'
+  | 'EUR'
+  | 'GBP'
+  | 'HKD'
+  | 'HUF'
+  | 'IDR'
+  | 'INR'
+  | 'JPY'
+  | 'MYR'
+  | 'NOK'
+  | 'NZD'
+  | 'CNY'
+  | 'PLN'
+  | 'RON'
+  | 'TRY'
+  | 'SEK'
+  | 'SGD'
+  | 'AED'
+  | 'ARS'
+  | 'BDT'
+  | 'BWP'
+  | 'CLP'
+  | 'COP'
+  | 'CRC'
+  | 'EGP'
+  | 'FJD'
+  | 'GEL'
+  | 'GHS'
+  | 'ILS'
+  | 'KES'
+  | 'KRW'
+  | 'LKR'
+  | 'MAD'
+  | 'MXN'
+  | 'NPR'
+  | 'PHP'
+  | 'PKR'
+  | 'THB'
+  | 'UAH'
+  | 'UGX'
+  | 'UYU'
+  | 'VND'
+  | 'ZAR'
+  | 'ZMW'
+  | 'TND'
+  | 'NGN'
+  | 'RSD'
+  | 'TWD'
+  | 'GTQ'
+  | 'HNL'
+  | 'DOP'
+  | 'SAR'
+  | 'XAF'
+  | 'PEN';
 
 export type CustomFieldListResponse = Array<Shared.Objects>;
 
 export interface CustomFieldCreateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   name: string;
   type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
   category: 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
@@ -267,37 +340,47 @@ export interface CustomFieldCreateParams {
 }
 
 export interface CustomFieldCreateResponse {
+  /**
+   * @pattern ^cf_
+   */
   id: string;
   name: string;
-  description: Shared.Union2 | null;
-  type: Shared.Union3;
+  description: Shared.Union3 | null;
+  type: Shared.Union4;
   config: Shared.Objects1;
-  status: Shared.Union4;
-  category: Shared.Union5;
-  accessLevel: Shared.Union6;
-  inputBy: Shared.Union7;
+  status: Shared.Union5;
+  category: Shared.Union6;
+  accessLevel: Shared.Union7;
+  inputBy: Shared.Union8;
   canWrite: boolean;
   createdAt: string;
-  required?: Shared.Union8 | null;
+  required?: Union9 | null;
 }
 
 export interface CustomFieldGetResponse {
+  /**
+   * @pattern ^cf_
+   */
   id: string;
   name: string;
-  description: Shared.Union2 | null;
-  type: Shared.Union3;
+  description: Shared.Union3 | null;
+  type: Shared.Union4;
   config: Shared.Objects1;
-  status: Shared.Union4;
-  category: Shared.Union5;
-  accessLevel: Shared.Union6;
-  inputBy: Shared.Union7;
+  status: Shared.Union5;
+  category: Shared.Union6;
+  accessLevel: Shared.Union7;
+  inputBy: Shared.Union8;
   canWrite: boolean;
   createdAt: string;
   options: Array<Shared.Objects3>;
-  required?: Shared.Union8 | null;
+  required?: Union9 | null;
 }
 
 export interface CustomFieldUpdateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   name?: string | null;
   description?: string | null;
   config?: Shared.Objects1 | null;
@@ -308,23 +391,38 @@ export interface CustomFieldUpdateParams {
 }
 
 export interface CustomFieldCreateOptionParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   label: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   value: string;
-  sortOrder?: number | Union1 | null;
+  sortOrder?: number | Shared.Union2 | null;
 }
 
 export interface CustomFieldCreateOptionResponse {
+  /**
+   * @pattern ^cfo_
+   */
   id: string;
   label: string;
   value: string;
-  sortOrder: Shared.Union10;
+  sortOrder: Shared.Union11;
   status: 'active' | 'archived';
   createdAt: string;
 }
 
 export interface CustomFieldUpdateOptionParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
   label?: string | null;
-  sortOrder?: number | Union1 | null;
+  sortOrder?: number | Shared.Union2 | null;
 }
 
 export interface CustomFieldListValuesParams {
@@ -337,8 +435,17 @@ export type CustomFieldListValuesResponse =
 
 export namespace CustomFieldListValuesResponse {
   export interface CustomFieldListValuesResponseItem {
+    /**
+     * @pattern ^cfv_
+     */
     id: string;
+    /**
+     * @pattern ^wrk_
+     */
     workerId: string;
+    /**
+     * @pattern ^cf_
+     */
     fieldId: string;
     value:
       | CustomFieldListValuesResponseItem.Value
@@ -360,11 +467,14 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value2 {
       type: 'number';
-      value: Shared.Union10;
+      value: Shared.Union11;
     }
 
     export interface Value3 {
       type: 'date';
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
       value: string;
     }
 
@@ -375,13 +485,13 @@ export namespace CustomFieldListValuesResponse {
 
     export interface Value5 {
       type: 'currency';
-      amount: Shared.Union10;
-      currencyCode: Shared.Union;
+      amount: Shared.Union11;
+      currencyCode: Union1;
     }
 
     export interface Value6 {
       type: 'percentage';
-      value: Shared.Union10;
+      value: Shared.Union11;
     }
 
     export interface Value7 {
@@ -397,7 +507,13 @@ export namespace CustomFieldListValuesResponse {
 }
 
 export interface CustomFieldUpsertValueParams {
+  /**
+   * @pattern ^wrk_
+   */
   workerId: string;
+  /**
+   * @pattern ^cf_
+   */
   fieldId: string;
   value:
     | CustomFieldUpsertValueParams.Value
@@ -418,11 +534,14 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value2 {
     type: 'number';
-    value: number | Union1;
+    value: number | Shared.Union2;
   }
 
   export interface Value3 {
     type: 'date';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     value: string;
   }
 
@@ -433,7 +552,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | Union1;
+    amount: number | Shared.Union2;
     currencyCode:
       | 'USD'
       | 'AUD'
@@ -500,11 +619,14 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value6 {
     type: 'percentage';
-    value: number | Union1;
+    value: number | Shared.Union2;
   }
 
   export interface Value7 {
     type: 'select';
+    /**
+     * @pattern ^cfo_
+     */
     optionId: string;
   }
 
@@ -515,8 +637,17 @@ export namespace CustomFieldUpsertValueParams {
 }
 
 export interface CustomFieldUpsertValueResponse {
+  /**
+   * @pattern ^cfv_
+   */
   id: string;
+  /**
+   * @pattern ^wrk_
+   */
   workerId: string;
+  /**
+   * @pattern ^cf_
+   */
   fieldId: string;
   value:
     | CustomFieldUpsertValueResponse.Value
@@ -538,11 +669,14 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value2 {
     type: 'number';
-    value: Shared.Union10;
+    value: Shared.Union11;
   }
 
   export interface Value3 {
     type: 'date';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     value: string;
   }
 
@@ -553,13 +687,13 @@ export namespace CustomFieldUpsertValueResponse {
 
   export interface Value5 {
     type: 'currency';
-    amount: Shared.Union10;
-    currencyCode: Shared.Union;
+    amount: Shared.Union11;
+    currencyCode: Union1;
   }
 
   export interface Value6 {
     type: 'percentage';
-    value: Shared.Union10;
+    value: Shared.Union11;
   }
 
   export interface Value7 {
@@ -574,7 +708,13 @@ export namespace CustomFieldUpsertValueResponse {
 }
 
 export interface CustomFieldClearValueParams {
+  /**
+   * @pattern ^wrk_
+   */
   workerId: string;
+  /**
+   * @pattern ^cf_
+   */
   fieldId: string;
 }
 export declare namespace CustomFields {

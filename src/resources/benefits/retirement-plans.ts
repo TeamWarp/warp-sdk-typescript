@@ -16,7 +16,7 @@ export class RetirementPlans extends APIResource {
    *
    * @example
    * ```ts
-   * const list = await client.benefits.retirementPlans.list({
+   * const retirementPlan = await client.benefits.retirementPlans.list({
    *   limit: 'limit',
    *   statuses: ['active'],
    * });
@@ -35,7 +35,7 @@ export class RetirementPlans extends APIResource {
    *
    * @example
    * ```ts
-   * const get_ = await client.benefits.retirementPlans.get('id');
+   * const retirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
    * ```
    */
   get(id: string, options?: RequestOptions): APIPromise<RetirementPlanGetResponse> {
@@ -45,7 +45,13 @@ export class RetirementPlans extends APIResource {
 
 export interface RetirementPlanListParams {
   limit: string | null;
+  /**
+   * @pattern ^crpl_
+   */
   afterId?: string | null;
+  /**
+   * @pattern ^crpl_
+   */
   beforeId?: string | null;
   types?: Array<
     '401k' | 'roth_401k' | '403b' | 'roth_403b' | '457' | 'roth_457' | 'simple_ira' | 'roth_simple_ira'
@@ -61,6 +67,9 @@ export interface RetirementPlanListResponse {
 
 export namespace RetirementPlanListResponse {
   export interface Data {
+    /**
+     * @pattern ^crpl_
+     */
     id: string;
     /**
      * The retirement plan type.
@@ -74,7 +83,13 @@ export namespace RetirementPlanListResponse {
      * The system administering the plan. Manual plans are administered by the company outside a connected provider.
      */
     provider: 'manual' | 'human_interest' | 'accrue';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     effectiveStartDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
     effectiveEndDate: string | null;
     /**
      * The public lifecycle status of a retirement plan.
@@ -86,6 +101,9 @@ export namespace RetirementPlanListResponse {
 }
 
 export interface RetirementPlanGetResponse {
+  /**
+   * @pattern ^crpl_
+   */
   id: string;
   /**
    * The retirement plan type.
@@ -99,7 +117,13 @@ export interface RetirementPlanGetResponse {
    * The system administering the plan. Manual plans are administered by the company outside a connected provider.
    */
   provider: 'manual' | 'human_interest' | 'accrue';
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   effectiveStartDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
   effectiveEndDate: string | null;
   /**
    * The public lifecycle status of a retirement plan.
