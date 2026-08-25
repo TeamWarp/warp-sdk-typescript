@@ -104,9 +104,9 @@ import {
 import {
   Payroll,
   type PayrollListPaychecksResponse,
-  type PayrollRetrievePaycheckResponse,
+  type PayrollGetPaycheckResponse,
   type PayrollListResponse,
-  type PayrollRetrieveResponse,
+  type PayrollGetResponse,
   type PayrollListPaychecksParams,
   type PayrollListParams,
 } from './resources/payroll';
@@ -1044,9 +1044,9 @@ export declare namespace WarpAPI {
   export {
     Payroll as Payroll,
     type PayrollListPaychecksResponse as PayrollListPaychecksResponse,
-    type PayrollRetrievePaycheckResponse as PayrollRetrievePaycheckResponse,
+    type PayrollGetPaycheckResponse as PayrollGetPaycheckResponse,
     type PayrollListResponse as PayrollListResponse,
-    type PayrollRetrieveResponse as PayrollRetrieveResponse,
+    type PayrollGetResponse as PayrollGetResponse,
     type PayrollListPaychecksParams as PayrollListPaychecksParams,
     type PayrollListParams as PayrollListParams,
   };

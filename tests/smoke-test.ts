@@ -524,11 +524,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'retrievePaycheck',
+    operation: 'getPaycheck',
     method: 'GET',
     path: '/v1/paychecks/{id}',
     run: async () => {
-      const payroll = await client.payroll.retrievePaycheck('pyc_1234');
+      const payroll = await client.payroll.getPaycheck('pyc_1234');
     },
   },
 
@@ -544,11 +544,11 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'retrieve',
+    operation: 'get',
     method: 'GET',
     path: '/v1/payrolls/{id}',
     run: async () => {
-      const payroll = await client.payroll.retrieve('pay_1234');
+      const payroll = await client.payroll.get('pay_1234');
     },
   },
 ];
