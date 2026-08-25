@@ -33,14 +33,14 @@ export class Payroll extends APIResource {
    *
    * @param {string} id - The paycheck ID.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PayrollRetrievePaycheckResponse>} A paycheck with currency-specific calculation lines, totals grouped by currency, and authoritative parent-payroll funding-currency totals. Source currencies for expenses, benefits, or other inputs are outside this payroll-calculation resource.
+   * @returns {APIPromise<PayrollGetPaycheckResponse>} A paycheck with currency-specific calculation lines, totals grouped by currency, and authoritative parent-payroll funding-currency totals. Source currencies for expenses, benefits, or other inputs are outside this payroll-calculation resource.
    *
    * @example
    * ```ts
-   * const payroll = await client.payroll.retrievePaycheck('pyc_1234');
+   * const payroll = await client.payroll.getPaycheck('pyc_1234');
    * ```
    */
-  retrievePaycheck(id: string, options?: RequestOptions): APIPromise<PayrollRetrievePaycheckResponse> {
+  getPaycheck(id: string, options?: RequestOptions): APIPromise<PayrollGetPaycheckResponse> {
     return this._client.get(__scalarPath`/v1/paychecks/${id}`, options);
   }
 
@@ -67,14 +67,14 @@ export class Payroll extends APIResource {
    *
    * @param {string} id - The payroll ID.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PayrollRetrieveResponse>} A payroll run with funding and lifecycle details. Every amount in totals is expressed in fundingCurrency; line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative.
+   * @returns {APIPromise<PayrollGetResponse>} A payroll run with funding and lifecycle details. Every amount in totals is expressed in fundingCurrency; line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative.
    *
    * @example
    * ```ts
-   * const payroll = await client.payroll.retrieve('pay_1234');
+   * const payroll = await client.payroll.get('pay_1234');
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<PayrollRetrieveResponse> {
+  get(id: string, options?: RequestOptions): APIPromise<PayrollGetResponse> {
     return this._client.get(__scalarPath`/v1/payrolls/${id}`, options);
   }
 }
@@ -144,20 +144,20 @@ export interface PayrollListPaychecksResponse {
   data: string;
 }
 
-export interface PayrollRetrievePaycheckResponse {
+export interface PayrollGetPaycheckResponse {
   /**
    * @pattern ^pyc_
    */
   id: string;
-  payroll: PayrollRetrievePaycheckResponse.Payroll & string;
-  worker: PayrollRetrievePaycheckResponse.Worker & string;
+  payroll: PayrollGetPaycheckResponse.Payroll & string;
+  worker: PayrollGetPaycheckResponse.Worker & string;
   status: Shared.PublicPaycheckStatus & string;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   payday: string;
   paymentMethod: Shared.PublicPaycheckPaymentMethod & string;
-  totals: PayrollRetrievePaycheckResponse.Totals & string;
+  totals: PayrollGetPaycheckResponse.Totals & string;
   description: string | null;
   exchangeRates: string;
   /**
@@ -171,7 +171,7 @@ export interface PayrollRetrievePaycheckResponse {
   taxes: string;
 }
 
-export namespace PayrollRetrievePaycheckResponse {
+export namespace PayrollGetPaycheckResponse {
   export interface Payroll {
     /**
      * @pattern ^pay_
@@ -410,7 +410,7 @@ export interface PayrollListResponse {
   data: unknown;
 }
 
-export interface PayrollRetrieveResponse {
+export interface PayrollGetResponse {
   /**
    * @pattern ^pay_
    */
@@ -431,13 +431,13 @@ export interface PayrollRetrieveResponse {
    * @minimum 0
    */
   paycheckCount: number;
-  totals: PayrollRetrieveResponse.Totals & string;
+  totals: PayrollGetResponse.Totals & string;
   fundingMethod: ('ach' | 'wire') & string;
   reopenDeadline: string | null;
-  timeline: PayrollRetrieveResponse.Timeline & unknown;
+  timeline: PayrollGetResponse.Timeline & unknown;
 }
 
-export namespace PayrollRetrieveResponse {
+export namespace PayrollGetResponse {
   export interface Totals {
     cashRequirement: Totals.CashRequirement | null;
     /**
@@ -627,9 +627,9 @@ export namespace PayrollRetrieveResponse {
 export declare namespace Payroll {
   export {
     type PayrollListPaychecksResponse as PayrollListPaychecksResponse,
-    type PayrollRetrievePaycheckResponse as PayrollRetrievePaycheckResponse,
+    type PayrollGetPaycheckResponse as PayrollGetPaycheckResponse,
     type PayrollListResponse as PayrollListResponse,
-    type PayrollRetrieveResponse as PayrollRetrieveResponse,
+    type PayrollGetResponse as PayrollGetResponse,
     type PayrollListPaychecksParams as PayrollListPaychecksParams,
     type PayrollListParams as PayrollListParams,
   };

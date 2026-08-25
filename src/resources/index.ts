@@ -77,10 +77,10 @@ export { Payroll } from './payroll';
 export type {
   PayrollListPaychecksParams,
   PayrollListPaychecksResponse,
-  PayrollRetrievePaycheckResponse,
+  PayrollGetPaycheckResponse,
   PayrollListParams,
   PayrollListResponse,
-  PayrollRetrieveResponse,
+  PayrollGetResponse,
 } from './payroll';
 export { Webhooks } from './webhooks';
 export type {

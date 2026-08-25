@@ -770,10 +770,10 @@ Get a paycheck by id. All worker types use the same paycheck schema. Categories 
 
 | Direction | Type |
 | --- | --- |
-| Response | [`PayrollRetrievePaycheckResponse`](./src/resources/payroll.ts) |
+| Response | [`PayrollGetPaycheckResponse`](./src/resources/payroll.ts) |
 
 ```ts
-const payroll = await client.payroll.retrievePaycheck('pyc_1234');
+const payroll = await client.payroll.getPaycheck('pyc_1234');
 ```
 
 ### List Payrolls
@@ -797,8 +797,8 @@ Get a payroll by id. Every amount in totals is expressed in fundingCurrency, the
 
 | Direction | Type |
 | --- | --- |
-| Response | [`PayrollRetrieveResponse`](./src/resources/payroll.ts) |
+| Response | [`PayrollGetResponse`](./src/resources/payroll.ts) |
 
 ```ts
-const payroll = await client.payroll.retrieve('pay_1234');
+const payroll = await client.payroll.get('pay_1234');
 ```

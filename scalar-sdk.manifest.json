@@ -18363,8 +18363,8 @@
     {
       "resource": "payroll",
       "publicResource": "payroll",
-      "operation": "retrievePaycheck",
-      "publicOperation": "retrievePaycheck",
+      "operation": "getPaycheck",
+      "publicOperation": "getPaycheck",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/paychecks/{id}",
@@ -18395,7 +18395,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PayrollRetrievePaycheckParams"
+        "publicName": "PayrollGetPaycheckParams"
       },
       "response": {
         "status": "200",
@@ -18711,8 +18711,8 @@
     {
       "resource": "payroll",
       "publicResource": "payroll",
-      "operation": "retrieve",
-      "publicOperation": "retrieve",
+      "operation": "get",
+      "publicOperation": "get",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/payrolls/{id}",
@@ -18743,7 +18743,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PayrollRetrieveParams"
+        "publicName": "PayrollGetParams"
       },
       "response": {
         "status": "200",
