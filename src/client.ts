@@ -244,7 +244,7 @@ export class WarpAPI {
    *
    * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
    * @param {string | null | undefined} [opts.webhookSecret=process.env["WARP_WEBHOOK_SECRET"] ?? null]
-   * @param {string} [opts.baseURL=process.env["WARP_BASE_URL"] ?? https://api.joinwarp.com] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env["WARP_BASE_URL"] ?? https://api.joinwarp.com/public] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -268,10 +268,10 @@ export class WarpAPI {
       apiKey,
       webhookSecret,
       ...opts,
-      baseURL: baseURL || 'https://api.joinwarp.com',
+      baseURL: baseURL || 'https://api.joinwarp.com/public',
     };
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== '';
-    const defaultBaseURL = 'https://api.joinwarp.com';
+    const defaultBaseURL = 'https://api.joinwarp.com/public';
     this.baseURL = options.baseURL || defaultBaseURL;
     this.timeout = options.timeout ?? WarpAPI.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;

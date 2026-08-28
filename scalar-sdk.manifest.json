@@ -6,7 +6,7 @@
     "https://api.joinwarp.com"
   ],
   "environments": {
-    "production": "https://api.joinwarp.com"
+    "production": "https://api.joinwarp.com/public"
   },
   "environmentOrder": [
     "production"
