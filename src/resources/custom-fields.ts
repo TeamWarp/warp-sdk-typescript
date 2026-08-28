@@ -447,8 +447,62 @@ export namespace CustomFieldListValuesResponse {
      * @pattern ^cf_
      */
     fieldId: string;
-    value: Shared.Union12;
+    value:
+      | CustomFieldListValuesResponseItem.TextCustomFieldValue
+      | CustomFieldListValuesResponseItem.NumberCustomFieldValue
+      | CustomFieldListValuesResponseItem.DateCustomFieldValue
+      | CustomFieldListValuesResponseItem.BooleanCustomFieldValue
+      | CustomFieldListValuesResponseItem.CurrencyCustomFieldValue
+      | CustomFieldListValuesResponseItem.PercentageCustomFieldValue
+      | CustomFieldListValuesResponseItem.SelectCustomFieldValue
+      | CustomFieldListValuesResponseItem.MultiSelectCustomFieldValue;
     updatedAt: string;
+  }
+
+  export namespace CustomFieldListValuesResponseItem {
+    export interface TextCustomFieldValue {
+      type: 'text';
+      value: string;
+    }
+
+    export interface NumberCustomFieldValue {
+      type: 'number';
+      value: Shared.Union11;
+    }
+
+    export interface DateCustomFieldValue {
+      type: 'date';
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
+      value: string;
+    }
+
+    export interface BooleanCustomFieldValue {
+      type: 'boolean';
+      value: boolean;
+    }
+
+    export interface CurrencyCustomFieldValue {
+      type: 'currency';
+      amount: number;
+      currencyCode: Union1;
+    }
+
+    export interface PercentageCustomFieldValue {
+      type: 'percentage';
+      value: Shared.Union11;
+    }
+
+    export interface SelectCustomFieldValue {
+      type: 'select';
+      option: Shared.Objects3;
+    }
+
+    export interface MultiSelectCustomFieldValue {
+      type: 'multi_select';
+      options: Array<Shared.Objects3>;
+    }
   }
 }
 
@@ -498,7 +552,7 @@ export namespace CustomFieldUpsertValueParams {
 
   export interface Value5 {
     type: 'currency';
-    amount: number | Shared.Union2;
+    amount: number;
     currencyCode:
       | 'USD'
       | 'AUD'
@@ -595,8 +649,62 @@ export interface CustomFieldUpsertValueResponse {
    * @pattern ^cf_
    */
   fieldId: string;
-  value: Shared.Union12;
+  value:
+    | CustomFieldUpsertValueResponse.TextCustomFieldValue
+    | CustomFieldUpsertValueResponse.NumberCustomFieldValue
+    | CustomFieldUpsertValueResponse.DateCustomFieldValue
+    | CustomFieldUpsertValueResponse.BooleanCustomFieldValue
+    | CustomFieldUpsertValueResponse.CurrencyCustomFieldValue
+    | CustomFieldUpsertValueResponse.PercentageCustomFieldValue
+    | CustomFieldUpsertValueResponse.SelectCustomFieldValue
+    | CustomFieldUpsertValueResponse.MultiSelectCustomFieldValue;
   updatedAt: string;
+}
+
+export namespace CustomFieldUpsertValueResponse {
+  export interface TextCustomFieldValue {
+    type: 'text';
+    value: string;
+  }
+
+  export interface NumberCustomFieldValue {
+    type: 'number';
+    value: Shared.Union11;
+  }
+
+  export interface DateCustomFieldValue {
+    type: 'date';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    value: string;
+  }
+
+  export interface BooleanCustomFieldValue {
+    type: 'boolean';
+    value: boolean;
+  }
+
+  export interface CurrencyCustomFieldValue {
+    type: 'currency';
+    amount: number;
+    currencyCode: Union1;
+  }
+
+  export interface PercentageCustomFieldValue {
+    type: 'percentage';
+    value: Shared.Union11;
+  }
+
+  export interface SelectCustomFieldValue {
+    type: 'select';
+    option: Shared.Objects3;
+  }
+
+  export interface MultiSelectCustomFieldValue {
+    type: 'multi_select';
+    options: Array<Shared.Objects3>;
+  }
 }
 
 export interface CustomFieldClearValueParams {
