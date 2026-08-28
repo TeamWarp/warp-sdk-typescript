@@ -127,7 +127,7 @@ export interface OfferListParams {
    * @pattern ^offr_
    */
   beforeId?: string | null;
-  statuses?: Array<Shared.Union13> | null;
+  statuses?: Array<'draft' | 'sent' | 'accepted' | 'void'> | null;
   workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'> | null;
   /**
    * @format email
@@ -548,13 +548,13 @@ export interface OfferCreateResponse {
    * @pattern ^offr_
    */
   id: string;
-  status: Shared.Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferCreateResponse.Candidate;
   position: OfferCreateResponse.Position;
   department: OfferCreateResponse.Department | null;
-  workplace: OfferCreateResponse.Workplace | null;
-  manager: Shared.Union18 | null;
+  workplace: Shared.Union18 | null;
+  manager: OfferCreateResponse.Manager | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -855,12 +855,12 @@ export namespace OfferCreateResponse {
     name: string;
   }
 
-  export interface Workplace {
+  export interface Manager {
     /**
-     * @pattern ^wkp_
+     * @pattern ^wrk_
      */
     id: string;
-    name: string;
+    name: string | null;
   }
 
   export interface Compensation {

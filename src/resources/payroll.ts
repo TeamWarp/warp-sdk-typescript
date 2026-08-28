@@ -105,7 +105,7 @@ export interface PayrollListPaychecksParams {
   /**
    * Worker classifications in effect for the paycheck to include. Omit to include every worker type visible to the API key.
    */
-  workerTypes?: Array<Shared.Union21> | null;
+  workerTypes?: Array<'us_w2' | 'us_1099' | 'global_contractor'> | null;
   /**
    * Payroll calculation types to include, subject to the API key permissions.
    */
@@ -130,12 +130,12 @@ export interface PayrollListPaychecksParams {
    * Inclusive start of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayOnOrAfter?: Shared.Union20 | null;
+  paydayOnOrAfter?: Shared.Union21 | null;
   /**
    * Exclusive end of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayBefore?: Shared.Union20 | null;
+  paydayBefore?: Shared.Union21 | null;
 }
 
 export interface PayrollListPaychecksResponse {
@@ -199,7 +199,7 @@ export namespace PayrollGetPaycheckResponse {
      */
     lastName: string;
     displayName: string;
-    workerType: Shared.Union21 & string;
+    workerType: ('us_w2' | 'us_1099' | 'global_contractor') & string;
   }
 
   export interface Totals {
@@ -386,22 +386,22 @@ export interface PayrollListParams {
    * Inclusive start of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayOnOrAfter?: Shared.Union20 | null;
+  paydayOnOrAfter?: Shared.Union21 | null;
   /**
    * Exclusive end of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayBefore?: Shared.Union20 | null;
+  paydayBefore?: Shared.Union21 | null;
   /**
    * Inclusive start of the half-open pay-period-end range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  payPeriodEndOnOrAfter?: Shared.Union20 | null;
+  payPeriodEndOnOrAfter?: Shared.Union21 | null;
   /**
    * Exclusive end of the half-open pay-period-end range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  payPeriodEndBefore?: Shared.Union20 | null;
+  payPeriodEndBefore?: Shared.Union21 | null;
 }
 
 export interface PayrollListResponse {

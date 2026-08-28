@@ -447,62 +447,8 @@ export namespace CustomFieldListValuesResponse {
      * @pattern ^cf_
      */
     fieldId: string;
-    value:
-      | CustomFieldListValuesResponseItem.Value
-      | CustomFieldListValuesResponseItem.Value2
-      | CustomFieldListValuesResponseItem.Value3
-      | CustomFieldListValuesResponseItem.Value4
-      | CustomFieldListValuesResponseItem.Value5
-      | CustomFieldListValuesResponseItem.Value6
-      | CustomFieldListValuesResponseItem.Value7
-      | CustomFieldListValuesResponseItem.Value8;
+    value: Shared.Union12;
     updatedAt: string;
-  }
-
-  export namespace CustomFieldListValuesResponseItem {
-    export interface Value {
-      type: 'text';
-      value: string;
-    }
-
-    export interface Value2 {
-      type: 'number';
-      value: Shared.Union11;
-    }
-
-    export interface Value3 {
-      type: 'date';
-      /**
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string;
-    }
-
-    export interface Value4 {
-      type: 'boolean';
-      value: boolean;
-    }
-
-    export interface Value5 {
-      type: 'currency';
-      amount: Shared.Union11;
-      currencyCode: Union1;
-    }
-
-    export interface Value6 {
-      type: 'percentage';
-      value: Shared.Union11;
-    }
-
-    export interface Value7 {
-      type: 'select';
-      option: Shared.Objects3;
-    }
-
-    export interface Value8 {
-      type: 'multi_select';
-      options: Array<Shared.Objects3>;
-    }
   }
 }
 
@@ -649,62 +595,8 @@ export interface CustomFieldUpsertValueResponse {
    * @pattern ^cf_
    */
   fieldId: string;
-  value:
-    | CustomFieldUpsertValueResponse.Value
-    | CustomFieldUpsertValueResponse.Value2
-    | CustomFieldUpsertValueResponse.Value3
-    | CustomFieldUpsertValueResponse.Value4
-    | CustomFieldUpsertValueResponse.Value5
-    | CustomFieldUpsertValueResponse.Value6
-    | CustomFieldUpsertValueResponse.Value7
-    | CustomFieldUpsertValueResponse.Value8;
+  value: Shared.Union12;
   updatedAt: string;
-}
-
-export namespace CustomFieldUpsertValueResponse {
-  export interface Value {
-    type: 'text';
-    value: string;
-  }
-
-  export interface Value2 {
-    type: 'number';
-    value: Shared.Union11;
-  }
-
-  export interface Value3 {
-    type: 'date';
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    value: string;
-  }
-
-  export interface Value4 {
-    type: 'boolean';
-    value: boolean;
-  }
-
-  export interface Value5 {
-    type: 'currency';
-    amount: Shared.Union11;
-    currencyCode: Union1;
-  }
-
-  export interface Value6 {
-    type: 'percentage';
-    value: Shared.Union11;
-  }
-
-  export interface Value7 {
-    type: 'select';
-    option: Shared.Objects3;
-  }
-
-  export interface Value8 {
-    type: 'multi_select';
-    options: Array<Shared.Objects3>;
-  }
 }
 
 export interface CustomFieldClearValueParams {

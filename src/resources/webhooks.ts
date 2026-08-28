@@ -248,6 +248,7 @@ export namespace WorkerCreatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -257,6 +258,78 @@ export namespace WorkerCreatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -323,6 +396,7 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -332,6 +406,78 @@ export namespace WorkerUpdatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -398,6 +544,7 @@ export namespace WorkerDeletedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -407,6 +554,78 @@ export namespace WorkerDeletedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -473,6 +692,7 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -482,6 +702,78 @@ export namespace WorkerInviteSentWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -548,6 +840,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -557,6 +850,78 @@ export namespace WorkerInviteAcceptedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -623,6 +988,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -632,6 +998,78 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -698,6 +1136,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -707,6 +1146,78 @@ export namespace WorkerOffboardingStartedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -773,6 +1284,7 @@ export namespace WorkerOffboardedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -782,6 +1294,78 @@ export namespace WorkerOffboardedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
@@ -848,6 +1432,7 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Payload.CustomField> | null;
   }
 
   export namespace Payload {
@@ -857,6 +1442,78 @@ export namespace WorkerReactivatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: 'text' | 'number' | 'date' | 'boolean' | 'currency' | 'percentage' | 'select' | 'multi_select';
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value:
+        | CustomField.Value
+        | CustomField.Value2
+        | CustomField.Value3
+        | CustomField.Value4
+        | CustomField.Value5
+        | CustomField.Value6
+        | CustomField.Value7
+        | CustomField.Value8
+        | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
+
+    export namespace CustomField {
+      export interface Value {
+        type: 'text';
+        value: string;
+      }
+
+      export interface Value2 {
+        type: 'number';
+        value: Union1API.Union1;
+      }
+
+      export interface Value3 {
+        type: 'date';
+        /**
+         * @pattern ^\d{4}-\d{2}-\d{2}$
+         */
+        value: string;
+      }
+
+      export interface Value4 {
+        type: 'boolean';
+        value: boolean;
+      }
+
+      export interface Value5 {
+        type: 'currency';
+        amount: Union1API.Union1;
+        currencyCode: Shared.Union;
+      }
+
+      export interface Value6 {
+        type: 'percentage';
+        value: Union1API.Union1;
+      }
+
+      export interface Value7 {
+        type: 'select';
+        option: Shared.Objects;
+      }
+
+      export interface Value8 {
+        type: 'multi_select';
+        options: Array<Shared.Objects>;
+      }
     }
   }
 }
