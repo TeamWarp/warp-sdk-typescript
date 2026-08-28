@@ -70,11 +70,11 @@ export interface DepartmentListParams {
   /**
    * @pattern ^dpt_
    */
-  afterId?: Shared.Union13 | null;
+  afterId?: Shared.Union12 | null;
   /**
    * @pattern ^dpt_
    */
-  beforeId?: Shared.Union13 | null;
+  beforeId?: Shared.Union12 | null;
 }
 
 export interface DepartmentListResponse {

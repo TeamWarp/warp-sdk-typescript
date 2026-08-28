@@ -427,6 +427,597 @@
       }
     },
     {
+      "name": "public_text_worker_custom_field",
+      "source": "public_text_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "text"
+              ],
+              "names": [
+                "Text"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "union_2",
+      "source": "union_2",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "Infinity",
+          "-Infinity",
+          "NaN"
+        ],
+        "names": [
+          "Infinity",
+          "Infinity",
+          "NaN"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_number_worker_custom_field",
+      "source": "public_number_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "number"
+              ],
+              "names": [
+                "Number"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "union_11"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_date_worker_custom_field",
+      "source": "public_date_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "date"
+              ],
+              "names": [
+                "Date"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_boolean_worker_custom_field",
+      "source": "public_boolean_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "boolean"
+              ],
+              "names": [
+                "Boolean"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "boolean"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_currency_worker_custom_field",
+      "source": "public_currency_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "currency"
+              ],
+              "names": [
+                "Currency"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "integer"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "currencyCode",
+            "publicName": "currencyCode",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "union_1"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_percentage_worker_custom_field",
+      "source": "public_percentage_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "percentage"
+              ],
+              "names": [
+                "Percentage"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "union_11"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "objects",
       "source": "objects",
       "publicAliases": [],
@@ -559,6 +1150,244 @@
           }
         ],
         "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_select_worker_custom_field",
+      "source": "public_select_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "select"
+              ],
+              "names": [
+                "Select"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "option",
+            "publicName": "option",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "objects_3"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_multi_select_worker_custom_field",
+      "source": "public_multi_select_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "multi_select"
+              ],
+              "names": [
+                "MultiSelect"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "redacted",
+            "publicName": "redacted",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
+            }
+          },
+          {
+            "name": "options",
+            "publicName": "options",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "array",
+                  "items": {
+                    "kind": "ref",
+                    "name": "objects_3"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_worker_custom_field",
+      "source": "public_worker_custom_field",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "ref",
+            "name": "public_text_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_number_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_date_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_boolean_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_currency_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_percentage_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_select_worker_custom_field"
+          },
+          {
+            "kind": "ref",
+            "name": "public_multi_select_worker_custom_field"
+          }
+        ],
+        "variantNames": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
       }
     },
     {
@@ -1835,30 +2664,6 @@
       }
     },
     {
-      "name": "union_2",
-      "source": "union_2",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "Infinity",
-          "-Infinity",
-          "NaN"
-        ],
-        "names": [
-          "Infinity",
-          "Infinity",
-          "NaN"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
       "name": "percentage_contribution",
       "source": "percentage_contribution",
       "publicAliases": [],
@@ -2978,300 +3783,380 @@
       }
     },
     {
-      "name": "union_12",
-      "source": "union_12",
+      "name": "text_custom_field_value",
+      "source": "text_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "text"
+              ],
+              "names": [
+                "Text"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "number_custom_field_value",
+      "source": "number_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "number"
+              ],
+              "names": [
+                "Number"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_11"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "date_custom_field_value",
+      "source": "date_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "date"
+              ],
+              "names": [
+                "Date"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "boolean_custom_field_value",
+      "source": "boolean_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "boolean"
+              ],
+              "names": [
+                "Boolean"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "currency_custom_field_value",
+      "source": "currency_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "currency"
+              ],
+              "names": [
+                "Currency"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currencyCode",
+            "publicName": "currencyCode",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_1"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "percentage_custom_field_value",
+      "source": "percentage_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "percentage"
+              ],
+              "names": [
+                "Percentage"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "publicName": "value",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_11"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "select_custom_field_value",
+      "source": "select_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "select"
+              ],
+              "names": [
+                "Select"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "option",
+            "publicName": "option",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "objects_3"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "multi_select_custom_field_value",
+      "source": "multi_select_custom_field_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "multi_select"
+              ],
+              "names": [
+                "MultiSelect"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "options",
+            "publicName": "options",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "array",
+              "items": {
+                "kind": "ref",
+                "name": "objects_3"
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_custom_field_value_output",
+      "source": "public_custom_field_value_output",
       "publicAliases": [],
       "deprecated": false,
       "type": {
         "kind": "union",
         "variants": [
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "text"
-                  ],
-                  "names": [
-                    "Text"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "value",
-                "publicName": "value",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string"
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "text_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "number"
-                  ],
-                  "names": [
-                    "Number"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "value",
-                "publicName": "value",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "ref",
-                  "name": "union_11"
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "number_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "date"
-                  ],
-                  "names": [
-                    "Date"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "value",
-                "publicName": "value",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  }
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "date_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "boolean"
-                  ],
-                  "names": [
-                    "Boolean"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "value",
-                "publicName": "value",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "boolean"
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "boolean_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "currency"
-                  ],
-                  "names": [
-                    "Currency"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "amount",
-                "publicName": "amount",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "ref",
-                  "name": "union_11"
-                }
-              },
-              {
-                "name": "currencyCode",
-                "publicName": "currencyCode",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "ref",
-                  "name": "union_1"
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "currency_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "percentage"
-                  ],
-                  "names": [
-                    "Percentage"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "value",
-                "publicName": "value",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "ref",
-                  "name": "union_11"
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "percentage_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "select"
-                  ],
-                  "names": [
-                    "Select"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "option",
-                "publicName": "option",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "ref",
-                  "name": "objects_3"
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "select_custom_field_value"
           },
           {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "type",
-                "publicName": "type",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "enum",
-                  "values": [
-                    "multi_select"
-                  ],
-                  "names": [
-                    "MultiSelect"
-                  ],
-                  "deprecations": [
-                    false
-                  ]
-                }
-              },
-              {
-                "name": "options",
-                "publicName": "options",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "array",
-                  "items": {
-                    "kind": "ref",
-                    "name": "objects_3"
-                  }
-                }
-              }
-            ],
-            "additionalProperties": false
+            "kind": "ref",
+            "name": "multi_select_custom_field_value"
           }
         ],
         "variantNames": [
@@ -3340,7 +4225,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_12"
+              "name": "public_custom_field_value_output"
             }
           },
           {
@@ -3451,8 +4336,8 @@
       }
     },
     {
-      "name": "union_13",
-      "source": "union_13",
+      "name": "union_12",
+      "source": "union_12",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3504,7 +4389,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_13"
+              "name": "union_12"
             }
           },
           {
@@ -3585,8 +4470,8 @@
       }
     },
     {
-      "name": "union_14",
-      "source": "union_14",
+      "name": "union_13",
+      "source": "union_13",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3612,8 +4497,8 @@
       }
     },
     {
-      "name": "union_15",
-      "source": "union_15",
+      "name": "union_14",
+      "source": "union_14",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3745,8 +4630,8 @@
       }
     },
     {
-      "name": "union_16",
-      "source": "union_16",
+      "name": "union_15",
+      "source": "union_15",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4553,7 +5438,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_16"
+              "name": "union_15"
             }
           },
           {
@@ -4579,8 +5464,8 @@
       }
     },
     {
-      "name": "union_17",
-      "source": "union_17",
+      "name": "union_16",
+      "source": "union_16",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4628,8 +5513,8 @@
       }
     },
     {
-      "name": "union_18",
-      "source": "union_18",
+      "name": "union_17",
+      "source": "union_17",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4677,8 +5562,8 @@
       }
     },
     {
-      "name": "union_19",
-      "source": "union_19",
+      "name": "union_18",
+      "source": "union_18",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4734,8 +5619,8 @@
       }
     },
     {
-      "name": "union_20",
-      "source": "union_20",
+      "name": "union_19",
+      "source": "union_19",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4843,7 +5728,7 @@
                   "deprecated": false,
                   "type": {
                     "kind": "ref",
-                    "name": "union_20"
+                    "name": "union_19"
                   }
                 }
               ],
@@ -4857,7 +5742,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_20"
+              "name": "union_19"
             }
           },
           {
@@ -4867,7 +5752,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_20"
+              "name": "union_19"
             }
           },
           {
@@ -4971,7 +5856,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_14"
+              "name": "union_13"
             }
           },
           {
@@ -4981,7 +5866,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_15"
+              "name": "union_14"
             }
           },
           {
@@ -5011,7 +5896,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_17"
+              "name": "union_16"
             }
           },
           {
@@ -5021,7 +5906,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_18"
+              "name": "union_17"
             }
           },
           {
@@ -5031,7 +5916,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_19"
+              "name": "union_18"
             }
           },
           {
@@ -5421,7 +6306,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_14"
+              "name": "union_13"
             }
           },
           {
@@ -5818,8 +6703,8 @@
       }
     },
     {
-      "name": "union_21",
-      "source": "union_21",
+      "name": "union_20",
+      "source": "union_20",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -7657,8 +8542,8 @@
       }
     },
     {
-      "name": "union_22",
-      "source": "union_22",
+      "name": "union_21",
+      "source": "union_21",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -7983,7 +8868,7 @@
               "parts": [
                 {
                   "kind": "ref",
-                  "name": "union_22"
+                  "name": "union_21"
                 },
                 {
                   "kind": "primitive",
@@ -9646,8 +10531,8 @@
       }
     },
     {
-      "name": "union_23",
-      "source": "union_23",
+      "name": "union_22",
+      "source": "union_22",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9709,7 +10594,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_23"
+              "name": "union_22"
             }
           },
           {
@@ -9727,8 +10612,8 @@
       }
     },
     {
-      "name": "union_24",
-      "source": "union_24",
+      "name": "union_23",
+      "source": "union_23",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9748,8 +10633,8 @@
       }
     },
     {
-      "name": "union_25",
-      "source": "union_25",
+      "name": "union_24",
+      "source": "union_24",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9766,8 +10651,8 @@
       }
     },
     {
-      "name": "union_26",
-      "source": "union_26",
+      "name": "union_25",
+      "source": "union_25",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9858,8 +10743,8 @@
       }
     },
     {
-      "name": "union_27",
-      "source": "union_27",
+      "name": "union_26",
+      "source": "union_26",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9891,8 +10776,8 @@
       }
     },
     {
-      "name": "union_28",
-      "source": "union_28",
+      "name": "union_27",
+      "source": "union_27",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9912,8 +10797,8 @@
       }
     },
     {
-      "name": "union_29",
-      "source": "union_29",
+      "name": "union_28",
+      "source": "union_28",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9933,8 +10818,8 @@
       }
     },
     {
-      "name": "union_30",
-      "source": "union_30",
+      "name": "union_29",
+      "source": "union_29",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -9957,8 +10842,8 @@
       }
     },
     {
-      "name": "union_31",
-      "source": "union_31",
+      "name": "union_30",
+      "source": "union_30",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -9981,8 +10866,8 @@
       }
     },
     {
-      "name": "union_32",
-      "source": "union_32",
+      "name": "union_31",
+      "source": "union_31",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10000,8 +10885,8 @@
       }
     },
     {
-      "name": "union_33",
-      "source": "union_33",
+      "name": "union_32",
+      "source": "union_32",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10018,8 +10903,8 @@
       }
     },
     {
-      "name": "union_34",
-      "source": "union_34",
+      "name": "union_33",
+      "source": "union_33",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10042,8 +10927,8 @@
       }
     },
     {
-      "name": "union_35",
-      "source": "union_35",
+      "name": "union_34",
+      "source": "union_34",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10094,8 +10979,8 @@
       }
     },
     {
-      "name": "union_36",
-      "source": "union_36",
+      "name": "union_35",
+      "source": "union_35",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10120,73 +11005,28 @@
         "kind": "union",
         "variants": [
           {
+            "kind": "primitive",
+            "type": "string"
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "union_36",
+      "source": "union_36",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
             "kind": "array",
             "items": {
-              "kind": "object",
-              "properties": [
-                {
-                  "name": "id",
-                  "publicName": "id",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "primitive",
-                    "type": "string",
-                    "validation": {
-                      "pattern": "^cf_"
-                    }
-                  }
-                },
-                {
-                  "name": "name",
-                  "publicName": "name",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "primitive",
-                    "type": "string"
-                  }
-                },
-                {
-                  "name": "type",
-                  "publicName": "type",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "ref",
-                    "name": "union_4"
-                  }
-                },
-                {
-                  "name": "value",
-                  "publicName": "value",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "union",
-                    "variants": [
-                      {
-                        "kind": "ref",
-                        "name": "union_12"
-                      },
-                      {
-                        "kind": "null"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "redacted",
-                  "publicName": "redacted",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "primitive",
-                    "type": "boolean"
-                  }
-                }
-              ],
-              "additionalProperties": false
+              "kind": "ref",
+              "name": "public_worker_custom_field"
             }
           },
           {
@@ -10239,7 +11079,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_28"
+              "name": "union_27"
             }
           },
           {
@@ -10249,7 +11089,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_27"
+              "name": "union_26"
             }
           },
           {
@@ -10272,7 +11112,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_29"
+              "name": "union_28"
             }
           },
           {
@@ -10288,7 +11128,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_30"
+              "name": "union_29"
             }
           },
           {
@@ -10304,7 +11144,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_31"
+              "name": "union_30"
             }
           },
           {
@@ -10357,7 +11197,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_32"
+              "name": "union_31"
             }
           },
           {
@@ -10367,7 +11207,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_33"
+              "name": "union_32"
             }
           },
           {
@@ -10399,7 +11239,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_34"
+              "name": "union_33"
             }
           },
           {
@@ -10418,7 +11258,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_35"
+              "name": "union_34"
             }
           },
           {
@@ -10428,7 +11268,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_36"
+              "name": "union_35"
             }
           },
           {
@@ -10438,7 +11278,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_36"
             }
           }
         ],
@@ -11552,7 +12392,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union_16"
+                        "name": "union_15"
                       }
                     }
                   ],
