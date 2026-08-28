@@ -226,8 +226,8 @@ export interface WorkerListParams {
    * @pattern ^wrk_
    */
   beforeId?: string | null;
-  statuses?: Array<Shared.Union26> | null;
-  types?: Array<Shared.Union27> | null;
+  statuses?: Array<Shared.Union27> | null;
+  types?: Array<Shared.Union28> | null;
   workEmail?: string | null;
 }
 
@@ -244,8 +244,8 @@ export namespace WorkerListResponse {
      */
     id: string;
     position: string;
-    type: Shared.Union27;
-    status: Shared.Union26;
+    type: Shared.Union28;
+    status: Shared.Union27;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -253,9 +253,9 @@ export namespace WorkerListResponse {
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
-    endDate: Shared.Union28 | null;
-    isBusiness: Shared.Union29 | null;
-    businessName: Shared.Union30 | null;
+    endDate: Shared.Union29 | null;
+    isBusiness: Shared.Union30 | null;
+    businessName: Shared.Union31 | null;
     firstName: string;
     lastName: string;
     /**
@@ -265,8 +265,8 @@ export namespace WorkerListResponse {
     /**
      * @format email
      */
-    workEmail: Shared.Union31 | null;
-    preferredName: Shared.Union32 | null;
+    workEmail: Shared.Union32 | null;
+    preferredName: Shared.Union33 | null;
     /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
@@ -274,15 +274,35 @@ export namespace WorkerListResponse {
     /**
      * The IANA timezone of the worker (e.g., America/New_York).
      */
-    timeZone: Shared.Union33 | null;
+    timeZone: Shared.Union34 | null;
     /**
      * The department the worker belongs to, or null if unassigned.
      */
-    department: Shared.Union34 | null;
+    department: Shared.Union35 | null;
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    customFields?: Array<Data.CustomField> | null;
+  }
+
+  export namespace Data {
+    export interface CustomField {
+      /**
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      type: Shared.Union4;
+      /**
+       * The worker’s value; null when unset or when the field is redacted for this API key.
+       */
+      value: Shared.Union12 | null;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+       */
+      redacted: boolean;
+    }
   }
 }
 
@@ -292,8 +312,8 @@ export interface WorkerGetResponse {
    */
   id: string;
   position: string;
-  type: Shared.Union27;
-  status: Shared.Union26;
+  type: Shared.Union28;
+  status: Shared.Union27;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -301,9 +321,9 @@ export interface WorkerGetResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union28 | null;
-  isBusiness: Shared.Union29 | null;
-  businessName: Shared.Union30 | null;
+  endDate: Shared.Union29 | null;
+  isBusiness: Shared.Union30 | null;
+  businessName: Shared.Union31 | null;
   firstName: string;
   lastName: string;
   /**
@@ -313,8 +333,8 @@ export interface WorkerGetResponse {
   /**
    * @format email
    */
-  workEmail: Shared.Union31 | null;
-  preferredName: Shared.Union32 | null;
+  workEmail: Shared.Union32 | null;
+  preferredName: Shared.Union33 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -322,15 +342,35 @@ export interface WorkerGetResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union33 | null;
+  timeZone: Shared.Union34 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union34 | null;
+  department: Shared.Union35 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: Shared.PublicWorkerCompensation | null;
+  customFields?: Array<WorkerGetResponse.CustomField> | null;
+}
+
+export namespace WorkerGetResponse {
+  export interface CustomField {
+    /**
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    type: Shared.Union4;
+    /**
+     * The worker’s value; null when unset or when the field is redacted for this API key.
+     */
+    value: Shared.Union12 | null;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+     */
+    redacted: boolean;
+  }
 }
 
 export interface WorkerCreateEmployeeParams {
@@ -399,8 +439,8 @@ export interface WorkerCreateEmployeeResponse {
    */
   id: string;
   position: string;
-  type: Shared.Union27;
-  status: Shared.Union26;
+  type: Shared.Union28;
+  status: Shared.Union27;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -408,9 +448,9 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union28 | null;
-  isBusiness: Shared.Union29 | null;
-  businessName: Shared.Union30 | null;
+  endDate: Shared.Union29 | null;
+  isBusiness: Shared.Union30 | null;
+  businessName: Shared.Union31 | null;
   firstName: string;
   lastName: string;
   /**
@@ -420,8 +460,8 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * @format email
    */
-  workEmail: Shared.Union31 | null;
-  preferredName: Shared.Union32 | null;
+  workEmail: Shared.Union32 | null;
+  preferredName: Shared.Union33 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -429,15 +469,35 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union33 | null;
+  timeZone: Shared.Union34 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union34 | null;
+  department: Shared.Union35 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: Shared.PublicWorkerCompensation | null;
+  customFields?: Array<WorkerCreateEmployeeResponse.CustomField> | null;
+}
+
+export namespace WorkerCreateEmployeeResponse {
+  export interface CustomField {
+    /**
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    type: Shared.Union4;
+    /**
+     * The worker’s value; null when unset or when the field is redacted for this API key.
+     */
+    value: Shared.Union12 | null;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+     */
+    redacted: boolean;
+  }
 }
 
 export interface WorkerCreateContractorParams {
@@ -819,8 +879,8 @@ export interface WorkerCreateContractorResponse {
    */
   id: string;
   position: string;
-  type: Shared.Union27;
-  status: Shared.Union26;
+  type: Shared.Union28;
+  status: Shared.Union27;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -828,9 +888,9 @@ export interface WorkerCreateContractorResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union28 | null;
-  isBusiness: Shared.Union29 | null;
-  businessName: Shared.Union30 | null;
+  endDate: Shared.Union29 | null;
+  isBusiness: Shared.Union30 | null;
+  businessName: Shared.Union31 | null;
   firstName: string;
   lastName: string;
   /**
@@ -840,8 +900,8 @@ export interface WorkerCreateContractorResponse {
   /**
    * @format email
    */
-  workEmail: Shared.Union31 | null;
-  preferredName: Shared.Union32 | null;
+  workEmail: Shared.Union32 | null;
+  preferredName: Shared.Union33 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -849,15 +909,35 @@ export interface WorkerCreateContractorResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union33 | null;
+  timeZone: Shared.Union34 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union34 | null;
+  department: Shared.Union35 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: Shared.PublicWorkerCompensation | null;
+  customFields?: Array<WorkerCreateContractorResponse.CustomField> | null;
+}
+
+export namespace WorkerCreateContractorResponse {
+  export interface CustomField {
+    /**
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    type: Shared.Union4;
+    /**
+     * The worker’s value; null when unset or when the field is redacted for this API key.
+     */
+    value: Shared.Union12 | null;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+     */
+    redacted: boolean;
+  }
 }
 
 export interface WorkerInviteResponse {
@@ -866,8 +946,8 @@ export interface WorkerInviteResponse {
    */
   id: string;
   position: string;
-  type: Shared.Union27;
-  status: Shared.Union26;
+  type: Shared.Union28;
+  status: Shared.Union27;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -875,9 +955,9 @@ export interface WorkerInviteResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union28 | null;
-  isBusiness: Shared.Union29 | null;
-  businessName: Shared.Union30 | null;
+  endDate: Shared.Union29 | null;
+  isBusiness: Shared.Union30 | null;
+  businessName: Shared.Union31 | null;
   firstName: string;
   lastName: string;
   /**
@@ -887,8 +967,8 @@ export interface WorkerInviteResponse {
   /**
    * @format email
    */
-  workEmail: Shared.Union31 | null;
-  preferredName: Shared.Union32 | null;
+  workEmail: Shared.Union32 | null;
+  preferredName: Shared.Union33 | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -896,15 +976,35 @@ export interface WorkerInviteResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union33 | null;
+  timeZone: Shared.Union34 | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union34 | null;
+  department: Shared.Union35 | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: Shared.PublicWorkerCompensation | null;
+  customFields?: Array<WorkerInviteResponse.CustomField> | null;
+}
+
+export namespace WorkerInviteResponse {
+  export interface CustomField {
+    /**
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    type: Shared.Union4;
+    /**
+     * The worker’s value; null when unset or when the field is redacted for this API key.
+     */
+    value: Shared.Union12 | null;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value is withheld, not absent — absence of a value does not imply the worker has none.
+     */
+    redacted: boolean;
+  }
 }
 export declare namespace Workers {
   export {

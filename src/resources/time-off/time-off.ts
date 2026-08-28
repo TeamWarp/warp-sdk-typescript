@@ -79,11 +79,11 @@ export interface TimeOffListAssignmentsParams {
   /**
    * @pattern ^wrkasn_
    */
-  afterId?: Shared.Union23 | null;
+  afterId?: Shared.Union24 | null;
   /**
    * @pattern ^wrkasn_
    */
-  beforeId?: Shared.Union23 | null;
+  beforeId?: Shared.Union24 | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
 }
@@ -117,15 +117,15 @@ export interface TimeOffListBalancesParams {
   /**
    * @pattern ^wrkasn_
    */
-  afterId?: Shared.Union23 | null;
+  afterId?: Shared.Union24 | null;
   /**
    * @pattern ^wrkasn_
    */
-  beforeId?: Shared.Union23 | null;
+  beforeId?: Shared.Union24 | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
-  startDate?: Shared.Union24 | null;
-  endDate?: Shared.Union24 | null;
+  startDate?: Shared.Union25 | null;
+  endDate?: Shared.Union25 | null;
 }
 
 export interface TimeOffListBalancesResponse {
@@ -157,13 +157,13 @@ export interface TimeOffListRequestsParams {
   limit: string | null;
   afterId?: string | null;
   beforeId?: string | null;
-  statuses?: Array<Shared.Union25> | null;
+  statuses?: Array<Shared.Union26> | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
-  startsOnOrAfter?: Shared.Union24 | null;
-  startsBefore?: Shared.Union24 | null;
-  endsOnOrAfter?: Shared.Union24 | null;
-  endsBefore?: Shared.Union24 | null;
+  startsOnOrAfter?: Shared.Union25 | null;
+  startsBefore?: Shared.Union25 | null;
+  endsOnOrAfter?: Shared.Union25 | null;
+  endsBefore?: Shared.Union25 | null;
 }
 
 export interface TimeOffListRequestsResponse {
@@ -183,7 +183,7 @@ export namespace TimeOffListRequestsResponse {
      * @pattern ^wrk_
      */
     workerId: string;
-    status: Shared.Union25;
+    status: Shared.Union26;
     startAt: string;
     startRangeType: 'date' | 'datetime';
     endAt: string;

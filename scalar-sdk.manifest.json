@@ -1,7 +1,7 @@
 {
   "name": "WarpApi",
   "slug": "warpApi",
-  "generatorVersion": "0.29.0",
+  "generatorVersion": "0.30.1",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -417,6 +417,141 @@
               ],
               "examples": "$150,000.00 / yr"
             },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "objects",
+      "source": "objects",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^cf_"
+              }
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_3"
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_4"
+            }
+          },
+          {
+            "name": "config",
+            "publicName": "config",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "objects_1"
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_5"
+            }
+          },
+          {
+            "name": "category",
+            "publicName": "category",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_6"
+            }
+          },
+          {
+            "name": "accessLevel",
+            "publicName": "accessLevel",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_7"
+            }
+          },
+          {
+            "name": "inputBy",
+            "publicName": "inputBy",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_8"
+            }
+          },
+          {
+            "name": "required",
+            "publicName": "required",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_9"
+            }
+          },
+          {
+            "name": "canWrite",
+            "publicName": "canWrite",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "createdAt",
+            "publicName": "createdAt",
+            "required": true,
+            "deprecated": false,
             "type": {
               "kind": "primitive",
               "type": "string"
@@ -2346,141 +2481,6 @@
       }
     },
     {
-      "name": "objects",
-      "source": "objects",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^cf_"
-              }
-            }
-          },
-          {
-            "name": "name",
-            "publicName": "name",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "publicName": "description",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_3"
-            }
-          },
-          {
-            "name": "type",
-            "publicName": "type",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_4"
-            }
-          },
-          {
-            "name": "config",
-            "publicName": "config",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "objects_1"
-            }
-          },
-          {
-            "name": "status",
-            "publicName": "status",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_5"
-            }
-          },
-          {
-            "name": "category",
-            "publicName": "category",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_6"
-            }
-          },
-          {
-            "name": "accessLevel",
-            "publicName": "accessLevel",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_7"
-            }
-          },
-          {
-            "name": "inputBy",
-            "publicName": "inputBy",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_8"
-            }
-          },
-          {
-            "name": "required",
-            "publicName": "required",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_9"
-            }
-          },
-          {
-            "name": "canWrite",
-            "publicName": "canWrite",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "createdAt",
-            "publicName": "createdAt",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
       "name": "union_10",
       "source": "union_10",
       "publicAliases": [],
@@ -2978,6 +2978,315 @@
       }
     },
     {
+      "name": "union_12",
+      "source": "union_12",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "text"
+                  ],
+                  "names": [
+                    "Text"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "value",
+                "publicName": "value",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "number"
+                  ],
+                  "names": [
+                    "Number"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "value",
+                "publicName": "value",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "ref",
+                  "name": "union_11"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "date"
+                  ],
+                  "names": [
+                    "Date"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "value",
+                "publicName": "value",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "boolean"
+                  ],
+                  "names": [
+                    "Boolean"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "value",
+                "publicName": "value",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "primitive",
+                  "type": "boolean"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "currency"
+                  ],
+                  "names": [
+                    "Currency"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "amount",
+                "publicName": "amount",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "ref",
+                  "name": "union_11"
+                }
+              },
+              {
+                "name": "currencyCode",
+                "publicName": "currencyCode",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "ref",
+                  "name": "union_1"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "percentage"
+                  ],
+                  "names": [
+                    "Percentage"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "value",
+                "publicName": "value",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "ref",
+                  "name": "union_11"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "select"
+                  ],
+                  "names": [
+                    "Select"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "option",
+                "publicName": "option",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "ref",
+                  "name": "objects_3"
+                }
+              }
+            ],
+            "additionalProperties": false
+          },
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "type",
+                "publicName": "type",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "enum",
+                  "values": [
+                    "multi_select"
+                  ],
+                  "names": [
+                    "MultiSelect"
+                  ],
+                  "deprecations": [
+                    false
+                  ]
+                }
+              },
+              {
+                "name": "options",
+                "publicName": "options",
+                "required": true,
+                "deprecated": false,
+                "type": {
+                  "kind": "array",
+                  "items": {
+                    "kind": "ref",
+                    "name": "objects_3"
+                  }
+                }
+              }
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "variantNames": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
       "name": "objects_4",
       "source": "objects_4",
       "publicAliases": [],
@@ -3030,307 +3339,8 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "text"
-                        ],
-                        "names": [
-                          "Text"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "value",
-                      "publicName": "value",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "primitive",
-                        "type": "string"
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "number"
-                        ],
-                        "names": [
-                          "Number"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "value",
-                      "publicName": "value",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "ref",
-                        "name": "union_11"
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "date"
-                        ],
-                        "names": [
-                          "Date"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "value",
-                      "publicName": "value",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "primitive",
-                        "type": "string",
-                        "validation": {
-                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                        }
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "boolean"
-                        ],
-                        "names": [
-                          "Boolean"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "value",
-                      "publicName": "value",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "primitive",
-                        "type": "boolean"
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "currency"
-                        ],
-                        "names": [
-                          "Currency"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "amount",
-                      "publicName": "amount",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "ref",
-                        "name": "union_11"
-                      }
-                    },
-                    {
-                      "name": "currencyCode",
-                      "publicName": "currencyCode",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "ref",
-                        "name": "union_1"
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "percentage"
-                        ],
-                        "names": [
-                          "Percentage"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "value",
-                      "publicName": "value",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "ref",
-                        "name": "union_11"
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "select"
-                        ],
-                        "names": [
-                          "Select"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "option",
-                      "publicName": "option",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "ref",
-                        "name": "objects_3"
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "type",
-                      "publicName": "type",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "enum",
-                        "values": [
-                          "multi_select"
-                        ],
-                        "names": [
-                          "MultiSelect"
-                        ],
-                        "deprecations": [
-                          false
-                        ]
-                      }
-                    },
-                    {
-                      "name": "options",
-                      "publicName": "options",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "array",
-                        "items": {
-                          "kind": "ref",
-                          "name": "objects_3"
-                        }
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                }
-              ],
-              "variantNames": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-              ]
+              "kind": "ref",
+              "name": "union_12"
             }
           },
           {
@@ -3441,8 +3451,8 @@
       }
     },
     {
-      "name": "union_12",
-      "source": "union_12",
+      "name": "union_13",
+      "source": "union_13",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3494,7 +3504,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_12"
+              "name": "union_13"
             }
           },
           {
@@ -3575,8 +3585,8 @@
       }
     },
     {
-      "name": "union_13",
-      "source": "union_13",
+      "name": "union_14",
+      "source": "union_14",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3602,8 +3612,8 @@
       }
     },
     {
-      "name": "union_14",
-      "source": "union_14",
+      "name": "union_15",
+      "source": "union_15",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -3735,8 +3745,8 @@
       }
     },
     {
-      "name": "union_15",
-      "source": "union_15",
+      "name": "union_16",
+      "source": "union_16",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4543,7 +4553,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_15"
+              "name": "union_16"
             }
           },
           {
@@ -4569,8 +4579,8 @@
       }
     },
     {
-      "name": "union_16",
-      "source": "union_16",
+      "name": "union_17",
+      "source": "union_17",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4618,8 +4628,8 @@
       }
     },
     {
-      "name": "union_17",
-      "source": "union_17",
+      "name": "union_18",
+      "source": "union_18",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4667,8 +4677,8 @@
       }
     },
     {
-      "name": "union_18",
-      "source": "union_18",
+      "name": "union_19",
+      "source": "union_19",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4724,8 +4734,8 @@
       }
     },
     {
-      "name": "union_19",
-      "source": "union_19",
+      "name": "union_20",
+      "source": "union_20",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -4833,7 +4843,7 @@
                   "deprecated": false,
                   "type": {
                     "kind": "ref",
-                    "name": "union_19"
+                    "name": "union_20"
                   }
                 }
               ],
@@ -4847,7 +4857,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_19"
+              "name": "union_20"
             }
           },
           {
@@ -4857,7 +4867,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_19"
+              "name": "union_20"
             }
           },
           {
@@ -4961,7 +4971,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_13"
+              "name": "union_14"
             }
           },
           {
@@ -4971,7 +4981,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_14"
+              "name": "union_15"
             }
           },
           {
@@ -5001,7 +5011,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_16"
+              "name": "union_17"
             }
           },
           {
@@ -5011,7 +5021,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_17"
+              "name": "union_18"
             }
           },
           {
@@ -5021,7 +5031,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_18"
+              "name": "union_19"
             }
           },
           {
@@ -5411,7 +5421,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_13"
+              "name": "union_14"
             }
           },
           {
@@ -5808,8 +5818,8 @@
       }
     },
     {
-      "name": "union_20",
-      "source": "union_20",
+      "name": "union_21",
+      "source": "union_21",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -7647,8 +7657,8 @@
       }
     },
     {
-      "name": "union_21",
-      "source": "union_21",
+      "name": "union_22",
+      "source": "union_22",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -7973,7 +7983,7 @@
               "parts": [
                 {
                   "kind": "ref",
-                  "name": "union_21"
+                  "name": "union_22"
                 },
                 {
                   "kind": "primitive",
@@ -9636,8 +9646,8 @@
       }
     },
     {
-      "name": "union_22",
-      "source": "union_22",
+      "name": "union_23",
+      "source": "union_23",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9699,7 +9709,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_22"
+              "name": "union_23"
             }
           },
           {
@@ -9717,8 +9727,8 @@
       }
     },
     {
-      "name": "union_23",
-      "source": "union_23",
+      "name": "union_24",
+      "source": "union_24",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9738,8 +9748,8 @@
       }
     },
     {
-      "name": "union_24",
-      "source": "union_24",
+      "name": "union_25",
+      "source": "union_25",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9756,8 +9766,8 @@
       }
     },
     {
-      "name": "union_25",
-      "source": "union_25",
+      "name": "union_26",
+      "source": "union_26",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9848,8 +9858,8 @@
       }
     },
     {
-      "name": "union_26",
-      "source": "union_26",
+      "name": "union_27",
+      "source": "union_27",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9881,8 +9891,8 @@
       }
     },
     {
-      "name": "union_27",
-      "source": "union_27",
+      "name": "union_28",
+      "source": "union_28",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9902,8 +9912,8 @@
       }
     },
     {
-      "name": "union_28",
-      "source": "union_28",
+      "name": "union_29",
+      "source": "union_29",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9923,8 +9933,8 @@
       }
     },
     {
-      "name": "union_29",
-      "source": "union_29",
+      "name": "union_30",
+      "source": "union_30",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -9947,8 +9957,8 @@
       }
     },
     {
-      "name": "union_30",
-      "source": "union_30",
+      "name": "union_31",
+      "source": "union_31",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -9971,8 +9981,8 @@
       }
     },
     {
-      "name": "union_31",
-      "source": "union_31",
+      "name": "union_32",
+      "source": "union_32",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -9990,8 +10000,8 @@
       }
     },
     {
-      "name": "union_32",
-      "source": "union_32",
+      "name": "union_33",
+      "source": "union_33",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10008,8 +10018,8 @@
       }
     },
     {
-      "name": "union_33",
-      "source": "union_33",
+      "name": "union_34",
+      "source": "union_34",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10032,8 +10042,8 @@
       }
     },
     {
-      "name": "union_34",
-      "source": "union_34",
+      "name": "union_35",
+      "source": "union_35",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10084,8 +10094,8 @@
       }
     },
     {
-      "name": "union_35",
-      "source": "union_35",
+      "name": "union_36",
+      "source": "union_36",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10094,6 +10104,90 @@
           {
             "kind": "ref",
             "name": "public_worker_compensation"
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "union_37",
+      "source": "union_37",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "array",
+            "items": {
+              "kind": "object",
+              "properties": [
+                {
+                  "name": "id",
+                  "publicName": "id",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "primitive",
+                    "type": "string",
+                    "validation": {
+                      "pattern": "^cf_"
+                    }
+                  }
+                },
+                {
+                  "name": "name",
+                  "publicName": "name",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "primitive",
+                    "type": "string"
+                  }
+                },
+                {
+                  "name": "type",
+                  "publicName": "type",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "ref",
+                    "name": "union_4"
+                  }
+                },
+                {
+                  "name": "value",
+                  "publicName": "value",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "union",
+                    "variants": [
+                      {
+                        "kind": "ref",
+                        "name": "union_12"
+                      },
+                      {
+                        "kind": "null"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "redacted",
+                  "publicName": "redacted",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "primitive",
+                    "type": "boolean"
+                  }
+                }
+              ],
+              "additionalProperties": false
+            }
           },
           {
             "kind": "null"
@@ -10145,7 +10239,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_27"
+              "name": "union_28"
             }
           },
           {
@@ -10155,7 +10249,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_26"
+              "name": "union_27"
             }
           },
           {
@@ -10178,7 +10272,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_28"
+              "name": "union_29"
             }
           },
           {
@@ -10194,7 +10288,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_29"
+              "name": "union_30"
             }
           },
           {
@@ -10210,7 +10304,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_30"
+              "name": "union_31"
             }
           },
           {
@@ -10263,7 +10357,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_31"
+              "name": "union_32"
             }
           },
           {
@@ -10273,7 +10367,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_32"
+              "name": "union_33"
             }
           },
           {
@@ -10305,7 +10399,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_33"
+              "name": "union_34"
             }
           },
           {
@@ -10324,7 +10418,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_34"
+              "name": "union_35"
             }
           },
           {
@@ -10334,7 +10428,17 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_35"
+              "name": "union_36"
+            }
+          },
+          {
+            "name": "customFields",
+            "publicName": "customFields",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_37"
             }
           }
         ],
@@ -10972,8 +11076,8 @@
       }
     },
     {
-      "name": "union_36",
-      "source": "union_36",
+      "name": "union_38",
+      "source": "union_38",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10993,8 +11097,8 @@
       }
     },
     {
-      "name": "union_37",
-      "source": "union_37",
+      "name": "union_39",
+      "source": "union_39",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11014,8 +11118,8 @@
       }
     },
     {
-      "name": "union_38",
-      "source": "union_38",
+      "name": "union_40",
+      "source": "union_40",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11316,7 +11420,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_36"
+              "name": "union_38"
             }
           },
           {
@@ -11448,7 +11552,7 @@
                       "deprecated": false,
                       "type": {
                         "kind": "ref",
-                        "name": "union_15"
+                        "name": "union_16"
                       }
                     }
                   ],

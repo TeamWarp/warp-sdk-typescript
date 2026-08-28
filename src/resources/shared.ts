@@ -52,7 +52,7 @@ export interface InvalidOfferStatusErrorEncoded {
    * @pattern ^offr_
    */
   id: string;
-  status: Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   message: string;
 }
 export interface ManagerNotFoundErrorEncoded {
@@ -139,13 +139,13 @@ export interface Objects5 {
    * @pattern ^offr_
    */
   id: string;
-  status: Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: Objects5.Candidate;
   position: Objects5.Position;
   department: Objects5.Department | null;
-  workplace: Objects5.Workplace | null;
-  manager: Union18 | null;
+  workplace: Union18 | null;
+  manager: Objects5.Manager | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -446,12 +446,12 @@ export namespace Objects5 {
     name: string;
   }
 
-  export interface Workplace {
+  export interface Manager {
     /**
-     * @pattern ^wkp_
+     * @pattern ^wrk_
      */
     id: string;
-    name: string;
+    name: string | null;
   }
 
   export interface Compensation {
@@ -666,7 +666,7 @@ export interface RateLimitExceededEncoded {
 }
 export interface TimeOffPolicyNotFoundEncoded {
   _tag: 'TimeOffPolicyNotFound';
-  id: number | Union2 | (string & {});
+  id: Union23;
   message: string;
 }
 export type Union =
@@ -702,64 +702,107 @@ export type Union =
   | 'other';
 export type Union10 = Record<string, unknown> | null;
 export type Union11 = number | Union2;
-export type Union12 = string | null;
-export type Union13 = 'draft' | 'sent' | 'accepted' | 'void';
+export type Union12 =
+  | Union12.Union12Item
+  | Union12.Union12Item2
+  | Union12.Union12Item3
+  | Union12.Union12Item4
+  | Union12.Union12Item5
+  | Union12.Union12Item6
+  | Union12.Union12Item7
+  | Union12.Union12Item8;
+
+export namespace Union12 {
+  export interface Union12Item {
+    type: 'text';
+    value: string;
+  }
+
+  export interface Union12Item2 {
+    type: 'number';
+    value: Union11;
+  }
+
+  export interface Union12Item3 {
+    type: 'date';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    value: string;
+  }
+
+  export interface Union12Item4 {
+    type: 'boolean';
+    value: boolean;
+  }
+
+  export interface Union12Item5 {
+    type: 'currency';
+    amount: Union11;
+    currencyCode: CustomFieldsAPI.Union1;
+  }
+
+  export interface Union12Item6 {
+    type: 'percentage';
+    value: Union11;
+  }
+
+  export interface Union12Item7 {
+    type: 'select';
+    option: Objects3;
+  }
+
+  export interface Union12Item8 {
+    type: 'multi_select';
+    options: Array<Objects3>;
+  }
+}
+export type Union13 = string | null;
 export interface Union18 {
   /**
-   * @pattern ^wrk_
-   */
-  id: string;
-  name: string | null;
-}
-export type Union2 = 'Infinity' | '-Infinity' | 'NaN';
-export type Union20 = string | null;
-export type Union21 = 'us_w2' | 'us_1099' | 'global_contractor';
-export type Union23 = string | null;
-export type Union24 = string | null;
-export type Union25 = 'pending' | 'approved' | 'denied';
-export type Union26 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-export type Union27 = 'employee' | 'contractor';
-export type Union28 = string | null;
-export type Union29 = boolean | null;
-export type Union3 = string | null;
-export type Union30 = string | null;
-export type Union31 = string | null;
-export type Union32 = string | null;
-/**
- * The IANA timezone of the worker (e.g., America/New_York).
- */
-export type Union33 = string | null;
-/**
- * The department the worker belongs to, or null if unassigned.
- */
-export interface Union34 {
-  /**
-   * @pattern ^dpt_
+   * @pattern ^wkp_
    */
   id: string;
   name: string;
 }
-/**
- * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
- */
-export interface Union35 {
-  /**
-   * @pattern ^pyr_
-   */
-  payRateId: string;
-  /**
-   * The period represented by the pay rate amount.
-   */
-  per: 'year' | 'month' | 'week' | 'hour';
+export type Union2 = 'Infinity' | '-Infinity' | 'NaN';
+export interface Union20 {
   /**
    * @minimum 0
    */
   amount: number;
   currency: CustomFieldsAPI.Union1;
   /**
-   * The server-formatted pay rate, including its period.
+   * The server-formatted display string for the amount in its currency.
    */
   display: string;
+}
+export type Union21 = string | null;
+export type Union23 = number | Union2 | (string & {});
+export type Union24 = string | null;
+export type Union25 = string | null;
+export type Union26 = 'pending' | 'approved' | 'denied';
+export type Union27 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+export type Union28 = 'employee' | 'contractor';
+export type Union29 = string | null;
+export type Union3 = string | null;
+export type Union30 = boolean | null;
+export type Union31 = string | null;
+export type Union32 = string | null;
+export type Union33 = string | null;
+/**
+ * The IANA timezone of the worker (e.g., America/New_York).
+ */
+export type Union34 = string | null;
+/**
+ * The department the worker belongs to, or null if unassigned.
+ */
+export interface Union35 {
+  /**
+   * @pattern ^dpt_
+   */
+  id: string;
+  name: string;
 }
 export type Union4 =
   | 'text'
