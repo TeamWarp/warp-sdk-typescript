@@ -88,6 +88,7 @@ export namespace MissingRequiredCompanyPermissionsEncoded {
       | 'offers'
       | 'departments'
       | 'levels'
+      | 'performance'
       | 'workplaces'
       | 'time_off'
       | 'time_tracking'

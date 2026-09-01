@@ -1,7 +1,7 @@
 {
   "name": "WarpApi",
   "slug": "warpApi",
-  "generatorVersion": "0.30.1",
+  "generatorVersion": "0.31.1",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -1876,6 +1876,7 @@
                         "offers",
                         "departments",
                         "levels",
+                        "performance",
                         "workplaces",
                         "time_off",
                         "time_tracking",
@@ -1908,6 +1909,7 @@
                         "Offers",
                         "Departments",
                         "Levels",
+                        "Performance",
                         "Workplaces",
                         "TimeOff",
                         "TimeTracking",
@@ -1924,6 +1926,7 @@
                         "Developer"
                       ],
                       "deprecations": [
+                        false,
                         false,
                         false,
                         false,
