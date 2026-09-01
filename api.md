@@ -1,4 +1,4 @@
-# Warp TypeScript API
+# warp TypeScript API
 
 Complete reference of every operation, grouped by resource. See [the README](./README.md) for usage and configuration.
 
@@ -67,9 +67,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import WarpAPI from 'warp-hr';
+import Warp from 'warp-hr';
 
-const client = new WarpAPI({
+const client = new Warp({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 ```
