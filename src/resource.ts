@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type { WarpAPI } from './client';
+import type { Warp } from './client';
 
 export abstract class APIResource {
-  protected _client: WarpAPI;
+  protected _client: Warp;
 
-  constructor(client: WarpAPI) {
+  constructor(client: Warp) {
     this._client = client;
   }
 }

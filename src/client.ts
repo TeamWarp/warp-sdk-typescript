@@ -217,12 +217,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type WarpAPIOptions = ClientOptions;
+export type WarpOptions = ClientOptions;
 
 /**
- * API Client for interfacing with the WarpApi API.
+ * API Client for interfacing with the Warp API.
  */
-export class WarpAPI {
+export class Warp {
   apiKey: string | AuthTokenProvider;
   webhookSecret: string | null;
 
@@ -240,7 +240,7 @@ export class WarpAPI {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the WarpApi API.
+   * API Client for interfacing with the Warp API.
    *
    * @param {string | AuthTokenProvider | undefined} [opts.apiKey=process.env["WARP_API_KEY"] ?? undefined]
    * @param {string | null | undefined} [opts.webhookSecret=process.env["WARP_WEBHOOK_SECRET"] ?? null]
@@ -259,8 +259,8 @@ export class WarpAPI {
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.WarpAPIError(
-        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the WarpAPI client with an apiKey option, like new WarpAPI({ apiKey: 'My API Key' }).",
+      throw new Errors.WarpError(
+        "The WARP_API_KEY environment variable is missing or empty; either provide it, or instantiate the Warp client with an apiKey option, like new Warp({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -273,7 +273,7 @@ export class WarpAPI {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== '';
     const defaultBaseURL = 'https://api.joinwarp.com/public';
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? WarpAPI.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? Warp.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -898,7 +898,7 @@ export class WarpAPI {
   ): Promise<string | undefined> {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? await value() : value;
-    if (!token) throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+    if (!token) throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
@@ -909,14 +909,14 @@ export class WarpAPI {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? value() : value;
     if (typeof token !== 'string' || !token)
-      throw new Errors.WarpAPIError(`Expected '${optionName}' to resolve to a non-empty string.`);
+      throw new Errors.WarpError(`Expected '${optionName}' to resolve to a non-empty string.`);
     return token;
   }
 
-  static WarpAPI = this;
+  static Warp = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static WarpAPIError = Errors.WarpAPIError;
+  static WarpError = Errors.WarpError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -944,18 +944,18 @@ export class WarpAPI {
   webhooks: Webhooks = new Webhooks(this);
 }
 
-WarpAPI.Benefits = Benefits;
-WarpAPI.CustomFields = CustomFields;
-WarpAPI.Departments = Departments;
-WarpAPI.Offers = Offers;
-WarpAPI.PayRates = PayRates;
-WarpAPI.TimeOff = TimeOff;
-WarpAPI.Workers = Workers;
-WarpAPI.Workplaces = Workplaces;
-WarpAPI.Payroll = Payroll;
-WarpAPI.Webhooks = Webhooks;
+Warp.Benefits = Benefits;
+Warp.CustomFields = CustomFields;
+Warp.Departments = Departments;
+Warp.Offers = Offers;
+Warp.PayRates = PayRates;
+Warp.TimeOff = TimeOff;
+Warp.Workers = Workers;
+Warp.Workplaces = Workplaces;
+Warp.Payroll = Payroll;
+Warp.Webhooks = Webhooks;
 
-export declare namespace WarpAPI {
+export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
   export { Benefits as Benefits };
 
