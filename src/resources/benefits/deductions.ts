@@ -5,7 +5,6 @@ import { APIPromise } from '../../api-promise';
 import type { RequestOptions } from '../../internal/request-options';
 import { path as __scalarPath } from '../../internal/utils/path';
 import type * as Shared from '../shared';
-import type * as CustomFieldsAPI from '../custom-fields';
 
 export class Deductions extends APIResource {
   /**
@@ -30,7 +29,7 @@ export class Deductions extends APIResource {
   /**
    * Get the current version of a company benefit deduction by id.
    *
-   * @param {string} id
+   * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<DeductionGetResponse>} The current version of a stable payroll benefit deduction.
    *
@@ -58,7 +57,38 @@ export interface DeductionListParams {
   categories?: Array<
     'health' | 'retirement' | 'health_savings' | 'commuter' | 'voluntary' | 'post_tax' | 'other'
   > | null;
-  types?: Array<Shared.Union> | null;
+  types?: Array<
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | '401k'
+    | 'roth_401k'
+    | '403b'
+    | 'roth_403b'
+    | '457'
+    | 'roth_457'
+    | 'hsa'
+    | 'fsa_medical'
+    | 'fsa_dependent_care'
+    | 'transit'
+    | 'parking'
+    | 'accident'
+    | 'cancer'
+    | 'critical_illness'
+    | 'hospital'
+    | 'medical_other'
+    | 'simple_ira'
+    | 'roth_simple_ira'
+    | 'nqdc'
+    | 'nontaxable_fringe'
+    | 'pucc'
+    | 'voluntary'
+    | 'post_tax'
+    | 'other'
+  > | null;
   statuses: Array<'active' | 'pending' | 'suspended' | 'terminated'> | null;
   healthPlanIds?: Array<string> | null;
   retirementPlanIds?: Array<string> | null;
@@ -73,6 +103,7 @@ export interface DeductionListResponse {
 export namespace DeductionListResponse {
   export interface Data {
     /**
+     * Stable identifier shared by every internal version of this deduction.
      * @pattern ^pbdg_
      */
     id: string;
@@ -153,6 +184,7 @@ export namespace DeductionListResponse {
   export namespace Data {
     export interface Worker {
       /**
+       * The worker id.
        * @pattern ^wrk_
        */
       id: string;
@@ -169,6 +201,7 @@ export namespace DeductionListResponse {
     export interface HealthPlanReference {
       type: 'health_plan';
       /**
+       * The tag of a company health plan.
        * @pattern ^chpl_
        */
       id: string;
@@ -181,6 +214,7 @@ export namespace DeductionListResponse {
     export interface RetirementPlanReference {
       type: 'retirement_plan';
       /**
+       * The tag of a company retirement plan.
        * @pattern ^crpl_
        */
       id: string;
@@ -220,7 +254,7 @@ export namespace DeductionListResponse {
 
     export namespace PercentageBenefitCalculation {
       export interface EmployeeContribution {
-        percentage: number | Shared.Union2;
+        percentage: number | 'Infinity' | '-Infinity' | 'NaN';
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -228,7 +262,7 @@ export namespace DeductionListResponse {
       }
 
       export interface EmployerContribution {
-        percentage: number | Shared.Union2;
+        percentage: number | 'Infinity' | '-Infinity' | 'NaN';
         /**
          * The server-formatted percentage, for example "3%".
          */
@@ -240,6 +274,7 @@ export namespace DeductionListResponse {
 
 export interface DeductionGetResponse {
   /**
+   * Stable identifier shared by every internal version of this deduction.
    * @pattern ^pbdg_
    */
   id: string;
@@ -322,6 +357,7 @@ export interface DeductionGetResponse {
 export namespace DeductionGetResponse {
   export interface Worker {
     /**
+     * The worker id.
      * @pattern ^wrk_
      */
     id: string;
@@ -338,6 +374,7 @@ export namespace DeductionGetResponse {
   export interface HealthPlanReference {
     type: 'health_plan';
     /**
+     * The tag of a company health plan.
      * @pattern ^chpl_
      */
     id: string;
@@ -350,6 +387,7 @@ export namespace DeductionGetResponse {
   export interface RetirementPlanReference {
     type: 'retirement_plan';
     /**
+     * The tag of a company retirement plan.
      * @pattern ^crpl_
      */
     id: string;
@@ -389,7 +427,7 @@ export namespace DeductionGetResponse {
 
   export namespace PercentageBenefitCalculation {
     export interface EmployeeContribution {
-      percentage: number | Shared.Union2;
+      percentage: number | 'Infinity' | '-Infinity' | 'NaN';
       /**
        * The server-formatted percentage, for example "3%".
        */
@@ -397,7 +435,7 @@ export namespace DeductionGetResponse {
     }
 
     export interface EmployerContribution {
-      percentage: number | Shared.Union2;
+      percentage: number | 'Infinity' | '-Infinity' | 'NaN';
       /**
        * The server-formatted percentage, for example "3%".
        */

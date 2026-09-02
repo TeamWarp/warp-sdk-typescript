@@ -5,9 +5,7 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { buildHeaders } from '../internal/headers';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as WorkplacesAPI from './workplaces';
 import type * as Shared from './shared';
-import type * as CustomFieldsAPI from './custom-fields';
 
 export class Workers extends APIResource {
   /**
@@ -31,23 +29,23 @@ export class Workers extends APIResource {
   /**
    * Get a specific worker by id.
    *
-   * @param {string} id
+   * @param {string} id - The id of the worker.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkplacesAPI.Objects11>} Success
+   * @returns {APIPromise<WorkerGetResponse>} Success
    *
    * @example
    * ```ts
-   * const objects11 = await client.workers.get('wrk_1234');
+   * const worker = await client.workers.get('wrk_1234');
    * ```
    */
-  get(id: string, options?: RequestOptions): APIPromise<WorkplacesAPI.Objects11> {
+  get(id: string, options?: RequestOptions): APIPromise<WorkerGetResponse> {
     return this._client.get(__scalarPath`/v1/workers/${id}`, options);
   }
 
   /**
    * Delete a worker. Only workers who have not yet completed onboarding can be deleted. Active workers must be properly offboarded.
    *
-   * @param {string} id
+   * @param {string} id - The id of the worker.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns <No Content>
    *
@@ -130,7 +128,7 @@ export class Workers extends APIResource {
   /**
    * Send or resend the worker invite so they can accept and complete onboarding to Warp. If the worker has already been invited, the invite will be resent with extended validity.
    *
-   * @param {string} id
+   * @param {string} id - The id of the worker.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<WorkerInviteResponse>} Success
    *
@@ -150,6 +148,7 @@ export class Workers extends APIResource {
 export interface OfficeWorkLocation {
   type: 'office';
   /**
+   * Public workplace identifier
    * @pattern ^wkp_
    */
   workplaceId: string;
@@ -227,90 +226,386 @@ export interface WorkerListParams {
    * @pattern ^wrk_
    */
   beforeId?: string | null;
-  statuses?: Array<Shared.Union27> | null;
-  types?: Array<Shared.Union28> | null;
+  statuses?: Array<'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive'> | null;
+  types?: Array<'employee' | 'contractor'> | null;
   workEmail?: string | null;
 }
 
 export interface WorkerListResponse {
   hasMore: boolean;
   count: number;
-  data: Array<WorkplacesAPI.Objects11>;
+  data: Array<WorkerListResponse.Data>;
 }
 
-export interface WorkerCreateEmployeeParams {
-  /**
-   * @minLength 1
-   * @pattern ^\S[\s\S]*\S$|^\S$|^$
-   */
-  firstName: string;
-  /**
-   * @minLength 1
-   * @pattern ^\S[\s\S]*\S$|^\S$|^$
-   */
-  lastName: string;
-  /**
-   * @minLength 1
-   * @pattern ^\S[\s\S]*\S$|^\S$|^$
-   */
-  position: string;
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
-  startDate: string;
-  /**
-   * @format email
-   */
-  email: string;
-  /**
-   * @pattern ^dpt_
-   */
-  departmentId: string;
-  /**
-   * @pattern ^wrk_
-   */
-  managerId: string;
-  /**
-   * Where the employee will work. Either an existing company workplace or a remote US state.
-   */
-  workLocation: OfficeWorkLocation | RemoteWorkLocation;
-  /**
-   * The employee's base compensation.
-   */
-  compensation: WorkerCreateEmployeeParams.Compensation;
-  /**
-   * @format email
-   */
-  workEmail?: string | null;
-  requireI9?: boolean | null;
-  stateRegistration?: 'self_managed' | 'warp_managed' | null;
-  /**
-   * The job level to assign this employee to, or null to leave unassigned. Omit this field when job levels are not enabled.
-   * @pattern ^jlvl_
-   */
-  levelId?: string | null;
-  stockOptions?: number | Shared.Union2 | null;
-  paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
-}
-
-export namespace WorkerCreateEmployeeParams {
-  export interface Compensation {
-    amount: number;
+export namespace WorkerListResponse {
+  export interface Data {
     /**
-     * Whether the amount is per hour or per year.
+     * The id of the worker.
+     * @pattern ^wrk_
      */
-    per: 'hour' | 'year';
+    id: string;
+    position: string;
+    type: 'employee' | 'contractor';
+    status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    startDate: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    endDate: string | null;
+    isBusiness: boolean | null;
+    businessName: string | null;
+    firstName: string;
+    lastName: string;
+    /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+     * @format email
+     */
+    email: string;
+    /**
+     * @format email
+     */
+    workEmail: string | null;
+    preferredName: string | null;
+    /**
+     * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
+     */
+    displayName: string;
+    /**
+     * The IANA timezone of the worker (e.g., America/New_York).
+     */
+    timeZone: string | null;
+    /**
+     * The department the worker belongs to, or null if unassigned.
+     */
+    department: Data.Department | null;
+    /**
+     * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
+     */
+    compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Data.Level | null;
+    customFields?: Array<
+      | Data.PublicTextWorkerCustomField
+      | Data.PublicNumberWorkerCustomField
+      | Data.PublicDateWorkerCustomField
+      | Data.PublicBooleanWorkerCustomField
+      | Data.PublicCurrencyWorkerCustomField
+      | Data.PublicPercentageWorkerCustomField
+      | Data.PublicSelectWorkerCustomField
+      | Data.PublicMultiSelectWorkerCustomField
+    > | null;
+  }
+
+  export namespace Data {
+    export interface Department {
+      /**
+       * The unique public id of the department
+       * @pattern ^dpt_
+       */
+      id: string;
+      name: string;
+    }
+
+    export interface Level {
+      /**
+       * The unique public id of the job level
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
+    }
+
+    export interface PublicTextWorkerCustomField {
+      type: 'text';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The worker’s text; null when unset or when the field is redacted for this API key.
+       */
+      value: string | null;
+    }
+
+    export interface PublicNumberWorkerCustomField {
+      type: 'number';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The worker’s number; null when unset or when the field is redacted for this API key.
+       */
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    }
+
+    export interface PublicDateWorkerCustomField {
+      type: 'date';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The worker’s date; null when unset or when the field is redacted for this API key.
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
+      value: string | null;
+    }
+
+    export interface PublicBooleanWorkerCustomField {
+      type: 'boolean';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The worker’s answer; null when unset or when the field is redacted for this API key.
+       */
+      value: boolean | null;
+    }
+
+    export interface PublicCurrencyWorkerCustomField {
+      type: 'currency';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
+       */
+      amount: number | null;
+      /**
+       * The amount’s currency; null when unset or when the field is redacted for this API key.
+       */
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
+    }
+
+    export interface PublicPercentageWorkerCustomField {
+      type: 'percentage';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The worker’s percentage; null when unset or when the field is redacted for this API key.
+       */
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    }
+
+    export interface PublicSelectWorkerCustomField {
+      type: 'select';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The selected option; null when unset or when the field is redacted for this API key.
+       */
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
+    }
+
+    export interface PublicMultiSelectWorkerCustomField {
+      type: 'multi_select';
+      /**
+       * The tag of a company custom worker field.
+       * @pattern ^cf_
+       */
+      id: string;
+      name: string;
+      /**
+       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+       */
+      redacted: boolean;
+      /**
+       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+       */
+      display: string | null;
+      /**
+       * The selected options; null when unset or when the field is redacted for this API key.
+       */
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
+    }
   }
 }
 
-export interface WorkerCreateEmployeeResponse {
+export interface WorkerGetResponse {
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   id: string;
   position: string;
-  type: Shared.Union28;
-  status: Shared.Union27;
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -318,20 +613,21 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union29 | null;
-  isBusiness: Shared.Union30 | null;
-  businessName: Shared.Union31 | null;
+  endDate: string | null;
+  isBusiness: boolean | null;
+  businessName: string | null;
   firstName: string;
   lastName: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   email: string;
   /**
    * @format email
    */
-  workEmail: Shared.Union32 | null;
-  preferredName: Shared.Union33 | null;
+  workEmail: string | null;
+  preferredName: string | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -339,11 +635,11 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union34 | null;
+  timeZone: string | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union35 | null;
+  department: WorkerGetResponse.Department | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
@@ -351,23 +647,44 @@ export interface WorkerCreateEmployeeResponse {
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: WorkerGetResponse.Level | null;
   customFields?: Array<
-    | WorkerCreateEmployeeResponse.PublicTextWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicNumberWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicDateWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicBooleanWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicCurrencyWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicPercentageWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicSelectWorkerCustomField
-    | WorkerCreateEmployeeResponse.PublicMultiSelectWorkerCustomField
+    | WorkerGetResponse.PublicTextWorkerCustomField
+    | WorkerGetResponse.PublicNumberWorkerCustomField
+    | WorkerGetResponse.PublicDateWorkerCustomField
+    | WorkerGetResponse.PublicBooleanWorkerCustomField
+    | WorkerGetResponse.PublicCurrencyWorkerCustomField
+    | WorkerGetResponse.PublicPercentageWorkerCustomField
+    | WorkerGetResponse.PublicSelectWorkerCustomField
+    | WorkerGetResponse.PublicMultiSelectWorkerCustomField
   > | null;
 }
 
-export namespace WorkerCreateEmployeeResponse {
+export namespace WorkerGetResponse {
+  export interface Department {
+    /**
+     * The unique public id of the department
+     * @pattern ^dpt_
+     */
+    id: string;
+    name: string;
+  }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
+
   export interface PublicTextWorkerCustomField {
     type: 'text';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -389,6 +706,7 @@ export namespace WorkerCreateEmployeeResponse {
   export interface PublicNumberWorkerCustomField {
     type: 'number';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -404,12 +722,13 @@ export namespace WorkerCreateEmployeeResponse {
     /**
      * The worker’s number; null when unset or when the field is redacted for this API key.
      */
-    value: Shared.Union11 | null;
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 
   export interface PublicDateWorkerCustomField {
     type: 'date';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -432,6 +751,7 @@ export namespace WorkerCreateEmployeeResponse {
   export interface PublicBooleanWorkerCustomField {
     type: 'boolean';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -453,6 +773,7 @@ export namespace WorkerCreateEmployeeResponse {
   export interface PublicCurrencyWorkerCustomField {
     type: 'currency';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -472,12 +793,75 @@ export namespace WorkerCreateEmployeeResponse {
     /**
      * The amount’s currency; null when unset or when the field is redacted for this API key.
      */
-    currencyCode: CustomFieldsAPI.Union1 | null;
+    currencyCode:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN'
+      | null;
   }
 
   export interface PublicPercentageWorkerCustomField {
     type: 'percentage';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -493,12 +877,13 @@ export namespace WorkerCreateEmployeeResponse {
     /**
      * The worker’s percentage; null when unset or when the field is redacted for this API key.
      */
-    value: Shared.Union11 | null;
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 
   export interface PublicSelectWorkerCustomField {
     type: 'select';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -514,12 +899,28 @@ export namespace WorkerCreateEmployeeResponse {
     /**
      * The selected option; null when unset or when the field is redacted for this API key.
      */
-    option: Shared.Objects3 | null;
+    option: PublicSelectWorkerCustomField.Option | null;
+  }
+
+  export namespace PublicSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
   }
 
   export interface PublicMultiSelectWorkerCustomField {
     type: 'multi_select';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -535,7 +936,449 @@ export namespace WorkerCreateEmployeeResponse {
     /**
      * The selected options; null when unset or when the field is redacted for this API key.
      */
-    options: Array<Shared.Objects3> | null;
+    options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+  }
+
+  export namespace PublicMultiSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
+  }
+}
+
+export interface WorkerCreateEmployeeParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  firstName: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  lastName: string;
+  /**
+   * The employee's job title.
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  position: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  startDate: string;
+  /**
+   * Personal email address. The invite will be sent here.
+   * @format email
+   */
+  email: string;
+  /**
+   * The department to assign this employee to.
+   * @pattern ^dpt_
+   */
+  departmentId: string;
+  /**
+   * The worker id of this employee's direct manager.
+   * @pattern ^wrk_
+   */
+  managerId: string;
+  /**
+   * Where the employee will work. Either an existing company workplace or a remote US state.
+   */
+  workLocation: OfficeWorkLocation | RemoteWorkLocation;
+  /**
+   * The employee's base compensation.
+   */
+  compensation: WorkerCreateEmployeeParams.Compensation;
+  /**
+   * @format email
+   */
+  workEmail?: string | null;
+  requireI9?: boolean | null;
+  stateRegistration?: 'self_managed' | 'warp_managed' | null;
+  /**
+   * The job level to assign this employee to, or null to leave unassigned. Omit this field when job levels are not enabled.
+   * @pattern ^jlvl_
+   */
+  levelId?: string | null;
+  stockOptions?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
+}
+
+export namespace WorkerCreateEmployeeParams {
+  export interface Compensation {
+    amount: number;
+    /**
+     * Whether the amount is per hour or per year.
+     */
+    per: 'hour' | 'year';
+  }
+}
+
+export interface WorkerCreateEmployeeResponse {
+  /**
+   * The id of the worker.
+   * @pattern ^wrk_
+   */
+  id: string;
+  position: string;
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  startDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  endDate: string | null;
+  isBusiness: boolean | null;
+  businessName: string | null;
+  firstName: string;
+  lastName: string;
+  /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+   * @format email
+   */
+  email: string;
+  /**
+   * @format email
+   */
+  workEmail: string | null;
+  preferredName: string | null;
+  /**
+   * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
+   */
+  displayName: string;
+  /**
+   * The IANA timezone of the worker (e.g., America/New_York).
+   */
+  timeZone: string | null;
+  /**
+   * The department the worker belongs to, or null if unassigned.
+   */
+  department: WorkerCreateEmployeeResponse.Department | null;
+  /**
+   * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
+   */
+  compensation: Shared.PublicWorkerCompensation | null;
+  /**
+   * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+   */
+  level?: WorkerCreateEmployeeResponse.Level | null;
+  customFields?: Array<
+    | WorkerCreateEmployeeResponse.PublicTextWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicNumberWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicDateWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicBooleanWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicCurrencyWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicPercentageWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicSelectWorkerCustomField
+    | WorkerCreateEmployeeResponse.PublicMultiSelectWorkerCustomField
+  > | null;
+}
+
+export namespace WorkerCreateEmployeeResponse {
+  export interface Department {
+    /**
+     * The unique public id of the department
+     * @pattern ^dpt_
+     */
+    id: string;
+    name: string;
+  }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
+
+  export interface PublicTextWorkerCustomField {
+    type: 'text';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The worker’s text; null when unset or when the field is redacted for this API key.
+     */
+    value: string | null;
+  }
+
+  export interface PublicNumberWorkerCustomField {
+    type: 'number';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The worker’s number; null when unset or when the field is redacted for this API key.
+     */
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  }
+
+  export interface PublicDateWorkerCustomField {
+    type: 'date';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The worker’s date; null when unset or when the field is redacted for this API key.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    value: string | null;
+  }
+
+  export interface PublicBooleanWorkerCustomField {
+    type: 'boolean';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The worker’s answer; null when unset or when the field is redacted for this API key.
+     */
+    value: boolean | null;
+  }
+
+  export interface PublicCurrencyWorkerCustomField {
+    type: 'currency';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
+     */
+    amount: number | null;
+    /**
+     * The amount’s currency; null when unset or when the field is redacted for this API key.
+     */
+    currencyCode:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN'
+      | null;
+  }
+
+  export interface PublicPercentageWorkerCustomField {
+    type: 'percentage';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The worker’s percentage; null when unset or when the field is redacted for this API key.
+     */
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  }
+
+  export interface PublicSelectWorkerCustomField {
+    type: 'select';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The selected option; null when unset or when the field is redacted for this API key.
+     */
+    option: PublicSelectWorkerCustomField.Option | null;
+  }
+
+  export namespace PublicSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
+  }
+
+  export interface PublicMultiSelectWorkerCustomField {
+    type: 'multi_select';
+    /**
+     * The tag of a company custom worker field.
+     * @pattern ^cf_
+     */
+    id: string;
+    name: string;
+    /**
+     * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
+     */
+    redacted: boolean;
+    /**
+     * The value rendered as the Warp dashboard displays it; null when unset or redacted.
+     */
+    display: string | null;
+    /**
+     * The selected options; null when unset or when the field is redacted for this API key.
+     */
+    options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+  }
+
+  export namespace PublicMultiSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
   }
 }
 
@@ -555,6 +1398,7 @@ export interface WorkerCreateContractorParams {
    */
   lastName: string;
   /**
+   * The contractor's role or job title.
    * @minLength 1
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
@@ -564,14 +1408,17 @@ export interface WorkerCreateContractorParams {
    */
   startDate: string;
   /**
+   * Personal email address. The invite will be sent here.
    * @format email
    */
   email: string;
   /**
+   * The department to assign this contractor to.
    * @pattern ^dpt_
    */
   departmentId: string;
   /**
+   * The worker id of this contractor's direct manager.
    * @pattern ^wrk_
    */
   managerId: string;
@@ -919,12 +1766,13 @@ export namespace WorkerCreateContractorParams {
 
 export interface WorkerCreateContractorResponse {
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   id: string;
   position: string;
-  type: Shared.Union28;
-  status: Shared.Union27;
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -932,20 +1780,21 @@ export interface WorkerCreateContractorResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union29 | null;
-  isBusiness: Shared.Union30 | null;
-  businessName: Shared.Union31 | null;
+  endDate: string | null;
+  isBusiness: boolean | null;
+  businessName: string | null;
   firstName: string;
   lastName: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   email: string;
   /**
    * @format email
    */
-  workEmail: Shared.Union32 | null;
-  preferredName: Shared.Union33 | null;
+  workEmail: string | null;
+  preferredName: string | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -953,11 +1802,11 @@ export interface WorkerCreateContractorResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union34 | null;
+  timeZone: string | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union35 | null;
+  department: WorkerCreateContractorResponse.Department | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
@@ -965,7 +1814,7 @@ export interface WorkerCreateContractorResponse {
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: WorkerCreateContractorResponse.Level | null;
   customFields?: Array<
     | WorkerCreateContractorResponse.PublicTextWorkerCustomField
     | WorkerCreateContractorResponse.PublicNumberWorkerCustomField
@@ -979,9 +1828,30 @@ export interface WorkerCreateContractorResponse {
 }
 
 export namespace WorkerCreateContractorResponse {
+  export interface Department {
+    /**
+     * The unique public id of the department
+     * @pattern ^dpt_
+     */
+    id: string;
+    name: string;
+  }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
+
   export interface PublicTextWorkerCustomField {
     type: 'text';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1003,6 +1873,7 @@ export namespace WorkerCreateContractorResponse {
   export interface PublicNumberWorkerCustomField {
     type: 'number';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1018,12 +1889,13 @@ export namespace WorkerCreateContractorResponse {
     /**
      * The worker’s number; null when unset or when the field is redacted for this API key.
      */
-    value: Shared.Union11 | null;
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 
   export interface PublicDateWorkerCustomField {
     type: 'date';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1046,6 +1918,7 @@ export namespace WorkerCreateContractorResponse {
   export interface PublicBooleanWorkerCustomField {
     type: 'boolean';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1067,6 +1940,7 @@ export namespace WorkerCreateContractorResponse {
   export interface PublicCurrencyWorkerCustomField {
     type: 'currency';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1086,12 +1960,75 @@ export namespace WorkerCreateContractorResponse {
     /**
      * The amount’s currency; null when unset or when the field is redacted for this API key.
      */
-    currencyCode: CustomFieldsAPI.Union1 | null;
+    currencyCode:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN'
+      | null;
   }
 
   export interface PublicPercentageWorkerCustomField {
     type: 'percentage';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1107,12 +2044,13 @@ export namespace WorkerCreateContractorResponse {
     /**
      * The worker’s percentage; null when unset or when the field is redacted for this API key.
      */
-    value: Shared.Union11 | null;
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 
   export interface PublicSelectWorkerCustomField {
     type: 'select';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1128,12 +2066,28 @@ export namespace WorkerCreateContractorResponse {
     /**
      * The selected option; null when unset or when the field is redacted for this API key.
      */
-    option: Shared.Objects3 | null;
+    option: PublicSelectWorkerCustomField.Option | null;
+  }
+
+  export namespace PublicSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
   }
 
   export interface PublicMultiSelectWorkerCustomField {
     type: 'multi_select';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1149,18 +2103,34 @@ export namespace WorkerCreateContractorResponse {
     /**
      * The selected options; null when unset or when the field is redacted for this API key.
      */
-    options: Array<Shared.Objects3> | null;
+    options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+  }
+
+  export namespace PublicMultiSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
   }
 }
 
 export interface WorkerInviteResponse {
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   id: string;
   position: string;
-  type: Shared.Union28;
-  status: Shared.Union27;
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -1168,20 +2138,21 @@ export interface WorkerInviteResponse {
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  endDate: Shared.Union29 | null;
-  isBusiness: Shared.Union30 | null;
-  businessName: Shared.Union31 | null;
+  endDate: string | null;
+  isBusiness: boolean | null;
+  businessName: string | null;
   firstName: string;
   lastName: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   email: string;
   /**
    * @format email
    */
-  workEmail: Shared.Union32 | null;
-  preferredName: Shared.Union33 | null;
+  workEmail: string | null;
+  preferredName: string | null;
   /**
    * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
    */
@@ -1189,11 +2160,11 @@ export interface WorkerInviteResponse {
   /**
    * The IANA timezone of the worker (e.g., America/New_York).
    */
-  timeZone: Shared.Union34 | null;
+  timeZone: string | null;
   /**
    * The department the worker belongs to, or null if unassigned.
    */
-  department: Shared.Union35 | null;
+  department: WorkerInviteResponse.Department | null;
   /**
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
@@ -1201,7 +2172,7 @@ export interface WorkerInviteResponse {
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: WorkerInviteResponse.Level | null;
   customFields?: Array<
     | WorkerInviteResponse.PublicTextWorkerCustomField
     | WorkerInviteResponse.PublicNumberWorkerCustomField
@@ -1215,9 +2186,30 @@ export interface WorkerInviteResponse {
 }
 
 export namespace WorkerInviteResponse {
+  export interface Department {
+    /**
+     * The unique public id of the department
+     * @pattern ^dpt_
+     */
+    id: string;
+    name: string;
+  }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
+
   export interface PublicTextWorkerCustomField {
     type: 'text';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1239,6 +2231,7 @@ export namespace WorkerInviteResponse {
   export interface PublicNumberWorkerCustomField {
     type: 'number';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1254,12 +2247,13 @@ export namespace WorkerInviteResponse {
     /**
      * The worker’s number; null when unset or when the field is redacted for this API key.
      */
-    value: Shared.Union11 | null;
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 
   export interface PublicDateWorkerCustomField {
     type: 'date';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1282,6 +2276,7 @@ export namespace WorkerInviteResponse {
   export interface PublicBooleanWorkerCustomField {
     type: 'boolean';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1303,6 +2298,7 @@ export namespace WorkerInviteResponse {
   export interface PublicCurrencyWorkerCustomField {
     type: 'currency';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1322,12 +2318,75 @@ export namespace WorkerInviteResponse {
     /**
      * The amount’s currency; null when unset or when the field is redacted for this API key.
      */
-    currencyCode: CustomFieldsAPI.Union1 | null;
+    currencyCode:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN'
+      | null;
   }
 
   export interface PublicPercentageWorkerCustomField {
     type: 'percentage';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1343,12 +2402,13 @@ export namespace WorkerInviteResponse {
     /**
      * The worker’s percentage; null when unset or when the field is redacted for this API key.
      */
-    value: Shared.Union11 | null;
+    value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 
   export interface PublicSelectWorkerCustomField {
     type: 'select';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1364,12 +2424,28 @@ export namespace WorkerInviteResponse {
     /**
      * The selected option; null when unset or when the field is redacted for this API key.
      */
-    option: Shared.Objects3 | null;
+    option: PublicSelectWorkerCustomField.Option | null;
+  }
+
+  export namespace PublicSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
   }
 
   export interface PublicMultiSelectWorkerCustomField {
     type: 'multi_select';
     /**
+     * The tag of a company custom worker field.
      * @pattern ^cf_
      */
     id: string;
@@ -1385,7 +2461,22 @@ export namespace WorkerInviteResponse {
     /**
      * The selected options; null when unset or when the field is redacted for this API key.
      */
-    options: Array<Shared.Objects3> | null;
+    options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+  }
+
+  export namespace PublicMultiSelectWorkerCustomField {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
   }
 }
 export declare namespace Workers {
@@ -1393,6 +2484,7 @@ export declare namespace Workers {
     type OfficeWorkLocation as OfficeWorkLocation,
     type RemoteWorkLocation as RemoteWorkLocation,
     type WorkerListResponse as WorkerListResponse,
+    type WorkerGetResponse as WorkerGetResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,

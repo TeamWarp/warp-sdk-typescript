@@ -22,7 +22,20 @@ export class Levels extends APIResource {
   }
 }
 
-export type LevelListResponse = Array<Shared.Objects5>;
+export type LevelListResponse = Array<LevelListResponse.LevelListResponseItem>;
+
+export namespace LevelListResponse {
+  export interface LevelListResponseItem {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
+}
 export declare namespace Levels {
   export { type LevelListResponse as LevelListResponse };
 }

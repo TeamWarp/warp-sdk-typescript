@@ -46,7 +46,7 @@ export class Departments extends APIResource {
   /**
    * Update an existing department.
    *
-   * @param {string} id
+   * @param {string} id - The unique public id of the department
    * @param {DepartmentUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<DepartmentUpdateResponse>} Success
@@ -70,11 +70,11 @@ export interface DepartmentListParams {
   /**
    * @pattern ^dpt_
    */
-  afterId?: Shared.Union12 | null;
+  afterId?: string | null;
   /**
    * @pattern ^dpt_
    */
-  beforeId?: Shared.Union12 | null;
+  beforeId?: string | null;
 }
 
 export interface DepartmentListResponse {
@@ -86,6 +86,7 @@ export interface DepartmentListResponse {
 export namespace DepartmentListResponse {
   export interface Data {
     /**
+     * The unique public id of the department
      * @pattern ^dpt_
      */
     id: string;
@@ -104,6 +105,7 @@ export interface DepartmentCreateParams {
 
 export interface DepartmentCreateResponse {
   /**
+   * The unique public id of the department
    * @pattern ^dpt_
    */
   id: string;
@@ -117,6 +119,7 @@ export interface DepartmentUpdateParams {
 
 export interface DepartmentUpdateResponse {
   /**
+   * The unique public id of the department
    * @pattern ^dpt_
    */
   id: string;

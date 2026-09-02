@@ -226,10 +226,10 @@ Update a custom worker field definition. The field type cannot be changed; creat
 | Direction | Type |
 | --- | --- |
 | Request | [`CustomFieldUpdateParams`](./src/resources/custom-fields.ts) |
-| Response | [`Objects`](./src/resources/shared.ts) |
+| Response | [`CustomFieldUpdateResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const objects = await client.customFields.update('cf_1234', {});
+const customField = await client.customFields.update('cf_1234', {});
 ```
 
 ### Archive Field
@@ -238,10 +238,10 @@ Archive a custom worker field. Archived fields keep their existing worker values
 
 | Direction | Type |
 | --- | --- |
-| Response | [`Objects`](./src/resources/shared.ts) |
+| Response | [`CustomFieldArchiveResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const objects = await client.customFields.archive('cf_1234');
+const customField = await client.customFields.archive('cf_1234');
 ```
 
 ### Create Field Option
@@ -267,10 +267,10 @@ Update the label or sort order of a custom worker field option. Options of archi
 | Direction | Type |
 | --- | --- |
 | Request | [`CustomFieldUpdateOptionParams`](./src/resources/custom-fields.ts) |
-| Response | [`Objects3`](./src/resources/shared.ts) |
+| Response | [`CustomFieldUpdateOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const objects3 = await client.customFields.updateOption('cfo_1234', {});
+const customField = await client.customFields.updateOption('cfo_1234', {});
 ```
 
 ### Delete Unused Field Option
@@ -287,10 +287,10 @@ Archive a custom worker field option. Archived options remain on existing worker
 
 | Direction | Type |
 | --- | --- |
-| Response | [`Objects3`](./src/resources/shared.ts) |
+| Response | [`CustomFieldArchiveOptionResponse`](./src/resources/custom-fields.ts) |
 
 ```ts
-const objects3 = await client.customFields.archiveOption('cfo_1234');
+const customField = await client.customFields.archiveOption('cfo_1234');
 ```
 
 ### List Field Values
@@ -612,8 +612,12 @@ const worker = await client.workers.list({
 
 Get a specific worker by id.
 
+| Direction | Type |
+| --- | --- |
+| Response | [`WorkerGetResponse`](./src/resources/workers.ts) |
+
 ```ts
-const objects11 = await client.workers.get('wrk_1234');
+const worker = await client.workers.get('wrk_1234');
 ```
 
 ### Delete Worker

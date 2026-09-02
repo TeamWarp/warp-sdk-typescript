@@ -4,7 +4,6 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as CustomFieldsAPI from './custom-fields';
 import type * as Shared from './shared';
 
 export class PayRates extends APIResource {
@@ -29,7 +28,7 @@ export class PayRates extends APIResource {
   /**
    * Get a specific pay rate by id. The API key must have the compensation read scope corresponding to the worker.
    *
-   * @param {string} id
+   * @param {string} id - The tag of the pay rate.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<PayRateGetResponse>} A regular or additional pay rate assigned to a worker.
    *
@@ -83,6 +82,7 @@ export interface PayRateListResponse {
 export namespace PayRateListResponse {
   export interface Data {
     /**
+     * The pay rate id.
      * @pattern ^pyr_
      */
     id: string;
@@ -99,10 +99,72 @@ export namespace PayRateListResponse {
      */
     per: 'year' | 'month' | 'week' | 'hour';
     /**
+     * Amount in the currency base unit, e.g. cents for USD.
      * @minimum 0
      */
     amount: number;
-    currency: CustomFieldsAPI.Union1;
+    currency:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN';
     /**
      * The server-formatted pay rate, including its period.
      */
@@ -126,6 +188,7 @@ export namespace PayRateListResponse {
   export namespace Data {
     export interface Worker {
       /**
+       * The worker id.
        * @pattern ^wrk_
        */
       id: string;
@@ -143,6 +206,7 @@ export namespace PayRateListResponse {
 
 export interface PayRateGetResponse {
   /**
+   * The pay rate id.
    * @pattern ^pyr_
    */
   id: string;
@@ -159,10 +223,72 @@ export interface PayRateGetResponse {
    */
   per: 'year' | 'month' | 'week' | 'hour';
   /**
+   * Amount in the currency base unit, e.g. cents for USD.
    * @minimum 0
    */
   amount: number;
-  currency: CustomFieldsAPI.Union1;
+  currency:
+    | 'USD'
+    | 'AUD'
+    | 'BGN'
+    | 'BRL'
+    | 'CAD'
+    | 'CHF'
+    | 'CZK'
+    | 'DKK'
+    | 'EUR'
+    | 'GBP'
+    | 'HKD'
+    | 'HUF'
+    | 'IDR'
+    | 'INR'
+    | 'JPY'
+    | 'MYR'
+    | 'NOK'
+    | 'NZD'
+    | 'CNY'
+    | 'PLN'
+    | 'RON'
+    | 'TRY'
+    | 'SEK'
+    | 'SGD'
+    | 'AED'
+    | 'ARS'
+    | 'BDT'
+    | 'BWP'
+    | 'CLP'
+    | 'COP'
+    | 'CRC'
+    | 'EGP'
+    | 'FJD'
+    | 'GEL'
+    | 'GHS'
+    | 'ILS'
+    | 'KES'
+    | 'KRW'
+    | 'LKR'
+    | 'MAD'
+    | 'MXN'
+    | 'NPR'
+    | 'PHP'
+    | 'PKR'
+    | 'THB'
+    | 'UAH'
+    | 'UGX'
+    | 'UYU'
+    | 'VND'
+    | 'ZAR'
+    | 'ZMW'
+    | 'TND'
+    | 'NGN'
+    | 'RSD'
+    | 'TWD'
+    | 'GTQ'
+    | 'HNL'
+    | 'DOP'
+    | 'SAR'
+    | 'XAF'
+    | 'PEN';
   /**
    * The server-formatted pay rate, including its period.
    */
@@ -186,6 +312,7 @@ export interface PayRateGetResponse {
 export namespace PayRateGetResponse {
   export interface Worker {
     /**
+     * The worker id.
      * @pattern ^wrk_
      */
     id: string;

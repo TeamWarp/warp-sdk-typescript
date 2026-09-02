@@ -29,7 +29,7 @@ export class RetirementPlans extends APIResource {
   /**
    * Get a company retirement plan by id, regardless of status.
    *
-   * @param {string} id
+   * @param {string} id - The tag of a company retirement plan.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<RetirementPlanGetResponse>} A company retirement plan available through Warp.
    *
@@ -68,6 +68,7 @@ export interface RetirementPlanListResponse {
 export namespace RetirementPlanListResponse {
   export interface Data {
     /**
+     * The tag of a company retirement plan.
      * @pattern ^crpl_
      */
     id: string;
@@ -102,6 +103,7 @@ export namespace RetirementPlanListResponse {
 
 export interface RetirementPlanGetResponse {
   /**
+   * The tag of a company retirement plan.
    * @pattern ^crpl_
    */
   id: string;

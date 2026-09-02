@@ -25,309 +25,6 @@
   "clientHeaderParams": [],
   "schemas": [
     {
-      "name": "union",
-      "source": "union",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "medical",
-          "dental",
-          "vision",
-          "life",
-          "short_term_disability",
-          "long_term_disability",
-          "401k",
-          "roth_401k",
-          "403b",
-          "roth_403b",
-          "457",
-          "roth_457",
-          "hsa",
-          "fsa_medical",
-          "fsa_dependent_care",
-          "transit",
-          "parking",
-          "accident",
-          "cancer",
-          "critical_illness",
-          "hospital",
-          "medical_other",
-          "simple_ira",
-          "roth_simple_ira",
-          "nqdc",
-          "nontaxable_fringe",
-          "pucc",
-          "voluntary",
-          "post_tax",
-          "other"
-        ],
-        "names": [
-          "Medical",
-          "Dental",
-          "Vision",
-          "Life",
-          "ShortTermDisability",
-          "LongTermDisability",
-          "_401k",
-          "Roth401k",
-          "_403b",
-          "Roth403b",
-          "_457",
-          "Roth457",
-          "Hsa",
-          "FsaMedical",
-          "FsaDependentCare",
-          "Transit",
-          "Parking",
-          "Accident",
-          "Cancer",
-          "CriticalIllness",
-          "Hospital",
-          "MedicalOther",
-          "SimpleIra",
-          "RothSimpleIra",
-          "Nqdc",
-          "NontaxableFringe",
-          "Pucc",
-          "Voluntary",
-          "PostTax",
-          "Other"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_1",
-      "source": "union_1",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "USD",
-          "AUD",
-          "BGN",
-          "BRL",
-          "CAD",
-          "CHF",
-          "CZK",
-          "DKK",
-          "EUR",
-          "GBP",
-          "HKD",
-          "HUF",
-          "IDR",
-          "INR",
-          "JPY",
-          "MYR",
-          "NOK",
-          "NZD",
-          "CNY",
-          "PLN",
-          "RON",
-          "TRY",
-          "SEK",
-          "SGD",
-          "AED",
-          "ARS",
-          "BDT",
-          "BWP",
-          "CLP",
-          "COP",
-          "CRC",
-          "EGP",
-          "FJD",
-          "GEL",
-          "GHS",
-          "ILS",
-          "KES",
-          "KRW",
-          "LKR",
-          "MAD",
-          "MXN",
-          "NPR",
-          "PHP",
-          "PKR",
-          "THB",
-          "UAH",
-          "UGX",
-          "UYU",
-          "VND",
-          "ZAR",
-          "ZMW",
-          "TND",
-          "NGN",
-          "RSD",
-          "TWD",
-          "GTQ",
-          "HNL",
-          "DOP",
-          "SAR",
-          "XAF",
-          "PEN"
-        ],
-        "names": [
-          "Usd",
-          "Aud",
-          "Bgn",
-          "Brl",
-          "Cad",
-          "Chf",
-          "Czk",
-          "Dkk",
-          "Eur",
-          "Gbp",
-          "Hkd",
-          "Huf",
-          "Idr",
-          "Inr",
-          "Jpy",
-          "Myr",
-          "Nok",
-          "Nzd",
-          "Cny",
-          "Pln",
-          "Ron",
-          "Try",
-          "Sek",
-          "Sgd",
-          "Aed",
-          "Ars",
-          "Bdt",
-          "Bwp",
-          "Clp",
-          "Cop",
-          "Crc",
-          "Egp",
-          "Fjd",
-          "Gel",
-          "Ghs",
-          "Ils",
-          "Kes",
-          "Krw",
-          "Lkr",
-          "Mad",
-          "Mxn",
-          "Npr",
-          "Php",
-          "Pkr",
-          "Thb",
-          "Uah",
-          "Ugx",
-          "Uyu",
-          "Vnd",
-          "Zar",
-          "Zmw",
-          "Tnd",
-          "Ngn",
-          "Rsd",
-          "Twd",
-          "Gtq",
-          "Hnl",
-          "Dop",
-          "Sar",
-          "Xaf",
-          "Pen"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
       "name": "public_pay_rate_per",
       "source": "public_pay_rate_per",
       "publicAliases": [],
@@ -367,6 +64,12 @@
             "publicName": "payRateId",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pyr_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -402,8 +105,196 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_1"
+              "kind": "enum",
+              "values": [
+                "USD",
+                "AUD",
+                "BGN",
+                "BRL",
+                "CAD",
+                "CHF",
+                "CZK",
+                "DKK",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HUF",
+                "IDR",
+                "INR",
+                "JPY",
+                "MYR",
+                "NOK",
+                "NZD",
+                "CNY",
+                "PLN",
+                "RON",
+                "TRY",
+                "SEK",
+                "SGD",
+                "AED",
+                "ARS",
+                "BDT",
+                "BWP",
+                "CLP",
+                "COP",
+                "CRC",
+                "EGP",
+                "FJD",
+                "GEL",
+                "GHS",
+                "ILS",
+                "KES",
+                "KRW",
+                "LKR",
+                "MAD",
+                "MXN",
+                "NPR",
+                "PHP",
+                "PKR",
+                "THB",
+                "UAH",
+                "UGX",
+                "UYU",
+                "VND",
+                "ZAR",
+                "ZMW",
+                "TND",
+                "NGN",
+                "RSD",
+                "TWD",
+                "GTQ",
+                "HNL",
+                "DOP",
+                "SAR",
+                "XAF",
+                "PEN"
+              ],
+              "names": [
+                "Usd",
+                "Aud",
+                "Bgn",
+                "Brl",
+                "Cad",
+                "Chf",
+                "Czk",
+                "Dkk",
+                "Eur",
+                "Gbp",
+                "Hkd",
+                "Huf",
+                "Idr",
+                "Inr",
+                "Jpy",
+                "Myr",
+                "Nok",
+                "Nzd",
+                "Cny",
+                "Pln",
+                "Ron",
+                "Try",
+                "Sek",
+                "Sgd",
+                "Aed",
+                "Ars",
+                "Bdt",
+                "Bwp",
+                "Clp",
+                "Cop",
+                "Crc",
+                "Egp",
+                "Fjd",
+                "Gel",
+                "Ghs",
+                "Ils",
+                "Kes",
+                "Krw",
+                "Lkr",
+                "Mad",
+                "Mxn",
+                "Npr",
+                "Php",
+                "Pkr",
+                "Thb",
+                "Uah",
+                "Ugx",
+                "Uyu",
+                "Vnd",
+                "Zar",
+                "Zmw",
+                "Tnd",
+                "Ngn",
+                "Rsd",
+                "Twd",
+                "Gtq",
+                "Hnl",
+                "Dop",
+                "Sar",
+                "Xaf",
+                "Pen"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
             }
           },
           {
@@ -457,6 +348,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -491,8 +388,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -515,30 +420,6 @@
           }
         ],
         "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_2",
-      "source": "union_2",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "Infinity",
-          "-Infinity",
-          "NaN"
-        ],
-        "names": [
-          "Infinity",
-          "Infinity",
-          "NaN"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
       }
     },
     {
@@ -572,6 +453,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -606,8 +493,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -619,8 +514,35 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "ref",
-                  "name": "union_11"
+                  "kind": "union",
+                  "variants": [
+                    {
+                      "kind": "primitive",
+                      "type": "number"
+                    },
+                    {
+                      "kind": "enum",
+                      "values": [
+                        "Infinity",
+                        "-Infinity",
+                        "NaN"
+                      ],
+                      "names": [
+                        "Infinity",
+                        "Infinity",
+                        "NaN"
+                      ],
+                      "deprecations": [
+                        false,
+                        false,
+                        false
+                      ]
+                    }
+                  ],
+                  "variantNames": [
+                    null,
+                    null
+                  ]
                 },
                 {
                   "kind": "null"
@@ -663,6 +585,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -697,8 +625,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -757,6 +693,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -791,8 +733,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -848,6 +798,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -882,8 +838,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -913,8 +877,196 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "ref",
-                  "name": "union_1"
+                  "kind": "enum",
+                  "values": [
+                    "USD",
+                    "AUD",
+                    "BGN",
+                    "BRL",
+                    "CAD",
+                    "CHF",
+                    "CZK",
+                    "DKK",
+                    "EUR",
+                    "GBP",
+                    "HKD",
+                    "HUF",
+                    "IDR",
+                    "INR",
+                    "JPY",
+                    "MYR",
+                    "NOK",
+                    "NZD",
+                    "CNY",
+                    "PLN",
+                    "RON",
+                    "TRY",
+                    "SEK",
+                    "SGD",
+                    "AED",
+                    "ARS",
+                    "BDT",
+                    "BWP",
+                    "CLP",
+                    "COP",
+                    "CRC",
+                    "EGP",
+                    "FJD",
+                    "GEL",
+                    "GHS",
+                    "ILS",
+                    "KES",
+                    "KRW",
+                    "LKR",
+                    "MAD",
+                    "MXN",
+                    "NPR",
+                    "PHP",
+                    "PKR",
+                    "THB",
+                    "UAH",
+                    "UGX",
+                    "UYU",
+                    "VND",
+                    "ZAR",
+                    "ZMW",
+                    "TND",
+                    "NGN",
+                    "RSD",
+                    "TWD",
+                    "GTQ",
+                    "HNL",
+                    "DOP",
+                    "SAR",
+                    "XAF",
+                    "PEN"
+                  ],
+                  "names": [
+                    "Usd",
+                    "Aud",
+                    "Bgn",
+                    "Brl",
+                    "Cad",
+                    "Chf",
+                    "Czk",
+                    "Dkk",
+                    "Eur",
+                    "Gbp",
+                    "Hkd",
+                    "Huf",
+                    "Idr",
+                    "Inr",
+                    "Jpy",
+                    "Myr",
+                    "Nok",
+                    "Nzd",
+                    "Cny",
+                    "Pln",
+                    "Ron",
+                    "Try",
+                    "Sek",
+                    "Sgd",
+                    "Aed",
+                    "Ars",
+                    "Bdt",
+                    "Bwp",
+                    "Clp",
+                    "Cop",
+                    "Crc",
+                    "Egp",
+                    "Fjd",
+                    "Gel",
+                    "Ghs",
+                    "Ils",
+                    "Kes",
+                    "Krw",
+                    "Lkr",
+                    "Mad",
+                    "Mxn",
+                    "Npr",
+                    "Php",
+                    "Pkr",
+                    "Thb",
+                    "Uah",
+                    "Ugx",
+                    "Uyu",
+                    "Vnd",
+                    "Zar",
+                    "Zmw",
+                    "Tnd",
+                    "Ngn",
+                    "Rsd",
+                    "Twd",
+                    "Gtq",
+                    "Hnl",
+                    "Dop",
+                    "Sar",
+                    "Xaf",
+                    "Pen"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
                 },
                 {
                   "kind": "null"
@@ -957,6 +1109,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -991,8 +1149,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -1004,148 +1170,40 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "ref",
-                  "name": "union_11"
+                  "kind": "union",
+                  "variants": [
+                    {
+                      "kind": "primitive",
+                      "type": "number"
+                    },
+                    {
+                      "kind": "enum",
+                      "values": [
+                        "Infinity",
+                        "-Infinity",
+                        "NaN"
+                      ],
+                      "names": [
+                        "Infinity",
+                        "Infinity",
+                        "NaN"
+                      ],
+                      "deprecations": [
+                        false,
+                        false,
+                        false
+                      ]
+                    }
+                  ],
+                  "variantNames": [
+                    null,
+                    null
+                  ]
                 },
                 {
                   "kind": "null"
                 }
               ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "objects",
-      "source": "objects",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^cf_"
-              }
-            }
-          },
-          {
-            "name": "name",
-            "publicName": "name",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "publicName": "description",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_3"
-            }
-          },
-          {
-            "name": "type",
-            "publicName": "type",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_4"
-            }
-          },
-          {
-            "name": "config",
-            "publicName": "config",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "objects_1"
-            }
-          },
-          {
-            "name": "status",
-            "publicName": "status",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_5"
-            }
-          },
-          {
-            "name": "category",
-            "publicName": "category",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_6"
-            }
-          },
-          {
-            "name": "accessLevel",
-            "publicName": "accessLevel",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_7"
-            }
-          },
-          {
-            "name": "inputBy",
-            "publicName": "inputBy",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_8"
-            }
-          },
-          {
-            "name": "required",
-            "publicName": "required",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_9"
-            }
-          },
-          {
-            "name": "canWrite",
-            "publicName": "canWrite",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "createdAt",
-            "publicName": "createdAt",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
             }
           }
         ],
@@ -1183,6 +1241,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -1217,8 +1281,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -1230,8 +1302,117 @@
               "kind": "union",
               "variants": [
                 {
-                  "kind": "ref",
-                  "name": "objects_3"
+                  "kind": "object",
+                  "properties": [
+                    {
+                      "name": "id",
+                      "publicName": "id",
+                      "required": true,
+                      "deprecated": false,
+                      "extensions": {
+                        "source": [
+                          "examples"
+                        ],
+                        "examples": "cfo_1234"
+                      },
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string",
+                        "validation": {
+                          "pattern": "^cfo_"
+                        }
+                      }
+                    },
+                    {
+                      "name": "label",
+                      "publicName": "label",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "publicName": "value",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "name": "sortOrder",
+                      "publicName": "sortOrder",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "union",
+                        "variants": [
+                          {
+                            "kind": "primitive",
+                            "type": "number"
+                          },
+                          {
+                            "kind": "enum",
+                            "values": [
+                              "Infinity",
+                              "-Infinity",
+                              "NaN"
+                            ],
+                            "names": [
+                              "Infinity",
+                              "Infinity",
+                              "NaN"
+                            ],
+                            "deprecations": [
+                              false,
+                              false,
+                              false
+                            ]
+                          }
+                        ],
+                        "variantNames": [
+                          null,
+                          null
+                        ]
+                      }
+                    },
+                    {
+                      "name": "status",
+                      "publicName": "status",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "enum",
+                        "values": [
+                          "active",
+                          "archived"
+                        ],
+                        "names": [
+                          "Active",
+                          "Archived"
+                        ],
+                        "deprecations": [
+                          false,
+                          false
+                        ]
+                      }
+                    },
+                    {
+                      "name": "createdAt",
+                      "publicName": "createdAt",
+                      "required": true,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "primitive",
+                        "type": "string"
+                      }
+                    }
+                  ],
+                  "additionalProperties": false
                 },
                 {
                   "kind": "null"
@@ -1274,6 +1455,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -1308,8 +1495,16 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_39"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -1323,8 +1518,117 @@
                 {
                   "kind": "array",
                   "items": {
-                    "kind": "ref",
-                    "name": "objects_3"
+                    "kind": "object",
+                    "properties": [
+                      {
+                        "name": "id",
+                        "publicName": "id",
+                        "required": true,
+                        "deprecated": false,
+                        "extensions": {
+                          "source": [
+                            "examples"
+                          ],
+                          "examples": "cfo_1234"
+                        },
+                        "type": {
+                          "kind": "primitive",
+                          "type": "string",
+                          "validation": {
+                            "pattern": "^cfo_"
+                          }
+                        }
+                      },
+                      {
+                        "name": "label",
+                        "publicName": "label",
+                        "required": true,
+                        "deprecated": false,
+                        "type": {
+                          "kind": "primitive",
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "name": "value",
+                        "publicName": "value",
+                        "required": true,
+                        "deprecated": false,
+                        "type": {
+                          "kind": "primitive",
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "name": "sortOrder",
+                        "publicName": "sortOrder",
+                        "required": true,
+                        "deprecated": false,
+                        "type": {
+                          "kind": "union",
+                          "variants": [
+                            {
+                              "kind": "primitive",
+                              "type": "number"
+                            },
+                            {
+                              "kind": "enum",
+                              "values": [
+                                "Infinity",
+                                "-Infinity",
+                                "NaN"
+                              ],
+                              "names": [
+                                "Infinity",
+                                "Infinity",
+                                "NaN"
+                              ],
+                              "deprecations": [
+                                false,
+                                false,
+                                false
+                              ]
+                            }
+                          ],
+                          "variantNames": [
+                            null,
+                            null
+                          ]
+                        }
+                      },
+                      {
+                        "name": "status",
+                        "publicName": "status",
+                        "required": true,
+                        "deprecated": false,
+                        "type": {
+                          "kind": "enum",
+                          "values": [
+                            "active",
+                            "archived"
+                          ],
+                          "names": [
+                            "Active",
+                            "Archived"
+                          ],
+                          "deprecations": [
+                            false,
+                            false
+                          ]
+                        }
+                      },
+                      {
+                        "name": "createdAt",
+                        "publicName": "createdAt",
+                        "required": true,
+                        "deprecated": false,
+                        "type": {
+                          "kind": "primitive",
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "additionalProperties": false
                   }
                 },
                 {
@@ -1415,8 +1719,196 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_1"
+              "kind": "enum",
+              "values": [
+                "USD",
+                "AUD",
+                "BGN",
+                "BRL",
+                "CAD",
+                "CHF",
+                "CZK",
+                "DKK",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HUF",
+                "IDR",
+                "INR",
+                "JPY",
+                "MYR",
+                "NOK",
+                "NZD",
+                "CNY",
+                "PLN",
+                "RON",
+                "TRY",
+                "SEK",
+                "SGD",
+                "AED",
+                "ARS",
+                "BDT",
+                "BWP",
+                "CLP",
+                "COP",
+                "CRC",
+                "EGP",
+                "FJD",
+                "GEL",
+                "GHS",
+                "ILS",
+                "KES",
+                "KRW",
+                "LKR",
+                "MAD",
+                "MXN",
+                "NPR",
+                "PHP",
+                "PKR",
+                "THB",
+                "UAH",
+                "UGX",
+                "UYU",
+                "VND",
+                "ZAR",
+                "ZMW",
+                "TND",
+                "NGN",
+                "RSD",
+                "TWD",
+                "GTQ",
+                "HNL",
+                "DOP",
+                "SAR",
+                "XAF",
+                "PEN"
+              ],
+              "names": [
+                "Usd",
+                "Aud",
+                "Bgn",
+                "Brl",
+                "Cad",
+                "Chf",
+                "Czk",
+                "Dkk",
+                "Eur",
+                "Gbp",
+                "Hkd",
+                "Huf",
+                "Idr",
+                "Inr",
+                "Jpy",
+                "Myr",
+                "Nok",
+                "Nzd",
+                "Cny",
+                "Pln",
+                "Ron",
+                "Try",
+                "Sek",
+                "Sgd",
+                "Aed",
+                "Ars",
+                "Bdt",
+                "Bwp",
+                "Clp",
+                "Cop",
+                "Crc",
+                "Egp",
+                "Fjd",
+                "Gel",
+                "Ghs",
+                "Ils",
+                "Kes",
+                "Krw",
+                "Lkr",
+                "Mad",
+                "Mxn",
+                "Npr",
+                "Php",
+                "Pkr",
+                "Thb",
+                "Uah",
+                "Ugx",
+                "Uyu",
+                "Vnd",
+                "Zar",
+                "Zmw",
+                "Tnd",
+                "Ngn",
+                "Rsd",
+                "Twd",
+                "Gtq",
+                "Hnl",
+                "Dop",
+                "Sar",
+                "Xaf",
+                "Pen"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
             }
           },
           {
@@ -1473,6 +1965,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "car_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -1508,6 +2006,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "chpl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2074,6 +2578,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "chpl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2154,6 +2664,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "crpl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2320,6 +2836,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "crpl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2418,6 +2940,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2481,6 +3009,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "chpl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2534,6 +3068,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "crpl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -2684,12 +3224,25 @@
               "variants": [
                 {
                   "kind": "primitive",
-                  "type": "number",
-                  "validation": {}
+                  "type": "number"
                 },
                 {
-                  "kind": "ref",
-                  "name": "union_2"
+                  "kind": "enum",
+                  "values": [
+                    "Infinity",
+                    "-Infinity",
+                    "NaN"
+                  ],
+                  "names": [
+                    "Infinity",
+                    "Infinity",
+                    "NaN"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false
+                  ]
                 }
               ],
               "variantNames": [
@@ -2798,6 +3351,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pbdg_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -3081,6 +3640,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pbdg_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -3097,280 +3662,6 @@
             "type": {
               "kind": "primitive",
               "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_3",
-      "source": "union_3",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_4",
-      "source": "union_4",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "text",
-          "number",
-          "date",
-          "boolean",
-          "currency",
-          "percentage",
-          "select",
-          "multi_select"
-        ],
-        "names": [
-          "Text",
-          "Number",
-          "Date",
-          "Boolean",
-          "Currency",
-          "Percentage",
-          "Select",
-          "MultiSelect"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "objects_1",
-      "source": "objects_1",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_5",
-      "source": "union_5",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "active",
-          "archived"
-        ],
-        "names": [
-          "Active",
-          "Archived"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_6",
-      "source": "union_6",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "info",
-          "pii",
-          "compensation",
-          "banking",
-          "it",
-          "compliance"
-        ],
-        "names": [
-          "Info",
-          "Pii",
-          "Compensation",
-          "Banking",
-          "It",
-          "Compliance"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_7",
-      "source": "union_7",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "admins",
-          "manager",
-          "worker"
-        ],
-        "names": [
-          "Admins",
-          "Manager",
-          "Worker"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_8",
-      "source": "union_8",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "admin",
-          "worker"
-        ],
-        "names": [
-          "Admin",
-          "Worker"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_9",
-      "source": "union_9",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "boolean"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_10",
-      "source": "union_10",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "ref",
-            "name": "objects_1"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "objects_2",
-      "source": "objects_2",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "label",
-            "publicName": "label",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
-                "minLength": 1
-              }
-            }
-          },
-          {
-            "name": "value",
-            "publicName": "value",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^\\S[\\s\\S]*\\S$|^\\S$|^$",
-                "minLength": 1
-              }
-            }
-          },
-          {
-            "name": "sortOrder",
-            "publicName": "sortOrder",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "union",
-                  "variants": [
-                    {
-                      "kind": "primitive",
-                      "type": "number"
-                    },
-                    {
-                      "kind": "ref",
-                      "name": "union_2"
-                    }
-                  ],
-                  "variantNames": [
-                    null,
-                    null
-                  ]
-                },
-                {
-                  "kind": "null"
-                }
-              ]
             }
           }
         ],
@@ -3518,115 +3809,6 @@
       }
     },
     {
-      "name": "union_11",
-      "source": "union_11",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "number"
-          },
-          {
-            "kind": "ref",
-            "name": "union_2"
-          }
-        ],
-        "variantNames": [
-          null,
-          null
-        ]
-      }
-    },
-    {
-      "name": "objects_3",
-      "source": "objects_3",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^cfo_"
-              }
-            }
-          },
-          {
-            "name": "label",
-            "publicName": "label",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "publicName": "value",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "sortOrder",
-            "publicName": "sortOrder",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_11"
-            }
-          },
-          {
-            "name": "status",
-            "publicName": "status",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "active",
-                "archived"
-              ],
-              "names": [
-                "Active",
-                "Archived"
-              ],
-              "deprecations": [
-                false,
-                false
-              ]
-            }
-          },
-          {
-            "name": "createdAt",
-            "publicName": "createdAt",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
       "name": "custom_field_not_found_error_encoded",
       "source": "custom_field_not_found_error_encoded",
       "publicAliases": [],
@@ -3657,6 +3839,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cf_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -3710,6 +3898,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cfo_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -3763,6 +3957,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "cfo_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -3857,8 +4057,35 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_11"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "number"
+                },
+                {
+                  "kind": "enum",
+                  "values": [
+                    "Infinity",
+                    "-Infinity",
+                    "NaN"
+                  ],
+                  "names": [
+                    "Infinity",
+                    "Infinity",
+                    "NaN"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              ],
+              "variantNames": [
+                null,
+                null
+              ]
             }
           }
         ],
@@ -3990,8 +4217,196 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_1"
+              "kind": "enum",
+              "values": [
+                "USD",
+                "AUD",
+                "BGN",
+                "BRL",
+                "CAD",
+                "CHF",
+                "CZK",
+                "DKK",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HUF",
+                "IDR",
+                "INR",
+                "JPY",
+                "MYR",
+                "NOK",
+                "NZD",
+                "CNY",
+                "PLN",
+                "RON",
+                "TRY",
+                "SEK",
+                "SGD",
+                "AED",
+                "ARS",
+                "BDT",
+                "BWP",
+                "CLP",
+                "COP",
+                "CRC",
+                "EGP",
+                "FJD",
+                "GEL",
+                "GHS",
+                "ILS",
+                "KES",
+                "KRW",
+                "LKR",
+                "MAD",
+                "MXN",
+                "NPR",
+                "PHP",
+                "PKR",
+                "THB",
+                "UAH",
+                "UGX",
+                "UYU",
+                "VND",
+                "ZAR",
+                "ZMW",
+                "TND",
+                "NGN",
+                "RSD",
+                "TWD",
+                "GTQ",
+                "HNL",
+                "DOP",
+                "SAR",
+                "XAF",
+                "PEN"
+              ],
+              "names": [
+                "Usd",
+                "Aud",
+                "Bgn",
+                "Brl",
+                "Cad",
+                "Chf",
+                "Czk",
+                "Dkk",
+                "Eur",
+                "Gbp",
+                "Hkd",
+                "Huf",
+                "Idr",
+                "Inr",
+                "Jpy",
+                "Myr",
+                "Nok",
+                "Nzd",
+                "Cny",
+                "Pln",
+                "Ron",
+                "Try",
+                "Sek",
+                "Sgd",
+                "Aed",
+                "Ars",
+                "Bdt",
+                "Bwp",
+                "Clp",
+                "Cop",
+                "Crc",
+                "Egp",
+                "Fjd",
+                "Gel",
+                "Ghs",
+                "Ils",
+                "Kes",
+                "Krw",
+                "Lkr",
+                "Mad",
+                "Mxn",
+                "Npr",
+                "Php",
+                "Pkr",
+                "Thb",
+                "Uah",
+                "Ugx",
+                "Uyu",
+                "Vnd",
+                "Zar",
+                "Zmw",
+                "Tnd",
+                "Ngn",
+                "Rsd",
+                "Twd",
+                "Gtq",
+                "Hnl",
+                "Dop",
+                "Sar",
+                "Xaf",
+                "Pen"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
             }
           }
         ],
@@ -4030,8 +4445,35 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_11"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "number"
+                },
+                {
+                  "kind": "enum",
+                  "values": [
+                    "Infinity",
+                    "-Infinity",
+                    "NaN"
+                  ],
+                  "names": [
+                    "Infinity",
+                    "Infinity",
+                    "NaN"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              ],
+              "variantNames": [
+                null,
+                null
+              ]
             }
           }
         ],
@@ -4070,8 +4512,117 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "objects_3"
+              "kind": "object",
+              "properties": [
+                {
+                  "name": "id",
+                  "publicName": "id",
+                  "required": true,
+                  "deprecated": false,
+                  "extensions": {
+                    "source": [
+                      "examples"
+                    ],
+                    "examples": "cfo_1234"
+                  },
+                  "type": {
+                    "kind": "primitive",
+                    "type": "string",
+                    "validation": {
+                      "pattern": "^cfo_"
+                    }
+                  }
+                },
+                {
+                  "name": "label",
+                  "publicName": "label",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "primitive",
+                    "type": "string"
+                  }
+                },
+                {
+                  "name": "value",
+                  "publicName": "value",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "primitive",
+                    "type": "string"
+                  }
+                },
+                {
+                  "name": "sortOrder",
+                  "publicName": "sortOrder",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "union",
+                    "variants": [
+                      {
+                        "kind": "primitive",
+                        "type": "number"
+                      },
+                      {
+                        "kind": "enum",
+                        "values": [
+                          "Infinity",
+                          "-Infinity",
+                          "NaN"
+                        ],
+                        "names": [
+                          "Infinity",
+                          "Infinity",
+                          "NaN"
+                        ],
+                        "deprecations": [
+                          false,
+                          false,
+                          false
+                        ]
+                      }
+                    ],
+                    "variantNames": [
+                      null,
+                      null
+                    ]
+                  }
+                },
+                {
+                  "name": "status",
+                  "publicName": "status",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "enum",
+                    "values": [
+                      "active",
+                      "archived"
+                    ],
+                    "names": [
+                      "Active",
+                      "Archived"
+                    ],
+                    "deprecations": [
+                      false,
+                      false
+                    ]
+                  }
+                },
+                {
+                  "name": "createdAt",
+                  "publicName": "createdAt",
+                  "required": true,
+                  "deprecated": false,
+                  "type": {
+                    "kind": "primitive",
+                    "type": "string"
+                  }
+                }
+              ],
+              "additionalProperties": false
             }
           }
         ],
@@ -4112,8 +4663,117 @@
             "type": {
               "kind": "array",
               "items": {
-                "kind": "ref",
-                "name": "objects_3"
+                "kind": "object",
+                "properties": [
+                  {
+                    "name": "id",
+                    "publicName": "id",
+                    "required": true,
+                    "deprecated": false,
+                    "extensions": {
+                      "source": [
+                        "examples"
+                      ],
+                      "examples": "cfo_1234"
+                    },
+                    "type": {
+                      "kind": "primitive",
+                      "type": "string",
+                      "validation": {
+                        "pattern": "^cfo_"
+                      }
+                    }
+                  },
+                  {
+                    "name": "label",
+                    "publicName": "label",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "primitive",
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "name": "value",
+                    "publicName": "value",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "primitive",
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "name": "sortOrder",
+                    "publicName": "sortOrder",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "union",
+                      "variants": [
+                        {
+                          "kind": "primitive",
+                          "type": "number"
+                        },
+                        {
+                          "kind": "enum",
+                          "values": [
+                            "Infinity",
+                            "-Infinity",
+                            "NaN"
+                          ],
+                          "names": [
+                            "Infinity",
+                            "Infinity",
+                            "NaN"
+                          ],
+                          "deprecations": [
+                            false,
+                            false,
+                            false
+                          ]
+                        }
+                      ],
+                      "variantNames": [
+                        null,
+                        null
+                      ]
+                    }
+                  },
+                  {
+                    "name": "status",
+                    "publicName": "status",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "enum",
+                      "values": [
+                        "active",
+                        "archived"
+                      ],
+                      "names": [
+                        "Active",
+                        "Archived"
+                      ],
+                      "deprecations": [
+                        false,
+                        false
+                      ]
+                    }
+                  },
+                  {
+                    "name": "createdAt",
+                    "publicName": "createdAt",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "primitive",
+                      "type": "string"
+                    }
+                  }
+                ],
+                "additionalProperties": false
               }
             }
           }
@@ -4175,77 +4835,6 @@
       }
     },
     {
-      "name": "objects_4",
-      "source": "objects_4",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^cfv_"
-              }
-            }
-          },
-          {
-            "name": "workerId",
-            "publicName": "workerId",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "fieldId",
-            "publicName": "fieldId",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^cf_"
-              }
-            }
-          },
-          {
-            "name": "value",
-            "publicName": "value",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "public_custom_field_value_output"
-            }
-          },
-          {
-            "name": "updatedAt",
-            "publicName": "updatedAt",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
       "name": "custom_field_worker_not_found_error_encoded",
       "source": "custom_field_worker_not_found_error_encoded",
       "publicAliases": [],
@@ -4276,6 +4865,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -4339,27 +4934,6 @@
       }
     },
     {
-      "name": "union_12",
-      "source": "union_12",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "validation": {
-              "pattern": "^dpt_"
-            }
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
       "name": "department_already_exists_encoded",
       "source": "department_already_exists_encoded",
       "publicAliases": [],
@@ -4391,8 +4965,19 @@
             "required": false,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_12"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^dpt_"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -4450,6 +5035,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "dpt_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -4466,75 +5057,6 @@
             "type": {
               "kind": "primitive",
               "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "objects_5",
-      "source": "objects_5",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^jlvl_"
-              }
-            }
-          },
-          {
-            "name": "code",
-            "publicName": "code",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "name",
-            "publicName": "name",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "track",
-            "publicName": "track",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "ic",
-                "manager",
-                "executive"
-              ],
-              "names": [
-                "Ic",
-                "Manager",
-                "Executive"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false
-              ]
             }
           }
         ],
@@ -4570,1586 +5092,6 @@
           {
             "name": "message",
             "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_13",
-      "source": "union_13",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "draft",
-          "sent",
-          "accepted",
-          "void"
-        ],
-        "names": [
-          "Draft",
-          "Sent",
-          "Accepted",
-          "Void"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_14",
-      "source": "union_14",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "employee",
-          "us_contractor",
-          "global_contractor"
-        ],
-        "names": [
-          "Employee",
-          "UsContractor",
-          "GlobalContractor"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "objects_7",
-      "source": "objects_7",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "firstName",
-            "publicName": "firstName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Jonathan"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "lastName",
-            "publicName": "lastName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Galt"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "email",
-            "publicName": "email",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "format": "email"
-            }
-          },
-          {
-            "name": "contractorDetails",
-            "publicName": "contractorDetails",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "isBusiness",
-                      "publicName": "isBusiness",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "primitive",
-                        "type": "boolean"
-                      }
-                    },
-                    {
-                      "name": "legalBusinessName",
-                      "publicName": "legalBusinessName",
-                      "required": true,
-                      "deprecated": false,
-                      "extensions": {
-                        "source": [
-                          "examples"
-                        ],
-                        "examples": null
-                      },
-                      "type": {
-                        "kind": "union",
-                        "variants": [
-                          {
-                            "kind": "primitive",
-                            "type": "string"
-                          },
-                          {
-                            "kind": "null"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_15",
-      "source": "union_15",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "AD",
-          "AE",
-          "AF",
-          "AG",
-          "AI",
-          "AL",
-          "AM",
-          "AO",
-          "AQ",
-          "AR",
-          "AS",
-          "AT",
-          "AU",
-          "AW",
-          "AX",
-          "AZ",
-          "BA",
-          "BB",
-          "BD",
-          "BE",
-          "BF",
-          "BG",
-          "BH",
-          "BI",
-          "BJ",
-          "BL",
-          "BM",
-          "BN",
-          "BO",
-          "BQ",
-          "BR",
-          "BS",
-          "BT",
-          "BV",
-          "BW",
-          "BY",
-          "BZ",
-          "CA",
-          "CC",
-          "CD",
-          "CF",
-          "CG",
-          "CH",
-          "CI",
-          "CK",
-          "CL",
-          "CM",
-          "CN",
-          "CO",
-          "CR",
-          "CU",
-          "CV",
-          "CW",
-          "CX",
-          "CY",
-          "CZ",
-          "DE",
-          "DJ",
-          "DK",
-          "DM",
-          "DO",
-          "DZ",
-          "EC",
-          "EE",
-          "EG",
-          "EH",
-          "ER",
-          "ES",
-          "ET",
-          "FI",
-          "FJ",
-          "FK",
-          "FM",
-          "FO",
-          "FR",
-          "GA",
-          "GB",
-          "GD",
-          "GE",
-          "GF",
-          "GG",
-          "GH",
-          "GI",
-          "GL",
-          "GM",
-          "GN",
-          "GP",
-          "GQ",
-          "GR",
-          "GS",
-          "GT",
-          "GU",
-          "GW",
-          "GY",
-          "HK",
-          "HM",
-          "HN",
-          "HR",
-          "HT",
-          "HU",
-          "ID",
-          "IE",
-          "IL",
-          "IM",
-          "IN",
-          "IO",
-          "IQ",
-          "IR",
-          "IS",
-          "IT",
-          "JE",
-          "JM",
-          "JO",
-          "JP",
-          "KE",
-          "KG",
-          "KH",
-          "KI",
-          "KM",
-          "KN",
-          "KP",
-          "KR",
-          "KW",
-          "KY",
-          "KZ",
-          "LA",
-          "LB",
-          "LC",
-          "LI",
-          "LK",
-          "LR",
-          "LS",
-          "LT",
-          "LU",
-          "LV",
-          "LY",
-          "MA",
-          "MC",
-          "MD",
-          "ME",
-          "MF",
-          "MG",
-          "MH",
-          "MK",
-          "ML",
-          "MM",
-          "MN",
-          "MO",
-          "MP",
-          "MQ",
-          "MR",
-          "MS",
-          "MT",
-          "MU",
-          "MV",
-          "MW",
-          "MX",
-          "MY",
-          "MZ",
-          "NA",
-          "NC",
-          "NE",
-          "NF",
-          "NG",
-          "NI",
-          "NL",
-          "NO",
-          "NP",
-          "NR",
-          "NU",
-          "NZ",
-          "OM",
-          "PA",
-          "PE",
-          "PF",
-          "PG",
-          "PH",
-          "PK",
-          "PL",
-          "PM",
-          "PN",
-          "PR",
-          "PS",
-          "PT",
-          "PW",
-          "PY",
-          "QA",
-          "RE",
-          "RO",
-          "RS",
-          "RU",
-          "RW",
-          "SA",
-          "SB",
-          "SC",
-          "SD",
-          "SE",
-          "SG",
-          "SH",
-          "SI",
-          "SJ",
-          "SK",
-          "SL",
-          "SM",
-          "SN",
-          "SO",
-          "SR",
-          "SS",
-          "ST",
-          "SV",
-          "SX",
-          "SY",
-          "SZ",
-          "TC",
-          "TD",
-          "TF",
-          "TG",
-          "TH",
-          "TJ",
-          "TK",
-          "TL",
-          "TM",
-          "TN",
-          "TO",
-          "TR",
-          "TT",
-          "TV",
-          "TW",
-          "TZ",
-          "UA",
-          "UG",
-          "UM",
-          "US",
-          "UY",
-          "UZ",
-          "VA",
-          "VC",
-          "VE",
-          "VG",
-          "VI",
-          "VN",
-          "VU",
-          "WF",
-          "WS",
-          "XK",
-          "YE",
-          "YT",
-          "ZA",
-          "ZM",
-          "ZW"
-        ],
-        "names": [
-          "Ad",
-          "Ae",
-          "Af",
-          "Ag",
-          "Ai",
-          "Al",
-          "Am",
-          "Ao",
-          "Aq",
-          "Ar",
-          "As",
-          "At",
-          "Au",
-          "Aw",
-          "Ax",
-          "Az",
-          "Ba",
-          "Bb",
-          "Bd",
-          "Be",
-          "Bf",
-          "Bg",
-          "Bh",
-          "Bi",
-          "Bj",
-          "Bl",
-          "Bm",
-          "Bn",
-          "Bo",
-          "Bq",
-          "Br",
-          "Bs",
-          "Bt",
-          "Bv",
-          "Bw",
-          "By",
-          "Bz",
-          "Ca",
-          "Cc",
-          "Cd",
-          "Cf",
-          "Cg",
-          "Ch",
-          "Ci",
-          "Ck",
-          "Cl",
-          "Cm",
-          "Cn",
-          "Co",
-          "Cr",
-          "Cu",
-          "Cv",
-          "Cw",
-          "Cx",
-          "Cy",
-          "Cz",
-          "De",
-          "Dj",
-          "Dk",
-          "Dm",
-          "Do",
-          "Dz",
-          "Ec",
-          "Ee",
-          "Eg",
-          "Eh",
-          "Er",
-          "Es",
-          "Et",
-          "Fi",
-          "Fj",
-          "Fk",
-          "Fm",
-          "Fo",
-          "Fr",
-          "Ga",
-          "Gb",
-          "Gd",
-          "Ge",
-          "Gf",
-          "Gg",
-          "Gh",
-          "Gi",
-          "Gl",
-          "Gm",
-          "Gn",
-          "Gp",
-          "Gq",
-          "Gr",
-          "Gs",
-          "Gt",
-          "Gu",
-          "Gw",
-          "Gy",
-          "Hk",
-          "Hm",
-          "Hn",
-          "Hr",
-          "Ht",
-          "Hu",
-          "Id",
-          "Ie",
-          "Il",
-          "Im",
-          "In",
-          "Io",
-          "Iq",
-          "Ir",
-          "Is",
-          "It",
-          "Je",
-          "Jm",
-          "Jo",
-          "Jp",
-          "Ke",
-          "Kg",
-          "Kh",
-          "Ki",
-          "Km",
-          "Kn",
-          "Kp",
-          "Kr",
-          "Kw",
-          "Ky",
-          "Kz",
-          "La",
-          "Lb",
-          "Lc",
-          "Li",
-          "Lk",
-          "Lr",
-          "Ls",
-          "Lt",
-          "Lu",
-          "Lv",
-          "Ly",
-          "Ma",
-          "Mc",
-          "Md",
-          "Me",
-          "Mf",
-          "Mg",
-          "Mh",
-          "Mk",
-          "Ml",
-          "Mm",
-          "Mn",
-          "Mo",
-          "Mp",
-          "Mq",
-          "Mr",
-          "Ms",
-          "Mt",
-          "Mu",
-          "Mv",
-          "Mw",
-          "Mx",
-          "My",
-          "Mz",
-          "Na",
-          "Nc",
-          "Ne",
-          "Nf",
-          "Ng",
-          "Ni",
-          "Nl",
-          "No",
-          "Np",
-          "Nr",
-          "Nu",
-          "Nz",
-          "Om",
-          "Pa",
-          "Pe",
-          "Pf",
-          "Pg",
-          "Ph",
-          "Pk",
-          "Pl",
-          "Pm",
-          "Pn",
-          "Pr",
-          "Ps",
-          "Pt",
-          "Pw",
-          "Py",
-          "Qa",
-          "Re",
-          "Ro",
-          "Rs",
-          "Ru",
-          "Rw",
-          "Sa",
-          "Sb",
-          "Sc",
-          "Sd",
-          "Se",
-          "Sg",
-          "Sh",
-          "Si",
-          "Sj",
-          "Sk",
-          "Sl",
-          "Sm",
-          "Sn",
-          "So",
-          "Sr",
-          "Ss",
-          "St",
-          "Sv",
-          "Sx",
-          "Sy",
-          "Sz",
-          "Tc",
-          "Td",
-          "Tf",
-          "Tg",
-          "Th",
-          "Tj",
-          "Tk",
-          "Tl",
-          "Tm",
-          "Tn",
-          "To",
-          "Tr",
-          "Tt",
-          "Tv",
-          "Tw",
-          "Tz",
-          "Ua",
-          "Ug",
-          "Um",
-          "Us",
-          "Uy",
-          "Uz",
-          "Va",
-          "Vc",
-          "Ve",
-          "Vg",
-          "Vi",
-          "Vn",
-          "Vu",
-          "Wf",
-          "Ws",
-          "Xk",
-          "Ye",
-          "Yt",
-          "Za",
-          "Zm",
-          "Zw"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "objects_8",
-      "source": "objects_8",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "title",
-            "publicName": "title",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Research Engineer"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "startDate",
-            "publicName": "startDate",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-              }
-            }
-          },
-          {
-            "name": "country",
-            "publicName": "country",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_15"
-            }
-          },
-          {
-            "name": "scopeOfWork",
-            "publicName": "scopeOfWork",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_16",
-      "source": "union_16",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "id",
-                "publicName": "id",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^dpt_"
-                  }
-                }
-              },
-              {
-                "name": "name",
-                "publicName": "name",
-                "required": true,
-                "deprecated": false,
-                "extensions": {
-                  "source": [
-                    "examples"
-                  ],
-                  "examples": "Engineering"
-                },
-                "type": {
-                  "kind": "primitive",
-                  "type": "string"
-                }
-              }
-            ],
-            "additionalProperties": false
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_17",
-      "source": "union_17",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "id",
-                "publicName": "id",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wkp_"
-                  }
-                }
-              },
-              {
-                "name": "name",
-                "publicName": "name",
-                "required": true,
-                "deprecated": false,
-                "extensions": {
-                  "source": [
-                    "examples"
-                  ],
-                  "examples": "New York Office"
-                },
-                "type": {
-                  "kind": "primitive",
-                  "type": "string"
-                }
-              }
-            ],
-            "additionalProperties": false
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_18",
-      "source": "union_18",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "id",
-                "publicName": "id",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wrk_"
-                  }
-                }
-              },
-              {
-                "name": "name",
-                "publicName": "name",
-                "required": true,
-                "deprecated": false,
-                "extensions": {
-                  "source": [
-                    "examples"
-                  ],
-                  "examples": null
-                },
-                "type": {
-                  "kind": "union",
-                  "variants": [
-                    {
-                      "kind": "primitive",
-                      "type": "string"
-                    },
-                    {
-                      "kind": "null"
-                    }
-                  ]
-                }
-              }
-            ],
-            "additionalProperties": false
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_19",
-      "source": "union_19",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "ref",
-            "name": "objects_5"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_20",
-      "source": "union_20",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "ref",
-            "name": "public_money_amount"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "objects_9",
-      "source": "objects_9",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "basePay",
-            "publicName": "basePay",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "object",
-              "properties": [
-                {
-                  "name": "amount",
-                  "publicName": "amount",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "ref",
-                    "name": "public_money_amount"
-                  }
-                },
-                {
-                  "name": "basis",
-                  "publicName": "basis",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "enum",
-                    "values": [
-                      "year",
-                      "month",
-                      "week",
-                      "hour",
-                      "variable"
-                    ],
-                    "names": [
-                      "Year",
-                      "Month",
-                      "Week",
-                      "Hour",
-                      "Variable"
-                    ],
-                    "deprecations": [
-                      false,
-                      false,
-                      false,
-                      false,
-                      false
-                    ]
-                  }
-                },
-                {
-                  "name": "type",
-                  "publicName": "type",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "union",
-                    "variants": [
-                      {
-                        "kind": "enum",
-                        "values": [
-                          "fixed",
-                          "pay_as_you_go"
-                        ],
-                        "names": [
-                          "Fixed",
-                          "PayAsYouGo"
-                        ],
-                        "deprecations": [
-                          false,
-                          false
-                        ]
-                      },
-                      {
-                        "kind": "null"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "variableRate",
-                  "publicName": "variableRate",
-                  "required": true,
-                  "deprecated": false,
-                  "type": {
-                    "kind": "ref",
-                    "name": "union_20"
-                  }
-                }
-              ],
-              "additionalProperties": false
-            }
-          },
-          {
-            "name": "signOnBonus",
-            "publicName": "signOnBonus",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_20"
-            }
-          },
-          {
-            "name": "relocationBonus",
-            "publicName": "relocationBonus",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_20"
-            }
-          },
-          {
-            "name": "stock",
-            "publicName": "stock",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "options",
-                      "publicName": "options",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "primitive",
-                        "type": "integer",
-                        "validation": {}
-                      }
-                    },
-                    {
-                      "name": "vestingScheduleMonths",
-                      "publicName": "vestingScheduleMonths",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "union",
-                        "variants": [
-                          {
-                            "kind": "primitive",
-                            "type": "integer",
-                            "validation": {}
-                          },
-                          {
-                            "kind": "null"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "name": "cliffMonths",
-                      "publicName": "cliffMonths",
-                      "required": true,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "union",
-                        "variants": [
-                          {
-                            "kind": "primitive",
-                            "type": "integer",
-                            "validation": {}
-                          },
-                          {
-                            "kind": "null"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "objects_6",
-      "source": "objects_6",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^offr_"
-              }
-            }
-          },
-          {
-            "name": "status",
-            "publicName": "status",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_13"
-            }
-          },
-          {
-            "name": "workerType",
-            "publicName": "workerType",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_14"
-            }
-          },
-          {
-            "name": "candidate",
-            "publicName": "candidate",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "objects_7"
-            }
-          },
-          {
-            "name": "position",
-            "publicName": "position",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "objects_8"
-            }
-          },
-          {
-            "name": "department",
-            "publicName": "department",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_16"
-            }
-          },
-          {
-            "name": "workplace",
-            "publicName": "workplace",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_17"
-            }
-          },
-          {
-            "name": "manager",
-            "publicName": "manager",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_18"
-            }
-          },
-          {
-            "name": "level",
-            "publicName": "level",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_19"
-            }
-          },
-          {
-            "name": "sentBy",
-            "publicName": "sentBy",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": null
-            },
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "compensation",
-            "publicName": "compensation",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "objects_9"
-            }
-          },
-          {
-            "name": "offerUrl",
-            "publicName": "offerUrl",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "expirationTime",
-            "publicName": "expirationTime",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "lastViewedAt",
-            "publicName": "lastViewedAt",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "createdAt",
-            "publicName": "createdAt",
             "required": true,
             "deprecated": false,
             "type": {
@@ -6272,6 +5214,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6325,6 +5273,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6378,6 +5332,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "jlvl_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6431,6 +5391,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "offr_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6484,6 +5450,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "offr_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6498,8 +5470,25 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_13"
+              "kind": "enum",
+              "values": [
+                "draft",
+                "sent",
+                "accepted",
+                "void"
+              ],
+              "names": [
+                "Draft",
+                "Sent",
+                "Accepted",
+                "Void"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false
+              ]
             }
           },
           {
@@ -6550,6 +5539,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pyr_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6605,8 +5600,196 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_1"
+              "kind": "enum",
+              "values": [
+                "USD",
+                "AUD",
+                "BGN",
+                "BRL",
+                "CAD",
+                "CHF",
+                "CZK",
+                "DKK",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HUF",
+                "IDR",
+                "INR",
+                "JPY",
+                "MYR",
+                "NOK",
+                "NZD",
+                "CNY",
+                "PLN",
+                "RON",
+                "TRY",
+                "SEK",
+                "SGD",
+                "AED",
+                "ARS",
+                "BDT",
+                "BWP",
+                "CLP",
+                "COP",
+                "CRC",
+                "EGP",
+                "FJD",
+                "GEL",
+                "GHS",
+                "ILS",
+                "KES",
+                "KRW",
+                "LKR",
+                "MAD",
+                "MXN",
+                "NPR",
+                "PHP",
+                "PKR",
+                "THB",
+                "UAH",
+                "UGX",
+                "UYU",
+                "VND",
+                "ZAR",
+                "ZMW",
+                "TND",
+                "NGN",
+                "RSD",
+                "TWD",
+                "GTQ",
+                "HNL",
+                "DOP",
+                "SAR",
+                "XAF",
+                "PEN"
+              ],
+              "names": [
+                "Usd",
+                "Aud",
+                "Bgn",
+                "Brl",
+                "Cad",
+                "Chf",
+                "Czk",
+                "Dkk",
+                "Eur",
+                "Gbp",
+                "Hkd",
+                "Huf",
+                "Idr",
+                "Inr",
+                "Jpy",
+                "Myr",
+                "Nok",
+                "Nzd",
+                "Cny",
+                "Pln",
+                "Ron",
+                "Try",
+                "Sek",
+                "Sgd",
+                "Aed",
+                "Ars",
+                "Bdt",
+                "Bwp",
+                "Clp",
+                "Cop",
+                "Crc",
+                "Egp",
+                "Fjd",
+                "Gel",
+                "Ghs",
+                "Ils",
+                "Kes",
+                "Krw",
+                "Lkr",
+                "Mad",
+                "Mxn",
+                "Npr",
+                "Php",
+                "Pkr",
+                "Thb",
+                "Uah",
+                "Ugx",
+                "Uyu",
+                "Vnd",
+                "Zar",
+                "Zmw",
+                "Tnd",
+                "Ngn",
+                "Rsd",
+                "Twd",
+                "Gtq",
+                "Hnl",
+                "Dop",
+                "Sar",
+                "Xaf",
+                "Pen"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
             }
           },
           {
@@ -6720,6 +5903,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pyr_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -6892,27 +6081,6 @@
           false,
           false,
           false
-        ]
-      }
-    },
-    {
-      "name": "union_21",
-      "source": "union_21",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "validation": {
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-            }
-          },
-          {
-            "kind": "null"
-          }
         ]
       }
     },
@@ -7192,6 +6360,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7240,6 +6414,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7288,6 +6468,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7336,6 +6522,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7384,6 +6576,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7432,6 +6630,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7480,6 +6684,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7528,6 +6738,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7576,6 +6792,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7624,6 +6846,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7672,6 +6900,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -7948,6 +7182,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -8422,6 +7662,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pay_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -8712,6 +7958,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pay_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -8732,30 +7984,6 @@
           }
         ],
         "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_22",
-      "source": "union_22",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "us_w2",
-          "us_1099",
-          "global_contractor"
-        ],
-        "names": [
-          "UsW2",
-          "Us1099",
-          "GlobalContractor"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
       }
     },
     {
@@ -8863,6 +8091,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pay_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -9013,6 +8247,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -9057,16 +8297,21 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "intersection",
-              "parts": [
-                {
-                  "kind": "ref",
-                  "name": "union_22"
-                },
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                }
+              "kind": "enum",
+              "values": [
+                "us_w2",
+                "us_1099",
+                "global_contractor"
+              ],
+              "names": [
+                "UsW2",
+                "Us1099",
+                "GlobalContractor"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false
               ]
             }
           }
@@ -9096,6 +8341,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9245,6 +8496,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9293,6 +8550,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9341,6 +8604,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9389,6 +8658,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9437,6 +8712,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9485,6 +8766,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9533,6 +8820,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9581,6 +8874,12 @@
             "publicName": "amount",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
             "type": {
               "kind": "primitive",
               "type": "integer",
@@ -9958,13 +9257,6 @@
               "parts": [
                 {
                   "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "minItems": 1
-                  }
-                },
-                {
-                  "kind": "primitive",
                   "type": "string"
                 }
               ]
@@ -10207,6 +9499,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pyc_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -10485,6 +9783,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pyc_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -10505,253 +9809,6 @@
           }
         ],
         "additionalProperties": false
-      }
-    },
-    {
-      "name": "objects_10",
-      "source": "objects_10",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^top_"
-              }
-            }
-          },
-          {
-            "name": "timeOffTypeId",
-            "publicName": "timeOffTypeId",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^tot_"
-              }
-            }
-          },
-          {
-            "name": "timeOffTypeName",
-            "publicName": "timeOffTypeName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Vacation"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "paid",
-            "publicName": "paid",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "isUnlimited",
-            "publicName": "isUnlimited",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "schedule",
-            "publicName": "schedule",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "per_hour_worked",
-                "monthly",
-                "yearly",
-                "unlimited"
-              ],
-              "names": [
-                "PerHourWorked",
-                "Monthly",
-                "Yearly",
-                "Unlimited"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false
-              ]
-            }
-          },
-          {
-            "name": "unit",
-            "publicName": "unit",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "hour",
-                "day"
-              ],
-              "names": [
-                "Hour",
-                "Day"
-              ],
-              "deprecations": [
-                false,
-                false
-              ]
-            }
-          },
-          {
-            "name": "name",
-            "publicName": "name",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Company-Wide Vacation Policy"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "description",
-            "publicName": "description",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Vacation policy for the whole company"
-            },
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "hoursWorkedPerChunk",
-            "publicName": "hoursWorkedPerChunk",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "ref",
-                  "name": "union_11"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "minutesPerChunk",
-            "publicName": "minutesPerChunk",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "ref",
-                  "name": "union_11"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "minutesPerPeriod",
-            "publicName": "minutesPerPeriod",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "ref",
-                  "name": "union_11"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_23",
-      "source": "union_23",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "validation": {
-              "pattern": "^top_"
-            }
-          },
-          {
-            "kind": "primitive",
-            "type": "number"
-          },
-          {
-            "kind": "ref",
-            "name": "union_2"
-          }
-        ],
-        "variantNames": [
-          null,
-          null,
-          null
-        ]
       }
     },
     {
@@ -10786,8 +9843,43 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_23"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^top_"
+                  }
+                },
+                {
+                  "kind": "primitive",
+                  "type": "number"
+                },
+                {
+                  "kind": "enum",
+                  "values": [
+                    "Infinity",
+                    "-Infinity",
+                    "NaN"
+                  ],
+                  "names": [
+                    "Infinity",
+                    "Infinity",
+                    "NaN"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              ],
+              "variantNames": [
+                null,
+                null,
+                null
+              ]
             }
           },
           {
@@ -10802,69 +9894,6 @@
           }
         ],
         "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_24",
-      "source": "union_24",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "validation": {
-              "pattern": "^wrkasn_"
-            }
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_25",
-      "source": "union_25",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_26",
-      "source": "union_26",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "pending",
-          "approved",
-          "denied"
-        ],
-        "names": [
-          "Pending",
-          "Approved",
-          "Denied"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false
-        ]
       }
     },
     {
@@ -10910,8 +9939,22 @@
                   "type": "number"
                 },
                 {
-                  "kind": "ref",
-                  "name": "union_2"
+                  "kind": "enum",
+                  "values": [
+                    "Infinity",
+                    "-Infinity",
+                    "NaN"
+                  ],
+                  "names": [
+                    "Infinity",
+                    "Infinity",
+                    "NaN"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false
+                  ]
                 }
               ],
               "variantNames": [
@@ -10929,577 +9972,6 @@
             "type": {
               "kind": "primitive",
               "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_27",
-      "source": "union_27",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "draft",
-          "invited",
-          "onboarding",
-          "active",
-          "offboarding",
-          "inactive"
-        ],
-        "names": [
-          "Draft",
-          "Invited",
-          "Onboarding",
-          "Active",
-          "Offboarding",
-          "Inactive"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_28",
-      "source": "union_28",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "employee",
-          "contractor"
-        ],
-        "names": [
-          "Employee",
-          "Contractor"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_29",
-      "source": "union_29",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "validation": {
-              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-            }
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_30",
-      "source": "union_30",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": false
-      },
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "boolean"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_31",
-      "source": "union_31",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": null
-      },
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_32",
-      "source": "union_32",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "format": "email"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_33",
-      "source": "union_33",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_34",
-      "source": "union_34",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": "America/New_York"
-      },
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_35",
-      "source": "union_35",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": {
-          "id": "dpt_1234",
-          "name": "Engineering"
-        }
-      },
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "object",
-            "properties": [
-              {
-                "name": "id",
-                "publicName": "id",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^dpt_"
-                  }
-                }
-              },
-              {
-                "name": "name",
-                "publicName": "name",
-                "required": true,
-                "deprecated": false,
-                "type": {
-                  "kind": "primitive",
-                  "type": "string"
-                }
-              }
-            ],
-            "additionalProperties": false
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_36",
-      "source": "union_36",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "ref",
-            "name": "objects_5"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_37",
-      "source": "union_37",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "ref",
-            "name": "public_worker_compensation"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_39",
-      "source": "union_39",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string"
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_38",
-      "source": "union_38",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "array",
-            "items": {
-              "kind": "ref",
-              "name": "public_worker_custom_field"
-            }
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "objects_11",
-      "source": "objects_11",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "position",
-            "publicName": "position",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Research Engineer"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "type",
-            "publicName": "type",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_28"
-            }
-          },
-          {
-            "name": "status",
-            "publicName": "status",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_27"
-            }
-          },
-          {
-            "name": "startDate",
-            "publicName": "startDate",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-              }
-            }
-          },
-          {
-            "name": "endDate",
-            "publicName": "endDate",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_29"
-            }
-          },
-          {
-            "name": "isBusiness",
-            "publicName": "isBusiness",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": false
-            },
-            "type": {
-              "kind": "ref",
-              "name": "union_30"
-            }
-          },
-          {
-            "name": "businessName",
-            "publicName": "businessName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": null
-            },
-            "type": {
-              "kind": "ref",
-              "name": "union_31"
-            }
-          },
-          {
-            "name": "firstName",
-            "publicName": "firstName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Jonathan"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "lastName",
-            "publicName": "lastName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Galt"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "email",
-            "publicName": "email",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "format": "email"
-            }
-          },
-          {
-            "name": "workEmail",
-            "publicName": "workEmail",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_32"
-            }
-          },
-          {
-            "name": "preferredName",
-            "publicName": "preferredName",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_33"
-            }
-          },
-          {
-            "name": "displayName",
-            "publicName": "displayName",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "Jack Galt"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "timeZone",
-            "publicName": "timeZone",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "America/New_York"
-            },
-            "type": {
-              "kind": "ref",
-              "name": "union_34"
-            }
-          },
-          {
-            "name": "department",
-            "publicName": "department",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": {
-                "id": "dpt_1234",
-                "name": "Engineering"
-              }
-            },
-            "type": {
-              "kind": "ref",
-              "name": "union_35"
-            }
-          },
-          {
-            "name": "level",
-            "publicName": "level",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_36"
-            }
-          },
-          {
-            "name": "compensation",
-            "publicName": "compensation",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_37"
-            }
-          },
-          {
-            "name": "customFields",
-            "publicName": "customFields",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "ref",
-              "name": "union_38"
             }
           }
         ],
@@ -11537,6 +10009,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -11590,6 +10068,12 @@
             "publicName": "workplaceId",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -11981,6 +10465,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -12114,6 +10604,12 @@
             "publicName": "id",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
             "type": {
               "kind": "primitive",
               "type": "string",
@@ -12130,318 +10626,6 @@
             "type": {
               "kind": "primitive",
               "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "union_40",
-      "source": "union_40",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "union",
-        "variants": [
-          {
-            "kind": "primitive",
-            "type": "string",
-            "validation": {
-              "pattern": "^wkp_"
-            }
-          },
-          {
-            "kind": "null"
-          }
-        ]
-      }
-    },
-    {
-      "name": "union_41",
-      "source": "union_41",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "remote",
-          "office"
-        ],
-        "names": [
-          "Remote",
-          "Office"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "union_42",
-      "source": "union_42",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "active",
-          "archived"
-        ],
-        "names": [
-          "Active",
-          "Archived"
-        ],
-        "deprecations": [
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "objects_12",
-      "source": "objects_12",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "line1",
-            "publicName": "line1",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "minLength": 1
-              }
-            }
-          },
-          {
-            "name": "line2",
-            "publicName": "line2",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string"
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "city",
-            "publicName": "city",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "postalCode",
-            "publicName": "postalCode",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "state",
-            "publicName": "state",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "AL",
-                "AK",
-                "AZ",
-                "AR",
-                "CA",
-                "CO",
-                "CT",
-                "DC",
-                "DE",
-                "FL",
-                "GA",
-                "HI",
-                "ID",
-                "IL",
-                "IN",
-                "IA",
-                "KS",
-                "KY",
-                "LA",
-                "ME",
-                "MD",
-                "MA",
-                "MI",
-                "MN",
-                "MS",
-                "MO",
-                "MT",
-                "NE",
-                "NV",
-                "NH",
-                "NJ",
-                "NM",
-                "NY",
-                "NC",
-                "ND",
-                "OH",
-                "OK",
-                "OR",
-                "PA",
-                "RI",
-                "SC",
-                "SD",
-                "TN",
-                "TX",
-                "UT",
-                "VT",
-                "VA",
-                "WA",
-                "WV",
-                "WI",
-                "WY"
-              ],
-              "names": [
-                "Al",
-                "Ak",
-                "Az",
-                "Ar",
-                "Ca",
-                "Co",
-                "Ct",
-                "Dc",
-                "De",
-                "Fl",
-                "Ga",
-                "Hi",
-                "Id",
-                "Il",
-                "In",
-                "Ia",
-                "Ks",
-                "Ky",
-                "La",
-                "Me",
-                "Md",
-                "Ma",
-                "Mi",
-                "Mn",
-                "Ms",
-                "Mo",
-                "Mt",
-                "Ne",
-                "Nv",
-                "Nh",
-                "Nj",
-                "Nm",
-                "Ny",
-                "Nc",
-                "Nd",
-                "Oh",
-                "Ok",
-                "Or",
-                "Pa",
-                "Ri",
-                "Sc",
-                "Sd",
-                "Tn",
-                "Tx",
-                "Ut",
-                "Vt",
-                "Va",
-                "Wa",
-                "Wv",
-                "Wi",
-                "Wy"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
-            }
-          },
-          {
-            "name": "country",
-            "publicName": "country",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "US"
-              ],
-              "names": [
-                "Us"
-              ],
-              "deprecations": [
-                false
-              ]
             }
           }
         ],
@@ -12480,8 +10664,19 @@
             "required": false,
             "deprecated": false,
             "type": {
-              "kind": "ref",
-              "name": "union_40"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^wkp_"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -12612,8 +10807,763 @@
                       "required": true,
                       "deprecated": false,
                       "type": {
-                        "kind": "ref",
-                        "name": "union_15"
+                        "kind": "enum",
+                        "values": [
+                          "AD",
+                          "AE",
+                          "AF",
+                          "AG",
+                          "AI",
+                          "AL",
+                          "AM",
+                          "AO",
+                          "AQ",
+                          "AR",
+                          "AS",
+                          "AT",
+                          "AU",
+                          "AW",
+                          "AX",
+                          "AZ",
+                          "BA",
+                          "BB",
+                          "BD",
+                          "BE",
+                          "BF",
+                          "BG",
+                          "BH",
+                          "BI",
+                          "BJ",
+                          "BL",
+                          "BM",
+                          "BN",
+                          "BO",
+                          "BQ",
+                          "BR",
+                          "BS",
+                          "BT",
+                          "BV",
+                          "BW",
+                          "BY",
+                          "BZ",
+                          "CA",
+                          "CC",
+                          "CD",
+                          "CF",
+                          "CG",
+                          "CH",
+                          "CI",
+                          "CK",
+                          "CL",
+                          "CM",
+                          "CN",
+                          "CO",
+                          "CR",
+                          "CU",
+                          "CV",
+                          "CW",
+                          "CX",
+                          "CY",
+                          "CZ",
+                          "DE",
+                          "DJ",
+                          "DK",
+                          "DM",
+                          "DO",
+                          "DZ",
+                          "EC",
+                          "EE",
+                          "EG",
+                          "EH",
+                          "ER",
+                          "ES",
+                          "ET",
+                          "FI",
+                          "FJ",
+                          "FK",
+                          "FM",
+                          "FO",
+                          "FR",
+                          "GA",
+                          "GB",
+                          "GD",
+                          "GE",
+                          "GF",
+                          "GG",
+                          "GH",
+                          "GI",
+                          "GL",
+                          "GM",
+                          "GN",
+                          "GP",
+                          "GQ",
+                          "GR",
+                          "GS",
+                          "GT",
+                          "GU",
+                          "GW",
+                          "GY",
+                          "HK",
+                          "HM",
+                          "HN",
+                          "HR",
+                          "HT",
+                          "HU",
+                          "ID",
+                          "IE",
+                          "IL",
+                          "IM",
+                          "IN",
+                          "IO",
+                          "IQ",
+                          "IR",
+                          "IS",
+                          "IT",
+                          "JE",
+                          "JM",
+                          "JO",
+                          "JP",
+                          "KE",
+                          "KG",
+                          "KH",
+                          "KI",
+                          "KM",
+                          "KN",
+                          "KP",
+                          "KR",
+                          "KW",
+                          "KY",
+                          "KZ",
+                          "LA",
+                          "LB",
+                          "LC",
+                          "LI",
+                          "LK",
+                          "LR",
+                          "LS",
+                          "LT",
+                          "LU",
+                          "LV",
+                          "LY",
+                          "MA",
+                          "MC",
+                          "MD",
+                          "ME",
+                          "MF",
+                          "MG",
+                          "MH",
+                          "MK",
+                          "ML",
+                          "MM",
+                          "MN",
+                          "MO",
+                          "MP",
+                          "MQ",
+                          "MR",
+                          "MS",
+                          "MT",
+                          "MU",
+                          "MV",
+                          "MW",
+                          "MX",
+                          "MY",
+                          "MZ",
+                          "NA",
+                          "NC",
+                          "NE",
+                          "NF",
+                          "NG",
+                          "NI",
+                          "NL",
+                          "NO",
+                          "NP",
+                          "NR",
+                          "NU",
+                          "NZ",
+                          "OM",
+                          "PA",
+                          "PE",
+                          "PF",
+                          "PG",
+                          "PH",
+                          "PK",
+                          "PL",
+                          "PM",
+                          "PN",
+                          "PR",
+                          "PS",
+                          "PT",
+                          "PW",
+                          "PY",
+                          "QA",
+                          "RE",
+                          "RO",
+                          "RS",
+                          "RU",
+                          "RW",
+                          "SA",
+                          "SB",
+                          "SC",
+                          "SD",
+                          "SE",
+                          "SG",
+                          "SH",
+                          "SI",
+                          "SJ",
+                          "SK",
+                          "SL",
+                          "SM",
+                          "SN",
+                          "SO",
+                          "SR",
+                          "SS",
+                          "ST",
+                          "SV",
+                          "SX",
+                          "SY",
+                          "SZ",
+                          "TC",
+                          "TD",
+                          "TF",
+                          "TG",
+                          "TH",
+                          "TJ",
+                          "TK",
+                          "TL",
+                          "TM",
+                          "TN",
+                          "TO",
+                          "TR",
+                          "TT",
+                          "TV",
+                          "TW",
+                          "TZ",
+                          "UA",
+                          "UG",
+                          "UM",
+                          "US",
+                          "UY",
+                          "UZ",
+                          "VA",
+                          "VC",
+                          "VE",
+                          "VG",
+                          "VI",
+                          "VN",
+                          "VU",
+                          "WF",
+                          "WS",
+                          "XK",
+                          "YE",
+                          "YT",
+                          "ZA",
+                          "ZM",
+                          "ZW"
+                        ],
+                        "names": [
+                          "Ad",
+                          "Ae",
+                          "Af",
+                          "Ag",
+                          "Ai",
+                          "Al",
+                          "Am",
+                          "Ao",
+                          "Aq",
+                          "Ar",
+                          "As",
+                          "At",
+                          "Au",
+                          "Aw",
+                          "Ax",
+                          "Az",
+                          "Ba",
+                          "Bb",
+                          "Bd",
+                          "Be",
+                          "Bf",
+                          "Bg",
+                          "Bh",
+                          "Bi",
+                          "Bj",
+                          "Bl",
+                          "Bm",
+                          "Bn",
+                          "Bo",
+                          "Bq",
+                          "Br",
+                          "Bs",
+                          "Bt",
+                          "Bv",
+                          "Bw",
+                          "By",
+                          "Bz",
+                          "Ca",
+                          "Cc",
+                          "Cd",
+                          "Cf",
+                          "Cg",
+                          "Ch",
+                          "Ci",
+                          "Ck",
+                          "Cl",
+                          "Cm",
+                          "Cn",
+                          "Co",
+                          "Cr",
+                          "Cu",
+                          "Cv",
+                          "Cw",
+                          "Cx",
+                          "Cy",
+                          "Cz",
+                          "De",
+                          "Dj",
+                          "Dk",
+                          "Dm",
+                          "Do",
+                          "Dz",
+                          "Ec",
+                          "Ee",
+                          "Eg",
+                          "Eh",
+                          "Er",
+                          "Es",
+                          "Et",
+                          "Fi",
+                          "Fj",
+                          "Fk",
+                          "Fm",
+                          "Fo",
+                          "Fr",
+                          "Ga",
+                          "Gb",
+                          "Gd",
+                          "Ge",
+                          "Gf",
+                          "Gg",
+                          "Gh",
+                          "Gi",
+                          "Gl",
+                          "Gm",
+                          "Gn",
+                          "Gp",
+                          "Gq",
+                          "Gr",
+                          "Gs",
+                          "Gt",
+                          "Gu",
+                          "Gw",
+                          "Gy",
+                          "Hk",
+                          "Hm",
+                          "Hn",
+                          "Hr",
+                          "Ht",
+                          "Hu",
+                          "Id",
+                          "Ie",
+                          "Il",
+                          "Im",
+                          "In",
+                          "Io",
+                          "Iq",
+                          "Ir",
+                          "Is",
+                          "It",
+                          "Je",
+                          "Jm",
+                          "Jo",
+                          "Jp",
+                          "Ke",
+                          "Kg",
+                          "Kh",
+                          "Ki",
+                          "Km",
+                          "Kn",
+                          "Kp",
+                          "Kr",
+                          "Kw",
+                          "Ky",
+                          "Kz",
+                          "La",
+                          "Lb",
+                          "Lc",
+                          "Li",
+                          "Lk",
+                          "Lr",
+                          "Ls",
+                          "Lt",
+                          "Lu",
+                          "Lv",
+                          "Ly",
+                          "Ma",
+                          "Mc",
+                          "Md",
+                          "Me",
+                          "Mf",
+                          "Mg",
+                          "Mh",
+                          "Mk",
+                          "Ml",
+                          "Mm",
+                          "Mn",
+                          "Mo",
+                          "Mp",
+                          "Mq",
+                          "Mr",
+                          "Ms",
+                          "Mt",
+                          "Mu",
+                          "Mv",
+                          "Mw",
+                          "Mx",
+                          "My",
+                          "Mz",
+                          "Na",
+                          "Nc",
+                          "Ne",
+                          "Nf",
+                          "Ng",
+                          "Ni",
+                          "Nl",
+                          "No",
+                          "Np",
+                          "Nr",
+                          "Nu",
+                          "Nz",
+                          "Om",
+                          "Pa",
+                          "Pe",
+                          "Pf",
+                          "Pg",
+                          "Ph",
+                          "Pk",
+                          "Pl",
+                          "Pm",
+                          "Pn",
+                          "Pr",
+                          "Ps",
+                          "Pt",
+                          "Pw",
+                          "Py",
+                          "Qa",
+                          "Re",
+                          "Ro",
+                          "Rs",
+                          "Ru",
+                          "Rw",
+                          "Sa",
+                          "Sb",
+                          "Sc",
+                          "Sd",
+                          "Se",
+                          "Sg",
+                          "Sh",
+                          "Si",
+                          "Sj",
+                          "Sk",
+                          "Sl",
+                          "Sm",
+                          "Sn",
+                          "So",
+                          "Sr",
+                          "Ss",
+                          "St",
+                          "Sv",
+                          "Sx",
+                          "Sy",
+                          "Sz",
+                          "Tc",
+                          "Td",
+                          "Tf",
+                          "Tg",
+                          "Th",
+                          "Tj",
+                          "Tk",
+                          "Tl",
+                          "Tm",
+                          "Tn",
+                          "To",
+                          "Tr",
+                          "Tt",
+                          "Tv",
+                          "Tw",
+                          "Tz",
+                          "Ua",
+                          "Ug",
+                          "Um",
+                          "Us",
+                          "Uy",
+                          "Uz",
+                          "Va",
+                          "Vc",
+                          "Ve",
+                          "Vg",
+                          "Vi",
+                          "Vn",
+                          "Vu",
+                          "Wf",
+                          "Ws",
+                          "Xk",
+                          "Ye",
+                          "Yt",
+                          "Za",
+                          "Zm",
+                          "Zw"
+                        ],
+                        "deprecations": [
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false,
+                          false
+                        ]
                       }
                     }
                   ],
@@ -14090,10 +13040,6 @@
           }
         ]
       },
-      "responseModel": {
-        "name": "objects",
-        "publicAliases": []
-      },
       "result": {
         "successStatus": "200",
         "errorStatuses": [
@@ -14255,10 +13201,6 @@
             "encoding": "json"
           }
         ]
-      },
-      "responseModel": {
-        "name": "objects",
-        "publicAliases": []
       },
       "result": {
         "successStatus": "200",
@@ -14614,10 +13556,6 @@
           }
         ]
       },
-      "responseModel": {
-        "name": "objects_3",
-        "publicAliases": []
-      },
       "result": {
         "successStatus": "200",
         "errorStatuses": [
@@ -14915,10 +13853,6 @@
           }
         ]
       },
-      "responseModel": {
-        "name": "objects_3",
-        "publicAliases": []
-      },
       "result": {
         "successStatus": "200",
         "errorStatuses": [
@@ -15193,10 +14127,6 @@
             "encoding": "json"
           }
         ]
-      },
-      "responseModel": {
-        "name": "objects_4",
-        "publicAliases": []
       },
       "result": {
         "successStatus": "200",
@@ -16283,10 +15213,6 @@
           }
         ]
       },
-      "responseModel": {
-        "name": "objects_6",
-        "publicAliases": []
-      },
       "result": {
         "successStatus": "200",
         "errorStatuses": [
@@ -16455,10 +15381,6 @@
           }
         ]
       },
-      "responseModel": {
-        "name": "objects_6",
-        "publicAliases": []
-      },
       "result": {
         "successStatus": "200",
         "errorStatuses": [
@@ -16620,10 +15542,6 @@
             "encoding": "json"
           }
         ]
-      },
-      "responseModel": {
-        "name": "objects_6",
-        "publicAliases": []
       },
       "result": {
         "successStatus": "200",
@@ -17739,10 +16657,6 @@
           }
         ]
       },
-      "responseModel": {
-        "name": "objects_10",
-        "publicAliases": []
-      },
       "result": {
         "successStatus": "200",
         "errorStatuses": [
@@ -18026,10 +16940,6 @@
             "encoding": "json"
           }
         ]
-      },
-      "responseModel": {
-        "name": "objects_11",
-        "publicAliases": []
       },
       "result": {
         "successStatus": "200",

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Shared from './shared';
-import * as Union1API from './custom-fields';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -44,6 +43,7 @@ export namespace TimeOffRequestCreatedWebhookEvent {
      */
     timeOffPolicyId: string;
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     workerId: string;
@@ -86,6 +86,7 @@ export namespace TimeOffRequestReviewedWebhookEvent {
      */
     timeOffPolicyId: string;
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     workerId: string;
@@ -128,6 +129,7 @@ export namespace TimeOffRequestDeletedWebhookEvent {
      */
     timeOffPolicyId: string;
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     workerId: string;
@@ -155,35 +157,11 @@ export interface TimeOffBalanceAdjustedWebhookEvent {
    * The event type.
    */
   event_type: 'time_off:balance:adjusted';
-  payload: TimeOffBalanceAdjustedWebhookEvent.Payload;
+  payload: Record<string, unknown>;
   /**
    * ISO 8601 timestamp of when the event was generated.
    */
   created_at: string;
-}
-
-export namespace TimeOffBalanceAdjustedWebhookEvent {
-  export interface Payload {
-    /**
-     * @pattern ^wrk_
-     */
-    workerId: string;
-    /**
-     * @pattern ^top_
-     */
-    policyId: string;
-    /**
-     * Signed adjustment applied to the balance, in minutes. Omitted when no balance snapshot was captured.
-     */
-    adjustmentMinutes?: Shared.Union | null;
-    /**
-     * The date the adjustment takes effect. Omitted when no balance snapshot was captured.
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    effectiveDate?: string | null;
-    previousBalance?: Union1API.Union1;
-    newBalance?: Union1API.Union1;
-  }
 }
 
 export interface WorkerCreatedWebhookEvent {
@@ -205,6 +183,7 @@ export interface WorkerCreatedWebhookEvent {
 export namespace WorkerCreatedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -224,6 +203,7 @@ export namespace WorkerCreatedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -267,6 +247,7 @@ export namespace WorkerCreatedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -275,6 +256,7 @@ export namespace WorkerCreatedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -286,6 +268,7 @@ export namespace WorkerCreatedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -307,6 +290,7 @@ export namespace WorkerCreatedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -322,12 +306,13 @@ export namespace WorkerCreatedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -350,6 +335,7 @@ export namespace WorkerCreatedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -371,6 +357,7 @@ export namespace WorkerCreatedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -390,12 +377,75 @@ export namespace WorkerCreatedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -411,12 +461,13 @@ export namespace WorkerCreatedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -432,12 +483,28 @@ export namespace WorkerCreatedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -453,7 +520,22 @@ export namespace WorkerCreatedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -477,6 +559,7 @@ export interface WorkerUpdatedWebhookEvent {
 export namespace WorkerUpdatedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -496,6 +579,7 @@ export namespace WorkerUpdatedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -539,6 +623,7 @@ export namespace WorkerUpdatedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -547,6 +632,7 @@ export namespace WorkerUpdatedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -558,6 +644,7 @@ export namespace WorkerUpdatedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -579,6 +666,7 @@ export namespace WorkerUpdatedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -594,12 +682,13 @@ export namespace WorkerUpdatedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -622,6 +711,7 @@ export namespace WorkerUpdatedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -643,6 +733,7 @@ export namespace WorkerUpdatedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -662,12 +753,75 @@ export namespace WorkerUpdatedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -683,12 +837,13 @@ export namespace WorkerUpdatedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -704,12 +859,28 @@ export namespace WorkerUpdatedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -725,7 +896,22 @@ export namespace WorkerUpdatedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -749,6 +935,7 @@ export interface WorkerDeletedWebhookEvent {
 export namespace WorkerDeletedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -768,6 +955,7 @@ export namespace WorkerDeletedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -811,6 +999,7 @@ export namespace WorkerDeletedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -819,6 +1008,7 @@ export namespace WorkerDeletedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -830,6 +1020,7 @@ export namespace WorkerDeletedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -851,6 +1042,7 @@ export namespace WorkerDeletedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -866,12 +1058,13 @@ export namespace WorkerDeletedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -894,6 +1087,7 @@ export namespace WorkerDeletedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -915,6 +1109,7 @@ export namespace WorkerDeletedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -934,12 +1129,75 @@ export namespace WorkerDeletedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -955,12 +1213,13 @@ export namespace WorkerDeletedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -976,12 +1235,28 @@ export namespace WorkerDeletedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -997,7 +1272,22 @@ export namespace WorkerDeletedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -1021,6 +1311,7 @@ export interface WorkerInviteSentWebhookEvent {
 export namespace WorkerInviteSentWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -1040,6 +1331,7 @@ export namespace WorkerInviteSentWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1083,6 +1375,7 @@ export namespace WorkerInviteSentWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -1091,6 +1384,7 @@ export namespace WorkerInviteSentWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -1102,6 +1396,7 @@ export namespace WorkerInviteSentWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1123,6 +1418,7 @@ export namespace WorkerInviteSentWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1138,12 +1434,13 @@ export namespace WorkerInviteSentWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1166,6 +1463,7 @@ export namespace WorkerInviteSentWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1187,6 +1485,7 @@ export namespace WorkerInviteSentWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1206,12 +1505,75 @@ export namespace WorkerInviteSentWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1227,12 +1589,13 @@ export namespace WorkerInviteSentWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1248,12 +1611,28 @@ export namespace WorkerInviteSentWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1269,7 +1648,22 @@ export namespace WorkerInviteSentWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -1293,6 +1687,7 @@ export interface WorkerInviteAcceptedWebhookEvent {
 export namespace WorkerInviteAcceptedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -1312,6 +1707,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1355,6 +1751,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -1363,6 +1760,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -1374,6 +1772,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1395,6 +1794,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1410,12 +1810,13 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1438,6 +1839,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1459,6 +1861,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1478,12 +1881,75 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1499,12 +1965,13 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1520,12 +1987,28 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1541,7 +2024,22 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -1565,6 +2063,7 @@ export interface WorkerOnboardingCompletedWebhookEvent {
 export namespace WorkerOnboardingCompletedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -1584,6 +2083,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1627,6 +2127,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -1635,6 +2136,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -1646,6 +2148,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1667,6 +2170,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1682,12 +2186,13 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1710,6 +2215,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1731,6 +2237,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1750,12 +2257,75 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1771,12 +2341,13 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1792,12 +2363,28 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1813,7 +2400,22 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -1837,6 +2439,7 @@ export interface WorkerOffboardingStartedWebhookEvent {
 export namespace WorkerOffboardingStartedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -1856,6 +2459,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1899,6 +2503,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -1907,6 +2512,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -1918,6 +2524,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1939,6 +2546,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1954,12 +2562,13 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -1982,6 +2591,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2003,6 +2613,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2022,12 +2633,75 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2043,12 +2717,13 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2064,12 +2739,28 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2085,7 +2776,22 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -2109,6 +2815,7 @@ export interface WorkerOffboardedWebhookEvent {
 export namespace WorkerOffboardedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -2128,6 +2835,7 @@ export namespace WorkerOffboardedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -2171,6 +2879,7 @@ export namespace WorkerOffboardedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -2179,6 +2888,7 @@ export namespace WorkerOffboardedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -2190,6 +2900,7 @@ export namespace WorkerOffboardedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2211,6 +2922,7 @@ export namespace WorkerOffboardedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2226,12 +2938,13 @@ export namespace WorkerOffboardedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2254,6 +2967,7 @@ export namespace WorkerOffboardedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2275,6 +2989,7 @@ export namespace WorkerOffboardedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2294,12 +3009,75 @@ export namespace WorkerOffboardedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2315,12 +3093,13 @@ export namespace WorkerOffboardedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2336,12 +3115,28 @@ export namespace WorkerOffboardedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2357,7 +3152,22 @@ export namespace WorkerOffboardedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -2381,6 +3191,7 @@ export interface WorkerReactivatedWebhookEvent {
 export namespace WorkerReactivatedWebhookEvent {
   export interface Payload {
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     id: string;
@@ -2400,6 +3211,7 @@ export namespace WorkerReactivatedWebhookEvent {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -2443,6 +3255,7 @@ export namespace WorkerReactivatedWebhookEvent {
   export namespace Payload {
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -2451,6 +3264,7 @@ export namespace WorkerReactivatedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -2462,6 +3276,7 @@ export namespace WorkerReactivatedWebhookEvent {
     export interface PublicTextWorkerCustomField {
       type: 'text';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2483,6 +3298,7 @@ export namespace WorkerReactivatedWebhookEvent {
     export interface PublicNumberWorkerCustomField {
       type: 'number';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2498,12 +3314,13 @@ export namespace WorkerReactivatedWebhookEvent {
       /**
        * The worker’s number; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicDateWorkerCustomField {
       type: 'date';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2526,6 +3343,7 @@ export namespace WorkerReactivatedWebhookEvent {
     export interface PublicBooleanWorkerCustomField {
       type: 'boolean';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2547,6 +3365,7 @@ export namespace WorkerReactivatedWebhookEvent {
     export interface PublicCurrencyWorkerCustomField {
       type: 'currency';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2566,12 +3385,75 @@ export namespace WorkerReactivatedWebhookEvent {
       /**
        * The amount’s currency; null when unset or when the field is redacted for this API key.
        */
-      currencyCode: Union1API.Union1 | null;
+      currencyCode:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN'
+        | null;
     }
 
     export interface PublicPercentageWorkerCustomField {
       type: 'percentage';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2587,12 +3469,13 @@ export namespace WorkerReactivatedWebhookEvent {
       /**
        * The worker’s percentage; null when unset or when the field is redacted for this API key.
        */
-      value: Shared.Union11 | null;
+      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
     }
 
     export interface PublicSelectWorkerCustomField {
       type: 'select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2608,12 +3491,28 @@ export namespace WorkerReactivatedWebhookEvent {
       /**
        * The selected option; null when unset or when the field is redacted for this API key.
        */
-      option: Shared.Objects3 | null;
+      option: PublicSelectWorkerCustomField.Option | null;
+    }
+
+    export namespace PublicSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
 
     export interface PublicMultiSelectWorkerCustomField {
       type: 'multi_select';
       /**
+       * The tag of a company custom worker field.
        * @pattern ^cf_
        */
       id: string;
@@ -2629,7 +3528,22 @@ export namespace WorkerReactivatedWebhookEvent {
       /**
        * The selected options; null when unset or when the field is redacted for this API key.
        */
-      options: Array<Shared.Objects3> | null;
+      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
+    }
+
+    export namespace PublicMultiSelectWorkerCustomField {
+      export interface Option {
+        /**
+         * The tag of a company custom worker field option.
+         * @pattern ^cfo_
+         */
+        id: string;
+        label: string;
+        value: string;
+        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+        status: 'active' | 'archived';
+        createdAt: string;
+      }
     }
   }
 }
@@ -2653,6 +3567,7 @@ export interface OfferCreatedWebhookEvent {
 export namespace OfferCreatedWebhookEvent {
   export interface Payload {
     /**
+     * The tag of the offer.
      * @pattern ^offr_
      */
     id: string;
@@ -2686,6 +3601,7 @@ export namespace OfferCreatedWebhookEvent {
       firstName: string;
       lastName: string;
       /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
        * @format email
        */
       email: string;
@@ -2961,6 +3877,7 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -2969,6 +3886,7 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Workplace {
       /**
+       * Public workplace identifier
        * @pattern ^wkp_
        */
       id: string;
@@ -2977,6 +3895,7 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Manager {
       /**
+       * The id of the worker.
        * @pattern ^wrk_
        */
       id: string;
@@ -2985,8 +3904,8 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.Union;
-      relocationBonus: Shared.Union;
+      signOnBonus: Shared.PublicMoneyAmount | null;
+      relocationBonus: Shared.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -2998,7 +3917,7 @@ export namespace OfferCreatedWebhookEvent {
         amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.Union;
+        variableRate: Shared.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -3019,6 +3938,7 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -3048,6 +3968,7 @@ export interface OfferSentWebhookEvent {
 export namespace OfferSentWebhookEvent {
   export interface Payload {
     /**
+     * The tag of the offer.
      * @pattern ^offr_
      */
     id: string;
@@ -3081,6 +4002,7 @@ export namespace OfferSentWebhookEvent {
       firstName: string;
       lastName: string;
       /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
        * @format email
        */
       email: string;
@@ -3356,6 +4278,7 @@ export namespace OfferSentWebhookEvent {
 
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -3364,6 +4287,7 @@ export namespace OfferSentWebhookEvent {
 
     export interface Workplace {
       /**
+       * Public workplace identifier
        * @pattern ^wkp_
        */
       id: string;
@@ -3372,6 +4296,7 @@ export namespace OfferSentWebhookEvent {
 
     export interface Manager {
       /**
+       * The id of the worker.
        * @pattern ^wrk_
        */
       id: string;
@@ -3380,8 +4305,8 @@ export namespace OfferSentWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.Union;
-      relocationBonus: Shared.Union;
+      signOnBonus: Shared.PublicMoneyAmount | null;
+      relocationBonus: Shared.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -3393,7 +4318,7 @@ export namespace OfferSentWebhookEvent {
         amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.Union;
+        variableRate: Shared.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -3414,6 +4339,7 @@ export namespace OfferSentWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -3443,6 +4369,7 @@ export interface OfferViewedWebhookEvent {
 export namespace OfferViewedWebhookEvent {
   export interface Payload {
     /**
+     * The tag of the offer.
      * @pattern ^offr_
      */
     id: string;
@@ -3476,6 +4403,7 @@ export namespace OfferViewedWebhookEvent {
       firstName: string;
       lastName: string;
       /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
        * @format email
        */
       email: string;
@@ -3751,6 +4679,7 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -3759,6 +4688,7 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Workplace {
       /**
+       * Public workplace identifier
        * @pattern ^wkp_
        */
       id: string;
@@ -3767,6 +4697,7 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Manager {
       /**
+       * The id of the worker.
        * @pattern ^wrk_
        */
       id: string;
@@ -3775,8 +4706,8 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.Union;
-      relocationBonus: Shared.Union;
+      signOnBonus: Shared.PublicMoneyAmount | null;
+      relocationBonus: Shared.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -3788,7 +4719,7 @@ export namespace OfferViewedWebhookEvent {
         amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.Union;
+        variableRate: Shared.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -3809,6 +4740,7 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -3838,6 +4770,7 @@ export interface OfferAcceptedWebhookEvent {
 export namespace OfferAcceptedWebhookEvent {
   export interface Payload {
     /**
+     * The tag of the offer.
      * @pattern ^offr_
      */
     id: string;
@@ -3871,6 +4804,7 @@ export namespace OfferAcceptedWebhookEvent {
       firstName: string;
       lastName: string;
       /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
        * @format email
        */
       email: string;
@@ -4146,6 +5080,7 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -4154,6 +5089,7 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Workplace {
       /**
+       * Public workplace identifier
        * @pattern ^wkp_
        */
       id: string;
@@ -4162,6 +5098,7 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Manager {
       /**
+       * The id of the worker.
        * @pattern ^wrk_
        */
       id: string;
@@ -4170,8 +5107,8 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.Union;
-      relocationBonus: Shared.Union;
+      signOnBonus: Shared.PublicMoneyAmount | null;
+      relocationBonus: Shared.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -4183,7 +5120,7 @@ export namespace OfferAcceptedWebhookEvent {
         amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.Union;
+        variableRate: Shared.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -4204,6 +5141,7 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;
@@ -4233,6 +5171,7 @@ export interface OfferVoidedWebhookEvent {
 export namespace OfferVoidedWebhookEvent {
   export interface Payload {
     /**
+     * The tag of the offer.
      * @pattern ^offr_
      */
     id: string;
@@ -4266,6 +5205,7 @@ export namespace OfferVoidedWebhookEvent {
       firstName: string;
       lastName: string;
       /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
        * @format email
        */
       email: string;
@@ -4541,6 +5481,7 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -4549,6 +5490,7 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Workplace {
       /**
+       * Public workplace identifier
        * @pattern ^wkp_
        */
       id: string;
@@ -4557,6 +5499,7 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Manager {
       /**
+       * The id of the worker.
        * @pattern ^wrk_
        */
       id: string;
@@ -4565,8 +5508,8 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.Union;
-      relocationBonus: Shared.Union;
+      signOnBonus: Shared.PublicMoneyAmount | null;
+      relocationBonus: Shared.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -4578,7 +5521,7 @@ export namespace OfferVoidedWebhookEvent {
         amount: Shared.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.Union;
+        variableRate: Shared.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -4599,6 +5542,7 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Level {
       /**
+       * The unique public id of the job level
        * @pattern ^jlvl_
        */
       id: string;

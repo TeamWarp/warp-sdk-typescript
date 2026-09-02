@@ -77,9 +77,9 @@ export namespace PolicyListResponse {
     unit: 'hour' | 'day';
     name: string;
     description: string | null;
-    hoursWorkedPerChunk: Shared.Union11 | null;
-    minutesPerChunk: Shared.Union11 | null;
-    minutesPerPeriod: Shared.Union11 | null;
+    hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+    minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
   }
 }
 
@@ -99,9 +99,9 @@ export interface PolicyGetResponse {
   unit: 'hour' | 'day';
   name: string;
   description: string | null;
-  hoursWorkedPerChunk: Shared.Union11 | null;
-  minutesPerChunk: Shared.Union11 | null;
-  minutesPerPeriod: Shared.Union11 | null;
+  hoursWorkedPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  minutesPerChunk: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  minutesPerPeriod: number | 'Infinity' | '-Infinity' | 'NaN' | null;
 }
 export declare namespace Policies {
   export {

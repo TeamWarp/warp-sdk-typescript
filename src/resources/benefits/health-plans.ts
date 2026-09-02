@@ -29,7 +29,7 @@ export class HealthPlans extends APIResource {
   /**
    * Get a publicly visible company health plan by id.
    *
-   * @param {string} id
+   * @param {string} id - The tag of a company health plan.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<HealthPlanGetResponse>} A company health plan available through Warp.
    *
@@ -69,6 +69,7 @@ export interface HealthPlanListResponse {
 export namespace HealthPlanListResponse {
   export interface Data {
     /**
+     * The tag of a company health plan.
      * @pattern ^chpl_
      */
     id: string;
@@ -111,6 +112,7 @@ export namespace HealthPlanListResponse {
   export namespace Data {
     export interface Carrier {
       /**
+       * The tag of a carrier.
        * @pattern ^car_
        */
       id: string;
@@ -124,6 +126,7 @@ export namespace HealthPlanListResponse {
 
 export interface HealthPlanGetResponse {
   /**
+   * The tag of a company health plan.
    * @pattern ^chpl_
    */
   id: string;
@@ -166,6 +169,7 @@ export interface HealthPlanGetResponse {
 export namespace HealthPlanGetResponse {
   export interface Carrier {
     /**
+     * The tag of a carrier.
      * @pattern ^car_
      */
     id: string;

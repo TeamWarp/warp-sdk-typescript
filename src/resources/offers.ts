@@ -5,7 +5,6 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
 import type * as Shared from './shared';
-import type * as CustomFieldsAPI from './custom-fields';
 
 export class Offers extends APIResource {
   /**
@@ -61,7 +60,7 @@ export class Offers extends APIResource {
   /**
    * Void a previously sent offer. Only sent offers can be voided.
    *
-   * @param {string} id
+   * @param {string} id - The tag of the offer.
    * @param {OfferVoidParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferVoidResponse>} Success
@@ -80,7 +79,7 @@ export class Offers extends APIResource {
   /**
    * Extend the expiration deadline of a sent offer.
    *
-   * @param {string} id
+   * @param {string} id - The tag of the offer.
    * @param {OfferExtendDeadlineParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferExtendDeadlineResponse>} Success
@@ -103,7 +102,7 @@ export class Offers extends APIResource {
   /**
    * Resend the offer email to the candidate for a sent offer.
    *
-   * @param {string} id
+   * @param {string} id - The tag of the offer.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<OfferResendResponse>} Success
    *
@@ -127,7 +126,7 @@ export interface OfferListParams {
    * @pattern ^offr_
    */
   beforeId?: string | null;
-  statuses?: Array<Shared.Union13> | null;
+  statuses?: Array<'draft' | 'sent' | 'accepted' | 'void'> | null;
   workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'> | null;
   /**
    * @format email
@@ -144,16 +143,17 @@ export interface OfferListResponse {
 export namespace OfferListResponse {
   export interface Data {
     /**
+     * The tag of the offer.
      * @pattern ^offr_
      */
     id: string;
-    status: Shared.Union13;
+    status: 'draft' | 'sent' | 'accepted' | 'void';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
     candidate: Data.Candidate;
     position: Data.Position;
     department: Data.Department | null;
     workplace: Data.Workplace | null;
-    manager: Shared.Union18 | null;
+    manager: Data.Manager | null;
     /**
      * Display name of the person or company that sent the offer. Null for offers not yet sent.
      */
@@ -169,7 +169,7 @@ export namespace OfferListResponse {
     /**
      * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
      */
-    level?: Shared.Objects5 | null;
+    level?: Data.Level | null;
   }
 
   export namespace Data {
@@ -177,6 +177,7 @@ export namespace OfferListResponse {
       firstName: string;
       lastName: string;
       /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
        * @format email
        */
       email: string;
@@ -452,6 +453,7 @@ export namespace OfferListResponse {
 
     export interface Department {
       /**
+       * The unique public id of the department
        * @pattern ^dpt_
        */
       id: string;
@@ -460,10 +462,20 @@ export namespace OfferListResponse {
 
     export interface Workplace {
       /**
+       * Public workplace identifier
        * @pattern ^wkp_
        */
       id: string;
       name: string;
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      name: string | null;
     }
 
     export interface Compensation {
@@ -498,6 +510,17 @@ export namespace OfferListResponse {
          */
         cliffMonths: number | null;
       }
+    }
+
+    export interface Level {
+      /**
+       * The unique public id of the job level
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
   }
 }
@@ -540,6 +563,7 @@ export namespace OfferCreateParams {
      */
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -910,16 +934,17 @@ export namespace OfferCreateParams {
 
 export interface OfferCreateResponse {
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   id: string;
-  status: Shared.Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferCreateResponse.Candidate;
   position: OfferCreateResponse.Position;
   department: OfferCreateResponse.Department | null;
   workplace: OfferCreateResponse.Workplace | null;
-  manager: Shared.Union18 | null;
+  manager: OfferCreateResponse.Manager | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -935,7 +960,7 @@ export interface OfferCreateResponse {
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: OfferCreateResponse.Level | null;
 }
 
 export namespace OfferCreateResponse {
@@ -943,6 +968,7 @@ export namespace OfferCreateResponse {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1218,6 +1244,7 @@ export namespace OfferCreateResponse {
 
   export interface Department {
     /**
+     * The unique public id of the department
      * @pattern ^dpt_
      */
     id: string;
@@ -1226,10 +1253,20 @@ export namespace OfferCreateResponse {
 
   export interface Workplace {
     /**
+     * Public workplace identifier
      * @pattern ^wkp_
      */
     id: string;
     name: string;
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    name: string | null;
   }
 
   export interface Compensation {
@@ -1265,6 +1302,17 @@ export namespace OfferCreateResponse {
       cliffMonths: number | null;
     }
   }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
 }
 
 export interface OfferVoidParams {
@@ -1274,16 +1322,17 @@ export interface OfferVoidParams {
 
 export interface OfferVoidResponse {
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   id: string;
-  status: Shared.Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferVoidResponse.Candidate;
   position: OfferVoidResponse.Position;
   department: OfferVoidResponse.Department | null;
   workplace: OfferVoidResponse.Workplace | null;
-  manager: Shared.Union18 | null;
+  manager: OfferVoidResponse.Manager | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -1299,7 +1348,7 @@ export interface OfferVoidResponse {
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: OfferVoidResponse.Level | null;
 }
 
 export namespace OfferVoidResponse {
@@ -1307,6 +1356,7 @@ export namespace OfferVoidResponse {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1582,6 +1632,7 @@ export namespace OfferVoidResponse {
 
   export interface Department {
     /**
+     * The unique public id of the department
      * @pattern ^dpt_
      */
     id: string;
@@ -1590,10 +1641,20 @@ export namespace OfferVoidResponse {
 
   export interface Workplace {
     /**
+     * Public workplace identifier
      * @pattern ^wkp_
      */
     id: string;
     name: string;
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    name: string | null;
   }
 
   export interface Compensation {
@@ -1629,6 +1690,17 @@ export namespace OfferVoidResponse {
       cliffMonths: number | null;
     }
   }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
 }
 
 export interface OfferExtendDeadlineParams {
@@ -1637,16 +1709,17 @@ export interface OfferExtendDeadlineParams {
 
 export interface OfferExtendDeadlineResponse {
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   id: string;
-  status: Shared.Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferExtendDeadlineResponse.Candidate;
   position: OfferExtendDeadlineResponse.Position;
   department: OfferExtendDeadlineResponse.Department | null;
   workplace: OfferExtendDeadlineResponse.Workplace | null;
-  manager: Shared.Union18 | null;
+  manager: OfferExtendDeadlineResponse.Manager | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -1662,7 +1735,7 @@ export interface OfferExtendDeadlineResponse {
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: OfferExtendDeadlineResponse.Level | null;
 }
 
 export namespace OfferExtendDeadlineResponse {
@@ -1670,6 +1743,7 @@ export namespace OfferExtendDeadlineResponse {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -1945,6 +2019,7 @@ export namespace OfferExtendDeadlineResponse {
 
   export interface Department {
     /**
+     * The unique public id of the department
      * @pattern ^dpt_
      */
     id: string;
@@ -1953,10 +2028,20 @@ export namespace OfferExtendDeadlineResponse {
 
   export interface Workplace {
     /**
+     * Public workplace identifier
      * @pattern ^wkp_
      */
     id: string;
     name: string;
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    name: string | null;
   }
 
   export interface Compensation {
@@ -1992,20 +2077,32 @@ export namespace OfferExtendDeadlineResponse {
       cliffMonths: number | null;
     }
   }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
 }
 
 export interface OfferResendResponse {
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   id: string;
-  status: Shared.Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferResendResponse.Candidate;
   position: OfferResendResponse.Position;
   department: OfferResendResponse.Department | null;
   workplace: OfferResendResponse.Workplace | null;
-  manager: Shared.Union18 | null;
+  manager: OfferResendResponse.Manager | null;
   /**
    * Display name of the person or company that sent the offer. Null for offers not yet sent.
    */
@@ -2021,7 +2118,7 @@ export interface OfferResendResponse {
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
-  level?: Shared.Objects5 | null;
+  level?: OfferResendResponse.Level | null;
 }
 
 export namespace OfferResendResponse {
@@ -2029,6 +2126,7 @@ export namespace OfferResendResponse {
     firstName: string;
     lastName: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     email: string;
@@ -2304,6 +2402,7 @@ export namespace OfferResendResponse {
 
   export interface Department {
     /**
+     * The unique public id of the department
      * @pattern ^dpt_
      */
     id: string;
@@ -2312,10 +2411,20 @@ export namespace OfferResendResponse {
 
   export interface Workplace {
     /**
+     * Public workplace identifier
      * @pattern ^wkp_
      */
     id: string;
     name: string;
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    name: string | null;
   }
 
   export interface Compensation {
@@ -2350,6 +2459,17 @@ export namespace OfferResendResponse {
        */
       cliffMonths: number | null;
     }
+  }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
   }
 }
 export declare namespace Offers {
