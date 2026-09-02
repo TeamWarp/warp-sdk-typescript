@@ -21289,130 +21289,130 @@
   ],
   "webhooks": [
     {
-      "event": "time_off:request:created",
-      "name": "Unwrap",
+      "event": "time_off.request.created",
+      "name": "TimeOffRequestCreated",
       "source": "webhook",
       "method": "POST",
-      "path": "time_off:request:created"
+      "path": "time_off.request.created"
     },
     {
-      "event": "time_off:request:reviewed",
-      "name": "Unwrap",
+      "event": "time_off.request.reviewed",
+      "name": "TimeOffRequestReviewed",
       "source": "webhook",
       "method": "POST",
-      "path": "time_off:request:reviewed"
+      "path": "time_off.request.reviewed"
     },
     {
-      "event": "time_off:request:deleted",
-      "name": "Unwrap",
+      "event": "time_off.request.deleted",
+      "name": "TimeOffRequestDeleted",
       "source": "webhook",
       "method": "POST",
-      "path": "time_off:request:deleted"
+      "path": "time_off.request.deleted"
     },
     {
-      "event": "time_off:balance:adjusted",
-      "name": "Unwrap",
+      "event": "time_off.balance.adjusted",
+      "name": "TimeOffBalanceAdjusted",
       "source": "webhook",
       "method": "POST",
-      "path": "time_off:balance:adjusted"
+      "path": "time_off.balance.adjusted"
     },
     {
-      "event": "worker:created",
-      "name": "Unwrap",
+      "event": "worker.created",
+      "name": "WorkerCreated",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:created"
+      "path": "worker.created"
     },
     {
-      "event": "worker:updated",
-      "name": "Unwrap",
+      "event": "worker.updated",
+      "name": "WorkerUpdated",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:updated"
+      "path": "worker.updated"
     },
     {
-      "event": "worker:deleted",
-      "name": "Unwrap",
+      "event": "worker.deleted",
+      "name": "WorkerDeleted",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:deleted"
+      "path": "worker.deleted"
     },
     {
-      "event": "worker:invite_sent",
-      "name": "Unwrap",
+      "event": "worker.invite_sent",
+      "name": "WorkerInviteSent",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:invite_sent"
+      "path": "worker.invite_sent"
     },
     {
-      "event": "worker:invite_accepted",
-      "name": "Unwrap",
+      "event": "worker.invite_accepted",
+      "name": "WorkerInviteAccepted",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:invite_accepted"
+      "path": "worker.invite_accepted"
     },
     {
-      "event": "worker:onboarding_completed",
-      "name": "Unwrap",
+      "event": "worker.onboarding_completed",
+      "name": "WorkerOnboardingCompleted",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:onboarding_completed"
+      "path": "worker.onboarding_completed"
     },
     {
-      "event": "worker:offboarding_started",
-      "name": "Unwrap",
+      "event": "worker.offboarding_started",
+      "name": "WorkerOffboardingStarted",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:offboarding_started"
+      "path": "worker.offboarding_started"
     },
     {
-      "event": "worker:offboarded",
-      "name": "Unwrap",
+      "event": "worker.offboarded",
+      "name": "WorkerOffboarded",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:offboarded"
+      "path": "worker.offboarded"
     },
     {
-      "event": "worker:reactivated",
-      "name": "Unwrap",
+      "event": "worker.reactivated",
+      "name": "WorkerReactivated",
       "source": "webhook",
       "method": "POST",
-      "path": "worker:reactivated"
+      "path": "worker.reactivated"
     },
     {
-      "event": "offer:created",
-      "name": "Unwrap",
+      "event": "offer.created",
+      "name": "OfferCreated",
       "source": "webhook",
       "method": "POST",
-      "path": "offer:created"
+      "path": "offer.created"
     },
     {
-      "event": "offer:sent",
-      "name": "Unwrap",
+      "event": "offer.sent",
+      "name": "OfferSent",
       "source": "webhook",
       "method": "POST",
-      "path": "offer:sent"
+      "path": "offer.sent"
     },
     {
-      "event": "offer:viewed",
-      "name": "Unwrap",
+      "event": "offer.viewed",
+      "name": "OfferViewed",
       "source": "webhook",
       "method": "POST",
-      "path": "offer:viewed"
+      "path": "offer.viewed"
     },
     {
-      "event": "offer:accepted",
-      "name": "Unwrap",
+      "event": "offer.accepted",
+      "name": "OfferAccepted",
       "source": "webhook",
       "method": "POST",
-      "path": "offer:accepted"
+      "path": "offer.accepted"
     },
     {
-      "event": "offer:voided",
-      "name": "Unwrap",
+      "event": "offer.voided",
+      "name": "OfferVoided",
       "source": "webhook",
       "method": "POST",
-      "path": "offer:voided"
+      "path": "offer.voided"
     }
   ]
 }
