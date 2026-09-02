@@ -248,6 +248,10 @@ export namespace WorkerCreatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -267,6 +271,16 @@ export namespace WorkerCreatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -506,6 +520,10 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -525,6 +543,16 @@ export namespace WorkerUpdatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -764,6 +792,10 @@ export namespace WorkerDeletedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -783,6 +815,16 @@ export namespace WorkerDeletedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -1022,6 +1064,10 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -1041,6 +1087,16 @@ export namespace WorkerInviteSentWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -1280,6 +1336,10 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -1299,6 +1359,16 @@ export namespace WorkerInviteAcceptedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -1538,6 +1608,10 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -1557,6 +1631,16 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -1796,6 +1880,10 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -1815,6 +1903,16 @@ export namespace WorkerOffboardingStartedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -2054,6 +2152,10 @@ export namespace WorkerOffboardedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -2073,6 +2175,16 @@ export namespace WorkerOffboardedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -2312,6 +2424,10 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: Shared.PublicWorkerCompensation | null;
+    /**
+     * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
     customFields?: Array<
       | Payload.PublicTextWorkerCustomField
       | Payload.PublicNumberWorkerCustomField
@@ -2331,6 +2447,16 @@ export namespace WorkerReactivatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
 
     export interface PublicTextWorkerCustomField {
@@ -2549,6 +2675,10 @@ export namespace OfferCreatedWebhookEvent {
     expirationTime: string | null;
     lastViewedAt: string | null;
     createdAt: string;
+    /**
+     * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
   }
 
   export namespace Payload {
@@ -2885,6 +3015,16 @@ export namespace OfferCreatedWebhookEvent {
          */
         cliffMonths: number | null;
       }
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
   }
 }
@@ -2930,6 +3070,10 @@ export namespace OfferSentWebhookEvent {
     expirationTime: string | null;
     lastViewedAt: string | null;
     createdAt: string;
+    /**
+     * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
   }
 
   export namespace Payload {
@@ -3266,6 +3410,16 @@ export namespace OfferSentWebhookEvent {
          */
         cliffMonths: number | null;
       }
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
   }
 }
@@ -3311,6 +3465,10 @@ export namespace OfferViewedWebhookEvent {
     expirationTime: string | null;
     lastViewedAt: string | null;
     createdAt: string;
+    /**
+     * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
   }
 
   export namespace Payload {
@@ -3647,6 +3805,16 @@ export namespace OfferViewedWebhookEvent {
          */
         cliffMonths: number | null;
       }
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
   }
 }
@@ -3692,6 +3860,10 @@ export namespace OfferAcceptedWebhookEvent {
     expirationTime: string | null;
     lastViewedAt: string | null;
     createdAt: string;
+    /**
+     * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
   }
 
   export namespace Payload {
@@ -4028,6 +4200,16 @@ export namespace OfferAcceptedWebhookEvent {
          */
         cliffMonths: number | null;
       }
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
   }
 }
@@ -4073,6 +4255,10 @@ export namespace OfferVoidedWebhookEvent {
     expirationTime: string | null;
     lastViewedAt: string | null;
     createdAt: string;
+    /**
+     * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Payload.Level | null;
   }
 
   export namespace Payload {
@@ -4409,6 +4595,16 @@ export namespace OfferVoidedWebhookEvent {
          */
         cliffMonths: number | null;
       }
+    }
+
+    export interface Level {
+      /**
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
     }
   }
 }

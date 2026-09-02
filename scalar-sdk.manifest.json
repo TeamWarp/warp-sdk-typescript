@@ -492,7 +492,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -607,7 +607,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -698,7 +698,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -792,7 +792,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -883,7 +883,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -992,7 +992,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -1218,7 +1218,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -1309,7 +1309,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_37"
+              "name": "union_39"
             }
           },
           {
@@ -4473,6 +4473,115 @@
       }
     },
     {
+      "name": "objects_5",
+      "source": "objects_5",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^jlvl_"
+              }
+            }
+          },
+          {
+            "name": "code",
+            "publicName": "code",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "track",
+            "publicName": "track",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "ic",
+                "manager",
+                "executive"
+              ],
+              "names": [
+                "Ic",
+                "Manager",
+                "Executive"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "job_levels_not_enabled_encoded",
+      "source": "job_levels_not_enabled_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "JobLevelsNotEnabled"
+              ],
+              "names": [
+                "JobLevelsNotEnabled"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "union_13",
       "source": "union_13",
       "publicAliases": [],
@@ -4524,8 +4633,8 @@
       }
     },
     {
-      "name": "objects_6",
-      "source": "objects_6",
+      "name": "objects_7",
+      "source": "objects_7",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -5398,8 +5507,8 @@
       }
     },
     {
-      "name": "objects_7",
-      "source": "objects_7",
+      "name": "objects_8",
+      "source": "objects_8",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -5631,6 +5740,24 @@
         "variants": [
           {
             "kind": "ref",
+            "name": "objects_5"
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "union_20",
+      "source": "union_20",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "ref",
             "name": "public_money_amount"
           },
           {
@@ -5640,8 +5767,8 @@
       }
     },
     {
-      "name": "objects_8",
-      "source": "objects_8",
+      "name": "objects_9",
+      "source": "objects_9",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -5731,7 +5858,7 @@
                   "deprecated": false,
                   "type": {
                     "kind": "ref",
-                    "name": "union_19"
+                    "name": "union_20"
                   }
                 }
               ],
@@ -5745,7 +5872,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_19"
+              "name": "union_20"
             }
           },
           {
@@ -5755,7 +5882,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_19"
+              "name": "union_20"
             }
           },
           {
@@ -5832,8 +5959,8 @@
       }
     },
     {
-      "name": "objects_5",
-      "source": "objects_5",
+      "name": "objects_6",
+      "source": "objects_6",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -5879,7 +6006,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "objects_6"
+              "name": "objects_7"
             }
           },
           {
@@ -5889,7 +6016,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "objects_7"
+              "name": "objects_8"
             }
           },
           {
@@ -5923,6 +6050,16 @@
             }
           },
           {
+            "name": "level",
+            "publicName": "level",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_19"
+            }
+          },
+          {
             "name": "sentBy",
             "publicName": "sentBy",
             "required": true,
@@ -5953,7 +6090,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "objects_8"
+              "name": "objects_9"
             }
           },
           {
@@ -6193,6 +6330,59 @@
               "type": "string",
               "validation": {
                 "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "level_not_found_encoded",
+      "source": "level_not_found_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "LevelNotFound"
+              ],
+              "names": [
+                "LevelNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^jlvl_"
               }
             }
           },
@@ -6706,8 +6896,8 @@
       }
     },
     {
-      "name": "union_20",
-      "source": "union_20",
+      "name": "union_21",
+      "source": "union_21",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -8545,8 +8735,8 @@
       }
     },
     {
-      "name": "union_21",
-      "source": "union_21",
+      "name": "union_22",
+      "source": "union_22",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -8871,7 +9061,7 @@
               "parts": [
                 {
                   "kind": "ref",
-                  "name": "union_21"
+                  "name": "union_22"
                 },
                 {
                   "kind": "primitive",
@@ -10318,8 +10508,8 @@
       }
     },
     {
-      "name": "objects_9",
-      "source": "objects_9",
+      "name": "objects_10",
+      "source": "objects_10",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10534,8 +10724,8 @@
       }
     },
     {
-      "name": "union_22",
-      "source": "union_22",
+      "name": "union_23",
+      "source": "union_23",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10597,7 +10787,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_22"
+              "name": "union_23"
             }
           },
           {
@@ -10615,8 +10805,8 @@
       }
     },
     {
-      "name": "union_23",
-      "source": "union_23",
+      "name": "union_24",
+      "source": "union_24",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10636,8 +10826,8 @@
       }
     },
     {
-      "name": "union_24",
-      "source": "union_24",
+      "name": "union_25",
+      "source": "union_25",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10654,8 +10844,8 @@
       }
     },
     {
-      "name": "union_25",
-      "source": "union_25",
+      "name": "union_26",
+      "source": "union_26",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10746,8 +10936,8 @@
       }
     },
     {
-      "name": "union_26",
-      "source": "union_26",
+      "name": "union_27",
+      "source": "union_27",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10779,8 +10969,8 @@
       }
     },
     {
-      "name": "union_27",
-      "source": "union_27",
+      "name": "union_28",
+      "source": "union_28",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10800,8 +10990,8 @@
       }
     },
     {
-      "name": "union_28",
-      "source": "union_28",
+      "name": "union_29",
+      "source": "union_29",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10821,8 +11011,8 @@
       }
     },
     {
-      "name": "union_29",
-      "source": "union_29",
+      "name": "union_30",
+      "source": "union_30",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10845,8 +11035,8 @@
       }
     },
     {
-      "name": "union_30",
-      "source": "union_30",
+      "name": "union_31",
+      "source": "union_31",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10869,8 +11059,8 @@
       }
     },
     {
-      "name": "union_31",
-      "source": "union_31",
+      "name": "union_32",
+      "source": "union_32",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10888,8 +11078,8 @@
       }
     },
     {
-      "name": "union_32",
-      "source": "union_32",
+      "name": "union_33",
+      "source": "union_33",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10906,8 +11096,8 @@
       }
     },
     {
-      "name": "union_33",
-      "source": "union_33",
+      "name": "union_34",
+      "source": "union_34",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10930,8 +11120,8 @@
       }
     },
     {
-      "name": "union_34",
-      "source": "union_34",
+      "name": "union_35",
+      "source": "union_35",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10982,8 +11172,8 @@
       }
     },
     {
-      "name": "union_35",
-      "source": "union_35",
+      "name": "union_36",
+      "source": "union_36",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -10991,7 +11181,7 @@
         "variants": [
           {
             "kind": "ref",
-            "name": "public_worker_compensation"
+            "name": "objects_5"
           },
           {
             "kind": "null"
@@ -11008,6 +11198,24 @@
         "kind": "union",
         "variants": [
           {
+            "kind": "ref",
+            "name": "public_worker_compensation"
+          },
+          {
+            "kind": "null"
+          }
+        ]
+      }
+    },
+    {
+      "name": "union_39",
+      "source": "union_39",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
             "kind": "primitive",
             "type": "string"
           },
@@ -11018,8 +11226,8 @@
       }
     },
     {
-      "name": "union_36",
-      "source": "union_36",
+      "name": "union_38",
+      "source": "union_38",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11039,8 +11247,8 @@
       }
     },
     {
-      "name": "objects_10",
-      "source": "objects_10",
+      "name": "objects_11",
+      "source": "objects_11",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11082,7 +11290,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_27"
+              "name": "union_28"
             }
           },
           {
@@ -11092,7 +11300,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_26"
+              "name": "union_27"
             }
           },
           {
@@ -11115,7 +11323,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_28"
+              "name": "union_29"
             }
           },
           {
@@ -11131,7 +11339,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_29"
+              "name": "union_30"
             }
           },
           {
@@ -11147,7 +11355,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_30"
+              "name": "union_31"
             }
           },
           {
@@ -11200,7 +11408,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_31"
+              "name": "union_32"
             }
           },
           {
@@ -11210,7 +11418,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_32"
+              "name": "union_33"
             }
           },
           {
@@ -11242,7 +11450,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_33"
+              "name": "union_34"
             }
           },
           {
@@ -11261,7 +11469,17 @@
             },
             "type": {
               "kind": "ref",
-              "name": "union_34"
+              "name": "union_35"
+            }
+          },
+          {
+            "name": "level",
+            "publicName": "level",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "union_36"
             }
           },
           {
@@ -11271,7 +11489,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_35"
+              "name": "union_37"
             }
           },
           {
@@ -11281,7 +11499,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_36"
+              "name": "union_38"
             }
           }
         ],
@@ -11919,8 +12137,8 @@
       }
     },
     {
-      "name": "union_38",
-      "source": "union_38",
+      "name": "union_40",
+      "source": "union_40",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11940,8 +12158,8 @@
       }
     },
     {
-      "name": "union_39",
-      "source": "union_39",
+      "name": "union_41",
+      "source": "union_41",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11961,8 +12179,8 @@
       }
     },
     {
-      "name": "union_40",
-      "source": "union_40",
+      "name": "union_42",
+      "source": "union_42",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -11982,8 +12200,8 @@
       }
     },
     {
-      "name": "objects_11",
-      "source": "objects_11",
+      "name": "objects_12",
+      "source": "objects_12",
       "publicAliases": [],
       "deprecated": false,
       "type": {
@@ -12263,7 +12481,7 @@
             "deprecated": false,
             "type": {
               "kind": "ref",
-              "name": "union_38"
+              "name": "union_40"
             }
           },
           {
@@ -15804,6 +16022,7 @@
         "departmentId",
         "workplaceId",
         "managerId",
+        "levelId",
         "workerType",
         "compensation",
         "expirationTime",
@@ -15815,6 +16034,7 @@
         "departmentId",
         "workplaceId",
         "managerId",
+        "levelId",
         "workerType",
         "compensation",
         "expirationTime",
@@ -15839,6 +16059,10 @@
         },
         {
           "name": "managerId",
+          "required": false
+        },
+        {
+          "name": "levelId",
           "required": false
         },
         {
@@ -16058,7 +16282,7 @@
         ]
       },
       "responseModel": {
-        "name": "objects_5",
+        "name": "objects_6",
         "publicAliases": []
       },
       "result": {
@@ -16230,7 +16454,7 @@
         ]
       },
       "responseModel": {
-        "name": "objects_5",
+        "name": "objects_6",
         "publicAliases": []
       },
       "result": {
@@ -16396,7 +16620,7 @@
         ]
       },
       "responseModel": {
-        "name": "objects_5",
+        "name": "objects_6",
         "publicAliases": []
       },
       "result": {
@@ -17514,7 +17738,7 @@
         ]
       },
       "responseModel": {
-        "name": "objects_9",
+        "name": "objects_10",
         "publicAliases": []
       },
       "result": {
@@ -17802,7 +18026,7 @@
         ]
       },
       "responseModel": {
-        "name": "objects_10",
+        "name": "objects_11",
         "publicAliases": []
       },
       "result": {
@@ -18046,6 +18270,7 @@
         "requireI9",
         "stateRegistration",
         "departmentId",
+        "levelId",
         "managerId",
         "stockOptions",
         "workLocation",
@@ -18062,6 +18287,7 @@
         "requireI9",
         "stateRegistration",
         "departmentId",
+        "levelId",
         "managerId",
         "stockOptions",
         "workLocation",
@@ -18104,6 +18330,10 @@
         {
           "name": "departmentId",
           "required": true
+        },
+        {
+          "name": "levelId",
+          "required": false
         },
         {
           "name": "managerId",
@@ -18278,6 +18508,7 @@
         "email",
         "workEmail",
         "departmentId",
+        "levelId",
         "managerId",
         "workCountry",
         "compensation",
@@ -18294,6 +18525,7 @@
         "email",
         "workEmail",
         "departmentId",
+        "levelId",
         "managerId",
         "workCountry",
         "compensation",
@@ -18339,6 +18571,10 @@
         {
           "name": "departmentId",
           "required": true
+        },
+        {
+          "name": "levelId",
+          "required": false
         },
         {
           "name": "managerId",
