@@ -63,6 +63,8 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [Get Paycheck](#get-paycheck)
   - [List Payrolls](#list-payrolls)
   - [Get Payroll](#get-payroll)
+- [`Levels`](#levels)
+  - [List Job Levels](#list-job-levels)
 
 ## Setup
 
@@ -797,4 +799,20 @@ Get a payroll by id. Every amount in totals is expressed in fundingCurrency, the
 
 ```ts
 const payroll = await client.payroll.get('pay_1234');
+```
+
+## `Levels`
+
+Endpoints for reading the job-level framework configured for your company.
+
+### List Job Levels
+
+List the active standard job levels available to your company.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`LevelListResponse`](./src/resources/levels.ts) |
+
+```ts
+const level = await client.levels.list();
 ```

@@ -112,6 +112,7 @@ import {
   type PayrollListPaychecksParams,
   type PayrollListParams,
 } from './resources/payroll';
+import { Levels, type LevelListResponse } from './resources/levels';
 import {
   Webhooks,
   type TimeOffRequestCreatedWebhookEvent,
@@ -943,6 +944,7 @@ export class Warp {
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
   payroll: Payroll = new Payroll(this);
+  levels: Levels = new Levels(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
@@ -955,6 +957,7 @@ Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
 Warp.Payroll = Payroll;
+Warp.Levels = Levels;
 Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
@@ -1054,6 +1057,8 @@ export declare namespace Warp {
     type PayrollListPaychecksParams as PayrollListPaychecksParams,
     type PayrollListParams as PayrollListParams,
   };
+
+  export { Levels as Levels, type LevelListResponse as LevelListResponse };
 
   export {
     Webhooks as Webhooks,

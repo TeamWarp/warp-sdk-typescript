@@ -84,6 +84,8 @@ export type {
   PayrollListResponse,
   PayrollGetResponse,
 } from './payroll';
+export { Levels } from './levels';
+export type { LevelListResponse } from './levels';
 export { Webhooks } from './webhooks';
 export type {
   TimeOffRequestCreatedWebhookEvent,
