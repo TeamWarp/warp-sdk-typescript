@@ -441,10 +441,10 @@ Void a previously sent offer. Only sent offers can be voided.
 | Direction | Type |
 | --- | --- |
 | Request | [`OfferVoidParams`](./src/resources/offers.ts) |
-| Response | [`Objects5`](./src/resources/shared.ts) |
+| Response | [`OfferVoidResponse`](./src/resources/offers.ts) |
 
 ```ts
-const objects5 = await client.offers.void('offr_1234', {
+const offer = await client.offers.void('offr_1234', {
   voidReason: 'candidate_declined',
 });
 ```
@@ -456,10 +456,10 @@ Extend the expiration deadline of a sent offer.
 | Direction | Type |
 | --- | --- |
 | Request | [`OfferExtendDeadlineParams`](./src/resources/offers.ts) |
-| Response | [`Objects5`](./src/resources/shared.ts) |
+| Response | [`OfferExtendDeadlineResponse`](./src/resources/offers.ts) |
 
 ```ts
-const objects5 = await client.offers.extendDeadline('offr_1234', {
+const offer = await client.offers.extendDeadline('offr_1234', {
   expirationTime: '',
 });
 ```
@@ -470,10 +470,10 @@ Resend the offer email to the candidate for a sent offer.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`Objects5`](./src/resources/shared.ts) |
+| Response | [`OfferResendResponse`](./src/resources/offers.ts) |
 
 ```ts
-const objects5 = await client.offers.resend('offr_1234');
+const offer = await client.offers.resend('offr_1234');
 ```
 
 ## `PayRates`
@@ -610,12 +610,8 @@ const worker = await client.workers.list({
 
 Get a specific worker by id.
 
-| Direction | Type |
-| --- | --- |
-| Response | [`WorkerGetResponse`](./src/resources/workers.ts) |
-
 ```ts
-const worker = await client.workers.get('wrk_1234');
+const objects11 = await client.workers.get('wrk_1234');
 ```
 
 ### Delete Worker

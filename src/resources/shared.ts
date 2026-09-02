@@ -137,357 +137,12 @@ export interface Objects3 {
 }
 export interface Objects5 {
   /**
-   * @pattern ^offr_
+   * @pattern ^jlvl_
    */
   id: string;
-  status: Union13;
-  workerType: 'employee' | 'us_contractor' | 'global_contractor';
-  candidate: Objects5.Candidate;
-  position: Objects5.Position;
-  department: Objects5.Department | null;
-  workplace: Objects5.Workplace | null;
-  manager: Union18 | null;
-  /**
-   * Display name of the person or company that sent the offer. Null for offers not yet sent.
-   */
-  sentBy: string | null;
-  compensation: Objects5.Compensation;
-  /**
-   * The candidate-facing offer portal URL. Null for offers that have not been sent.
-   */
-  offerUrl: string | null;
-  expirationTime: string | null;
-  lastViewedAt: string | null;
-  createdAt: string;
-}
-
-export namespace Objects5 {
-  export interface Candidate {
-    firstName: string;
-    lastName: string;
-    /**
-     * @format email
-     */
-    email: string;
-    contractorDetails: Candidate.ContractorDetails | null;
-  }
-
-  export namespace Candidate {
-    export interface ContractorDetails {
-      isBusiness: boolean;
-      legalBusinessName: string | null;
-    }
-  }
-
-  export interface Position {
-    title: string;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    startDate: string;
-    country:
-      | 'AD'
-      | 'AE'
-      | 'AF'
-      | 'AG'
-      | 'AI'
-      | 'AL'
-      | 'AM'
-      | 'AO'
-      | 'AQ'
-      | 'AR'
-      | 'AS'
-      | 'AT'
-      | 'AU'
-      | 'AW'
-      | 'AX'
-      | 'AZ'
-      | 'BA'
-      | 'BB'
-      | 'BD'
-      | 'BE'
-      | 'BF'
-      | 'BG'
-      | 'BH'
-      | 'BI'
-      | 'BJ'
-      | 'BL'
-      | 'BM'
-      | 'BN'
-      | 'BO'
-      | 'BQ'
-      | 'BR'
-      | 'BS'
-      | 'BT'
-      | 'BV'
-      | 'BW'
-      | 'BY'
-      | 'BZ'
-      | 'CA'
-      | 'CC'
-      | 'CD'
-      | 'CF'
-      | 'CG'
-      | 'CH'
-      | 'CI'
-      | 'CK'
-      | 'CL'
-      | 'CM'
-      | 'CN'
-      | 'CO'
-      | 'CR'
-      | 'CU'
-      | 'CV'
-      | 'CW'
-      | 'CX'
-      | 'CY'
-      | 'CZ'
-      | 'DE'
-      | 'DJ'
-      | 'DK'
-      | 'DM'
-      | 'DO'
-      | 'DZ'
-      | 'EC'
-      | 'EE'
-      | 'EG'
-      | 'EH'
-      | 'ER'
-      | 'ES'
-      | 'ET'
-      | 'FI'
-      | 'FJ'
-      | 'FK'
-      | 'FM'
-      | 'FO'
-      | 'FR'
-      | 'GA'
-      | 'GB'
-      | 'GD'
-      | 'GE'
-      | 'GF'
-      | 'GG'
-      | 'GH'
-      | 'GI'
-      | 'GL'
-      | 'GM'
-      | 'GN'
-      | 'GP'
-      | 'GQ'
-      | 'GR'
-      | 'GS'
-      | 'GT'
-      | 'GU'
-      | 'GW'
-      | 'GY'
-      | 'HK'
-      | 'HM'
-      | 'HN'
-      | 'HR'
-      | 'HT'
-      | 'HU'
-      | 'ID'
-      | 'IE'
-      | 'IL'
-      | 'IM'
-      | 'IN'
-      | 'IO'
-      | 'IQ'
-      | 'IR'
-      | 'IS'
-      | 'IT'
-      | 'JE'
-      | 'JM'
-      | 'JO'
-      | 'JP'
-      | 'KE'
-      | 'KG'
-      | 'KH'
-      | 'KI'
-      | 'KM'
-      | 'KN'
-      | 'KP'
-      | 'KR'
-      | 'KW'
-      | 'KY'
-      | 'KZ'
-      | 'LA'
-      | 'LB'
-      | 'LC'
-      | 'LI'
-      | 'LK'
-      | 'LR'
-      | 'LS'
-      | 'LT'
-      | 'LU'
-      | 'LV'
-      | 'LY'
-      | 'MA'
-      | 'MC'
-      | 'MD'
-      | 'ME'
-      | 'MF'
-      | 'MG'
-      | 'MH'
-      | 'MK'
-      | 'ML'
-      | 'MM'
-      | 'MN'
-      | 'MO'
-      | 'MP'
-      | 'MQ'
-      | 'MR'
-      | 'MS'
-      | 'MT'
-      | 'MU'
-      | 'MV'
-      | 'MW'
-      | 'MX'
-      | 'MY'
-      | 'MZ'
-      | 'NA'
-      | 'NC'
-      | 'NE'
-      | 'NF'
-      | 'NG'
-      | 'NI'
-      | 'NL'
-      | 'NO'
-      | 'NP'
-      | 'NR'
-      | 'NU'
-      | 'NZ'
-      | 'OM'
-      | 'PA'
-      | 'PE'
-      | 'PF'
-      | 'PG'
-      | 'PH'
-      | 'PK'
-      | 'PL'
-      | 'PM'
-      | 'PN'
-      | 'PR'
-      | 'PS'
-      | 'PT'
-      | 'PW'
-      | 'PY'
-      | 'QA'
-      | 'RE'
-      | 'RO'
-      | 'RS'
-      | 'RU'
-      | 'RW'
-      | 'SA'
-      | 'SB'
-      | 'SC'
-      | 'SD'
-      | 'SE'
-      | 'SG'
-      | 'SH'
-      | 'SI'
-      | 'SJ'
-      | 'SK'
-      | 'SL'
-      | 'SM'
-      | 'SN'
-      | 'SO'
-      | 'SR'
-      | 'SS'
-      | 'ST'
-      | 'SV'
-      | 'SX'
-      | 'SY'
-      | 'SZ'
-      | 'TC'
-      | 'TD'
-      | 'TF'
-      | 'TG'
-      | 'TH'
-      | 'TJ'
-      | 'TK'
-      | 'TL'
-      | 'TM'
-      | 'TN'
-      | 'TO'
-      | 'TR'
-      | 'TT'
-      | 'TV'
-      | 'TW'
-      | 'TZ'
-      | 'UA'
-      | 'UG'
-      | 'UM'
-      | 'US'
-      | 'UY'
-      | 'UZ'
-      | 'VA'
-      | 'VC'
-      | 'VE'
-      | 'VG'
-      | 'VI'
-      | 'VN'
-      | 'VU'
-      | 'WF'
-      | 'WS'
-      | 'XK'
-      | 'YE'
-      | 'YT'
-      | 'ZA'
-      | 'ZM'
-      | 'ZW';
-    scopeOfWork: string | null;
-  }
-
-  export interface Department {
-    /**
-     * @pattern ^dpt_
-     */
-    id: string;
-    name: string;
-  }
-
-  export interface Workplace {
-    /**
-     * @pattern ^wkp_
-     */
-    id: string;
-    name: string;
-  }
-
-  export interface Compensation {
-    basePay: Compensation.BasePay;
-    signOnBonus: PublicMoneyAmount | null;
-    relocationBonus: PublicMoneyAmount | null;
-    stock: Compensation.Stock | null;
-  }
-
-  export namespace Compensation {
-    export interface BasePay {
-      /**
-       * A monetary amount with its currency and server-formatted display value.
-       */
-      amount: PublicMoneyAmount;
-      basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
-      type: 'fixed' | 'pay_as_you_go' | null;
-      variableRate: PublicMoneyAmount | null;
-    }
-
-    export interface Stock {
-      /**
-       * @minimum 0
-       */
-      options: number;
-      /**
-       * @minimum 0
-       */
-      vestingScheduleMonths: number | null;
-      /**
-       * @minimum 0
-       */
-      cliffMonths: number | null;
-    }
-  }
+  code: string;
+  name: string;
+  track: 'ic' | 'manager' | 'executive';
 }
 export interface OfferNotFoundErrorEncoded {
   _tag: 'OfferNotFoundError';
@@ -667,7 +322,7 @@ export interface RateLimitExceededEncoded {
 }
 export interface TimeOffPolicyNotFoundEncoded {
   _tag: 'TimeOffPolicyNotFound';
-  id: number | Union2 | (string & {});
+  id: Union23;
   message: string;
 }
 export type Union =
@@ -713,54 +368,43 @@ export interface Union18 {
   name: string | null;
 }
 export type Union2 = 'Infinity' | '-Infinity' | 'NaN';
-export type Union20 = string | null;
-export type Union21 = 'us_w2' | 'us_1099' | 'global_contractor';
-export type Union23 = string | null;
-export type Union24 = string | null;
-export type Union25 = 'pending' | 'approved' | 'denied';
-export type Union26 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-export type Union27 = 'employee' | 'contractor';
-export type Union28 = string | null;
-export type Union29 = boolean | null;
-export type Union3 = string | null;
-export type Union30 = string | null;
-export type Union31 = string | null;
-export type Union32 = string | null;
-/**
- * The IANA timezone of the worker (e.g., America/New_York).
- */
-export type Union33 = string | null;
-/**
- * The department the worker belongs to, or null if unassigned.
- */
-export interface Union34 {
-  /**
-   * @pattern ^dpt_
-   */
-  id: string;
-  name: string;
-}
-/**
- * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
- */
-export interface Union35 {
-  /**
-   * @pattern ^pyr_
-   */
-  payRateId: string;
-  /**
-   * The period represented by the pay rate amount.
-   */
-  per: 'year' | 'month' | 'week' | 'hour';
+export interface Union20 {
   /**
    * @minimum 0
    */
   amount: number;
   currency: CustomFieldsAPI.Union1;
   /**
-   * The server-formatted pay rate, including its period.
+   * The server-formatted display string for the amount in its currency.
    */
   display: string;
+}
+export type Union21 = string | null;
+export type Union23 = number | Union2 | (string & {});
+export type Union24 = string | null;
+export type Union25 = string | null;
+export type Union26 = 'pending' | 'approved' | 'denied';
+export type Union27 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+export type Union28 = 'employee' | 'contractor';
+export type Union29 = string | null;
+export type Union3 = string | null;
+export type Union30 = boolean | null;
+export type Union31 = string | null;
+export type Union32 = string | null;
+export type Union33 = string | null;
+/**
+ * The IANA timezone of the worker (e.g., America/New_York).
+ */
+export type Union34 = string | null;
+/**
+ * The department the worker belongs to, or null if unassigned.
+ */
+export interface Union35 {
+  /**
+   * @pattern ^dpt_
+   */
+  id: string;
+  name: string;
 }
 export type Union4 =
   | 'text'

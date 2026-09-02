@@ -501,6 +501,7 @@ const cases: {
         departmentId: 'dpt_1234',
         workplaceId: 'wkp_1234',
         managerId: 'wrk_1234',
+        levelId: 'jlvl_1234',
         workerType: 'employee',
         compensation: {
           payBasis: 'year',
@@ -523,7 +524,7 @@ const cases: {
     path: '/v1/offers/{id}/void',
     label: 'required params',
     run: async () => {
-      const objects5 = await client.offers.void('offr_1234', {
+      const offer = await client.offers.void('offr_1234', {
         voidReason: 'candidate_declined',
       });
     },
@@ -535,7 +536,7 @@ const cases: {
     path: '/v1/offers/{id}/void',
     label: 'all params',
     run: async () => {
-      const objects5 = await client.offers.void('offr_1234', {
+      const offer = await client.offers.void('offr_1234', {
         voidReason: 'candidate_declined',
         voidNotes: '',
       });
@@ -547,7 +548,7 @@ const cases: {
     method: 'POST',
     path: '/v1/offers/{id}/extend-deadline',
     run: async () => {
-      const objects5 = await client.offers.extendDeadline('offr_1234', {
+      const offer = await client.offers.extendDeadline('offr_1234', {
         expirationTime: '',
       });
     },
@@ -558,7 +559,7 @@ const cases: {
     method: 'POST',
     path: '/v1/offers/{id}/resend',
     run: async () => {
-      const objects5 = await client.offers.resend('offr_1234');
+      const offer = await client.offers.resend('offr_1234');
     },
   },
 
@@ -761,7 +762,7 @@ const cases: {
     method: 'GET',
     path: '/v1/workers/{id}',
     run: async () => {
-      const worker = await client.workers.get('wrk_1234');
+      const objects11 = await client.workers.get('wrk_1234');
     },
   },
 
@@ -816,6 +817,7 @@ const cases: {
         requireI9: false,
         stateRegistration: 'self_managed',
         departmentId: 'dpt_1234',
+        levelId: 'jlvl_1234',
         managerId: 'wrk_1234',
         stockOptions: 0,
         workLocation: {
@@ -868,6 +870,7 @@ const cases: {
         email: 'john@joinwarp.com',
         workEmail: 'john@joinwarp.com',
         departmentId: 'dpt_1234',
+        levelId: 'jlvl_1234',
         managerId: 'wrk_1234',
         workCountry: 'AD',
         compensation: {

@@ -37,7 +37,10 @@ export type {
   OfferCreateParams,
   OfferCreateResponse,
   OfferVoidParams,
+  OfferVoidResponse,
   OfferExtendDeadlineParams,
+  OfferExtendDeadlineResponse,
+  OfferResendResponse,
 } from './offers';
 export { PayRates } from './pay-rates';
 export type { PayRateListParams, PayRateListResponse, PayRateGetResponse } from './pay-rates';
@@ -56,7 +59,6 @@ export type {
   RemoteWorkLocation,
   WorkerListParams,
   WorkerListResponse,
-  WorkerGetResponse,
   WorkerCreateEmployeeParams,
   WorkerCreateEmployeeResponse,
   WorkerCreateContractorParams,
