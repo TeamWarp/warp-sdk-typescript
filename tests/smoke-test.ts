@@ -1046,6 +1046,15 @@ const cases: {
       const payroll = await client.payroll.get('pay_1234');
     },
   },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/levels',
+    run: async () => {
+      const level = await client.levels.list();
+    },
+  },
 ];
 
 const main = async (): Promise<void> => {

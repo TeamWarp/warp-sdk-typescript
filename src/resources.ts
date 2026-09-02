@@ -11,6 +11,7 @@ export {
   Workers,
   Workplaces,
   Payroll,
+  Levels,
   Webhooks,
 } from './resources/index';
 export type {
@@ -76,6 +77,7 @@ export type {
   PayrollListParams,
   PayrollListResponse,
   PayrollGetResponse,
+  LevelListResponse,
   TimeOffRequestCreatedWebhookEvent,
   TimeOffRequestReviewedWebhookEvent,
   TimeOffRequestDeletedWebhookEvent,
