@@ -4,7 +4,6 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as Shared from './shared';
 
 export class Offers extends APIResource {
   /**
@@ -114,6 +113,83 @@ export class Offers extends APIResource {
   resend(id: string, options?: RequestOptions): APIPromise<OfferResendResponse> {
     return this._client.post(__scalarPath`/v1/offers/${id}/resend`, options);
   }
+}
+
+/**
+ * A monetary amount with its currency and server-formatted display value.
+ */
+export interface PublicMoneyAmount {
+  /**
+   * Amount in the currency base unit, e.g. cents for USD.
+   * @minimum 0
+   */
+  amount: number;
+  currency:
+    | 'USD'
+    | 'AUD'
+    | 'BGN'
+    | 'BRL'
+    | 'CAD'
+    | 'CHF'
+    | 'CZK'
+    | 'DKK'
+    | 'EUR'
+    | 'GBP'
+    | 'HKD'
+    | 'HUF'
+    | 'IDR'
+    | 'INR'
+    | 'JPY'
+    | 'MYR'
+    | 'NOK'
+    | 'NZD'
+    | 'CNY'
+    | 'PLN'
+    | 'RON'
+    | 'TRY'
+    | 'SEK'
+    | 'SGD'
+    | 'AED'
+    | 'ARS'
+    | 'BDT'
+    | 'BWP'
+    | 'CLP'
+    | 'COP'
+    | 'CRC'
+    | 'EGP'
+    | 'FJD'
+    | 'GEL'
+    | 'GHS'
+    | 'ILS'
+    | 'KES'
+    | 'KRW'
+    | 'LKR'
+    | 'MAD'
+    | 'MXN'
+    | 'NPR'
+    | 'PHP'
+    | 'PKR'
+    | 'THB'
+    | 'UAH'
+    | 'UGX'
+    | 'UYU'
+    | 'VND'
+    | 'ZAR'
+    | 'ZMW'
+    | 'TND'
+    | 'NGN'
+    | 'RSD'
+    | 'TWD'
+    | 'GTQ'
+    | 'HNL'
+    | 'DOP'
+    | 'SAR'
+    | 'XAF'
+    | 'PEN';
+  /**
+   * The server-formatted display string for the amount in its currency.
+   */
+  display: string;
 }
 
 export interface OfferListParams {
@@ -480,8 +556,8 @@ export namespace OfferListResponse {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.PublicMoneyAmount | null;
-      relocationBonus: Shared.PublicMoneyAmount | null;
+      signOnBonus: PublicMoneyAmount | null;
+      relocationBonus: PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -490,10 +566,10 @@ export namespace OfferListResponse {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: Shared.PublicMoneyAmount;
+        amount: PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.PublicMoneyAmount | null;
+        variableRate: PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -1271,8 +1347,8 @@ export namespace OfferCreateResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
-    signOnBonus: Shared.PublicMoneyAmount | null;
-    relocationBonus: Shared.PublicMoneyAmount | null;
+    signOnBonus: PublicMoneyAmount | null;
+    relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
 
@@ -1281,10 +1357,10 @@ export namespace OfferCreateResponse {
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
-      amount: Shared.PublicMoneyAmount;
+      amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
-      variableRate: Shared.PublicMoneyAmount | null;
+      variableRate: PublicMoneyAmount | null;
     }
 
     export interface Stock {
@@ -1659,8 +1735,8 @@ export namespace OfferVoidResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
-    signOnBonus: Shared.PublicMoneyAmount | null;
-    relocationBonus: Shared.PublicMoneyAmount | null;
+    signOnBonus: PublicMoneyAmount | null;
+    relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
 
@@ -1669,10 +1745,10 @@ export namespace OfferVoidResponse {
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
-      amount: Shared.PublicMoneyAmount;
+      amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
-      variableRate: Shared.PublicMoneyAmount | null;
+      variableRate: PublicMoneyAmount | null;
     }
 
     export interface Stock {
@@ -2046,8 +2122,8 @@ export namespace OfferExtendDeadlineResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
-    signOnBonus: Shared.PublicMoneyAmount | null;
-    relocationBonus: Shared.PublicMoneyAmount | null;
+    signOnBonus: PublicMoneyAmount | null;
+    relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
 
@@ -2056,10 +2132,10 @@ export namespace OfferExtendDeadlineResponse {
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
-      amount: Shared.PublicMoneyAmount;
+      amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
-      variableRate: Shared.PublicMoneyAmount | null;
+      variableRate: PublicMoneyAmount | null;
     }
 
     export interface Stock {
@@ -2429,8 +2505,8 @@ export namespace OfferResendResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
-    signOnBonus: Shared.PublicMoneyAmount | null;
-    relocationBonus: Shared.PublicMoneyAmount | null;
+    signOnBonus: PublicMoneyAmount | null;
+    relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
 
@@ -2439,10 +2515,10 @@ export namespace OfferResendResponse {
       /**
        * A monetary amount with its currency and server-formatted display value.
        */
-      amount: Shared.PublicMoneyAmount;
+      amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
-      variableRate: Shared.PublicMoneyAmount | null;
+      variableRate: PublicMoneyAmount | null;
     }
 
     export interface Stock {
@@ -2474,6 +2550,7 @@ export namespace OfferResendResponse {
 }
 export declare namespace Offers {
   export {
+    type PublicMoneyAmount as PublicMoneyAmount,
     type OfferListResponse as OfferListResponse,
     type OfferCreateResponse as OfferCreateResponse,
     type OfferVoidResponse as OfferVoidResponse,

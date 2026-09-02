@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 import { APIResource } from '../resource';
-import * as Shared from './shared';
+import * as PublicWorkerCompensationAPI from './workers';
+import * as PublicMoneyAmountAPI from './offers';
 import { Webhook } from 'standardwebhooks';
 
 export class Webhooks extends APIResource {
@@ -227,21 +228,12 @@ export namespace WorkerCreatedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -263,279 +255,6 @@ export namespace WorkerCreatedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -603,21 +322,12 @@ export namespace WorkerUpdatedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -639,279 +349,6 @@ export namespace WorkerUpdatedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -979,21 +416,12 @@ export namespace WorkerDeletedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -1015,279 +443,6 @@ export namespace WorkerDeletedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -1355,21 +510,12 @@ export namespace WorkerInviteSentWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -1391,279 +537,6 @@ export namespace WorkerInviteSentWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -1731,21 +604,12 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -1767,279 +631,6 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -2107,21 +698,12 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -2143,279 +725,6 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -2483,21 +792,12 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -2519,279 +819,6 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -2859,21 +886,12 @@ export namespace WorkerOffboardedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -2895,279 +913,6 @@ export namespace WorkerOffboardedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -3235,21 +980,12 @@ export namespace WorkerReactivatedWebhookEvent {
     /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
-    compensation: Shared.PublicWorkerCompensation | null;
+    compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Payload.Level | null;
-    customFields?: Array<
-      | Payload.PublicTextWorkerCustomField
-      | Payload.PublicNumberWorkerCustomField
-      | Payload.PublicDateWorkerCustomField
-      | Payload.PublicBooleanWorkerCustomField
-      | Payload.PublicCurrencyWorkerCustomField
-      | Payload.PublicPercentageWorkerCustomField
-      | Payload.PublicSelectWorkerCustomField
-      | Payload.PublicMultiSelectWorkerCustomField
-    > | null;
+    customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
   export namespace Payload {
@@ -3271,279 +1007,6 @@ export namespace WorkerReactivatedWebhookEvent {
       code: string;
       name: string;
       track: 'ic' | 'manager' | 'executive';
-    }
-
-    export interface PublicTextWorkerCustomField {
-      type: 'text';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s text; null when unset or when the field is redacted for this API key.
-       */
-      value: string | null;
-    }
-
-    export interface PublicNumberWorkerCustomField {
-      type: 'number';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s number; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicDateWorkerCustomField {
-      type: 'date';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s date; null when unset or when the field is redacted for this API key.
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string | null;
-    }
-
-    export interface PublicBooleanWorkerCustomField {
-      type: 'boolean';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s answer; null when unset or when the field is redacted for this API key.
-       */
-      value: boolean | null;
-    }
-
-    export interface PublicCurrencyWorkerCustomField {
-      type: 'currency';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The amount in integer base units of currencyCode (e.g. cents); null when unset or when the field is redacted for this API key.
-       */
-      amount: number | null;
-      /**
-       * The amount’s currency; null when unset or when the field is redacted for this API key.
-       */
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN'
-        | null;
-    }
-
-    export interface PublicPercentageWorkerCustomField {
-      type: 'percentage';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The worker’s percentage; null when unset or when the field is redacted for this API key.
-       */
-      value: number | 'Infinity' | '-Infinity' | 'NaN' | null;
-    }
-
-    export interface PublicSelectWorkerCustomField {
-      type: 'select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected option; null when unset or when the field is redacted for this API key.
-       */
-      option: PublicSelectWorkerCustomField.Option | null;
-    }
-
-    export namespace PublicSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface PublicMultiSelectWorkerCustomField {
-      type: 'multi_select';
-      /**
-       * The tag of a company custom worker field.
-       * @pattern ^cf_
-       */
-      id: string;
-      name: string;
-      /**
-       * True when this API key’s permission scopes cannot read the field’s category. The value fields are withheld (null), not absent — null does not imply the worker has no value.
-       */
-      redacted: boolean;
-      /**
-       * The value rendered as the Warp dashboard displays it; null when unset or redacted.
-       */
-      display: string | null;
-      /**
-       * The selected options; null when unset or when the field is redacted for this API key.
-       */
-      options: Array<PublicMultiSelectWorkerCustomField.Option> | null;
-    }
-
-    export namespace PublicMultiSelectWorkerCustomField {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
     }
   }
 }
@@ -3904,8 +1367,8 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.PublicMoneyAmount | null;
-      relocationBonus: Shared.PublicMoneyAmount | null;
+      signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -3914,10 +1377,10 @@ export namespace OfferCreatedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: Shared.PublicMoneyAmount;
+        amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.PublicMoneyAmount | null;
+        variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -4305,8 +1768,8 @@ export namespace OfferSentWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.PublicMoneyAmount | null;
-      relocationBonus: Shared.PublicMoneyAmount | null;
+      signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -4315,10 +1778,10 @@ export namespace OfferSentWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: Shared.PublicMoneyAmount;
+        amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.PublicMoneyAmount | null;
+        variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -4706,8 +2169,8 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.PublicMoneyAmount | null;
-      relocationBonus: Shared.PublicMoneyAmount | null;
+      signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -4716,10 +2179,10 @@ export namespace OfferViewedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: Shared.PublicMoneyAmount;
+        amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.PublicMoneyAmount | null;
+        variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -5107,8 +2570,8 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.PublicMoneyAmount | null;
-      relocationBonus: Shared.PublicMoneyAmount | null;
+      signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -5117,10 +2580,10 @@ export namespace OfferAcceptedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: Shared.PublicMoneyAmount;
+        amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.PublicMoneyAmount | null;
+        variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
       export interface Stock {
@@ -5508,8 +2971,8 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
-      signOnBonus: Shared.PublicMoneyAmount | null;
-      relocationBonus: Shared.PublicMoneyAmount | null;
+      signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
 
@@ -5518,10 +2981,10 @@ export namespace OfferVoidedWebhookEvent {
         /**
          * A monetary amount with its currency and server-formatted display value.
          */
-        amount: Shared.PublicMoneyAmount;
+        amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
-        variableRate: Shared.PublicMoneyAmount | null;
+        variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
       export interface Stock {

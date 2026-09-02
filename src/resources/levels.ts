@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
-import type * as Shared from './shared';
 
 export class Levels extends APIResource {
   /**

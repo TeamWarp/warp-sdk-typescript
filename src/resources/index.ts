@@ -1,9 +1,17 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-export * from './shared';
 export { Benefits } from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
+  PublicCustomFieldValueOutput,
+  TextCustomFieldValue,
+  NumberCustomFieldValue,
+  DateCustomFieldValue,
+  BooleanCustomFieldValue,
+  CurrencyCustomFieldValue,
+  PercentageCustomFieldValue,
+  SelectCustomFieldValue,
+  MultiSelectCustomFieldValue,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,
@@ -31,8 +39,11 @@ export type {
   DepartmentUpdateParams,
   DepartmentUpdateResponse,
 } from './departments';
+export { Levels } from './levels';
+export type { LevelListResponse } from './levels';
 export { Offers } from './offers';
 export type {
+  PublicMoneyAmount,
   OfferListParams,
   OfferListResponse,
   OfferCreateParams,
@@ -44,7 +55,80 @@ export type {
   OfferResendResponse,
 } from './offers';
 export { PayRates } from './pay-rates';
-export type { PayRateListParams, PayRateListResponse, PayRateGetResponse } from './pay-rates';
+export type {
+  PublicPayRate,
+  PublicPayRateType,
+  PublicPayRatePer,
+  PayRateListParams,
+  PayRateListResponse,
+} from './pay-rates';
+export { Payroll } from './payroll';
+export type {
+  PublicPayrollList,
+  PublicPayrollDetail,
+  PublicPaycheckList,
+  PublicPaycheckDetail,
+  PublicPayrollSummary,
+  PublicPayrollType,
+  PublicPayrollSubtype,
+  PublicPayrollStatus,
+  PublicPayrollCurrency,
+  PublicPayPeriod,
+  PublicPayFrequency,
+  PublicPayrollDetailTotals,
+  PublicPayrollFundingMethod,
+  PublicPayrollTimeline,
+  PublicPaycheckSummary,
+  PublicPaycheckPayroll,
+  PublicPaycheckWorker,
+  PublicPaycheckStatus,
+  PublicPaycheckPaymentMethod,
+  PublicPaycheckDetailTotals,
+  PublicExchangeRate,
+  PublicPaycheckEarning,
+  PublicPaycheckReimbursement,
+  PublicPaycheckDeduction,
+  PublicPaycheckBenefit,
+  PublicPaycheckTax,
+  PublicFundingPayrollTotals,
+  PublicCurrencyMoneyAmount11,
+  PublicCurrencyMoneyAmount,
+  PublicCurrencyMoneyAmount1,
+  PublicCurrencyMoneyAmount2,
+  PublicCurrencyMoneyAmount3,
+  PublicCurrencyMoneyAmount4,
+  PublicCurrencyMoneyAmount5,
+  PublicCurrencyMoneyAmount6,
+  PublicCurrencyMoneyAmount7,
+  PublicCurrencyMoneyAmount8,
+  PublicCurrencyMoneyAmount9,
+  PublicCurrencyMoneyAmount10,
+  PublicPaycheckSummaryTotals,
+  PublicPaycheckCurrencyTotals,
+  PublicExchangeRateValue,
+  PublicPayrollMoneyAmount,
+  PublicHourlyRate,
+  PublicPayrollMoneyAmount1,
+  PublicPaycheckDeductionTaxTreatment,
+  PublicPayrollMoneyAmount2,
+  PublicPayrollMoneyAmount3,
+  PublicPayrollMoneyAmount4,
+  PublicTaxPayer,
+  PublicPayrollMoneyAmount5,
+  PublicPaycheckSummaryCurrencyTotals,
+  PublicCurrencyMoneyAmount13,
+  PublicCurrencyMoneyAmount12,
+  PublicCurrencyMoneyAmount14,
+  PublicCurrencyMoneyAmount15,
+  PublicCurrencyMoneyAmount16,
+  PublicCurrencyMoneyAmount17,
+  PublicCurrencyMoneyAmount18,
+  PublicCurrencyMoneyAmount19,
+  PublicCurrencyMoneyAmount20,
+  PublicHourlyRateAmount,
+  PayrollListParams,
+  PayrollListPaychecksParams,
+} from './payroll';
 export { TimeOff } from './time-off/time-off';
 export type {
   TimeOffListAssignmentsParams,
@@ -56,8 +140,16 @@ export type {
 } from './time-off/time-off';
 export { Workers } from './workers';
 export type {
-  OfficeWorkLocation,
-  RemoteWorkLocation,
+  PublicWorkerCompensation,
+  PublicWorkerCustomField,
+  PublicTextWorkerCustomField,
+  PublicNumberWorkerCustomField,
+  PublicDateWorkerCustomField,
+  PublicBooleanWorkerCustomField,
+  PublicCurrencyWorkerCustomField,
+  PublicPercentageWorkerCustomField,
+  PublicSelectWorkerCustomField,
+  PublicMultiSelectWorkerCustomField,
   WorkerListParams,
   WorkerListResponse,
   WorkerGetResponse,
@@ -76,17 +168,6 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
-export { Payroll } from './payroll';
-export type {
-  PayrollListPaychecksParams,
-  PayrollListPaychecksResponse,
-  PayrollGetPaycheckResponse,
-  PayrollListParams,
-  PayrollListResponse,
-  PayrollGetResponse,
-} from './payroll';
-export { Levels } from './levels';
-export type { LevelListResponse } from './levels';
 export { Webhooks } from './webhooks';
 export type {
   TimeOffRequestCreatedWebhookEvent,

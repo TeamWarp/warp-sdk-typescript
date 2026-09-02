@@ -6933,8 +6933,570 @@
       }
     },
     {
-      "name": "public_payroll_list_response",
-      "source": "public_payroll_list_response",
+      "name": "public_funding_payroll_totals",
+      "source": "public_funding_payroll_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "grossPay": {
+            "amount": 300000,
+            "display": "$3,000.00"
+          },
+          "netPay": {
+            "amount": 230000,
+            "display": "$2,300.00"
+          },
+          "reimbursements": {
+            "amount": 15000,
+            "display": "$150.00"
+          },
+          "workerTaxes": {
+            "amount": 50000,
+            "display": "$500.00"
+          },
+          "employerTaxes": {
+            "amount": 25000,
+            "display": "$250.00"
+          },
+          "preTaxDeductions": {
+            "amount": 10000,
+            "display": "$100.00"
+          },
+          "postTaxDeductions": {
+            "amount": 5000,
+            "display": "$50.00"
+          },
+          "workerBenefitContributions": {
+            "amount": 20000,
+            "display": "$200.00"
+          },
+          "employerBenefitContributions": {
+            "amount": 15000,
+            "display": "$150.00"
+          },
+          "transactionFees": {
+            "amount": 500,
+            "display": "$5.00"
+          },
+          "totalCost": {
+            "amount": 355500,
+            "display": "$3,555.00"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "grossPay",
+            "publicName": "grossPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 300000,
+                "display": "$3,000.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount"
+            }
+          },
+          {
+            "name": "netPay",
+            "publicName": "netPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_1"
+            }
+          },
+          {
+            "name": "reimbursements",
+            "publicName": "reimbursements",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_2"
+            }
+          },
+          {
+            "name": "workerTaxes",
+            "publicName": "workerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 50000,
+                "display": "$500.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_3"
+            }
+          },
+          {
+            "name": "employerTaxes",
+            "publicName": "employerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 25000,
+                "display": "$250.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_4"
+            }
+          },
+          {
+            "name": "preTaxDeductions",
+            "publicName": "preTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 10000,
+                "display": "$100.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_5"
+            }
+          },
+          {
+            "name": "postTaxDeductions",
+            "publicName": "postTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 5000,
+                "display": "$50.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_6"
+            }
+          },
+          {
+            "name": "workerBenefitContributions",
+            "publicName": "workerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 20000,
+                "display": "$200.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_7"
+            }
+          },
+          {
+            "name": "employerBenefitContributions",
+            "publicName": "employerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_8"
+            }
+          },
+          {
+            "name": "transactionFees",
+            "publicName": "transactionFees",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 500,
+                "display": "$5.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_9"
+            }
+          },
+          {
+            "name": "totalCost",
+            "publicName": "totalCost",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 355500,
+                "display": "$3,555.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_10"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_summary",
+      "source": "public_payroll_summary",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "pay_1234",
+          "type": "us",
+          "subtype": "regular",
+          "status": "processing",
+          "fundingCurrency": "USD",
+          "payday": "2026-08-31",
+          "payPeriod": {
+            "startDate": "2026-08-16",
+            "endDate": "2026-08-31"
+          },
+          "payFrequency": "semimonthly",
+          "description": "August 16–31, 2026 semimonthly payroll",
+          "approvalDeadline": "2026-08-27T17:00:00.000Z",
+          "paycheckCount": 1,
+          "totals": {
+            "grossPay": {
+              "amount": 300000,
+              "display": "$3,000.00"
+            },
+            "netPay": {
+              "amount": 230000,
+              "display": "$2,300.00"
+            },
+            "reimbursements": {
+              "amount": 15000,
+              "display": "$150.00"
+            },
+            "workerTaxes": {
+              "amount": 50000,
+              "display": "$500.00"
+            },
+            "employerTaxes": {
+              "amount": 25000,
+              "display": "$250.00"
+            },
+            "preTaxDeductions": {
+              "amount": 10000,
+              "display": "$100.00"
+            },
+            "postTaxDeductions": {
+              "amount": 5000,
+              "display": "$50.00"
+            },
+            "workerBenefitContributions": {
+              "amount": 20000,
+              "display": "$200.00"
+            },
+            "employerBenefitContributions": {
+              "amount": 15000,
+              "display": "$150.00"
+            },
+            "transactionFees": {
+              "amount": 500,
+              "display": "$5.00"
+            },
+            "totalCost": {
+              "amount": 355500,
+              "display": "$3,555.00"
+            }
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pay_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pay_"
+              }
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_type"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "subtype",
+            "publicName": "subtype",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_subtype"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_status"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "fundingCurrency",
+            "publicName": "fundingCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payday",
+            "publicName": "payday",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "payPeriod",
+            "publicName": "payPeriod",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_period"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payFrequency",
+            "publicName": "payFrequency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_frequency"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "approvalDeadline",
+            "publicName": "approvalDeadline",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "paycheckCount",
+            "publicName": "paycheckCount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "totals",
+            "publicName": "totals",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_funding_payroll_totals"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_list",
+      "source": "public_payroll_list",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -8374,8 +8936,326 @@
       }
     },
     {
-      "name": "public_paycheck_list_response",
-      "source": "public_paycheck_list_response",
+      "name": "public_paycheck_summary_currency_totals",
+      "source": "public_paycheck_summary_currency_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "currency": "USD",
+          "netPay": {
+            "amount": 230000,
+            "display": "$2,300.00"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "netPay",
+            "publicName": "netPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_currency_money_amount_12"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_summary_totals",
+      "source": "public_paycheck_summary_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "byCurrency": [
+            {
+              "currency": "USD",
+              "netPay": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              }
+            }
+          ],
+          "inFundingCurrency": {
+            "currency": "USD",
+            "netPay": {
+              "amount": 230000,
+              "display": "$2,300.00"
+            }
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "byCurrency",
+            "publicName": "byCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "inFundingCurrency",
+            "publicName": "inFundingCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_summary_currency_totals"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_summary",
+      "source": "public_paycheck_summary",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "pyc_1234",
+          "payroll": {
+            "id": "pay_1234",
+            "type": "us",
+            "subtype": "regular",
+            "status": "processing",
+            "fundingCurrency": "USD",
+            "payPeriod": {
+              "startDate": "2026-08-16",
+              "endDate": "2026-08-31"
+            },
+            "payFrequency": "semimonthly"
+          },
+          "worker": {
+            "id": "wrk_1234",
+            "firstName": "John",
+            "lastName": "Galt",
+            "displayName": "Jack Galt",
+            "workerType": "us_w2"
+          },
+          "status": "processing",
+          "payday": "2026-08-31",
+          "paymentMethod": "direct_deposit",
+          "totals": {
+            "byCurrency": [
+              {
+                "currency": "USD",
+                "netPay": {
+                  "amount": 230000,
+                  "display": "$2,300.00"
+                }
+              }
+            ],
+            "inFundingCurrency": {
+              "currency": "USD",
+              "netPay": {
+                "amount": 230000,
+                "display": "$2,300.00"
+              }
+            }
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pyc_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^pyc_"
+              }
+            }
+          },
+          {
+            "name": "payroll",
+            "publicName": "payroll",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_payroll"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "worker",
+            "publicName": "worker",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_worker"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_status"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "payday",
+            "publicName": "payday",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "paymentMethod",
+            "publicName": "paymentMethod",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_payment_method"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "totals",
+            "publicName": "totals",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_summary_totals"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_list",
+      "source": "public_paycheck_list",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -9277,6 +10157,1375 @@
                 {
                   "kind": "primitive",
                   "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_exchange_rate_value",
+      "source": "public_exchange_rate_value",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "1.083741"
+      },
+      "type": {
+        "kind": "primitive",
+        "type": "string",
+        "validation": {
+          "pattern": "^(?=.*[1-9])(?:0|[1-9]\\d{0,17})(?:\\.\\d{1,18})?$"
+        }
+      }
+    },
+    {
+      "name": "public_exchange_rate",
+      "source": "public_exchange_rate",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "fromCurrency": "EUR",
+          "toCurrency": "USD",
+          "rate": "1.083741"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "fromCurrency",
+            "publicName": "fromCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "toCurrency",
+            "publicName": "toCurrency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "rate",
+            "publicName": "rate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_exchange_rate_value"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_money_amount",
+      "source": "public_payroll_money_amount",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 300000,
+          "currency": "USD",
+          "display": "$3,000.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_hourly_rate_amount",
+      "source": "public_hourly_rate_amount",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "50.00"
+      },
+      "type": {
+        "kind": "primitive",
+        "type": "string",
+        "validation": {
+          "pattern": "^(?:0|[1-9]\\d{0,17})(?:\\.\\d{1,18})?$"
+        }
+      }
+    },
+    {
+      "name": "public_hourly_rate",
+      "source": "public_hourly_rate",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": "50.00",
+          "currency": "USD",
+          "per": "hour"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_hourly_rate_amount"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "per",
+            "publicName": "per",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "hour"
+              ],
+              "names": [
+                "Hour"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_earning",
+      "source": "public_paycheck_earning",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "type": "hourly",
+          "workplaceId": "wkp_1234",
+          "amount": {
+            "amount": 300000,
+            "currency": "USD",
+            "display": "$3,000.00"
+          },
+          "hours": 60,
+          "hourlyRate": {
+            "amount": "50.00",
+            "currency": "USD",
+            "per": "hour"
+          },
+          "description": "Regular hours"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "hourly",
+                "salaried",
+                "overtime",
+                "double_overtime",
+                "paid_holiday",
+                "pto",
+                "sick",
+                "commission",
+                "bonus",
+                "severance",
+                "non_hourly_regular",
+                "fixed",
+                "group_term_life",
+                "other_imputed"
+              ],
+              "names": [
+                "Hourly",
+                "Salaried",
+                "Overtime",
+                "DoubleOvertime",
+                "PaidHoliday",
+                "Pto",
+                "Sick",
+                "Commission",
+                "Bonus",
+                "Severance",
+                "NonHourlyRegular",
+                "Fixed",
+                "GroupTermLife",
+                "OtherImputed"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "workplaceId",
+            "publicName": "workplaceId",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^wkp_"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 300000,
+                "currency": "USD",
+                "display": "$3,000.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_payroll_money_amount"
+            }
+          },
+          {
+            "name": "hours",
+            "publicName": "hours",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "number",
+                  "validation": {}
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "hourlyRate",
+            "publicName": "hourlyRate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_hourly_rate"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_money_amount_1",
+      "source": "public_payroll_money_amount_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 15000,
+          "currency": "USD",
+          "display": "$150.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_reimbursement",
+      "source": "public_paycheck_reimbursement",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": {
+            "amount": 15000,
+            "currency": "USD",
+            "display": "$150.00"
+          },
+          "description": "Client travel reimbursement"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "currency": "USD",
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_payroll_money_amount_1"
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_deduction_tax_treatment",
+      "source": "public_paycheck_deduction_tax_treatment",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "pre_tax"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "pre_tax",
+          "post_tax"
+        ],
+        "names": [
+          "PreTax",
+          "PostTax"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_payroll_money_amount_2",
+      "source": "public_payroll_money_amount_2",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 10000,
+          "currency": "USD",
+          "display": "$100.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_deduction",
+      "source": "public_paycheck_deduction",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "taxTreatment": "pre_tax",
+          "amount": {
+            "amount": 10000,
+            "currency": "USD",
+            "display": "$100.00"
+          },
+          "description": "Pre-tax commuter deduction"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "taxTreatment",
+            "publicName": "taxTreatment",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_deduction_tax_treatment"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 10000,
+                "currency": "USD",
+                "display": "$100.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_payroll_money_amount_2"
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_money_amount_3",
+      "source": "public_payroll_money_amount_3",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 20000,
+          "currency": "USD",
+          "display": "$200.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_payroll_money_amount_4",
+      "source": "public_payroll_money_amount_4",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 15000,
+          "currency": "USD",
+          "display": "$150.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_benefit",
+      "source": "public_paycheck_benefit",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "name": "Medical insurance",
+          "benefitDeductionId": "pbdg_1234",
+          "category": "health",
+          "type": "medical",
+          "workerContribution": {
+            "amount": 20000,
+            "currency": "USD",
+            "display": "$200.00"
+          },
+          "employerContribution": {
+            "amount": 15000,
+            "currency": "USD",
+            "display": "$150.00"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "benefitDeductionId",
+            "publicName": "benefitDeductionId",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^pbdg_"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "category",
+            "publicName": "category",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "enum",
+                  "values": [
+                    "health",
+                    "retirement",
+                    "health_savings",
+                    "commuter",
+                    "voluntary",
+                    "post_tax",
+                    "other"
+                  ],
+                  "names": [
+                    "Health",
+                    "Retirement",
+                    "HealthSavings",
+                    "Commuter",
+                    "Voluntary",
+                    "PostTax",
+                    "Other"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "enum",
+                  "values": [
+                    "medical",
+                    "dental",
+                    "vision",
+                    "life",
+                    "short_term_disability",
+                    "long_term_disability",
+                    "401k",
+                    "roth_401k",
+                    "403b",
+                    "roth_403b",
+                    "457",
+                    "roth_457",
+                    "hsa",
+                    "fsa_medical",
+                    "fsa_dependent_care",
+                    "transit",
+                    "parking",
+                    "accident",
+                    "cancer",
+                    "critical_illness",
+                    "hospital",
+                    "medical_other",
+                    "simple_ira",
+                    "roth_simple_ira",
+                    "nqdc",
+                    "nontaxable_fringe",
+                    "pucc",
+                    "voluntary",
+                    "post_tax",
+                    "other"
+                  ],
+                  "names": [
+                    "Medical",
+                    "Dental",
+                    "Vision",
+                    "Life",
+                    "ShortTermDisability",
+                    "LongTermDisability",
+                    "_401k",
+                    "Roth401k",
+                    "_403b",
+                    "Roth403b",
+                    "_457",
+                    "Roth457",
+                    "Hsa",
+                    "FsaMedical",
+                    "FsaDependentCare",
+                    "Transit",
+                    "Parking",
+                    "Accident",
+                    "Cancer",
+                    "CriticalIllness",
+                    "Hospital",
+                    "MedicalOther",
+                    "SimpleIra",
+                    "RothSimpleIra",
+                    "Nqdc",
+                    "NontaxableFringe",
+                    "Pucc",
+                    "Voluntary",
+                    "PostTax",
+                    "Other"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "workerContribution",
+            "publicName": "workerContribution",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 20000,
+                "currency": "USD",
+                "display": "$200.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_payroll_money_amount_3"
+            }
+          },
+          {
+            "name": "employerContribution",
+            "publicName": "employerContribution",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 15000,
+                "currency": "USD",
+                "display": "$150.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_payroll_money_amount_4"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_tax_payer",
+      "source": "public_tax_payer",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": "worker"
+      },
+      "type": {
+        "kind": "enum",
+        "values": [
+          "worker",
+          "employer"
+        ],
+        "names": [
+          "Worker",
+          "Employer"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_payroll_money_amount_5",
+      "source": "public_payroll_money_amount_5",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 50000,
+          "currency": "USD",
+          "display": "$500.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": 300000
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {}
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_tax",
+      "source": "public_paycheck_tax",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "payer": "worker",
+          "amount": {
+            "amount": 50000,
+            "currency": "USD",
+            "display": "$500.00"
+          },
+          "description": "Federal income tax withholding"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "payer",
+            "publicName": "payer",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_tax_payer"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 50000,
+                "currency": "USD",
+                "display": "$500.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_payroll_money_amount_5"
+            }
+          },
+          {
+            "name": "description",
+            "publicName": "description",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
                 }
               ]
             }
@@ -11597,14 +13846,14 @@
     "benefits.deductions",
     "customFields",
     "departments",
+    "levels",
     "offers",
     "payRates",
+    "payroll",
     "timeOff",
     "timeOff.policies",
     "workers",
-    "workplaces",
-    "payroll",
-    "levels"
+    "workplaces"
   ],
   "publicResources": [
     "benefits",
@@ -11613,14 +13862,14 @@
     "benefits.deductions",
     "customFields",
     "departments",
+    "levels",
     "offers",
     "payRates",
+    "payroll",
     "timeOff",
     "timeOff.policies",
     "workers",
-    "workplaces",
-    "payroll",
-    "levels"
+    "workplaces"
   ],
   "operations": [
     {
@@ -14781,6 +17030,106 @@
       "transport": "http"
     },
     {
+      "resource": "levels",
+      "publicResource": "levels",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/levels",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
       "resource": "offers",
       "publicResource": "offers",
       "operation": "list",
@@ -15904,6 +18253,718 @@
           ],
           "model": {
             "name": "pay_rate_not_found_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/payrolls",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "subtypes",
+        "statuses",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore",
+        "payPeriodEndOnOrAfter",
+        "payPeriodEndBefore"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "types",
+        "subtypes",
+        "statuses",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore",
+        "payPeriodEndOnOrAfter",
+        "payPeriodEndBefore"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "subtypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payFrequencies",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payPeriodEndOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payPeriodEndBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_payroll_list",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_payroll_query_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "get",
+      "publicOperation": "get",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/payrolls/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollGetParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_payroll_detail",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "payroll_not_found_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "listPaychecks",
+      "publicOperation": "listPaychecks",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/paychecks",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "payrollIds",
+        "workerIds",
+        "workerTypes",
+        "payrollTypes",
+        "statuses",
+        "paymentMethods",
+        "compensationCurrencies",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "payrollIds",
+        "workerIds",
+        "workerTypes",
+        "payrollTypes",
+        "statuses",
+        "paymentMethods",
+        "compensationCurrencies",
+        "payFrequencies",
+        "paydayOnOrAfter",
+        "paydayBefore"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payrollIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerTypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payrollTypes",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paymentMethods",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "compensationCurrencies",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "payFrequencies",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayOnOrAfter",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "paydayBefore",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollListPaychecksParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_paycheck_list",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_payroll_query_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "payroll",
+      "publicResource": "payroll",
+      "operation": "getPaycheck",
+      "publicOperation": "getPaycheck",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/paychecks/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PayrollGetPaycheckParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_paycheck_detail",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "paycheck_not_found_error_encoded",
             "publicAliases": []
           }
         },
@@ -18194,818 +21255,6 @@
             "name": "workplace_already_exists_encoded",
             "publicAliases": []
           }
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "rate_limit_exceeded_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "payroll",
-      "publicResource": "payroll",
-      "operation": "listPaychecks",
-      "publicOperation": "listPaychecks",
-      "deprecated": false,
-      "method": "GET",
-      "path": "/v1/paychecks",
-      "pathParams": [],
-      "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "payrollIds",
-        "workerIds",
-        "workerTypes",
-        "payrollTypes",
-        "statuses",
-        "paymentMethods",
-        "compensationCurrencies",
-        "payFrequencies",
-        "paydayOnOrAfter",
-        "paydayBefore"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "payrollIds",
-        "workerIds",
-        "workerTypes",
-        "payrollTypes",
-        "statuses",
-        "paymentMethods",
-        "compensationCurrencies",
-        "payFrequencies",
-        "paydayOnOrAfter",
-        "paydayBefore"
-      ],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
-      "pathParamDetails": [],
-      "queryParamDetails": [
-        {
-          "name": "limit",
-          "required": true,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "afterId",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "beforeId",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "payrollIds",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "workerIds",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "workerTypes",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "payrollTypes",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "statuses",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "paymentMethods",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "compensationCurrencies",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "payFrequencies",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "paydayOnOrAfter",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "paydayBefore",
-          "required": false,
-          "style": "form",
-          "explode": true
-        }
-      ],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "PayrollListPaychecksParams"
-      },
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "responseModel": {
-        "name": "public_paycheck_list_response",
-        "publicAliases": []
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "400",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "invalid_payroll_query_error_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "api_key_unauthorized_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "rate_limit_exceeded_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "payroll",
-      "publicResource": "payroll",
-      "operation": "getPaycheck",
-      "publicOperation": "getPaycheck",
-      "deprecated": false,
-      "method": "GET",
-      "path": "/v1/paychecks/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
-      "queryParams": [],
-      "publicQueryParams": [],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
-      "pathParamDetails": [
-        {
-          "name": "id",
-          "required": true,
-          "style": "simple",
-          "explode": false
-        }
-      ],
-      "queryParamDetails": [],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "PayrollGetPaycheckParams"
-      },
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "responseModel": {
-        "name": "public_paycheck_detail",
-        "publicAliases": []
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "api_key_unauthorized_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "404",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "paycheck_not_found_error_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "rate_limit_exceeded_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "payroll",
-      "publicResource": "payroll",
-      "operation": "list",
-      "publicOperation": "list",
-      "deprecated": false,
-      "method": "GET",
-      "path": "/v1/payrolls",
-      "pathParams": [],
-      "publicPathParams": [],
-      "queryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "types",
-        "subtypes",
-        "statuses",
-        "payFrequencies",
-        "paydayOnOrAfter",
-        "paydayBefore",
-        "payPeriodEndOnOrAfter",
-        "payPeriodEndBefore"
-      ],
-      "publicQueryParams": [
-        "limit",
-        "afterId",
-        "beforeId",
-        "types",
-        "subtypes",
-        "statuses",
-        "payFrequencies",
-        "paydayOnOrAfter",
-        "paydayBefore",
-        "payPeriodEndOnOrAfter",
-        "payPeriodEndBefore"
-      ],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
-      "pathParamDetails": [],
-      "queryParamDetails": [
-        {
-          "name": "limit",
-          "required": true,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "afterId",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "beforeId",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "types",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "subtypes",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "statuses",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "payFrequencies",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "paydayOnOrAfter",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "paydayBefore",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "payPeriodEndOnOrAfter",
-          "required": false,
-          "style": "form",
-          "explode": true
-        },
-        {
-          "name": "payPeriodEndBefore",
-          "required": false,
-          "style": "form",
-          "explode": true
-        }
-      ],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "PayrollListParams"
-      },
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "responseModel": {
-        "name": "public_payroll_list_response",
-        "publicAliases": []
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "400",
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "400",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "invalid_payroll_query_error_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "api_key_unauthorized_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "rate_limit_exceeded_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "payroll",
-      "publicResource": "payroll",
-      "operation": "get",
-      "publicOperation": "get",
-      "deprecated": false,
-      "method": "GET",
-      "path": "/v1/payrolls/{id}",
-      "pathParams": [
-        "id"
-      ],
-      "publicPathParams": [
-        "id"
-      ],
-      "queryParams": [],
-      "publicQueryParams": [],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
-      "pathParamDetails": [
-        {
-          "name": "id",
-          "required": true,
-          "style": "simple",
-          "explode": false
-        }
-      ],
-      "queryParamDetails": [],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "paramsModel": {
-        "publicName": "PayrollGetParams"
-      },
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "responseModel": {
-        "name": "public_payroll_detail",
-        "publicAliases": []
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "401",
-          "403",
-          "404",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "api_key_unauthorized_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        },
-        {
-          "status": "404",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "payroll_not_found_error_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "429",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "rate_limit_exceeded_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "500",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
-        }
-      ],
-      "responseLinks": [],
-      "transport": "http"
-    },
-    {
-      "resource": "levels",
-      "publicResource": "levels",
-      "operation": "list",
-      "publicOperation": "list",
-      "deprecated": false,
-      "method": "GET",
-      "path": "/v1/levels",
-      "pathParams": [],
-      "publicPathParams": [],
-      "queryParams": [],
-      "publicQueryParams": [],
-      "headerParams": [],
-      "publicHeaderParams": [],
-      "bodyParams": [],
-      "publicBodyParams": [],
-      "bodyParamDetails": [],
-      "pathParamDetails": [],
-      "queryParamDetails": [],
-      "headerParamDetails": [],
-      "cookieParams": [],
-      "publicCookieParams": [],
-      "cookieParamDetails": [],
-      "response": {
-        "status": "200",
-        "contentType": "application/json",
-        "encoding": "json",
-        "contents": [
-          {
-            "contentType": "application/json",
-            "encoding": "json"
-          }
-        ]
-      },
-      "result": {
-        "successStatus": "200",
-        "errorStatuses": [
-          "401",
-          "403",
-          "429",
-          "500"
-        ]
-      },
-      "errorResponses": [
-        {
-          "status": "401",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ],
-          "model": {
-            "name": "api_key_unauthorized_encoded",
-            "publicAliases": []
-          }
-        },
-        {
-          "status": "403",
-          "contentType": "application/json",
-          "encoding": "json",
-          "contents": [
-            {
-              "contentType": "application/json",
-              "encoding": "json"
-            }
-          ]
         },
         {
           "status": "429",

@@ -28,6 +28,15 @@ import { VERSION } from './version';
 import { Benefits } from './resources/benefits/benefits';
 import {
   CustomFields,
+  type PublicCustomFieldValueOutput,
+  type TextCustomFieldValue,
+  type NumberCustomFieldValue,
+  type DateCustomFieldValue,
+  type BooleanCustomFieldValue,
+  type CurrencyCustomFieldValue,
+  type PercentageCustomFieldValue,
+  type SelectCustomFieldValue,
+  type MultiSelectCustomFieldValue,
   type CustomFieldListResponse,
   type CustomFieldCreateResponse,
   type CustomFieldGetResponse,
@@ -55,8 +64,10 @@ import {
   type DepartmentCreateParams,
   type DepartmentUpdateParams,
 } from './resources/departments';
+import { Levels, type LevelListResponse } from './resources/levels';
 import {
   Offers,
+  type PublicMoneyAmount,
   type OfferListResponse,
   type OfferCreateResponse,
   type OfferVoidResponse,
@@ -69,10 +80,79 @@ import {
 } from './resources/offers';
 import {
   PayRates,
+  type PublicPayRate,
+  type PublicPayRateType,
+  type PublicPayRatePer,
   type PayRateListResponse,
-  type PayRateGetResponse,
   type PayRateListParams,
 } from './resources/pay-rates';
+import {
+  Payroll,
+  type PublicPayrollList,
+  type PublicPayrollDetail,
+  type PublicPaycheckList,
+  type PublicPaycheckDetail,
+  type PublicPayrollSummary,
+  type PublicPayrollType,
+  type PublicPayrollSubtype,
+  type PublicPayrollStatus,
+  type PublicPayrollCurrency,
+  type PublicPayPeriod,
+  type PublicPayFrequency,
+  type PublicPayrollDetailTotals,
+  type PublicPayrollFundingMethod,
+  type PublicPayrollTimeline,
+  type PublicPaycheckSummary,
+  type PublicPaycheckPayroll,
+  type PublicPaycheckWorker,
+  type PublicPaycheckStatus,
+  type PublicPaycheckPaymentMethod,
+  type PublicPaycheckDetailTotals,
+  type PublicExchangeRate,
+  type PublicPaycheckEarning,
+  type PublicPaycheckReimbursement,
+  type PublicPaycheckDeduction,
+  type PublicPaycheckBenefit,
+  type PublicPaycheckTax,
+  type PublicFundingPayrollTotals,
+  type PublicCurrencyMoneyAmount11,
+  type PublicCurrencyMoneyAmount,
+  type PublicCurrencyMoneyAmount1,
+  type PublicCurrencyMoneyAmount2,
+  type PublicCurrencyMoneyAmount3,
+  type PublicCurrencyMoneyAmount4,
+  type PublicCurrencyMoneyAmount5,
+  type PublicCurrencyMoneyAmount6,
+  type PublicCurrencyMoneyAmount7,
+  type PublicCurrencyMoneyAmount8,
+  type PublicCurrencyMoneyAmount9,
+  type PublicCurrencyMoneyAmount10,
+  type PublicPaycheckSummaryTotals,
+  type PublicPaycheckCurrencyTotals,
+  type PublicExchangeRateValue,
+  type PublicPayrollMoneyAmount,
+  type PublicHourlyRate,
+  type PublicPayrollMoneyAmount1,
+  type PublicPaycheckDeductionTaxTreatment,
+  type PublicPayrollMoneyAmount2,
+  type PublicPayrollMoneyAmount3,
+  type PublicPayrollMoneyAmount4,
+  type PublicTaxPayer,
+  type PublicPayrollMoneyAmount5,
+  type PublicPaycheckSummaryCurrencyTotals,
+  type PublicCurrencyMoneyAmount13,
+  type PublicCurrencyMoneyAmount12,
+  type PublicCurrencyMoneyAmount14,
+  type PublicCurrencyMoneyAmount15,
+  type PublicCurrencyMoneyAmount16,
+  type PublicCurrencyMoneyAmount17,
+  type PublicCurrencyMoneyAmount18,
+  type PublicCurrencyMoneyAmount19,
+  type PublicCurrencyMoneyAmount20,
+  type PublicHourlyRateAmount,
+  type PayrollListParams,
+  type PayrollListPaychecksParams,
+} from './resources/payroll';
 import {
   TimeOff,
   type TimeOffListAssignmentsResponse,
@@ -84,8 +164,16 @@ import {
 } from './resources/time-off/time-off';
 import {
   Workers,
-  type OfficeWorkLocation,
-  type RemoteWorkLocation,
+  type PublicWorkerCompensation,
+  type PublicWorkerCustomField,
+  type PublicTextWorkerCustomField,
+  type PublicNumberWorkerCustomField,
+  type PublicDateWorkerCustomField,
+  type PublicBooleanWorkerCustomField,
+  type PublicCurrencyWorkerCustomField,
+  type PublicPercentageWorkerCustomField,
+  type PublicSelectWorkerCustomField,
+  type PublicMultiSelectWorkerCustomField,
   type WorkerListResponse,
   type WorkerGetResponse,
   type WorkerCreateEmployeeResponse,
@@ -104,16 +192,6 @@ import {
   type WorkplaceCreateParams,
   type WorkplaceUpdateParams,
 } from './resources/workplaces';
-import {
-  Payroll,
-  type PayrollListPaychecksResponse,
-  type PayrollGetPaycheckResponse,
-  type PayrollListResponse,
-  type PayrollGetResponse,
-  type PayrollListPaychecksParams,
-  type PayrollListParams,
-} from './resources/payroll';
-import { Levels, type LevelListResponse } from './resources/levels';
 import {
   Webhooks,
   type TimeOffRequestCreatedWebhookEvent,
@@ -136,7 +214,6 @@ import {
   type OfferVoidedWebhookEvent,
   type ParsedWebhookEvent,
 } from './resources/webhooks';
-import * as SharedAPI from './resources/shared';
 
 export type AuthTokenProvider = () => string | Promise<string>;
 
@@ -939,26 +1016,26 @@ export class Warp {
   benefits: Benefits = new Benefits(this);
   customFields: CustomFields = new CustomFields(this);
   departments: Departments = new Departments(this);
+  levels: Levels = new Levels(this);
   offers: Offers = new Offers(this);
   payRates: PayRates = new PayRates(this);
+  payroll: Payroll = new Payroll(this);
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
-  payroll: Payroll = new Payroll(this);
-  levels: Levels = new Levels(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
 Warp.Benefits = Benefits;
 Warp.CustomFields = CustomFields;
 Warp.Departments = Departments;
+Warp.Levels = Levels;
 Warp.Offers = Offers;
 Warp.PayRates = PayRates;
+Warp.Payroll = Payroll;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
-Warp.Payroll = Payroll;
-Warp.Levels = Levels;
 Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
@@ -967,6 +1044,15 @@ export declare namespace Warp {
 
   export {
     CustomFields as CustomFields,
+    type PublicCustomFieldValueOutput as PublicCustomFieldValueOutput,
+    type TextCustomFieldValue as TextCustomFieldValue,
+    type NumberCustomFieldValue as NumberCustomFieldValue,
+    type DateCustomFieldValue as DateCustomFieldValue,
+    type BooleanCustomFieldValue as BooleanCustomFieldValue,
+    type CurrencyCustomFieldValue as CurrencyCustomFieldValue,
+    type PercentageCustomFieldValue as PercentageCustomFieldValue,
+    type SelectCustomFieldValue as SelectCustomFieldValue,
+    type MultiSelectCustomFieldValue as MultiSelectCustomFieldValue,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldGetResponse as CustomFieldGetResponse,
@@ -996,8 +1082,11 @@ export declare namespace Warp {
     type DepartmentUpdateParams as DepartmentUpdateParams,
   };
 
+  export { Levels as Levels, type LevelListResponse as LevelListResponse };
+
   export {
     Offers as Offers,
+    type PublicMoneyAmount as PublicMoneyAmount,
     type OfferListResponse as OfferListResponse,
     type OfferCreateResponse as OfferCreateResponse,
     type OfferVoidResponse as OfferVoidResponse,
@@ -1011,9 +1100,79 @@ export declare namespace Warp {
 
   export {
     PayRates as PayRates,
+    type PublicPayRate as PublicPayRate,
+    type PublicPayRateType as PublicPayRateType,
+    type PublicPayRatePer as PublicPayRatePer,
     type PayRateListResponse as PayRateListResponse,
-    type PayRateGetResponse as PayRateGetResponse,
     type PayRateListParams as PayRateListParams,
+  };
+
+  export {
+    Payroll as Payroll,
+    type PublicPayrollList as PublicPayrollList,
+    type PublicPayrollDetail as PublicPayrollDetail,
+    type PublicPaycheckList as PublicPaycheckList,
+    type PublicPaycheckDetail as PublicPaycheckDetail,
+    type PublicPayrollSummary as PublicPayrollSummary,
+    type PublicPayrollType as PublicPayrollType,
+    type PublicPayrollSubtype as PublicPayrollSubtype,
+    type PublicPayrollStatus as PublicPayrollStatus,
+    type PublicPayrollCurrency as PublicPayrollCurrency,
+    type PublicPayPeriod as PublicPayPeriod,
+    type PublicPayFrequency as PublicPayFrequency,
+    type PublicPayrollDetailTotals as PublicPayrollDetailTotals,
+    type PublicPayrollFundingMethod as PublicPayrollFundingMethod,
+    type PublicPayrollTimeline as PublicPayrollTimeline,
+    type PublicPaycheckSummary as PublicPaycheckSummary,
+    type PublicPaycheckPayroll as PublicPaycheckPayroll,
+    type PublicPaycheckWorker as PublicPaycheckWorker,
+    type PublicPaycheckStatus as PublicPaycheckStatus,
+    type PublicPaycheckPaymentMethod as PublicPaycheckPaymentMethod,
+    type PublicPaycheckDetailTotals as PublicPaycheckDetailTotals,
+    type PublicExchangeRate as PublicExchangeRate,
+    type PublicPaycheckEarning as PublicPaycheckEarning,
+    type PublicPaycheckReimbursement as PublicPaycheckReimbursement,
+    type PublicPaycheckDeduction as PublicPaycheckDeduction,
+    type PublicPaycheckBenefit as PublicPaycheckBenefit,
+    type PublicPaycheckTax as PublicPaycheckTax,
+    type PublicFundingPayrollTotals as PublicFundingPayrollTotals,
+    type PublicCurrencyMoneyAmount11 as PublicCurrencyMoneyAmount11,
+    type PublicCurrencyMoneyAmount as PublicCurrencyMoneyAmount,
+    type PublicCurrencyMoneyAmount1 as PublicCurrencyMoneyAmount1,
+    type PublicCurrencyMoneyAmount2 as PublicCurrencyMoneyAmount2,
+    type PublicCurrencyMoneyAmount3 as PublicCurrencyMoneyAmount3,
+    type PublicCurrencyMoneyAmount4 as PublicCurrencyMoneyAmount4,
+    type PublicCurrencyMoneyAmount5 as PublicCurrencyMoneyAmount5,
+    type PublicCurrencyMoneyAmount6 as PublicCurrencyMoneyAmount6,
+    type PublicCurrencyMoneyAmount7 as PublicCurrencyMoneyAmount7,
+    type PublicCurrencyMoneyAmount8 as PublicCurrencyMoneyAmount8,
+    type PublicCurrencyMoneyAmount9 as PublicCurrencyMoneyAmount9,
+    type PublicCurrencyMoneyAmount10 as PublicCurrencyMoneyAmount10,
+    type PublicPaycheckSummaryTotals as PublicPaycheckSummaryTotals,
+    type PublicPaycheckCurrencyTotals as PublicPaycheckCurrencyTotals,
+    type PublicExchangeRateValue as PublicExchangeRateValue,
+    type PublicPayrollMoneyAmount as PublicPayrollMoneyAmount,
+    type PublicHourlyRate as PublicHourlyRate,
+    type PublicPayrollMoneyAmount1 as PublicPayrollMoneyAmount1,
+    type PublicPaycheckDeductionTaxTreatment as PublicPaycheckDeductionTaxTreatment,
+    type PublicPayrollMoneyAmount2 as PublicPayrollMoneyAmount2,
+    type PublicPayrollMoneyAmount3 as PublicPayrollMoneyAmount3,
+    type PublicPayrollMoneyAmount4 as PublicPayrollMoneyAmount4,
+    type PublicTaxPayer as PublicTaxPayer,
+    type PublicPayrollMoneyAmount5 as PublicPayrollMoneyAmount5,
+    type PublicPaycheckSummaryCurrencyTotals as PublicPaycheckSummaryCurrencyTotals,
+    type PublicCurrencyMoneyAmount13 as PublicCurrencyMoneyAmount13,
+    type PublicCurrencyMoneyAmount12 as PublicCurrencyMoneyAmount12,
+    type PublicCurrencyMoneyAmount14 as PublicCurrencyMoneyAmount14,
+    type PublicCurrencyMoneyAmount15 as PublicCurrencyMoneyAmount15,
+    type PublicCurrencyMoneyAmount16 as PublicCurrencyMoneyAmount16,
+    type PublicCurrencyMoneyAmount17 as PublicCurrencyMoneyAmount17,
+    type PublicCurrencyMoneyAmount18 as PublicCurrencyMoneyAmount18,
+    type PublicCurrencyMoneyAmount19 as PublicCurrencyMoneyAmount19,
+    type PublicCurrencyMoneyAmount20 as PublicCurrencyMoneyAmount20,
+    type PublicHourlyRateAmount as PublicHourlyRateAmount,
+    type PayrollListParams as PayrollListParams,
+    type PayrollListPaychecksParams as PayrollListPaychecksParams,
   };
 
   export {
@@ -1028,8 +1187,16 @@ export declare namespace Warp {
 
   export {
     Workers as Workers,
-    type OfficeWorkLocation as OfficeWorkLocation,
-    type RemoteWorkLocation as RemoteWorkLocation,
+    type PublicWorkerCompensation as PublicWorkerCompensation,
+    type PublicWorkerCustomField as PublicWorkerCustomField,
+    type PublicTextWorkerCustomField as PublicTextWorkerCustomField,
+    type PublicNumberWorkerCustomField as PublicNumberWorkerCustomField,
+    type PublicDateWorkerCustomField as PublicDateWorkerCustomField,
+    type PublicBooleanWorkerCustomField as PublicBooleanWorkerCustomField,
+    type PublicCurrencyWorkerCustomField as PublicCurrencyWorkerCustomField,
+    type PublicPercentageWorkerCustomField as PublicPercentageWorkerCustomField,
+    type PublicSelectWorkerCustomField as PublicSelectWorkerCustomField,
+    type PublicMultiSelectWorkerCustomField as PublicMultiSelectWorkerCustomField,
     type WorkerListResponse as WorkerListResponse,
     type WorkerGetResponse as WorkerGetResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
@@ -1049,18 +1216,6 @@ export declare namespace Warp {
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
   };
-
-  export {
-    Payroll as Payroll,
-    type PayrollListPaychecksResponse as PayrollListPaychecksResponse,
-    type PayrollGetPaycheckResponse as PayrollGetPaycheckResponse,
-    type PayrollListResponse as PayrollListResponse,
-    type PayrollGetResponse as PayrollGetResponse,
-    type PayrollListPaychecksParams as PayrollListPaychecksParams,
-    type PayrollListParams as PayrollListParams,
-  };
-
-  export { Levels as Levels, type LevelListResponse as LevelListResponse };
 
   export {
     Webhooks as Webhooks,
@@ -1084,35 +1239,6 @@ export declare namespace Warp {
     type OfferVoidedWebhookEvent as OfferVoidedWebhookEvent,
     type ParsedWebhookEvent as ParsedWebhookEvent,
   };
-
-  export type APIKeyUnauthorizedEncoded = SharedAPI.APIKeyUnauthorizedEncoded;
-  export type APINotEnabledEncoded = SharedAPI.APINotEnabledEncoded;
-  export type CustomFieldNotFoundErrorEncoded = SharedAPI.CustomFieldNotFoundErrorEncoded;
-  export type CustomFieldOptionAlreadyExistsErrorEncoded =
-    SharedAPI.CustomFieldOptionAlreadyExistsErrorEncoded;
-  export type CustomFieldOptionNotFoundErrorEncoded = SharedAPI.CustomFieldOptionNotFoundErrorEncoded;
-  export type DepartmentNotFoundEncoded = SharedAPI.DepartmentNotFoundEncoded;
-  export type EffectHTTPAPIErrorInternalServerErrorEncoded =
-    SharedAPI.EffectHTTPAPIErrorInternalServerErrorEncoded;
-  export type InvalidCustomFieldOperationErrorEncoded = SharedAPI.InvalidCustomFieldOperationErrorEncoded;
-  export type InvalidOfferStatusErrorEncoded = SharedAPI.InvalidOfferStatusErrorEncoded;
-  export type ManagerNotFoundErrorEncoded = SharedAPI.ManagerNotFoundErrorEncoded;
-  export type MissingRequiredCompanyPermissionsEncoded = SharedAPI.MissingRequiredCompanyPermissionsEncoded;
-  export type OfferNotFoundErrorEncoded = SharedAPI.OfferNotFoundErrorEncoded;
-  export type PublicMoneyAmount = SharedAPI.PublicMoneyAmount;
-  export type PublicPaycheckPaymentMethod = SharedAPI.PublicPaycheckPaymentMethod;
-  export type PublicPaycheckStatus = SharedAPI.PublicPaycheckStatus;
-  export type PublicPayFrequency = SharedAPI.PublicPayFrequency;
-  export type PublicPayPeriod = SharedAPI.PublicPayPeriod;
-  export type PublicPayrollCurrency = SharedAPI.PublicPayrollCurrency;
-  export type PublicPayrollStatus = SharedAPI.PublicPayrollStatus;
-  export type PublicPayrollSubtype = SharedAPI.PublicPayrollSubtype;
-  export type PublicPayrollType = SharedAPI.PublicPayrollType;
-  export type PublicWorkerCompensation = SharedAPI.PublicWorkerCompensation;
-  export type RateLimitExceededEncoded = SharedAPI.RateLimitExceededEncoded;
-  export type TimeOffPolicyNotFoundEncoded = SharedAPI.TimeOffPolicyNotFoundEncoded;
-  export type WorkerNotFoundErrorEncoded = SharedAPI.WorkerNotFoundErrorEncoded;
-  export type WorkplaceNotFoundEncoded = SharedAPI.WorkplaceNotFoundEncoded;
 }
 
 const headerExplicitlyOmitted = (source: HeadersLike | undefined, name: string): boolean => {

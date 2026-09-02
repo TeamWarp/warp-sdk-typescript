@@ -5,7 +5,6 @@ import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { buildHeaders } from '../internal/headers';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as Shared from './shared';
 
 export class CustomFields extends APIResource {
   /**
@@ -243,6 +242,294 @@ export class CustomFields extends APIResource {
       ...options,
       headers: buildHeaders([{ Accept: '*/*' }, options?.headers]),
     });
+  }
+}
+
+export type PublicCustomFieldValueOutput =
+  | PublicCustomFieldValueOutput.TextCustomFieldValue
+  | PublicCustomFieldValueOutput.NumberCustomFieldValue
+  | PublicCustomFieldValueOutput.DateCustomFieldValue
+  | PublicCustomFieldValueOutput.BooleanCustomFieldValue
+  | PublicCustomFieldValueOutput.CurrencyCustomFieldValue
+  | PublicCustomFieldValueOutput.PercentageCustomFieldValue
+  | PublicCustomFieldValueOutput.SelectCustomFieldValue
+  | PublicCustomFieldValueOutput.MultiSelectCustomFieldValue;
+
+export namespace PublicCustomFieldValueOutput {
+  export interface TextCustomFieldValue {
+    type: 'text';
+    value: string;
+  }
+
+  export interface NumberCustomFieldValue {
+    type: 'number';
+    value: number | 'Infinity' | '-Infinity' | 'NaN';
+  }
+
+  export interface DateCustomFieldValue {
+    type: 'date';
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    value: string;
+  }
+
+  export interface BooleanCustomFieldValue {
+    type: 'boolean';
+    value: boolean;
+  }
+
+  export interface CurrencyCustomFieldValue {
+    type: 'currency';
+    /**
+     * Integer base units of currencyCode (e.g. cents).
+     */
+    amount: number;
+    currencyCode:
+      | 'USD'
+      | 'AUD'
+      | 'BGN'
+      | 'BRL'
+      | 'CAD'
+      | 'CHF'
+      | 'CZK'
+      | 'DKK'
+      | 'EUR'
+      | 'GBP'
+      | 'HKD'
+      | 'HUF'
+      | 'IDR'
+      | 'INR'
+      | 'JPY'
+      | 'MYR'
+      | 'NOK'
+      | 'NZD'
+      | 'CNY'
+      | 'PLN'
+      | 'RON'
+      | 'TRY'
+      | 'SEK'
+      | 'SGD'
+      | 'AED'
+      | 'ARS'
+      | 'BDT'
+      | 'BWP'
+      | 'CLP'
+      | 'COP'
+      | 'CRC'
+      | 'EGP'
+      | 'FJD'
+      | 'GEL'
+      | 'GHS'
+      | 'ILS'
+      | 'KES'
+      | 'KRW'
+      | 'LKR'
+      | 'MAD'
+      | 'MXN'
+      | 'NPR'
+      | 'PHP'
+      | 'PKR'
+      | 'THB'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'VND'
+      | 'ZAR'
+      | 'ZMW'
+      | 'TND'
+      | 'NGN'
+      | 'RSD'
+      | 'TWD'
+      | 'GTQ'
+      | 'HNL'
+      | 'DOP'
+      | 'SAR'
+      | 'XAF'
+      | 'PEN';
+  }
+
+  export interface PercentageCustomFieldValue {
+    type: 'percentage';
+    value: number | 'Infinity' | '-Infinity' | 'NaN';
+  }
+
+  export interface SelectCustomFieldValue {
+    type: 'select';
+    option: SelectCustomFieldValue.Option;
+  }
+
+  export namespace SelectCustomFieldValue {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
+  }
+
+  export interface MultiSelectCustomFieldValue {
+    type: 'multi_select';
+    options: Array<MultiSelectCustomFieldValue.Option>;
+  }
+
+  export namespace MultiSelectCustomFieldValue {
+    export interface Option {
+      /**
+       * The tag of a company custom worker field option.
+       * @pattern ^cfo_
+       */
+      id: string;
+      label: string;
+      value: string;
+      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+      status: 'active' | 'archived';
+      createdAt: string;
+    }
+  }
+}
+
+export interface TextCustomFieldValue {
+  type: 'text';
+  value: string;
+}
+
+export interface NumberCustomFieldValue {
+  type: 'number';
+  value: number | 'Infinity' | '-Infinity' | 'NaN';
+}
+
+export interface DateCustomFieldValue {
+  type: 'date';
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  value: string;
+}
+
+export interface BooleanCustomFieldValue {
+  type: 'boolean';
+  value: boolean;
+}
+
+export interface CurrencyCustomFieldValue {
+  type: 'currency';
+  /**
+   * Integer base units of currencyCode (e.g. cents).
+   */
+  amount: number;
+  currencyCode:
+    | 'USD'
+    | 'AUD'
+    | 'BGN'
+    | 'BRL'
+    | 'CAD'
+    | 'CHF'
+    | 'CZK'
+    | 'DKK'
+    | 'EUR'
+    | 'GBP'
+    | 'HKD'
+    | 'HUF'
+    | 'IDR'
+    | 'INR'
+    | 'JPY'
+    | 'MYR'
+    | 'NOK'
+    | 'NZD'
+    | 'CNY'
+    | 'PLN'
+    | 'RON'
+    | 'TRY'
+    | 'SEK'
+    | 'SGD'
+    | 'AED'
+    | 'ARS'
+    | 'BDT'
+    | 'BWP'
+    | 'CLP'
+    | 'COP'
+    | 'CRC'
+    | 'EGP'
+    | 'FJD'
+    | 'GEL'
+    | 'GHS'
+    | 'ILS'
+    | 'KES'
+    | 'KRW'
+    | 'LKR'
+    | 'MAD'
+    | 'MXN'
+    | 'NPR'
+    | 'PHP'
+    | 'PKR'
+    | 'THB'
+    | 'UAH'
+    | 'UGX'
+    | 'UYU'
+    | 'VND'
+    | 'ZAR'
+    | 'ZMW'
+    | 'TND'
+    | 'NGN'
+    | 'RSD'
+    | 'TWD'
+    | 'GTQ'
+    | 'HNL'
+    | 'DOP'
+    | 'SAR'
+    | 'XAF'
+    | 'PEN';
+}
+
+export interface PercentageCustomFieldValue {
+  type: 'percentage';
+  value: number | 'Infinity' | '-Infinity' | 'NaN';
+}
+
+export interface SelectCustomFieldValue {
+  type: 'select';
+  option: SelectCustomFieldValue.Option;
+}
+
+export namespace SelectCustomFieldValue {
+  export interface Option {
+    /**
+     * The tag of a company custom worker field option.
+     * @pattern ^cfo_
+     */
+    id: string;
+    label: string;
+    value: string;
+    sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+    status: 'active' | 'archived';
+    createdAt: string;
+  }
+}
+
+export interface MultiSelectCustomFieldValue {
+  type: 'multi_select';
+  options: Array<MultiSelectCustomFieldValue.Option>;
+}
+
+export namespace MultiSelectCustomFieldValue {
+  export interface Option {
+    /**
+     * The tag of a company custom worker field option.
+     * @pattern ^cfo_
+     */
+    id: string;
+    label: string;
+    value: string;
+    sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
+    status: 'active' | 'archived';
+    createdAt: string;
   }
 }
 
@@ -494,156 +781,8 @@ export namespace CustomFieldListValuesResponse {
      * @pattern ^cf_
      */
     fieldId: string;
-    value:
-      | CustomFieldListValuesResponseItem.TextCustomFieldValue
-      | CustomFieldListValuesResponseItem.NumberCustomFieldValue
-      | CustomFieldListValuesResponseItem.DateCustomFieldValue
-      | CustomFieldListValuesResponseItem.BooleanCustomFieldValue
-      | CustomFieldListValuesResponseItem.CurrencyCustomFieldValue
-      | CustomFieldListValuesResponseItem.PercentageCustomFieldValue
-      | CustomFieldListValuesResponseItem.SelectCustomFieldValue
-      | CustomFieldListValuesResponseItem.MultiSelectCustomFieldValue;
+    value: PublicCustomFieldValueOutput;
     updatedAt: string;
-  }
-
-  export namespace CustomFieldListValuesResponseItem {
-    export interface TextCustomFieldValue {
-      type: 'text';
-      value: string;
-    }
-
-    export interface NumberCustomFieldValue {
-      type: 'number';
-      value: number | 'Infinity' | '-Infinity' | 'NaN';
-    }
-
-    export interface DateCustomFieldValue {
-      type: 'date';
-      /**
-       * @pattern ^\d{4}-\d{2}-\d{2}$
-       */
-      value: string;
-    }
-
-    export interface BooleanCustomFieldValue {
-      type: 'boolean';
-      value: boolean;
-    }
-
-    export interface CurrencyCustomFieldValue {
-      type: 'currency';
-      /**
-       * Integer base units of currencyCode (e.g. cents).
-       */
-      amount: number;
-      currencyCode:
-        | 'USD'
-        | 'AUD'
-        | 'BGN'
-        | 'BRL'
-        | 'CAD'
-        | 'CHF'
-        | 'CZK'
-        | 'DKK'
-        | 'EUR'
-        | 'GBP'
-        | 'HKD'
-        | 'HUF'
-        | 'IDR'
-        | 'INR'
-        | 'JPY'
-        | 'MYR'
-        | 'NOK'
-        | 'NZD'
-        | 'CNY'
-        | 'PLN'
-        | 'RON'
-        | 'TRY'
-        | 'SEK'
-        | 'SGD'
-        | 'AED'
-        | 'ARS'
-        | 'BDT'
-        | 'BWP'
-        | 'CLP'
-        | 'COP'
-        | 'CRC'
-        | 'EGP'
-        | 'FJD'
-        | 'GEL'
-        | 'GHS'
-        | 'ILS'
-        | 'KES'
-        | 'KRW'
-        | 'LKR'
-        | 'MAD'
-        | 'MXN'
-        | 'NPR'
-        | 'PHP'
-        | 'PKR'
-        | 'THB'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'VND'
-        | 'ZAR'
-        | 'ZMW'
-        | 'TND'
-        | 'NGN'
-        | 'RSD'
-        | 'TWD'
-        | 'GTQ'
-        | 'HNL'
-        | 'DOP'
-        | 'SAR'
-        | 'XAF'
-        | 'PEN';
-    }
-
-    export interface PercentageCustomFieldValue {
-      type: 'percentage';
-      value: number | 'Infinity' | '-Infinity' | 'NaN';
-    }
-
-    export interface SelectCustomFieldValue {
-      type: 'select';
-      option: SelectCustomFieldValue.Option;
-    }
-
-    export namespace SelectCustomFieldValue {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
-
-    export interface MultiSelectCustomFieldValue {
-      type: 'multi_select';
-      options: Array<MultiSelectCustomFieldValue.Option>;
-    }
-
-    export namespace MultiSelectCustomFieldValue {
-      export interface Option {
-        /**
-         * The tag of a company custom worker field option.
-         * @pattern ^cfo_
-         */
-        id: string;
-        label: string;
-        value: string;
-        sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-        status: 'active' | 'archived';
-        createdAt: string;
-      }
-    }
   }
 }
 
@@ -799,156 +938,8 @@ export interface CustomFieldUpsertValueResponse {
    * @pattern ^cf_
    */
   fieldId: string;
-  value:
-    | CustomFieldUpsertValueResponse.TextCustomFieldValue
-    | CustomFieldUpsertValueResponse.NumberCustomFieldValue
-    | CustomFieldUpsertValueResponse.DateCustomFieldValue
-    | CustomFieldUpsertValueResponse.BooleanCustomFieldValue
-    | CustomFieldUpsertValueResponse.CurrencyCustomFieldValue
-    | CustomFieldUpsertValueResponse.PercentageCustomFieldValue
-    | CustomFieldUpsertValueResponse.SelectCustomFieldValue
-    | CustomFieldUpsertValueResponse.MultiSelectCustomFieldValue;
+  value: PublicCustomFieldValueOutput;
   updatedAt: string;
-}
-
-export namespace CustomFieldUpsertValueResponse {
-  export interface TextCustomFieldValue {
-    type: 'text';
-    value: string;
-  }
-
-  export interface NumberCustomFieldValue {
-    type: 'number';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
-  }
-
-  export interface DateCustomFieldValue {
-    type: 'date';
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    value: string;
-  }
-
-  export interface BooleanCustomFieldValue {
-    type: 'boolean';
-    value: boolean;
-  }
-
-  export interface CurrencyCustomFieldValue {
-    type: 'currency';
-    /**
-     * Integer base units of currencyCode (e.g. cents).
-     */
-    amount: number;
-    currencyCode:
-      | 'USD'
-      | 'AUD'
-      | 'BGN'
-      | 'BRL'
-      | 'CAD'
-      | 'CHF'
-      | 'CZK'
-      | 'DKK'
-      | 'EUR'
-      | 'GBP'
-      | 'HKD'
-      | 'HUF'
-      | 'IDR'
-      | 'INR'
-      | 'JPY'
-      | 'MYR'
-      | 'NOK'
-      | 'NZD'
-      | 'CNY'
-      | 'PLN'
-      | 'RON'
-      | 'TRY'
-      | 'SEK'
-      | 'SGD'
-      | 'AED'
-      | 'ARS'
-      | 'BDT'
-      | 'BWP'
-      | 'CLP'
-      | 'COP'
-      | 'CRC'
-      | 'EGP'
-      | 'FJD'
-      | 'GEL'
-      | 'GHS'
-      | 'ILS'
-      | 'KES'
-      | 'KRW'
-      | 'LKR'
-      | 'MAD'
-      | 'MXN'
-      | 'NPR'
-      | 'PHP'
-      | 'PKR'
-      | 'THB'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'VND'
-      | 'ZAR'
-      | 'ZMW'
-      | 'TND'
-      | 'NGN'
-      | 'RSD'
-      | 'TWD'
-      | 'GTQ'
-      | 'HNL'
-      | 'DOP'
-      | 'SAR'
-      | 'XAF'
-      | 'PEN';
-  }
-
-  export interface PercentageCustomFieldValue {
-    type: 'percentage';
-    value: number | 'Infinity' | '-Infinity' | 'NaN';
-  }
-
-  export interface SelectCustomFieldValue {
-    type: 'select';
-    option: SelectCustomFieldValue.Option;
-  }
-
-  export namespace SelectCustomFieldValue {
-    export interface Option {
-      /**
-       * The tag of a company custom worker field option.
-       * @pattern ^cfo_
-       */
-      id: string;
-      label: string;
-      value: string;
-      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-      status: 'active' | 'archived';
-      createdAt: string;
-    }
-  }
-
-  export interface MultiSelectCustomFieldValue {
-    type: 'multi_select';
-    options: Array<MultiSelectCustomFieldValue.Option>;
-  }
-
-  export namespace MultiSelectCustomFieldValue {
-    export interface Option {
-      /**
-       * The tag of a company custom worker field option.
-       * @pattern ^cfo_
-       */
-      id: string;
-      label: string;
-      value: string;
-      sortOrder: number | 'Infinity' | '-Infinity' | 'NaN';
-      status: 'active' | 'archived';
-      createdAt: string;
-    }
-  }
 }
 
 export interface CustomFieldClearValueParams {
@@ -965,6 +956,15 @@ export interface CustomFieldClearValueParams {
 }
 export declare namespace CustomFields {
   export {
+    type PublicCustomFieldValueOutput as PublicCustomFieldValueOutput,
+    type TextCustomFieldValue as TextCustomFieldValue,
+    type NumberCustomFieldValue as NumberCustomFieldValue,
+    type DateCustomFieldValue as DateCustomFieldValue,
+    type BooleanCustomFieldValue as BooleanCustomFieldValue,
+    type CurrencyCustomFieldValue as CurrencyCustomFieldValue,
+    type PercentageCustomFieldValue as PercentageCustomFieldValue,
+    type SelectCustomFieldValue as SelectCustomFieldValue,
+    type MultiSelectCustomFieldValue as MultiSelectCustomFieldValue,
     type CustomFieldListResponse as CustomFieldListResponse,
     type CustomFieldCreateResponse as CustomFieldCreateResponse,
     type CustomFieldGetResponse as CustomFieldGetResponse,

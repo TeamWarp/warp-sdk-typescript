@@ -76,7 +76,7 @@ const cases: {
     method: 'GET',
     path: '/v1/benefits/health_plans/{id}',
     run: async () => {
-      const healthPlan = await client.benefits.healthPlans.get('chpl_1234');
+      const publicHealthPlan = await client.benefits.healthPlans.get('chpl_1234');
     },
   },
 
@@ -114,7 +114,7 @@ const cases: {
     method: 'GET',
     path: '/v1/benefits/retirement_plans/{id}',
     run: async () => {
-      const retirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
+      const publicRetirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
     },
   },
 
@@ -156,7 +156,7 @@ const cases: {
     method: 'GET',
     path: '/v1/benefits/deductions/{id}',
     run: async () => {
-      const deduction = await client.benefits.deductions.get('pbdg_1234');
+      const publicBenefitDeduction = await client.benefits.deductions.get('pbdg_1234');
     },
   },
 
@@ -430,6 +430,15 @@ const cases: {
   {
     operation: 'list',
     method: 'GET',
+    path: '/v1/levels',
+    run: async () => {
+      const level = await client.levels.list();
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
     path: '/v1/offers',
     label: 'required params',
     run: async () => {
@@ -598,7 +607,95 @@ const cases: {
     method: 'GET',
     path: '/v1/pay_rates/{id}',
     run: async () => {
-      const payRate = await client.payRates.get('pyr_1234');
+      const publicPayRate = await client.payRates.get('pyr_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/payrolls',
+    label: 'required params',
+    run: async () => {
+      const publicPayrollList = await client.payroll.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/payrolls',
+    label: 'all params',
+    run: async () => {
+      const publicPayrollList = await client.payroll.list({
+        limit: 'limit',
+        afterId: 'pay_1234',
+        beforeId: 'pay_1234',
+        types: ['us'],
+        subtypes: ['regular'],
+        statuses: ['processing'],
+        payFrequencies: ['semimonthly'],
+        paydayOnOrAfter: 'paydayOnOrAfter',
+        paydayBefore: 'paydayBefore',
+        payPeriodEndOnOrAfter: 'payPeriodEndOnOrAfter',
+        payPeriodEndBefore: 'payPeriodEndBefore',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/payrolls/{id}',
+    run: async () => {
+      const publicPayrollDetail = await client.payroll.get('pay_1234');
+    },
+  },
+
+  {
+    operation: 'listPaychecks',
+    method: 'GET',
+    path: '/v1/paychecks',
+    label: 'required params',
+    run: async () => {
+      const publicPaycheckList = await client.payroll.listPaychecks({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'listPaychecks',
+    method: 'GET',
+    path: '/v1/paychecks',
+    label: 'all params',
+    run: async () => {
+      const publicPaycheckList = await client.payroll.listPaychecks({
+        limit: 'limit',
+        afterId: 'pyc_1234',
+        beforeId: 'pyc_1234',
+        payrollIds: ['pay_1234'],
+        workerIds: ['wrk_1234'],
+        workerTypes: ['us_w2'],
+        payrollTypes: ['us'],
+        statuses: ['processing'],
+        paymentMethods: ['direct_deposit'],
+        compensationCurrencies: ['USD'],
+        payFrequencies: ['semimonthly'],
+        paydayOnOrAfter: 'paydayOnOrAfter',
+        paydayBefore: 'paydayBefore',
+      });
+    },
+  },
+
+  {
+    operation: 'getPaycheck',
+    method: 'GET',
+    path: '/v1/paychecks/{id}',
+    run: async () => {
+      const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
     },
   },
 
@@ -956,103 +1053,6 @@ const cases: {
       const workplace = await client.workplaces.update('wkp_1234', {
         name: '',
       });
-    },
-  },
-
-  {
-    operation: 'listPaychecks',
-    method: 'GET',
-    path: '/v1/paychecks',
-    label: 'required params',
-    run: async () => {
-      const payroll = await client.payroll.listPaychecks({
-        limit: 'limit',
-      });
-    },
-  },
-
-  {
-    operation: 'listPaychecks',
-    method: 'GET',
-    path: '/v1/paychecks',
-    label: 'all params',
-    run: async () => {
-      const payroll = await client.payroll.listPaychecks({
-        limit: 'limit',
-        afterId: 'pyc_1234',
-        beforeId: 'pyc_1234',
-        payrollIds: ['pay_1234'],
-        workerIds: ['wrk_1234'],
-        workerTypes: ['us_w2'],
-        payrollTypes: ['us'],
-        statuses: ['processing'],
-        paymentMethods: ['direct_deposit'],
-        compensationCurrencies: ['USD'],
-        payFrequencies: ['semimonthly'],
-        paydayOnOrAfter: 'paydayOnOrAfter',
-        paydayBefore: 'paydayBefore',
-      });
-    },
-  },
-
-  {
-    operation: 'getPaycheck',
-    method: 'GET',
-    path: '/v1/paychecks/{id}',
-    run: async () => {
-      const payroll = await client.payroll.getPaycheck('pyc_1234');
-    },
-  },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/payrolls',
-    label: 'required params',
-    run: async () => {
-      const payroll = await client.payroll.list({
-        limit: 'limit',
-      });
-    },
-  },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/payrolls',
-    label: 'all params',
-    run: async () => {
-      const payroll = await client.payroll.list({
-        limit: 'limit',
-        afterId: 'pay_1234',
-        beforeId: 'pay_1234',
-        types: ['us'],
-        subtypes: ['regular'],
-        statuses: ['processing'],
-        payFrequencies: ['semimonthly'],
-        paydayOnOrAfter: 'paydayOnOrAfter',
-        paydayBefore: 'paydayBefore',
-        payPeriodEndOnOrAfter: 'payPeriodEndOnOrAfter',
-        payPeriodEndBefore: 'payPeriodEndBefore',
-      });
-    },
-  },
-
-  {
-    operation: 'get',
-    method: 'GET',
-    path: '/v1/payrolls/{id}',
-    run: async () => {
-      const payroll = await client.payroll.get('pay_1234');
-    },
-  },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/levels',
-    run: async () => {
-      const level = await client.levels.list();
     },
   },
 ];
