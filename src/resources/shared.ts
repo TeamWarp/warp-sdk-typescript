@@ -1,7 +1,5 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type * as CustomFieldsAPI from './custom-fields';
-
 export interface APIKeyUnauthorizedEncoded {
   _tag: 'ApiKeyUnauthorized';
   message: string;
@@ -13,6 +11,7 @@ export interface APINotEnabledEncoded {
 export interface CustomFieldNotFoundErrorEncoded {
   _tag: 'CustomFieldNotFoundError';
   /**
+   * The tag of a company custom worker field.
    * @pattern ^cf_
    */
   id: string;
@@ -26,6 +25,7 @@ export interface CustomFieldOptionAlreadyExistsErrorEncoded {
 export interface CustomFieldOptionNotFoundErrorEncoded {
   _tag: 'CustomFieldOptionNotFoundError';
   /**
+   * The tag of a company custom worker field option.
    * @pattern ^cfo_
    */
   id: string;
@@ -34,6 +34,7 @@ export interface CustomFieldOptionNotFoundErrorEncoded {
 export interface DepartmentNotFoundEncoded {
   _tag: 'DepartmentNotFound';
   /**
+   * The unique public id of the department
    * @pattern ^dpt_
    */
   id: string;
@@ -49,15 +50,17 @@ export interface InvalidCustomFieldOperationErrorEncoded {
 export interface InvalidOfferStatusErrorEncoded {
   _tag: 'InvalidOfferStatusError';
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   id: string;
-  status: Union13;
+  status: 'draft' | 'sent' | 'accepted' | 'void';
   message: string;
 }
 export interface ManagerNotFoundErrorEncoded {
   _tag: 'ManagerNotFoundError';
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   id: string;
@@ -106,47 +109,10 @@ export namespace MissingRequiredCompanyPermissionsEncoded {
     level: 'read' | 'write' | 'manage';
   }
 }
-export interface Objects {
-  /**
-   * @pattern ^cf_
-   */
-  id: string;
-  name: string;
-  description: Union3 | null;
-  type: Union4;
-  config: Objects1;
-  status: Union5;
-  category: Union6;
-  accessLevel: Union7;
-  inputBy: Union8;
-  canWrite: boolean;
-  createdAt: string;
-  required?: CustomFieldsAPI.Union9 | null;
-}
-export type Objects1 = Record<string, unknown>;
-export interface Objects3 {
-  /**
-   * @pattern ^cfo_
-   */
-  id: string;
-  label: string;
-  value: string;
-  sortOrder: Union11;
-  status: 'active' | 'archived';
-  createdAt: string;
-}
-export interface Objects5 {
-  /**
-   * @pattern ^jlvl_
-   */
-  id: string;
-  code: string;
-  name: string;
-  track: 'ic' | 'manager' | 'executive';
-}
 export interface OfferNotFoundErrorEncoded {
   _tag: 'OfferNotFoundError';
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   id: string;
@@ -157,10 +123,72 @@ export interface OfferNotFoundErrorEncoded {
  */
 export interface PublicMoneyAmount {
   /**
+   * Amount in the currency base unit, e.g. cents for USD.
    * @minimum 0
    */
   amount: number;
-  currency: CustomFieldsAPI.Union1;
+  currency:
+    | 'USD'
+    | 'AUD'
+    | 'BGN'
+    | 'BRL'
+    | 'CAD'
+    | 'CHF'
+    | 'CZK'
+    | 'DKK'
+    | 'EUR'
+    | 'GBP'
+    | 'HKD'
+    | 'HUF'
+    | 'IDR'
+    | 'INR'
+    | 'JPY'
+    | 'MYR'
+    | 'NOK'
+    | 'NZD'
+    | 'CNY'
+    | 'PLN'
+    | 'RON'
+    | 'TRY'
+    | 'SEK'
+    | 'SGD'
+    | 'AED'
+    | 'ARS'
+    | 'BDT'
+    | 'BWP'
+    | 'CLP'
+    | 'COP'
+    | 'CRC'
+    | 'EGP'
+    | 'FJD'
+    | 'GEL'
+    | 'GHS'
+    | 'ILS'
+    | 'KES'
+    | 'KRW'
+    | 'LKR'
+    | 'MAD'
+    | 'MXN'
+    | 'NPR'
+    | 'PHP'
+    | 'PKR'
+    | 'THB'
+    | 'UAH'
+    | 'UGX'
+    | 'UYU'
+    | 'VND'
+    | 'ZAR'
+    | 'ZMW'
+    | 'TND'
+    | 'NGN'
+    | 'RSD'
+    | 'TWD'
+    | 'GTQ'
+    | 'HNL'
+    | 'DOP'
+    | 'SAR'
+    | 'XAF'
+    | 'PEN';
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -298,6 +326,7 @@ export type PublicPayrollType = 'us' | 'global';
  */
 export interface PublicWorkerCompensation {
   /**
+   * The id of the regular pay rate represented here.
    * @pattern ^pyr_
    */
   payRateId: string;
@@ -306,10 +335,72 @@ export interface PublicWorkerCompensation {
    */
   per: 'year' | 'month' | 'week' | 'hour';
   /**
+   * Amount in the currency base unit, e.g. cents for USD.
    * @minimum 0
    */
   amount: number;
-  currency: CustomFieldsAPI.Union1;
+  currency:
+    | 'USD'
+    | 'AUD'
+    | 'BGN'
+    | 'BRL'
+    | 'CAD'
+    | 'CHF'
+    | 'CZK'
+    | 'DKK'
+    | 'EUR'
+    | 'GBP'
+    | 'HKD'
+    | 'HUF'
+    | 'IDR'
+    | 'INR'
+    | 'JPY'
+    | 'MYR'
+    | 'NOK'
+    | 'NZD'
+    | 'CNY'
+    | 'PLN'
+    | 'RON'
+    | 'TRY'
+    | 'SEK'
+    | 'SGD'
+    | 'AED'
+    | 'ARS'
+    | 'BDT'
+    | 'BWP'
+    | 'CLP'
+    | 'COP'
+    | 'CRC'
+    | 'EGP'
+    | 'FJD'
+    | 'GEL'
+    | 'GHS'
+    | 'ILS'
+    | 'KES'
+    | 'KRW'
+    | 'LKR'
+    | 'MAD'
+    | 'MXN'
+    | 'NPR'
+    | 'PHP'
+    | 'PKR'
+    | 'THB'
+    | 'UAH'
+    | 'UGX'
+    | 'UYU'
+    | 'VND'
+    | 'ZAR'
+    | 'ZMW'
+    | 'TND'
+    | 'NGN'
+    | 'RSD'
+    | 'TWD'
+    | 'GTQ'
+    | 'HNL'
+    | 'DOP'
+    | 'SAR'
+    | 'XAF'
+    | 'PEN';
   /**
    * The server-formatted pay rate, including its period.
    */
@@ -322,106 +413,13 @@ export interface RateLimitExceededEncoded {
 }
 export interface TimeOffPolicyNotFoundEncoded {
   _tag: 'TimeOffPolicyNotFound';
-  id: Union23;
+  id: number | 'Infinity' | '-Infinity' | 'NaN' | (string & {});
   message: string;
 }
-export type Union =
-  | 'medical'
-  | 'dental'
-  | 'vision'
-  | 'life'
-  | 'short_term_disability'
-  | 'long_term_disability'
-  | '401k'
-  | 'roth_401k'
-  | '403b'
-  | 'roth_403b'
-  | '457'
-  | 'roth_457'
-  | 'hsa'
-  | 'fsa_medical'
-  | 'fsa_dependent_care'
-  | 'transit'
-  | 'parking'
-  | 'accident'
-  | 'cancer'
-  | 'critical_illness'
-  | 'hospital'
-  | 'medical_other'
-  | 'simple_ira'
-  | 'roth_simple_ira'
-  | 'nqdc'
-  | 'nontaxable_fringe'
-  | 'pucc'
-  | 'voluntary'
-  | 'post_tax'
-  | 'other';
-export type Union10 = Record<string, unknown> | null;
-export type Union11 = number | Union2;
-export type Union12 = string | null;
-export type Union13 = 'draft' | 'sent' | 'accepted' | 'void';
-export interface Union18 {
-  /**
-   * @pattern ^wrk_
-   */
-  id: string;
-  name: string | null;
-}
-export type Union2 = 'Infinity' | '-Infinity' | 'NaN';
-export interface Union20 {
-  /**
-   * @minimum 0
-   */
-  amount: number;
-  currency: CustomFieldsAPI.Union1;
-  /**
-   * The server-formatted display string for the amount in its currency.
-   */
-  display: string;
-}
-export type Union21 = string | null;
-export type Union23 = number | Union2 | (string & {});
-export type Union24 = string | null;
-export type Union25 = string | null;
-export type Union26 = 'pending' | 'approved' | 'denied';
-export type Union27 = 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
-export type Union28 = 'employee' | 'contractor';
-export type Union29 = string | null;
-export type Union3 = string | null;
-export type Union30 = boolean | null;
-export type Union31 = string | null;
-export type Union32 = string | null;
-export type Union33 = string | null;
-/**
- * The IANA timezone of the worker (e.g., America/New_York).
- */
-export type Union34 = string | null;
-/**
- * The department the worker belongs to, or null if unassigned.
- */
-export interface Union35 {
-  /**
-   * @pattern ^dpt_
-   */
-  id: string;
-  name: string;
-}
-export type Union4 =
-  | 'text'
-  | 'number'
-  | 'date'
-  | 'boolean'
-  | 'currency'
-  | 'percentage'
-  | 'select'
-  | 'multi_select';
-export type Union5 = 'active' | 'archived';
-export type Union6 = 'info' | 'pii' | 'compensation' | 'banking' | 'it' | 'compliance';
-export type Union7 = 'admins' | 'manager' | 'worker';
-export type Union8 = 'admin' | 'worker';
 export interface WorkerNotFoundErrorEncoded {
   _tag: 'WorkerNotFoundError';
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   id: string;
@@ -430,6 +428,7 @@ export interface WorkerNotFoundErrorEncoded {
 export interface WorkplaceNotFoundEncoded {
   _tag: 'WorkplaceNotFound';
   /**
+   * Public workplace identifier
    * @pattern ^wkp_
    */
   id: string;

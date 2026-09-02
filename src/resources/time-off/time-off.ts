@@ -79,11 +79,11 @@ export interface TimeOffListAssignmentsParams {
   /**
    * @pattern ^wrkasn_
    */
-  afterId?: Shared.Union24 | null;
+  afterId?: string | null;
   /**
    * @pattern ^wrkasn_
    */
-  beforeId?: Shared.Union24 | null;
+  beforeId?: string | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
 }
@@ -97,6 +97,7 @@ export interface TimeOffListAssignmentsResponse {
 export namespace TimeOffListAssignmentsResponse {
   export interface Data {
     /**
+     * The external-facing id of the worker assignment.
      * @pattern ^wrkasn_
      */
     id: string;
@@ -105,6 +106,7 @@ export namespace TimeOffListAssignmentsResponse {
      */
     policyId: string;
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     workerId: string;
@@ -117,15 +119,15 @@ export interface TimeOffListBalancesParams {
   /**
    * @pattern ^wrkasn_
    */
-  afterId?: Shared.Union24 | null;
+  afterId?: string | null;
   /**
    * @pattern ^wrkasn_
    */
-  beforeId?: Shared.Union24 | null;
+  beforeId?: string | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
-  startDate?: Shared.Union25 | null;
-  endDate?: Shared.Union25 | null;
+  startDate?: string | null;
+  endDate?: string | null;
 }
 
 export interface TimeOffListBalancesResponse {
@@ -137,6 +139,7 @@ export interface TimeOffListBalancesResponse {
 export namespace TimeOffListBalancesResponse {
   export interface Data {
     /**
+     * The external-facing id of the worker assignment.
      * @pattern ^wrkasn_
      */
     id: string;
@@ -145,11 +148,11 @@ export namespace TimeOffListBalancesResponse {
      */
     policyId: string;
     legacyWorkerId: string;
-    accruedUnlocked: Shared.Union11;
-    accruedLocked: Shared.Union11;
-    used: Shared.Union11;
-    holds: Shared.Union11;
-    available: Shared.Union11;
+    accruedUnlocked: number | 'Infinity' | '-Infinity' | 'NaN';
+    accruedLocked: number | 'Infinity' | '-Infinity' | 'NaN';
+    used: number | 'Infinity' | '-Infinity' | 'NaN';
+    holds: number | 'Infinity' | '-Infinity' | 'NaN';
+    available: number | 'Infinity' | '-Infinity' | 'NaN';
   }
 }
 
@@ -157,13 +160,13 @@ export interface TimeOffListRequestsParams {
   limit: string | null;
   afterId?: string | null;
   beforeId?: string | null;
-  statuses?: Array<Shared.Union26> | null;
+  statuses?: Array<'pending' | 'approved' | 'denied'> | null;
   policyIds?: Array<string> | null;
   workerIds?: Array<string> | null;
-  startsOnOrAfter?: Shared.Union25 | null;
-  startsBefore?: Shared.Union25 | null;
-  endsOnOrAfter?: Shared.Union25 | null;
-  endsBefore?: Shared.Union25 | null;
+  startsOnOrAfter?: string | null;
+  startsBefore?: string | null;
+  endsOnOrAfter?: string | null;
+  endsBefore?: string | null;
 }
 
 export interface TimeOffListRequestsResponse {
@@ -180,17 +183,18 @@ export namespace TimeOffListRequestsResponse {
      */
     timeOffPolicyId: string;
     /**
+     * The id of the worker.
      * @pattern ^wrk_
      */
     workerId: string;
-    status: Shared.Union26;
+    status: 'pending' | 'approved' | 'denied';
     startAt: string;
     startRangeType: 'date' | 'datetime';
     endAt: string;
     endRangeType: 'date' | 'datetime';
     reason: string | null;
     createdAt: string;
-    requestedMinutes: Shared.Union11;
+    requestedMinutes: number | 'Infinity' | '-Infinity' | 'NaN';
     /**
      * The time zone that the worker is requesting time off in.
      */

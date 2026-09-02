@@ -4,17 +4,18 @@ export * from './shared';
 export { Benefits } from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
-  Union9,
-  Objects2,
-  Union1,
   CustomFieldListResponse,
   CustomFieldCreateParams,
   CustomFieldCreateResponse,
   CustomFieldGetResponse,
   CustomFieldUpdateParams,
+  CustomFieldUpdateResponse,
+  CustomFieldArchiveResponse,
   CustomFieldCreateOptionParams,
   CustomFieldCreateOptionResponse,
   CustomFieldUpdateOptionParams,
+  CustomFieldUpdateOptionResponse,
+  CustomFieldArchiveOptionResponse,
   CustomFieldListValuesParams,
   CustomFieldListValuesResponse,
   CustomFieldUpsertValueParams,
@@ -59,6 +60,7 @@ export type {
   RemoteWorkLocation,
   WorkerListParams,
   WorkerListResponse,
+  WorkerGetResponse,
   WorkerCreateEmployeeParams,
   WorkerCreateEmployeeResponse,
   WorkerCreateContractorParams,
@@ -67,7 +69,6 @@ export type {
 } from './workers';
 export { Workplaces } from './workplaces';
 export type {
-  Objects11,
   WorkplaceListParams,
   WorkplaceListResponse,
   WorkplaceCreateParams,

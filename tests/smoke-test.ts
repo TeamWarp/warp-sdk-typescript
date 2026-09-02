@@ -218,7 +218,7 @@ const cases: {
     path: '/v1/custom_fields/{id}',
     label: 'required params',
     run: async () => {
-      const objects = await client.customFields.update('cf_1234', {});
+      const customField = await client.customFields.update('cf_1234', {});
     },
   },
 
@@ -228,7 +228,7 @@ const cases: {
     path: '/v1/custom_fields/{id}',
     label: 'all params',
     run: async () => {
-      const objects = await client.customFields.update('cf_1234', {
+      const customField = await client.customFields.update('cf_1234', {
         name: 'x',
         description: '',
         config: {},
@@ -245,7 +245,7 @@ const cases: {
     method: 'POST',
     path: '/v1/custom_fields/{id}/archive',
     run: async () => {
-      const objects = await client.customFields.archive('cf_1234');
+      const customField = await client.customFields.archive('cf_1234');
     },
   },
 
@@ -282,7 +282,7 @@ const cases: {
     path: '/v1/custom_field_options/{id}',
     label: 'required params',
     run: async () => {
-      const objects3 = await client.customFields.updateOption('cfo_1234', {});
+      const customField = await client.customFields.updateOption('cfo_1234', {});
     },
   },
 
@@ -292,7 +292,7 @@ const cases: {
     path: '/v1/custom_field_options/{id}',
     label: 'all params',
     run: async () => {
-      const objects3 = await client.customFields.updateOption('cfo_1234', {
+      const customField = await client.customFields.updateOption('cfo_1234', {
         label: 'x',
         sortOrder: 0,
       });
@@ -313,7 +313,7 @@ const cases: {
     method: 'POST',
     path: '/v1/custom_field_options/{id}/archive',
     run: async () => {
-      const objects3 = await client.customFields.archiveOption('cfo_1234');
+      const customField = await client.customFields.archiveOption('cfo_1234');
     },
   },
 
@@ -762,7 +762,7 @@ const cases: {
     method: 'GET',
     path: '/v1/workers/{id}',
     run: async () => {
-      const objects11 = await client.workers.get('wrk_1234');
+      const worker = await client.workers.get('wrk_1234');
     },
   },
 

@@ -130,12 +130,12 @@ export interface PayrollListPaychecksParams {
    * Inclusive start of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayOnOrAfter?: Shared.Union21 | null;
+  paydayOnOrAfter?: string | null;
   /**
    * Exclusive end of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayBefore?: Shared.Union21 | null;
+  paydayBefore?: string | null;
 }
 
 export interface PayrollListPaychecksResponse {
@@ -146,6 +146,7 @@ export interface PayrollListPaychecksResponse {
 
 export interface PayrollGetPaycheckResponse {
   /**
+   * The tag of the paycheck.
    * @pattern ^pyc_
    */
   id: string;
@@ -174,6 +175,7 @@ export interface PayrollGetPaycheckResponse {
 export namespace PayrollGetPaycheckResponse {
   export interface Payroll {
     /**
+     * The tag of the payroll.
      * @pattern ^pay_
      */
     id: string;
@@ -187,6 +189,7 @@ export namespace PayrollGetPaycheckResponse {
 
   export interface Worker {
     /**
+     * The worker id.
      * @pattern ^wrk_
      */
     id: string;
@@ -199,7 +202,7 @@ export namespace PayrollGetPaycheckResponse {
      */
     lastName: string;
     displayName: string;
-    workerType: ('us_w2' | 'us_1099' | 'global_contractor') & string;
+    workerType: 'us_w2' | 'us_1099' | 'global_contractor';
   }
 
   export interface Totals {
@@ -251,6 +254,7 @@ export namespace PayrollGetPaycheckResponse {
     export namespace InFundingCurrency {
       export interface GrossPay {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -262,6 +266,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface NetPay {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -273,6 +278,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface Reimbursements {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -284,6 +290,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface WorkerTaxes {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -295,6 +302,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface EmployerTaxes {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -306,6 +314,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface PreTaxDeductions {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -317,6 +326,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface PostTaxDeductions {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -328,6 +338,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface WorkerBenefitContributions {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -339,6 +350,7 @@ export namespace PayrollGetPaycheckResponse {
 
       export interface EmployerBenefitContributions {
         /**
+         * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
          * @minimum 0
          */
         amount: number;
@@ -386,22 +398,22 @@ export interface PayrollListParams {
    * Inclusive start of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayOnOrAfter?: Shared.Union21 | null;
+  paydayOnOrAfter?: string | null;
   /**
    * Exclusive end of the half-open payday range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  paydayBefore?: Shared.Union21 | null;
+  paydayBefore?: string | null;
   /**
    * Inclusive start of the half-open pay-period-end range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  payPeriodEndOnOrAfter?: Shared.Union21 | null;
+  payPeriodEndOnOrAfter?: string | null;
   /**
    * Exclusive end of the half-open pay-period-end range.
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
-  payPeriodEndBefore?: Shared.Union21 | null;
+  payPeriodEndBefore?: string | null;
 }
 
 export interface PayrollListResponse {
@@ -412,6 +424,7 @@ export interface PayrollListResponse {
 
 export interface PayrollGetResponse {
   /**
+   * The tag of the payroll.
    * @pattern ^pay_
    */
   id: string;
@@ -489,6 +502,7 @@ export namespace PayrollGetResponse {
   export namespace Totals {
     export interface CashRequirement {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -500,6 +514,7 @@ export namespace PayrollGetResponse {
 
     export interface GrossPay {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -511,6 +526,7 @@ export namespace PayrollGetResponse {
 
     export interface NetPay {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -522,6 +538,7 @@ export namespace PayrollGetResponse {
 
     export interface Reimbursements {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -533,6 +550,7 @@ export namespace PayrollGetResponse {
 
     export interface WorkerTaxes {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -544,6 +562,7 @@ export namespace PayrollGetResponse {
 
     export interface EmployerTaxes {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -555,6 +574,7 @@ export namespace PayrollGetResponse {
 
     export interface PreTaxDeductions {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -566,6 +586,7 @@ export namespace PayrollGetResponse {
 
     export interface PostTaxDeductions {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -577,6 +598,7 @@ export namespace PayrollGetResponse {
 
     export interface WorkerBenefitContributions {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -588,6 +610,7 @@ export namespace PayrollGetResponse {
 
     export interface EmployerBenefitContributions {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -599,6 +622,7 @@ export namespace PayrollGetResponse {
 
     export interface TransactionFees {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
@@ -610,6 +634,7 @@ export namespace PayrollGetResponse {
 
     export interface TotalCost {
       /**
+       * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
        * @minimum 0
        */
       amount: number;
