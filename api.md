@@ -31,6 +31,8 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [List Departments](#list-departments)
   - [Create Department](#create-department)
   - [Update Department](#update-department)
+- [`Levels`](#levels)
+  - [List Job Levels](#list-job-levels)
 - [`Offers`](#offers)
   - [List Offers](#list-offers)
   - [Create Offer](#create-offer)
@@ -40,6 +42,11 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 - [`PayRates`](#payrates)
   - [List Pay Rates](#list-pay-rates)
   - [Get Pay Rate](#get-pay-rate)
+- [`Payroll`](#payroll)
+  - [List Payrolls](#list-payrolls)
+  - [Get Payroll](#get-payroll)
+  - [List Paychecks](#list-paychecks)
+  - [Get Paycheck](#get-paycheck)
 - [`TimeOff`](#timeoff)
   - [List Time Off Assignments](#list-time-off-assignments)
   - [List Time Off Balances](#list-time-off-balances)
@@ -58,13 +65,6 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [List Workplaces](#list-workplaces)
   - [Create Workplace](#create-workplace)
   - [Update Workplace](#update-workplace)
-- [`Payroll`](#payroll)
-  - [List Paychecks](#list-paychecks)
-  - [Get Paycheck](#get-paycheck)
-  - [List Payrolls](#list-payrolls)
-  - [Get Payroll](#get-payroll)
-- [`Levels`](#levels)
-  - [List Job Levels](#list-job-levels)
 
 ## Setup
 
@@ -104,10 +104,10 @@ Get a publicly visible company health plan by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`HealthPlanGetResponse`](./src/resources/benefits/health-plans.ts) |
+| Response | [`PublicHealthPlan`](./src/resources/benefits/health-plans.ts) |
 
 ```ts
-const healthPlan = await client.benefits.healthPlans.get('chpl_1234');
+const publicHealthPlan = await client.benefits.healthPlans.get('chpl_1234');
 ```
 
 ### `Benefits RetirementPlans`
@@ -136,10 +136,10 @@ Get a company retirement plan by id, regardless of status.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`RetirementPlanGetResponse`](./src/resources/benefits/retirement-plans.ts) |
+| Response | [`PublicRetirementPlan`](./src/resources/benefits/retirement-plans.ts) |
 
 ```ts
-const retirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
+const publicRetirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
 ```
 
 ### `Benefits Deductions`
@@ -168,10 +168,10 @@ Get the current version of a company benefit deduction by id.
 
 | Direction | Type |
 | --- | --- |
-| Response | [`DeductionGetResponse`](./src/resources/benefits/deductions.ts) |
+| Response | [`PublicBenefitDeduction`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const deduction = await client.benefits.deductions.get('pbdg_1234');
+const publicBenefitDeduction = await client.benefits.deductions.get('pbdg_1234');
 ```
 
 ## `CustomFields`
@@ -388,6 +388,22 @@ Update an existing department.
 const department = await client.departments.update('dpt_1234', {});
 ```
 
+## `Levels`
+
+Endpoints for reading the job-level framework configured for your company.
+
+### List Job Levels
+
+List the active standard job levels available to your company.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`LevelListResponse`](./src/resources/levels.ts) |
+
+```ts
+const level = await client.levels.list();
+```
+
 ## `Offers`
 
 Endpoints for managing candidate offers. Create and send offers, list existing offers, and manage their lifecycle.
@@ -503,10 +519,68 @@ Get a specific pay rate by id. The API key must have the compensation read scope
 
 | Direction | Type |
 | --- | --- |
-| Response | [`PayRateGetResponse`](./src/resources/pay-rates.ts) |
+| Response | [`PublicPayRate`](./src/resources/pay-rates.ts) |
 
 ```ts
-const payRate = await client.payRates.get('pyr_1234');
+const publicPayRate = await client.payRates.get('pyr_1234');
+```
+
+## `Payroll`
+
+Read-only payrolls and worker-level payroll calculations. Paycheck endpoints use one consistent resource for every worker type; payment execution is outside this API.
+
+### List Payrolls
+
+List payroll summaries newest first with stable cursor ordering. Every amount in totals is expressed in fundingCurrency, the currency the employer uses to fund the payroll. Line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative. Payroll type visibility follows the API key permissions. All lifecycle statuses are included unless statuses are provided.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PayrollListParams`](./src/resources/payroll.ts) |
+| Response | [`PublicPayrollList`](./src/resources/payroll.ts) |
+
+```ts
+const publicPayrollList = await client.payroll.list({
+  limit: 'limit',
+});
+```
+
+### Get Payroll
+
+Get a payroll by id. Every amount in totals is expressed in fundingCurrency, the currency the employer uses to fund the payroll. Line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative. Missing, foreign, unauthorized, or unavailable payrolls return 404.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PublicPayrollDetail`](./src/resources/payroll.ts) |
+
+```ts
+const publicPayrollDetail = await client.payroll.get('pay_1234');
+```
+
+### List Paychecks
+
+List per-worker paycheck summaries newest first with stable cursor ordering. By default, the response includes every worker type visible to the API key, including US W-2 employees, US 1099 contractors, and global contractors; use workerTypes to narrow the results. Payroll type visibility follows the API key permissions. All lifecycle statuses are included unless statuses are provided.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PayrollListPaychecksParams`](./src/resources/payroll.ts) |
+| Response | [`PublicPaycheckList`](./src/resources/payroll.ts) |
+
+```ts
+const publicPaycheckList = await client.payroll.listPaychecks({
+  limit: 'limit',
+});
+```
+
+### Get Paycheck
+
+Get a paycheck by id. All worker types use the same paycheck schema. Categories that do not apply to a worker are represented by zero-valued totals and empty line-item arrays. For example, a US 1099 contractor with no applicable payroll taxes returns zero `workerTaxes` and `employerTaxes` totals and an empty `taxes` array. Missing, foreign, unauthorized, or unavailable paychecks return 404.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PublicPaycheckDetail`](./src/resources/payroll.ts) |
+
+```ts
+const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
 ```
 
 ## `TimeOff`
@@ -745,78 +819,4 @@ Update an existing workplace.
 
 ```ts
 const workplace = await client.workplaces.update('wkp_1234', {});
-```
-
-## `Payroll`
-
-Read-only payrolls and worker-level payroll calculations. Paycheck endpoints use one consistent resource for every worker type; payment execution is outside this API.
-
-### List Paychecks
-
-List per-worker paycheck summaries newest first with stable cursor ordering. By default, the response includes every worker type visible to the API key, including US W-2 employees, US 1099 contractors, and global contractors; use workerTypes to narrow the results. Payroll type visibility follows the API key permissions. All lifecycle statuses are included unless statuses are provided.
-
-| Direction | Type |
-| --- | --- |
-| Request | [`PayrollListPaychecksParams`](./src/resources/payroll.ts) |
-| Response | [`PayrollListPaychecksResponse`](./src/resources/payroll.ts) |
-
-```ts
-const payroll = await client.payroll.listPaychecks({
-  limit: 'limit',
-});
-```
-
-### Get Paycheck
-
-Get a paycheck by id. All worker types use the same paycheck schema. Categories that do not apply to a worker are represented by zero-valued totals and empty line-item arrays. For example, a US 1099 contractor with no applicable payroll taxes returns zero `workerTaxes` and `employerTaxes` totals and an empty `taxes` array. Missing, foreign, unauthorized, or unavailable paychecks return 404.
-
-| Direction | Type |
-| --- | --- |
-| Response | [`PayrollGetPaycheckResponse`](./src/resources/payroll.ts) |
-
-```ts
-const payroll = await client.payroll.getPaycheck('pyc_1234');
-```
-
-### List Payrolls
-
-List payroll summaries newest first with stable cursor ordering. Every amount in totals is expressed in fundingCurrency, the currency the employer uses to fund the payroll. Line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative. Payroll type visibility follows the API key permissions. All lifecycle statuses are included unless statuses are provided.
-
-| Direction | Type |
-| --- | --- |
-| Request | [`PayrollListParams`](./src/resources/payroll.ts) |
-| Response | [`PayrollListResponse`](./src/resources/payroll.ts) |
-
-```ts
-const payroll = await client.payroll.list({
-  limit: 'limit',
-});
-```
-
-### Get Payroll
-
-Get a payroll by id. Every amount in totals is expressed in fundingCurrency, the currency the employer uses to fund the payroll. Line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative. Missing, foreign, unauthorized, or unavailable payrolls return 404.
-
-| Direction | Type |
-| --- | --- |
-| Response | [`PayrollGetResponse`](./src/resources/payroll.ts) |
-
-```ts
-const payroll = await client.payroll.get('pay_1234');
-```
-
-## `Levels`
-
-Endpoints for reading the job-level framework configured for your company.
-
-### List Job Levels
-
-List the active standard job levels available to your company.
-
-| Direction | Type |
-| --- | --- |
-| Response | [`LevelListResponse`](./src/resources/levels.ts) |
-
-```ts
-const level = await client.levels.list();
 ```
