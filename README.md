@@ -1,6 +1,6 @@
-# Warp
+# warp
 
-This library provides convenient access to the Warp REST API from TypeScript or JavaScript.
+This library provides convenient access to the warp REST API from TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](./api.md).
 
@@ -39,11 +39,12 @@ const client = new Warp({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 
-const list = await client.benefits.healthPlans.list({
+const healthPlan = await client.benefits.healthPlans.list({
+  limit: 'limit',
   statuses: ['active'],
 });
 
-console.log(list);
+console.log(healthPlan);
 ```
 
 The examples in the following sections assume a `client` configured as shown above.
@@ -74,7 +75,8 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from 'warp-hr';
 
 try {
-  const list = await client.benefits.healthPlans.list({
+  const healthPlan = await client.benefits.healthPlans.list({
+    limit: 'limit',
     statuses: ['active'],
   });
 } catch (err) {
@@ -129,7 +131,7 @@ const client = new Warp({
 | `maxRetries` | `number` | - | Per-request retry count. |
 | `signal` | `AbortSignal` | - | Abort an in-flight request. |
 | `fetchOptions` | `RequestInit` | - | Per-request fetch options. |
-| `idempotencyKey` | `string` | - | Idempotency key for retry-safe operations. |
+| `idempotencyKey` | `string` | - | Idempotency key for retry-safe operations. Applies to this request and its retries. |
 
 <br />
 

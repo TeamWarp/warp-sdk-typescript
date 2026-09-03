@@ -11,7 +11,7 @@
 //     printing a table. The generator uses this to collect per-operation results.
 import { writeFileSync } from 'node:fs';
 
-// The default export is the client class. The client reads auth and the base URL from the
+// The package exports the client class. The client reads auth and the base URL from the
 // environment, so it needs no constructor options to point at a server.
 import Warp from 'warp-hr';
 
@@ -23,22 +23,50 @@ type SmokeResult = {
   operation: string;
   method: string;
   path: string;
+  label?: string;
   status: 'passed' | 'failed';
   durationMs: number;
   error?: string;
 };
 
-// One entry per generated operation. `run` performs the real SDK call; the other fields are
-// metadata used for filtering and reporting. This list is generated, so it stays in sync with
-// the SDK surface.
-const cases: { operation: string; method: string; path: string; run: () => Promise<unknown> }[] = [
+// One or two entries per generated operation: the first passes only the arguments the method
+// requires, the second also fills every optional parameter and body property. `label` says which
+// is which, and is absent when the operation has no optional argument and so has only one case.
+// `run` performs the real SDK call; the other fields are metadata used for filtering and
+// reporting. This list is generated, so it stays in sync with the SDK surface.
+const cases: {
+  operation: string;
+  method: string;
+  path: string;
+  label?: string;
+  run: () => Promise<unknown>;
+}[] = [
   {
     operation: 'list',
     method: 'GET',
     path: '/v1/benefits/health_plans',
+    label: 'required params',
     run: async () => {
-      const list = await client.benefits.healthPlans.list({
+      const healthPlan = await client.benefits.healthPlans.list({
+        limit: 'limit',
         statuses: ['active'],
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/benefits/health_plans',
+    label: 'all params',
+    run: async () => {
+      const healthPlan = await client.benefits.healthPlans.list({
+        limit: 'limit',
+        afterId: 'chpl_1234',
+        beforeId: 'chpl_1234',
+        types: ['medical'],
+        statuses: ['active'],
+        carrierIds: ['car_1234'],
       });
     },
   },
@@ -48,7 +76,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/benefits/health_plans/{id}',
     run: async () => {
-      const get_ = await client.benefits.healthPlans.get('chpl_1234');
+      const publicHealthPlan = await client.benefits.healthPlans.get('chpl_1234');
     },
   },
 
@@ -56,8 +84,26 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'list',
     method: 'GET',
     path: '/v1/benefits/retirement_plans',
+    label: 'required params',
     run: async () => {
-      const list = await client.benefits.retirementPlans.list({
+      const retirementPlan = await client.benefits.retirementPlans.list({
+        limit: 'limit',
+        statuses: ['active'],
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/benefits/retirement_plans',
+    label: 'all params',
+    run: async () => {
+      const retirementPlan = await client.benefits.retirementPlans.list({
+        limit: 'limit',
+        afterId: 'crpl_1234',
+        beforeId: 'crpl_1234',
+        types: ['401k'],
         statuses: ['active'],
       });
     },
@@ -68,7 +114,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/benefits/retirement_plans/{id}',
     run: async () => {
-      const get_ = await client.benefits.retirementPlans.get('crpl_1234');
+      const publicRetirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
     },
   },
 
@@ -76,9 +122,31 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'list',
     method: 'GET',
     path: '/v1/benefits/deductions',
+    label: 'required params',
     run: async () => {
-      const list = await client.benefits.deductions.list({
+      const deduction = await client.benefits.deductions.list({
+        limit: 'limit',
         statuses: ['active'],
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/benefits/deductions',
+    label: 'all params',
+    run: async () => {
+      const deduction = await client.benefits.deductions.list({
+        limit: 'limit',
+        afterId: 'pbdg_1234',
+        beforeId: 'pbdg_1234',
+        workerIds: ['wrk_1234'],
+        categories: ['health'],
+        types: ['medical'],
+        statuses: ['active'],
+        healthPlanIds: ['chpl_1234'],
+        retirementPlanIds: ['crpl_1234'],
       });
     },
   },
@@ -88,7 +156,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/benefits/deductions/{id}',
     run: async () => {
-      const get_ = await client.benefits.deductions.get('pbdg_1234');
+      const publicBenefitDeduction = await client.benefits.deductions.get('pbdg_1234');
     },
   },
 
@@ -97,7 +165,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'GET',
     path: '/v1/custom_fields',
     run: async () => {
-      const list = await client.customFields.list();
+      const customField = await client.customFields.list();
     },
   },
 
@@ -105,9 +173,10 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'create',
     method: 'POST',
     path: '/v1/custom_fields',
+    label: 'required params',
     run: async () => {
-      const create = await client.customFields.create({
-        name: '',
+      const customField = await client.customFields.create({
+        name: 'x',
         type: 'text',
         category: 'info',
       });
@@ -115,11 +184,31 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
-    operation: 'retrieve',
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/custom_fields',
+    label: 'all params',
+    run: async () => {
+      const customField = await client.customFields.create({
+        name: 'x',
+        description: '',
+        type: 'text',
+        config: {},
+        category: 'info',
+        accessLevel: 'admins',
+        inputBy: 'admin',
+        required: false,
+        options: [],
+      });
+    },
+  },
+
+  {
+    operation: 'get',
     method: 'GET',
     path: '/v1/custom_fields/{id}',
     run: async () => {
-      const retrieve = await client.customFields.retrieve('cf_1234');
+      const customField = await client.customFields.get('cf_1234');
     },
   },
 
@@ -127,8 +216,27 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'update',
     method: 'PATCH',
     path: '/v1/custom_fields/{id}',
+    label: 'required params',
     run: async () => {
-      const update = await client.customFields.update('cf_1234', {});
+      const customField = await client.customFields.update('cf_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/custom_fields/{id}',
+    label: 'all params',
+    run: async () => {
+      const customField = await client.customFields.update('cf_1234', {
+        name: 'x',
+        description: '',
+        config: {},
+        category: 'info',
+        accessLevel: 'admins',
+        inputBy: 'admin',
+        required: false,
+      });
     },
   },
 
@@ -137,7 +245,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_fields/{id}/archive',
     run: async () => {
-      const archive = await client.customFields.archive('cf_1234');
+      const customField = await client.customFields.archive('cf_1234');
     },
   },
 
@@ -145,10 +253,25 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'createOption',
     method: 'POST',
     path: '/v1/custom_fields/{id}/options',
+    label: 'required params',
     run: async () => {
-      const createOption = await client.customFields.createOption('cf_1234', {
+      const customField = await client.customFields.createOption('cf_1234', {
         label: 'x',
         value: 'x',
+      });
+    },
+  },
+
+  {
+    operation: 'createOption',
+    method: 'POST',
+    path: '/v1/custom_fields/{id}/options',
+    label: 'all params',
+    run: async () => {
+      const customField = await client.customFields.createOption('cf_1234', {
+        label: 'x',
+        value: 'x',
+        sortOrder: 0,
       });
     },
   },
@@ -157,8 +280,22 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'updateOption',
     method: 'PATCH',
     path: '/v1/custom_field_options/{id}',
+    label: 'required params',
     run: async () => {
-      const updateOption = await client.customFields.updateOption('cfo_1234', {});
+      const customField = await client.customFields.updateOption('cfo_1234', {});
+    },
+  },
+
+  {
+    operation: 'updateOption',
+    method: 'PATCH',
+    path: '/v1/custom_field_options/{id}',
+    label: 'all params',
+    run: async () => {
+      const customField = await client.customFields.updateOption('cfo_1234', {
+        label: 'x',
+        sortOrder: 0,
+      });
     },
   },
 
@@ -176,7 +313,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/custom_field_options/{id}/archive',
     run: async () => {
-      const archiveOption = await client.customFields.archiveOption('cfo_1234');
+      const customField = await client.customFields.archiveOption('cfo_1234');
     },
   },
 
@@ -184,8 +321,22 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'listValues',
     method: 'GET',
     path: '/v1/custom_field_values',
+    label: 'required params',
     run: async () => {
-      const listValues = await client.customFields.listValues();
+      const customField = await client.customFields.listValues();
+    },
+  },
+
+  {
+    operation: 'listValues',
+    method: 'GET',
+    path: '/v1/custom_field_values',
+    label: 'all params',
+    run: async () => {
+      const customField = await client.customFields.listValues({
+        workerIds: ['wrk_1234'],
+        fieldIds: ['cf_1234'],
+      });
     },
   },
 
@@ -194,7 +345,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'PUT',
     path: '/v1/custom_field_values',
     run: async () => {
-      const upsertValue = await client.customFields.upsertValue({
+      const customField = await client.customFields.upsertValue({
         workerId: 'wrk_1234',
         fieldId: 'cf_1234',
         value: {
@@ -221,8 +372,25 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'list',
     method: 'GET',
     path: '/v1/departments',
+    label: 'required params',
     run: async () => {
-      const list = await client.departments.list();
+      const department = await client.departments.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/departments',
+    label: 'all params',
+    run: async () => {
+      const department = await client.departments.list({
+        limit: 'limit',
+        afterId: 'dpt_1234',
+        beforeId: 'dpt_1234',
+      });
     },
   },
 
@@ -231,8 +399,8 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/departments',
     run: async () => {
-      const create = await client.departments.create({
-        name: '',
+      const department = await client.departments.create({
+        name: 'x',
       });
     },
   },
@@ -241,8 +409,30 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'update',
     method: 'PATCH',
     path: '/v1/departments/{id}',
+    label: 'required params',
     run: async () => {
-      const update = await client.departments.update('dpt_1234', {});
+      const department = await client.departments.update('dpt_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/departments/{id}',
+    label: 'all params',
+    run: async () => {
+      const department = await client.departments.update('dpt_1234', {
+        name: '',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/levels',
+    run: async () => {
+      const level = await client.levels.list();
     },
   },
 
@@ -250,8 +440,28 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'list',
     method: 'GET',
     path: '/v1/offers',
+    label: 'required params',
     run: async () => {
-      const list = await client.offers.list();
+      const offer = await client.offers.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/offers',
+    label: 'all params',
+    run: async () => {
+      const offer = await client.offers.list({
+        limit: 'limit',
+        afterId: 'offr_1234',
+        beforeId: 'offr_1234',
+        statuses: ['draft'],
+        workerTypes: ['employee'],
+        candidateEmail: 'john@joinwarp.com',
+      });
     },
   },
 
@@ -259,8 +469,9 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'create',
     method: 'POST',
     path: '/v1/offers',
+    label: 'required params',
     run: async () => {
-      const create = await client.offers.create({
+      const offer = await client.offers.create({
         candidate: {
           firstName: 'x',
           lastName: 'x',
@@ -268,7 +479,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
         },
         position: {
           title: 'x',
-          startDate: '2000-01-01',
+          startDate: '',
         },
         workerType: 'employee',
         compensation: {
@@ -281,11 +492,63 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/offers',
+    label: 'all params',
+    run: async () => {
+      const offer = await client.offers.create({
+        candidate: {
+          firstName: 'x',
+          lastName: 'x',
+          email: 'john@joinwarp.com',
+        },
+        position: {
+          title: 'x',
+          startDate: '',
+        },
+        departmentId: 'dpt_1234',
+        workplaceId: 'wkp_1234',
+        managerId: 'wrk_1234',
+        levelId: 'jlvl_1234',
+        workerType: 'employee',
+        compensation: {
+          payBasis: 'year',
+          payCurrency: 'USD',
+          payRate: 0,
+        },
+        expirationTime: '',
+        backgroundCheckWorkLocation: {
+          country: '',
+          state: '',
+          city: '',
+        },
+      });
+    },
+  },
+
+  {
     operation: 'void',
     method: 'POST',
     path: '/v1/offers/{id}/void',
+    label: 'required params',
     run: async () => {
-      const void_ = await client.offers.void('offr_1234');
+      const offer = await client.offers.void('offr_1234', {
+        voidReason: 'candidate_declined',
+      });
+    },
+  },
+
+  {
+    operation: 'void',
+    method: 'POST',
+    path: '/v1/offers/{id}/void',
+    label: 'all params',
+    run: async () => {
+      const offer = await client.offers.void('offr_1234', {
+        voidReason: 'candidate_declined',
+        voidNotes: '',
+      });
     },
   },
 
@@ -294,7 +557,7 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/extend-deadline',
     run: async () => {
-      const extendDeadline = await client.offers.extendDeadline('offr_1234', {
+      const offer = await client.offers.extendDeadline('offr_1234', {
         expirationTime: '',
       });
     },
@@ -305,7 +568,134 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/offers/{id}/resend',
     run: async () => {
-      const resend = await client.offers.resend('offr_1234');
+      const offer = await client.offers.resend('offr_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/pay_rates',
+    label: 'required params',
+    run: async () => {
+      const payRate = await client.payRates.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/pay_rates',
+    label: 'all params',
+    run: async () => {
+      const payRate = await client.payRates.list({
+        limit: 'limit',
+        afterId: 'pyr_1234',
+        beforeId: 'pyr_1234',
+        workerId: 'wrk_1234',
+        effectiveOnOrAfter: 'effectiveOnOrAfter',
+        effectiveBefore: 'effectiveBefore',
+        type: 'regular',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/pay_rates/{id}',
+    run: async () => {
+      const publicPayRate = await client.payRates.get('pyr_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/payrolls',
+    label: 'required params',
+    run: async () => {
+      const publicPayrollList = await client.payroll.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/payrolls',
+    label: 'all params',
+    run: async () => {
+      const publicPayrollList = await client.payroll.list({
+        limit: 'limit',
+        afterId: 'pay_1234',
+        beforeId: 'pay_1234',
+        types: ['us'],
+        subtypes: ['regular'],
+        statuses: ['processing'],
+        payFrequencies: ['semimonthly'],
+        paydayOnOrAfter: 'paydayOnOrAfter',
+        paydayBefore: 'paydayBefore',
+        payPeriodEndOnOrAfter: 'payPeriodEndOnOrAfter',
+        payPeriodEndBefore: 'payPeriodEndBefore',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/payrolls/{id}',
+    run: async () => {
+      const publicPayrollDetail = await client.payroll.get('pay_1234');
+    },
+  },
+
+  {
+    operation: 'listPaychecks',
+    method: 'GET',
+    path: '/v1/paychecks',
+    label: 'required params',
+    run: async () => {
+      const publicPaycheckList = await client.payroll.listPaychecks({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'listPaychecks',
+    method: 'GET',
+    path: '/v1/paychecks',
+    label: 'all params',
+    run: async () => {
+      const publicPaycheckList = await client.payroll.listPaychecks({
+        limit: 'limit',
+        afterId: 'pyc_1234',
+        beforeId: 'pyc_1234',
+        payrollIds: ['pay_1234'],
+        workerIds: ['wrk_1234'],
+        workerTypes: ['us_w2'],
+        payrollTypes: ['us'],
+        statuses: ['processing'],
+        paymentMethods: ['direct_deposit'],
+        compensationCurrencies: ['USD'],
+        payFrequencies: ['semimonthly'],
+        paydayOnOrAfter: 'paydayOnOrAfter',
+        paydayBefore: 'paydayBefore',
+      });
+    },
+  },
+
+  {
+    operation: 'getPaycheck',
+    method: 'GET',
+    path: '/v1/paychecks/{id}',
+    run: async () => {
+      const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
     },
   },
 
@@ -313,8 +703,27 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'listAssignments',
     method: 'GET',
     path: '/v1/time_off/assignments',
+    label: 'required params',
     run: async () => {
-      const listAssignments = await client.timeOff.listAssignments();
+      const timeOff = await client.timeOff.listAssignments({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'listAssignments',
+    method: 'GET',
+    path: '/v1/time_off/assignments',
+    label: 'all params',
+    run: async () => {
+      const timeOff = await client.timeOff.listAssignments({
+        limit: 'limit',
+        afterId: 'wrkasn_1234',
+        beforeId: 'wrkasn_1234',
+        policyIds: ['top_1234'],
+        workerIds: ['wrk_1234'],
+      });
     },
   },
 
@@ -322,8 +731,29 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'listBalances',
     method: 'GET',
     path: '/v1/time_off/balances',
+    label: 'required params',
     run: async () => {
-      const listBalances = await client.timeOff.listBalances();
+      const timeOff = await client.timeOff.listBalances({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'listBalances',
+    method: 'GET',
+    path: '/v1/time_off/balances',
+    label: 'all params',
+    run: async () => {
+      const timeOff = await client.timeOff.listBalances({
+        limit: 'limit',
+        afterId: 'wrkasn_1234',
+        beforeId: 'wrkasn_1234',
+        policyIds: ['top_1234'],
+        workerIds: ['wrk_1234'],
+        startDate: 'startDate',
+        endDate: 'endDate',
+      });
     },
   },
 
@@ -331,26 +761,67 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'listRequests',
     method: 'GET',
     path: '/v1/time_off/requests',
+    label: 'required params',
     run: async () => {
-      const listRequests = await client.timeOff.listRequests();
+      const timeOff = await client.timeOff.listRequests({
+        limit: 'limit',
+      });
     },
   },
 
   {
-    operation: 'timeOffGet',
+    operation: 'listRequests',
+    method: 'GET',
+    path: '/v1/time_off/requests',
+    label: 'all params',
+    run: async () => {
+      const timeOff = await client.timeOff.listRequests({
+        limit: 'limit',
+        afterId: 'afterId',
+        beforeId: 'beforeId',
+        statuses: ['pending'],
+        policyIds: ['top_1234'],
+        workerIds: ['wrk_1234'],
+        startsOnOrAfter: 'startsOnOrAfter',
+        startsBefore: 'startsBefore',
+        endsOnOrAfter: 'endsOnOrAfter',
+        endsBefore: 'endsBefore',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
     method: 'GET',
     path: '/v1/time_off/policies',
+    label: 'required params',
     run: async () => {
-      const timeOffGet = await client.timeOff.policies.timeOffGet();
+      const policy = await client.timeOff.policies.list({
+        limit: 'limit',
+      });
     },
   },
 
   {
-    operation: 'timeOffGet2',
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/time_off/policies',
+    label: 'all params',
+    run: async () => {
+      const policy = await client.timeOff.policies.list({
+        limit: 'limit',
+        afterId: 'top_1234',
+        beforeId: 'top_1234',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
     method: 'GET',
     path: '/v1/time_off/policies/{id}',
     run: async () => {
-      const timeOffGet2 = await client.timeOff.policies.timeOffGet2('top_1234');
+      const policy = await client.timeOff.policies.get('top_1234');
     },
   },
 
@@ -358,17 +829,37 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'list',
     method: 'GET',
     path: '/v1/workers',
+    label: 'required params',
     run: async () => {
-      const list = await client.workers.list();
+      const worker = await client.workers.list({
+        limit: 'limit',
+      });
     },
   },
 
   {
-    operation: 'retrieve',
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/workers',
+    label: 'all params',
+    run: async () => {
+      const worker = await client.workers.list({
+        limit: 'limit',
+        afterId: 'wrk_1234',
+        beforeId: 'wrk_1234',
+        statuses: ['draft'],
+        types: ['employee'],
+        workEmail: 'workEmail',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
     method: 'GET',
     path: '/v1/workers/{id}',
     run: async () => {
-      const retrieve = await client.workers.retrieve('wrk_1234');
+      const worker = await client.workers.get('wrk_1234');
     },
   },
 
@@ -385,12 +876,13 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'createEmployee',
     method: 'POST',
     path: '/v1/workers/employee',
+    label: 'required params',
     run: async () => {
-      const createEmployee = await client.workers.createEmployee({
-        firstName: '',
-        lastName: '',
-        position: '',
-        startDate: '2000-01-01',
+      const worker = await client.workers.createEmployee({
+        firstName: 'Jonathan',
+        lastName: 'Galt',
+        position: 'Software Engineer',
+        startDate: '',
         email: 'john@joinwarp.com',
         departmentId: 'dpt_1234',
         managerId: 'wrk_1234',
@@ -407,16 +899,49 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
+    operation: 'createEmployee',
+    method: 'POST',
+    path: '/v1/workers/employee',
+    label: 'all params',
+    run: async () => {
+      const worker = await client.workers.createEmployee({
+        firstName: 'Jonathan',
+        lastName: 'Galt',
+        position: 'Software Engineer',
+        startDate: '',
+        email: 'john@joinwarp.com',
+        workEmail: 'john@joinwarp.com',
+        requireI9: false,
+        stateRegistration: 'self_managed',
+        departmentId: 'dpt_1234',
+        levelId: 'jlvl_1234',
+        managerId: 'wrk_1234',
+        stockOptions: 0,
+        workLocation: {
+          type: 'office',
+          workplaceId: 'wkp_1234',
+        },
+        compensation: {
+          amount: 0,
+          per: 'hour',
+        },
+        paySchedule: 'weekly',
+      });
+    },
+  },
+
+  {
     operation: 'createContractor',
     method: 'POST',
     path: '/v1/workers/contractor',
+    label: 'required params',
     run: async () => {
-      const createContractor = await client.workers.createContractor({
+      const worker = await client.workers.createContractor({
         entityType: 'individual',
-        firstName: '',
-        lastName: '',
-        position: '',
-        startDate: '2000-01-01',
+        firstName: 'Melissa',
+        lastName: 'Jones',
+        position: 'Design Consultant',
+        startDate: '',
         email: 'john@joinwarp.com',
         departmentId: 'dpt_1234',
         managerId: 'wrk_1234',
@@ -426,11 +951,41 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
   },
 
   {
+    operation: 'createContractor',
+    method: 'POST',
+    path: '/v1/workers/contractor',
+    label: 'all params',
+    run: async () => {
+      const worker = await client.workers.createContractor({
+        entityType: 'individual',
+        firstName: 'Melissa',
+        lastName: 'Jones',
+        position: 'Design Consultant',
+        businessName: 'Galt Enterprises, LLC',
+        scopeOfWork: '',
+        startDate: '',
+        email: 'john@joinwarp.com',
+        workEmail: 'john@joinwarp.com',
+        departmentId: 'dpt_1234',
+        levelId: 'jlvl_1234',
+        managerId: 'wrk_1234',
+        workCountry: 'AD',
+        compensation: {
+          currency: 'USD',
+          amount: 0,
+          per: 'year',
+        },
+        paySchedule: 'weekly',
+      });
+    },
+  },
+
+  {
     operation: 'invite',
     method: 'POST',
     path: '/v1/workers/{id}/invite',
     run: async () => {
-      const invite = await client.workers.invite('wrk_1234');
+      const worker = await client.workers.invite('wrk_1234');
     },
   },
 
@@ -438,8 +993,25 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'list',
     method: 'GET',
     path: '/v1/workplaces',
+    label: 'required params',
     run: async () => {
-      const list = await client.workplaces.list();
+      const workplace = await client.workplaces.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/workplaces',
+    label: 'all params',
+    run: async () => {
+      const workplace = await client.workplaces.list({
+        limit: 'limit',
+        afterId: 'wkp_1234',
+        beforeId: 'wkp_1234',
+      });
     },
   },
 
@@ -448,8 +1020,8 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     method: 'POST',
     path: '/v1/workplaces',
     run: async () => {
-      const create = await client.workplaces.create({
-        name: '',
+      const workplace = await client.workplaces.create({
+        name: 'x',
         type: 'remote',
         address: {
           line1: 'x',
@@ -466,8 +1038,21 @@ const cases: { operation: string; method: string; path: string; run: () => Promi
     operation: 'update',
     method: 'PATCH',
     path: '/v1/workplaces/{id}',
+    label: 'required params',
     run: async () => {
-      const update = await client.workplaces.update('wkp_1234', {});
+      const workplace = await client.workplaces.update('wkp_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/workplaces/{id}',
+    label: 'all params',
+    run: async () => {
+      const workplace = await client.workplaces.update('wkp_1234', {
+        name: '',
+      });
     },
   },
 ];
@@ -494,26 +1079,21 @@ const main = async (): Promise<void> => {
   const settled = await Promise.allSettled(
     selected.map(async (testCase): Promise<SmokeResult> => {
       const startedAt = Date.now();
+      // `label` distinguishes the required-params run from the all-params run of the same
+      // operation; it is omitted entirely when the operation contributed only one case.
+      const identity = {
+        operation: testCase.operation,
+        method: testCase.method,
+        path: testCase.path,
+        ...(testCase.label ? { label: testCase.label } : {}),
+      };
       try {
         await testCase.run();
-        return {
-          operation: testCase.operation,
-          method: testCase.method,
-          path: testCase.path,
-          status: 'passed',
-          durationMs: Date.now() - startedAt,
-        };
+        return { ...identity, status: 'passed', durationMs: Date.now() - startedAt };
       } catch (error) {
         // Prefer the stack so a failure points at the failing SDK call; fall back to the message.
         const message = error instanceof Error ? (error.stack ?? error.message) : String(error);
-        return {
-          operation: testCase.operation,
-          method: testCase.method,
-          path: testCase.path,
-          status: 'failed',
-          durationMs: Date.now() - startedAt,
-          error: message,
-        };
+        return { ...identity, status: 'failed', durationMs: Date.now() - startedAt, error: message };
       }
     }),
   );
@@ -539,10 +1119,15 @@ const main = async (): Promise<void> => {
     writeFileSync(reportPath, JSON.stringify({ total: results.length, failed: failed.length, results }));
   } else {
     for (const result of results) {
+      const suffix = result.label ? ` [${result.label}]` : '';
       if (result.status === 'passed')
-        console.log(`\u2714 ${result.operation} (${result.method} ${result.path}) ${result.durationMs}ms`);
+        console.log(
+          `\u2714 ${result.operation}${suffix} (${result.method} ${result.path}) ${result.durationMs}ms`,
+        );
       else
-        console.error(`\u2718 ${result.operation} (${result.method} ${result.path})\n${result.error ?? ''}`);
+        console.error(
+          `\u2718 ${result.operation}${suffix} (${result.method} ${result.path})\n${result.error ?? ''}`,
+        );
     }
     if (results.length === 0) {
       console.error('No code samples ran (empty SDK or a SCALAR_SMOKE_FILTER that matched nothing).');

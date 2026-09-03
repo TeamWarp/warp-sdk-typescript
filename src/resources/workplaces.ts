@@ -4,26 +4,23 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as OffersAPI from './offers';
-import type * as CustomFieldsAPI from './custom-fields';
 
 export class Workplaces extends APIResource {
   /**
    * List all workplaces for your company.
    *
-   * @param {WorkplaceListParams} [query] - The parameters to send with the request.
+   * @param {WorkplaceListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<WorkplaceListResponse>} Success
    *
    * @example
    * ```ts
-   * const list = await client.workplaces.list();
+   * const workplace = await client.workplaces.list({
+   *   limit: 'limit',
+   * });
    * ```
    */
-  list(
-    query: WorkplaceListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<WorkplaceListResponse> {
+  list(query: WorkplaceListParams, options?: RequestOptions): APIPromise<WorkplaceListResponse> {
     return this._client.get('/v1/workplaces', { query, ...options });
   }
 
@@ -36,8 +33,8 @@ export class Workplaces extends APIResource {
    *
    * @example
    * ```ts
-   * const create = await client.workplaces.create({
-   *   name: '',
+   * const workplace = await client.workplaces.create({
+   *   name: 'x',
    *   type: 'remote',
    *   address: {
    *     line1: 'x',
@@ -63,7 +60,7 @@ export class Workplaces extends APIResource {
    *
    * @example
    * ```ts
-   * const update = await client.workplaces.update('wkp_1234', {});
+   * const workplace = await client.workplaces.update('wkp_1234', {});
    * ```
    */
   update(
@@ -76,27 +73,19 @@ export class Workplaces extends APIResource {
 }
 
 export interface WorkplaceListParams {
+  limit: string | null;
   /**
-   * a number less than or equal to 100
-   */
-  limit?: string;
-  /**
-   * Public workplace identifier
    * @pattern ^wkp_
    */
-  afterId?: string;
+  afterId?: string | null;
   /**
-   * Public workplace identifier
    * @pattern ^wkp_
    */
-  beforeId?: string;
+  beforeId?: string | null;
 }
 
 export interface WorkplaceListResponse {
   hasMore: boolean;
-  /**
-   * an integer
-   */
   count: number;
   data: Array<WorkplaceListResponse.Data>;
 }
@@ -115,16 +104,12 @@ export namespace WorkplaceListResponse {
      * A valid US address
      */
     address: Data.Address;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: OffersAPI.Date;
+    createdAt: string;
   }
 
   export namespace Data {
     export interface Address {
       /**
-       * a non empty string
        * @minLength 1
        */
       line1: string;
@@ -190,10 +175,10 @@ export namespace WorkplaceListResponse {
 
 export interface WorkplaceCreateParams {
   /**
-   * a non empty string
+   * @minLength 1
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  name: CustomFieldsAPI.Trimmed;
+  name: string;
   type: 'remote' | 'office';
   /**
    * A valid US address
@@ -204,7 +189,6 @@ export interface WorkplaceCreateParams {
 export namespace WorkplaceCreateParams {
   export interface Address {
     /**
-     * a non empty string
      * @minLength 1
      */
     line1: string;
@@ -280,16 +264,12 @@ export interface WorkplaceCreateResponse {
    * A valid US address
    */
   address: WorkplaceCreateResponse.Address;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: OffersAPI.Date;
+  createdAt: string;
 }
 
 export namespace WorkplaceCreateResponse {
   export interface Address {
     /**
-     * a non empty string
      * @minLength 1
      */
     line1: string;
@@ -353,7 +333,7 @@ export namespace WorkplaceCreateResponse {
 }
 
 export interface WorkplaceUpdateParams {
-  name?: string;
+  name?: string | null;
 }
 
 export interface WorkplaceUpdateResponse {
@@ -369,16 +349,12 @@ export interface WorkplaceUpdateResponse {
    * A valid US address
    */
   address: WorkplaceUpdateResponse.Address;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: OffersAPI.Date;
+  createdAt: string;
 }
 
 export namespace WorkplaceUpdateResponse {
   export interface Address {
     /**
-     * a non empty string
      * @minLength 1
      */
     line1: string;

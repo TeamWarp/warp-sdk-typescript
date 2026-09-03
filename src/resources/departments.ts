@@ -4,26 +4,23 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
-import type * as OffersAPI from './offers';
-import type * as CustomFieldsAPI from './custom-fields';
 
 export class Departments extends APIResource {
   /**
    * List all departments for your company.
    *
-   * @param {DepartmentListParams} [query] - The parameters to send with the request.
+   * @param {DepartmentListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
    * @returns {APIPromise<DepartmentListResponse>} Success
    *
    * @example
    * ```ts
-   * const list = await client.departments.list();
+   * const department = await client.departments.list({
+   *   limit: 'limit',
+   * });
    * ```
    */
-  list(
-    query: DepartmentListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<DepartmentListResponse> {
+  list(query: DepartmentListParams, options?: RequestOptions): APIPromise<DepartmentListResponse> {
     return this._client.get('/v1/departments', { query, ...options });
   }
 
@@ -36,8 +33,8 @@ export class Departments extends APIResource {
    *
    * @example
    * ```ts
-   * const create = await client.departments.create({
-   *   name: '',
+   * const department = await client.departments.create({
+   *   name: 'x',
    * });
    * ```
    */
@@ -55,7 +52,7 @@ export class Departments extends APIResource {
    *
    * @example
    * ```ts
-   * const update = await client.departments.update('dpt_1234', {});
+   * const department = await client.departments.update('dpt_1234', {});
    * ```
    */
   update(
@@ -68,27 +65,19 @@ export class Departments extends APIResource {
 }
 
 export interface DepartmentListParams {
+  limit: string | null;
   /**
-   * a number less than or equal to 100
-   */
-  limit?: string;
-  /**
-   * The unique public id of the department
    * @pattern ^dpt_
    */
-  afterId?: string;
+  afterId?: string | null;
   /**
-   * The unique public id of the department
    * @pattern ^dpt_
    */
-  beforeId?: string;
+  beforeId?: string | null;
 }
 
 export interface DepartmentListResponse {
   hasMore: boolean;
-  /**
-   * an integer
-   */
   count: number;
   data: Array<DepartmentListResponse.Data>;
 }
@@ -101,19 +90,16 @@ export namespace DepartmentListResponse {
      */
     id: string;
     name: string;
-    /**
-     * a string to be decoded into a Date
-     */
-    createdAt: OffersAPI.Date;
+    createdAt: string;
   }
 }
 
 export interface DepartmentCreateParams {
   /**
-   * a non empty string
+   * @minLength 1
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
-  name: CustomFieldsAPI.Trimmed;
+  name: string;
 }
 
 export interface DepartmentCreateResponse {
@@ -123,14 +109,11 @@ export interface DepartmentCreateResponse {
    */
   id: string;
   name: string;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: OffersAPI.Date;
+  createdAt: string;
 }
 
 export interface DepartmentUpdateParams {
-  name?: string;
+  name?: string | null;
 }
 
 export interface DepartmentUpdateResponse {
@@ -140,10 +123,7 @@ export interface DepartmentUpdateResponse {
    */
   id: string;
   name: string;
-  /**
-   * a string to be decoded into a Date
-   */
-  createdAt: OffersAPI.Date;
+  createdAt: string;
 }
 export declare namespace Departments {
   export {

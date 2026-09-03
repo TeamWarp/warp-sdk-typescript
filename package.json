@@ -1,11 +1,13 @@
 {
   "name": "warp-hr",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "Warp TypeScript SDK",
+  "author": "Warp",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TeamWarp/warp-sdk-typescript.git"
   },
+  "homepage": "https://docs.warp.co",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/cjs/index.js",
