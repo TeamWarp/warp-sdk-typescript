@@ -2183,6 +2183,9 @@ export interface WorkerCreatedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerCreatedWebhookEvent.Data;
 }
 
@@ -2219,6 +2222,27 @@ export namespace WorkerCreatedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2231,6 +2255,20 @@ export namespace WorkerCreatedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2242,6 +2280,265 @@ export namespace WorkerCreatedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2249,6 +2546,16 @@ export namespace WorkerCreatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2277,6 +2584,9 @@ export interface WorkerDeletedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerDeletedWebhookEvent.Data;
 }
 
@@ -2313,6 +2623,27 @@ export namespace WorkerDeletedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2325,6 +2656,20 @@ export namespace WorkerDeletedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2336,6 +2681,265 @@ export namespace WorkerDeletedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2343,6 +2947,16 @@ export namespace WorkerDeletedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2371,6 +2985,9 @@ export interface WorkerInviteAcceptedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerInviteAcceptedWebhookEvent.Data;
 }
 
@@ -2407,6 +3024,27 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2419,6 +3057,20 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2430,6 +3082,265 @@ export namespace WorkerInviteAcceptedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2437,6 +3348,16 @@ export namespace WorkerInviteAcceptedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2465,6 +3386,9 @@ export interface WorkerInviteSentWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerInviteSentWebhookEvent.Data;
 }
 
@@ -2501,6 +3425,27 @@ export namespace WorkerInviteSentWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2513,6 +3458,20 @@ export namespace WorkerInviteSentWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2524,6 +3483,265 @@ export namespace WorkerInviteSentWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2531,6 +3749,16 @@ export namespace WorkerInviteSentWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2559,6 +3787,9 @@ export interface WorkerOffboardedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerOffboardedWebhookEvent.Data;
 }
 
@@ -2595,6 +3826,27 @@ export namespace WorkerOffboardedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2607,6 +3859,20 @@ export namespace WorkerOffboardedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2618,6 +3884,265 @@ export namespace WorkerOffboardedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2625,6 +4150,16 @@ export namespace WorkerOffboardedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2653,6 +4188,9 @@ export interface WorkerOffboardingStartedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerOffboardingStartedWebhookEvent.Data;
 }
 
@@ -2689,6 +4227,27 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2701,6 +4260,20 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2712,6 +4285,265 @@ export namespace WorkerOffboardingStartedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2719,6 +4551,16 @@ export namespace WorkerOffboardingStartedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2747,6 +4589,9 @@ export interface WorkerOnboardingCompletedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerOnboardingCompletedWebhookEvent.Data;
 }
 
@@ -2783,6 +4628,27 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2795,6 +4661,20 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2806,6 +4686,265 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2813,6 +4952,16 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2841,6 +4990,9 @@ export interface WorkerReactivatedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerReactivatedWebhookEvent.Data;
 }
 
@@ -2877,6 +5029,27 @@ export namespace WorkerReactivatedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2889,6 +5062,20 @@ export namespace WorkerReactivatedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2900,6 +5087,265 @@ export namespace WorkerReactivatedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -2907,6 +5353,16 @@ export namespace WorkerReactivatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
@@ -2935,6 +5391,9 @@ export interface WorkerUpdatedWebhookEvent {
    * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
    */
   timestamp: string;
+  /**
+   * A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   */
   data: WorkerUpdatedWebhookEvent.Data;
 }
 
@@ -2971,6 +5430,27 @@ export namespace WorkerUpdatedWebhookEvent {
     workEmail: string | null;
     preferredName: string | null;
     /**
+     * The worker's biological sex, or null when unavailable.
+     */
+    biologicalSex: 'male' | 'female' | null;
+    /**
+     * The worker's marital status, or null when unavailable.
+     */
+    maritalStatus: 'married' | 'not_married' | null;
+    /**
+     * The worker's date of birth, or null when unavailable.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    dateOfBirth: string | null;
+    /**
+     * The worker's personal phone number, or null when unavailable.
+     */
+    phone: string | null;
+    /**
+     * The worker's home address, or null when unavailable.
+     */
+    address: Data.Address | null;
+    /**
      * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
      */
     displayName: string;
@@ -2983,6 +5463,20 @@ export namespace WorkerUpdatedWebhookEvent {
      */
     department: Data.Department | null;
     /**
+     * The primary workplace the worker is assigned to, or null if unassigned.
+     */
+    primaryWorkplace: Data.PrimaryWorkplace | null;
+    /**
+     * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    latestRehireDate: string | null;
+    /**
+     * The reason the worker was terminated, or null when no termination reason is recorded.
+     */
+    terminationReason: string | null;
+    updatedAt: string;
+    /**
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
@@ -2994,6 +5488,265 @@ export namespace WorkerUpdatedWebhookEvent {
   }
 
   export namespace Data {
+    export interface Address {
+      line1: string;
+      line2: string | null;
+      city: string;
+      state: string | null;
+      postalCode: string | null;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+    }
+
     export interface Department {
       /**
        * The unique public id of the department
@@ -3001,6 +5754,16 @@ export namespace WorkerUpdatedWebhookEvent {
        */
       id: string;
       name: string;
+    }
+
+    export interface PrimaryWorkplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+      type: 'remote' | 'office';
     }
 
     export interface Level {
