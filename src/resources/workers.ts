@@ -887,6 +887,7 @@ export namespace WorkerListResponse {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensation | null;
+    manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -1173,6 +1174,17 @@ export namespace WorkerListResponse {
       type: 'remote' | 'office';
     }
 
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
+    }
+
     export interface Level {
       /**
        * The unique public id of the job level
@@ -1268,6 +1280,7 @@ export interface WorkerGetResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  manager?: WorkerGetResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1554,6 +1567,17 @@ export namespace WorkerGetResponse {
     type: 'remote' | 'office';
   }
 
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
+  }
+
   export interface Level {
     /**
      * The unique public id of the job level
@@ -1785,6 +1809,7 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  manager?: WorkerCreateEmployeeResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2069,6 +2094,17 @@ export namespace WorkerCreateEmployeeResponse {
     id: string;
     name: string;
     type: 'remote' | 'office';
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
   }
 
   export interface Level {
@@ -2547,6 +2583,7 @@ export interface WorkerCreateContractorResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  manager?: WorkerCreateContractorResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2833,6 +2870,17 @@ export namespace WorkerCreateContractorResponse {
     type: 'remote' | 'office';
   }
 
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
+  }
+
   export interface Level {
     /**
      * The unique public id of the job level
@@ -2927,6 +2975,7 @@ export interface WorkerInviteResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  manager?: WorkerInviteResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -3211,6 +3260,17 @@ export namespace WorkerInviteResponse {
     id: string;
     name: string;
     type: 'remote' | 'office';
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
   }
 
   export interface Level {
