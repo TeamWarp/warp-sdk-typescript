@@ -887,6 +887,9 @@ export namespace WorkerListResponse {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -1280,6 +1283,9 @@ export interface WorkerGetResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
   manager?: WorkerGetResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -1809,6 +1815,9 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
   manager?: WorkerCreateEmployeeResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -2583,6 +2592,9 @@ export interface WorkerCreateContractorResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
   manager?: WorkerCreateContractorResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -2975,6 +2987,9 @@ export interface WorkerInviteResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
   manager?: WorkerInviteResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
