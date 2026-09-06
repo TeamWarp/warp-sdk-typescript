@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.21.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.20.0...v0.21.0) (2026-09-06)
+
+
+### Features
+
+* **api:** add schema public_worker_manager ([56fec24](https://github.com/TeamWarp/warp-sdk-typescript/commit/56fec245d8235c627062798e0c0cb37201e97b2b))
+
+
+### Chores
+
+* **api:** update generated SDK content ([8a6b1ed](https://github.com/TeamWarp/warp-sdk-typescript/commit/8a6b1ed5e92e42a568cdc5abb6d8c6bf3fd80158))
+
 ## [0.20.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.19.0...v0.20.0) (2026-09-03)
 
 

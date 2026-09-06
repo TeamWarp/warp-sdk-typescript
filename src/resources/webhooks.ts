@@ -2273,6 +2273,10 @@ export namespace WorkerCreatedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -2556,6 +2560,17 @@ export namespace WorkerCreatedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -2674,6 +2689,10 @@ export namespace WorkerDeletedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -2957,6 +2976,17 @@ export namespace WorkerDeletedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -3075,6 +3105,10 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -3358,6 +3392,17 @@ export namespace WorkerInviteAcceptedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -3476,6 +3521,10 @@ export namespace WorkerInviteSentWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -3759,6 +3808,17 @@ export namespace WorkerInviteSentWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -3877,6 +3937,10 @@ export namespace WorkerOffboardedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -4160,6 +4224,17 @@ export namespace WorkerOffboardedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -4278,6 +4353,10 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -4561,6 +4640,17 @@ export namespace WorkerOffboardingStartedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -4679,6 +4769,10 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -4962,6 +5056,17 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -5080,6 +5185,10 @@ export namespace WorkerReactivatedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -5363,6 +5472,17 @@ export namespace WorkerReactivatedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
@@ -5481,6 +5601,10 @@ export namespace WorkerUpdatedWebhookEvent {
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -5764,6 +5888,17 @@ export namespace WorkerUpdatedWebhookEvent {
       id: string;
       name: string;
       type: 'remote' | 'office';
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
     }
 
     export interface Level {
