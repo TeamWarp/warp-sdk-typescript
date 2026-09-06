@@ -2272,6 +2272,9 @@ export namespace WorkerCreatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -2685,6 +2688,9 @@ export namespace WorkerDeletedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -3098,6 +3104,9 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -3511,6 +3520,9 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -3924,6 +3936,9 @@ export namespace WorkerOffboardedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -4337,6 +4352,9 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -4750,6 +4768,9 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -5163,6 +5184,9 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
@@ -5576,6 +5600,9 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
      */
     compensation: PublicWorkerCompensationAPI.PublicWorkerCompensation | null;
+    /**
+     * The worker's manager, or null if unassigned.
+     */
     manager?: Data.Manager | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
