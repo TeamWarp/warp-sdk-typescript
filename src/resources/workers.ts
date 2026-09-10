@@ -83,7 +83,7 @@ export class Workers extends APIResource {
    *     workplaceId: 'wkp_1234',
    *   },
    *   compensation: {
-   *     amount: 0,
+   *     amount: 1,
    *     per: 'hour',
    *   },
    * });
@@ -895,6 +895,7 @@ export namespace WorkerListResponse {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCustomField> | null;
   }
 
@@ -1291,6 +1292,7 @@ export interface WorkerGetResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerGetResponse.Level | null;
+  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -1725,6 +1727,9 @@ export namespace WorkerCreateEmployeeParams {
   }
 
   export interface Compensation {
+    /**
+     * @exclusiveMinimum 0
+     */
     amount: number;
     /**
      * Whether the amount is per hour or per year.
@@ -1823,6 +1828,7 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateEmployeeResponse.Level | null;
+  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -2502,6 +2508,9 @@ export namespace WorkerCreateContractorParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
+    /**
+     * @exclusiveMinimum 0
+     */
     amount: number;
     /**
      * The pay period for the compensation amount.
@@ -2600,6 +2609,7 @@ export interface WorkerCreateContractorResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateContractorResponse.Level | null;
+  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -2995,6 +3005,7 @@ export interface WorkerInviteResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerInviteResponse.Level | null;
+  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 

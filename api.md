@@ -447,7 +447,7 @@ const offer = await client.offers.create({
   compensation: {
     payBasis: 'year',
     payCurrency: 'USD',
-    payRate: 0,
+    payRate: 1,
   },
 });
 ```
@@ -725,7 +725,7 @@ const worker = await client.workers.createEmployee({
     workplaceId: 'wkp_1234',
   },
   compensation: {
-    amount: 0,
+    amount: 1,
     per: 'hour',
   },
 });
