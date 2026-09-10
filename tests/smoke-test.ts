@@ -995,6 +995,15 @@ const cases: {
   },
 
   {
+    operation: 'revealSsn',
+    method: 'POST',
+    path: '/v1/workers/reveal_ssn',
+    run: async () => {
+      const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
+    },
+  },
+
+  {
     operation: 'list',
     method: 'GET',
     path: '/v1/workplaces',
@@ -1058,6 +1067,43 @@ const cases: {
       const workplace = await client.workplaces.update('wkp_1234', {
         name: '',
       });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/i9-verifications',
+    label: 'required params',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/i9-verifications',
+    label: 'all params',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.list({
+        limit: 'limit',
+        afterId: 'i9v_1234',
+        beforeId: 'i9v_1234',
+        workerIds: ['wrk_1234'],
+        statuses: ['not_started'],
+      });
+    },
+  },
+
+  {
+    operation: 'retrieve',
+    method: 'GET',
+    path: '/v1/i9-verifications/{id}',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
     },
   },
 ];
