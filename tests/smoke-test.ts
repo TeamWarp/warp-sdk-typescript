@@ -1069,43 +1069,6 @@ const cases: {
       });
     },
   },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/i9-verifications',
-    label: 'required params',
-    run: async () => {
-      const i9Verification = await client.i9Verifications.list({
-        limit: 'limit',
-      });
-    },
-  },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/i9-verifications',
-    label: 'all params',
-    run: async () => {
-      const i9Verification = await client.i9Verifications.list({
-        limit: 'limit',
-        afterId: 'i9v_1234',
-        beforeId: 'i9v_1234',
-        workerIds: ['wrk_1234'],
-        statuses: ['not_started'],
-      });
-    },
-  },
-
-  {
-    operation: 'retrieve',
-    method: 'GET',
-    path: '/v1/i9-verifications/{id}',
-    run: async () => {
-      const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
-    },
-  },
 ];
 
 /**

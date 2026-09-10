@@ -195,12 +195,6 @@ import {
   type WorkplaceUpdateParams,
 } from './resources/workplaces';
 import {
-  I9Verifications,
-  type I9VerificationListResponse,
-  type I9VerificationRetrieveResponse,
-  type I9VerificationListParams,
-} from './resources/i9-verifications';
-import {
   Webhooks,
   type OfferAcceptedWebhookEvent,
   type OfferCreatedWebhookEvent,
@@ -1031,7 +1025,6 @@ export class Warp {
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
-  i9Verifications: I9Verifications = new I9Verifications(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
@@ -1045,7 +1038,6 @@ Warp.Payroll = Payroll;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
-Warp.I9Verifications = I9Verifications;
 Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
@@ -1227,13 +1219,6 @@ export declare namespace Warp {
     type WorkplaceListParams as WorkplaceListParams,
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
-  };
-
-  export {
-    I9Verifications as I9Verifications,
-    type I9VerificationListResponse as I9VerificationListResponse,
-    type I9VerificationRetrieveResponse as I9VerificationRetrieveResponse,
-    type I9VerificationListParams as I9VerificationListParams,
   };
 
   export {
