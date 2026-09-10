@@ -170,12 +170,6 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
-export { I9Verifications } from './i9-verifications';
-export type {
-  I9VerificationListParams,
-  I9VerificationListResponse,
-  I9VerificationRetrieveResponse,
-} from './i9-verifications';
 export { Webhooks } from './webhooks';
 export type {
   OfferAcceptedWebhookEvent,

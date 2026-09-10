@@ -11,7 +11,6 @@ export {
   TimeOff,
   Workers,
   Workplaces,
-  I9Verifications,
   Webhooks,
 } from './resources/index';
 export type {
@@ -159,9 +158,6 @@ export type {
   WorkplaceCreateResponse,
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
-  I9VerificationListParams,
-  I9VerificationListResponse,
-  I9VerificationRetrieveResponse,
   OfferAcceptedWebhookEvent,
   OfferCreatedWebhookEvent,
   OfferSentWebhookEvent,
