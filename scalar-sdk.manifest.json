@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.32.0",
+  "generatorVersion": "0.32.9",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -889,6 +889,78 @@
       }
     },
     {
+      "name": "public_worker_manager",
+      "source": "public_worker_manager",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "wrk_3Fna7qP2mL8z",
+          "firstName": "Hank",
+          "lastName": "Rearden",
+          "displayName": "Hank Rearden"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "firstName",
+            "publicName": "firstName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "publicName": "lastName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "displayName",
+            "publicName": "displayName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "public_pay_rate_per",
       "source": "public_pay_rate_per",
       "publicAliases": [],
@@ -981,7 +1053,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -2595,7 +2669,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -5949,6 +6025,267 @@
       }
     },
     {
+      "name": "public_i9_verification",
+      "source": "public_i9_verification",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "i9v_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^i9v_"
+              }
+            }
+          },
+          {
+            "name": "worker",
+            "publicName": "worker",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_worker_reference"
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "not_started",
+                "awaiting_worker",
+                "awaiting_admin",
+                "verified"
+              ],
+              "names": [
+                "NotStarted",
+                "AwaitingWorker",
+                "AwaitingAdmin",
+                "Verified"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "startDate",
+            "publicName": "startDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "verifiedAt",
+            "publicName": "verifiedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "retentionUntil",
+            "publicName": "retentionUntil",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "dueDate",
+            "publicName": "dueDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "invalid_i9_verification_query_encoded",
+      "source": "invalid_i9_verification_query_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidI9VerificationQuery"
+              ],
+              "names": [
+                "InvalidI9VerificationQuery"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "i9_verification_not_found_encoded",
+      "source": "i9_verification_not_found_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "I9VerificationNotFound"
+              ],
+              "names": [
+                "I9VerificationNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^i9v_"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "legacyWorkerId",
+            "publicName": "legacyWorkerId",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "job_levels_not_enabled_encoded",
       "source": "job_levels_not_enabled_encoded",
       "publicAliases": [],
@@ -6476,7 +6813,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7254,7 +7593,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7308,7 +7649,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7362,7 +7705,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7416,7 +7761,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7470,7 +7817,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7524,7 +7873,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7578,7 +7929,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7632,7 +7985,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7686,7 +8041,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7740,7 +8097,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -7794,7 +8153,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -8353,7 +8714,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -8638,7 +9001,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -9293,7 +9658,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -9797,7 +10164,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10270,7 +10639,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10324,7 +10695,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10378,7 +10751,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10432,7 +10807,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10486,7 +10863,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10540,7 +10919,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10594,7 +10975,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -10648,7 +11031,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -11180,7 +11565,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -11457,7 +11844,9 @@
                 {
                   "kind": "primitive",
                   "type": "number",
-                  "validation": {}
+                  "validation": {
+                    "minimum": 0
+                  }
                 },
                 {
                   "kind": "null"
@@ -11537,7 +11926,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -11701,7 +12092,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -11858,7 +12251,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -11932,7 +12327,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -12294,7 +12691,9 @@
             "type": {
               "kind": "primitive",
               "type": "integer",
-              "validation": {}
+              "validation": {
+                "minimum": 0
+              }
             }
           },
           {
@@ -12799,7 +13198,9 @@
                 {
                   "kind": "primitive",
                   "type": "number",
-                  "validation": {}
+                  "validation": {
+                    "minimum": 0
+                  }
                 },
                 {
                   "kind": "null"
@@ -13106,6 +13507,75 @@
             "type": {
               "kind": "primitive",
               "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_worker_ssn",
+      "source": "public_worker_ssn",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "wrk_khac8380c2Lm",
+          "ssn": "000123456"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "ssn",
+            "publicName": "ssn",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "000123456"
+            },
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d+$",
+                    "minLength": 9,
+                    "maxLength": 9
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           }
         ],
@@ -14722,6 +15192,36 @@
         ],
         "additionalProperties": false
       }
+    },
+    {
+      "name": "RevealSsnResponseHeaders",
+      "source": "RevealSsnResponseHeaders",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "cache-control",
+            "publicName": "cache-control",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "private, no-store"
+              ],
+              "names": [
+                "PrivateNoStore"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
     }
   ],
   "resources": [
@@ -14738,7 +15238,8 @@
     "timeOff",
     "timeOff.policies",
     "workers",
-    "workplaces"
+    "workplaces",
+    "i9Verifications"
   ],
   "publicResources": [
     "benefits",
@@ -14754,7 +15255,8 @@
     "timeOff",
     "timeOff.policies",
     "workers",
-    "workplaces"
+    "workplaces",
+    "i9Verifications"
   ],
   "operations": [
     {
@@ -19218,19 +19720,37 @@
           "name": "limit",
           "required": true,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "25"
+          }
         },
         {
           "name": "afterId",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "pay_1234"
+          }
         },
         {
           "name": "beforeId",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "pay_1234"
+          }
         },
         {
           "name": "types",
@@ -19260,25 +19780,49 @@
           "name": "paydayOnOrAfter",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "2026-08-01"
+          }
         },
         {
           "name": "paydayBefore",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "2026-09-01"
+          }
         },
         {
           "name": "payPeriodEndOnOrAfter",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "2026-08-01"
+          }
         },
         {
           "name": "payPeriodEndBefore",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "2026-09-01"
+          }
         }
       ],
       "headerParamDetails": [],
@@ -19411,7 +19955,13 @@
           "name": "id",
           "required": true,
           "style": "simple",
-          "explode": false
+          "explode": false,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "pay_1234"
+          }
         }
       ],
       "queryParamDetails": [],
@@ -19570,19 +20120,37 @@
           "name": "limit",
           "required": true,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "25"
+          }
         },
         {
           "name": "afterId",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "pyc_1234"
+          }
         },
         {
           "name": "beforeId",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "pyc_1234"
+          }
         },
         {
           "name": "payrollIds",
@@ -19636,13 +20204,25 @@
           "name": "paydayOnOrAfter",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "2026-08-01"
+          }
         },
         {
           "name": "paydayBefore",
           "required": false,
           "style": "form",
-          "explode": true
+          "explode": true,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "2026-09-01"
+          }
         }
       ],
       "headerParamDetails": [],
@@ -19775,7 +20355,13 @@
           "name": "id",
           "required": true,
           "style": "simple",
-          "explode": false
+          "explode": false,
+          "extensions": {
+            "source": [
+              "example"
+            ],
+            "examples": "pyc_1234"
+          }
         }
       ],
       "queryParamDetails": [],
@@ -21705,6 +22291,151 @@
       "transport": "http"
     },
     {
+      "resource": "workers",
+      "publicResource": "workers",
+      "operation": "revealSsn",
+      "publicOperation": "revealSsn",
+      "deprecated": false,
+      "method": "POST",
+      "path": "/v1/workers/reveal_ssn",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [
+        "workerIds"
+      ],
+      "publicBodyParams": [
+        "workerIds"
+      ],
+      "bodyParamDetails": [
+        {
+          "name": "workerIds",
+          "required": true
+        }
+      ],
+      "pathParamDetails": [],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "WorkerRevealSsnParams"
+      },
+      "requestBody": {
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ],
+        "required": true,
+        "publicName": "body",
+        "publicIdentifier": "body"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseHeadersModel": {
+        "name": "RevealSsnResponseHeaders",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "worker_not_found_error_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
       "resource": "workplaces",
       "publicResource": "workplaces",
       "operation": "list",
@@ -22138,6 +22869,302 @@
           ],
           "model": {
             "name": "workplace_already_exists_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "i9Verifications",
+      "publicResource": "i9Verifications",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/i9_verifications",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "workerIds",
+        "statuses"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "workerIds",
+        "statuses"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": false,
+          "style": "form",
+          "explode": true
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "I9VerificationListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_i9_verification_query_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "i9Verifications",
+      "publicResource": "i9Verifications",
+      "operation": "retrieve",
+      "publicOperation": "retrieve",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/i9_verifications/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "I9VerificationRetrieveParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_i9_verification",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "i9_verification_not_found_encoded",
             "publicAliases": []
           }
         },

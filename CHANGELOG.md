@@ -1,5 +1,69 @@
 # Changelog
 
+## [0.21.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.20.0...v0.21.0) (2026-09-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** 2 breaking changes to the SDK surface.
+    - Added required property `public_i9_verification.worker`.
+    - Removed required property `public_i9_verification.workerId`.
+* **api:** 5 breaking changes to the SDK surface.
+    - Removed operation `i9Verifications.list` (`GET /v1/i9-verifications`).
+    - Removed operation `i9Verifications.retrieve` (`GET /v1/i9-verifications/{id}`).
+    - Removed schema `public_i9_verification`.
+    - Removed schema `invalid_i9_verification_query_encoded`.
+    - Removed schema `i9_verification_not_found_encoded`.
+* **api:** 34 breaking changes to the SDK surface.
+    - Property `public_worker_compensation.amount` type changed from `integer` to `integer`.
+    - Property `public_money_amount.amount` type changed from `integer` to `integer`.
+    - Property `public_pay_rate.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_1.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_2.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_3.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_4.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_5.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_6.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_7.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_8.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_9.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_10.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_summary.paycheckCount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_11.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_detail.paycheckCount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_12.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_13.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_14.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_15.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_16.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_17.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_18.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_19.amount` type changed from `integer` to `integer`.
+    - Property `public_currency_money_amount_20.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_money_amount.amount` type changed from `integer` to `integer`.
+    - Property `public_paycheck_earning.hours` type changed from `number | null` to `number | null`.
+    - Property `public_payroll_money_amount_1.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_money_amount_2.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_money_amount_3.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_money_amount_4.amount` type changed from `integer` to `integer`.
+    - Property `public_payroll_money_amount_5.amount` type changed from `integer` to `integer`.
+    - Property `public_paycheck_detail.reportedHours` type changed from `number | null` to `number | null`.
+
+### Features
+
+* **api:** add operation i9Verifications.list (+4 more changes) ([d685198](https://github.com/TeamWarp/warp-sdk-typescript/commit/d685198414c7c369faccdc12d12ec3cd507593b2))
+* **api:** add operation workers.revealSsn (+7 more changes) ([5ffb227](https://github.com/TeamWarp/warp-sdk-typescript/commit/5ffb2277f20a2ab1fe25127d3611b98203ffeb49))
+* **api:** add property public_i9_verification.worker (+1 more change) ([c25e13e](https://github.com/TeamWarp/warp-sdk-typescript/commit/c25e13e86a98697f1323a136e7a9618c4e9f07bd))
+* **api:** add schema public_worker_manager ([56fec24](https://github.com/TeamWarp/warp-sdk-typescript/commit/56fec245d8235c627062798e0c0cb37201e97b2b))
+* **api:** remove operation i9Verifications.list (+4 more changes) ([77540b1](https://github.com/TeamWarp/warp-sdk-typescript/commit/77540b188b9b73a1fb17310e09e288ee61875f61))
+* **api:** update SDK surface (35 changes) ([2e9b15c](https://github.com/TeamWarp/warp-sdk-typescript/commit/2e9b15ce77d49075963bd18cf75a0fb13a05aec0))
+
+
+### Chores
+
+* **api:** update generated SDK content ([8a6b1ed](https://github.com/TeamWarp/warp-sdk-typescript/commit/8a6b1ed5e92e42a568cdc5abb6d8c6bf3fd80158))
+
 ## [0.20.0](https://github.com/TeamWarp/warp-sdk-typescript/compare/v0.19.0...v0.20.0) (2026-09-03)
 
 

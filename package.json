@@ -1,6 +1,6 @@
 {
   "name": "warp-hr",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "description": "Warp TypeScript SDK",
   "author": "Warp",
   "repository": {
@@ -27,8 +27,9 @@
     },
     "./*.js": {
       "types": "./dist/esm/*.d.ts",
+      "import": "./dist/esm/*.js",
       "require": "./dist/cjs/*.js",
-      "default": "./dist/cjs/*.js"
+      "default": "./dist/esm/*.js"
     },
     "./*": {
       "types": "./dist/esm/*.d.ts",

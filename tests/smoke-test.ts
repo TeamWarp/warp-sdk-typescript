@@ -198,7 +198,12 @@ const cases: {
         accessLevel: 'admins',
         inputBy: 'admin',
         required: false,
-        options: [],
+        options: [
+          {
+            label: 'x',
+            value: 'x',
+          },
+        ],
       });
     },
   },
@@ -485,7 +490,7 @@ const cases: {
         compensation: {
           payBasis: 'year',
           payCurrency: 'USD',
-          payRate: 0,
+          payRate: 1,
         },
       });
     },
@@ -515,7 +520,7 @@ const cases: {
         compensation: {
           payBasis: 'year',
           payCurrency: 'USD',
-          payRate: 0,
+          payRate: 1,
         },
         expirationTime: '',
         backgroundCheckWorkLocation: {
@@ -891,7 +896,7 @@ const cases: {
           workplaceId: 'wkp_1234',
         },
         compensation: {
-          amount: 0,
+          amount: 1,
           per: 'hour',
         },
       });
@@ -922,7 +927,7 @@ const cases: {
           workplaceId: 'wkp_1234',
         },
         compensation: {
-          amount: 0,
+          amount: 1,
           per: 'hour',
         },
         paySchedule: 'weekly',
@@ -972,7 +977,7 @@ const cases: {
         workCountry: 'AD',
         compensation: {
           currency: 'USD',
-          amount: 0,
+          amount: 1,
           per: 'year',
         },
         paySchedule: 'weekly',
@@ -986,6 +991,15 @@ const cases: {
     path: '/v1/workers/{id}/invite',
     run: async () => {
       const worker = await client.workers.invite('wrk_1234');
+    },
+  },
+
+  {
+    operation: 'revealSsn',
+    method: 'POST',
+    path: '/v1/workers/reveal_ssn',
+    run: async () => {
+      const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
     },
   },
 
@@ -1055,7 +1069,55 @@ const cases: {
       });
     },
   },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/i9_verifications',
+    label: 'required params',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/i9_verifications',
+    label: 'all params',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.list({
+        limit: 'limit',
+        afterId: 'i9v_1234',
+        beforeId: 'i9v_1234',
+        workerIds: ['wrk_1234'],
+        statuses: ['not_started'],
+      });
+    },
+  },
+
+  {
+    operation: 'retrieve',
+    method: 'GET',
+    path: '/v1/i9_verifications/{id}',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
+    },
+  },
 ];
+
+/**
+ * How many cases run at once, capped at the number of cases there are.
+ *
+ * SCALAR_SMOKE_CONCURRENCY overrides the default; anything unparseable falls back to it.
+ */
+const smokeConcurrency = (caseCount: number): number => {
+  const override = Number.parseInt(process.env['SCALAR_SMOKE_CONCURRENCY'] ?? '', 10);
+  const limit = Number.isInteger(override) && override > 0 ? override : 32;
+  return Math.min(limit, caseCount);
+};
 
 const main = async (): Promise<void> => {
   // SCALAR_SMOKE_FILTER (comma-separated) keeps only cases whose operation name or path matches
@@ -1074,10 +1136,18 @@ const main = async (): Promise<void> => {
         )
       : cases;
 
-  // Run every selected case concurrently. Promise.allSettled means one failing operation never
-  // blocks the others, so a single run reports the status of every endpoint.
-  const settled = await Promise.allSettled(
-    selected.map(async (testCase): Promise<SmokeResult> => {
+  // Run the selected cases under a bounded worker pool rather than all at once. A large SDK has
+  // hundreds of operations, and firing every request together exceeds what the client's transport
+  // keeps connections for while the runner is already busy with other targets. Each worker pulls
+  // the next index off a shared cursor and writes into a pre-sized array, so results stay in case
+  // order however the workers interleave. The per-case body catches everything and never rejects,
+  // so one failing operation still cannot block the others.
+  const results: SmokeResult[] = new Array<SmokeResult>(selected.length);
+  let cursor = 0;
+  const runNext = async (): Promise<void> => {
+    for (let index = cursor++; index < selected.length; index = cursor++) {
+      const testCase = selected[index];
+      if (!testCase) continue;
       const startedAt = Date.now();
       // `label` distinguishes the required-params run from the all-params run of the same
       // operation; it is omitted entirely when the operation contributed only one case.
@@ -1089,28 +1159,20 @@ const main = async (): Promise<void> => {
       };
       try {
         await testCase.run();
-        return { ...identity, status: 'passed', durationMs: Date.now() - startedAt };
+        results[index] = { ...identity, status: 'passed', durationMs: Date.now() - startedAt };
       } catch (error) {
         // Prefer the stack so a failure points at the failing SDK call; fall back to the message.
         const message = error instanceof Error ? (error.stack ?? error.message) : String(error);
-        return { ...identity, status: 'failed', durationMs: Date.now() - startedAt, error: message };
-      }
-    }),
-  );
-
-  // allSettled never rejects, but defensively map any rejected slot to a failed result.
-  const results: SmokeResult[] = settled.map((result) =>
-    result.status === 'fulfilled'
-      ? result.value
-      : {
-          operation: 'unknown',
-          method: '',
-          path: '',
+        results[index] = {
+          ...identity,
           status: 'failed',
-          durationMs: 0,
-          error: String(result.reason),
-        },
-  );
+          durationMs: Date.now() - startedAt,
+          error: message,
+        };
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: smokeConcurrency(selected.length) }, runNext));
   const failed = results.filter((result) => result.status === 'failed');
 
   // With SCALAR_SMOKE_REPORT set, write a machine-readable report; otherwise print a table.

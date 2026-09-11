@@ -47,7 +47,7 @@ export class Offers extends APIResource {
    *   compensation: {
    *     payBasis: 'year',
    *     payCurrency: 'USD',
-   *     payRate: 0,
+   *     payRate: 1,
    *   },
    * });
    * ```
@@ -982,10 +982,22 @@ export namespace OfferCreateParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
+    /**
+     * @exclusiveMinimum 0
+     */
     payRate: number;
     payType?: 'fixed' | 'pay_as_you_go' | null;
+    /**
+     * @exclusiveMinimum 0
+     */
     payVariableRate?: number | null;
+    /**
+     * @exclusiveMinimum 0
+     */
     signOnBonus?: number | null;
+    /**
+     * @exclusiveMinimum 0
+     */
     relocationBonus?: number | null;
     /**
      * @minimum 0

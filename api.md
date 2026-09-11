@@ -61,10 +61,14 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [Create Employee](#create-employee)
   - [Create Contractor](#create-contractor)
   - [Invite Worker](#invite-worker)
+  - [Reveal Worker SSNs](#reveal-worker-ssns)
 - [`Workplaces`](#workplaces)
   - [List Workplaces](#list-workplaces)
   - [Create Workplace](#create-workplace)
   - [Update Workplace](#update-workplace)
+- [`I9Verifications`](#i9verifications)
+  - [List I-9 verifications](#list-i-9-verifications)
+  - [Get I-9 verification](#get-i-9-verification)
 
 ## Setup
 
@@ -447,7 +451,7 @@ const offer = await client.offers.create({
   compensation: {
     payBasis: 'year',
     payCurrency: 'USD',
-    payRate: 0,
+    payRate: 1,
   },
 });
 ```
@@ -725,7 +729,7 @@ const worker = await client.workers.createEmployee({
     workplaceId: 'wkp_1234',
   },
   compensation: {
-    amount: 0,
+    amount: 1,
     per: 'hour',
   },
 });
@@ -764,6 +768,19 @@ Send or resend the worker invite so they can accept and complete onboarding to W
 
 ```ts
 const worker = await client.workers.invite('wrk_1234');
+```
+
+### Reveal Worker SSNs
+
+Reveal full Social Security numbers for up to 50 workers. Requires the workers:pii read scope. Results preserve request order and use null when a worker has no SSN on file. The request fails if any worker is not found, emits one audit event per worker, and returns Cache-Control: private, no-store.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`WorkerRevealSsnParams`](./src/resources/workers.ts) |
+| Response | [`WorkerRevealSsnResponse`](./src/resources/workers.ts) |
+
+```ts
+const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
 ```
 
 ## `Workplaces`
@@ -819,4 +836,35 @@ Update an existing workplace.
 
 ```ts
 const workplace = await client.workplaces.update('wkp_1234', {});
+```
+
+## `I9Verifications`
+
+Read company I-9 verification metadata, including retained forms, without exposing form contents.
+
+### List I-9 verifications
+
+List current and retained company I-9 verifications in all workflow states, newest first. The API key must have workers profile and compliance read scope.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`I9VerificationListParams`](./src/resources/i9-verifications.ts) |
+| Response | [`I9VerificationListResponse`](./src/resources/i9-verifications.ts) |
+
+```ts
+const i9Verification = await client.i9Verifications.list({
+  limit: 'limit',
+});
+```
+
+### Get I-9 verification
+
+Get a specific I-9 verification by its id. The API key must have workers profile and compliance read scope.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`I9VerificationRetrieveResponse`](./src/resources/i9-verifications.ts) |
+
+```ts
+const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
 ```

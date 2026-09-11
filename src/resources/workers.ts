@@ -83,7 +83,7 @@ export class Workers extends APIResource {
    *     workplaceId: 'wkp_1234',
    *   },
    *   compensation: {
-   *     amount: 0,
+   *     amount: 1,
    *     per: 'hour',
    *   },
    * });
@@ -139,6 +139,22 @@ export class Workers extends APIResource {
    */
   invite(id: string, options?: RequestOptions): APIPromise<WorkerInviteResponse> {
     return this._client.post(__scalarPath`/v1/workers/${id}/invite`, options);
+  }
+
+  /**
+   * Reveal full Social Security numbers for up to 50 workers. Requires the workers:pii read scope. Results preserve request order and use null when a worker has no SSN on file. The request fails if any worker is not found, emits one audit event per worker, and returns Cache-Control: private, no-store.
+   *
+   * @param {WorkerRevealSsnParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<WorkerRevealSsnResponse>} Success
+   *
+   * @example
+   * ```ts
+   * const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
+   * ```
+   */
+  revealSsn(body: WorkerRevealSsnParams, options?: RequestOptions): APIPromise<WorkerRevealSsnResponse> {
+    return this._client.post('/v1/workers/reveal_ssn', { body, ...options });
   }
 }
 
@@ -888,6 +904,10 @@ export namespace WorkerListResponse {
      */
     compensation: PublicWorkerCompensation | null;
     /**
+     * The worker's manager, or null if unassigned.
+     */
+    manager?: Data.Manager | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1173,6 +1193,17 @@ export namespace WorkerListResponse {
       type: 'remote' | 'office';
     }
 
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      firstName: string;
+      lastName: string;
+      displayName: string;
+    }
+
     export interface Level {
       /**
        * The unique public id of the job level
@@ -1268,6 +1299,10 @@ export interface WorkerGetResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
+  manager?: WorkerGetResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1554,6 +1589,17 @@ export namespace WorkerGetResponse {
     type: 'remote' | 'office';
   }
 
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
+  }
+
   export interface Level {
     /**
      * The unique public id of the job level
@@ -1695,6 +1741,9 @@ export namespace WorkerCreateEmployeeParams {
   }
 
   export interface Compensation {
+    /**
+     * @exclusiveMinimum 0
+     */
     amount: number;
     /**
      * Whether the amount is per hour or per year.
@@ -1785,6 +1834,10 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
+  manager?: WorkerCreateEmployeeResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2069,6 +2122,17 @@ export namespace WorkerCreateEmployeeResponse {
     id: string;
     name: string;
     type: 'remote' | 'office';
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
   }
 
   export interface Level {
@@ -2457,6 +2521,9 @@ export namespace WorkerCreateContractorParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
+    /**
+     * @exclusiveMinimum 0
+     */
     amount: number;
     /**
      * The pay period for the compensation amount.
@@ -2547,6 +2614,10 @@ export interface WorkerCreateContractorResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
+  manager?: WorkerCreateContractorResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2833,6 +2904,17 @@ export namespace WorkerCreateContractorResponse {
     type: 'remote' | 'office';
   }
 
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
+  }
+
   export interface Level {
     /**
      * The unique public id of the job level
@@ -2927,6 +3009,10 @@ export interface WorkerInviteResponse {
    * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
    */
   compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
+  manager?: WorkerInviteResponse.Manager | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -3213,6 +3299,17 @@ export namespace WorkerInviteResponse {
     type: 'remote' | 'office';
   }
 
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
+  }
+
   export interface Level {
     /**
      * The unique public id of the job level
@@ -3222,6 +3319,34 @@ export namespace WorkerInviteResponse {
     code: string;
     name: string;
     track: 'ic' | 'manager' | 'executive';
+  }
+}
+
+export interface WorkerRevealSsnParams {
+  /**
+   * One to 50 unique worker ids. Results are returned in this order.
+   * @minItems 1
+   * @maxItems 50
+   */
+  workerIds: Array<string>;
+}
+
+export type WorkerRevealSsnResponse = Array<WorkerRevealSsnResponse.WorkerRevealSsnResponseItem>;
+
+export namespace WorkerRevealSsnResponse {
+  export interface WorkerRevealSsnResponseItem {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    /**
+     * The nine-digit Social Security number, or null when the worker has no SSN on file.
+     * @minLength 9
+     * @maxLength 9
+     * @pattern ^\d+$
+     */
+    ssn: string | null;
   }
 }
 export declare namespace Workers {
@@ -3241,8 +3366,10 @@ export declare namespace Workers {
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,
+    type WorkerRevealSsnResponse as WorkerRevealSsnResponse,
     type WorkerListParams as WorkerListParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
     type WorkerCreateContractorParams as WorkerCreateContractorParams,
+    type WorkerRevealSsnParams as WorkerRevealSsnParams,
   };
 }
