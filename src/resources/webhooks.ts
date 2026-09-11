@@ -2280,7 +2280,6 @@ export namespace WorkerCreatedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -2697,7 +2696,6 @@ export namespace WorkerDeletedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -3114,7 +3112,6 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -3531,7 +3528,6 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -3948,7 +3944,6 @@ export namespace WorkerOffboardedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -4365,7 +4360,6 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -4782,7 +4776,6 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -5199,7 +5192,6 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -5616,7 +5608,6 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 

@@ -911,7 +911,6 @@ export namespace WorkerListResponse {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
-    i9VerificationIds?: Array<string> | null;
     customFields?: Array<PublicWorkerCustomField> | null;
   }
 
@@ -1308,7 +1307,6 @@ export interface WorkerGetResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerGetResponse.Level | null;
-  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -1844,7 +1842,6 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateEmployeeResponse.Level | null;
-  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -2625,7 +2622,6 @@ export interface WorkerCreateContractorResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateContractorResponse.Level | null;
-  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -3021,7 +3017,6 @@ export interface WorkerInviteResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerInviteResponse.Level | null;
-  i9VerificationIds?: Array<string> | null;
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
