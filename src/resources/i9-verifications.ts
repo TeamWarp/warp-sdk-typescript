@@ -4,10 +4,11 @@ import { APIResource } from '../resource';
 import { APIPromise } from '../api-promise';
 import type { RequestOptions } from '../internal/request-options';
 import { path as __scalarPath } from '../internal/utils/path';
+import type * as DeductionsAPI from './benefits/deductions';
 
 export class I9Verifications extends APIResource {
   /**
-   * List current and retained company I-9 verifications in all workflow states, newest first. Requires workers:compliance read access. Filters combine with AND across parameters and OR within each array. Count covers all matches before pagination. Use either afterId or beforeId; a missing or filter-mismatched cursor returns 400, so restart pagination if a filtered cursor changes state. Only verifications linked to a canonical company worker are returned.
+   * List current and retained company I-9 verifications in all workflow states, newest first. The API key must have workers profile and compliance read scope.
    *
    * @param {I9VerificationListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
@@ -25,11 +26,11 @@ export class I9Verifications extends APIResource {
   }
 
   /**
-   * Get a current or retained I-9 verification by its i9v_ ID. Requires workers:compliance read access. Returns the same metadata as the list endpoint. Missing verifications and verifications outside the company or without a canonical worker return 404.
+   * Get a specific I-9 verification by its id. The API key must have workers profile and compliance read scope.
    *
    * @param {string} id - The tag of the i9 verification.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<I9VerificationRetrieveResponse>} I-9 workflow metadata without document contents, identity details, or file links.
+   * @returns {APIPromise<I9VerificationRetrieveResponse>}
    *
    * @example
    * ```ts
@@ -77,10 +78,9 @@ export namespace I9VerificationListResponse {
      */
     id: string;
     /**
-     * The id of the worker.
-     * @pattern ^wrk_
+     * Basic identifying information for a worker associated with another resource.
      */
-    workerId: string;
+    worker: DeductionsAPI.PublicWorkerReference;
     status: 'not_started' | 'awaiting_worker' | 'awaiting_admin' | 'verified';
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
@@ -108,10 +108,9 @@ export interface I9VerificationRetrieveResponse {
    */
   id: string;
   /**
-   * The id of the worker.
-   * @pattern ^wrk_
+   * Basic identifying information for a worker associated with another resource.
    */
-  workerId: string;
+  worker: DeductionsAPI.PublicWorkerReference;
   status: 'not_started' | 'awaiting_worker' | 'awaiting_admin' | 'verified';
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$

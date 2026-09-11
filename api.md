@@ -844,7 +844,7 @@ Read company I-9 verification metadata, including retained forms, without exposi
 
 ### List I-9 verifications
 
-List current and retained company I-9 verifications in all workflow states, newest first. Requires workers:compliance read access. Filters combine with AND across parameters and OR within each array. Count covers all matches before pagination. Use either afterId or beforeId; a missing or filter-mismatched cursor returns 400, so restart pagination if a filtered cursor changes state. Only verifications linked to a canonical company worker are returned.
+List current and retained company I-9 verifications in all workflow states, newest first. The API key must have workers profile and compliance read scope.
 
 | Direction | Type |
 | --- | --- |
@@ -859,7 +859,7 @@ const i9Verification = await client.i9Verifications.list({
 
 ### Get I-9 verification
 
-Get a current or retained I-9 verification by its i9v_ ID. Requires workers:compliance read access. Returns the same metadata as the list endpoint. Missing verifications and verifications outside the company or without a canonical worker return 404.
+Get a specific I-9 verification by its id. The API key must have workers profile and compliance read scope.
 
 | Direction | Type |
 | --- | --- |

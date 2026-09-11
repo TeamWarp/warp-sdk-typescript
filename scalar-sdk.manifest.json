@@ -6052,22 +6052,13 @@
             }
           },
           {
-            "name": "workerId",
-            "publicName": "workerId",
+            "name": "worker",
+            "publicName": "worker",
             "required": true,
             "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wrk_1234"
-            },
             "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
+              "kind": "ref",
+              "name": "public_worker_reference"
             }
           },
           {
