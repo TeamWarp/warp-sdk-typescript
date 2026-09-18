@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.32.9",
+  "generatorVersion": "0.32.14",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -14171,6 +14171,89 @@
             "type": {
               "kind": "primitive",
               "type": "string"
+            }
+          },
+          {
+            "name": "requiredFeatures",
+            "publicName": "requiredFeatures",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "object",
+                  "properties": [
+                    {
+                      "name": "allowedUSStates",
+                      "publicName": "allowedUSStates",
+                      "required": false,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "union",
+                        "variants": [
+                          {
+                            "kind": "union",
+                            "variants": [
+                              {
+                                "kind": "primitive",
+                                "type": "number"
+                              },
+                              {
+                                "kind": "enum",
+                                "values": [
+                                  "Infinity",
+                                  "-Infinity",
+                                  "NaN"
+                                ],
+                                "names": [
+                                  "Infinity",
+                                  "Infinity",
+                                  "NaN"
+                                ],
+                                "deprecations": [
+                                  false,
+                                  false,
+                                  false
+                                ]
+                              }
+                            ],
+                            "variantNames": [
+                              null,
+                              null
+                            ]
+                          },
+                          {
+                            "kind": "null"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "hasGlobalPayrollAccess",
+                      "publicName": "hasGlobalPayrollAccess",
+                      "required": false,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "union",
+                        "variants": [
+                          {
+                            "kind": "primitive",
+                            "type": "boolean"
+                          },
+                          {
+                            "kind": "null"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           }
         ],
