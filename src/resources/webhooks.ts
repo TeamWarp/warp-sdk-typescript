@@ -376,7 +376,13 @@ export namespace OfferAcceptedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
@@ -389,6 +395,9 @@ export namespace OfferAcceptedWebhookEvent {
         amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
@@ -777,7 +786,13 @@ export namespace OfferCreatedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
@@ -790,6 +805,9 @@ export namespace OfferCreatedWebhookEvent {
         amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
@@ -1178,7 +1196,13 @@ export namespace OfferSentWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
@@ -1191,6 +1215,9 @@ export namespace OfferSentWebhookEvent {
         amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
@@ -1579,7 +1606,13 @@ export namespace OfferViewedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
@@ -1592,6 +1625,9 @@ export namespace OfferViewedWebhookEvent {
         amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
@@ -1980,7 +2016,13 @@ export namespace OfferVoidedWebhookEvent {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
@@ -1993,6 +2035,9 @@ export namespace OfferVoidedWebhookEvent {
         amount: PublicMoneyAmountAPI.PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
       }
 
@@ -2217,6 +2262,7 @@ export namespace WorkerCreatedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -2280,6 +2326,9 @@ export namespace WorkerCreatedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -2633,6 +2682,7 @@ export namespace WorkerDeletedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -2696,6 +2746,9 @@ export namespace WorkerDeletedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -3049,6 +3102,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -3112,6 +3166,9 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -3465,6 +3522,7 @@ export namespace WorkerInviteSentWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -3528,6 +3586,9 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -3881,6 +3942,7 @@ export namespace WorkerOffboardedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -3944,6 +4006,9 @@ export namespace WorkerOffboardedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -4297,6 +4362,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -4360,6 +4426,9 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -4713,6 +4782,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -4776,6 +4846,9 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -5129,6 +5202,7 @@ export namespace WorkerReactivatedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -5192,6 +5266,9 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 
@@ -5545,6 +5622,7 @@ export namespace WorkerUpdatedWebhookEvent {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -5608,6 +5686,9 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCompensationAPI.PublicWorkerCustomField> | null;
   }
 

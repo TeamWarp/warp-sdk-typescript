@@ -802,10 +802,12 @@ export namespace PublicMultiSelectWorkerCustomField {
 export interface WorkerListParams {
   limit: string | null;
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   afterId?: string | null;
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   beforeId?: string | null;
@@ -848,6 +850,7 @@ export namespace WorkerListResponse {
      */
     email: string;
     /**
+     * An email with a reasonably valid regex (based on RFC 5321 atext characters)
      * @format email
      */
     workEmail: string | null;
@@ -911,6 +914,9 @@ export namespace WorkerListResponse {
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
+    /**
+     * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+     */
     customFields?: Array<PublicWorkerCustomField> | null;
   }
 
@@ -1244,6 +1250,7 @@ export interface WorkerGetResponse {
    */
   email: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   workEmail: string | null;
@@ -1307,6 +1314,9 @@ export interface WorkerGetResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerGetResponse.Level | null;
+  /**
+   * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+   */
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -1657,17 +1667,30 @@ export interface WorkerCreateEmployeeParams {
    */
   compensation: WorkerCreateEmployeeParams.Compensation;
   /**
+   * Company-issued email address, if applicable.
    * @format email
    */
   workEmail?: string | null;
+  /**
+   * Whether the employee is required to complete I-9 work authorization. Set to false if the employee has already been verified off-platform. Defaults to true.
+   */
   requireI9?: boolean | null;
+  /**
+   * How state tax registration is handled for this employee's work state. Required when hiring in a state where your company doesn't have an existing registration. Use 'self_managed' if you've already registered in this state, or 'warp_managed' for Warp to handle registration on your behalf.
+   */
   stateRegistration?: 'self_managed' | 'warp_managed' | null;
   /**
    * The job level to assign this employee to, or null to leave unassigned. Omit this field when job levels are not enabled.
    * @pattern ^jlvl_
    */
   levelId?: string | null;
+  /**
+   * Number of stock options granted to this employee.
+   */
   stockOptions?: number | 'Infinity' | '-Infinity' | 'NaN' | null;
+  /**
+   * The employee's pay schedule. Must be a pay schedule that the company has configured.
+   */
   paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
@@ -1779,6 +1802,7 @@ export interface WorkerCreateEmployeeResponse {
    */
   email: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   workEmail: string | null;
@@ -1842,6 +1866,9 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateEmployeeResponse.Level | null;
+  /**
+   * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+   */
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -2439,12 +2466,17 @@ export interface WorkerCreateContractorParams {
     | 'ZM'
     | 'ZW';
   /**
+   * Required when entityType is "business". The legal name of the contractor's business.
    * @minLength 1
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
   businessName?: string | null;
+  /**
+   * A description of the work the contractor will perform.
+   */
   scopeOfWork?: string | null;
   /**
+   * Company-issued email address, if applicable.
    * @format email
    */
   workEmail?: string | null;
@@ -2453,7 +2485,13 @@ export interface WorkerCreateContractorParams {
    * @pattern ^jlvl_
    */
   levelId?: string | null;
+  /**
+   * The contractor's pay rate. Omit if you'd like to pay on-demand or via invoicing.
+   */
   compensation?: WorkerCreateContractorParams.Compensation | null;
+  /**
+   * The contractor's pay schedule. Must be a pay schedule that the company has configured.
+   */
   paySchedule?: 'weekly' | 'biweekly' | 'monthly' | 'semimonthly' | 'quarterly' | 'annually' | null;
 }
 
@@ -2559,6 +2597,7 @@ export interface WorkerCreateContractorResponse {
    */
   email: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   workEmail: string | null;
@@ -2622,6 +2661,9 @@ export interface WorkerCreateContractorResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateContractorResponse.Level | null;
+  /**
+   * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+   */
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 
@@ -2954,6 +2996,7 @@ export interface WorkerInviteResponse {
    */
   email: string;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   workEmail: string | null;
@@ -3017,6 +3060,9 @@ export interface WorkerInviteResponse {
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerInviteResponse.Level | null;
+  /**
+   * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+   */
   customFields?: Array<PublicWorkerCustomField> | null;
 }
 

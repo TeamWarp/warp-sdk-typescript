@@ -45,10 +45,12 @@ export class I9Verifications extends APIResource {
 export interface I9VerificationListParams {
   limit: string | null;
   /**
+   * The tag of the i9 verification.
    * @pattern ^i9v_
    */
   afterId?: string | null;
   /**
+   * The tag of the i9 verification.
    * @pattern ^i9v_
    */
   beforeId?: string | null;

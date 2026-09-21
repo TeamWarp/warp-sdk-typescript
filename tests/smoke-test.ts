@@ -16,7 +16,7 @@ import { writeFileSync } from 'node:fs';
 import Warp from 'warp-hr';
 
 // One shared client runs every case.
-const client = new Warp();
+const client = new Warp({ maxRetries: 2, timeout: 10_000 });
 
 // The result of running one case, collected for the JSON report or the printed table.
 type SmokeResult = {
@@ -921,7 +921,7 @@ const cases: {
         departmentId: 'dpt_1234',
         levelId: 'jlvl_1234',
         managerId: 'wrk_1234',
-        stockOptions: 0,
+        stockOptions: 10000,
         workLocation: {
           type: 'office',
           workplaceId: 'wkp_1234',
@@ -967,7 +967,7 @@ const cases: {
         lastName: 'Jones',
         position: 'Design Consultant',
         businessName: 'Galt Enterprises, LLC',
-        scopeOfWork: '',
+        scopeOfWork: 'Frontend development for the customer dashboard',
         startDate: '',
         email: 'john@joinwarp.com',
         workEmail: 'john@joinwarp.com',
