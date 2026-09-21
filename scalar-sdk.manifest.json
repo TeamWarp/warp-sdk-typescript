@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.32.14",
+  "generatorVersion": "0.33.2",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -3039,6 +3039,12 @@
             "publicName": "groupNumber",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "GRP-12345"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -5925,6 +5931,12 @@
             "publicName": "id",
             "required": false,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "dpt_1234"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -6237,6 +6249,12 @@
             "publicName": "id",
             "required": false,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "i9v_1234"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -8657,6 +8675,12 @@
             "publicName": "payFrequency",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "semimonthly"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -8693,6 +8717,12 @@
             "publicName": "approvalDeadline",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2026-08-27T17:00:00.000Z"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -9094,6 +9124,15 @@
             "publicName": "cashRequirement",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 355500,
+                "display": "$3,555.00"
+              }
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -9368,6 +9407,12 @@
             "publicName": "approvedAt",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2026-08-27T16:42:00.000Z"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -9601,6 +9646,12 @@
             "publicName": "payFrequency",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "semimonthly"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -9637,6 +9688,12 @@
             "publicName": "approvalDeadline",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2026-08-27T17:00:00.000Z"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -9706,6 +9763,12 @@
             "publicName": "reopenDeadline",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "2026-08-28T17:00:00.000Z"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -10019,6 +10082,12 @@
             "publicName": "payFrequency",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "semimonthly"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -10115,14 +10184,17 @@
               "values": [
                 "us_w2",
                 "us_1099",
-                "global_contractor"
+                "global_contractor",
+                "global_employee"
               ],
               "names": [
                 "UsW2",
                 "Us1099",
-                "GlobalContractor"
+                "GlobalContractor",
+                "GlobalEmployee"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false
@@ -11797,6 +11869,12 @@
             "publicName": "workplaceId",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -11859,6 +11937,16 @@
             "publicName": "hourlyRate",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": "50.00",
+                "currency": "USD",
+                "per": "hour"
+              }
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -12415,6 +12503,12 @@
             "publicName": "benefitDeductionId",
             "required": true,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "pbdg_1234"
+            },
             "type": {
               "kind": "union",
               "variants": [
@@ -14350,6 +14444,12 @@
             "publicName": "id",
             "required": false,
             "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
             "type": {
               "kind": "union",
               "variants": [
