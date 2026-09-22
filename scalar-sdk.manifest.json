@@ -13608,889 +13608,6 @@
       }
     },
     {
-      "name": "public_worker_ssn",
-      "source": "public_worker_ssn",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": {
-          "id": "wrk_khac8380c2Lm",
-          "ssn": "000123456"
-        }
-      },
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wrk_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "ssn",
-            "publicName": "ssn",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "000123456"
-            },
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^\\d+$",
-                    "minLength": 9,
-                    "maxLength": 9
-                  }
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "worker_not_found_error_encoded",
-      "source": "worker_not_found_error_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "WorkerNotFoundError"
-              ],
-              "names": [
-                "WorkerNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wrk_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "office_work_location",
-      "source": "office_work_location",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "type",
-            "publicName": "type",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "office"
-              ],
-              "names": [
-                "Office"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "workplaceId",
-            "publicName": "workplaceId",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wkp_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wkp_"
-              }
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "remote_work_location",
-      "source": "remote_work_location",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "type",
-            "publicName": "type",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "remote"
-              ],
-              "names": [
-                "Remote"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "state",
-            "publicName": "state",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "AL",
-                "AK",
-                "AZ",
-                "AR",
-                "CA",
-                "CO",
-                "CT",
-                "DC",
-                "DE",
-                "FL",
-                "GA",
-                "HI",
-                "ID",
-                "IL",
-                "IN",
-                "IA",
-                "KS",
-                "KY",
-                "LA",
-                "ME",
-                "MD",
-                "MA",
-                "MI",
-                "MN",
-                "MS",
-                "MO",
-                "MT",
-                "NE",
-                "NV",
-                "NH",
-                "NJ",
-                "NM",
-                "NY",
-                "NC",
-                "ND",
-                "OH",
-                "OK",
-                "OR",
-                "PA",
-                "RI",
-                "SC",
-                "SD",
-                "TN",
-                "TX",
-                "UT",
-                "VT",
-                "VA",
-                "WA",
-                "WV",
-                "WI",
-                "WY"
-              ],
-              "names": [
-                "Al",
-                "Ak",
-                "Az",
-                "Ar",
-                "Ca",
-                "Co",
-                "Ct",
-                "Dc",
-                "De",
-                "Fl",
-                "Ga",
-                "Hi",
-                "Id",
-                "Il",
-                "In",
-                "Ia",
-                "Ks",
-                "Ky",
-                "La",
-                "Me",
-                "Md",
-                "Ma",
-                "Mi",
-                "Mn",
-                "Ms",
-                "Mo",
-                "Mt",
-                "Ne",
-                "Nv",
-                "Nh",
-                "Nj",
-                "Nm",
-                "Ny",
-                "Nc",
-                "Nd",
-                "Oh",
-                "Ok",
-                "Or",
-                "Pa",
-                "Ri",
-                "Sc",
-                "Sd",
-                "Tn",
-                "Tx",
-                "Ut",
-                "Vt",
-                "Va",
-                "Wa",
-                "Wv",
-                "Wi",
-                "Wy"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "pay_schedule_not_configured_encoded",
-      "source": "pay_schedule_not_configured_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "PayScheduleNotConfigured"
-              ],
-              "names": [
-                "PayScheduleNotConfigured"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "paySchedule",
-            "publicName": "paySchedule",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "weekly",
-                "biweekly",
-                "monthly",
-                "semimonthly",
-                "quarterly",
-                "annually"
-              ],
-              "names": [
-                "Weekly",
-                "Biweekly",
-                "Monthly",
-                "Semimonthly",
-                "Quarterly",
-                "Annually"
-              ],
-              "deprecations": [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false
-              ]
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "state_registration_required_encoded",
-      "source": "state_registration_required_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "StateRegistrationRequired"
-              ],
-              "names": [
-                "StateRegistrationRequired"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "state",
-            "publicName": "state",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "public_pay_rate_per_1",
-      "source": "public_pay_rate_per_1",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "enum",
-        "values": [
-          "year",
-          "month",
-          "week",
-          "hour"
-        ],
-        "names": [
-          "Year",
-          "Month",
-          "Week",
-          "Hour"
-        ],
-        "deprecations": [
-          false,
-          false,
-          false,
-          false
-        ]
-      }
-    },
-    {
-      "name": "invalid_worker_status_error_encoded",
-      "source": "invalid_worker_status_error_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "InvalidWorkerStatusError"
-              ],
-              "names": [
-                "InvalidWorkerStatusError"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wrk_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "worker_already_exists_error_encoded",
-      "source": "worker_already_exists_error_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "WorkerAlreadyExistsError"
-              ],
-              "names": [
-                "WorkerAlreadyExistsError"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "subscription_limit_error_encoded",
-      "source": "subscription_limit_error_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "SubscriptionLimitError"
-              ],
-              "names": [
-                "SubscriptionLimitError"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "requiredFeatures",
-            "publicName": "requiredFeatures",
-            "required": false,
-            "deprecated": false,
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "object",
-                  "properties": [
-                    {
-                      "name": "allowedUSStates",
-                      "publicName": "allowedUSStates",
-                      "required": false,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "union",
-                        "variants": [
-                          {
-                            "kind": "union",
-                            "variants": [
-                              {
-                                "kind": "primitive",
-                                "type": "number"
-                              },
-                              {
-                                "kind": "enum",
-                                "values": [
-                                  "Infinity",
-                                  "-Infinity",
-                                  "NaN"
-                                ],
-                                "names": [
-                                  "Infinity",
-                                  "Infinity",
-                                  "NaN"
-                                ],
-                                "deprecations": [
-                                  false,
-                                  false,
-                                  false
-                                ]
-                              }
-                            ],
-                            "variantNames": [
-                              null,
-                              null
-                            ]
-                          },
-                          {
-                            "kind": "null"
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "name": "hasGlobalPayrollAccess",
-                      "publicName": "hasGlobalPayrollAccess",
-                      "required": false,
-                      "deprecated": false,
-                      "type": {
-                        "kind": "union",
-                        "variants": [
-                          {
-                            "kind": "primitive",
-                            "type": "boolean"
-                          },
-                          {
-                            "kind": "null"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "cannot_delete_worker_encoded",
-      "source": "cannot_delete_worker_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "CannotDeleteWorker"
-              ],
-              "names": [
-                "CannotDeleteWorker"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wrk_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "workplace_already_exists_encoded",
-      "source": "workplace_already_exists_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "WorkplaceAlreadyExists"
-              ],
-              "names": [
-                "WorkplaceAlreadyExists"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": false,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wkp_1234"
-            },
-            "type": {
-              "kind": "union",
-              "variants": [
-                {
-                  "kind": "primitive",
-                  "type": "string",
-                  "validation": {
-                    "pattern": "^wkp_"
-                  }
-                },
-                {
-                  "kind": "null"
-                }
-              ]
-            }
-          },
-          {
-            "name": "name",
-            "publicName": "name",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
       "name": "address_invalid_encoded",
       "source": "address_invalid_encoded",
       "publicAliases": [],
@@ -15360,6 +14477,889 @@
                   "kind": "null"
                 }
               ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "subscription_limit_error_encoded",
+      "source": "subscription_limit_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "SubscriptionLimitError"
+              ],
+              "names": [
+                "SubscriptionLimitError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "requiredFeatures",
+            "publicName": "requiredFeatures",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "object",
+                  "properties": [
+                    {
+                      "name": "allowedUSStates",
+                      "publicName": "allowedUSStates",
+                      "required": false,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "union",
+                        "variants": [
+                          {
+                            "kind": "union",
+                            "variants": [
+                              {
+                                "kind": "primitive",
+                                "type": "number"
+                              },
+                              {
+                                "kind": "enum",
+                                "values": [
+                                  "Infinity",
+                                  "-Infinity",
+                                  "NaN"
+                                ],
+                                "names": [
+                                  "Infinity",
+                                  "Infinity",
+                                  "NaN"
+                                ],
+                                "deprecations": [
+                                  false,
+                                  false,
+                                  false
+                                ]
+                              }
+                            ],
+                            "variantNames": [
+                              null,
+                              null
+                            ]
+                          },
+                          {
+                            "kind": "null"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "name": "hasGlobalPayrollAccess",
+                      "publicName": "hasGlobalPayrollAccess",
+                      "required": false,
+                      "deprecated": false,
+                      "type": {
+                        "kind": "union",
+                        "variants": [
+                          {
+                            "kind": "primitive",
+                            "type": "boolean"
+                          },
+                          {
+                            "kind": "null"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "worker_already_exists_error_encoded",
+      "source": "worker_already_exists_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkerAlreadyExistsError"
+              ],
+              "names": [
+                "WorkerAlreadyExistsError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "workplace_already_exists_encoded",
+      "source": "workplace_already_exists_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkplaceAlreadyExists"
+              ],
+              "names": [
+                "WorkplaceAlreadyExists"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": false,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^wkp_"
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "name",
+            "publicName": "name",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_worker_ssn",
+      "source": "public_worker_ssn",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "id": "wrk_khac8380c2Lm",
+          "ssn": "000123456"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "ssn",
+            "publicName": "ssn",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "000123456"
+            },
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^\\d+$",
+                    "minLength": 9,
+                    "maxLength": 9
+                  }
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "worker_not_found_error_encoded",
+      "source": "worker_not_found_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkerNotFoundError"
+              ],
+              "names": [
+                "WorkerNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "office_work_location",
+      "source": "office_work_location",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "office"
+              ],
+              "names": [
+                "Office"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "workplaceId",
+            "publicName": "workplaceId",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wkp_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wkp_"
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "remote_work_location",
+      "source": "remote_work_location",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "remote"
+              ],
+              "names": [
+                "Remote"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "state",
+            "publicName": "state",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "AL",
+                "AK",
+                "AZ",
+                "AR",
+                "CA",
+                "CO",
+                "CT",
+                "DC",
+                "DE",
+                "FL",
+                "GA",
+                "HI",
+                "ID",
+                "IL",
+                "IN",
+                "IA",
+                "KS",
+                "KY",
+                "LA",
+                "ME",
+                "MD",
+                "MA",
+                "MI",
+                "MN",
+                "MS",
+                "MO",
+                "MT",
+                "NE",
+                "NV",
+                "NH",
+                "NJ",
+                "NM",
+                "NY",
+                "NC",
+                "ND",
+                "OH",
+                "OK",
+                "OR",
+                "PA",
+                "RI",
+                "SC",
+                "SD",
+                "TN",
+                "TX",
+                "UT",
+                "VT",
+                "VA",
+                "WA",
+                "WV",
+                "WI",
+                "WY"
+              ],
+              "names": [
+                "Al",
+                "Ak",
+                "Az",
+                "Ar",
+                "Ca",
+                "Co",
+                "Ct",
+                "Dc",
+                "De",
+                "Fl",
+                "Ga",
+                "Hi",
+                "Id",
+                "Il",
+                "In",
+                "Ia",
+                "Ks",
+                "Ky",
+                "La",
+                "Me",
+                "Md",
+                "Ma",
+                "Mi",
+                "Mn",
+                "Ms",
+                "Mo",
+                "Mt",
+                "Ne",
+                "Nv",
+                "Nh",
+                "Nj",
+                "Nm",
+                "Ny",
+                "Nc",
+                "Nd",
+                "Oh",
+                "Ok",
+                "Or",
+                "Pa",
+                "Ri",
+                "Sc",
+                "Sd",
+                "Tn",
+                "Tx",
+                "Ut",
+                "Vt",
+                "Va",
+                "Wa",
+                "Wv",
+                "Wi",
+                "Wy"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "pay_schedule_not_configured_encoded",
+      "source": "pay_schedule_not_configured_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "PayScheduleNotConfigured"
+              ],
+              "names": [
+                "PayScheduleNotConfigured"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "paySchedule",
+            "publicName": "paySchedule",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "weekly",
+                "biweekly",
+                "monthly",
+                "semimonthly",
+                "quarterly",
+                "annually"
+              ],
+              "names": [
+                "Weekly",
+                "Biweekly",
+                "Monthly",
+                "Semimonthly",
+                "Quarterly",
+                "Annually"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "state_registration_required_encoded",
+      "source": "state_registration_required_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "StateRegistrationRequired"
+              ],
+              "names": [
+                "StateRegistrationRequired"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "state",
+            "publicName": "state",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_rate_per_1",
+      "source": "public_pay_rate_per_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "year",
+          "month",
+          "week",
+          "hour"
+        ],
+        "names": [
+          "Year",
+          "Month",
+          "Week",
+          "Hour"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "invalid_worker_status_error_encoded",
+      "source": "invalid_worker_status_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidWorkerStatusError"
+              ],
+              "names": [
+                "InvalidWorkerStatusError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "cannot_delete_worker_encoded",
+      "source": "cannot_delete_worker_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "CannotDeleteWorker"
+              ],
+              "names": [
+                "CannotDeleteWorker"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
             }
           },
           {
