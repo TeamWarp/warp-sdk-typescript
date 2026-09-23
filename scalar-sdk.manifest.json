@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.33.2",
+  "generatorVersion": "0.33.3",
   "servers": [
     "https://api.joinwarp.com"
   ],
