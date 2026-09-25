@@ -42,6 +42,139 @@ const cases: {
   run: () => Promise<unknown>;
 }[] = [
   {
+    operation: 'createDeduction',
+    method: 'POST',
+    path: '/v1/benefits/deductions',
+    label: 'required params',
+    run: async () => {
+      const benefit = await client.benefits.createDeduction({
+        workerId: 'wrk_1234',
+        type: 'medical',
+        calculation: {
+          type: 'fixed_amount',
+          frequency: 'monthly',
+          employeeContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+          employerContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+        },
+        effectiveStartDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'createDeduction',
+    method: 'POST',
+    path: '/v1/benefits/deductions',
+    label: 'all params',
+    run: async () => {
+      const benefit = await client.benefits.createDeduction({
+        workerId: 'wrk_1234',
+        type: 'medical',
+        plan: {
+          type: 'health_plan',
+          id: 'chpl_1234',
+        },
+        name: 'x',
+        calculation: {
+          type: 'fixed_amount',
+          frequency: 'monthly',
+          employeeContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+          employerContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+        },
+        recurrence: 'recurring',
+        effectiveStartDate: '',
+        effectiveEndDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'updateDeduction',
+    method: 'PATCH',
+    path: '/v1/benefits/deductions/{id}',
+    label: 'required params',
+    run: async () => {
+      const publicBenefitDeduction = await client.benefits.updateDeduction('pbdg_1234', {});
+    },
+  },
+
+  {
+    operation: 'updateDeduction',
+    method: 'PATCH',
+    path: '/v1/benefits/deductions/{id}',
+    label: 'all params',
+    run: async () => {
+      const publicBenefitDeduction = await client.benefits.updateDeduction('pbdg_1234', {
+        name: 'x',
+        calculation: {
+          type: 'fixed_amount',
+          frequency: 'monthly',
+          employeeContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+          employerContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+        },
+        recurrence: 'recurring',
+        status: 'active',
+        effectiveEndDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'createRetirementPlan',
+    method: 'POST',
+    path: '/v1/benefits/retirement_plans',
+    run: async () => {
+      const benefit = await client.benefits.createRetirementPlan({
+        type: '401k',
+        name: 'x',
+        effectiveStartDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'updateRetirementPlan',
+    method: 'PATCH',
+    path: '/v1/benefits/retirement_plans/{id}',
+    label: 'required params',
+    run: async () => {
+      const publicRetirementPlan = await client.benefits.updateRetirementPlan('crpl_1234', {});
+    },
+  },
+
+  {
+    operation: 'updateRetirementPlan',
+    method: 'PATCH',
+    path: '/v1/benefits/retirement_plans/{id}',
+    label: 'all params',
+    run: async () => {
+      const publicRetirementPlan = await client.benefits.updateRetirementPlan('crpl_1234', {
+        name: 'x',
+        effectiveStartDate: '',
+        effectiveEndDate: '',
+      });
+    },
+  },
+
+  {
     operation: 'list',
     method: 'GET',
     path: '/v1/benefits/health_plans',
@@ -1000,6 +1133,45 @@ const cases: {
     path: '/v1/workers/reveal_ssn',
     run: async () => {
       const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/workers/{id}',
+    label: 'required params',
+    run: async () => {
+      const worker = await client.workers.update('wrk_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/workers/{id}',
+    label: 'all params',
+    run: async () => {
+      const worker = await client.workers.update('wrk_1234', {
+        firstName: 'x',
+        lastName: 'x',
+        preferredName: '',
+        email: 'john@joinwarp.com',
+        workEmail: 'john@joinwarp.com',
+        phone: '',
+        timeZone: 'America/New_York',
+        dateOfBirth: '1990-06-15',
+        maritalStatus: 'married',
+        biologicalSex: 'male',
+        address: {},
+        position: 'x',
+        departmentId: 'dpt_1234',
+        managerId: 'wrk_1234',
+        levelId: 'jlvl_1234',
+        startDate: '',
+        workplaceId: 'wkp_1234',
+        stateRegistration: 'self_managed',
+      });
     },
   },
 

@@ -1,6 +1,14 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 export { Benefits } from './benefits/benefits';
+export type {
+  BenefitCreateDeductionParams,
+  BenefitCreateDeductionResponse,
+  BenefitUpdateDeductionParams,
+  BenefitCreateRetirementPlanParams,
+  BenefitCreateRetirementPlanResponse,
+  BenefitUpdateRetirementPlanParams,
+} from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
   PublicCustomFieldValueOutput,
@@ -160,6 +168,8 @@ export type {
   WorkerInviteResponse,
   WorkerRevealSsnParams,
   WorkerRevealSsnResponse,
+  WorkerUpdateParams,
+  WorkerUpdateResponse,
 } from './workers';
 export { Workplaces } from './workplaces';
 export type {

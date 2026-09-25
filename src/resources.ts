@@ -15,6 +15,12 @@ export {
   Webhooks,
 } from './resources/index';
 export type {
+  BenefitCreateDeductionParams,
+  BenefitCreateDeductionResponse,
+  BenefitUpdateDeductionParams,
+  BenefitCreateRetirementPlanParams,
+  BenefitCreateRetirementPlanResponse,
+  BenefitUpdateRetirementPlanParams,
   PublicCustomFieldValueOutput,
   TextCustomFieldValue,
   NumberCustomFieldValue,
@@ -153,6 +159,8 @@ export type {
   WorkerInviteResponse,
   WorkerRevealSsnParams,
   WorkerRevealSsnResponse,
+  WorkerUpdateParams,
+  WorkerUpdateResponse,
   WorkplaceListParams,
   WorkplaceListResponse,
   WorkplaceCreateParams,

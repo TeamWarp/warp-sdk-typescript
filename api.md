@@ -5,6 +5,10 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Contents
 
 - [`Benefits`](#benefits)
+  - [Create Benefit Deduction](#create-benefit-deduction)
+  - [Update Benefit Deduction](#update-benefit-deduction)
+  - [Create Retirement Plan](#create-retirement-plan)
+  - [Update Retirement Plan](#update-retirement-plan)
   - [`Benefits HealthPlans`](#benefits-healthplans)
     - [List Health Plans](#list-health-plans)
     - [Get Health Plan](#get-health-plan)
@@ -62,6 +66,7 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [Create Contractor](#create-contractor)
   - [Invite Worker](#invite-worker)
   - [Reveal Worker SSNs](#reveal-worker-ssns)
+  - [Update Worker](#update-worker)
 - [`Workplaces`](#workplaces)
   - [List Workplaces](#list-workplaces)
   - [Create Workplace](#create-workplace)
@@ -81,6 +86,78 @@ const client = new Warp({
 ```
 
 ## `Benefits`
+
+Health plan reads and retirement plan and payroll benefit deduction management.
+
+### Create Benefit Deduction
+
+Create a benefit deduction for a worker.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitCreateDeductionParams`](./src/resources/benefits/benefits.ts) |
+| Response | [`BenefitCreateDeductionResponse`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const benefit = await client.benefits.createDeduction({
+  workerId: 'wrk_1234',
+  type: 'medical',
+  calculation: {
+    type: 'fixed_amount',
+    frequency: 'monthly',
+    employeeContribution: {
+      amount: 0,
+      currency: 'USD',
+    },
+    employerContribution: {
+      amount: 0,
+      currency: 'USD',
+    },
+  },
+  effectiveStartDate: '',
+});
+```
+
+### Update Benefit Deduction
+
+Update a benefit deduction. The calculation type cannot change.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitUpdateDeductionParams`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const publicBenefitDeduction = await client.benefits.updateDeduction('pbdg_1234', {});
+```
+
+### Create Retirement Plan
+
+Create a retirement plan for a company on the manual retirement channel.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitCreateRetirementPlanParams`](./src/resources/benefits/benefits.ts) |
+| Response | [`BenefitCreateRetirementPlanResponse`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const benefit = await client.benefits.createRetirementPlan({
+  type: '401k',
+  name: 'x',
+  effectiveStartDate: '',
+});
+```
+
+### Update Retirement Plan
+
+Update a retirement plan for a company on the manual retirement channel.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitUpdateRetirementPlanParams`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const publicRetirementPlan = await client.benefits.updateRetirementPlan('crpl_1234', {});
+```
 
 ### `Benefits HealthPlans`
 
@@ -781,6 +858,19 @@ Reveal full Social Security numbers for up to 50 workers. Requires the workers:p
 
 ```ts
 const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
+```
+
+### Update Worker
+
+Update a worker and return the updated worker object. Omitted fields remain unchanged. Requires workers:profile write, plus read access to any referenced department, level, or workplace. See individual fields for update restrictions.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`WorkerUpdateParams`](./src/resources/workers.ts) |
+| Response | [`WorkerUpdateResponse`](./src/resources/workers.ts) |
+
+```ts
+const worker = await client.workers.update('wrk_1234', {});
 ```
 
 ## `Workplaces`
