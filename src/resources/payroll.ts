@@ -102,6 +102,9 @@ export interface PublicPayrollDetail {
    */
   payday: string;
   payPeriod: PublicPayPeriod & string;
+  /**
+   * The cadence at which workers are paid.
+   */
   payFrequency: PublicPayFrequency | null;
   description: string | null;
   approvalDeadline: string | null;
@@ -173,6 +176,9 @@ export interface PublicPayrollSummary {
    */
   payday: string;
   payPeriod: PublicPayPeriod & string;
+  /**
+   * The cadence at which workers are paid.
+   */
   payFrequency: PublicPayFrequency | null;
   description: string | null;
   approvalDeadline: string | null;
@@ -303,6 +309,9 @@ export type PublicPayFrequency = 'weekly' | 'biweekly' | 'monthly' | 'semimonthl
  * Payroll category totals and provider-authoritative funding requirement.
  */
 export interface PublicPayrollDetailTotals {
+  /**
+   * The provider-reported amount the employer must fund for the payroll, when available.
+   */
   cashRequirement: PublicCurrencyMoneyAmount11 | null;
   /**
    * Gross earnings before worker taxes, deductions, and benefit contributions. Reimbursements are reported separately.
@@ -396,6 +405,9 @@ export interface PublicPaycheckPayroll {
   status: PublicPayrollStatus & string;
   fundingCurrency: PublicPayrollCurrency & string;
   payPeriod: PublicPayPeriod & string;
+  /**
+   * The cadence at which workers are paid.
+   */
   payFrequency: PublicPayFrequency | null;
 }
 
@@ -417,7 +429,7 @@ export interface PublicPaycheckWorker {
    */
   lastName: string;
   displayName: string;
-  workerType: 'us_w2' | 'us_1099' | 'global_contractor';
+  workerType: 'us_w2' | 'us_1099' | 'global_contractor' | 'global_employee';
 }
 
 /**
@@ -476,6 +488,7 @@ export interface PublicPaycheckEarning {
     | 'group_term_life'
     | 'other_imputed';
   /**
+   * Public workplace identifier
    * @pattern ^wkp_
    */
   workplaceId: string | null;
@@ -487,6 +500,9 @@ export interface PublicPaycheckEarning {
    * @minimum 0
    */
   hours: number | null;
+  /**
+   * A non-negative major-unit hourly rate. The earning amount remains authoritative.
+   */
   hourlyRate: PublicHourlyRate | null;
   description: string | null;
 }
@@ -520,6 +536,7 @@ export interface PublicPaycheckDeduction {
 export interface PublicPaycheckBenefit {
   name: string;
   /**
+   * The version-group tag of a payroll benefit deduction. Stable across edits.
    * @pattern ^pbdg_
    */
   benefitDeductionId: string | null;
@@ -1217,7 +1234,7 @@ export interface PayrollListPaychecksParams {
   /**
    * Worker classifications in effect for the paycheck to include. Omit to include every worker type visible to the API key.
    */
-  workerTypes?: Array<'us_w2' | 'us_1099' | 'global_contractor'> | null;
+  workerTypes?: Array<'us_w2' | 'us_1099' | 'global_contractor' | 'global_employee'> | null;
   /**
    * Payroll calculation types to include, subject to the API key permissions.
    */

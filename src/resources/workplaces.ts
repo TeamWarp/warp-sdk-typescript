@@ -75,10 +75,12 @@ export class Workplaces extends APIResource {
 export interface WorkplaceListParams {
   limit: string | null;
   /**
+   * Public workplace identifier
    * @pattern ^wkp_
    */
   afterId?: string | null;
   /**
+   * Public workplace identifier
    * @pattern ^wkp_
    */
   beforeId?: string | null;

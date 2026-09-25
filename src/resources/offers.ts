@@ -47,7 +47,7 @@ export class Offers extends APIResource {
    *   compensation: {
    *     payBasis: 'year',
    *     payCurrency: 'USD',
-   *     payRate: 0,
+   *     payRate: 1,
    *   },
    * });
    * ```
@@ -195,16 +195,19 @@ export interface PublicMoneyAmount {
 export interface OfferListParams {
   limit: string | null;
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   afterId?: string | null;
   /**
+   * The tag of the offer.
    * @pattern ^offr_
    */
   beforeId?: string | null;
   statuses?: Array<'draft' | 'sent' | 'accepted' | 'void'> | null;
   workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'> | null;
   /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
    */
   candidateEmail?: string | null;
@@ -556,7 +559,13 @@ export namespace OfferListResponse {
 
     export interface Compensation {
       basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       signOnBonus: PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       relocationBonus: PublicMoneyAmount | null;
       stock: Compensation.Stock | null;
     }
@@ -569,6 +578,9 @@ export namespace OfferListResponse {
         amount: PublicMoneyAmount;
         basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
         type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
         variableRate: PublicMoneyAmount | null;
       }
 
@@ -607,18 +619,22 @@ export interface OfferCreateParams {
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   compensation: OfferCreateParams.Compensation;
   /**
+   * The unique public id of the department
    * @pattern ^dpt_
    */
   departmentId?: string | null;
   /**
+   * Public workplace identifier
    * @pattern ^wkp_
    */
   workplaceId?: string | null;
   /**
+   * The id of the worker.
    * @pattern ^wrk_
    */
   managerId?: string | null;
   /**
+   * The unique public id of the job level
    * @pattern ^jlvl_
    */
   levelId?: string | null;
@@ -663,6 +679,9 @@ export namespace OfferCreateParams {
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
     startDate: string;
+    /**
+     * Required when workerType is global_contractor. Ignored for employee and us_contractor offers.
+     */
     country?:
       | 'AD'
       | 'AE'
@@ -982,10 +1001,22 @@ export namespace OfferCreateParams {
       | 'SAR'
       | 'XAF'
       | 'PEN';
+    /**
+     * @exclusiveMinimum 0
+     */
     payRate: number;
     payType?: 'fixed' | 'pay_as_you_go' | null;
+    /**
+     * @exclusiveMinimum 0
+     */
     payVariableRate?: number | null;
+    /**
+     * @exclusiveMinimum 0
+     */
     signOnBonus?: number | null;
+    /**
+     * @exclusiveMinimum 0
+     */
     relocationBonus?: number | null;
     /**
      * @minimum 0
@@ -1347,7 +1378,13 @@ export namespace OfferCreateResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     signOnBonus: PublicMoneyAmount | null;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
@@ -1360,6 +1397,9 @@ export namespace OfferCreateResponse {
       amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       variableRate: PublicMoneyAmount | null;
     }
 
@@ -1735,7 +1775,13 @@ export namespace OfferVoidResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     signOnBonus: PublicMoneyAmount | null;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
@@ -1748,6 +1794,9 @@ export namespace OfferVoidResponse {
       amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       variableRate: PublicMoneyAmount | null;
     }
 
@@ -2122,7 +2171,13 @@ export namespace OfferExtendDeadlineResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     signOnBonus: PublicMoneyAmount | null;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
@@ -2135,6 +2190,9 @@ export namespace OfferExtendDeadlineResponse {
       amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       variableRate: PublicMoneyAmount | null;
     }
 
@@ -2505,7 +2563,13 @@ export namespace OfferResendResponse {
 
   export interface Compensation {
     basePay: Compensation.BasePay;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     signOnBonus: PublicMoneyAmount | null;
+    /**
+     * A monetary amount with its currency and server-formatted display value.
+     */
     relocationBonus: PublicMoneyAmount | null;
     stock: Compensation.Stock | null;
   }
@@ -2518,6 +2582,9 @@ export namespace OfferResendResponse {
       amount: PublicMoneyAmount;
       basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
       type: 'fixed' | 'pay_as_you_go' | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
       variableRate: PublicMoneyAmount | null;
     }
 

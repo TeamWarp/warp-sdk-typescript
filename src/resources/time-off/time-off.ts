@@ -76,10 +76,12 @@ export class TimeOff extends APIResource {
 export interface TimeOffListAssignmentsParams {
   limit: string | null;
   /**
+   * The external-facing id of the worker assignment.
    * @pattern ^wrkasn_
    */
   afterId?: string | null;
   /**
+   * The external-facing id of the worker assignment.
    * @pattern ^wrkasn_
    */
   beforeId?: string | null;
@@ -116,10 +118,12 @@ export namespace TimeOffListAssignmentsResponse {
 export interface TimeOffListBalancesParams {
   limit: string | null;
   /**
+   * The external-facing id of the worker assignment.
    * @pattern ^wrkasn_
    */
   afterId?: string | null;
   /**
+   * The external-facing id of the worker assignment.
    * @pattern ^wrkasn_
    */
   beforeId?: string | null;

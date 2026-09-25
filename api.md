@@ -5,6 +5,10 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Contents
 
 - [`Benefits`](#benefits)
+  - [Create Benefit Deduction](#create-benefit-deduction)
+  - [Update Benefit Deduction](#update-benefit-deduction)
+  - [Create Retirement Plan](#create-retirement-plan)
+  - [Update Retirement Plan](#update-retirement-plan)
   - [`Benefits HealthPlans`](#benefits-healthplans)
     - [List Health Plans](#list-health-plans)
     - [Get Health Plan](#get-health-plan)
@@ -61,10 +65,15 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [Create Employee](#create-employee)
   - [Create Contractor](#create-contractor)
   - [Invite Worker](#invite-worker)
+  - [Reveal Worker SSNs](#reveal-worker-ssns)
+  - [Update Worker](#update-worker)
 - [`Workplaces`](#workplaces)
   - [List Workplaces](#list-workplaces)
   - [Create Workplace](#create-workplace)
   - [Update Workplace](#update-workplace)
+- [`I9Verifications`](#i9verifications)
+  - [List I-9 verifications](#list-i-9-verifications)
+  - [Get I-9 verification](#get-i-9-verification)
 
 ## Setup
 
@@ -78,9 +87,81 @@ const client = new Warp({
 
 ## `Benefits`
 
+Health plan reads and retirement plan and payroll benefit deduction management.
+
+### Create Benefit Deduction
+
+Create a benefit deduction for a worker.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitCreateDeductionParams`](./src/resources/benefits/benefits.ts) |
+| Response | [`BenefitCreateDeductionResponse`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const benefit = await client.benefits.createDeduction({
+  workerId: 'wrk_1234',
+  type: 'medical',
+  calculation: {
+    type: 'fixed_amount',
+    frequency: 'monthly',
+    employeeContribution: {
+      amount: 0,
+      currency: 'USD',
+    },
+    employerContribution: {
+      amount: 0,
+      currency: 'USD',
+    },
+  },
+  effectiveStartDate: '',
+});
+```
+
+### Update Benefit Deduction
+
+Update a benefit deduction. The calculation type cannot change.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitUpdateDeductionParams`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const publicBenefitDeduction = await client.benefits.updateDeduction('pbdg_1234', {});
+```
+
+### Create Retirement Plan
+
+Create a retirement plan for a company on the manual retirement channel.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitCreateRetirementPlanParams`](./src/resources/benefits/benefits.ts) |
+| Response | [`BenefitCreateRetirementPlanResponse`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const benefit = await client.benefits.createRetirementPlan({
+  type: '401k',
+  name: 'x',
+  effectiveStartDate: '',
+});
+```
+
+### Update Retirement Plan
+
+Update a retirement plan for a company on the manual retirement channel.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`BenefitUpdateRetirementPlanParams`](./src/resources/benefits/benefits.ts) |
+
+```ts
+const publicRetirementPlan = await client.benefits.updateRetirementPlan('crpl_1234', {});
+```
+
 ### `Benefits HealthPlans`
 
-Read-only health plans, retirement plans, and payroll benefit deductions.
+Health plan reads and retirement plan and payroll benefit deduction management.
 
 #### List Health Plans
 
@@ -112,7 +193,7 @@ const publicHealthPlan = await client.benefits.healthPlans.get('chpl_1234');
 
 ### `Benefits RetirementPlans`
 
-Read-only health plans, retirement plans, and payroll benefit deductions.
+Health plan reads and retirement plan and payroll benefit deduction management.
 
 #### List Retirement Plans
 
@@ -144,7 +225,7 @@ const publicRetirementPlan = await client.benefits.retirementPlans.get('crpl_123
 
 ### `Benefits Deductions`
 
-Read-only health plans, retirement plans, and payroll benefit deductions.
+Health plan reads and retirement plan and payroll benefit deduction management.
 
 #### List Benefit Deductions
 
@@ -447,7 +528,7 @@ const offer = await client.offers.create({
   compensation: {
     payBasis: 'year',
     payCurrency: 'USD',
-    payRate: 0,
+    payRate: 1,
   },
 });
 ```
@@ -725,7 +806,7 @@ const worker = await client.workers.createEmployee({
     workplaceId: 'wkp_1234',
   },
   compensation: {
-    amount: 0,
+    amount: 1,
     per: 'hour',
   },
 });
@@ -764,6 +845,32 @@ Send or resend the worker invite so they can accept and complete onboarding to W
 
 ```ts
 const worker = await client.workers.invite('wrk_1234');
+```
+
+### Reveal Worker SSNs
+
+Reveal full Social Security numbers for up to 50 workers. Requires the workers:pii read scope. Results preserve request order and use null when a worker has no SSN on file. The request fails if any worker is not found, emits one audit event per worker, and returns Cache-Control: private, no-store.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`WorkerRevealSsnParams`](./src/resources/workers.ts) |
+| Response | [`WorkerRevealSsnResponse`](./src/resources/workers.ts) |
+
+```ts
+const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
+```
+
+### Update Worker
+
+Update a worker and return the updated worker object. Omitted fields remain unchanged. Requires workers:profile write, plus read access to any referenced department, level, or workplace. See individual fields for update restrictions.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`WorkerUpdateParams`](./src/resources/workers.ts) |
+| Response | [`WorkerUpdateResponse`](./src/resources/workers.ts) |
+
+```ts
+const worker = await client.workers.update('wrk_1234', {});
 ```
 
 ## `Workplaces`
@@ -819,4 +926,35 @@ Update an existing workplace.
 
 ```ts
 const workplace = await client.workplaces.update('wkp_1234', {});
+```
+
+## `I9Verifications`
+
+Read company I-9 verification metadata, including retained forms, without exposing form contents.
+
+### List I-9 verifications
+
+List current and retained company I-9 verifications in all workflow states, newest first. The API key must have workers profile and compliance read scope.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`I9VerificationListParams`](./src/resources/i9-verifications.ts) |
+| Response | [`I9VerificationListResponse`](./src/resources/i9-verifications.ts) |
+
+```ts
+const i9Verification = await client.i9Verifications.list({
+  limit: 'limit',
+});
+```
+
+### Get I-9 verification
+
+Get a specific I-9 verification by its id. The API key must have workers profile and compliance read scope.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`I9VerificationRetrieveResponse`](./src/resources/i9-verifications.ts) |
+
+```ts
+const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
 ```

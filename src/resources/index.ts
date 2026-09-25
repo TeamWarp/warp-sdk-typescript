@@ -1,6 +1,14 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 export { Benefits } from './benefits/benefits';
+export type {
+  BenefitCreateDeductionParams,
+  BenefitCreateDeductionResponse,
+  BenefitUpdateDeductionParams,
+  BenefitCreateRetirementPlanParams,
+  BenefitCreateRetirementPlanResponse,
+  BenefitUpdateRetirementPlanParams,
+} from './benefits/benefits';
 export { CustomFields } from './custom-fields';
 export type {
   PublicCustomFieldValueOutput,
@@ -158,6 +166,10 @@ export type {
   WorkerCreateContractorParams,
   WorkerCreateContractorResponse,
   WorkerInviteResponse,
+  WorkerRevealSsnParams,
+  WorkerRevealSsnResponse,
+  WorkerUpdateParams,
+  WorkerUpdateResponse,
 } from './workers';
 export { Workplaces } from './workplaces';
 export type {
@@ -168,6 +180,12 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
+export { I9Verifications } from './i9-verifications';
+export type {
+  I9VerificationListParams,
+  I9VerificationListResponse,
+  I9VerificationRetrieveResponse,
+} from './i9-verifications';
 export { Webhooks } from './webhooks';
 export type {
   OfferAcceptedWebhookEvent,

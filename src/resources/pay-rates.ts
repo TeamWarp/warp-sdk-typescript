@@ -163,10 +163,12 @@ export type PublicPayRatePer = 'year' | 'month' | 'week' | 'hour';
 export interface PayRateListParams {
   limit: string | null;
   /**
+   * The tag of the pay rate.
    * @pattern ^pyr_
    */
   afterId?: string | null;
   /**
+   * The tag of the pay rate.
    * @pattern ^pyr_
    */
   beforeId?: string | null;
