@@ -36,12 +36,25 @@ const client = new Warp({
   apiKey: process.env['WARP_API_KEY'], // defaults to the WARP_API_KEY env var
 });
 
-const healthPlan = await client.benefits.healthPlans.list({
-  limit: 'limit',
-  statuses: ['active'],
+const benefit = await client.benefits.createDeduction({
+  workerId: 'wrk_1234',
+  type: 'medical',
+  calculation: {
+    type: 'fixed_amount',
+    frequency: 'monthly',
+    employeeContribution: {
+      amount: 0,
+      currency: 'USD',
+    },
+    employerContribution: {
+      amount: 0,
+      currency: 'USD',
+    },
+  },
+  effectiveStartDate: '',
 });
 
-console.log(healthPlan);
+console.log(benefit);
 ```
 
 Method names, parameter shapes, and response types are generated from the API description — do not guess them. Look up the exact call signature in [api.md](./api.md) before writing a call.
@@ -54,9 +67,22 @@ Non-success responses throw generated API errors. Error objects expose status, h
 import { APIError } from 'warp-hr';
 
 try {
-  const healthPlan = await client.benefits.healthPlans.list({
-    limit: 'limit',
-    statuses: ['active'],
+  const benefit = await client.benefits.createDeduction({
+    workerId: 'wrk_1234',
+    type: 'medical',
+    calculation: {
+      type: 'fixed_amount',
+      frequency: 'monthly',
+      employeeContribution: {
+        amount: 0,
+        currency: 'USD',
+      },
+      employerContribution: {
+        amount: 0,
+        currency: 'USD',
+      },
+    },
+    effectiveStartDate: '',
   });
 } catch (err) {
   if (err instanceof APIError) {

@@ -26,7 +26,15 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
-import { Benefits } from './resources/benefits/benefits';
+import {
+  Benefits,
+  type BenefitCreateDeductionResponse,
+  type BenefitCreateRetirementPlanResponse,
+  type BenefitCreateDeductionParams,
+  type BenefitUpdateDeductionParams,
+  type BenefitCreateRetirementPlanParams,
+  type BenefitUpdateRetirementPlanParams,
+} from './resources/benefits/benefits';
 import {
   CustomFields,
   type PublicCustomFieldValueOutput,
@@ -181,10 +189,12 @@ import {
   type WorkerCreateContractorResponse,
   type WorkerInviteResponse,
   type WorkerRevealSsnResponse,
+  type WorkerUpdateResponse,
   type WorkerListParams,
   type WorkerCreateEmployeeParams,
   type WorkerCreateContractorParams,
   type WorkerRevealSsnParams,
+  type WorkerUpdateParams,
 } from './resources/workers';
 import {
   Workplaces,
@@ -1052,7 +1062,15 @@ Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
-  export { Benefits as Benefits };
+  export {
+    Benefits as Benefits,
+    type BenefitCreateDeductionResponse as BenefitCreateDeductionResponse,
+    type BenefitCreateRetirementPlanResponse as BenefitCreateRetirementPlanResponse,
+    type BenefitCreateDeductionParams as BenefitCreateDeductionParams,
+    type BenefitUpdateDeductionParams as BenefitUpdateDeductionParams,
+    type BenefitCreateRetirementPlanParams as BenefitCreateRetirementPlanParams,
+    type BenefitUpdateRetirementPlanParams as BenefitUpdateRetirementPlanParams,
+  };
 
   export {
     CustomFields as CustomFields,
@@ -1215,10 +1233,12 @@ export declare namespace Warp {
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,
     type WorkerRevealSsnResponse as WorkerRevealSsnResponse,
+    type WorkerUpdateResponse as WorkerUpdateResponse,
     type WorkerListParams as WorkerListParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
     type WorkerCreateContractorParams as WorkerCreateContractorParams,
     type WorkerRevealSsnParams as WorkerRevealSsnParams,
+    type WorkerUpdateParams as WorkerUpdateParams,
   };
 
   export {

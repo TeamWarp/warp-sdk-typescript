@@ -156,6 +156,23 @@ export class Workers extends APIResource {
   revealSsn(body: WorkerRevealSsnParams, options?: RequestOptions): APIPromise<WorkerRevealSsnResponse> {
     return this._client.post('/v1/workers/reveal_ssn', { body, ...options });
   }
+
+  /**
+   * Update a worker and return the updated worker object. Omitted fields remain unchanged. Requires workers:profile write, plus read access to any referenced department, level, or workplace. See individual fields for update restrictions.
+   *
+   * @param {string} id - The id of the worker.
+   * @param {WorkerUpdateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<WorkerUpdateResponse>} A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   *
+   * @example
+   * ```ts
+   * const worker = await client.workers.update('wrk_1234', {});
+   * ```
+   */
+  update(id: string, body: WorkerUpdateParams, options?: RequestOptions): APIPromise<WorkerUpdateResponse> {
+    return this._client.patch(__scalarPath`/v1/workers/${id}`, { body, ...options });
+  }
 }
 
 /**
@@ -3395,6 +3412,471 @@ export namespace WorkerRevealSsnResponse {
     ssn: string | null;
   }
 }
+
+export interface WorkerUpdateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  firstName?: string;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  lastName?: string;
+  /**
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  preferredName?: string | null;
+  /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+   * @format email
+   */
+  email?: string;
+  /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+   * @format email
+   */
+  workEmail?: string | null;
+  phone?: string;
+  timeZone?: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  dateOfBirth?: string;
+  maritalStatus?: 'married' | 'not_married';
+  biologicalSex?: 'male' | 'female';
+  address?: unknown;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  position?: string;
+  /**
+   * The unique public id of the department
+   * @pattern ^dpt_
+   */
+  departmentId?: string | null;
+  /**
+   * The id of the worker.
+   * @pattern ^wrk_
+   */
+  managerId?: string | null;
+  /**
+   * The unique public id of the job level
+   * @pattern ^jlvl_
+   */
+  levelId?: string | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  startDate?: string;
+  /**
+   * Public workplace identifier
+   * @pattern ^wkp_
+   */
+  workplaceId?: string | null;
+  stateRegistration?: 'self_managed' | 'warp_managed';
+}
+
+export interface WorkerUpdateResponse {
+  /**
+   * The id of the worker.
+   * @pattern ^wrk_
+   */
+  id: string;
+  position: string;
+  type: 'employee' | 'contractor';
+  status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  startDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  endDate: string | null;
+  isBusiness: boolean | null;
+  businessName: string | null;
+  firstName: string;
+  lastName: string;
+  /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+   * @format email
+   */
+  email: string;
+  /**
+   * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+   * @format email
+   */
+  workEmail: string | null;
+  preferredName: string | null;
+  /**
+   * The worker's biological sex, or null when unavailable.
+   */
+  biologicalSex: 'male' | 'female' | null;
+  /**
+   * The worker's marital status, or null when unavailable.
+   */
+  maritalStatus: 'married' | 'not_married' | null;
+  /**
+   * The worker's date of birth, or null when unavailable.
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  dateOfBirth: string | null;
+  /**
+   * The worker's personal phone number, or null when unavailable.
+   */
+  phone: string | null;
+  /**
+   * The worker's home address, or null when unavailable.
+   */
+  address: WorkerUpdateResponse.Address | null;
+  /**
+   * The "ui" name of a worker. If it's a business contractor business name is used. Otherwise we default to preferred name, then first-last.
+   */
+  displayName: string;
+  /**
+   * The IANA timezone of the worker (e.g., America/New_York).
+   */
+  timeZone: string | null;
+  /**
+   * The department the worker belongs to, or null if unassigned.
+   */
+  department: WorkerUpdateResponse.Department | null;
+  /**
+   * The primary workplace the worker is assigned to, or null if unassigned.
+   */
+  primaryWorkplace: WorkerUpdateResponse.PrimaryWorkplace | null;
+  /**
+   * The date the worker was most recently reactivated after an offboarding. This is distinct from startDate and is null if the worker has not been rehired.
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  latestRehireDate: string | null;
+  /**
+   * The reason the worker was terminated, or null when no termination reason is recorded.
+   */
+  terminationReason: string | null;
+  updatedAt: string;
+  /**
+   * The worker's current regular compensation, or the rate effective on a future start date. Null when the worker has no applicable regular pay rate or the API key lacks the corresponding compensation read scope.
+   */
+  compensation: PublicWorkerCompensation | null;
+  /**
+   * The worker's manager, or null if unassigned.
+   */
+  manager?: WorkerUpdateResponse.Manager | null;
+  /**
+   * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
+   */
+  level?: WorkerUpdateResponse.Level | null;
+  /**
+   * The worker's custom field values. Every active company custom field appears; fields outside this API key's permission scopes are redacted (value null, redacted true) rather than omitted, so the list is identical across keys. Empty when the company has no custom fields.
+   */
+  customFields?: Array<PublicWorkerCustomField> | null;
+}
+
+export namespace WorkerUpdateResponse {
+  export interface Address {
+    line1: string;
+    line2: string | null;
+    city: string;
+    state: string | null;
+    postalCode: string | null;
+    country:
+      | 'AD'
+      | 'AE'
+      | 'AF'
+      | 'AG'
+      | 'AI'
+      | 'AL'
+      | 'AM'
+      | 'AO'
+      | 'AQ'
+      | 'AR'
+      | 'AS'
+      | 'AT'
+      | 'AU'
+      | 'AW'
+      | 'AX'
+      | 'AZ'
+      | 'BA'
+      | 'BB'
+      | 'BD'
+      | 'BE'
+      | 'BF'
+      | 'BG'
+      | 'BH'
+      | 'BI'
+      | 'BJ'
+      | 'BL'
+      | 'BM'
+      | 'BN'
+      | 'BO'
+      | 'BQ'
+      | 'BR'
+      | 'BS'
+      | 'BT'
+      | 'BV'
+      | 'BW'
+      | 'BY'
+      | 'BZ'
+      | 'CA'
+      | 'CC'
+      | 'CD'
+      | 'CF'
+      | 'CG'
+      | 'CH'
+      | 'CI'
+      | 'CK'
+      | 'CL'
+      | 'CM'
+      | 'CN'
+      | 'CO'
+      | 'CR'
+      | 'CU'
+      | 'CV'
+      | 'CW'
+      | 'CX'
+      | 'CY'
+      | 'CZ'
+      | 'DE'
+      | 'DJ'
+      | 'DK'
+      | 'DM'
+      | 'DO'
+      | 'DZ'
+      | 'EC'
+      | 'EE'
+      | 'EG'
+      | 'EH'
+      | 'ER'
+      | 'ES'
+      | 'ET'
+      | 'FI'
+      | 'FJ'
+      | 'FK'
+      | 'FM'
+      | 'FO'
+      | 'FR'
+      | 'GA'
+      | 'GB'
+      | 'GD'
+      | 'GE'
+      | 'GF'
+      | 'GG'
+      | 'GH'
+      | 'GI'
+      | 'GL'
+      | 'GM'
+      | 'GN'
+      | 'GP'
+      | 'GQ'
+      | 'GR'
+      | 'GS'
+      | 'GT'
+      | 'GU'
+      | 'GW'
+      | 'GY'
+      | 'HK'
+      | 'HM'
+      | 'HN'
+      | 'HR'
+      | 'HT'
+      | 'HU'
+      | 'ID'
+      | 'IE'
+      | 'IL'
+      | 'IM'
+      | 'IN'
+      | 'IO'
+      | 'IQ'
+      | 'IR'
+      | 'IS'
+      | 'IT'
+      | 'JE'
+      | 'JM'
+      | 'JO'
+      | 'JP'
+      | 'KE'
+      | 'KG'
+      | 'KH'
+      | 'KI'
+      | 'KM'
+      | 'KN'
+      | 'KP'
+      | 'KR'
+      | 'KW'
+      | 'KY'
+      | 'KZ'
+      | 'LA'
+      | 'LB'
+      | 'LC'
+      | 'LI'
+      | 'LK'
+      | 'LR'
+      | 'LS'
+      | 'LT'
+      | 'LU'
+      | 'LV'
+      | 'LY'
+      | 'MA'
+      | 'MC'
+      | 'MD'
+      | 'ME'
+      | 'MF'
+      | 'MG'
+      | 'MH'
+      | 'MK'
+      | 'ML'
+      | 'MM'
+      | 'MN'
+      | 'MO'
+      | 'MP'
+      | 'MQ'
+      | 'MR'
+      | 'MS'
+      | 'MT'
+      | 'MU'
+      | 'MV'
+      | 'MW'
+      | 'MX'
+      | 'MY'
+      | 'MZ'
+      | 'NA'
+      | 'NC'
+      | 'NE'
+      | 'NF'
+      | 'NG'
+      | 'NI'
+      | 'NL'
+      | 'NO'
+      | 'NP'
+      | 'NR'
+      | 'NU'
+      | 'NZ'
+      | 'OM'
+      | 'PA'
+      | 'PE'
+      | 'PF'
+      | 'PG'
+      | 'PH'
+      | 'PK'
+      | 'PL'
+      | 'PM'
+      | 'PN'
+      | 'PR'
+      | 'PS'
+      | 'PT'
+      | 'PW'
+      | 'PY'
+      | 'QA'
+      | 'RE'
+      | 'RO'
+      | 'RS'
+      | 'RU'
+      | 'RW'
+      | 'SA'
+      | 'SB'
+      | 'SC'
+      | 'SD'
+      | 'SE'
+      | 'SG'
+      | 'SH'
+      | 'SI'
+      | 'SJ'
+      | 'SK'
+      | 'SL'
+      | 'SM'
+      | 'SN'
+      | 'SO'
+      | 'SR'
+      | 'SS'
+      | 'ST'
+      | 'SV'
+      | 'SX'
+      | 'SY'
+      | 'SZ'
+      | 'TC'
+      | 'TD'
+      | 'TF'
+      | 'TG'
+      | 'TH'
+      | 'TJ'
+      | 'TK'
+      | 'TL'
+      | 'TM'
+      | 'TN'
+      | 'TO'
+      | 'TR'
+      | 'TT'
+      | 'TV'
+      | 'TW'
+      | 'TZ'
+      | 'UA'
+      | 'UG'
+      | 'UM'
+      | 'US'
+      | 'UY'
+      | 'UZ'
+      | 'VA'
+      | 'VC'
+      | 'VE'
+      | 'VG'
+      | 'VI'
+      | 'VN'
+      | 'VU'
+      | 'WF'
+      | 'WS'
+      | 'XK'
+      | 'YE'
+      | 'YT'
+      | 'ZA'
+      | 'ZM'
+      | 'ZW';
+  }
+
+  export interface Department {
+    /**
+     * The unique public id of the department
+     * @pattern ^dpt_
+     */
+    id: string;
+    name: string;
+  }
+
+  export interface PrimaryWorkplace {
+    /**
+     * Public workplace identifier
+     * @pattern ^wkp_
+     */
+    id: string;
+    name: string;
+    type: 'remote' | 'office';
+  }
+
+  export interface Manager {
+    /**
+     * The id of the worker.
+     * @pattern ^wrk_
+     */
+    id: string;
+    firstName: string;
+    lastName: string;
+    displayName: string;
+  }
+
+  export interface Level {
+    /**
+     * The unique public id of the job level
+     * @pattern ^jlvl_
+     */
+    id: string;
+    code: string;
+    name: string;
+    track: 'ic' | 'manager' | 'executive';
+  }
+}
 export declare namespace Workers {
   export {
     type PublicWorkerCompensation as PublicWorkerCompensation,
@@ -3413,9 +3895,11 @@ export declare namespace Workers {
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,
     type WorkerRevealSsnResponse as WorkerRevealSsnResponse,
+    type WorkerUpdateResponse as WorkerUpdateResponse,
     type WorkerListParams as WorkerListParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
     type WorkerCreateContractorParams as WorkerCreateContractorParams,
     type WorkerRevealSsnParams as WorkerRevealSsnParams,
+    type WorkerUpdateParams as WorkerUpdateParams,
   };
 }
