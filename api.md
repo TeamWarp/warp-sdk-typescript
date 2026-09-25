@@ -84,7 +84,7 @@ const client = new Warp({
 
 ### `Benefits HealthPlans`
 
-Read-only health plans, retirement plans, and payroll benefit deductions.
+Health plan reads and retirement plan and payroll benefit deduction management.
 
 #### List Health Plans
 
@@ -116,7 +116,7 @@ const publicHealthPlan = await client.benefits.healthPlans.get('chpl_1234');
 
 ### `Benefits RetirementPlans`
 
-Read-only health plans, retirement plans, and payroll benefit deductions.
+Health plan reads and retirement plan and payroll benefit deduction management.
 
 #### List Retirement Plans
 
@@ -148,7 +148,7 @@ const publicRetirementPlan = await client.benefits.retirementPlans.get('crpl_123
 
 ### `Benefits Deductions`
 
-Read-only health plans, retirement plans, and payroll benefit deductions.
+Health plan reads and retirement plan and payroll benefit deduction management.
 
 #### List Benefit Deductions
 
