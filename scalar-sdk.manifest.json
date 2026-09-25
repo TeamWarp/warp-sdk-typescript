@@ -4636,6 +4636,65 @@
       }
     },
     {
+      "name": "worker_not_found_error_encoded",
+      "source": "worker_not_found_error_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "WorkerNotFoundError"
+              ],
+              "names": [
+                "WorkerNotFoundError"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "wrk_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^wrk_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "custom_field_already_exists_error_encoded",
       "source": "custom_field_already_exists_error_encoded",
       "publicAliases": [],
@@ -14796,65 +14855,6 @@
                   "kind": "null"
                 }
               ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "worker_not_found_error_encoded",
-      "source": "worker_not_found_error_encoded",
-      "publicAliases": [],
-      "deprecated": false,
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "_tag",
-            "publicName": "_tag",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "enum",
-              "values": [
-                "WorkerNotFoundError"
-              ],
-              "names": [
-                "WorkerNotFoundError"
-              ],
-              "deprecations": [
-                false
-              ]
-            }
-          },
-          {
-            "name": "id",
-            "publicName": "id",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "wrk_1234"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string",
-              "validation": {
-                "pattern": "^wrk_"
-              }
-            }
-          },
-          {
-            "name": "message",
-            "publicName": "message",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "string"
             }
           }
         ],
