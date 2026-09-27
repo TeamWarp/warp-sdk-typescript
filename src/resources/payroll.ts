@@ -658,7 +658,7 @@ export interface PublicFundingPayrollTotals {
  */
 export interface PublicCurrencyMoneyAmount11 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -673,7 +673,7 @@ export interface PublicCurrencyMoneyAmount11 {
  */
 export interface PublicCurrencyMoneyAmount {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -688,7 +688,7 @@ export interface PublicCurrencyMoneyAmount {
  */
 export interface PublicCurrencyMoneyAmount1 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -703,7 +703,7 @@ export interface PublicCurrencyMoneyAmount1 {
  */
 export interface PublicCurrencyMoneyAmount2 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -718,7 +718,7 @@ export interface PublicCurrencyMoneyAmount2 {
  */
 export interface PublicCurrencyMoneyAmount3 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -733,7 +733,7 @@ export interface PublicCurrencyMoneyAmount3 {
  */
 export interface PublicCurrencyMoneyAmount4 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -748,7 +748,7 @@ export interface PublicCurrencyMoneyAmount4 {
  */
 export interface PublicCurrencyMoneyAmount5 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -763,7 +763,7 @@ export interface PublicCurrencyMoneyAmount5 {
  */
 export interface PublicCurrencyMoneyAmount6 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -778,7 +778,7 @@ export interface PublicCurrencyMoneyAmount6 {
  */
 export interface PublicCurrencyMoneyAmount7 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -793,7 +793,7 @@ export interface PublicCurrencyMoneyAmount7 {
  */
 export interface PublicCurrencyMoneyAmount8 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -808,7 +808,7 @@ export interface PublicCurrencyMoneyAmount8 {
  */
 export interface PublicCurrencyMoneyAmount9 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -823,7 +823,7 @@ export interface PublicCurrencyMoneyAmount9 {
  */
 export interface PublicCurrencyMoneyAmount10 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -894,7 +894,7 @@ export type PublicExchangeRateValue = string;
  */
 export interface PublicPayrollMoneyAmount {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -919,7 +919,7 @@ export interface PublicHourlyRate {
  */
 export interface PublicPayrollMoneyAmount1 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -940,7 +940,7 @@ export type PublicPaycheckDeductionTaxTreatment = 'pre_tax' | 'post_tax';
  */
 export interface PublicPayrollMoneyAmount2 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -956,7 +956,7 @@ export interface PublicPayrollMoneyAmount2 {
  */
 export interface PublicPayrollMoneyAmount3 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -972,7 +972,7 @@ export interface PublicPayrollMoneyAmount3 {
  */
 export interface PublicPayrollMoneyAmount4 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -993,7 +993,7 @@ export type PublicTaxPayer = 'worker' | 'employer';
  */
 export interface PublicPayrollMoneyAmount5 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1020,7 +1020,7 @@ export interface PublicPaycheckSummaryCurrencyTotals {
  */
 export interface PublicCurrencyMoneyAmount13 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1035,7 +1035,7 @@ export interface PublicCurrencyMoneyAmount13 {
  */
 export interface PublicCurrencyMoneyAmount12 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1050,7 +1050,7 @@ export interface PublicCurrencyMoneyAmount12 {
  */
 export interface PublicCurrencyMoneyAmount14 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1065,7 +1065,7 @@ export interface PublicCurrencyMoneyAmount14 {
  */
 export interface PublicCurrencyMoneyAmount15 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1080,7 +1080,7 @@ export interface PublicCurrencyMoneyAmount15 {
  */
 export interface PublicCurrencyMoneyAmount16 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1095,7 +1095,7 @@ export interface PublicCurrencyMoneyAmount16 {
  */
 export interface PublicCurrencyMoneyAmount17 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1110,7 +1110,7 @@ export interface PublicCurrencyMoneyAmount17 {
  */
 export interface PublicCurrencyMoneyAmount18 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1125,7 +1125,7 @@ export interface PublicCurrencyMoneyAmount18 {
  */
 export interface PublicCurrencyMoneyAmount19 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
@@ -1140,7 +1140,7 @@ export interface PublicCurrencyMoneyAmount19 {
  */
 export interface PublicCurrencyMoneyAmount20 {
   /**
-   * The amount in ISO 4217 minor units. For USD, 300000 represents $3,000.00.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;

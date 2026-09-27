@@ -230,7 +230,7 @@ export namespace BenefitCreateDeductionParams {
   export namespace FixedAmountBenefitInput {
     export interface EmployeeContribution {
       /**
-       * Amount in the currency base unit, e.g. cents for USD.
+       * minor units — cents, e.g. 2345 for $23.45
        * @minimum 0
        */
       amount: number;
@@ -300,7 +300,7 @@ export namespace BenefitCreateDeductionParams {
 
     export interface EmployerContribution {
       /**
-       * Amount in the currency base unit, e.g. cents for USD.
+       * minor units — cents, e.g. 2345 for $23.45
        * @minimum 0
        */
       amount: number;
@@ -522,7 +522,7 @@ export namespace BenefitUpdateDeductionParams {
   export namespace FixedAmountBenefitInput {
     export interface EmployeeContribution {
       /**
-       * Amount in the currency base unit, e.g. cents for USD.
+       * minor units — cents, e.g. 2345 for $23.45
        * @minimum 0
        */
       amount: number;
@@ -592,7 +592,7 @@ export namespace BenefitUpdateDeductionParams {
 
     export interface EmployerContribution {
       /**
-       * Amount in the currency base unit, e.g. cents for USD.
+       * minor units — cents, e.g. 2345 for $23.45
        * @minimum 0
        */
       amount: number;

@@ -120,7 +120,7 @@ export class Offers extends APIResource {
  */
 export interface PublicMoneyAmount {
   /**
-   * Amount in the currency base unit, e.g. cents for USD.
+   * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
    */
   amount: number;
