@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.33.3",
+  "generatorVersion": "0.35.2",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -4725,6 +4725,115 @@
           false,
           false,
           false
+        ]
+      }
+    },
+    {
+      "name": "benefit_plan_input",
+      "source": "benefit_plan_input",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "union",
+            "variants": [
+              {
+                "kind": "object",
+                "properties": [
+                  {
+                    "name": "type",
+                    "publicName": "type",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "enum",
+                      "values": [
+                        "health_plan"
+                      ],
+                      "names": [
+                        "HealthPlan"
+                      ],
+                      "deprecations": [
+                        false
+                      ]
+                    }
+                  },
+                  {
+                    "name": "id",
+                    "publicName": "id",
+                    "required": true,
+                    "deprecated": false,
+                    "extensions": {
+                      "source": [
+                        "examples"
+                      ],
+                      "examples": "chpl_1234"
+                    },
+                    "type": {
+                      "kind": "primitive",
+                      "type": "string",
+                      "validation": {
+                        "pattern": "^chpl_"
+                      }
+                    }
+                  }
+                ],
+                "additionalProperties": false
+              },
+              {
+                "kind": "object",
+                "properties": [
+                  {
+                    "name": "type",
+                    "publicName": "type",
+                    "required": true,
+                    "deprecated": false,
+                    "type": {
+                      "kind": "enum",
+                      "values": [
+                        "retirement_plan"
+                      ],
+                      "names": [
+                        "RetirementPlan"
+                      ],
+                      "deprecations": [
+                        false
+                      ]
+                    }
+                  },
+                  {
+                    "name": "id",
+                    "publicName": "id",
+                    "required": true,
+                    "deprecated": false,
+                    "extensions": {
+                      "source": [
+                        "examples"
+                      ],
+                      "examples": "crpl_1234"
+                    },
+                    "type": {
+                      "kind": "primitive",
+                      "type": "string",
+                      "validation": {
+                        "pattern": "^crpl_"
+                      }
+                    }
+                  }
+                ],
+                "additionalProperties": false
+              }
+            ],
+            "variantNames": [
+              null,
+              null
+            ]
+          },
+          {
+            "kind": "null"
+          }
         ]
       }
     },
