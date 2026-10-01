@@ -3361,7 +3361,8 @@
                         "authorized_users",
                         "billing",
                         "settings",
-                        "developer"
+                        "developer",
+                        "ai_spend"
                       ],
                       "names": [
                         "WorkersProfile",
@@ -3394,9 +3395,11 @@
                         "AuthorizedUsers",
                         "Billing",
                         "Settings",
-                        "Developer"
+                        "Developer",
+                        "AiSpend"
                       ],
                       "deprecations": [
+                        false,
                         false,
                         false,
                         false,
