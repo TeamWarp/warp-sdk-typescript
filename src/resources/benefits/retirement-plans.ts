@@ -92,10 +92,12 @@ export type PublicRetirementPlanStatus = 'active' | 'terminated';
 export interface RetirementPlanListParams {
   limit: string | null;
   /**
+   * The tag of a company retirement plan.
    * @pattern ^crpl_
    */
   afterId?: string | null;
   /**
+   * The tag of a company retirement plan.
    * @pattern ^crpl_
    */
   beforeId?: string | null;

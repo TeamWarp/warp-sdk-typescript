@@ -14,6 +14,7 @@ import {
   formatRequestDetails,
   loggerFor,
   parseLogLevel,
+  redactUrl,
   type LogLevel,
   type Logger,
 } from './internal/utils/log';
@@ -25,7 +26,15 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
-import { Benefits } from './resources/benefits/benefits';
+import {
+  Benefits,
+  type BenefitCreateDeductionResponse,
+  type BenefitCreateRetirementPlanResponse,
+  type BenefitCreateDeductionParams,
+  type BenefitUpdateDeductionParams,
+  type BenefitCreateRetirementPlanParams,
+  type BenefitUpdateRetirementPlanParams,
+} from './resources/benefits/benefits';
 import {
   CustomFields,
   type PublicCustomFieldValueOutput,
@@ -179,9 +188,13 @@ import {
   type WorkerCreateEmployeeResponse,
   type WorkerCreateContractorResponse,
   type WorkerInviteResponse,
+  type WorkerRevealSsnResponse,
+  type WorkerUpdateResponse,
   type WorkerListParams,
   type WorkerCreateEmployeeParams,
   type WorkerCreateContractorParams,
+  type WorkerRevealSsnParams,
+  type WorkerUpdateParams,
 } from './resources/workers';
 import {
   Workplaces,
@@ -192,6 +205,12 @@ import {
   type WorkplaceCreateParams,
   type WorkplaceUpdateParams,
 } from './resources/workplaces';
+import {
+  I9Verifications,
+  type I9VerificationListResponse,
+  type I9VerificationRetrieveResponse,
+  type I9VerificationListParams,
+} from './resources/i9-verifications';
 import {
   Webhooks,
   type OfferAcceptedWebhookEvent,
@@ -419,7 +438,7 @@ export class Warp {
   }
 
   private getUserAgent(): string {
-    return `${this.constructor.name}/JS ${VERSION}`;
+    return `Warp/JS ${VERSION}`;
   }
 
   protected defaultIdempotencyKey(): string {
@@ -605,7 +624,7 @@ export class Warp {
       throw new Errors.APIConnectionError({ cause: response });
     }
 
-    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${
+    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${redactUrl(url)} ${
       response.ok ? 'succeeded' : 'failed'
     } with status ${response.status} in ${headersTime - startTime}ms`;
 
@@ -682,7 +701,8 @@ export class Warp {
   ): Promise<Response> {
     const { signal, method, ...options } = init || {};
     const abort = this._makeAbort(controller);
-    if (signal) signal.addEventListener('abort', abort, { once: true });
+    if (signal?.aborted) abort();
+    else if (signal) signal.addEventListener('abort', abort, { once: true });
 
     const timeout = setTimeout(abort, ms);
 
@@ -1023,6 +1043,7 @@ export class Warp {
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
+  i9Verifications: I9Verifications = new I9Verifications(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
@@ -1036,11 +1057,20 @@ Warp.Payroll = Payroll;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
+Warp.I9Verifications = I9Verifications;
 Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
-  export { Benefits as Benefits };
+  export {
+    Benefits as Benefits,
+    type BenefitCreateDeductionResponse as BenefitCreateDeductionResponse,
+    type BenefitCreateRetirementPlanResponse as BenefitCreateRetirementPlanResponse,
+    type BenefitCreateDeductionParams as BenefitCreateDeductionParams,
+    type BenefitUpdateDeductionParams as BenefitUpdateDeductionParams,
+    type BenefitCreateRetirementPlanParams as BenefitCreateRetirementPlanParams,
+    type BenefitUpdateRetirementPlanParams as BenefitUpdateRetirementPlanParams,
+  };
 
   export {
     CustomFields as CustomFields,
@@ -1202,9 +1232,13 @@ export declare namespace Warp {
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,
+    type WorkerRevealSsnResponse as WorkerRevealSsnResponse,
+    type WorkerUpdateResponse as WorkerUpdateResponse,
     type WorkerListParams as WorkerListParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
     type WorkerCreateContractorParams as WorkerCreateContractorParams,
+    type WorkerRevealSsnParams as WorkerRevealSsnParams,
+    type WorkerUpdateParams as WorkerUpdateParams,
   };
 
   export {
@@ -1215,6 +1249,13 @@ export declare namespace Warp {
     type WorkplaceListParams as WorkplaceListParams,
     type WorkplaceCreateParams as WorkplaceCreateParams,
     type WorkplaceUpdateParams as WorkplaceUpdateParams,
+  };
+
+  export {
+    I9Verifications as I9Verifications,
+    type I9VerificationListResponse as I9VerificationListResponse,
+    type I9VerificationRetrieveResponse as I9VerificationRetrieveResponse,
+    type I9VerificationListParams as I9VerificationListParams,
   };
 
   export {

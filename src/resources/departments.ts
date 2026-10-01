@@ -67,10 +67,12 @@ export class Departments extends APIResource {
 export interface DepartmentListParams {
   limit: string | null;
   /**
+   * The unique public id of the department
    * @pattern ^dpt_
    */
   afterId?: string | null;
   /**
+   * The unique public id of the department
    * @pattern ^dpt_
    */
   beforeId?: string | null;

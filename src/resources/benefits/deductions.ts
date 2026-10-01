@@ -315,10 +315,12 @@ export interface PercentageContribution {
 export interface DeductionListParams {
   limit: string | null;
   /**
+   * The version-group tag of a payroll benefit deduction. Stable across edits.
    * @pattern ^pbdg_
    */
   afterId?: string | null;
   /**
+   * The version-group tag of a payroll benefit deduction. Stable across edits.
    * @pattern ^pbdg_
    */
   beforeId?: string | null;

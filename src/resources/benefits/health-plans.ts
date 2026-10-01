@@ -110,10 +110,12 @@ export type PublicHealthPlanStatus = 'active' | 'terminated';
 export interface HealthPlanListParams {
   limit: string | null;
   /**
+   * The tag of a company health plan.
    * @pattern ^chpl_
    */
   afterId?: string | null;
   /**
+   * The tag of a company health plan.
    * @pattern ^chpl_
    */
   beforeId?: string | null;

@@ -1,6 +1,14 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 export { Benefits } from './benefits';
+export type {
+  BenefitCreateDeductionParams,
+  BenefitCreateDeductionResponse,
+  BenefitUpdateDeductionParams,
+  BenefitCreateRetirementPlanParams,
+  BenefitCreateRetirementPlanResponse,
+  BenefitUpdateRetirementPlanParams,
+} from './benefits';
 export { HealthPlans } from './health-plans';
 export type {
   PublicHealthPlan,
