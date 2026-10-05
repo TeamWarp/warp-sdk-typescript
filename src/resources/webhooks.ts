@@ -1250,6 +1250,416 @@ export namespace OfferSentWebhookEvent {
   }
 }
 
+export interface OfferSignatureRequestedWebhookEvent {
+  /**
+   * Unique event identifier (format: `<objectTag>:<uuid>`). Stable across retries.
+   */
+  id: string;
+  /**
+   * The event type.
+   */
+  type: 'offer.signature_requested';
+  /**
+   * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
+   */
+  timestamp: string;
+  data: OfferSignatureRequestedWebhookEvent.Data;
+}
+
+export namespace OfferSignatureRequestedWebhookEvent {
+  export interface Data {
+    /**
+     * The tag of the offer.
+     * @pattern ^offr_
+     */
+    id: string;
+    status: 'draft' | 'sent' | 'accepted' | 'void';
+    workerType: 'employee' | 'us_contractor' | 'global_contractor';
+    candidate: Data.Candidate;
+    position: Data.Position;
+    department: Data.Department | null;
+    workplace: Data.Workplace | null;
+    manager: Data.Manager | null;
+    /**
+     * Display name of the person or company that sent the offer. Null for offers not yet sent.
+     */
+    sentBy: string | null;
+    compensation: Data.Compensation;
+    /**
+     * The candidate-facing offer portal URL. Null for offers that have not been sent.
+     */
+    offerUrl: string | null;
+    expirationTime: string | null;
+    lastViewedAt: string | null;
+    createdAt: string;
+    /**
+     * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
+     */
+    level?: Data.Level | null;
+  }
+
+  export namespace Data {
+    export interface Candidate {
+      firstName: string;
+      lastName: string;
+      /**
+       * An email with a reasonably valid regex (based on RFC 5321 atext characters)
+       * @format email
+       */
+      email: string;
+      contractorDetails: Candidate.ContractorDetails | null;
+    }
+
+    export namespace Candidate {
+      export interface ContractorDetails {
+        isBusiness: boolean;
+        legalBusinessName: string | null;
+      }
+    }
+
+    export interface Position {
+      title: string;
+      /**
+       * @pattern ^\d{4}-\d{2}-\d{2}$
+       */
+      startDate: string;
+      country:
+        | 'AD'
+        | 'AE'
+        | 'AF'
+        | 'AG'
+        | 'AI'
+        | 'AL'
+        | 'AM'
+        | 'AO'
+        | 'AQ'
+        | 'AR'
+        | 'AS'
+        | 'AT'
+        | 'AU'
+        | 'AW'
+        | 'AX'
+        | 'AZ'
+        | 'BA'
+        | 'BB'
+        | 'BD'
+        | 'BE'
+        | 'BF'
+        | 'BG'
+        | 'BH'
+        | 'BI'
+        | 'BJ'
+        | 'BL'
+        | 'BM'
+        | 'BN'
+        | 'BO'
+        | 'BQ'
+        | 'BR'
+        | 'BS'
+        | 'BT'
+        | 'BV'
+        | 'BW'
+        | 'BY'
+        | 'BZ'
+        | 'CA'
+        | 'CC'
+        | 'CD'
+        | 'CF'
+        | 'CG'
+        | 'CH'
+        | 'CI'
+        | 'CK'
+        | 'CL'
+        | 'CM'
+        | 'CN'
+        | 'CO'
+        | 'CR'
+        | 'CU'
+        | 'CV'
+        | 'CW'
+        | 'CX'
+        | 'CY'
+        | 'CZ'
+        | 'DE'
+        | 'DJ'
+        | 'DK'
+        | 'DM'
+        | 'DO'
+        | 'DZ'
+        | 'EC'
+        | 'EE'
+        | 'EG'
+        | 'EH'
+        | 'ER'
+        | 'ES'
+        | 'ET'
+        | 'FI'
+        | 'FJ'
+        | 'FK'
+        | 'FM'
+        | 'FO'
+        | 'FR'
+        | 'GA'
+        | 'GB'
+        | 'GD'
+        | 'GE'
+        | 'GF'
+        | 'GG'
+        | 'GH'
+        | 'GI'
+        | 'GL'
+        | 'GM'
+        | 'GN'
+        | 'GP'
+        | 'GQ'
+        | 'GR'
+        | 'GS'
+        | 'GT'
+        | 'GU'
+        | 'GW'
+        | 'GY'
+        | 'HK'
+        | 'HM'
+        | 'HN'
+        | 'HR'
+        | 'HT'
+        | 'HU'
+        | 'ID'
+        | 'IE'
+        | 'IL'
+        | 'IM'
+        | 'IN'
+        | 'IO'
+        | 'IQ'
+        | 'IR'
+        | 'IS'
+        | 'IT'
+        | 'JE'
+        | 'JM'
+        | 'JO'
+        | 'JP'
+        | 'KE'
+        | 'KG'
+        | 'KH'
+        | 'KI'
+        | 'KM'
+        | 'KN'
+        | 'KP'
+        | 'KR'
+        | 'KW'
+        | 'KY'
+        | 'KZ'
+        | 'LA'
+        | 'LB'
+        | 'LC'
+        | 'LI'
+        | 'LK'
+        | 'LR'
+        | 'LS'
+        | 'LT'
+        | 'LU'
+        | 'LV'
+        | 'LY'
+        | 'MA'
+        | 'MC'
+        | 'MD'
+        | 'ME'
+        | 'MF'
+        | 'MG'
+        | 'MH'
+        | 'MK'
+        | 'ML'
+        | 'MM'
+        | 'MN'
+        | 'MO'
+        | 'MP'
+        | 'MQ'
+        | 'MR'
+        | 'MS'
+        | 'MT'
+        | 'MU'
+        | 'MV'
+        | 'MW'
+        | 'MX'
+        | 'MY'
+        | 'MZ'
+        | 'NA'
+        | 'NC'
+        | 'NE'
+        | 'NF'
+        | 'NG'
+        | 'NI'
+        | 'NL'
+        | 'NO'
+        | 'NP'
+        | 'NR'
+        | 'NU'
+        | 'NZ'
+        | 'OM'
+        | 'PA'
+        | 'PE'
+        | 'PF'
+        | 'PG'
+        | 'PH'
+        | 'PK'
+        | 'PL'
+        | 'PM'
+        | 'PN'
+        | 'PR'
+        | 'PS'
+        | 'PT'
+        | 'PW'
+        | 'PY'
+        | 'QA'
+        | 'RE'
+        | 'RO'
+        | 'RS'
+        | 'RU'
+        | 'RW'
+        | 'SA'
+        | 'SB'
+        | 'SC'
+        | 'SD'
+        | 'SE'
+        | 'SG'
+        | 'SH'
+        | 'SI'
+        | 'SJ'
+        | 'SK'
+        | 'SL'
+        | 'SM'
+        | 'SN'
+        | 'SO'
+        | 'SR'
+        | 'SS'
+        | 'ST'
+        | 'SV'
+        | 'SX'
+        | 'SY'
+        | 'SZ'
+        | 'TC'
+        | 'TD'
+        | 'TF'
+        | 'TG'
+        | 'TH'
+        | 'TJ'
+        | 'TK'
+        | 'TL'
+        | 'TM'
+        | 'TN'
+        | 'TO'
+        | 'TR'
+        | 'TT'
+        | 'TV'
+        | 'TW'
+        | 'TZ'
+        | 'UA'
+        | 'UG'
+        | 'UM'
+        | 'US'
+        | 'UY'
+        | 'UZ'
+        | 'VA'
+        | 'VC'
+        | 'VE'
+        | 'VG'
+        | 'VI'
+        | 'VN'
+        | 'VU'
+        | 'WF'
+        | 'WS'
+        | 'XK'
+        | 'YE'
+        | 'YT'
+        | 'ZA'
+        | 'ZM'
+        | 'ZW';
+      scopeOfWork: string | null;
+    }
+
+    export interface Department {
+      /**
+       * The unique public id of the department
+       * @pattern ^dpt_
+       */
+      id: string;
+      name: string;
+    }
+
+    export interface Workplace {
+      /**
+       * Public workplace identifier
+       * @pattern ^wkp_
+       */
+      id: string;
+      name: string;
+    }
+
+    export interface Manager {
+      /**
+       * The id of the worker.
+       * @pattern ^wrk_
+       */
+      id: string;
+      name: string | null;
+    }
+
+    export interface Compensation {
+      basePay: Compensation.BasePay;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
+      signOnBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      /**
+       * A monetary amount with its currency and server-formatted display value.
+       */
+      relocationBonus: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      stock: Compensation.Stock | null;
+    }
+
+    export namespace Compensation {
+      export interface BasePay {
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
+        amount: PublicMoneyAmountAPI.PublicMoneyAmount;
+        basis: 'year' | 'month' | 'week' | 'hour' | 'variable';
+        type: 'fixed' | 'pay_as_you_go' | null;
+        /**
+         * A monetary amount with its currency and server-formatted display value.
+         */
+        variableRate: PublicMoneyAmountAPI.PublicMoneyAmount | null;
+      }
+
+      export interface Stock {
+        /**
+         * @minimum 0
+         */
+        options: number;
+        /**
+         * @minimum 0
+         */
+        vestingScheduleMonths: number | null;
+        /**
+         * @minimum 0
+         */
+        cliffMonths: number | null;
+      }
+    }
+
+    export interface Level {
+      /**
+       * The unique public id of the job level
+       * @pattern ^jlvl_
+       */
+      id: string;
+      code: string;
+      name: string;
+      track: 'ic' | 'manager' | 'executive';
+    }
+  }
+}
+
 export interface OfferViewedWebhookEvent {
   /**
    * Unique event identifier (format: `<objectTag>:<uuid>`). Stable across retries.
@@ -5999,6 +6409,7 @@ export type ParsedWebhookEvent =
   | OfferAcceptedWebhookEvent
   | OfferCreatedWebhookEvent
   | OfferSentWebhookEvent
+  | OfferSignatureRequestedWebhookEvent
   | OfferViewedWebhookEvent
   | OfferVoidedWebhookEvent
   | TimeOffBalanceAdjustedWebhookEvent
@@ -6020,6 +6431,7 @@ export declare namespace Webhooks {
     type OfferAcceptedWebhookEvent as OfferAcceptedWebhookEvent,
     type OfferCreatedWebhookEvent as OfferCreatedWebhookEvent,
     type OfferSentWebhookEvent as OfferSentWebhookEvent,
+    type OfferSignatureRequestedWebhookEvent as OfferSignatureRequestedWebhookEvent,
     type OfferViewedWebhookEvent as OfferViewedWebhookEvent,
     type OfferVoidedWebhookEvent as OfferVoidedWebhookEvent,
     type TimeOffBalanceAdjustedWebhookEvent as TimeOffBalanceAdjustedWebhookEvent,

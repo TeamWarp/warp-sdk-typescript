@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.36.0",
+  "generatorVersion": "0.36.1",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -27040,6 +27040,13 @@
       "source": "webhook",
       "method": "POST",
       "path": "offer.created"
+    },
+    {
+      "event": "offer.signature_requested",
+      "name": "OfferSignatureRequested",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer.signature_requested"
     },
     {
       "event": "offer.sent",
