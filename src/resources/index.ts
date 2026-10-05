@@ -191,6 +191,7 @@ export type {
   OfferAcceptedWebhookEvent,
   OfferCreatedWebhookEvent,
   OfferSentWebhookEvent,
+  OfferSignatureRequestedWebhookEvent,
   OfferViewedWebhookEvent,
   OfferVoidedWebhookEvent,
   TimeOffBalanceAdjustedWebhookEvent,
