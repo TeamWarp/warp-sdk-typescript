@@ -176,6 +176,8 @@ export type {
   OfferSignatureRequestedWebhookEvent,
   OfferViewedWebhookEvent,
   OfferVoidedWebhookEvent,
+  PayRateCreatedWebhookEvent,
+  PayRateDeletedWebhookEvent,
   TimeOffBalanceAdjustedWebhookEvent,
   TimeOffRequestCreatedWebhookEvent,
   TimeOffRequestDeletedWebhookEvent,

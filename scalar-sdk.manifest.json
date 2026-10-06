@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.36.1",
+  "generatorVersion": "0.36.3",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -27075,6 +27075,20 @@
       "source": "webhook",
       "method": "POST",
       "path": "offer.voided"
+    },
+    {
+      "event": "pay_rate.created",
+      "name": "PayRateCreated",
+      "source": "webhook",
+      "method": "POST",
+      "path": "pay_rate.created"
+    },
+    {
+      "event": "pay_rate.deleted",
+      "name": "PayRateDeleted",
+      "source": "webhook",
+      "method": "POST",
+      "path": "pay_rate.deleted"
     }
   ]
 }
