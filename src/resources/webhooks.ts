@@ -2480,6 +2480,76 @@ export namespace OfferVoidedWebhookEvent {
   }
 }
 
+export interface PayRateCreatedWebhookEvent {
+  /**
+   * Unique event identifier (format: `<objectTag>:<uuid>`). Stable across retries.
+   */
+  id: string;
+  /**
+   * The event type.
+   */
+  type: 'pay_rate.created';
+  /**
+   * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
+   */
+  timestamp: string;
+  data: PayRateCreatedWebhookEvent.Data;
+}
+
+export namespace PayRateCreatedWebhookEvent {
+  export interface Data {
+    /**
+     * The fixed pay-rate id, or null when the event represents a variable-pay boundary with no row.
+     * @pattern ^pyr_
+     */
+    id: string | null;
+    /**
+     * The worker whose regular pay-rate timeline changed.
+     * @pattern ^wrk_
+     */
+    workerId: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    effectiveDate: string;
+  }
+}
+
+export interface PayRateDeletedWebhookEvent {
+  /**
+   * Unique event identifier (format: `<objectTag>:<uuid>`). Stable across retries.
+   */
+  id: string;
+  /**
+   * The event type.
+   */
+  type: 'pay_rate.deleted';
+  /**
+   * ISO 8601 timestamp of when the event occurred. Unchanged across retries.
+   */
+  timestamp: string;
+  data: PayRateDeletedWebhookEvent.Data;
+}
+
+export namespace PayRateDeletedWebhookEvent {
+  export interface Data {
+    /**
+     * The fixed pay-rate id, or null when the event represents a variable-pay boundary with no row.
+     * @pattern ^pyr_
+     */
+    id: string | null;
+    /**
+     * The worker whose regular pay-rate timeline changed.
+     * @pattern ^wrk_
+     */
+    workerId: string;
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    effectiveDate: string;
+  }
+}
+
 export interface TimeOffBalanceAdjustedWebhookEvent {
   /**
    * Unique event identifier (format: `<objectTag>:<uuid>`). Stable across retries.
@@ -6412,6 +6482,8 @@ export type ParsedWebhookEvent =
   | OfferSignatureRequestedWebhookEvent
   | OfferViewedWebhookEvent
   | OfferVoidedWebhookEvent
+  | PayRateCreatedWebhookEvent
+  | PayRateDeletedWebhookEvent
   | TimeOffBalanceAdjustedWebhookEvent
   | TimeOffRequestCreatedWebhookEvent
   | TimeOffRequestDeletedWebhookEvent
@@ -6434,6 +6506,8 @@ export declare namespace Webhooks {
     type OfferSignatureRequestedWebhookEvent as OfferSignatureRequestedWebhookEvent,
     type OfferViewedWebhookEvent as OfferViewedWebhookEvent,
     type OfferVoidedWebhookEvent as OfferVoidedWebhookEvent,
+    type PayRateCreatedWebhookEvent as PayRateCreatedWebhookEvent,
+    type PayRateDeletedWebhookEvent as PayRateDeletedWebhookEvent,
     type TimeOffBalanceAdjustedWebhookEvent as TimeOffBalanceAdjustedWebhookEvent,
     type TimeOffRequestCreatedWebhookEvent as TimeOffRequestCreatedWebhookEvent,
     type TimeOffRequestDeletedWebhookEvent as TimeOffRequestDeletedWebhookEvent,
