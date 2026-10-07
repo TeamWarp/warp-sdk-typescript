@@ -849,6 +849,7 @@ export namespace WorkerListResponse {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -1249,6 +1250,7 @@ export interface WorkerGetResponse {
   position: string;
   type: 'employee' | 'contractor';
   status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  benefitEligible: boolean;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -1801,6 +1803,7 @@ export interface WorkerCreateEmployeeResponse {
   position: string;
   type: 'employee' | 'contractor';
   status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  benefitEligible: boolean;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -2596,6 +2599,7 @@ export interface WorkerCreateContractorResponse {
   position: string;
   type: 'employee' | 'contractor';
   status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  benefitEligible: boolean;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -2995,6 +2999,7 @@ export interface WorkerInviteResponse {
   position: string;
   type: 'employee' | 'contractor';
   status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  benefitEligible: boolean;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
@@ -3488,6 +3493,7 @@ export interface WorkerUpdateResponse {
   position: string;
   type: 'employee' | 'contractor';
   status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+  benefitEligible: boolean;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
