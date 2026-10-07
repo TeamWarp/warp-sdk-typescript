@@ -2724,6 +2724,7 @@ export namespace WorkerCreatedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -3144,6 +3145,7 @@ export namespace WorkerDeletedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -3564,6 +3566,7 @@ export namespace WorkerInviteAcceptedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -3984,6 +3987,7 @@ export namespace WorkerInviteSentWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -4404,6 +4408,7 @@ export namespace WorkerOffboardedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -4824,6 +4829,7 @@ export namespace WorkerOffboardingStartedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -5244,6 +5250,7 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -5664,6 +5671,7 @@ export namespace WorkerReactivatedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
@@ -6084,6 +6092,7 @@ export namespace WorkerUpdatedWebhookEvent {
     position: string;
     type: 'employee' | 'contractor';
     status: 'draft' | 'invited' | 'onboarding' | 'active' | 'offboarding' | 'inactive';
+    benefitEligible: boolean;
     /**
      * @pattern ^\d{4}-\d{2}-\d{2}$
      */
