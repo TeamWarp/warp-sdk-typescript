@@ -58,7 +58,16 @@ export interface PublicHealthPlan {
   /**
    * The health coverage type.
    */
-  type: 'medical' | 'dental' | 'vision' | 'life' | 'short_term_disability' | 'long_term_disability';
+  type:
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | 'accident'
+    | 'critical_illness'
+    | 'hospital';
   /**
    * The company-facing plan name.
    */
@@ -120,7 +129,15 @@ export interface HealthPlanListParams {
    */
   beforeId?: string | null;
   types?: Array<
-    'medical' | 'dental' | 'vision' | 'life' | 'short_term_disability' | 'long_term_disability'
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | 'accident'
+    | 'critical_illness'
+    | 'hospital'
   > | null;
   statuses: Array<PublicHealthPlanStatus> | null;
   carrierIds?: Array<string> | null;
