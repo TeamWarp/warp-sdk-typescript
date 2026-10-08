@@ -8507,15 +8507,18 @@
                 "draft",
                 "sent",
                 "accepted",
-                "void"
+                "void",
+                "expired"
               ],
               "names": [
                 "Draft",
                 "Sent",
                 "Accepted",
-                "Void"
+                "Void",
+                "Expired"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -27075,6 +27078,13 @@
       "source": "webhook",
       "method": "POST",
       "path": "offer.voided"
+    },
+    {
+      "event": "offer.expired",
+      "name": "OfferExpired",
+      "source": "webhook",
+      "method": "POST",
+      "path": "offer.expired"
     },
     {
       "event": "pay_rate.created",

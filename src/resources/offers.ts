@@ -204,7 +204,7 @@ export interface OfferListParams {
    * @pattern ^offr_
    */
   beforeId?: string | null;
-  statuses?: Array<'draft' | 'sent' | 'accepted' | 'void'> | null;
+  statuses?: Array<'draft' | 'sent' | 'accepted' | 'void' | 'expired'> | null;
   workerTypes?: Array<'employee' | 'us_contractor' | 'global_contractor'> | null;
   /**
    * An email with a reasonably valid regex (based on RFC 5321 atext characters)
@@ -226,7 +226,7 @@ export namespace OfferListResponse {
      * @pattern ^offr_
      */
     id: string;
-    status: 'draft' | 'sent' | 'accepted' | 'void';
+    status: 'draft' | 'sent' | 'accepted' | 'void' | 'expired';
     workerType: 'employee' | 'us_contractor' | 'global_contractor';
     candidate: Data.Candidate;
     position: Data.Position;
@@ -245,6 +245,14 @@ export namespace OfferListResponse {
     expirationTime: string | null;
     lastViewedAt: string | null;
     createdAt: string;
+    /**
+     * The reason the offer was voided. Null for offers that have not been voided.
+     */
+    voidReason?: 'replaced' | 'candidate_declined' | 'other' | null;
+    /**
+     * Additional notes explaining why the offer was voided.
+     */
+    voidNotes?: string | null;
     /**
      * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -1045,7 +1053,7 @@ export interface OfferCreateResponse {
    * @pattern ^offr_
    */
   id: string;
-  status: 'draft' | 'sent' | 'accepted' | 'void';
+  status: 'draft' | 'sent' | 'accepted' | 'void' | 'expired';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferCreateResponse.Candidate;
   position: OfferCreateResponse.Position;
@@ -1064,6 +1072,14 @@ export interface OfferCreateResponse {
   expirationTime: string | null;
   lastViewedAt: string | null;
   createdAt: string;
+  /**
+   * The reason the offer was voided. Null for offers that have not been voided.
+   */
+  voidReason?: 'replaced' | 'candidate_declined' | 'other' | null;
+  /**
+   * Additional notes explaining why the offer was voided.
+   */
+  voidNotes?: string | null;
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1442,7 +1458,7 @@ export interface OfferVoidResponse {
    * @pattern ^offr_
    */
   id: string;
-  status: 'draft' | 'sent' | 'accepted' | 'void';
+  status: 'draft' | 'sent' | 'accepted' | 'void' | 'expired';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferVoidResponse.Candidate;
   position: OfferVoidResponse.Position;
@@ -1461,6 +1477,14 @@ export interface OfferVoidResponse {
   expirationTime: string | null;
   lastViewedAt: string | null;
   createdAt: string;
+  /**
+   * The reason the offer was voided. Null for offers that have not been voided.
+   */
+  voidReason?: 'replaced' | 'candidate_declined' | 'other' | null;
+  /**
+   * Additional notes explaining why the offer was voided.
+   */
+  voidNotes?: string | null;
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1838,7 +1862,7 @@ export interface OfferExtendDeadlineResponse {
    * @pattern ^offr_
    */
   id: string;
-  status: 'draft' | 'sent' | 'accepted' | 'void';
+  status: 'draft' | 'sent' | 'accepted' | 'void' | 'expired';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferExtendDeadlineResponse.Candidate;
   position: OfferExtendDeadlineResponse.Position;
@@ -1857,6 +1881,14 @@ export interface OfferExtendDeadlineResponse {
   expirationTime: string | null;
   lastViewedAt: string | null;
   createdAt: string;
+  /**
+   * The reason the offer was voided. Null for offers that have not been voided.
+   */
+  voidReason?: 'replaced' | 'candidate_declined' | 'other' | null;
+  /**
+   * Additional notes explaining why the offer was voided.
+   */
+  voidNotes?: string | null;
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2230,7 +2262,7 @@ export interface OfferResendResponse {
    * @pattern ^offr_
    */
   id: string;
-  status: 'draft' | 'sent' | 'accepted' | 'void';
+  status: 'draft' | 'sent' | 'accepted' | 'void' | 'expired';
   workerType: 'employee' | 'us_contractor' | 'global_contractor';
   candidate: OfferResendResponse.Candidate;
   position: OfferResendResponse.Position;
@@ -2249,6 +2281,14 @@ export interface OfferResendResponse {
   expirationTime: string | null;
   lastViewedAt: string | null;
   createdAt: string;
+  /**
+   * The reason the offer was voided. Null for offers that have not been voided.
+   */
+  voidReason?: 'replaced' | 'candidate_declined' | 'other' | null;
+  /**
+   * Additional notes explaining why the offer was voided.
+   */
+  voidNotes?: string | null;
   /**
    * The offer's job level, or null if unassigned. Omitted when job levels are not enabled.
    */

@@ -172,6 +172,7 @@ export type {
   I9VerificationRetrieveResponse,
   OfferAcceptedWebhookEvent,
   OfferCreatedWebhookEvent,
+  OfferExpiredWebhookEvent,
   OfferSentWebhookEvent,
   OfferSignatureRequestedWebhookEvent,
   OfferViewedWebhookEvent,
