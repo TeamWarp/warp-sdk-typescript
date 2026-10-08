@@ -190,6 +190,7 @@ export { Webhooks } from './webhooks';
 export type {
   OfferAcceptedWebhookEvent,
   OfferCreatedWebhookEvent,
+  OfferExpiredWebhookEvent,
   OfferSentWebhookEvent,
   OfferSignatureRequestedWebhookEvent,
   OfferViewedWebhookEvent,
