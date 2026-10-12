@@ -1,12 +1,20 @@
 name: Release Please
 
 on:
-  # Fires when a human merges the platform-managed release PR into main
-  # (the PR's base, so its diff shows the full pending release). Regenerations and
-  # custom-code pushes only touch scalar-next and never run this workflow.
+  # A release is cut when a human merges the platform-managed release PR into
+  # main (the PR's base, so its diff shows the full pending release).
+  # Every other push here runs release-please as well — commits written straight to
+  # this branch included — and cuts nothing, there being no release commit at the tip.
   push:
     branches:
       - main
+    # The Scalar platform pushes these workflow files straight to main to keep them
+    # current between releases; that is bookkeeping, never a release. Running anyway is worse
+    # than pointless on a branch that has not been handed a .release-please-manifest.json yet —
+    # release-please fails the run outright when it cannot read one. A release commit always
+    # rewrites the manifest and the changelog, so this filter can never swallow one.
+    paths-ignore:
+      - '.github/workflows/**'
   # Manual fallback only; nothing in the automated chain depends on dispatch.
   workflow_dispatch:
 
@@ -35,7 +43,7 @@ jobs:
           # credential (so their CI runs without manual approval); this workflow only
           # cuts the tag + GitHub Release once a release PR is merged.
           skip-github-pull-request: true
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         if: ${{ steps.release.outputs.release_created == 'true' }}
         with:
           fetch-depth: 0
@@ -79,10 +87,10 @@ jobs:
       # (never a reusable-workflow call). The release-please job cut the tag earlier in this
       # run; checking it out publishes exactly the released commit, not the branch head that
       # triggered the workflow.
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ needs.release-please.outputs.tag_name }}
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
