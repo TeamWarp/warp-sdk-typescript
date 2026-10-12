@@ -486,7 +486,8 @@ export interface PublicPaycheckEarning {
     | 'non_hourly_regular'
     | 'fixed'
     | 'group_term_life'
-    | 'other_imputed';
+    | 'other_imputed'
+    | '2_percent_shareholder_benefits';
   /**
    * Public workplace identifier
    * @pattern ^wkp_

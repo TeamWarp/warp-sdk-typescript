@@ -13500,7 +13500,8 @@
                 "non_hourly_regular",
                 "fixed",
                 "group_term_life",
-                "other_imputed"
+                "other_imputed",
+                "2_percent_shareholder_benefits"
               ],
               "names": [
                 "Hourly",
@@ -13516,9 +13517,11 @@
                 "NonHourlyRegular",
                 "Fixed",
                 "GroupTermLife",
-                "OtherImputed"
+                "OtherImputed",
+                "_2PercentShareholderBenefits"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
