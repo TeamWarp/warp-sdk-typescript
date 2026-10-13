@@ -26,6 +26,29 @@ export class RetirementPlans extends APIResource {
   }
 
   /**
+   * Create a retirement plan for a company on the manual retirement channel.
+   *
+   * @param {RetirementPlanCreateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<RetirementPlanCreateResponse>} A company retirement plan available through Warp.
+   *
+   * @example
+   * ```ts
+   * const retirementPlan = await client.benefits.retirementPlans.create({
+   *   type: '401k',
+   *   name: 'x',
+   *   effectiveStartDate: '',
+   * });
+   * ```
+   */
+  create(
+    body: RetirementPlanCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<RetirementPlanCreateResponse> {
+    return this._client.post('/v1/benefits/retirement_plans', { body, ...options });
+  }
+
+  /**
    * Get a company retirement plan by id, regardless of status.
    *
    * @param {string} id - The tag of a company retirement plan.
@@ -39,6 +62,27 @@ export class RetirementPlans extends APIResource {
    */
   get(id: string, options?: RequestOptions): APIPromise<PublicRetirementPlan> {
     return this._client.get(__scalarPath`/v1/benefits/retirement_plans/${id}`, options);
+  }
+
+  /**
+   * Update a retirement plan for a company on the manual retirement channel.
+   *
+   * @param {string} id - The tag of a company retirement plan.
+   * @param {RetirementPlanUpdateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<PublicRetirementPlan>} A company retirement plan available through Warp.
+   *
+   * @example
+   * ```ts
+   * const publicRetirementPlan = await client.benefits.retirementPlans.update('crpl_1234', {});
+   * ```
+   */
+  update(
+    id: string,
+    body: RetirementPlanUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<PublicRetirementPlan> {
+    return this._client.patch(__scalarPath`/v1/benefits/retirement_plans/${id}`, { body, ...options });
   }
 }
 
@@ -112,12 +156,78 @@ export interface RetirementPlanListResponse {
   count: number;
   data: Array<PublicRetirementPlan>;
 }
+
+export interface RetirementPlanCreateParams {
+  type: '401k' | 'roth_401k' | '403b' | 'roth_403b' | '457' | 'roth_457' | 'simple_ira' | 'roth_simple_ira';
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  name: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveStartDate: string;
+}
+
+export interface RetirementPlanCreateResponse {
+  /**
+   * The tag of a company retirement plan.
+   * @pattern ^crpl_
+   */
+  id: string;
+  /**
+   * The retirement plan type.
+   */
+  type: '401k' | 'roth_401k' | '403b' | 'roth_403b' | '457' | 'roth_457' | 'simple_ira' | 'roth_simple_ira';
+  /**
+   * The company-facing plan name.
+   */
+  name: string;
+  /**
+   * The system administering the plan. Manual plans are administered by the company outside a connected provider.
+   */
+  provider: PublicRetirementPlanProvider;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveStartDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveEndDate: string | null;
+  /**
+   * The public lifecycle status of a retirement plan.
+   */
+  status: PublicRetirementPlanStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface RetirementPlanUpdateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  name?: string | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveStartDate?: string | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveEndDate?: string | null;
+}
 export declare namespace RetirementPlans {
   export {
     type PublicRetirementPlan as PublicRetirementPlan,
     type PublicRetirementPlanProvider as PublicRetirementPlanProvider,
     type PublicRetirementPlanStatus as PublicRetirementPlanStatus,
     type RetirementPlanListResponse as RetirementPlanListResponse,
+    type RetirementPlanCreateResponse as RetirementPlanCreateResponse,
     type RetirementPlanListParams as RetirementPlanListParams,
+    type RetirementPlanCreateParams as RetirementPlanCreateParams,
+    type RetirementPlanUpdateParams as RetirementPlanUpdateParams,
   };
 }

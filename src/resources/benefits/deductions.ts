@@ -27,6 +27,38 @@ export class Deductions extends APIResource {
   }
 
   /**
+   * Create a benefit deduction for a worker.
+   *
+   * @param {DeductionCreateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<DeductionCreateResponse>} The current version of a stable payroll benefit deduction.
+   *
+   * @example
+   * ```ts
+   * const deduction = await client.benefits.deductions.create({
+   *   workerId: 'wrk_1234',
+   *   type: 'medical',
+   *   calculation: {
+   *     type: 'fixed_amount',
+   *     frequency: 'monthly',
+   *     employeeContribution: {
+   *       amount: 0,
+   *       currency: 'USD',
+   *     },
+   *     employerContribution: {
+   *       amount: 0,
+   *       currency: 'USD',
+   *     },
+   *   },
+   *   effectiveStartDate: '',
+   * });
+   * ```
+   */
+  create(body: DeductionCreateParams, options?: RequestOptions): APIPromise<DeductionCreateResponse> {
+    return this._client.post('/v1/benefits/deductions', { body, ...options });
+  }
+
+  /**
    * Get the current version of a company benefit deduction by id.
    *
    * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
@@ -40,6 +72,27 @@ export class Deductions extends APIResource {
    */
   get(id: string, options?: RequestOptions): APIPromise<PublicBenefitDeduction> {
     return this._client.get(__scalarPath`/v1/benefits/deductions/${id}`, options);
+  }
+
+  /**
+   * Update a benefit deduction. The calculation type cannot change.
+   *
+   * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
+   * @param {DeductionUpdateParams} body - The request body to send.
+   * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
+   * @returns {APIPromise<PublicBenefitDeduction>} The current version of a stable payroll benefit deduction.
+   *
+   * @example
+   * ```ts
+   * const publicBenefitDeduction = await client.benefits.deductions.update('pbdg_1234', {});
+   * ```
+   */
+  update(
+    id: string,
+    body: DeductionUpdateParams,
+    options?: RequestOptions,
+  ): APIPromise<PublicBenefitDeduction> {
+    return this._client.patch(__scalarPath`/v1/benefits/deductions/${id}`, { body, ...options });
   }
 }
 
@@ -368,6 +421,531 @@ export interface DeductionListResponse {
   count: number;
   data: Array<PublicBenefitDeduction>;
 }
+
+export interface DeductionCreateParams {
+  /**
+   * The id of the worker.
+   * @pattern ^wrk_
+   */
+  workerId: string;
+  /**
+   * The payroll deduction type to create.
+   */
+  type:
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | '401k'
+    | 'roth_401k'
+    | '403b'
+    | 'roth_403b'
+    | '457'
+    | 'roth_457'
+    | 'simple_ira'
+    | 'roth_simple_ira'
+    | 'hsa'
+    | 'fsa_medical'
+    | 'fsa_dependent_care'
+    | 'transit'
+    | 'parking'
+    | 'accident'
+    | 'cancer'
+    | 'critical_illness'
+    | 'hospital'
+    | 'medical_other'
+    | 'nqdc'
+    | 'nontaxable_fringe';
+  /**
+   * Both contributions must be supplied.
+   */
+  calculation: DeductionCreateParams.FixedAmountBenefitInput | DeductionCreateParams.PercentageBenefitInput;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveStartDate: string;
+  /**
+   * A matching company plan, or null for a planless deduction.
+   */
+  plan?: DeductionCreateParams.Plan | DeductionCreateParams.Plan2 | null;
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  name?: string | null;
+  recurrence?: 'recurring' | 'one_time' | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveEndDate?: string | null;
+}
+
+export namespace DeductionCreateParams {
+  export interface FixedAmountBenefitInput {
+    type: 'fixed_amount';
+    frequency: 'monthly' | 'per_paycheck' | null;
+    /**
+     * A non-negative amount in cents. Currently only USD is accepted.
+     */
+    employeeContribution: FixedAmountBenefitInput.EmployeeContribution;
+    /**
+     * A non-negative amount in cents. Currently only USD is accepted.
+     */
+    employerContribution: FixedAmountBenefitInput.EmployerContribution;
+  }
+
+  export namespace FixedAmountBenefitInput {
+    export interface EmployeeContribution {
+      /**
+       * minor units — cents, e.g. 2345 for $23.45
+       * @minimum 0
+       */
+      amount: number;
+      currency:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+    }
+
+    export interface EmployerContribution {
+      /**
+       * minor units — cents, e.g. 2345 for $23.45
+       * @minimum 0
+       */
+      amount: number;
+      currency:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+    }
+  }
+
+  export interface PercentageBenefitInput {
+    type: 'percentage';
+    employeeContribution: PercentageBenefitInput.EmployeeContribution;
+    employerContribution: PercentageBenefitInput.EmployerContribution;
+  }
+
+  export namespace PercentageBenefitInput {
+    export interface EmployeeContribution {
+      percentage: number | 'Infinity' | '-Infinity' | 'NaN';
+    }
+
+    export interface EmployerContribution {
+      percentage: number | 'Infinity' | '-Infinity' | 'NaN';
+    }
+  }
+
+  export interface Plan {
+    type: 'health_plan';
+    /**
+     * The tag of a company health plan.
+     * @pattern ^chpl_
+     */
+    id: string;
+  }
+
+  export interface Plan2 {
+    type: 'retirement_plan';
+    /**
+     * The tag of a company retirement plan.
+     * @pattern ^crpl_
+     */
+    id: string;
+  }
+}
+
+export interface DeductionCreateResponse {
+  /**
+   * Stable identifier shared by every internal version of this deduction.
+   * @pattern ^pbdg_
+   */
+  id: string;
+  /**
+   * Basic identifying information for a worker associated with another resource.
+   */
+  worker: PublicWorkerReference;
+  /**
+   * The deduction name shown in payroll and benefits surfaces.
+   */
+  name: string;
+  /**
+   * The broad reporting category. The type field identifies the specific payroll deduction.
+   */
+  category: PublicBenefitDeductionCategory;
+  /**
+   * The specific payroll deduction type within the broader category.
+   */
+  type:
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | '401k'
+    | 'roth_401k'
+    | '403b'
+    | 'roth_403b'
+    | '457'
+    | 'roth_457'
+    | 'hsa'
+    | 'fsa_medical'
+    | 'fsa_dependent_care'
+    | 'transit'
+    | 'parking'
+    | 'accident'
+    | 'cancer'
+    | 'critical_illness'
+    | 'hospital'
+    | 'medical_other'
+    | 'simple_ira'
+    | 'roth_simple_ira'
+    | 'nqdc'
+    | 'nontaxable_fringe'
+    | 'pucc'
+    | 'voluntary'
+    | 'post_tax'
+    | 'other';
+  /**
+   * Whether the deduction recurs or applies once.
+   */
+  recurrence: 'recurring' | 'one_time';
+  /**
+   * The associated benefit plan, or null for a planless payroll deduction.
+   */
+  plan: PublicBenefitDeductionPlan | null;
+  /**
+   * How the employee and employer contributions are calculated.
+   */
+  calculation: PublicBenefitDeductionCalculation;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveStartDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveEndDate: string | null;
+  /**
+   * The public lifecycle status of the current deduction version.
+   */
+  status: PublicBenefitDeductionStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DeductionUpdateParams {
+  /**
+   * @minLength 1
+   * @pattern ^\S[\s\S]*\S$|^\S$|^$
+   */
+  name?: string | null;
+  /**
+   * Both contributions must be supplied.
+   */
+  calculation?:
+    | DeductionUpdateParams.FixedAmountBenefitInput
+    | DeductionUpdateParams.PercentageBenefitInput
+    | null;
+  recurrence?: 'recurring' | 'one_time' | null;
+  status?: 'active' | 'terminated' | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveEndDate?: string | null;
+}
+
+export namespace DeductionUpdateParams {
+  export interface FixedAmountBenefitInput {
+    type: 'fixed_amount';
+    frequency: 'monthly' | 'per_paycheck' | null;
+    /**
+     * A non-negative amount in cents. Currently only USD is accepted.
+     */
+    employeeContribution: FixedAmountBenefitInput.EmployeeContribution;
+    /**
+     * A non-negative amount in cents. Currently only USD is accepted.
+     */
+    employerContribution: FixedAmountBenefitInput.EmployerContribution;
+  }
+
+  export namespace FixedAmountBenefitInput {
+    export interface EmployeeContribution {
+      /**
+       * minor units — cents, e.g. 2345 for $23.45
+       * @minimum 0
+       */
+      amount: number;
+      currency:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+    }
+
+    export interface EmployerContribution {
+      /**
+       * minor units — cents, e.g. 2345 for $23.45
+       * @minimum 0
+       */
+      amount: number;
+      currency:
+        | 'USD'
+        | 'AUD'
+        | 'BGN'
+        | 'BRL'
+        | 'CAD'
+        | 'CHF'
+        | 'CZK'
+        | 'DKK'
+        | 'EUR'
+        | 'GBP'
+        | 'HKD'
+        | 'HUF'
+        | 'IDR'
+        | 'INR'
+        | 'JPY'
+        | 'MYR'
+        | 'NOK'
+        | 'NZD'
+        | 'CNY'
+        | 'PLN'
+        | 'RON'
+        | 'TRY'
+        | 'SEK'
+        | 'SGD'
+        | 'AED'
+        | 'ARS'
+        | 'BDT'
+        | 'BWP'
+        | 'CLP'
+        | 'COP'
+        | 'CRC'
+        | 'EGP'
+        | 'FJD'
+        | 'GEL'
+        | 'GHS'
+        | 'ILS'
+        | 'KES'
+        | 'KRW'
+        | 'LKR'
+        | 'MAD'
+        | 'MXN'
+        | 'NPR'
+        | 'PHP'
+        | 'PKR'
+        | 'THB'
+        | 'UAH'
+        | 'UGX'
+        | 'UYU'
+        | 'VND'
+        | 'ZAR'
+        | 'ZMW'
+        | 'TND'
+        | 'NGN'
+        | 'RSD'
+        | 'TWD'
+        | 'GTQ'
+        | 'HNL'
+        | 'DOP'
+        | 'SAR'
+        | 'XAF'
+        | 'PEN';
+    }
+  }
+
+  export interface PercentageBenefitInput {
+    type: 'percentage';
+    employeeContribution: PercentageBenefitInput.EmployeeContribution;
+    employerContribution: PercentageBenefitInput.EmployerContribution;
+  }
+
+  export namespace PercentageBenefitInput {
+    export interface EmployeeContribution {
+      percentage: number | 'Infinity' | '-Infinity' | 'NaN';
+    }
+
+    export interface EmployerContribution {
+      percentage: number | 'Infinity' | '-Infinity' | 'NaN';
+    }
+  }
+}
 export declare namespace Deductions {
   export {
     type PublicBenefitDeduction as PublicBenefitDeduction,
@@ -382,6 +960,9 @@ export declare namespace Deductions {
     type PercentageBenefitCalculation as PercentageBenefitCalculation,
     type PercentageContribution as PercentageContribution,
     type DeductionListResponse as DeductionListResponse,
+    type DeductionCreateResponse as DeductionCreateResponse,
     type DeductionListParams as DeductionListParams,
+    type DeductionCreateParams as DeductionCreateParams,
+    type DeductionUpdateParams as DeductionUpdateParams,
   };
 }
