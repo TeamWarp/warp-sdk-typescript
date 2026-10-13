@@ -1,14 +1,8 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 export { Benefits } from './benefits/benefits';
-export type {
-  BenefitCreateDeductionParams,
-  BenefitCreateDeductionResponse,
-  BenefitUpdateDeductionParams,
-  BenefitCreateRetirementPlanParams,
-  BenefitCreateRetirementPlanResponse,
-  BenefitUpdateRetirementPlanParams,
-} from './benefits/benefits';
+export { Company } from './company';
+export type { PublicCompany, PublicCompanyAddress, PublicCompanyBusinessType } from './company';
 export { CustomFields } from './custom-fields';
 export type {
   PublicCustomFieldValueOutput,
@@ -47,6 +41,14 @@ export type {
   DepartmentUpdateParams,
   DepartmentUpdateResponse,
 } from './departments';
+export { I9Verifications } from './i9-verifications';
+export type {
+  PublicI9Verification,
+  I9VerificationListParams,
+  I9VerificationListResponse,
+} from './i9-verifications';
+export { BankAccounts } from './bank-accounts';
+export type { PublicBankAccount, BankAccountListParams, BankAccountListResponse } from './bank-accounts';
 export { Levels } from './levels';
 export type { LevelListResponse } from './levels';
 export { Offers } from './offers';
@@ -62,14 +64,14 @@ export type {
   OfferExtendDeadlineResponse,
   OfferResendResponse,
 } from './offers';
-export { PayRates } from './pay-rates';
+export { PayRates } from './pay-rates/pay-rates';
 export type {
   PublicPayRate,
   PublicPayRateType,
   PublicPayRatePer,
   PayRateListParams,
   PayRateListResponse,
-} from './pay-rates';
+} from './pay-rates/pay-rates';
 export { Payroll } from './payroll';
 export type {
   PublicPayrollList,
@@ -148,8 +150,11 @@ export type {
 } from './time-off/time-off';
 export { Workers } from './workers';
 export type {
+  PublicWorkerAddress,
+  PublicWorkerManager,
   PublicWorkerCompensation,
   PublicWorkerCustomField,
+  PublicWorkerSsn,
   PublicTextWorkerCustomField,
   PublicNumberWorkerCustomField,
   PublicDateWorkerCustomField,
@@ -158,18 +163,18 @@ export type {
   PublicPercentageWorkerCustomField,
   PublicSelectWorkerCustomField,
   PublicMultiSelectWorkerCustomField,
+  WorkerUpdateParams,
+  WorkerUpdateResponse,
+  WorkerGetResponse,
+  WorkerRevealSsnParams,
+  WorkerRevealSsnResponse,
   WorkerListParams,
   WorkerListResponse,
-  WorkerGetResponse,
   WorkerCreateEmployeeParams,
   WorkerCreateEmployeeResponse,
   WorkerCreateContractorParams,
   WorkerCreateContractorResponse,
   WorkerInviteResponse,
-  WorkerRevealSsnParams,
-  WorkerRevealSsnResponse,
-  WorkerUpdateParams,
-  WorkerUpdateResponse,
 } from './workers';
 export { Workplaces } from './workplaces';
 export type {
@@ -180,35 +185,29 @@ export type {
   WorkplaceUpdateParams,
   WorkplaceUpdateResponse,
 } from './workplaces';
-export { I9Verifications } from './i9-verifications';
-export type {
-  I9VerificationListParams,
-  I9VerificationListResponse,
-  I9VerificationRetrieveResponse,
-} from './i9-verifications';
 export { Webhooks } from './webhooks';
 export type {
-  OfferAcceptedWebhookEvent,
+  TimeOffRequestCreatedWebhookEvent,
+  TimeOffRequestReviewedWebhookEvent,
+  TimeOffRequestDeletedWebhookEvent,
+  TimeOffBalanceAdjustedWebhookEvent,
+  WorkerCreatedWebhookEvent,
+  WorkerUpdatedWebhookEvent,
+  WorkerDeletedWebhookEvent,
+  WorkerInviteSentWebhookEvent,
+  WorkerInviteAcceptedWebhookEvent,
+  WorkerOnboardingCompletedWebhookEvent,
+  WorkerOffboardingStartedWebhookEvent,
+  WorkerOffboardedWebhookEvent,
+  WorkerReactivatedWebhookEvent,
   OfferCreatedWebhookEvent,
-  OfferExpiredWebhookEvent,
-  OfferSentWebhookEvent,
   OfferSignatureRequestedWebhookEvent,
+  OfferSentWebhookEvent,
   OfferViewedWebhookEvent,
+  OfferAcceptedWebhookEvent,
   OfferVoidedWebhookEvent,
+  OfferExpiredWebhookEvent,
   PayRateCreatedWebhookEvent,
   PayRateDeletedWebhookEvent,
-  TimeOffBalanceAdjustedWebhookEvent,
-  TimeOffRequestCreatedWebhookEvent,
-  TimeOffRequestDeletedWebhookEvent,
-  TimeOffRequestReviewedWebhookEvent,
-  WorkerCreatedWebhookEvent,
-  WorkerDeletedWebhookEvent,
-  WorkerInviteAcceptedWebhookEvent,
-  WorkerInviteSentWebhookEvent,
-  WorkerOffboardedWebhookEvent,
-  WorkerOffboardingStartedWebhookEvent,
-  WorkerOnboardingCompletedWebhookEvent,
-  WorkerReactivatedWebhookEvent,
-  WorkerUpdatedWebhookEvent,
   ParsedWebhookEvent,
 } from './webhooks';

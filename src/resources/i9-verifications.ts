@@ -30,16 +30,48 @@ export class I9Verifications extends APIResource {
    *
    * @param {string} id - The tag of the i9 verification.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<I9VerificationRetrieveResponse>}
+   * @returns {APIPromise<PublicI9Verification>}
    *
    * @example
    * ```ts
-   * const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
+   * const publicI9Verification = await client.i9Verifications.get('i9v_1234');
    * ```
    */
-  retrieve(id: string, options?: RequestOptions): APIPromise<I9VerificationRetrieveResponse> {
+  get(id: string, options?: RequestOptions): APIPromise<PublicI9Verification> {
     return this._client.get(__scalarPath`/v1/i9_verifications/${id}`, options);
   }
+}
+
+/**
+ * I-9 workflow metadata and basic worker information without document contents or file links.
+ */
+export interface PublicI9Verification {
+  /**
+   * The tag of the i9 verification.
+   * @pattern ^i9v_
+   */
+  id: string;
+  /**
+   * Basic identifying information for a worker associated with another resource.
+   */
+  worker: DeductionsAPI.PublicWorkerReference;
+  status: 'not_started' | 'awaiting_worker' | 'awaiting_admin' | 'verified';
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  startDate: string;
+  /**
+   * @format date-time
+   */
+  verifiedAt: string | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  retentionUntil: string | null;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  dueDate: string | null;
 }
 
 export interface I9VerificationListParams {
@@ -69,72 +101,12 @@ export interface I9VerificationListParams {
 export interface I9VerificationListResponse {
   hasMore: boolean;
   count: number;
-  data: Array<I9VerificationListResponse.Data>;
-}
-
-export namespace I9VerificationListResponse {
-  export interface Data {
-    /**
-     * The tag of the i9 verification.
-     * @pattern ^i9v_
-     */
-    id: string;
-    /**
-     * Basic identifying information for a worker associated with another resource.
-     */
-    worker: DeductionsAPI.PublicWorkerReference;
-    status: 'not_started' | 'awaiting_worker' | 'awaiting_admin' | 'verified';
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    startDate: string;
-    /**
-     * @format date-time
-     */
-    verifiedAt: string | null;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    retentionUntil: string | null;
-    /**
-     * @pattern ^\d{4}-\d{2}-\d{2}$
-     */
-    dueDate: string | null;
-  }
-}
-
-export interface I9VerificationRetrieveResponse {
-  /**
-   * The tag of the i9 verification.
-   * @pattern ^i9v_
-   */
-  id: string;
-  /**
-   * Basic identifying information for a worker associated with another resource.
-   */
-  worker: DeductionsAPI.PublicWorkerReference;
-  status: 'not_started' | 'awaiting_worker' | 'awaiting_admin' | 'verified';
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
-  startDate: string;
-  /**
-   * @format date-time
-   */
-  verifiedAt: string | null;
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
-  retentionUntil: string | null;
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
-  dueDate: string | null;
+  data: Array<PublicI9Verification>;
 }
 export declare namespace I9Verifications {
   export {
+    type PublicI9Verification as PublicI9Verification,
     type I9VerificationListResponse as I9VerificationListResponse,
-    type I9VerificationRetrieveResponse as I9VerificationRetrieveResponse,
     type I9VerificationListParams as I9VerificationListParams,
   };
 }

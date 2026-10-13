@@ -1,14 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
 export { Benefits } from './benefits';
-export type {
-  BenefitCreateDeductionParams,
-  BenefitCreateDeductionResponse,
-  BenefitUpdateDeductionParams,
-  BenefitCreateRetirementPlanParams,
-  BenefitCreateRetirementPlanResponse,
-  BenefitUpdateRetirementPlanParams,
-} from './benefits';
 export { HealthPlans } from './health-plans';
 export type {
   PublicHealthPlan,
@@ -24,6 +16,9 @@ export type {
   PublicRetirementPlanStatus,
   RetirementPlanListParams,
   RetirementPlanListResponse,
+  RetirementPlanCreateParams,
+  RetirementPlanCreateResponse,
+  RetirementPlanUpdateParams,
 } from './retirement-plans';
 export { Deductions } from './deductions';
 export type {
@@ -40,4 +35,7 @@ export type {
   PercentageContribution,
   DeductionListParams,
   DeductionListResponse,
+  DeductionCreateParams,
+  DeductionCreateResponse,
+  DeductionUpdateParams,
 } from './deductions';

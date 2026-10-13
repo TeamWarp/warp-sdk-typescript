@@ -26,15 +26,13 @@ import type { HTTPMethod, FinalizedRequestInit, MergedRequestInit, PromiseOrValu
 import { stringifyQuery } from './internal/utils/query';
 import { toFile } from './core/uploads';
 import { VERSION } from './version';
+import { Benefits } from './resources/benefits/benefits';
 import {
-  Benefits,
-  type BenefitCreateDeductionResponse,
-  type BenefitCreateRetirementPlanResponse,
-  type BenefitCreateDeductionParams,
-  type BenefitUpdateDeductionParams,
-  type BenefitCreateRetirementPlanParams,
-  type BenefitUpdateRetirementPlanParams,
-} from './resources/benefits/benefits';
+  Company,
+  type PublicCompany,
+  type PublicCompanyAddress,
+  type PublicCompanyBusinessType,
+} from './resources/company';
 import {
   CustomFields,
   type PublicCustomFieldValueOutput,
@@ -73,6 +71,18 @@ import {
   type DepartmentCreateParams,
   type DepartmentUpdateParams,
 } from './resources/departments';
+import {
+  I9Verifications,
+  type PublicI9Verification,
+  type I9VerificationListResponse,
+  type I9VerificationListParams,
+} from './resources/i9-verifications';
+import {
+  BankAccounts,
+  type PublicBankAccount,
+  type BankAccountListResponse,
+  type BankAccountListParams,
+} from './resources/bank-accounts';
 import { Levels, type LevelListResponse } from './resources/levels';
 import {
   Offers,
@@ -94,7 +104,7 @@ import {
   type PublicPayRatePer,
   type PayRateListResponse,
   type PayRateListParams,
-} from './resources/pay-rates';
+} from './resources/pay-rates/pay-rates';
 import {
   Payroll,
   type PublicPayrollList,
@@ -173,8 +183,11 @@ import {
 } from './resources/time-off/time-off';
 import {
   Workers,
+  type PublicWorkerAddress,
+  type PublicWorkerManager,
   type PublicWorkerCompensation,
   type PublicWorkerCustomField,
+  type PublicWorkerSsn,
   type PublicTextWorkerCustomField,
   type PublicNumberWorkerCustomField,
   type PublicDateWorkerCustomField,
@@ -183,18 +196,18 @@ import {
   type PublicPercentageWorkerCustomField,
   type PublicSelectWorkerCustomField,
   type PublicMultiSelectWorkerCustomField,
-  type WorkerListResponse,
+  type WorkerUpdateResponse,
   type WorkerGetResponse,
+  type WorkerRevealSsnResponse,
+  type WorkerListResponse,
   type WorkerCreateEmployeeResponse,
   type WorkerCreateContractorResponse,
   type WorkerInviteResponse,
-  type WorkerRevealSsnResponse,
-  type WorkerUpdateResponse,
+  type WorkerUpdateParams,
+  type WorkerRevealSsnParams,
   type WorkerListParams,
   type WorkerCreateEmployeeParams,
   type WorkerCreateContractorParams,
-  type WorkerRevealSsnParams,
-  type WorkerUpdateParams,
 } from './resources/workers';
 import {
   Workplaces,
@@ -206,35 +219,29 @@ import {
   type WorkplaceUpdateParams,
 } from './resources/workplaces';
 import {
-  I9Verifications,
-  type I9VerificationListResponse,
-  type I9VerificationRetrieveResponse,
-  type I9VerificationListParams,
-} from './resources/i9-verifications';
-import {
   Webhooks,
-  type OfferAcceptedWebhookEvent,
+  type TimeOffRequestCreatedWebhookEvent,
+  type TimeOffRequestReviewedWebhookEvent,
+  type TimeOffRequestDeletedWebhookEvent,
+  type TimeOffBalanceAdjustedWebhookEvent,
+  type WorkerCreatedWebhookEvent,
+  type WorkerUpdatedWebhookEvent,
+  type WorkerDeletedWebhookEvent,
+  type WorkerInviteSentWebhookEvent,
+  type WorkerInviteAcceptedWebhookEvent,
+  type WorkerOnboardingCompletedWebhookEvent,
+  type WorkerOffboardingStartedWebhookEvent,
+  type WorkerOffboardedWebhookEvent,
+  type WorkerReactivatedWebhookEvent,
   type OfferCreatedWebhookEvent,
-  type OfferExpiredWebhookEvent,
-  type OfferSentWebhookEvent,
   type OfferSignatureRequestedWebhookEvent,
+  type OfferSentWebhookEvent,
   type OfferViewedWebhookEvent,
+  type OfferAcceptedWebhookEvent,
   type OfferVoidedWebhookEvent,
+  type OfferExpiredWebhookEvent,
   type PayRateCreatedWebhookEvent,
   type PayRateDeletedWebhookEvent,
-  type TimeOffBalanceAdjustedWebhookEvent,
-  type TimeOffRequestCreatedWebhookEvent,
-  type TimeOffRequestDeletedWebhookEvent,
-  type TimeOffRequestReviewedWebhookEvent,
-  type WorkerCreatedWebhookEvent,
-  type WorkerDeletedWebhookEvent,
-  type WorkerInviteAcceptedWebhookEvent,
-  type WorkerInviteSentWebhookEvent,
-  type WorkerOffboardedWebhookEvent,
-  type WorkerOffboardingStartedWebhookEvent,
-  type WorkerOnboardingCompletedWebhookEvent,
-  type WorkerReactivatedWebhookEvent,
-  type WorkerUpdatedWebhookEvent,
   type ParsedWebhookEvent,
 } from './resources/webhooks';
 
@@ -1040,8 +1047,11 @@ export class Warp {
   static toFile = toFile;
 
   benefits: Benefits = new Benefits(this);
+  company: Company = new Company(this);
   customFields: CustomFields = new CustomFields(this);
   departments: Departments = new Departments(this);
+  i9Verifications: I9Verifications = new I9Verifications(this);
+  bankAccounts: BankAccounts = new BankAccounts(this);
   levels: Levels = new Levels(this);
   offers: Offers = new Offers(this);
   payRates: PayRates = new PayRates(this);
@@ -1049,13 +1059,15 @@ export class Warp {
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
   workplaces: Workplaces = new Workplaces(this);
-  i9Verifications: I9Verifications = new I9Verifications(this);
   webhooks: Webhooks = new Webhooks(this);
 }
 
 Warp.Benefits = Benefits;
+Warp.Company = Company;
 Warp.CustomFields = CustomFields;
 Warp.Departments = Departments;
+Warp.I9Verifications = I9Verifications;
+Warp.BankAccounts = BankAccounts;
 Warp.Levels = Levels;
 Warp.Offers = Offers;
 Warp.PayRates = PayRates;
@@ -1063,19 +1075,17 @@ Warp.Payroll = Payroll;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
 Warp.Workplaces = Workplaces;
-Warp.I9Verifications = I9Verifications;
 Warp.Webhooks = Webhooks;
 
 export declare namespace Warp {
   export type RequestOptions = Opts.RequestOptions;
+  export { Benefits as Benefits };
+
   export {
-    Benefits as Benefits,
-    type BenefitCreateDeductionResponse as BenefitCreateDeductionResponse,
-    type BenefitCreateRetirementPlanResponse as BenefitCreateRetirementPlanResponse,
-    type BenefitCreateDeductionParams as BenefitCreateDeductionParams,
-    type BenefitUpdateDeductionParams as BenefitUpdateDeductionParams,
-    type BenefitCreateRetirementPlanParams as BenefitCreateRetirementPlanParams,
-    type BenefitUpdateRetirementPlanParams as BenefitUpdateRetirementPlanParams,
+    Company as Company,
+    type PublicCompany as PublicCompany,
+    type PublicCompanyAddress as PublicCompanyAddress,
+    type PublicCompanyBusinessType as PublicCompanyBusinessType,
   };
 
   export {
@@ -1116,6 +1126,20 @@ export declare namespace Warp {
     type DepartmentListParams as DepartmentListParams,
     type DepartmentCreateParams as DepartmentCreateParams,
     type DepartmentUpdateParams as DepartmentUpdateParams,
+  };
+
+  export {
+    I9Verifications as I9Verifications,
+    type PublicI9Verification as PublicI9Verification,
+    type I9VerificationListResponse as I9VerificationListResponse,
+    type I9VerificationListParams as I9VerificationListParams,
+  };
+
+  export {
+    BankAccounts as BankAccounts,
+    type PublicBankAccount as PublicBankAccount,
+    type BankAccountListResponse as BankAccountListResponse,
+    type BankAccountListParams as BankAccountListParams,
   };
 
   export { Levels as Levels, type LevelListResponse as LevelListResponse };
@@ -1223,8 +1247,11 @@ export declare namespace Warp {
 
   export {
     Workers as Workers,
+    type PublicWorkerAddress as PublicWorkerAddress,
+    type PublicWorkerManager as PublicWorkerManager,
     type PublicWorkerCompensation as PublicWorkerCompensation,
     type PublicWorkerCustomField as PublicWorkerCustomField,
+    type PublicWorkerSsn as PublicWorkerSsn,
     type PublicTextWorkerCustomField as PublicTextWorkerCustomField,
     type PublicNumberWorkerCustomField as PublicNumberWorkerCustomField,
     type PublicDateWorkerCustomField as PublicDateWorkerCustomField,
@@ -1233,18 +1260,18 @@ export declare namespace Warp {
     type PublicPercentageWorkerCustomField as PublicPercentageWorkerCustomField,
     type PublicSelectWorkerCustomField as PublicSelectWorkerCustomField,
     type PublicMultiSelectWorkerCustomField as PublicMultiSelectWorkerCustomField,
-    type WorkerListResponse as WorkerListResponse,
+    type WorkerUpdateResponse as WorkerUpdateResponse,
     type WorkerGetResponse as WorkerGetResponse,
+    type WorkerRevealSsnResponse as WorkerRevealSsnResponse,
+    type WorkerListResponse as WorkerListResponse,
     type WorkerCreateEmployeeResponse as WorkerCreateEmployeeResponse,
     type WorkerCreateContractorResponse as WorkerCreateContractorResponse,
     type WorkerInviteResponse as WorkerInviteResponse,
-    type WorkerRevealSsnResponse as WorkerRevealSsnResponse,
-    type WorkerUpdateResponse as WorkerUpdateResponse,
+    type WorkerUpdateParams as WorkerUpdateParams,
+    type WorkerRevealSsnParams as WorkerRevealSsnParams,
     type WorkerListParams as WorkerListParams,
     type WorkerCreateEmployeeParams as WorkerCreateEmployeeParams,
     type WorkerCreateContractorParams as WorkerCreateContractorParams,
-    type WorkerRevealSsnParams as WorkerRevealSsnParams,
-    type WorkerUpdateParams as WorkerUpdateParams,
   };
 
   export {
@@ -1258,36 +1285,29 @@ export declare namespace Warp {
   };
 
   export {
-    I9Verifications as I9Verifications,
-    type I9VerificationListResponse as I9VerificationListResponse,
-    type I9VerificationRetrieveResponse as I9VerificationRetrieveResponse,
-    type I9VerificationListParams as I9VerificationListParams,
-  };
-
-  export {
     Webhooks as Webhooks,
-    type OfferAcceptedWebhookEvent as OfferAcceptedWebhookEvent,
+    type TimeOffRequestCreatedWebhookEvent as TimeOffRequestCreatedWebhookEvent,
+    type TimeOffRequestReviewedWebhookEvent as TimeOffRequestReviewedWebhookEvent,
+    type TimeOffRequestDeletedWebhookEvent as TimeOffRequestDeletedWebhookEvent,
+    type TimeOffBalanceAdjustedWebhookEvent as TimeOffBalanceAdjustedWebhookEvent,
+    type WorkerCreatedWebhookEvent as WorkerCreatedWebhookEvent,
+    type WorkerUpdatedWebhookEvent as WorkerUpdatedWebhookEvent,
+    type WorkerDeletedWebhookEvent as WorkerDeletedWebhookEvent,
+    type WorkerInviteSentWebhookEvent as WorkerInviteSentWebhookEvent,
+    type WorkerInviteAcceptedWebhookEvent as WorkerInviteAcceptedWebhookEvent,
+    type WorkerOnboardingCompletedWebhookEvent as WorkerOnboardingCompletedWebhookEvent,
+    type WorkerOffboardingStartedWebhookEvent as WorkerOffboardingStartedWebhookEvent,
+    type WorkerOffboardedWebhookEvent as WorkerOffboardedWebhookEvent,
+    type WorkerReactivatedWebhookEvent as WorkerReactivatedWebhookEvent,
     type OfferCreatedWebhookEvent as OfferCreatedWebhookEvent,
-    type OfferExpiredWebhookEvent as OfferExpiredWebhookEvent,
-    type OfferSentWebhookEvent as OfferSentWebhookEvent,
     type OfferSignatureRequestedWebhookEvent as OfferSignatureRequestedWebhookEvent,
+    type OfferSentWebhookEvent as OfferSentWebhookEvent,
     type OfferViewedWebhookEvent as OfferViewedWebhookEvent,
+    type OfferAcceptedWebhookEvent as OfferAcceptedWebhookEvent,
     type OfferVoidedWebhookEvent as OfferVoidedWebhookEvent,
+    type OfferExpiredWebhookEvent as OfferExpiredWebhookEvent,
     type PayRateCreatedWebhookEvent as PayRateCreatedWebhookEvent,
     type PayRateDeletedWebhookEvent as PayRateDeletedWebhookEvent,
-    type TimeOffBalanceAdjustedWebhookEvent as TimeOffBalanceAdjustedWebhookEvent,
-    type TimeOffRequestCreatedWebhookEvent as TimeOffRequestCreatedWebhookEvent,
-    type TimeOffRequestDeletedWebhookEvent as TimeOffRequestDeletedWebhookEvent,
-    type TimeOffRequestReviewedWebhookEvent as TimeOffRequestReviewedWebhookEvent,
-    type WorkerCreatedWebhookEvent as WorkerCreatedWebhookEvent,
-    type WorkerDeletedWebhookEvent as WorkerDeletedWebhookEvent,
-    type WorkerInviteAcceptedWebhookEvent as WorkerInviteAcceptedWebhookEvent,
-    type WorkerInviteSentWebhookEvent as WorkerInviteSentWebhookEvent,
-    type WorkerOffboardedWebhookEvent as WorkerOffboardedWebhookEvent,
-    type WorkerOffboardingStartedWebhookEvent as WorkerOffboardingStartedWebhookEvent,
-    type WorkerOnboardingCompletedWebhookEvent as WorkerOnboardingCompletedWebhookEvent,
-    type WorkerReactivatedWebhookEvent as WorkerReactivatedWebhookEvent,
-    type WorkerUpdatedWebhookEvent as WorkerUpdatedWebhookEvent,
     type ParsedWebhookEvent as ParsedWebhookEvent,
   };
 }

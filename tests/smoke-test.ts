@@ -42,139 +42,6 @@ const cases: {
   run: () => Promise<unknown>;
 }[] = [
   {
-    operation: 'createDeduction',
-    method: 'POST',
-    path: '/v1/benefits/deductions',
-    label: 'required params',
-    run: async () => {
-      const benefit = await client.benefits.createDeduction({
-        workerId: 'wrk_1234',
-        type: 'medical',
-        calculation: {
-          type: 'fixed_amount',
-          frequency: 'monthly',
-          employeeContribution: {
-            amount: 0,
-            currency: 'USD',
-          },
-          employerContribution: {
-            amount: 0,
-            currency: 'USD',
-          },
-        },
-        effectiveStartDate: '',
-      });
-    },
-  },
-
-  {
-    operation: 'createDeduction',
-    method: 'POST',
-    path: '/v1/benefits/deductions',
-    label: 'all params',
-    run: async () => {
-      const benefit = await client.benefits.createDeduction({
-        workerId: 'wrk_1234',
-        type: 'medical',
-        plan: {
-          type: 'health_plan',
-          id: 'chpl_1234',
-        },
-        name: 'x',
-        calculation: {
-          type: 'fixed_amount',
-          frequency: 'monthly',
-          employeeContribution: {
-            amount: 0,
-            currency: 'USD',
-          },
-          employerContribution: {
-            amount: 0,
-            currency: 'USD',
-          },
-        },
-        recurrence: 'recurring',
-        effectiveStartDate: '',
-        effectiveEndDate: '',
-      });
-    },
-  },
-
-  {
-    operation: 'updateDeduction',
-    method: 'PATCH',
-    path: '/v1/benefits/deductions/{id}',
-    label: 'required params',
-    run: async () => {
-      const publicBenefitDeduction = await client.benefits.updateDeduction('pbdg_1234', {});
-    },
-  },
-
-  {
-    operation: 'updateDeduction',
-    method: 'PATCH',
-    path: '/v1/benefits/deductions/{id}',
-    label: 'all params',
-    run: async () => {
-      const publicBenefitDeduction = await client.benefits.updateDeduction('pbdg_1234', {
-        name: 'x',
-        calculation: {
-          type: 'fixed_amount',
-          frequency: 'monthly',
-          employeeContribution: {
-            amount: 0,
-            currency: 'USD',
-          },
-          employerContribution: {
-            amount: 0,
-            currency: 'USD',
-          },
-        },
-        recurrence: 'recurring',
-        status: 'active',
-        effectiveEndDate: '',
-      });
-    },
-  },
-
-  {
-    operation: 'createRetirementPlan',
-    method: 'POST',
-    path: '/v1/benefits/retirement_plans',
-    run: async () => {
-      const benefit = await client.benefits.createRetirementPlan({
-        type: '401k',
-        name: 'x',
-        effectiveStartDate: '',
-      });
-    },
-  },
-
-  {
-    operation: 'updateRetirementPlan',
-    method: 'PATCH',
-    path: '/v1/benefits/retirement_plans/{id}',
-    label: 'required params',
-    run: async () => {
-      const publicRetirementPlan = await client.benefits.updateRetirementPlan('crpl_1234', {});
-    },
-  },
-
-  {
-    operation: 'updateRetirementPlan',
-    method: 'PATCH',
-    path: '/v1/benefits/retirement_plans/{id}',
-    label: 'all params',
-    run: async () => {
-      const publicRetirementPlan = await client.benefits.updateRetirementPlan('crpl_1234', {
-        name: 'x',
-        effectiveStartDate: '',
-        effectiveEndDate: '',
-      });
-    },
-  },
-
-  {
     operation: 'list',
     method: 'GET',
     path: '/v1/benefits/health_plans',
@@ -243,11 +110,48 @@ const cases: {
   },
 
   {
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/benefits/retirement_plans',
+    run: async () => {
+      const retirementPlan = await client.benefits.retirementPlans.create({
+        type: '401k',
+        name: 'x',
+        effectiveStartDate: '',
+      });
+    },
+  },
+
+  {
     operation: 'get',
     method: 'GET',
     path: '/v1/benefits/retirement_plans/{id}',
     run: async () => {
       const publicRetirementPlan = await client.benefits.retirementPlans.get('crpl_1234');
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/benefits/retirement_plans/{id}',
+    label: 'required params',
+    run: async () => {
+      const publicRetirementPlan = await client.benefits.retirementPlans.update('crpl_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/benefits/retirement_plans/{id}',
+    label: 'all params',
+    run: async () => {
+      const publicRetirementPlan = await client.benefits.retirementPlans.update('crpl_1234', {
+        name: 'x',
+        effectiveStartDate: '',
+        effectiveEndDate: '',
+      });
     },
   },
 
@@ -285,11 +189,116 @@ const cases: {
   },
 
   {
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/benefits/deductions',
+    label: 'required params',
+    run: async () => {
+      const deduction = await client.benefits.deductions.create({
+        workerId: 'wrk_1234',
+        type: 'medical',
+        calculation: {
+          type: 'fixed_amount',
+          frequency: 'monthly',
+          employeeContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+          employerContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+        },
+        effectiveStartDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/benefits/deductions',
+    label: 'all params',
+    run: async () => {
+      const deduction = await client.benefits.deductions.create({
+        workerId: 'wrk_1234',
+        type: 'medical',
+        plan: {
+          type: 'health_plan',
+          id: 'chpl_1234',
+        },
+        name: 'x',
+        calculation: {
+          type: 'fixed_amount',
+          frequency: 'monthly',
+          employeeContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+          employerContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+        },
+        recurrence: 'recurring',
+        effectiveStartDate: '',
+        effectiveEndDate: '',
+      });
+    },
+  },
+
+  {
     operation: 'get',
     method: 'GET',
     path: '/v1/benefits/deductions/{id}',
     run: async () => {
       const publicBenefitDeduction = await client.benefits.deductions.get('pbdg_1234');
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/benefits/deductions/{id}',
+    label: 'required params',
+    run: async () => {
+      const publicBenefitDeduction = await client.benefits.deductions.update('pbdg_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/benefits/deductions/{id}',
+    label: 'all params',
+    run: async () => {
+      const publicBenefitDeduction = await client.benefits.deductions.update('pbdg_1234', {
+        name: 'x',
+        calculation: {
+          type: 'fixed_amount',
+          frequency: 'monthly',
+          employeeContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+          employerContribution: {
+            amount: 0,
+            currency: 'USD',
+          },
+        },
+        recurrence: 'recurring',
+        status: 'active',
+        effectiveEndDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/company',
+    run: async () => {
+      const publicCompany = await client.company.list();
     },
   },
 
@@ -568,6 +577,80 @@ const cases: {
   {
     operation: 'list',
     method: 'GET',
+    path: '/v1/i9_verifications',
+    label: 'required params',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/i9_verifications',
+    label: 'all params',
+    run: async () => {
+      const i9Verification = await client.i9Verifications.list({
+        limit: 'limit',
+        afterId: 'i9v_1234',
+        beforeId: 'i9v_1234',
+        workerIds: ['wrk_1234'],
+        statuses: ['not_started'],
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/i9_verifications/{id}',
+    run: async () => {
+      const publicI9Verification = await client.i9Verifications.get('i9v_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/bank_accounts',
+    label: 'required params',
+    run: async () => {
+      const bankAccount = await client.bankAccounts.list({
+        limit: 'limit',
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/bank_accounts',
+    label: 'all params',
+    run: async () => {
+      const bankAccount = await client.bankAccounts.list({
+        limit: 'limit',
+        afterId: 'bank_1234',
+        beforeId: 'bank_1234',
+        workerIds: ['wrk_1234'],
+        statuses: ['verified'],
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/bank_accounts/{id}',
+    run: async () => {
+      const publicBankAccount = await client.bankAccounts.get('bank_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
     path: '/v1/levels',
     run: async () => {
       const level = await client.levels.list();
@@ -750,6 +833,52 @@ const cases: {
   },
 
   {
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/pay_rates/regular',
+    label: 'required params',
+    run: async () => {
+      const publicCreateRegularPayRate = await client.payRates.regular.create({
+        workerId: 'wrk_khac8380c2Lm',
+        type: 'salary',
+        currency: 'USD',
+        effectiveDate: '',
+      });
+    },
+  },
+
+  {
+    operation: 'create',
+    method: 'POST',
+    path: '/v1/pay_rates/regular',
+    label: 'all params',
+    run: async () => {
+      const publicCreateRegularPayRate = await client.payRates.regular.create({
+        workerId: 'wrk_khac8380c2Lm',
+        type: 'salary',
+        amount: 12500000,
+        currency: 'USD',
+        effectiveDate: '',
+        requireHoursSubmission: false,
+        description: '',
+        notes: '',
+      });
+    },
+  },
+
+  {
+    operation: 'delete',
+    method: 'DELETE',
+    path: '/v1/pay_rates/regular',
+    run: async () => {
+      await client.payRates.regular.delete({
+        workerId: 'wrk_khac8380c2Lm',
+        effectiveDate: '',
+      });
+    },
+  },
+
+  {
     operation: 'list',
     method: 'GET',
     path: '/v1/payrolls',
@@ -829,11 +958,11 @@ const cases: {
   },
 
   {
-    operation: 'getPaycheck',
+    operation: 'retrievePaycheck',
     method: 'GET',
     path: '/v1/paychecks/{id}',
     run: async () => {
-      const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
+      const publicPaycheckDetail = await client.payroll.retrievePaycheck('pyc_1234');
     },
   },
 
@@ -964,6 +1093,72 @@ const cases: {
   },
 
   {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/workers/{id}',
+    label: 'required params',
+    run: async () => {
+      const worker = await client.workers.update('wrk_1234', {});
+    },
+  },
+
+  {
+    operation: 'update',
+    method: 'PATCH',
+    path: '/v1/workers/{id}',
+    label: 'all params',
+    run: async () => {
+      const worker = await client.workers.update('wrk_1234', {
+        firstName: 'x',
+        lastName: 'x',
+        preferredName: '',
+        email: 'john@joinwarp.com',
+        workEmail: 'john@joinwarp.com',
+        phone: '',
+        timeZone: 'America/New_York',
+        dateOfBirth: '1990-06-15',
+        maritalStatus: 'married',
+        biologicalSex: 'male',
+        address: {},
+        position: 'x',
+        departmentId: 'dpt_1234',
+        managerId: 'wrk_1234',
+        levelId: 'jlvl_1234',
+        startDate: '',
+        workplaceId: 'wkp_1234',
+        stateRegistration: 'self_managed',
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/workers/{id}',
+    run: async () => {
+      const worker = await client.workers.get('wrk_1234');
+    },
+  },
+
+  {
+    operation: 'delete',
+    method: 'DELETE',
+    path: '/v1/workers/{id}',
+    run: async () => {
+      await client.workers.delete('wrk_1234');
+    },
+  },
+
+  {
+    operation: 'revealSsn',
+    method: 'POST',
+    path: '/v1/workers/reveal_ssn',
+    run: async () => {
+      const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
+    },
+  },
+
+  {
     operation: 'list',
     method: 'GET',
     path: '/v1/workers',
@@ -989,24 +1184,6 @@ const cases: {
         types: ['employee'],
         workEmail: 'workEmail',
       });
-    },
-  },
-
-  {
-    operation: 'get',
-    method: 'GET',
-    path: '/v1/workers/{id}',
-    run: async () => {
-      const worker = await client.workers.get('wrk_1234');
-    },
-  },
-
-  {
-    operation: 'delete',
-    method: 'DELETE',
-    path: '/v1/workers/{id}',
-    run: async () => {
-      await client.workers.delete('wrk_1234');
     },
   },
 
@@ -1128,54 +1305,6 @@ const cases: {
   },
 
   {
-    operation: 'revealSsn',
-    method: 'POST',
-    path: '/v1/workers/reveal_ssn',
-    run: async () => {
-      const worker = await client.workers.revealSsn({ workerIds: ['wrk_khac8380c2Lm', 'wrk_q7Vm2pR9xK4c'] });
-    },
-  },
-
-  {
-    operation: 'update',
-    method: 'PATCH',
-    path: '/v1/workers/{id}',
-    label: 'required params',
-    run: async () => {
-      const worker = await client.workers.update('wrk_1234', {});
-    },
-  },
-
-  {
-    operation: 'update',
-    method: 'PATCH',
-    path: '/v1/workers/{id}',
-    label: 'all params',
-    run: async () => {
-      const worker = await client.workers.update('wrk_1234', {
-        firstName: 'x',
-        lastName: 'x',
-        preferredName: '',
-        email: 'john@joinwarp.com',
-        workEmail: 'john@joinwarp.com',
-        phone: '',
-        timeZone: 'America/New_York',
-        dateOfBirth: '1990-06-15',
-        maritalStatus: 'married',
-        biologicalSex: 'male',
-        address: {},
-        position: 'x',
-        departmentId: 'dpt_1234',
-        managerId: 'wrk_1234',
-        levelId: 'jlvl_1234',
-        startDate: '',
-        workplaceId: 'wkp_1234',
-        stateRegistration: 'self_managed',
-      });
-    },
-  },
-
-  {
     operation: 'list',
     method: 'GET',
     path: '/v1/workplaces',
@@ -1239,43 +1368,6 @@ const cases: {
       const workplace = await client.workplaces.update('wkp_1234', {
         name: '',
       });
-    },
-  },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/i9_verifications',
-    label: 'required params',
-    run: async () => {
-      const i9Verification = await client.i9Verifications.list({
-        limit: 'limit',
-      });
-    },
-  },
-
-  {
-    operation: 'list',
-    method: 'GET',
-    path: '/v1/i9_verifications',
-    label: 'all params',
-    run: async () => {
-      const i9Verification = await client.i9Verifications.list({
-        limit: 'limit',
-        afterId: 'i9v_1234',
-        beforeId: 'i9v_1234',
-        workerIds: ['wrk_1234'],
-        statuses: ['not_started'],
-      });
-    },
-  },
-
-  {
-    operation: 'retrieve',
-    method: 'GET',
-    path: '/v1/i9_verifications/{id}',
-    run: async () => {
-      const i9Verification = await client.i9Verifications.retrieve('i9v_1234');
     },
   },
 ];

@@ -67,10 +67,10 @@ export class Payroll extends APIResource {
    *
    * @example
    * ```ts
-   * const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
+   * const publicPaycheckDetail = await client.payroll.retrievePaycheck('pyc_1234');
    * ```
    */
-  getPaycheck(id: string, options?: RequestOptions): APIPromise<PublicPaycheckDetail> {
+  retrievePaycheck(id: string, options?: RequestOptions): APIPromise<PublicPaycheckDetail> {
     return this._client.get(__scalarPath`/v1/paychecks/${id}`, options);
   }
 }
