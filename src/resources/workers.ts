@@ -184,7 +184,7 @@ export interface PublicWorkerCompensation {
    * @pattern ^pyr_
    */
   payRateId: string;
-  per: PayRatesAPI.PublicPayRatePer & string;
+  per: PayRatesAPI.PublicPayRatePer & unknown;
   /**
    * minor units — cents, e.g. 2345 for $23.45
    * @minimum 0
