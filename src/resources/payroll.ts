@@ -93,15 +93,15 @@ export interface PublicPayrollDetail {
    * @pattern ^pay_
    */
   id: string;
-  type: PublicPayrollType & string;
-  subtype: PublicPayrollSubtype & string;
-  status: PublicPayrollStatus & string;
-  fundingCurrency: PublicPayrollCurrency & string;
+  type: PublicPayrollType & unknown;
+  subtype: PublicPayrollSubtype & unknown;
+  status: PublicPayrollStatus & unknown;
+  fundingCurrency: PublicPayrollCurrency & unknown;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   payday: string;
-  payPeriod: PublicPayPeriod & string;
+  payPeriod: PublicPayPeriod & unknown;
   /**
    * The cadence at which workers are paid.
    */
@@ -112,8 +112,8 @@ export interface PublicPayrollDetail {
    * @minimum 0
    */
   paycheckCount: number;
-  totals: PublicPayrollDetailTotals & string;
-  fundingMethod: PublicPayrollFundingMethod & string;
+  totals: PublicPayrollDetailTotals & unknown;
+  fundingMethod: PublicPayrollFundingMethod & unknown;
   reopenDeadline: string | null;
   timeline: PublicPayrollTimeline & unknown;
 }
@@ -124,7 +124,7 @@ export interface PublicPayrollDetail {
 export interface PublicPaycheckList {
   hasMore: boolean;
   count: number;
-  data: string;
+  data: unknown;
 }
 
 /**
@@ -136,26 +136,26 @@ export interface PublicPaycheckDetail {
    * @pattern ^pyc_
    */
   id: string;
-  payroll: PublicPaycheckPayroll & string;
-  worker: PublicPaycheckWorker & string;
-  status: PublicPaycheckStatus & string;
+  payroll: PublicPaycheckPayroll & unknown;
+  worker: PublicPaycheckWorker & unknown;
+  status: PublicPaycheckStatus & unknown;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   payday: string;
-  paymentMethod: PublicPaycheckPaymentMethod & string;
-  totals: PublicPaycheckDetailTotals & string;
+  paymentMethod: PublicPaycheckPaymentMethod & unknown;
+  totals: PublicPaycheckDetailTotals & unknown;
   description: string | null;
-  exchangeRates: string;
+  exchangeRates: unknown;
   /**
    * @minimum 0
    */
   reportedHours: number | null;
-  earnings: string;
-  reimbursements: string;
-  deductions: string;
-  benefits: string;
-  taxes: string;
+  earnings: unknown;
+  reimbursements: unknown;
+  deductions: unknown;
+  benefits: unknown;
+  taxes: unknown;
 }
 
 /**
@@ -167,15 +167,15 @@ export interface PublicPayrollSummary {
    * @pattern ^pay_
    */
   id: string;
-  type: PublicPayrollType & string;
-  subtype: PublicPayrollSubtype & string;
-  status: PublicPayrollStatus & string;
-  fundingCurrency: PublicPayrollCurrency & string;
+  type: PublicPayrollType & unknown;
+  subtype: PublicPayrollSubtype & unknown;
+  status: PublicPayrollStatus & unknown;
+  fundingCurrency: PublicPayrollCurrency & unknown;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   payday: string;
-  payPeriod: PublicPayPeriod & string;
+  payPeriod: PublicPayPeriod & unknown;
   /**
    * The cadence at which workers are paid.
    */
@@ -186,7 +186,7 @@ export interface PublicPayrollSummary {
    * @minimum 0
    */
   paycheckCount: number;
-  totals: PublicFundingPayrollTotals & string;
+  totals: PublicFundingPayrollTotals & unknown;
 }
 
 /**
@@ -380,15 +380,15 @@ export interface PublicPaycheckSummary {
    * @pattern ^pyc_
    */
   id: string;
-  payroll: PublicPaycheckPayroll & string;
-  worker: PublicPaycheckWorker & string;
-  status: PublicPaycheckStatus & string;
+  payroll: PublicPaycheckPayroll & unknown;
+  worker: PublicPaycheckWorker & unknown;
+  status: PublicPaycheckStatus & unknown;
   /**
    * @pattern ^\d{4}-\d{2}-\d{2}$
    */
   payday: string;
-  paymentMethod: PublicPaycheckPaymentMethod & string;
-  totals: PublicPaycheckSummaryTotals & string;
+  paymentMethod: PublicPaycheckPaymentMethod & unknown;
+  totals: PublicPaycheckSummaryTotals & unknown;
 }
 
 /**
@@ -400,11 +400,11 @@ export interface PublicPaycheckPayroll {
    * @pattern ^pay_
    */
   id: string;
-  type: PublicPayrollType & string;
-  subtype: PublicPayrollSubtype & string;
-  status: PublicPayrollStatus & string;
-  fundingCurrency: PublicPayrollCurrency & string;
-  payPeriod: PublicPayPeriod & string;
+  type: PublicPayrollType & unknown;
+  subtype: PublicPayrollSubtype & unknown;
+  status: PublicPayrollStatus & unknown;
+  fundingCurrency: PublicPayrollCurrency & unknown;
+  payPeriod: PublicPayPeriod & unknown;
   /**
    * The cadence at which workers are paid.
    */
@@ -455,17 +455,17 @@ export type PublicPaycheckPaymentMethod = 'direct_deposit' | 'manual';
  * Detailed paycheck totals in calculation and payroll funding currencies.
  */
 export interface PublicPaycheckDetailTotals {
-  byCurrency: string;
-  inFundingCurrency: PublicPaycheckCurrencyTotals & string;
+  byCurrency: unknown;
+  inFundingCurrency: PublicPaycheckCurrencyTotals & unknown;
 }
 
 /**
  * A directed exchange rate where a fromCurrency major-unit amount multiplied by rate equals its toCurrency equivalent.
  */
 export interface PublicExchangeRate {
-  fromCurrency: PublicPayrollCurrency & string;
-  toCurrency: PublicPayrollCurrency & string;
-  rate: PublicExchangeRateValue & string;
+  fromCurrency: PublicPayrollCurrency & unknown;
+  toCurrency: PublicPayrollCurrency & unknown;
+  rate: PublicExchangeRateValue & unknown;
 }
 
 /**
@@ -523,7 +523,7 @@ export interface PublicPaycheckReimbursement {
  * One non-benefit deduction calculation line. Lines have no durable public identity.
  */
 export interface PublicPaycheckDeduction {
-  taxTreatment: PublicPaycheckDeductionTaxTreatment & string;
+  taxTreatment: PublicPaycheckDeductionTaxTreatment & unknown;
   /**
    * The amount deducted from the worker's pay on this line in the amount's currency.
    */
@@ -596,7 +596,7 @@ export interface PublicPaycheckBenefit {
  * One tax calculation line. Lines have no durable public identity.
  */
 export interface PublicPaycheckTax {
-  payer: PublicTaxPayer & string;
+  payer: PublicTaxPayer & unknown;
   /**
    * The tax amount attributed to the party identified by payer, expressed in the amount's currency.
    */
@@ -838,15 +838,15 @@ export interface PublicCurrencyMoneyAmount10 {
  * Compact paycheck totals in calculation and payroll funding currencies.
  */
 export interface PublicPaycheckSummaryTotals {
-  byCurrency: string;
-  inFundingCurrency: PublicPaycheckSummaryCurrencyTotals & string;
+  byCurrency: unknown;
+  inFundingCurrency: PublicPaycheckSummaryCurrencyTotals & unknown;
 }
 
 /**
  * Paycheck category totals in one currency. Every category is present, including zero-valued categories.
  */
 export interface PublicPaycheckCurrencyTotals {
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * Gross earnings before worker taxes, deductions, and benefit contributions. Reimbursements are reported separately.
    */
@@ -899,7 +899,7 @@ export interface PublicPayrollMoneyAmount {
    * @minimum 0
    */
   amount: number;
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -910,8 +910,8 @@ export interface PublicPayrollMoneyAmount {
  * A non-negative major-unit hourly rate. The earning amount remains authoritative.
  */
 export interface PublicHourlyRate {
-  amount: PublicHourlyRateAmount & string;
-  currency: PublicPayrollCurrency & string;
+  amount: PublicHourlyRateAmount & unknown;
+  currency: PublicPayrollCurrency & unknown;
   per: 'hour';
 }
 
@@ -924,7 +924,7 @@ export interface PublicPayrollMoneyAmount1 {
    * @minimum 0
    */
   amount: number;
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -945,7 +945,7 @@ export interface PublicPayrollMoneyAmount2 {
    * @minimum 0
    */
   amount: number;
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -961,7 +961,7 @@ export interface PublicPayrollMoneyAmount3 {
    * @minimum 0
    */
   amount: number;
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -977,7 +977,7 @@ export interface PublicPayrollMoneyAmount4 {
    * @minimum 0
    */
   amount: number;
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -998,7 +998,7 @@ export interface PublicPayrollMoneyAmount5 {
    * @minimum 0
    */
   amount: number;
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * The server-formatted display string for the amount in its currency.
    */
@@ -1009,7 +1009,7 @@ export interface PublicPayrollMoneyAmount5 {
  * Compact paycheck totals in one calculation currency.
  */
 export interface PublicPaycheckSummaryCurrencyTotals {
-  currency: PublicPayrollCurrency & string;
+  currency: PublicPayrollCurrency & unknown;
   /**
    * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives.
    */

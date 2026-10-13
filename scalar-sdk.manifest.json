@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.36.3",
+  "generatorVersion": "0.36.5",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -1039,8 +1039,7 @@
                   "name": "public_pay_rate_per"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -10313,8 +10312,7 @@
                   "name": "public_payroll_type"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -10332,8 +10330,7 @@
                   "name": "public_payroll_subtype"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -10351,8 +10348,7 @@
                   "name": "public_payroll_status"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -10370,8 +10366,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -10402,8 +10397,7 @@
                   "name": "public_pay_period"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -10500,8 +10494,7 @@
                   "name": "public_funding_payroll_totals"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11278,8 +11271,7 @@
                   "name": "public_payroll_type"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11297,8 +11289,7 @@
                   "name": "public_payroll_subtype"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11316,8 +11307,7 @@
                   "name": "public_payroll_status"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11335,8 +11325,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11367,8 +11356,7 @@
                   "name": "public_pay_period"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11465,8 +11453,7 @@
                   "name": "public_payroll_detail_totals"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11484,8 +11471,7 @@
                   "name": "public_payroll_funding_method"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11727,8 +11713,7 @@
                   "name": "public_payroll_type"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11746,8 +11731,7 @@
                   "name": "public_payroll_subtype"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11765,8 +11749,7 @@
                   "name": "public_payroll_status"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11784,8 +11767,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -11803,8 +11785,7 @@
                   "name": "public_pay_period"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12020,8 +12001,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12089,8 +12069,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12108,8 +12087,7 @@
                   "name": "public_paycheck_summary_currency_totals"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12206,8 +12184,7 @@
                   "name": "public_paycheck_payroll"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12225,8 +12202,7 @@
                   "name": "public_paycheck_worker"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12244,8 +12220,7 @@
                   "name": "public_paycheck_status"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12276,8 +12251,7 @@
                   "name": "public_paycheck_payment_method"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12295,8 +12269,7 @@
                   "name": "public_paycheck_summary_totals"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12396,8 +12369,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -12871,8 +12843,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13156,8 +13127,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13175,8 +13145,7 @@
                   "name": "public_paycheck_currency_totals"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13235,8 +13204,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13254,8 +13222,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13273,8 +13240,7 @@
                   "name": "public_exchange_rate_value"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13327,8 +13293,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13403,8 +13368,7 @@
                   "name": "public_hourly_rate_amount"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13422,8 +13386,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13701,8 +13664,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13861,8 +13823,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -13922,8 +13883,7 @@
                   "name": "public_paycheck_deduction_tax_treatment"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14014,8 +13974,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14084,8 +14043,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14448,8 +14406,7 @@
                   "name": "public_payroll_currency"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14509,8 +14466,7 @@
                   "name": "public_tax_payer"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14798,8 +14754,7 @@
                   "name": "public_paycheck_payroll"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14817,8 +14772,7 @@
                   "name": "public_paycheck_worker"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14836,8 +14790,7 @@
                   "name": "public_paycheck_status"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14868,8 +14821,7 @@
                   "name": "public_paycheck_payment_method"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14887,8 +14839,7 @@
                   "name": "public_paycheck_detail_totals"
                 },
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14920,8 +14871,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14956,8 +14906,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14971,8 +14920,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -14986,8 +14934,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -15001,8 +14948,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
@@ -15016,8 +14962,7 @@
               "kind": "intersection",
               "parts": [
                 {
-                  "kind": "primitive",
-                  "type": "string"
+                  "kind": "unknown"
                 }
               ]
             }
