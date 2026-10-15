@@ -57,6 +57,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
   - [`PayRates Regular`](#payrates-regular)
     - [Create Regular Pay Rate](#create-regular-pay-rate)
     - [Delete Future Regular Pay Rate](#delete-future-regular-pay-rate)
+- [`PaySplits`](#paysplits)
+  - [List pay splits](#list-pay-splits)
+  - [Get pay split](#get-pay-split)
 - [`Payroll`](#payroll)
   - [List Payrolls](#list-payrolls)
   - [Get Payroll](#get-payroll)
@@ -154,10 +157,10 @@ Create a retirement plan for a company on the manual retirement channel.
 | Direction | Type |
 | --- | --- |
 | Request | [`RetirementPlanCreateParams`](./src/resources/benefits/retirement-plans.ts) |
-| Response | [`RetirementPlanCreateResponse`](./src/resources/benefits/retirement-plans.ts) |
+| Response | [`PublicRetirementPlan1`](./src/resources/benefits/retirement-plans.ts) |
 
 ```ts
-const retirementPlan = await client.benefits.retirementPlans.create({
+const publicRetirementPlan1 = await client.benefits.retirementPlans.create({
   type: '401k',
   name: 'x',
   effectiveStartDate: '',
@@ -216,10 +219,10 @@ Create a benefit deduction for a worker.
 | Direction | Type |
 | --- | --- |
 | Request | [`DeductionCreateParams`](./src/resources/benefits/deductions.ts) |
-| Response | [`DeductionCreateResponse`](./src/resources/benefits/deductions.ts) |
+| Response | [`PublicBenefitDeduction1`](./src/resources/benefits/deductions.ts) |
 
 ```ts
-const deduction = await client.benefits.deductions.create({
+const publicBenefitDeduction1 = await client.benefits.deductions.create({
   workerId: 'wrk_1234',
   type: 'medical',
   calculation: {
@@ -729,6 +732,38 @@ await client.payRates.regular.delete({
 });
 ```
 
+## `PaySplits`
+
+Read stored pay-split configurations without changing banking instructions or guaranteeing payroll execution.
+
+### List pay splits
+
+List stored pay-split configurations, newest first. Defaults to active. Requires workers banking and profile read scopes plus the applicable US or global compensation read scope.
+
+| Direction | Type |
+| --- | --- |
+| Request | [`PaySplitListParams`](./src/resources/pay-splits.ts) |
+| Response | [`PaySplitListResponse`](./src/resources/pay-splits.ts) |
+
+```ts
+const paySplit = await client.paySplits.list({
+  limit: 'limit',
+  statuses: ['active'],
+});
+```
+
+### Get pay split
+
+Get a stored pay-split configuration, including retained inactive configurations. Requires workers banking and profile read scopes plus the applicable US or global compensation read scope.
+
+| Direction | Type |
+| --- | --- |
+| Response | [`PublicPaySplit`](./src/resources/pay-splits.ts) |
+
+```ts
+const publicPaySplit = await client.paySplits.get('nps_1234');
+```
+
 ## `Payroll`
 
 Read-only payrolls and worker-level payroll calculations. Paycheck endpoints use one consistent resource for every worker type; payment execution is outside this API.
@@ -784,7 +819,7 @@ Get a paycheck by id. All worker types use the same paycheck schema. Categories 
 | Response | [`PublicPaycheckDetail`](./src/resources/payroll.ts) |
 
 ```ts
-const publicPaycheckDetail = await client.payroll.retrievePaycheck('pyc_1234');
+const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
 ```
 
 ## `TimeOff`

@@ -11040,6 +11040,965 @@
       }
     },
     {
+      "name": "public_pay_split_type",
+      "source": "public_pay_split_type",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "percentage",
+          "amount"
+        ],
+        "names": [
+          "Percentage",
+          "Amount"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_pay_split_status",
+      "source": "public_pay_split_status",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "active",
+          "inactive"
+        ],
+        "names": [
+          "Active",
+          "Inactive"
+        ],
+        "deprecations": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "public_bank_account_reference",
+      "source": "public_bank_account_reference",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "bank_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^bank_"
+              }
+            }
+          },
+          {
+            "name": "institutionName",
+            "publicName": "institutionName",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "accountType",
+            "publicName": "accountType",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "enum",
+                  "values": [
+                    "checking",
+                    "savings"
+                  ],
+                  "names": [
+                    "Checking",
+                    "Savings"
+                  ],
+                  "deprecations": [
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
+            "name": "accountNumberLastFour",
+            "publicName": "accountNumberLastFour",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_split_percentage",
+      "source": "public_pay_split_percentage",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "percentage": 25,
+          "display": "25%"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "percentage",
+            "publicName": "percentage",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "number"
+                },
+                {
+                  "kind": "enum",
+                  "values": [
+                    "Infinity",
+                    "-Infinity",
+                    "NaN"
+                  ],
+                  "names": [
+                    "Infinity",
+                    "Infinity",
+                    "NaN"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false
+                  ]
+                }
+              ],
+              "variantNames": [
+                null,
+                null
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_split_percentage_allocation",
+      "source": "public_pay_split_percentage_allocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "bankAccount",
+            "publicName": "bankAccount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_bank_account_reference"
+            }
+          },
+          {
+            "name": "priority",
+            "publicName": "priority",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": 0
+              }
+            }
+          },
+          {
+            "name": "percentage",
+            "publicName": "percentage",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "percentage": 25,
+                "display": "25%"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_pay_split_percentage"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_percentage_pay_split",
+      "source": "public_percentage_pay_split",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "nps_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^nps_"
+              }
+            }
+          },
+          {
+            "name": "worker",
+            "publicName": "worker",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_worker_reference"
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_split_status"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "createdAt",
+            "publicName": "createdAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "updatedAt",
+            "publicName": "updatedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "percentage"
+              ],
+              "names": [
+                "Percentage"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "allocations",
+            "publicName": "allocations",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "array",
+              "items": {
+                "kind": "ref",
+                "name": "public_pay_split_percentage_allocation"
+              },
+              "validation": {
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_split_fixed_allocation",
+      "source": "public_pay_split_fixed_allocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "amount"
+              ],
+              "names": [
+                "Amount"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": 0
+              }
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "USD",
+                "AUD",
+                "BGN",
+                "BRL",
+                "CAD",
+                "CHF",
+                "CZK",
+                "DKK",
+                "EUR",
+                "GBP",
+                "HKD",
+                "HUF",
+                "IDR",
+                "INR",
+                "JPY",
+                "MYR",
+                "NOK",
+                "NZD",
+                "CNY",
+                "PLN",
+                "RON",
+                "TRY",
+                "SEK",
+                "SGD",
+                "AED",
+                "ARS",
+                "BDT",
+                "BWP",
+                "CLP",
+                "COP",
+                "CRC",
+                "EGP",
+                "FJD",
+                "GEL",
+                "GHS",
+                "ILS",
+                "KES",
+                "KRW",
+                "LKR",
+                "MAD",
+                "MXN",
+                "NPR",
+                "PHP",
+                "PKR",
+                "THB",
+                "UAH",
+                "UGX",
+                "UYU",
+                "VND",
+                "ZAR",
+                "ZMW",
+                "TND",
+                "NGN",
+                "RSD",
+                "TWD",
+                "GTQ",
+                "HNL",
+                "DOP",
+                "SAR",
+                "XAF",
+                "PEN"
+              ],
+              "names": [
+                "Usd",
+                "Aud",
+                "Bgn",
+                "Brl",
+                "Cad",
+                "Chf",
+                "Czk",
+                "Dkk",
+                "Eur",
+                "Gbp",
+                "Hkd",
+                "Huf",
+                "Idr",
+                "Inr",
+                "Jpy",
+                "Myr",
+                "Nok",
+                "Nzd",
+                "Cny",
+                "Pln",
+                "Ron",
+                "Try",
+                "Sek",
+                "Sgd",
+                "Aed",
+                "Ars",
+                "Bdt",
+                "Bwp",
+                "Clp",
+                "Cop",
+                "Crc",
+                "Egp",
+                "Fjd",
+                "Gel",
+                "Ghs",
+                "Ils",
+                "Kes",
+                "Krw",
+                "Lkr",
+                "Mad",
+                "Mxn",
+                "Npr",
+                "Php",
+                "Pkr",
+                "Thb",
+                "Uah",
+                "Ugx",
+                "Uyu",
+                "Vnd",
+                "Zar",
+                "Zmw",
+                "Tnd",
+                "Ngn",
+                "Rsd",
+                "Twd",
+                "Gtq",
+                "Hnl",
+                "Dop",
+                "Sar",
+                "Xaf",
+                "Pen"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_split_remainder_allocation",
+      "source": "public_pay_split_remainder_allocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "remainder"
+              ],
+              "names": [
+                "Remainder"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_split_allocation",
+      "source": "public_pay_split_allocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "ref",
+            "name": "public_pay_split_fixed_allocation"
+          },
+          {
+            "kind": "ref",
+            "name": "public_pay_split_remainder_allocation"
+          }
+        ],
+        "variantNames": [
+          "Fixed amount",
+          "Remainder"
+        ]
+      }
+    },
+    {
+      "name": "public_pay_split_amount_allocation",
+      "source": "public_pay_split_amount_allocation",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "bankAccount",
+            "publicName": "bankAccount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_bank_account_reference"
+            }
+          },
+          {
+            "name": "priority",
+            "publicName": "priority",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": 0
+              }
+            }
+          },
+          {
+            "name": "allocation",
+            "publicName": "allocation",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_pay_split_allocation"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_amount_pay_split",
+      "source": "public_amount_pay_split",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "nps_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^nps_"
+              }
+            }
+          },
+          {
+            "name": "worker",
+            "publicName": "worker",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "ref",
+              "name": "public_worker_reference"
+            }
+          },
+          {
+            "name": "status",
+            "publicName": "status",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_pay_split_status"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "createdAt",
+            "publicName": "createdAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "updatedAt",
+            "publicName": "updatedAt",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "type",
+            "publicName": "type",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "amount"
+              ],
+              "names": [
+                "Amount"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "allocations",
+            "publicName": "allocations",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "array",
+              "items": {
+                "kind": "ref",
+                "name": "public_pay_split_amount_allocation"
+              },
+              "validation": {
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_pay_split",
+      "source": "public_pay_split",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "union",
+        "variants": [
+          {
+            "kind": "ref",
+            "name": "public_percentage_pay_split"
+          },
+          {
+            "kind": "ref",
+            "name": "public_amount_pay_split"
+          }
+        ],
+        "variantNames": [
+          "Percentage",
+          "Amount"
+        ]
+      }
+    },
+    {
+      "name": "invalid_pay_split_query_encoded",
+      "source": "invalid_pay_split_query_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "InvalidPaySplitQuery"
+              ],
+              "names": [
+                "InvalidPaySplitQuery"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "pay_split_not_found_encoded",
+      "source": "pay_split_not_found_encoded",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "_tag",
+            "publicName": "_tag",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "PaySplitNotFound"
+              ],
+              "names": [
+                "PaySplitNotFound"
+              ],
+              "deprecations": [
+                false
+              ]
+            }
+          },
+          {
+            "name": "id",
+            "publicName": "id",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "nps_1234"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^nps_"
+              }
+            }
+          },
+          {
+            "name": "message",
+            "publicName": "message",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "public_payroll_type",
       "source": "public_payroll_type",
       "publicAliases": [],
@@ -19934,6 +20893,7 @@
     "offers",
     "payRates",
     "payRates.regular",
+    "paySplits",
     "payroll",
     "timeOff",
     "timeOff.policies",
@@ -19954,6 +20914,7 @@
     "offers",
     "payRates",
     "payRates.regular",
+    "paySplits",
     "payroll",
     "timeOff",
     "timeOff.policies",
@@ -26231,6 +27192,313 @@
       "transport": "http"
     },
     {
+      "resource": "paySplits",
+      "publicResource": "paySplits",
+      "operation": "list",
+      "publicOperation": "list",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/pay_splits",
+      "pathParams": [],
+      "publicPathParams": [],
+      "queryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "workerIds",
+        "types",
+        "statuses"
+      ],
+      "publicQueryParams": [
+        "limit",
+        "afterId",
+        "beforeId",
+        "workerIds",
+        "types",
+        "statuses"
+      ],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [],
+      "queryParamDetails": [
+        {
+          "name": "limit",
+          "required": true,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "afterId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "beforeId",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "workerIds",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "types",
+          "required": false,
+          "style": "form",
+          "explode": true
+        },
+        {
+          "name": "statuses",
+          "required": true,
+          "style": "form",
+          "explode": true,
+          "defaultValue": [
+            "active"
+          ]
+        }
+      ],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PaySplitListParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "400",
+          "401",
+          "403",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "400",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "invalid_pay_split_query_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
+      "resource": "paySplits",
+      "publicResource": "paySplits",
+      "operation": "get",
+      "publicOperation": "get",
+      "deprecated": false,
+      "method": "GET",
+      "path": "/v1/pay_splits/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "publicPathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "publicQueryParams": [],
+      "headerParams": [],
+      "publicHeaderParams": [],
+      "bodyParams": [],
+      "publicBodyParams": [],
+      "bodyParamDetails": [],
+      "pathParamDetails": [
+        {
+          "name": "id",
+          "required": true,
+          "style": "simple",
+          "explode": false
+        }
+      ],
+      "queryParamDetails": [],
+      "headerParamDetails": [],
+      "cookieParams": [],
+      "publicCookieParams": [],
+      "cookieParamDetails": [],
+      "paramsModel": {
+        "publicName": "PaySplitGetParams"
+      },
+      "response": {
+        "status": "200",
+        "contentType": "application/json",
+        "encoding": "json",
+        "contents": [
+          {
+            "contentType": "application/json",
+            "encoding": "json"
+          }
+        ]
+      },
+      "responseModel": {
+        "name": "public_pay_split",
+        "publicAliases": []
+      },
+      "result": {
+        "successStatus": "200",
+        "errorStatuses": [
+          "401",
+          "403",
+          "404",
+          "429",
+          "500"
+        ]
+      },
+      "errorResponses": [
+        {
+          "status": "401",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "api_key_unauthorized_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "403",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        },
+        {
+          "status": "404",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "pay_split_not_found_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "429",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ],
+          "model": {
+            "name": "rate_limit_exceeded_encoded",
+            "publicAliases": []
+          }
+        },
+        {
+          "status": "500",
+          "contentType": "application/json",
+          "encoding": "json",
+          "contents": [
+            {
+              "contentType": "application/json",
+              "encoding": "json"
+            }
+          ]
+        }
+      ],
+      "responseLinks": [],
+      "transport": "http"
+    },
+    {
       "resource": "payroll",
       "publicResource": "payroll",
       "operation": "list",
@@ -26889,8 +28157,8 @@
     {
       "resource": "payroll",
       "publicResource": "payroll",
-      "operation": "retrievePaycheck",
-      "publicOperation": "retrievePaycheck",
+      "operation": "getPaycheck",
+      "publicOperation": "getPaycheck",
       "deprecated": false,
       "method": "GET",
       "path": "/v1/paychecks/{id}",
@@ -26927,7 +28195,7 @@
       "publicCookieParams": [],
       "cookieParamDetails": [],
       "paramsModel": {
-        "publicName": "PayrollRetrievePaycheckParams"
+        "publicName": "PayrollGetPaycheckParams"
       },
       "response": {
         "status": "200",

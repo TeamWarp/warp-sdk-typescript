@@ -106,6 +106,22 @@ import {
   type PayRateListParams,
 } from './resources/pay-rates/pay-rates';
 import {
+  PaySplits,
+  type PublicPaySplit,
+  type PublicPercentagePaySplit,
+  type PublicAmountPaySplit,
+  type PublicPaySplitStatus,
+  type PublicPaySplitPercentageAllocation,
+  type PublicPaySplitAmountAllocation,
+  type PublicBankAccountReference,
+  type PublicPaySplitPercentage,
+  type PublicPaySplitAllocation,
+  type PublicPaySplitFixedAllocation,
+  type PublicPaySplitRemainderAllocation,
+  type PaySplitListResponse,
+  type PaySplitListParams,
+} from './resources/pay-splits';
+import {
   Payroll,
   type PublicPayrollList,
   type PublicPayrollDetail,
@@ -1055,6 +1071,7 @@ export class Warp {
   levels: Levels = new Levels(this);
   offers: Offers = new Offers(this);
   payRates: PayRates = new PayRates(this);
+  paySplits: PaySplits = new PaySplits(this);
   payroll: Payroll = new Payroll(this);
   timeOff: TimeOff = new TimeOff(this);
   workers: Workers = new Workers(this);
@@ -1071,6 +1088,7 @@ Warp.BankAccounts = BankAccounts;
 Warp.Levels = Levels;
 Warp.Offers = Offers;
 Warp.PayRates = PayRates;
+Warp.PaySplits = PaySplits;
 Warp.Payroll = Payroll;
 Warp.TimeOff = TimeOff;
 Warp.Workers = Workers;
@@ -1165,6 +1183,23 @@ export declare namespace Warp {
     type PublicPayRatePer as PublicPayRatePer,
     type PayRateListResponse as PayRateListResponse,
     type PayRateListParams as PayRateListParams,
+  };
+
+  export {
+    PaySplits as PaySplits,
+    type PublicPaySplit as PublicPaySplit,
+    type PublicPercentagePaySplit as PublicPercentagePaySplit,
+    type PublicAmountPaySplit as PublicAmountPaySplit,
+    type PublicPaySplitStatus as PublicPaySplitStatus,
+    type PublicPaySplitPercentageAllocation as PublicPaySplitPercentageAllocation,
+    type PublicPaySplitAmountAllocation as PublicPaySplitAmountAllocation,
+    type PublicBankAccountReference as PublicBankAccountReference,
+    type PublicPaySplitPercentage as PublicPaySplitPercentage,
+    type PublicPaySplitAllocation as PublicPaySplitAllocation,
+    type PublicPaySplitFixedAllocation as PublicPaySplitFixedAllocation,
+    type PublicPaySplitRemainderAllocation as PublicPaySplitRemainderAllocation,
+    type PaySplitListResponse as PaySplitListResponse,
+    type PaySplitListParams as PaySplitListParams,
   };
 
   export {
