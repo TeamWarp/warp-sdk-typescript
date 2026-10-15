@@ -114,7 +114,7 @@ const cases: {
     method: 'POST',
     path: '/v1/benefits/retirement_plans',
     run: async () => {
-      const retirementPlan = await client.benefits.retirementPlans.create({
+      const publicRetirementPlan1 = await client.benefits.retirementPlans.create({
         type: '401k',
         name: 'x',
         effectiveStartDate: '',
@@ -194,7 +194,7 @@ const cases: {
     path: '/v1/benefits/deductions',
     label: 'required params',
     run: async () => {
-      const deduction = await client.benefits.deductions.create({
+      const publicBenefitDeduction1 = await client.benefits.deductions.create({
         workerId: 'wrk_1234',
         type: 'medical',
         calculation: {
@@ -220,7 +220,7 @@ const cases: {
     path: '/v1/benefits/deductions',
     label: 'all params',
     run: async () => {
-      const deduction = await client.benefits.deductions.create({
+      const publicBenefitDeduction1 = await client.benefits.deductions.create({
         workerId: 'wrk_1234',
         type: 'medical',
         plan: {
@@ -881,6 +881,45 @@ const cases: {
   {
     operation: 'list',
     method: 'GET',
+    path: '/v1/pay_splits',
+    label: 'required params',
+    run: async () => {
+      const paySplit = await client.paySplits.list({
+        limit: 'limit',
+        statuses: ['active'],
+      });
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
+    path: '/v1/pay_splits',
+    label: 'all params',
+    run: async () => {
+      const paySplit = await client.paySplits.list({
+        limit: 'limit',
+        afterId: 'nps_1234',
+        beforeId: 'nps_1234',
+        workerIds: ['wrk_1234'],
+        types: ['percentage'],
+        statuses: ['active'],
+      });
+    },
+  },
+
+  {
+    operation: 'get',
+    method: 'GET',
+    path: '/v1/pay_splits/{id}',
+    run: async () => {
+      const publicPaySplit = await client.paySplits.get('nps_1234');
+    },
+  },
+
+  {
+    operation: 'list',
+    method: 'GET',
     path: '/v1/payrolls',
     label: 'required params',
     run: async () => {
@@ -958,11 +997,11 @@ const cases: {
   },
 
   {
-    operation: 'retrievePaycheck',
+    operation: 'getPaycheck',
     method: 'GET',
     path: '/v1/paychecks/{id}',
     run: async () => {
-      const publicPaycheckDetail = await client.payroll.retrievePaycheck('pyc_1234');
+      const publicPaycheckDetail = await client.payroll.getPaycheck('pyc_1234');
     },
   },
 

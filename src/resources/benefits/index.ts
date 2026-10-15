@@ -12,17 +12,18 @@ export type {
 export { RetirementPlans } from './retirement-plans';
 export type {
   PublicRetirementPlan,
+  PublicRetirementPlan1,
   PublicRetirementPlanProvider,
   PublicRetirementPlanStatus,
   RetirementPlanListParams,
   RetirementPlanListResponse,
   RetirementPlanCreateParams,
-  RetirementPlanCreateResponse,
   RetirementPlanUpdateParams,
 } from './retirement-plans';
 export { Deductions } from './deductions';
 export type {
   PublicBenefitDeduction,
+  PublicBenefitDeduction1,
   PublicWorkerReference,
   PublicBenefitDeductionCategory,
   PublicBenefitDeductionPlan,
@@ -36,6 +37,5 @@ export type {
   DeductionListParams,
   DeductionListResponse,
   DeductionCreateParams,
-  DeductionCreateResponse,
   DeductionUpdateParams,
 } from './deductions';

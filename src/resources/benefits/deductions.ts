@@ -31,11 +31,11 @@ export class Deductions extends APIResource {
    *
    * @param {DeductionCreateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<DeductionCreateResponse>} The current version of a stable payroll benefit deduction.
+   * @returns {APIPromise<PublicBenefitDeduction1>} The current version of a stable payroll benefit deduction.
    *
    * @example
    * ```ts
-   * const deduction = await client.benefits.deductions.create({
+   * const publicBenefitDeduction1 = await client.benefits.deductions.create({
    *   workerId: 'wrk_1234',
    *   type: 'medical',
    *   calculation: {
@@ -54,7 +54,7 @@ export class Deductions extends APIResource {
    * });
    * ```
    */
-  create(body: DeductionCreateParams, options?: RequestOptions): APIPromise<DeductionCreateResponse> {
+  create(body: DeductionCreateParams, options?: RequestOptions): APIPromise<PublicBenefitDeduction1> {
     return this._client.post('/v1/benefits/deductions', { body, ...options });
   }
 
@@ -100,6 +100,89 @@ export class Deductions extends APIResource {
  * The current version of a stable payroll benefit deduction.
  */
 export interface PublicBenefitDeduction {
+  /**
+   * Stable identifier shared by every internal version of this deduction.
+   * @pattern ^pbdg_
+   */
+  id: string;
+  /**
+   * Basic identifying information for a worker associated with another resource.
+   */
+  worker: PublicWorkerReference;
+  /**
+   * The deduction name shown in payroll and benefits surfaces.
+   */
+  name: string;
+  /**
+   * The broad reporting category. The type field identifies the specific payroll deduction.
+   */
+  category: PublicBenefitDeductionCategory;
+  /**
+   * The specific payroll deduction type within the broader category.
+   */
+  type:
+    | 'medical'
+    | 'dental'
+    | 'vision'
+    | 'life'
+    | 'short_term_disability'
+    | 'long_term_disability'
+    | '401k'
+    | 'roth_401k'
+    | '403b'
+    | 'roth_403b'
+    | '457'
+    | 'roth_457'
+    | 'hsa'
+    | 'fsa_medical'
+    | 'fsa_dependent_care'
+    | 'transit'
+    | 'parking'
+    | 'accident'
+    | 'cancer'
+    | 'critical_illness'
+    | 'hospital'
+    | 'medical_other'
+    | 'simple_ira'
+    | 'roth_simple_ira'
+    | 'nqdc'
+    | 'nontaxable_fringe'
+    | 'pucc'
+    | 'voluntary'
+    | 'post_tax'
+    | 'other';
+  /**
+   * Whether the deduction recurs or applies once.
+   */
+  recurrence: 'recurring' | 'one_time';
+  /**
+   * The associated benefit plan, or null for a planless payroll deduction.
+   */
+  plan: PublicBenefitDeductionPlan | null;
+  /**
+   * How the employee and employer contributions are calculated.
+   */
+  calculation: PublicBenefitDeductionCalculation;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveStartDate: string;
+  /**
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   */
+  effectiveEndDate: string | null;
+  /**
+   * The public lifecycle status of the current deduction version.
+   */
+  status: PublicBenefitDeductionStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/**
+ * The current version of a stable payroll benefit deduction.
+ */
+export interface PublicBenefitDeduction1 {
   /**
    * Stable identifier shared by every internal version of this deduction.
    * @pattern ^pbdg_
@@ -673,86 +756,6 @@ export namespace DeductionCreateParams {
   }
 }
 
-export interface DeductionCreateResponse {
-  /**
-   * Stable identifier shared by every internal version of this deduction.
-   * @pattern ^pbdg_
-   */
-  id: string;
-  /**
-   * Basic identifying information for a worker associated with another resource.
-   */
-  worker: PublicWorkerReference;
-  /**
-   * The deduction name shown in payroll and benefits surfaces.
-   */
-  name: string;
-  /**
-   * The broad reporting category. The type field identifies the specific payroll deduction.
-   */
-  category: PublicBenefitDeductionCategory;
-  /**
-   * The specific payroll deduction type within the broader category.
-   */
-  type:
-    | 'medical'
-    | 'dental'
-    | 'vision'
-    | 'life'
-    | 'short_term_disability'
-    | 'long_term_disability'
-    | '401k'
-    | 'roth_401k'
-    | '403b'
-    | 'roth_403b'
-    | '457'
-    | 'roth_457'
-    | 'hsa'
-    | 'fsa_medical'
-    | 'fsa_dependent_care'
-    | 'transit'
-    | 'parking'
-    | 'accident'
-    | 'cancer'
-    | 'critical_illness'
-    | 'hospital'
-    | 'medical_other'
-    | 'simple_ira'
-    | 'roth_simple_ira'
-    | 'nqdc'
-    | 'nontaxable_fringe'
-    | 'pucc'
-    | 'voluntary'
-    | 'post_tax'
-    | 'other';
-  /**
-   * Whether the deduction recurs or applies once.
-   */
-  recurrence: 'recurring' | 'one_time';
-  /**
-   * The associated benefit plan, or null for a planless payroll deduction.
-   */
-  plan: PublicBenefitDeductionPlan | null;
-  /**
-   * How the employee and employer contributions are calculated.
-   */
-  calculation: PublicBenefitDeductionCalculation;
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
-  effectiveStartDate: string;
-  /**
-   * @pattern ^\d{4}-\d{2}-\d{2}$
-   */
-  effectiveEndDate: string | null;
-  /**
-   * The public lifecycle status of the current deduction version.
-   */
-  status: PublicBenefitDeductionStatus;
-  createdAt: string;
-  updatedAt: string;
-}
-
 export interface DeductionUpdateParams {
   /**
    * @minLength 1
@@ -949,6 +952,7 @@ export namespace DeductionUpdateParams {
 export declare namespace Deductions {
   export {
     type PublicBenefitDeduction as PublicBenefitDeduction,
+    type PublicBenefitDeduction1 as PublicBenefitDeduction1,
     type PublicWorkerReference as PublicWorkerReference,
     type PublicBenefitDeductionCategory as PublicBenefitDeductionCategory,
     type PublicBenefitDeductionPlan as PublicBenefitDeductionPlan,
@@ -960,7 +964,6 @@ export declare namespace Deductions {
     type PercentageBenefitCalculation as PercentageBenefitCalculation,
     type PercentageContribution as PercentageContribution,
     type DeductionListResponse as DeductionListResponse,
-    type DeductionCreateResponse as DeductionCreateResponse,
     type DeductionListParams as DeductionListParams,
     type DeductionCreateParams as DeductionCreateParams,
     type DeductionUpdateParams as DeductionUpdateParams,

@@ -72,6 +72,22 @@ export type {
   PayRateListParams,
   PayRateListResponse,
 } from './pay-rates/pay-rates';
+export { PaySplits } from './pay-splits';
+export type {
+  PublicPaySplit,
+  PublicPercentagePaySplit,
+  PublicAmountPaySplit,
+  PublicPaySplitStatus,
+  PublicPaySplitPercentageAllocation,
+  PublicPaySplitAmountAllocation,
+  PublicBankAccountReference,
+  PublicPaySplitPercentage,
+  PublicPaySplitAllocation,
+  PublicPaySplitFixedAllocation,
+  PublicPaySplitRemainderAllocation,
+  PaySplitListParams,
+  PaySplitListResponse,
+} from './pay-splits';
 export { Payroll } from './payroll';
 export type {
   PublicPayrollList,
