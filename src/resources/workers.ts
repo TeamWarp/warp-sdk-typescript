@@ -1266,6 +1266,10 @@ export interface WorkerUpdateResponse {
    */
   manager?: PublicWorkerManager | null;
   /**
+   * The worker's stored T-shirt size, or null when unset or unavailable.
+   */
+  tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+  /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerUpdateResponse.Level | null;
@@ -1395,6 +1399,10 @@ export interface WorkerGetResponse {
    * The worker's manager, or null if unassigned.
    */
   manager?: PublicWorkerManager | null;
+  /**
+   * The worker's stored T-shirt size, or null when unset or unavailable.
+   */
+  tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1560,6 +1568,10 @@ export namespace WorkerListResponse {
      * The worker's manager, or null if unassigned.
      */
     manager?: PublicWorkerManager | null;
+    /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -1844,6 +1856,10 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's manager, or null if unassigned.
    */
   manager?: PublicWorkerManager | null;
+  /**
+   * The worker's stored T-shirt size, or null when unset or unavailable.
+   */
+  tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2371,6 +2387,10 @@ export interface WorkerCreateContractorResponse {
    */
   manager?: PublicWorkerManager | null;
   /**
+   * The worker's stored T-shirt size, or null when unset or unavailable.
+   */
+  tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+  /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
   level?: WorkerCreateContractorResponse.Level | null;
@@ -2500,6 +2520,10 @@ export interface WorkerInviteResponse {
    * The worker's manager, or null if unassigned.
    */
   manager?: PublicWorkerManager | null;
+  /**
+   * The worker's stored T-shirt size, or null when unset or unavailable.
+   */
+  tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
