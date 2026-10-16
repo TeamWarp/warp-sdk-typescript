@@ -1151,6 +1151,7 @@ const cases: {
         firstName: 'x',
         lastName: 'x',
         preferredName: '',
+        tShirtSize: 'XS',
         email: 'john@joinwarp.com',
         workEmail: 'john@joinwarp.com',
         phone: '',
