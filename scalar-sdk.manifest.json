@@ -16177,6 +16177,803 @@
       }
     },
     {
+      "name": "public_paycheck_year_to_date_money_amount",
+      "source": "public_paycheck_year_to_date_money_amount",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 2400000,
+          "currency": "USD",
+          "display": "$24,000.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date_money_amount_1",
+      "source": "public_paycheck_year_to_date_money_amount_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 1880000,
+          "currency": "USD",
+          "display": "$18,800.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date_money_amount_2",
+      "source": "public_paycheck_year_to_date_money_amount_2",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 400000,
+          "currency": "USD",
+          "display": "$4,000.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date_money_amount_3",
+      "source": "public_paycheck_year_to_date_money_amount_3",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 160000,
+          "currency": "USD",
+          "display": "$1,600.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date_money_amount_4",
+      "source": "public_paycheck_year_to_date_money_amount_4",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 120000,
+          "currency": "USD",
+          "display": "$1,200.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date_money_amount_5",
+      "source": "public_paycheck_year_to_date_money_amount_5",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 80000,
+          "currency": "USD",
+          "display": "$800.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer"
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date_totals",
+      "source": "public_paycheck_year_to_date_totals",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "grossPay": {
+            "amount": 2400000,
+            "currency": "USD",
+            "display": "$24,000.00"
+          },
+          "netPay": {
+            "amount": 1880000,
+            "currency": "USD",
+            "display": "$18,800.00"
+          },
+          "workerTaxes": {
+            "amount": 400000,
+            "currency": "USD",
+            "display": "$4,000.00"
+          },
+          "workerBenefitContributions": {
+            "amount": 160000,
+            "currency": "USD",
+            "display": "$1,600.00"
+          },
+          "reimbursements": {
+            "amount": 120000,
+            "currency": "USD",
+            "display": "$1,200.00"
+          },
+          "postTaxDeductions": {
+            "amount": 80000,
+            "currency": "USD",
+            "display": "$800.00"
+          }
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "grossPay",
+            "publicName": "grossPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 2400000,
+                "currency": "USD",
+                "display": "$24,000.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_money_amount"
+            }
+          },
+          {
+            "name": "netPay",
+            "publicName": "netPay",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 1880000,
+                "currency": "USD",
+                "display": "$18,800.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_money_amount_1"
+            }
+          },
+          {
+            "name": "workerTaxes",
+            "publicName": "workerTaxes",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 400000,
+                "currency": "USD",
+                "display": "$4,000.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_money_amount_2"
+            }
+          },
+          {
+            "name": "workerBenefitContributions",
+            "publicName": "workerBenefitContributions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 160000,
+                "currency": "USD",
+                "display": "$1,600.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_money_amount_3"
+            }
+          },
+          {
+            "name": "reimbursements",
+            "publicName": "reimbursements",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 120000,
+                "currency": "USD",
+                "display": "$1,200.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_money_amount_4"
+            }
+          },
+          {
+            "name": "postTaxDeductions",
+            "publicName": "postTaxDeductions",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": 80000,
+                "currency": "USD",
+                "display": "$800.00"
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_money_amount_5"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_year_to_date",
+      "source": "public_paycheck_year_to_date",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "asOfDate": "2026-08-31",
+          "totals": {
+            "grossPay": {
+              "amount": 2400000,
+              "currency": "USD",
+              "display": "$24,000.00"
+            },
+            "netPay": {
+              "amount": 1880000,
+              "currency": "USD",
+              "display": "$18,800.00"
+            },
+            "workerTaxes": {
+              "amount": 400000,
+              "currency": "USD",
+              "display": "$4,000.00"
+            },
+            "workerBenefitContributions": {
+              "amount": 160000,
+              "currency": "USD",
+              "display": "$1,600.00"
+            },
+            "reimbursements": {
+              "amount": 120000,
+              "currency": "USD",
+              "display": "$1,200.00"
+            },
+            "postTaxDeductions": {
+              "amount": 80000,
+              "currency": "USD",
+              "display": "$800.00"
+            }
+          },
+          "earnings": [
+            {
+              "description": "Regular",
+              "amount": {
+                "amount": 2400000,
+                "currency": "USD",
+                "display": "$24,000.00"
+              }
+            }
+          ],
+          "taxes": [
+            {
+              "description": "Federal Income Tax",
+              "amount": {
+                "amount": 400000,
+                "currency": "USD",
+                "display": "$4,000.00"
+              }
+            }
+          ],
+          "benefits": [
+            {
+              "description": "Medical insurance",
+              "amount": {
+                "amount": 160000,
+                "currency": "USD",
+                "display": "$1,600.00"
+              }
+            }
+          ],
+          "reimbursements": [
+            {
+              "description": "Reimbursements",
+              "amount": {
+                "amount": 120000,
+                "currency": "USD",
+                "display": "$1,200.00"
+              }
+            }
+          ],
+          "deductions": [
+            {
+              "description": "Wage garnishment",
+              "amount": {
+                "amount": 80000,
+                "currency": "USD",
+                "display": "$800.00"
+              }
+            }
+          ]
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "asOfDate",
+            "publicName": "asOfDate",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "string",
+              "validation": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              }
+            }
+          },
+          {
+            "name": "totals",
+            "publicName": "totals",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "grossPay": {
+                  "amount": 2400000,
+                  "currency": "USD",
+                  "display": "$24,000.00"
+                },
+                "netPay": {
+                  "amount": 1880000,
+                  "currency": "USD",
+                  "display": "$18,800.00"
+                },
+                "workerTaxes": {
+                  "amount": 400000,
+                  "currency": "USD",
+                  "display": "$4,000.00"
+                },
+                "workerBenefitContributions": {
+                  "amount": 160000,
+                  "currency": "USD",
+                  "display": "$1,600.00"
+                },
+                "reimbursements": {
+                  "amount": 120000,
+                  "currency": "USD",
+                  "display": "$1,200.00"
+                },
+                "postTaxDeductions": {
+                  "amount": 80000,
+                  "currency": "USD",
+                  "display": "$800.00"
+                }
+              }
+            },
+            "type": {
+              "kind": "ref",
+              "name": "public_paycheck_year_to_date_totals"
+            }
+          },
+          {
+            "name": "earnings",
+            "publicName": "earnings",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "taxes",
+            "publicName": "taxes",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "benefits",
+            "publicName": "benefits",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "reimbursements",
+            "publicName": "reimbursements",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "deductions",
+            "publicName": "deductions",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "public_exchange_rate_value",
       "source": "public_exchange_rate_value",
       "publicAliases": [],
@@ -17738,7 +18535,92 @@
               },
               "description": "Employer payroll tax"
             }
-          ]
+          ],
+          "yearToDate": {
+            "asOfDate": "2026-08-31",
+            "totals": {
+              "grossPay": {
+                "amount": 2400000,
+                "currency": "USD",
+                "display": "$24,000.00"
+              },
+              "netPay": {
+                "amount": 1880000,
+                "currency": "USD",
+                "display": "$18,800.00"
+              },
+              "workerTaxes": {
+                "amount": 400000,
+                "currency": "USD",
+                "display": "$4,000.00"
+              },
+              "workerBenefitContributions": {
+                "amount": 160000,
+                "currency": "USD",
+                "display": "$1,600.00"
+              },
+              "reimbursements": {
+                "amount": 120000,
+                "currency": "USD",
+                "display": "$1,200.00"
+              },
+              "postTaxDeductions": {
+                "amount": 80000,
+                "currency": "USD",
+                "display": "$800.00"
+              }
+            },
+            "earnings": [
+              {
+                "description": "Regular",
+                "amount": {
+                  "amount": 2400000,
+                  "currency": "USD",
+                  "display": "$24,000.00"
+                }
+              }
+            ],
+            "taxes": [
+              {
+                "description": "Federal Income Tax",
+                "amount": {
+                  "amount": 400000,
+                  "currency": "USD",
+                  "display": "$4,000.00"
+                }
+              }
+            ],
+            "benefits": [
+              {
+                "description": "Medical insurance",
+                "amount": {
+                  "amount": 160000,
+                  "currency": "USD",
+                  "display": "$1,600.00"
+                }
+              }
+            ],
+            "reimbursements": [
+              {
+                "description": "Reimbursements",
+                "amount": {
+                  "amount": 120000,
+                  "currency": "USD",
+                  "display": "$1,200.00"
+                }
+              }
+            ],
+            "deductions": [
+              {
+                "description": "Wage garnishment",
+                "amount": {
+                  "amount": 80000,
+                  "currency": "USD",
+                  "display": "$800.00"
+                }
+              }
+            ]
+          }
         }
       },
       "type": {
@@ -17862,6 +18744,114 @@
                 },
                 {
                   "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "yearToDate",
+            "publicName": "yearToDate",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "asOfDate": "2026-08-31",
+                "totals": {
+                  "grossPay": {
+                    "amount": 2400000,
+                    "currency": "USD",
+                    "display": "$24,000.00"
+                  },
+                  "netPay": {
+                    "amount": 1880000,
+                    "currency": "USD",
+                    "display": "$18,800.00"
+                  },
+                  "workerTaxes": {
+                    "amount": 400000,
+                    "currency": "USD",
+                    "display": "$4,000.00"
+                  },
+                  "workerBenefitContributions": {
+                    "amount": 160000,
+                    "currency": "USD",
+                    "display": "$1,600.00"
+                  },
+                  "reimbursements": {
+                    "amount": 120000,
+                    "currency": "USD",
+                    "display": "$1,200.00"
+                  },
+                  "postTaxDeductions": {
+                    "amount": 80000,
+                    "currency": "USD",
+                    "display": "$800.00"
+                  }
+                },
+                "earnings": [
+                  {
+                    "description": "Regular",
+                    "amount": {
+                      "amount": 2400000,
+                      "currency": "USD",
+                      "display": "$24,000.00"
+                    }
+                  }
+                ],
+                "taxes": [
+                  {
+                    "description": "Federal Income Tax",
+                    "amount": {
+                      "amount": 400000,
+                      "currency": "USD",
+                      "display": "$4,000.00"
+                    }
+                  }
+                ],
+                "benefits": [
+                  {
+                    "description": "Medical insurance",
+                    "amount": {
+                      "amount": 160000,
+                      "currency": "USD",
+                      "display": "$1,600.00"
+                    }
+                  }
+                ],
+                "reimbursements": [
+                  {
+                    "description": "Reimbursements",
+                    "amount": {
+                      "amount": 120000,
+                      "currency": "USD",
+                      "display": "$1,200.00"
+                    }
+                  }
+                ],
+                "deductions": [
+                  {
+                    "description": "Wage garnishment",
+                    "amount": {
+                      "amount": 80000,
+                      "currency": "USD",
+                      "display": "$800.00"
+                    }
+                  }
+                ]
+              }
+            },
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_year_to_date"
+                },
+                {
+                  "kind": "null"
                 }
               ]
             }

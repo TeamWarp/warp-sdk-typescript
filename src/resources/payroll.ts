@@ -145,6 +145,10 @@ export interface PublicPaycheckDetail {
   payday: string;
   paymentMethod: PublicPaycheckPaymentMethod & unknown;
   totals: PublicPaycheckDetailTotals & unknown;
+  /**
+   * Employee YTD amounts for the selected US W-2 paystub. Groups with a nonzero current or YTD amount are included, including historical-only groups with no amount on this paycheck.
+   */
+  yearToDate: PublicPaycheckDetail.YearToDate | null;
   description: string | null;
   exchangeRates: unknown;
   /**
@@ -156,6 +160,127 @@ export interface PublicPaycheckDetail {
   deductions: unknown;
   benefits: unknown;
   taxes: unknown;
+}
+
+export namespace PublicPaycheckDetail {
+  export interface YearToDate {
+    /**
+     * @pattern ^\d{4}-\d{2}-\d{2}$
+     */
+    asOfDate: string;
+    /**
+     * Provider-reported employee YTD category totals, in signed USD cents.
+     */
+    totals: YearToDate.Totals;
+    earnings: unknown;
+    taxes: unknown;
+    benefits: unknown;
+    reimbursements: unknown;
+    deductions: unknown;
+  }
+
+  export namespace YearToDate {
+    export interface Totals {
+      /**
+       * Gross earnings year-to-date for the selected paystub.
+       */
+      grossPay: Totals.GrossPay;
+      /**
+       * Net pay year-to-date for the selected paystub.
+       */
+      netPay: Totals.NetPay;
+      /**
+       * Employee taxes withheld year-to-date for the selected paystub.
+       */
+      workerTaxes: Totals.WorkerTaxes;
+      /**
+       * Employee benefit contributions year-to-date for the selected paystub.
+       */
+      workerBenefitContributions: Totals.WorkerBenefitContributions;
+      /**
+       * Reimbursements year-to-date for the selected paystub.
+       */
+      reimbursements: Totals.Reimbursements;
+      /**
+       * Post-tax deductions year-to-date for the selected paystub.
+       */
+      postTaxDeductions: Totals.PostTaxDeductions;
+    }
+
+    export namespace Totals {
+      export interface GrossPay {
+        /**
+         * minor units — cents, e.g. 2345 for $23.45
+         */
+        amount: number;
+        currency: PublicPayrollCurrency & unknown;
+        /**
+         * The server-formatted display string for the amount in its currency.
+         */
+        display: string;
+      }
+
+      export interface NetPay {
+        /**
+         * minor units — cents, e.g. 2345 for $23.45
+         */
+        amount: number;
+        currency: PublicPayrollCurrency & unknown;
+        /**
+         * The server-formatted display string for the amount in its currency.
+         */
+        display: string;
+      }
+
+      export interface WorkerTaxes {
+        /**
+         * minor units — cents, e.g. 2345 for $23.45
+         */
+        amount: number;
+        currency: PublicPayrollCurrency & unknown;
+        /**
+         * The server-formatted display string for the amount in its currency.
+         */
+        display: string;
+      }
+
+      export interface WorkerBenefitContributions {
+        /**
+         * minor units — cents, e.g. 2345 for $23.45
+         */
+        amount: number;
+        currency: PublicPayrollCurrency & unknown;
+        /**
+         * The server-formatted display string for the amount in its currency.
+         */
+        display: string;
+      }
+
+      export interface Reimbursements {
+        /**
+         * minor units — cents, e.g. 2345 for $23.45
+         */
+        amount: number;
+        currency: PublicPayrollCurrency & unknown;
+        /**
+         * The server-formatted display string for the amount in its currency.
+         */
+        display: string;
+      }
+
+      export interface PostTaxDeductions {
+        /**
+         * minor units — cents, e.g. 2345 for $23.45
+         */
+        amount: number;
+        currency: PublicPayrollCurrency & unknown;
+        /**
+         * The server-formatted display string for the amount in its currency.
+         */
+        display: string;
+      }
+    }
+  }
 }
 
 /**
