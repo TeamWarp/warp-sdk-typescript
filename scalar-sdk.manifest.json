@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.36.5",
+  "generatorVersion": "0.36.6",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -18277,6 +18277,50 @@
             }
           },
           {
+            "name": "tShirtSize",
+            "publicName": "tShirtSize",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "enum",
+                  "values": [
+                    "XS",
+                    "S",
+                    "M",
+                    "L",
+                    "XL",
+                    "XXL",
+                    "XXXL"
+                  ],
+                  "names": [
+                    "Xs",
+                    "S",
+                    "M",
+                    "L",
+                    "Xl",
+                    "Xxl",
+                    "Xxxl"
+                  ],
+                  "deprecations": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                  ]
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
             "name": "email",
             "publicName": "email",
             "required": false,
@@ -29118,6 +29162,7 @@
         "firstName",
         "lastName",
         "preferredName",
+        "tShirtSize",
         "email",
         "workEmail",
         "phone",
@@ -29138,6 +29183,7 @@
         "firstName",
         "lastName",
         "preferredName",
+        "tShirtSize",
         "email",
         "workEmail",
         "phone",
@@ -29165,6 +29211,10 @@
         },
         {
           "name": "preferredName",
+          "required": false
+        },
+        {
+          "name": "tShirtSize",
           "required": false
         },
         {

@@ -1125,6 +1125,7 @@ export interface WorkerUpdateParams {
    * @pattern ^\S[\s\S]*\S$|^\S$|^$
    */
   preferredName?: string | null;
+  tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
   /**
    * An email with a reasonably valid regex (based on RFC 5321 atext characters)
    * @format email
