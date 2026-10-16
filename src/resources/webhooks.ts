@@ -274,6 +274,10 @@ export namespace WorkerCreatedWebhookEvent {
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
     /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -424,6 +428,10 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's manager, or null if unassigned.
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
+    /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -576,6 +584,10 @@ export namespace WorkerDeletedWebhookEvent {
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
     /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -726,6 +738,10 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's manager, or null if unassigned.
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
+    /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -878,6 +894,10 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
     /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1028,6 +1048,10 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's manager, or null if unassigned.
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
+    /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -1180,6 +1204,10 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
     /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1331,6 +1359,10 @@ export namespace WorkerOffboardedWebhookEvent {
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
     /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1481,6 +1513,10 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's manager, or null if unassigned.
      */
     manager?: PublicWorkerAddressAPI.PublicWorkerManager | null;
+    /**
+     * The worker's stored T-shirt size, or null when unset or unavailable.
+     */
+    tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
