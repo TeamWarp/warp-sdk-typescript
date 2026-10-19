@@ -30,7 +30,7 @@ export class RetirementPlans extends APIResource {
    *
    * @param {RetirementPlanCreateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicRetirementPlan1>} A company retirement plan available through Warp.
+   * @returns {APIPromise<PublicRetirementPlan1>}
    *
    * @example
    * ```ts
@@ -50,7 +50,7 @@ export class RetirementPlans extends APIResource {
    *
    * @param {string} id - The tag of a company retirement plan.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicRetirementPlan>} A company retirement plan available through Warp.
+   * @returns {APIPromise<PublicRetirementPlan>}
    *
    * @example
    * ```ts
@@ -67,7 +67,7 @@ export class RetirementPlans extends APIResource {
    * @param {string} id - The tag of a company retirement plan.
    * @param {RetirementPlanUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicRetirementPlan>} A company retirement plan available through Warp.
+   * @returns {APIPromise<PublicRetirementPlan>}
    *
    * @example
    * ```ts

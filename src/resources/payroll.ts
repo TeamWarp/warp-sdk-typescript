@@ -11,7 +11,7 @@ export class Payroll extends APIResource {
    *
    * @param {PayrollListParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicPayrollList>} A cursor-paginated page of payroll summaries.
+   * @returns {APIPromise<PublicPayrollList>}
    *
    * @example
    * ```ts
@@ -29,7 +29,7 @@ export class Payroll extends APIResource {
    *
    * @param {string} id - The payroll ID.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicPayrollDetail>} A payroll run with funding and lifecycle details. Every amount in totals is expressed in fundingCurrency; line-derived categories are converted and rounded per paycheck before aggregation, while netPay remains provider-authoritative.
+   * @returns {APIPromise<PublicPayrollDetail>}
    *
    * @example
    * ```ts
@@ -45,7 +45,7 @@ export class Payroll extends APIResource {
    *
    * @param {PayrollListPaychecksParams} query - The parameters to send with the request.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicPaycheckList>} A cursor-paginated page of paycheck summaries.
+   * @returns {APIPromise<PublicPaycheckList>}
    *
    * @example
    * ```ts
@@ -63,7 +63,7 @@ export class Payroll extends APIResource {
    *
    * @param {string} id - The paycheck ID.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicPaycheckDetail>} A paycheck with currency-specific calculation lines, totals grouped by currency, and authoritative parent-payroll funding-currency totals. Source currencies for expenses, benefits, or other inputs are outside this payroll-calculation resource.
+   * @returns {APIPromise<PublicPaycheckDetail>}
    *
    * @example
    * ```ts

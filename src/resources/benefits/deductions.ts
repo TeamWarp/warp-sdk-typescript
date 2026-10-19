@@ -31,7 +31,7 @@ export class Deductions extends APIResource {
    *
    * @param {DeductionCreateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicBenefitDeduction1>} The current version of a stable payroll benefit deduction.
+   * @returns {APIPromise<PublicBenefitDeduction1>}
    *
    * @example
    * ```ts
@@ -63,7 +63,7 @@ export class Deductions extends APIResource {
    *
    * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicBenefitDeduction>} The current version of a stable payroll benefit deduction.
+   * @returns {APIPromise<PublicBenefitDeduction>}
    *
    * @example
    * ```ts
@@ -80,7 +80,7 @@ export class Deductions extends APIResource {
    * @param {string} id - The version-group tag of a payroll benefit deduction. Stable across edits.
    * @param {DeductionUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicBenefitDeduction>} The current version of a stable payroll benefit deduction.
+   * @returns {APIPromise<PublicBenefitDeduction>}
    *
    * @example
    * ```ts

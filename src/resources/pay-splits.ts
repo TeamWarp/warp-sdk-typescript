@@ -31,7 +31,7 @@ export class PaySplits extends APIResource {
    *
    * @param {string} id - The tag of the bank account pay split.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicPaySplit>} A stored worker pay-split configuration, not a guarantee of executed payroll routing. Fixed amounts are in USD cents, and the final allocation of an amount split receives the remaining net pay. Allocations may reference archived bank accounts.
+   * @returns {APIPromise<PublicPaySplit>}
    *
    * @example
    * ```ts

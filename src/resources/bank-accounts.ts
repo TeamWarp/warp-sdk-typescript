@@ -30,7 +30,7 @@ export class BankAccounts extends APIResource {
    *
    * @param {string} id - The tag of the bank account.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicBankAccount>} Stored worker bank account metadata without full account numbers, routing details or provider identifiers.
+   * @returns {APIPromise<PublicBankAccount>}
    *
    * @example
    * ```ts
