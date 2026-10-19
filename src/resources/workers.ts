@@ -14,7 +14,7 @@ export class Workers extends APIResource {
    * @param {string} id - The id of the worker.
    * @param {WorkerUpdateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkerUpdateResponse>} A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   * @returns {APIPromise<WorkerUpdateResponse>}
    *
    * @example
    * ```ts
@@ -30,7 +30,7 @@ export class Workers extends APIResource {
    *
    * @param {string} id - The id of the worker.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkerGetResponse>} A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   * @returns {APIPromise<WorkerGetResponse>}
    *
    * @example
    * ```ts
@@ -99,7 +99,7 @@ export class Workers extends APIResource {
    *
    * @param {WorkerCreateEmployeeParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkerCreateEmployeeResponse>} A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   * @returns {APIPromise<WorkerCreateEmployeeResponse>}
    *
    * @example
    * ```ts
@@ -134,7 +134,7 @@ export class Workers extends APIResource {
    *
    * @param {WorkerCreateContractorParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkerCreateContractorResponse>} A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   * @returns {APIPromise<WorkerCreateContractorResponse>}
    *
    * @example
    * ```ts
@@ -163,7 +163,7 @@ export class Workers extends APIResource {
    *
    * @param {string} id - The id of the worker.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<WorkerInviteResponse>} A worker profile, including lifecycle, workplace, profile, and compensation fields.
+   * @returns {APIPromise<WorkerInviteResponse>}
    *
    * @example
    * ```ts

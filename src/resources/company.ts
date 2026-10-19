@@ -9,7 +9,7 @@ export class Company extends APIResource {
    * Get the company associated with your API key, including its unmasked EIN. Requires settings read permission or higher. No parameters are required. The response is the company object directly, and unavailable incorporation dates are null.
    *
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicCompany>} Basic identity, contact, address, and incorporation information for your company.
+   * @returns {APIPromise<PublicCompany>}
    *
    * @example
    * ```ts

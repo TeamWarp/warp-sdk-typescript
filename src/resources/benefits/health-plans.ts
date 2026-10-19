@@ -30,7 +30,7 @@ export class HealthPlans extends APIResource {
    *
    * @param {string} id - The tag of a company health plan.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicHealthPlan>} A company health plan available through Warp.
+   * @returns {APIPromise<PublicHealthPlan>}
    *
    * @example
    * ```ts

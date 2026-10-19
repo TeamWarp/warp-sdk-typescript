@@ -39,7 +39,7 @@ export class PayRates extends APIResource {
    *
    * @param {string} id - The tag of the pay rate.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
-   * @returns {APIPromise<PublicPayRate>} A regular or additional pay rate assigned to a worker.
+   * @returns {APIPromise<PublicPayRate>}
    *
    * @example
    * ```ts
