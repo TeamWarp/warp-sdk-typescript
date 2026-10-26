@@ -554,7 +554,7 @@ export interface PublicPaycheckWorker {
    */
   lastName: string;
   displayName: string;
-  workerType: 'us_w2' | 'us_1099' | 'global_contractor' | 'global_employee';
+  workerType: 'us_w2' | 'us_1099' | 'global_contractor' | 'eor_employee';
 }
 
 /**
@@ -1360,7 +1360,7 @@ export interface PayrollListPaychecksParams {
   /**
    * Worker classifications in effect for the paycheck to include. Omit to include every worker type visible to the API key.
    */
-  workerTypes?: Array<'us_w2' | 'us_1099' | 'global_contractor' | 'global_employee'> | null;
+  workerTypes?: Array<'us_w2' | 'us_1099' | 'global_contractor' | 'eor_employee'> | null;
   /**
    * Payroll calculation types to include, subject to the API key permissions.
    */

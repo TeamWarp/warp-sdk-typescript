@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.36.8",
+  "generatorVersion": "0.36.9",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -14920,13 +14920,13 @@
                 "us_w2",
                 "us_1099",
                 "global_contractor",
-                "global_employee"
+                "eor_employee"
               ],
               "names": [
                 "UsW2",
                 "Us1099",
                 "GlobalContractor",
-                "GlobalEmployee"
+                "EorEmployee"
               ],
               "deprecations": [
                 false,
