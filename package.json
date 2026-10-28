@@ -49,9 +49,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.cjs.json --noEmit",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "standardwebhooks": "^1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^6.0.0"
   },

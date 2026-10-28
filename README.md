@@ -16,6 +16,7 @@ The REST API documentation can be found on [docs.warp.co](https://docs.warp.co).
 - [Client Options](#client-options)
 - [Request Options](#request-options)
 - [Retries and Timeouts](#retries-and-timeouts)
+- [Webhooks](#webhooks)
 - [Helpers](#helpers)
 - [Logging](#logging)
 - [Requirements](#requirements)
@@ -138,6 +139,24 @@ const client = new Warp({
 ## Retries and Timeouts
 
 Generated clients support request timeouts and retry temporary failures such as network errors, 408, 409, 429, and 5xx responses. Retry delays honor `Retry-After` headers when present. Tune the retry and timeout client options shown above, or override them per request.
+
+<br />
+
+## Webhooks
+
+The webhook helper verifies the signature of each delivery your server receives, then decodes its body into a typed event. Pass it the request body exactly as it arrived, before any JSON parsing, together with the request headers: the signature covers the raw body, so one that was parsed and re-serialized fails verification. A delivery whose signature does not verify is rejected before it is decoded.
+
+```ts
+// `body` is the raw request body as a string; `headers` holds the request headers.
+const event = client.webhooks.unwrap(body, { headers });
+```
+
+The signing secret comes from the client's `webhookSecret` option, which defaults to the `WARP_WEBHOOK_SECRET` environment variable. Pass `key` to use a different secret for one call.
+
+The same resource also has:
+
+- `client.webhooks.verifySignature(body, headers)` checks a delivery's signature, and fails when it does not verify.
+- `client.webhooks.parseUnsafe(body)` decodes a body into a typed event without checking its signature. Use it only for a body verified elsewhere, or in tests.
 
 <br />
 

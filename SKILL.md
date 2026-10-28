@@ -72,5 +72,5 @@ try {
 
 ## Reference files
 
-- [README.md](./README.md) — full feature tour: client options, request options, retries and timeouts, logging.
+- [README.md](./README.md) — full feature tour: client options, request options, retries and timeouts, webhooks, logging.
 - [api.md](./api.md) — complete catalogue of every operation with request and response types.
