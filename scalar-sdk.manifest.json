@@ -12084,7 +12084,9 @@
       "type": {
         "kind": "enum",
         "values": [
+          "preparing",
           "draft",
+          "approving",
           "pending",
           "processing",
           "partially_paid",
@@ -12093,7 +12095,9 @@
           "voided"
         ],
         "names": [
+          "Preparing",
           "Draft",
+          "Approving",
           "Pending",
           "Processing",
           "PartiallyPaid",
@@ -12102,6 +12106,8 @@
           "Voided"
         ],
         "deprecations": [
+          false,
+          false,
           false,
           false,
           false,
@@ -13048,8 +13054,16 @@
               }
             },
             "type": {
-              "kind": "ref",
-              "name": "public_currency_money_amount_1"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_currency_money_amount_1"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -13927,8 +13941,16 @@
               }
             },
             "type": {
-              "kind": "ref",
-              "name": "public_currency_money_amount_1"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_currency_money_amount_1"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -15043,8 +15065,16 @@
               }
             },
             "type": {
-              "kind": "ref",
-              "name": "public_currency_money_amount_12"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_currency_money_amount_12"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           }
         ],
@@ -15904,8 +15934,16 @@
               }
             },
             "type": {
-              "kind": "ref",
-              "name": "public_currency_money_amount_12"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_currency_money_amount_12"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
             }
           },
           {
@@ -17233,6 +17271,145 @@
       }
     },
     {
+      "name": "public_payroll_money_amount_1",
+      "source": "public_payroll_money_amount_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 300000,
+          "currency": "USD",
+          "display": "$3,000.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": 0
+              }
+            }
+          },
+          {
+            "name": "currency",
+            "publicName": "currency",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_currency"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_paycheck_source_rate",
+      "source": "public_paycheck_source_rate",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": {
+            "amount": 12000000,
+            "currency": "USD",
+            "display": "$120,000.00"
+          },
+          "basis": "yearly"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "ref",
+                  "name": "public_payroll_money_amount_1"
+                },
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
+            "name": "basis",
+            "publicName": "basis",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "enum",
+              "values": [
+                "yearly",
+                "monthly",
+                "weekly",
+                "hourly"
+              ],
+              "names": [
+                "Yearly",
+                "Monthly",
+                "Weekly",
+                "Hourly"
+              ],
+              "deprecations": [
+                false,
+                false,
+                false,
+                false
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
       "name": "public_paycheck_earning",
       "source": "public_paycheck_earning",
       "publicAliases": [],
@@ -17255,6 +17432,7 @@
             "currency": "USD",
             "per": "hour"
           },
+          "sourceRate": null,
           "description": "Regular hours"
         }
       },
@@ -17418,6 +17596,37 @@
             }
           },
           {
+            "name": "sourceRate",
+            "publicName": "sourceRate",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": {
+                "amount": {
+                  "amount": 12000000,
+                  "currency": "USD",
+                  "display": "$120,000.00"
+                },
+                "basis": "yearly"
+              }
+            },
+            "type": {
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "ref",
+                  "name": "public_paycheck_source_rate"
+                },
+                {
+                  "kind": "null"
+                }
+              ]
+            }
+          },
+          {
             "name": "description",
             "publicName": "description",
             "required": true,
@@ -17440,8 +17649,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_1",
-      "source": "public_payroll_money_amount_1",
+      "name": "public_payroll_money_amount_2",
+      "source": "public_payroll_money_amount_2",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -17546,7 +17755,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_1"
+              "name": "public_payroll_money_amount_2"
             }
           },
           {
@@ -17599,8 +17808,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_2",
-      "source": "public_payroll_money_amount_2",
+      "name": "public_payroll_money_amount_3",
+      "source": "public_payroll_money_amount_3",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -17724,7 +17933,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_2"
+              "name": "public_payroll_money_amount_3"
             }
           },
           {
@@ -17750,8 +17959,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_3",
-      "source": "public_payroll_money_amount_3",
+      "name": "public_payroll_money_amount_4",
+      "source": "public_payroll_money_amount_4",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -17819,8 +18028,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_4",
-      "source": "public_payroll_money_amount_4",
+      "name": "public_payroll_money_amount_5",
+      "source": "public_payroll_money_amount_5",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -18127,7 +18336,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_3"
+              "name": "public_payroll_money_amount_4"
             }
           },
           {
@@ -18147,7 +18356,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_4"
+              "name": "public_payroll_money_amount_5"
             }
           }
         ],
@@ -18182,8 +18391,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_5",
-      "source": "public_payroll_money_amount_5",
+      "name": "public_payroll_money_amount_6",
+      "source": "public_payroll_money_amount_6",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -18307,7 +18516,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_5"
+              "name": "public_payroll_money_amount_6"
             }
           },
           {
@@ -18465,6 +18674,7 @@
                 "currency": "USD",
                 "per": "hour"
               },
+              "sourceRate": null,
               "description": "Regular hours"
             }
           ],
