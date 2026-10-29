@@ -336,7 +336,9 @@ export type PublicPayrollSubtype =
  * The current public lifecycle status of a payroll.
  */
 export type PublicPayrollStatus =
+  | 'preparing'
   | 'draft'
+  | 'approving'
   | 'pending'
   | 'processing'
   | 'partially_paid'
@@ -443,9 +445,9 @@ export interface PublicPayrollDetailTotals {
    */
   grossPay: PublicCurrencyMoneyAmount;
   /**
-   * The provider-calculated amount to send for workers: gross pay plus reimbursements, less worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from recomputed totals because of provider and FX rounding.
+   * The provider-calculated amount to send for workers: gross pay plus reimbursements, less worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from recomputed totals because of provider and FX rounding. Null when any paycheck net pay is not yet known.
    */
-  netPay: PublicCurrencyMoneyAmount1;
+  netPay: PublicCurrencyMoneyAmount1 | null;
   /**
    * Amounts reimbursed to workers in addition to gross pay. Reimbursements increase net pay and employer cost.
    */
@@ -630,7 +632,18 @@ export interface PublicPaycheckEarning {
    * A non-negative major-unit hourly rate. The earning amount remains authoritative.
    */
   hourlyRate: PublicHourlyRate | null;
+  /**
+   * The effective compensation rate captured when the earning was saved, before proration.
+   */
+  sourceRate: PublicPaycheckEarning.SourceRate | null;
   description: string | null;
+}
+
+export namespace PublicPaycheckEarning {
+  export interface SourceRate {
+    amount: PublicPayrollMoneyAmount1 & unknown;
+    basis: 'yearly' | 'monthly' | 'weekly' | 'hourly';
+  }
 }
 
 /**
@@ -640,7 +653,7 @@ export interface PublicPaycheckReimbursement {
   /**
    * The amount reimbursed to the worker on this paycheck in the amount's currency. It may differ from the currency of the original expense.
    */
-  amount: PublicPayrollMoneyAmount1;
+  amount: PublicPayrollMoneyAmount2;
   description: string | null;
 }
 
@@ -652,7 +665,7 @@ export interface PublicPaycheckDeduction {
   /**
    * The amount deducted from the worker's pay on this line in the amount's currency.
    */
-  amount: PublicPayrollMoneyAmount2;
+  amount: PublicPayrollMoneyAmount3;
   description: string | null;
 }
 
@@ -710,11 +723,11 @@ export interface PublicPaycheckBenefit {
   /**
    * The amount the worker pays toward this benefit on the paycheck in the amount's currency.
    */
-  workerContribution: PublicPayrollMoneyAmount3;
+  workerContribution: PublicPayrollMoneyAmount4;
   /**
    * The amount the employer pays toward this benefit on the paycheck in the amount's currency.
    */
-  employerContribution: PublicPayrollMoneyAmount4;
+  employerContribution: PublicPayrollMoneyAmount5;
 }
 
 /**
@@ -725,8 +738,23 @@ export interface PublicPaycheckTax {
   /**
    * The tax amount attributed to the party identified by payer, expressed in the amount's currency.
    */
-  amount: PublicPayrollMoneyAmount5;
+  amount: PublicPaycheckTax.Amount;
   description: string | null;
+}
+
+export namespace PublicPaycheckTax {
+  export interface Amount {
+    /**
+     * minor units — cents, e.g. 2345 for $23.45
+     * @minimum 0
+     */
+    amount: number;
+    currency: PublicPayrollCurrency & unknown;
+    /**
+     * The server-formatted display string for the amount in its currency.
+     */
+    display: string;
+  }
 }
 
 /**
@@ -738,9 +766,9 @@ export interface PublicFundingPayrollTotals {
    */
   grossPay: PublicCurrencyMoneyAmount;
   /**
-   * The provider-calculated amount to send for workers: gross pay plus reimbursements, less worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from recomputed totals because of provider and FX rounding.
+   * The provider-calculated amount to send for workers: gross pay plus reimbursements, less worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from recomputed totals because of provider and FX rounding. Null when any paycheck net pay is not yet known.
    */
-  netPay: PublicCurrencyMoneyAmount1;
+  netPay: PublicCurrencyMoneyAmount1 | null;
   /**
    * Amounts reimbursed to workers in addition to gross pay. Reimbursements increase net pay and employer cost.
    */
@@ -810,7 +838,7 @@ export interface PublicCurrencyMoneyAmount {
 }
 
 /**
- * The provider-calculated amount to send for workers: gross pay plus reimbursements, less worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from recomputed totals because of provider and FX rounding.
+ * The provider-calculated amount to send for workers: gross pay plus reimbursements, less worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from recomputed totals because of provider and FX rounding. Null when any paycheck net pay is not yet known.
  */
 export interface PublicCurrencyMoneyAmount1 {
   /**
@@ -968,7 +996,7 @@ export interface PublicPaycheckSummaryTotals {
 }
 
 /**
- * Paycheck category totals in one currency. Every category is present, including zero-valued categories.
+ * Paycheck category totals in one currency. Every category is present, including zero-valued categories; netPay is null until known.
  */
 export interface PublicPaycheckCurrencyTotals {
   currency: PublicPayrollCurrency & unknown;
@@ -977,9 +1005,9 @@ export interface PublicPaycheckCurrencyTotals {
    */
   grossPay: PublicCurrencyMoneyAmount13;
   /**
-   * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives.
+   * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives. Null in both calculation and funding currencies until net pay is known in both.
    */
-  netPay: PublicCurrencyMoneyAmount12;
+  netPay: PublicCurrencyMoneyAmount12 | null;
   /**
    * Amounts reimbursed to the worker in addition to gross pay. Reimbursements increase net pay and employer cost.
    */
@@ -1041,7 +1069,7 @@ export interface PublicHourlyRate {
 }
 
 /**
- * The amount reimbursed to the worker on this paycheck in the amount's currency. It may differ from the currency of the original expense.
+ * An amount in ISO currency minor units with a server-formatted display value.
  */
 export interface PublicPayrollMoneyAmount1 {
   /**
@@ -1062,7 +1090,7 @@ export interface PublicPayrollMoneyAmount1 {
 export type PublicPaycheckDeductionTaxTreatment = 'pre_tax' | 'post_tax';
 
 /**
- * The amount deducted from the worker's pay on this line in the amount's currency.
+ * The amount reimbursed to the worker on this paycheck in the amount's currency. It may differ from the currency of the original expense.
  */
 export interface PublicPayrollMoneyAmount2 {
   /**
@@ -1078,7 +1106,7 @@ export interface PublicPayrollMoneyAmount2 {
 }
 
 /**
- * The amount the worker pays toward this benefit on the paycheck in the amount's currency.
+ * The amount deducted from the worker's pay on this line in the amount's currency.
  */
 export interface PublicPayrollMoneyAmount3 {
   /**
@@ -1094,7 +1122,7 @@ export interface PublicPayrollMoneyAmount3 {
 }
 
 /**
- * The amount the employer pays toward this benefit on the paycheck in the amount's currency.
+ * The amount the worker pays toward this benefit on the paycheck in the amount's currency.
  */
 export interface PublicPayrollMoneyAmount4 {
   /**
@@ -1115,7 +1143,7 @@ export interface PublicPayrollMoneyAmount4 {
 export type PublicTaxPayer = 'worker' | 'employer';
 
 /**
- * The tax amount attributed to the party identified by payer, expressed in the amount's currency.
+ * The amount the employer pays toward this benefit on the paycheck in the amount's currency.
  */
 export interface PublicPayrollMoneyAmount5 {
   /**
@@ -1136,9 +1164,9 @@ export interface PublicPayrollMoneyAmount5 {
 export interface PublicPaycheckSummaryCurrencyTotals {
   currency: PublicPayrollCurrency & unknown;
   /**
-   * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives.
+   * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives. Null in both calculation and funding currencies until net pay is known in both.
    */
-  netPay: PublicCurrencyMoneyAmount12;
+  netPay: PublicCurrencyMoneyAmount12 | null;
 }
 
 /**
@@ -1157,7 +1185,7 @@ export interface PublicCurrencyMoneyAmount13 {
 }
 
 /**
- * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives.
+ * Calculated net pay after reimbursements, worker taxes, deductions, and benefit contributions. It excludes payment execution fees and may differ from the amount the worker ultimately receives. Null in both calculation and funding currencies until net pay is known in both.
  */
 export interface PublicCurrencyMoneyAmount12 {
   /**
