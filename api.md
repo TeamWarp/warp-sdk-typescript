@@ -990,7 +990,7 @@ const worker = await client.workers.createEmployee({
     workplaceId: 'wkp_1234',
   },
   compensation: {
-    amount: 1,
+    amount: 85000,
     per: 'hour',
   },
 });
