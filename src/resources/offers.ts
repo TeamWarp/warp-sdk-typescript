@@ -1010,19 +1010,23 @@ export namespace OfferCreateParams {
       | 'XAF'
       | 'PEN';
     /**
+     * major units (dollars), e.g. 23.45
      * @exclusiveMinimum 0
      */
     payRate: number;
     payType?: 'fixed' | 'pay_as_you_go' | null;
     /**
+     * major units (dollars), e.g. 23.45
      * @exclusiveMinimum 0
      */
     payVariableRate?: number | null;
     /**
+     * major units (dollars), e.g. 23.45
      * @exclusiveMinimum 0
      */
     signOnBonus?: number | null;
     /**
+     * major units (dollars), e.g. 23.45
      * @exclusiveMinimum 0
      */
     relocationBonus?: number | null;

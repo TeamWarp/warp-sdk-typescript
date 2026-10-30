@@ -1246,7 +1246,7 @@ const cases: {
           workplaceId: 'wkp_1234',
         },
         compensation: {
-          amount: 1,
+          amount: 85000,
           per: 'hour',
         },
       });
@@ -1277,7 +1277,7 @@ const cases: {
           workplaceId: 'wkp_1234',
         },
         compensation: {
-          amount: 1,
+          amount: 85000,
           per: 'hour',
         },
         paySchedule: 'weekly',
@@ -1327,7 +1327,7 @@ const cases: {
         workCountry: 'AD',
         compensation: {
           currency: 'USD',
-          amount: 1,
+          amount: 5000,
           per: 'year',
         },
         paySchedule: 'weekly',

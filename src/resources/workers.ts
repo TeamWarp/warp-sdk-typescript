@@ -116,7 +116,7 @@ export class Workers extends APIResource {
    *     workplaceId: 'wkp_1234',
    *   },
    *   compensation: {
-   *     amount: 1,
+   *     amount: 85000,
    *     per: 'hour',
    *   },
    * });
@@ -1758,6 +1758,7 @@ export namespace WorkerCreateEmployeeParams {
 
   export interface Compensation {
     /**
+     * The pay amount. Interpreted based on the "per" field.
      * @exclusiveMinimum 0
      */
     amount: number;
@@ -2288,6 +2289,7 @@ export namespace WorkerCreateContractorParams {
       | 'XAF'
       | 'PEN';
     /**
+     * The pay amount. Interpreted based on the "per" field.
      * @exclusiveMinimum 0
      */
     amount: number;

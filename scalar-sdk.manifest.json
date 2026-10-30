@@ -9003,8 +9003,29 @@
             "required": true,
             "deprecated": false,
             "type": {
-              "kind": "primitive",
-              "type": "string"
+              "kind": "union",
+              "variants": [
+                {
+                  "kind": "primitive",
+                  "type": "string",
+                  "validation": {
+                    "pattern": "^bank_"
+                  }
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                },
+                {
+                  "kind": "primitive",
+                  "type": "string"
+                }
+              ],
+              "variantNames": [
+                null,
+                null,
+                null
+              ]
             }
           },
           {
