@@ -614,7 +614,8 @@ export interface PublicPaycheckEarning {
     | 'fixed'
     | 'group_term_life'
     | 'other_imputed'
-    | '2_percent_shareholder_benefits';
+    | '2_percent_shareholder_benefits'
+    | 'paycheck_tips';
   /**
    * Public workplace identifier
    * @pattern ^wkp_
