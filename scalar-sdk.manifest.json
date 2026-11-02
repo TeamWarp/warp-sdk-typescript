@@ -17482,7 +17482,8 @@
                 "fixed",
                 "group_term_life",
                 "other_imputed",
-                "2_percent_shareholder_benefits"
+                "2_percent_shareholder_benefits",
+                "paycheck_tips"
               ],
               "names": [
                 "Hourly",
@@ -17499,9 +17500,11 @@
                 "Fixed",
                 "GroupTermLife",
                 "OtherImputed",
-                "_2PercentShareholderBenefits"
+                "_2PercentShareholderBenefits",
+                "PaycheckTips"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
