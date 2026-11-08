@@ -26,7 +26,7 @@ export class RetirementPlans extends APIResource {
   }
 
   /**
-   * Create a retirement plan for a company on the manual retirement channel.
+   * Create a retirement plan for a company on the manual or PayKonnect retirement channel.
    *
    * @param {RetirementPlanCreateParams} body - The request body to send.
    * @param {RequestOptions} [options] - Options to apply to the request, such as headers and an abort signal.
@@ -62,7 +62,7 @@ export class RetirementPlans extends APIResource {
   }
 
   /**
-   * Update a retirement plan for a company on the manual retirement channel.
+   * Update a retirement plan for a company on the manual or PayKonnect retirement channel.
    *
    * @param {string} id - The tag of a company retirement plan.
    * @param {RetirementPlanUpdateParams} body - The request body to send.
@@ -101,7 +101,7 @@ export interface PublicRetirementPlan {
    */
   name: string;
   /**
-   * The system administering the plan. Manual plans are administered by the company outside a connected provider.
+   * The system administering the plan. Manual plans are administered by the company outside a connected provider. PayKonnect plans are kept in sync by PayKonnect.
    */
   provider: PublicRetirementPlanProvider;
   /**
@@ -138,7 +138,7 @@ export interface PublicRetirementPlan1 {
    */
   name: string;
   /**
-   * The system administering the plan. Manual plans are administered by the company outside a connected provider.
+   * The system administering the plan. Manual plans are administered by the company outside a connected provider. PayKonnect plans are kept in sync by PayKonnect.
    */
   provider: PublicRetirementPlanProvider;
   /**
@@ -158,9 +158,9 @@ export interface PublicRetirementPlan1 {
 }
 
 /**
- * The system administering the plan. Manual plans are administered by the company outside a connected provider.
+ * The system administering the plan. Manual plans are administered by the company outside a connected provider. PayKonnect plans are kept in sync by PayKonnect.
  */
-export type PublicRetirementPlanProvider = 'manual' | 'human_interest' | 'accrue';
+export type PublicRetirementPlanProvider = 'manual' | 'human_interest' | 'accrue' | 'paykonnect';
 
 /**
  * The public lifecycle status of a retirement plan.
