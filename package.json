@@ -1,11 +1,14 @@
 {
   "name": "warp-hr",
   "version": "0.1.0",
-  "description": "Warp TypeScript SDK",
+  "description": "Warp Public API - API for accessing your organization's data on Warp.",
   "author": "Warp",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TeamWarp/warp-sdk-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TeamWarp/warp-sdk-typescript/issues"
   },
   "homepage": "https://docs.warp.co",
   "type": "module",
