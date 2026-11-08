@@ -3928,14 +3928,17 @@
         "values": [
           "manual",
           "human_interest",
-          "accrue"
+          "accrue",
+          "paykonnect"
         ],
         "names": [
           "Manual",
           "HumanInterest",
-          "Accrue"
+          "Accrue",
+          "Paykonnect"
         ],
         "deprecations": [
+          false,
           false,
           false,
           false
