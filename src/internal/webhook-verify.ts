@@ -38,6 +38,11 @@ export type WebhookSignatureScheme = {
   readonly toleranceSeconds?: number;
   /** The MAC the API signs with. Only `hmac-sha256` is implemented. */
   readonly algorithm?: string;
+  /**
+   * The helper's decode-only method as generated, named when `algorithm` is one this verifier cannot
+   * check; absent when the SDK has none.
+   */
+  readonly decodeOnly?: string;
 };
 
 /** The Standard Webhooks defaults. */
@@ -50,15 +55,17 @@ const DEFAULT_SCHEME = {
 } as const;
 
 /**
- * Thrown when a delivery fails verification: a missing header, a timestamp outside the window, or no
- * matching signature. The name and messages are stable, so callers can match on them.
+ * Thrown when a delivery fails verification: a missing header, a timestamp outside the window, no
+ * matching signature, or a signature algorithm the SDK cannot check. The name and messages are
+ * stable, so callers can match on them.
  *
  * SDKs that verified through the `standardwebhooks` package let that library's class of the same name
  * escape, so callers wrote `err.name === 'WebhookVerificationError'` or `err instanceof
  * WebhookVerificationError`. The name is kept, and the package root exports this class, so both checks
  * keep working once the import points at the SDK. It extends the SDK's base error, so
- * `instanceof WarpError` covers a refused delivery too; a missing or malformed secret,
- * and a header the companions find missing, still throw plain `Error`s.
+ * `instanceof WarpError` covers a refused delivery too. A helper configured with
+ * an algorithm the verifier does not implement throws it on every call; a missing or malformed
+ * secret, and a header the companions find missing, still throw plain `Error`s.
  */
 export class WebhookVerificationError extends WarpError {
   constructor(message: string) {
@@ -87,9 +94,18 @@ export const verifyWebhookSignature = (
 ): void => {
   const algorithm = scheme.algorithm ?? DEFAULT_SCHEME.algorithm;
   // Anything else would compute the wrong MAC and reject every genuine delivery as unsigned, so it fails
-  // up front and says why.
+  // up front and says why. It is a `WebhookVerificationError`, the class callers catch to reject a
+  // delivery, so the refusal reaches their handler instead of escaping as a crash; the message names
+  // the decode-only method the emitter passed (companions can be renamed or turned off, which this
+  // shared module cannot know), since the signature then has to be checked outside the SDK.
   if (algorithm !== 'hmac-sha256') {
-    throw new Error(`Webhook signature algorithm ${algorithm} is not supported; only hmac-sha256 is`);
+    const decode = scheme.decodeOnly
+      ? `decode the body with ${scheme.decodeOnly}`
+      : 'parse the body yourself';
+    throw new WebhookVerificationError(
+      `Webhook signature algorithm ${algorithm} is not supported; only hmac-sha256 is. ` +
+        `Verify the signature yourself, then ${decode}`,
+    );
   }
   // The secret is checked first, so a misconfigured SDK fails the same way whatever the delivery.
   const key = decodeSecret(secret);
