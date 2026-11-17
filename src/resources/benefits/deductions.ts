@@ -150,7 +150,8 @@ export interface PublicBenefitDeduction {
     | 'pucc'
     | 'voluntary'
     | 'post_tax'
-    | 'other';
+    | 'other'
+    | 'voluntary_life';
   /**
    * Whether the deduction recurs or applies once.
    */
@@ -233,7 +234,8 @@ export interface PublicBenefitDeduction1 {
     | 'pucc'
     | 'voluntary'
     | 'post_tax'
-    | 'other';
+    | 'other'
+    | 'voluntary_life';
   /**
    * Whether the deduction recurs or applies once.
    */
@@ -493,6 +495,7 @@ export interface DeductionListParams {
     | 'voluntary'
     | 'post_tax'
     | 'other'
+    | 'voluntary_life'
   > | null;
   statuses: Array<PublicBenefitDeductionStatus> | null;
   healthPlanIds?: Array<string> | null;
