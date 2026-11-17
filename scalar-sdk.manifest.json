@@ -3319,7 +3319,8 @@
                 "long_term_disability",
                 "accident",
                 "critical_illness",
-                "hospital"
+                "hospital",
+                "voluntary_life"
               ],
               "names": [
                 "Medical",
@@ -3330,9 +3331,11 @@
                 "LongTermDisability",
                 "Accident",
                 "CriticalIllness",
-                "Hospital"
+                "Hospital",
+                "VoluntaryLife"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -4965,7 +4968,8 @@
                 "pucc",
                 "voluntary",
                 "post_tax",
-                "other"
+                "other",
+                "voluntary_life"
               ],
               "names": [
                 "Medical",
@@ -4997,9 +5001,11 @@
                 "Pucc",
                 "Voluntary",
                 "PostTax",
-                "Other"
+                "Other",
+                "VoluntaryLife"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -6195,7 +6201,8 @@
                 "pucc",
                 "voluntary",
                 "post_tax",
-                "other"
+                "other",
+                "voluntary_life"
               ],
               "names": [
                 "Medical",
@@ -6227,9 +6234,11 @@
                 "Pucc",
                 "Voluntary",
                 "PostTax",
-                "Other"
+                "Other",
+                "VoluntaryLife"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -18905,7 +18914,8 @@
                     "pucc",
                     "voluntary",
                     "post_tax",
-                    "other"
+                    "other",
+                    "voluntary_life"
                   ],
                   "names": [
                     "Medical",
@@ -18937,9 +18947,11 @@
                     "Pucc",
                     "Voluntary",
                     "PostTax",
-                    "Other"
+                    "Other",
+                    "VoluntaryLife"
                   ],
                   "deprecations": [
+                    false,
                     false,
                     false,
                     false,
