@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.43.1",
+  "generatorVersion": "0.44.0",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -3320,7 +3320,8 @@
                 "accident",
                 "critical_illness",
                 "hospital",
-                "voluntary_life"
+                "voluntary_life",
+                "miscellaneous"
               ],
               "names": [
                 "Medical",
@@ -3332,9 +3333,11 @@
                 "Accident",
                 "CriticalIllness",
                 "Hospital",
-                "VoluntaryLife"
+                "VoluntaryLife",
+                "Miscellaneous"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -4969,7 +4972,8 @@
                 "voluntary",
                 "post_tax",
                 "other",
-                "voluntary_life"
+                "voluntary_life",
+                "miscellaneous"
               ],
               "names": [
                 "Medical",
@@ -5002,9 +5006,11 @@
                 "Voluntary",
                 "PostTax",
                 "Other",
-                "VoluntaryLife"
+                "VoluntaryLife",
+                "Miscellaneous"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -6202,7 +6208,8 @@
                 "voluntary",
                 "post_tax",
                 "other",
-                "voluntary_life"
+                "voluntary_life",
+                "miscellaneous"
               ],
               "names": [
                 "Medical",
@@ -6235,9 +6242,11 @@
                 "Voluntary",
                 "PostTax",
                 "Other",
-                "VoluntaryLife"
+                "VoluntaryLife",
+                "Miscellaneous"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -18915,7 +18924,8 @@
                     "voluntary",
                     "post_tax",
                     "other",
-                    "voluntary_life"
+                    "voluntary_life",
+                    "miscellaneous"
                   ],
                   "names": [
                     "Medical",
@@ -18948,9 +18958,11 @@
                     "Voluntary",
                     "PostTax",
                     "Other",
-                    "VoluntaryLife"
+                    "VoluntaryLife",
+                    "Miscellaneous"
                   ],
                   "deprecations": [
+                    false,
                     false,
                     false,
                     false,
