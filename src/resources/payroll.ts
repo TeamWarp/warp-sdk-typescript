@@ -721,6 +721,7 @@ export interface PublicPaycheckBenefit {
     | 'post_tax'
     | 'other'
     | 'voluntary_life'
+    | 'miscellaneous'
     | null;
   /**
    * The amount the worker pays toward this benefit on the paycheck in the amount's currency.

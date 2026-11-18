@@ -68,7 +68,8 @@ export interface PublicHealthPlan {
     | 'accident'
     | 'critical_illness'
     | 'hospital'
-    | 'voluntary_life';
+    | 'voluntary_life'
+    | 'miscellaneous';
   /**
    * The company-facing plan name.
    */
@@ -140,6 +141,7 @@ export interface HealthPlanListParams {
     | 'critical_illness'
     | 'hospital'
     | 'voluntary_life'
+    | 'miscellaneous'
   > | null;
   statuses: Array<PublicHealthPlanStatus> | null;
   carrierIds?: Array<string> | null;

@@ -63,16 +63,223 @@ const DEFAULT_SCHEME = {
  * escape, so callers wrote `err.name === 'WebhookVerificationError'` or `err instanceof
  * WebhookVerificationError`. The name is kept, and the package root exports this class, so both checks
  * keep working once the import points at the SDK. It extends the SDK's base error, so
- * `instanceof WarpError` covers a refused delivery too. A helper configured with
- * an algorithm the verifier does not implement throws it on every call; a missing or malformed
- * secret, and a header the companions find missing, still throw plain `Error`s.
+ * `instanceof WarpError` covers a refused delivery too. Where the application has
+ * loaded `standardwebhooks` itself, an `instanceof` against that library's class matches a refusal as
+ * well (see {@link bridgeLibraryError}). A helper configured with an algorithm the verifier does not
+ * implement throws it on every call; a missing or malformed secret, and a header the companions find
+ * missing, still throw plain `Error`s.
  */
 export class WebhookVerificationError extends WarpError {
   constructor(message: string) {
     super(message);
     this.name = 'WebhookVerificationError';
+    bridgeLibraryError();
   }
 }
+
+/** The package whose `WebhookVerificationError` a handler may import in place of the SDK's. */
+const LIBRARY_ID = 'standardwebhooks';
+
+/**
+ * Carried by the prototype of every SDK refusal class that bridges, and read by the wrapper the bridge
+ * installs. A registry symbol, so the ESM and CommonJS builds, other SDKs and a re-evaluated module all
+ * agree on it. Only the copy that installed the wrapper stays reachable through it; later copies and
+ * reloads add nothing.
+ */
+const REFUSAL_BRAND = Symbol.for('scalar-sdk.webhook-verification-error.refusal');
+
+/** Set on a library class once a wrapper is installed, so no later copy or reload stacks another. */
+const BRIDGED_MARK = Symbol.for('scalar-sdk.webhook-verification-error.bridged');
+
+Object.defineProperty(WebhookVerificationError.prototype, REFUSAL_BRAND, { value: true });
+
+/** The slice of `node:module`'s `require` the bridge uses: resolution and the shared module cache. */
+type NodeRequire = {
+  readonly resolve: (id: string, options?: { readonly paths?: readonly string[] }) => string;
+  readonly cache: Readonly<Record<string, { readonly exports?: unknown } | undefined>>;
+};
+
+/** The globals the bridge feature-detects; browsers and most edge runtimes have no `process`. */
+type BridgeGlobals = {
+  readonly process?:
+    | {
+        readonly getBuiltinModule?: (id: string) => unknown;
+        readonly cwd?: () => string;
+        readonly argv?: readonly string[];
+      }
+    | undefined;
+};
+
+/**
+ * Where the application's copy of the library would load from, resolved once on the first refusal:
+ * the module cache and every distinct entry file. `null` once resolution has run and found nothing to
+ * bridge (no `node:module`, or the library is not installed), so later refusals cost nothing.
+ */
+let libraryLookup:
+  | { readonly cache: NodeRequire['cache']; readonly entries: readonly string[] }
+  | null
+  | undefined;
+
+/** Library classes this copy of the SDK has already tried to bridge, so a failure is not retried. */
+const attemptedLibraryClasses = new WeakSet<object>();
+
+/**
+ * Whether `value` is an object whose prototype chain carries {@link REFUSAL_BRAND}. The brand is a
+ * registry symbol, so any code can forge it; that is accepted because `instanceof` is no security
+ * boundary. Reading it runs a Proxy's `get` trap, as `instanceof`'s own prototype walk runs its
+ * `getPrototypeOf` trap.
+ */
+const isBridgedRefusal = (value: unknown): boolean =>
+  (typeof value === 'object' || typeof value === 'function') &&
+  value !== null &&
+  (value as Record<symbol, unknown>)[REFUSAL_BRAND] === true;
+
+/**
+ * Makes `instanceof` against `standardwebhooks`' `WebhookVerificationError` match this SDK's refusals,
+ * so a handler still importing the library's class keeps catching them after the move to the SDK.
+ *
+ * A refusal already extends the SDK's base error, and a prototype chain is linear, so the library's
+ * class cannot be a second base the way it is in Python. The library's own `Symbol.hasInstance` is
+ * what can answer instead, and is wrapped to accept refusals carrying {@link REFUSAL_BRAND}.
+ *
+ * The SDK never loads the library. It only bridges a copy the application has already loaded, found
+ * in Node's module cache (`require.cache`, where an ESM `import` of the CommonJS-only library lands
+ * too) under the entry the resolver gives from the working directory and the entry script. Resolving
+ * reads files but runs none, so a `node_modules` planted in an untrusted working directory is never
+ * executed; requiring from there would be. The cache is checked on every refusal, a single lookup
+ * per entry, so a library loaded after the first refusal is picked up by the next one.
+ *
+ * Feature-detected through `process.getBuiltinModule`, never a static import or `require`, so no
+ * bundler tries to resolve the library and browsers and edge runtimes, which have neither, skip it.
+ * Any failure leaves the refusal exactly as it was without the library.
+ *
+ * Patching the library's class is deliberate and process-wide, and there is no opt-out: it changes
+ * that class's `instanceof` answer for every caller in the process, but only ever to add refusals,
+ * which are a refused delivery in every sense a handler of the library's class relies on.
+ */
+const bridgeLibraryError = (): void => {
+  try {
+    const lookup = libraryLookup === undefined ? resolveLibraryLookup() : libraryLookup;
+    if (!lookup) return;
+    for (const entry of lookup.entries) {
+      const exported = lookup.cache[entry]?.exports as
+        | { readonly WebhookVerificationError?: unknown }
+        | undefined;
+      const libraryClass = exported?.WebhookVerificationError;
+      if (typeof libraryClass !== 'function' || attemptedLibraryClasses.has(libraryClass)) continue;
+      attemptedLibraryClasses.add(libraryClass);
+      // A class whose instances are refusals (this SDK's own, or another SDK's that a planted entry
+      // re-exports) is never wrapped: the wrapper would make it match every other SDK's refusals too.
+      if (isBridgedRefusal((libraryClass as { readonly prototype?: unknown }).prototype)) continue;
+      if (Object.prototype.hasOwnProperty.call(libraryClass, BRIDGED_MARK)) continue;
+      patchLibraryHasInstance(libraryClass);
+    }
+  } catch {
+    // A locked-down runtime (a frozen class, a `process` polyfill that throws): leave the error as is.
+  }
+};
+
+/**
+ * Resolves the library's entry file from the working directory and the entry script, and records the
+ * module cache to look them up in. Leaves {@link libraryLookup} unset where the runtime has no
+ * `process.getBuiltinModule`, so a runtime that swaps `process` back in is still looked at; records
+ * `null` when `node:module` has no `createRequire`, or once resolution has run and found no entry.
+ */
+const resolveLibraryLookup = (): typeof libraryLookup => {
+  // Named apart from the `process` and `require` globals, so that nothing here reads to a bundler as
+  // the CommonJS `require` of the library, whether or not it tracks scopes.
+  const runtime = (globalThis as unknown as BridgeGlobals).process;
+  if (typeof runtime?.getBuiltinModule !== 'function') return undefined;
+  const nodeModule = runtime.getBuiltinModule('node:module') as
+    | { readonly createRequire?: (path: string) => NodeRequire }
+    | undefined;
+  const cwd = typeof runtime.cwd === 'function' ? runtime.cwd() : undefined;
+  if (typeof nodeModule?.createRequire !== 'function' || typeof cwd !== 'string') {
+    libraryLookup = null;
+    return null;
+  }
+  // The trailing separator makes `createRequire` treat the directory as the requiring location.
+  const nodeRequire = nodeModule.createRequire(`${cwd}/`);
+  const bases = [cwd, ...entryScriptBases(runtime.argv?.[1], runtime.getBuiltinModule)];
+  const entries = new Set<string>();
+  for (const base of bases) {
+    try {
+      const entry = nodeRequire.resolve(LIBRARY_ID, { paths: [base] });
+      const manifest = nodeRequire.resolve(`${LIBRARY_ID}/package.json`, { paths: [base] });
+      if (isOwnPackageFile(entry, manifest)) entries.add(entry);
+    } catch {
+      // Not installed where this base looks: nothing to bridge from here.
+    }
+  }
+  libraryLookup = entries.size > 0 ? { cache: nodeRequire.cache, entries: [...entries] } : null;
+  return libraryLookup;
+};
+
+/**
+ * Whether `entry` is a file of the package whose `package.json` is `manifest`: inside that package's
+ * own directory, which sits directly in a `node_modules`, and not inside a package nested under it. A
+ * `main` may point anywhere, even at another module the application has loaded, so a match anywhere
+ * in the path is not enough.
+ */
+const isOwnPackageFile = (entry: string, manifest: string): boolean => {
+  const file = entry.replace(/\\/g, '/');
+  const root = manifest.replace(/\\/g, '/').replace(/\/package\.json$/, '');
+  if (!root.endsWith(`/node_modules/${LIBRARY_ID}`) || !file.startsWith(`${root}/`)) return false;
+  return !file
+    .slice(root.length + 1)
+    .split('/')
+    .includes('node_modules');
+};
+
+/**
+ * The entry script as given and, when it differs, its real path. Either is a usable resolution base:
+ * the `node_modules` walk starts at the path itself (a directory entry such as `node /srv/app`) and
+ * climbs through every parent (a file entry). The real path reaches the package a symlinked bin
+ * belongs to.
+ */
+const entryScriptBases = (
+  script: string | undefined,
+  getBuiltinModule: (id: string) => unknown,
+): readonly string[] => {
+  if (typeof script !== 'string' || script === '') return [];
+  try {
+    const fs = getBuiltinModule('node:fs') as
+      | { readonly realpathSync?: (path: string) => string }
+      | undefined;
+    const real = typeof fs?.realpathSync === 'function' ? fs.realpathSync(script) : script;
+    return real === script ? [script] : [script, real];
+  } catch {
+    // The script is gone or unreadable: the path as given is still worth resolving from.
+    return [script];
+  }
+};
+
+/**
+ * Wraps `libraryClass`'s `Symbol.hasInstance` so it also accepts refusals carrying
+ * {@link REFUSAL_BRAND}, deferring to whatever answered before for everything else, and marks the
+ * class so no other copy of an SDK, and no reload of this one, wraps it again. The extra answer is
+ * given only for `libraryClass` itself: a subclass inherits the static method, and a refusal is no
+ * instance of a caller's own subclass.
+ */
+const patchLibraryHasInstance = (libraryClass: object): void => {
+  const inherited: unknown = (libraryClass as unknown as Record<symbol, unknown>)[Symbol.hasInstance];
+  const previous =
+    typeof inherited === 'function'
+      ? (inherited as (this: unknown, value: unknown) => boolean)
+      : Function.prototype[Symbol.hasInstance];
+  Object.defineProperty(libraryClass, Symbol.hasInstance, {
+    configurable: true,
+    /**
+     * True for a bridged refusal when asked about `libraryClass` itself; anything else gets the answer
+     * the class gave before.
+     */
+    value: function hasInstance(this: unknown, value: unknown): boolean {
+      if (this === libraryClass && isBridgedRefusal(value)) return true;
+      return previous.call(this, value);
+    },
+  });
+  Object.defineProperty(libraryClass, BRIDGED_MARK, { value: true });
+};
 
 /**
  * Verifies a Standard Webhooks delivery, throwing when it is not authentic.
