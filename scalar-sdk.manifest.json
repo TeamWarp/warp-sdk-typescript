@@ -10196,7 +10196,59 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_signed_currency_money_amount",
+      "source": "public_signed_currency_money_amount",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 230000,
+          "display": "$2,300.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10230,8 +10282,8 @@
           "examples"
         ],
         "examples": {
-          "amount": 230000,
-          "display": "$2,300.00"
+          "amount": 15000,
+          "display": "$150.00"
         }
       },
       "type": {
@@ -10246,7 +10298,110 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_signed_currency_money_amount_1",
+      "source": "public_signed_currency_money_amount_1",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 50000,
+          "display": "$500.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
+            }
+          },
+          {
+            "name": "display",
+            "publicName": "display",
+            "required": true,
+            "deprecated": false,
+            "extensions": {
+              "source": [
+                "examples"
+              ],
+              "examples": "$150,000.00"
+            },
+            "type": {
+              "kind": "primitive",
+              "type": "string"
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "public_signed_currency_money_amount_2",
+      "source": "public_signed_currency_money_amount_2",
+      "publicAliases": [],
+      "deprecated": false,
+      "extensions": {
+        "source": [
+          "examples"
+        ],
+        "examples": {
+          "amount": 25000,
+          "display": "$250.00"
+        }
+      },
+      "type": {
+        "kind": "object",
+        "properties": [
+          {
+            "name": "amount",
+            "publicName": "amount",
+            "required": true,
+            "deprecated": false,
+            "type": {
+              "kind": "primitive",
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10280,8 +10435,8 @@
           "examples"
         ],
         "examples": {
-          "amount": 15000,
-          "display": "$150.00"
+          "amount": 10000,
+          "display": "$100.00"
         }
       },
       "type": {
@@ -10296,7 +10451,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10330,8 +10486,8 @@
           "examples"
         ],
         "examples": {
-          "amount": 50000,
-          "display": "$500.00"
+          "amount": 5000,
+          "display": "$50.00"
         }
       },
       "type": {
@@ -10346,7 +10502,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10380,8 +10537,8 @@
           "examples"
         ],
         "examples": {
-          "amount": 25000,
-          "display": "$250.00"
+          "amount": 20000,
+          "display": "$200.00"
         }
       },
       "type": {
@@ -10396,7 +10553,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10430,8 +10588,8 @@
           "examples"
         ],
         "examples": {
-          "amount": 10000,
-          "display": "$100.00"
+          "amount": 15000,
+          "display": "$150.00"
         }
       },
       "type": {
@@ -10446,7 +10604,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10480,156 +10639,6 @@
           "examples"
         ],
         "examples": {
-          "amount": 5000,
-          "display": "$50.00"
-        }
-      },
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "amount",
-            "publicName": "amount",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "integer",
-              "validation": {
-                "minimum": 0
-              }
-            }
-          },
-          {
-            "name": "display",
-            "publicName": "display",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "$150,000.00"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "public_currency_money_amount_7",
-      "source": "public_currency_money_amount_7",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": {
-          "amount": 20000,
-          "display": "$200.00"
-        }
-      },
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "amount",
-            "publicName": "amount",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "integer",
-              "validation": {
-                "minimum": 0
-              }
-            }
-          },
-          {
-            "name": "display",
-            "publicName": "display",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "$150,000.00"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "public_currency_money_amount_8",
-      "source": "public_currency_money_amount_8",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": {
-          "amount": 15000,
-          "display": "$150.00"
-        }
-      },
-      "type": {
-        "kind": "object",
-        "properties": [
-          {
-            "name": "amount",
-            "publicName": "amount",
-            "required": true,
-            "deprecated": false,
-            "type": {
-              "kind": "primitive",
-              "type": "integer",
-              "validation": {
-                "minimum": 0
-              }
-            }
-          },
-          {
-            "name": "display",
-            "publicName": "display",
-            "required": true,
-            "deprecated": false,
-            "extensions": {
-              "source": [
-                "examples"
-              ],
-              "examples": "$150,000.00"
-            },
-            "type": {
-              "kind": "primitive",
-              "type": "string"
-            }
-          }
-        ],
-        "additionalProperties": false
-      }
-    },
-    {
-      "name": "public_currency_money_amount_9",
-      "source": "public_currency_money_amount_9",
-      "publicAliases": [],
-      "deprecated": false,
-      "extensions": {
-        "source": [
-          "examples"
-        ],
-        "examples": {
           "amount": 500,
           "display": "$5.00"
         }
@@ -10646,7 +10655,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10671,8 +10681,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_10",
-      "source": "public_currency_money_amount_10",
+      "name": "public_signed_currency_money_amount_3",
+      "source": "public_signed_currency_money_amount_3",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -10696,7 +10706,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -10817,7 +10828,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "public_currency_money_amount_1"
+                  "name": "public_signed_currency_money_amount"
                 },
                 {
                   "kind": "null"
@@ -10841,7 +10852,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_2"
+              "name": "public_currency_money_amount_1"
             }
           },
           {
@@ -10860,7 +10871,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_3"
+              "name": "public_signed_currency_money_amount_1"
             }
           },
           {
@@ -10879,7 +10890,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_4"
+              "name": "public_signed_currency_money_amount_2"
             }
           },
           {
@@ -10898,7 +10909,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_5"
+              "name": "public_currency_money_amount_2"
             }
           },
           {
@@ -10917,7 +10928,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_6"
+              "name": "public_currency_money_amount_3"
             }
           },
           {
@@ -10936,7 +10947,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_7"
+              "name": "public_currency_money_amount_4"
             }
           },
           {
@@ -10955,7 +10966,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_8"
+              "name": "public_currency_money_amount_5"
             }
           },
           {
@@ -10974,7 +10985,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_9"
+              "name": "public_currency_money_amount_6"
             }
           },
           {
@@ -10993,7 +11004,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_10"
+              "name": "public_signed_currency_money_amount_3"
             }
           }
         ],
@@ -11487,8 +11498,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_11",
-      "source": "public_currency_money_amount_11",
+      "name": "public_signed_currency_money_amount_4",
+      "source": "public_signed_currency_money_amount_4",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -11512,7 +11523,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -11618,7 +11630,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "public_currency_money_amount_11"
+                  "name": "public_signed_currency_money_amount_4"
                 },
                 {
                   "kind": "null"
@@ -11664,7 +11676,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "public_currency_money_amount_1"
+                  "name": "public_signed_currency_money_amount"
                 },
                 {
                   "kind": "null"
@@ -11688,7 +11700,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_2"
+              "name": "public_currency_money_amount_1"
             }
           },
           {
@@ -11707,7 +11719,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_3"
+              "name": "public_signed_currency_money_amount_1"
             }
           },
           {
@@ -11726,7 +11738,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_4"
+              "name": "public_signed_currency_money_amount_2"
             }
           },
           {
@@ -11745,7 +11757,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_5"
+              "name": "public_currency_money_amount_2"
             }
           },
           {
@@ -11764,7 +11776,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_6"
+              "name": "public_currency_money_amount_3"
             }
           },
           {
@@ -11783,7 +11795,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_7"
+              "name": "public_currency_money_amount_4"
             }
           },
           {
@@ -11802,7 +11814,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_8"
+              "name": "public_currency_money_amount_5"
             }
           },
           {
@@ -11821,7 +11833,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_9"
+              "name": "public_currency_money_amount_6"
             }
           },
           {
@@ -11840,7 +11852,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_10"
+              "name": "public_signed_currency_money_amount_3"
             }
           }
         ],
@@ -12623,8 +12635,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_12",
-      "source": "public_currency_money_amount_12",
+      "name": "public_signed_currency_money_amount_5",
+      "source": "public_signed_currency_money_amount_5",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -12648,7 +12660,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -12729,7 +12742,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "public_currency_money_amount_12"
+                  "name": "public_signed_currency_money_amount_5"
                 },
                 {
                   "kind": "null"
@@ -13091,8 +13104,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_13",
-      "source": "public_currency_money_amount_13",
+      "name": "public_currency_money_amount_7",
+      "source": "public_currency_money_amount_7",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13116,7 +13129,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13141,8 +13155,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_14",
-      "source": "public_currency_money_amount_14",
+      "name": "public_currency_money_amount_8",
+      "source": "public_currency_money_amount_8",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13166,7 +13180,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13191,8 +13206,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_15",
-      "source": "public_currency_money_amount_15",
+      "name": "public_signed_currency_money_amount_6",
+      "source": "public_signed_currency_money_amount_6",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13216,7 +13231,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13241,8 +13257,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_16",
-      "source": "public_currency_money_amount_16",
+      "name": "public_signed_currency_money_amount_7",
+      "source": "public_signed_currency_money_amount_7",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13266,7 +13282,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13291,8 +13308,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_17",
-      "source": "public_currency_money_amount_17",
+      "name": "public_currency_money_amount_9",
+      "source": "public_currency_money_amount_9",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13316,7 +13333,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13341,8 +13359,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_18",
-      "source": "public_currency_money_amount_18",
+      "name": "public_currency_money_amount_10",
+      "source": "public_currency_money_amount_10",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13366,7 +13384,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13391,8 +13410,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_19",
-      "source": "public_currency_money_amount_19",
+      "name": "public_currency_money_amount_11",
+      "source": "public_currency_money_amount_11",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13416,7 +13435,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13441,8 +13461,8 @@
       }
     },
     {
-      "name": "public_currency_money_amount_20",
-      "source": "public_currency_money_amount_20",
+      "name": "public_currency_money_amount_12",
+      "source": "public_currency_money_amount_12",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -13466,7 +13486,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -13576,7 +13597,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_13"
+              "name": "public_currency_money_amount_7"
             }
           },
           {
@@ -13598,7 +13619,7 @@
               "variants": [
                 {
                   "kind": "ref",
-                  "name": "public_currency_money_amount_12"
+                  "name": "public_signed_currency_money_amount_5"
                 },
                 {
                   "kind": "null"
@@ -13622,7 +13643,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_14"
+              "name": "public_currency_money_amount_8"
             }
           },
           {
@@ -13641,7 +13662,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_15"
+              "name": "public_signed_currency_money_amount_6"
             }
           },
           {
@@ -13660,7 +13681,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_16"
+              "name": "public_signed_currency_money_amount_7"
             }
           },
           {
@@ -13679,7 +13700,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_17"
+              "name": "public_currency_money_amount_9"
             }
           },
           {
@@ -13698,7 +13719,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_18"
+              "name": "public_currency_money_amount_10"
             }
           },
           {
@@ -13717,7 +13738,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_19"
+              "name": "public_currency_money_amount_11"
             }
           },
           {
@@ -13736,7 +13757,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_currency_money_amount_20"
+              "name": "public_currency_money_amount_12"
             }
           }
         ],
@@ -13899,7 +13920,11 @@
             "deprecated": false,
             "type": {
               "kind": "primitive",
-              "type": "integer"
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
             }
           },
           {
@@ -13965,7 +13990,11 @@
             "deprecated": false,
             "type": {
               "kind": "primitive",
-              "type": "integer"
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
             }
           },
           {
@@ -14031,7 +14060,11 @@
             "deprecated": false,
             "type": {
               "kind": "primitive",
-              "type": "integer"
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
             }
           },
           {
@@ -14097,7 +14130,11 @@
             "deprecated": false,
             "type": {
               "kind": "primitive",
-              "type": "integer"
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
             }
           },
           {
@@ -14163,7 +14200,11 @@
             "deprecated": false,
             "type": {
               "kind": "primitive",
-              "type": "integer"
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
             }
           },
           {
@@ -14229,7 +14270,11 @@
             "deprecated": false,
             "type": {
               "kind": "primitive",
-              "type": "integer"
+              "type": "integer",
+              "validation": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              }
             }
           },
           {
@@ -14767,8 +14812,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount",
-      "source": "public_payroll_money_amount",
+      "name": "public_signed_payroll_money_amount",
+      "source": "public_signed_payroll_money_amount",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -14793,7 +14838,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -14931,8 +14977,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_1",
-      "source": "public_payroll_money_amount_1",
+      "name": "public_payroll_money_amount",
+      "source": "public_payroll_money_amount",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -14957,7 +15003,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -15030,7 +15077,7 @@
               "parts": [
                 {
                   "kind": "ref",
-                  "name": "public_payroll_money_amount_1"
+                  "name": "public_payroll_money_amount"
                 },
                 {
                   "kind": "unknown"
@@ -15206,7 +15253,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount"
+              "name": "public_signed_payroll_money_amount"
             }
           },
           {
@@ -15312,8 +15359,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_2",
-      "source": "public_payroll_money_amount_2",
+      "name": "public_payroll_money_amount_1",
+      "source": "public_payroll_money_amount_1",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -15338,7 +15385,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -15418,7 +15466,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_2"
+              "name": "public_payroll_money_amount_1"
             }
           },
           {
@@ -15471,8 +15519,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_3",
-      "source": "public_payroll_money_amount_3",
+      "name": "public_payroll_money_amount_2",
+      "source": "public_payroll_money_amount_2",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -15497,7 +15545,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -15596,7 +15645,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_3"
+              "name": "public_payroll_money_amount_2"
             }
           },
           {
@@ -15622,8 +15671,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_4",
-      "source": "public_payroll_money_amount_4",
+      "name": "public_payroll_money_amount_3",
+      "source": "public_payroll_money_amount_3",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -15648,7 +15697,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -15691,8 +15741,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_5",
-      "source": "public_payroll_money_amount_5",
+      "name": "public_payroll_money_amount_4",
+      "source": "public_payroll_money_amount_4",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -15717,7 +15767,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": 0,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -16005,7 +16056,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_4"
+              "name": "public_payroll_money_amount_3"
             }
           },
           {
@@ -16025,7 +16076,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_5"
+              "name": "public_payroll_money_amount_4"
             }
           }
         ],
@@ -16060,8 +16111,8 @@
       }
     },
     {
-      "name": "public_payroll_money_amount_6",
-      "source": "public_payroll_money_amount_6",
+      "name": "public_signed_payroll_money_amount_1",
+      "source": "public_signed_payroll_money_amount_1",
       "publicAliases": [],
       "deprecated": false,
       "extensions": {
@@ -16086,7 +16137,8 @@
               "kind": "primitive",
               "type": "integer",
               "validation": {
-                "minimum": 0
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
               }
             }
           },
@@ -16185,7 +16237,7 @@
             },
             "type": {
               "kind": "ref",
-              "name": "public_payroll_money_amount_6"
+              "name": "public_signed_payroll_money_amount_1"
             }
           },
           {
