@@ -330,7 +330,9 @@ export type PublicPayrollSubtype =
   | 'contractor'
   | 'dismissal'
   | 'reimbursement'
-  | 'manual';
+  | 'manual'
+  | 'balancing'
+  | 'amendment';
 
 /**
  * The current public lifecycle status of a payroll.
