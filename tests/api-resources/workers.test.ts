@@ -24,6 +24,7 @@ describe.concurrent('resource workers', () => {
         lastName: 'x',
         preferredName: '',
         tShirtSize: 'XS',
+        dietaryRestrictions: 'vegetarian',
         email: 'john@joinwarp.com',
         workEmail: 'john@joinwarp.com',
         phone: '',

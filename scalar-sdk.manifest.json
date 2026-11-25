@@ -961,6 +961,72 @@
       }
     },
     {
+      "name": "public_dietary_restriction",
+      "source": "public_dietary_restriction",
+      "publicAliases": [],
+      "deprecated": false,
+      "type": {
+        "kind": "enum",
+        "values": [
+          "vegetarian",
+          "vegan",
+          "pescatarian",
+          "halal",
+          "kosher",
+          "no_pork",
+          "no_beef",
+          "no_red_meat",
+          "gluten_free",
+          "dairy_free",
+          "low_carb",
+          "nut_allergy",
+          "shellfish_allergy",
+          "fish_allergy",
+          "egg_allergy",
+          "soy_allergy",
+          "sesame_allergy"
+        ],
+        "names": [
+          "Vegetarian",
+          "Vegan",
+          "Pescatarian",
+          "Halal",
+          "Kosher",
+          "NoPork",
+          "NoBeef",
+          "NoRedMeat",
+          "GlutenFree",
+          "DairyFree",
+          "LowCarb",
+          "NutAllergy",
+          "ShellfishAllergy",
+          "FishAllergy",
+          "EggAllergy",
+          "SoyAllergy",
+          "SesameAllergy"
+        ],
+        "deprecations": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
       "name": "public_pay_rate_per",
       "source": "public_pay_rate_per",
       "publicAliases": [],
@@ -17028,6 +17094,20 @@
             }
           },
           {
+            "name": "dietaryRestrictions",
+            "publicName": "dietaryRestrictions",
+            "required": false,
+            "deprecated": false,
+            "type": {
+              "kind": "intersection",
+              "parts": [
+                {
+                  "kind": "unknown"
+                }
+              ]
+            }
+          },
+          {
             "name": "email",
             "publicName": "email",
             "required": false,
@@ -25316,6 +25396,7 @@
         "lastName",
         "preferredName",
         "tShirtSize",
+        "dietaryRestrictions",
         "email",
         "workEmail",
         "phone",
@@ -25337,6 +25418,7 @@
         "lastName",
         "preferredName",
         "tShirtSize",
+        "dietaryRestrictions",
         "email",
         "workEmail",
         "phone",
@@ -25368,6 +25450,10 @@
         },
         {
           "name": "tShirtSize",
+          "required": false
+        },
+        {
+          "name": "dietaryRestrictions",
           "required": false
         },
         {
