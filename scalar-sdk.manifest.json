@@ -1,7 +1,7 @@
 {
   "name": "Warp",
   "slug": "warp",
-  "generatorVersion": "0.45.0",
+  "generatorVersion": "0.46.2",
   "servers": [
     "https://api.joinwarp.com"
   ],
@@ -4505,7 +4505,8 @@
                 "post_tax",
                 "other",
                 "voluntary_life",
-                "miscellaneous"
+                "miscellaneous",
+                "retirement_loan_repayment"
               ],
               "names": [
                 "Medical",
@@ -4539,9 +4540,11 @@
                 "PostTax",
                 "Other",
                 "VoluntaryLife",
-                "Miscellaneous"
+                "Miscellaneous",
+                "RetirementLoanRepayment"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -4719,7 +4722,8 @@
           "hospital",
           "medical_other",
           "nqdc",
-          "nontaxable_fringe"
+          "nontaxable_fringe",
+          "retirement_loan_repayment"
         ],
         "names": [
           "Medical",
@@ -4747,9 +4751,11 @@
           "Hospital",
           "MedicalOther",
           "Nqdc",
-          "NontaxableFringe"
+          "NontaxableFringe",
+          "RetirementLoanRepayment"
         ],
         "deprecations": [
+          false,
           false,
           false,
           false,
@@ -5682,7 +5688,8 @@
                 "post_tax",
                 "other",
                 "voluntary_life",
-                "miscellaneous"
+                "miscellaneous",
+                "retirement_loan_repayment"
               ],
               "names": [
                 "Medical",
@@ -5716,9 +5723,11 @@
                 "PostTax",
                 "Other",
                 "VoluntaryLife",
-                "Miscellaneous"
+                "Miscellaneous",
+                "RetirementLoanRepayment"
               ],
               "deprecations": [
+                false,
                 false,
                 false,
                 false,
@@ -15962,7 +15971,8 @@
                     "post_tax",
                     "other",
                     "voluntary_life",
-                    "miscellaneous"
+                    "miscellaneous",
+                    "retirement_loan_repayment"
                   ],
                   "names": [
                     "Medical",
@@ -15996,9 +16006,11 @@
                     "PostTax",
                     "Other",
                     "VoluntaryLife",
-                    "Miscellaneous"
+                    "Miscellaneous",
+                    "RetirementLoanRepayment"
                   ],
                   "deprecations": [
+                    false,
                     false,
                     false,
                     false,

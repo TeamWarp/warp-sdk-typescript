@@ -152,7 +152,8 @@ export interface PublicBenefitDeduction {
     | 'post_tax'
     | 'other'
     | 'voluntary_life'
-    | 'miscellaneous';
+    | 'miscellaneous'
+    | 'retirement_loan_repayment';
   /**
    * Whether the deduction recurs or applies once.
    */
@@ -237,7 +238,8 @@ export interface PublicBenefitDeduction1 {
     | 'post_tax'
     | 'other'
     | 'voluntary_life'
-    | 'miscellaneous';
+    | 'miscellaneous'
+    | 'retirement_loan_repayment';
   /**
    * Whether the deduction recurs or applies once.
    */
@@ -499,6 +501,7 @@ export interface DeductionListParams {
     | 'other'
     | 'voluntary_life'
     | 'miscellaneous'
+    | 'retirement_loan_repayment'
   > | null;
   statuses: Array<PublicBenefitDeductionStatus> | null;
   healthPlanIds?: Array<string> | null;
@@ -518,7 +521,7 @@ export interface DeductionCreateParams {
    */
   workerId: string;
   /**
-   * The payroll deduction type to create.
+   * The payroll deduction type to create. Use retirement_loan_repayment when a worker repays a retirement plan loan, such as a 401(k) loan, through payroll.
    */
   type:
     | 'medical'
@@ -546,7 +549,8 @@ export interface DeductionCreateParams {
     | 'hospital'
     | 'medical_other'
     | 'nqdc'
-    | 'nontaxable_fringe';
+    | 'nontaxable_fringe'
+    | 'retirement_loan_repayment';
   /**
    * Both contributions must be supplied.
    */
