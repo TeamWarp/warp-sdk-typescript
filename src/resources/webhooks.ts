@@ -302,6 +302,28 @@ export namespace WorkerCreatedWebhookEvent {
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -456,6 +478,28 @@ export namespace WorkerUpdatedWebhookEvent {
      * The worker's stored T-shirt size, or null when unset or unavailable.
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -612,6 +656,28 @@ export namespace WorkerDeletedWebhookEvent {
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -766,6 +832,28 @@ export namespace WorkerInviteSentWebhookEvent {
      * The worker's stored T-shirt size, or null when unset or unavailable.
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -922,6 +1010,28 @@ export namespace WorkerInviteAcceptedWebhookEvent {
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1076,6 +1186,28 @@ export namespace WorkerOnboardingCompletedWebhookEvent {
      * The worker's stored T-shirt size, or null when unset or unavailable.
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -1232,6 +1364,28 @@ export namespace WorkerOffboardingStartedWebhookEvent {
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1387,6 +1541,28 @@ export namespace WorkerOffboardedWebhookEvent {
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
     /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
+    /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
     level?: Data.Level | null;
@@ -1541,6 +1717,28 @@ export namespace WorkerReactivatedWebhookEvent {
      * The worker's stored T-shirt size, or null when unset or unavailable.
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
+    /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions?: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    > | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
