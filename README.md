@@ -116,8 +116,8 @@ const client = new Warp({
 | `defaultQuery` | `Record<string, string \| undefined>` | - | Query parameters sent with every request. |
 | `fetchOptions` | `RequestInit` | - | Additional fetch options sent with every request. |
 | `fetch` | `Fetch` | - | Custom fetch implementation. |
-| `logLevel` | `"off" \| "error" \| "warn" \| "info" \| "debug" \| null` | `process.env["WARP_LOG"]` | Controls request and retry debug logging. |
-| `logger` | `Logger \| null` | `console` | Custom logger implementation. |
+| `logLevel` | `"off" \| "error" \| "warn" \| "info" \| "debug"` | `process.env["WARP_LOG"] ?? "warn"` | Controls request and retry debug logging. `"off"` turns logging off. |
+| `logger` | `Logger` | `console` | Custom logger implementation. |
 
 <br />
 
@@ -153,6 +153,21 @@ const event = client.webhooks.unwrap(body, { headers });
 
 The signing secret comes from the client's `webhookSecret` option, which defaults to the `WARP_WEBHOOK_SECRET` environment variable. Pass `key` to use a different secret for one call.
 
+A delivery that fails verification throws `WebhookVerificationError`, exported from the package root. Check for it with `isWebhookVerificationError(error)`, exported beside it:
+
+```ts
+import { isWebhookVerificationError } from 'warp-hr';
+
+try {
+  const event = client.webhooks.unwrap(body, { headers });
+} catch (error) {
+  if (!isWebhookVerificationError(error)) throw error;
+  // Not a genuine delivery: reject it, for example with a 400 response.
+}
+```
+
+The guard matches the SDK's class and its subclasses, and the `standardwebhooks` class of the same name from any copy of that library, in every runtime. A handler that still imports that class from `standardwebhooks` keeps matching the SDK's refusals with `instanceof` on Node and Bun when the application loads `standardwebhooks` from its own `node_modules`, and in a Jest test that loads it with Jest's default CommonJS modules. It does not match where the library is bundled into the application, or in a browser, an edge runtime, or an ES module application on a Node release without `process.getBuiltinModule` (before 20.16, any 21, or 22 before 22.3). Use the guard there, and in Jest tests that run as ES modules.
+
 The same resource also has:
 
 - `client.webhooks.verifySignature(body, headers)` checks a delivery's signature, and fails when it does not verify.
@@ -171,12 +186,13 @@ The same resource also has:
 
 - Set `logLevel: "debug"` to log request URLs, options, response status, response headers, and retry attempts.
 - Pass a custom `logger` to route logs into your own observability pipeline.
-- Set `logLevel: null` to disable environment-driven logging.
+- Set `logLevel: "off"` to turn logging off, whatever `WARP_LOG` says. Without `logLevel`, the client reads that environment variable, then defaults to `"warn"`.
 
 <br />
 
 ## Requirements
 
 - Node.js 20+, a modern browser, or any runtime with `fetch` support
+- TypeScript 5.8+ for type checking, with `moduleResolution` set to `node16` or `nodenext` (from CommonJS or ES modules) or `bundler`
 
 Powered by Scalar.

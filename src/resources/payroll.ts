@@ -817,6 +817,7 @@ export interface PublicPaycheckBenefit {
     | 'other'
     | 'voluntary_life'
     | 'miscellaneous'
+    | 'retirement_loan_repayment'
     | null;
   /**
    * The amount the worker pays toward this benefit on the paycheck in the amount's currency.

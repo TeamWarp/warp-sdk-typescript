@@ -65,11 +65,19 @@ const DEFAULT_SCHEME = {
  * keep working once the import points at the SDK. It extends the SDK's base error, so
  * `instanceof WarpError` covers a refused delivery too. Where the application has
  * loaded `standardwebhooks` itself, an `instanceof` against that library's class matches a refusal as
- * well (see {@link bridgeLibraryError}). A helper configured with an algorithm the verifier does not
+ * well (see {@link bridgeLibraryError}), and {@link isWebhookVerificationError} matches both classes
+ * wherever that bridge cannot reach. A helper configured with an algorithm the verifier does not
  * implement throws it on every call; a missing or malformed secret, and a header the companions find
  * missing, still throw plain `Error`s.
  */
 export class WebhookVerificationError extends WarpError {
+  /**
+   * Type-only, never set: a private member makes the class nominal, so a plain `Error` is not assignable
+   * to it. Without it the class can have exactly `Error`'s members, and a false answer from
+   * {@link isWebhookVerificationError} would narrow an `Error`-typed value to `never`.
+   */
+  declare private readonly webhookVerificationErrorBrand: true;
+
   constructor(message: string) {
     super(message);
     this.name = 'WebhookVerificationError';
@@ -93,11 +101,36 @@ const BRIDGED_MARK = Symbol.for('scalar-sdk.webhook-verification-error.bridged')
 
 Object.defineProperty(WebhookVerificationError.prototype, REFUSAL_BRAND, { value: true });
 
-/** The slice of `node:module`'s `require` the bridge uses: resolution and the shared module cache. */
+/**
+ * The slice of `node:module`'s `require` the bridge uses: resolution, the shared module cache, and
+ * loading a builtin (never a file) where the runtime has no `process.getBuiltinModule`.
+ */
 type NodeRequire = {
+  (id: string): unknown;
   readonly resolve: (id: string, options?: { readonly paths?: readonly string[] }) => string;
   readonly cache: Readonly<Record<string, { readonly exports?: unknown } | undefined>>;
 };
+
+/** The slice of `node:module` the bridge uses. */
+type NodeModule = { readonly createRequire?: (path: string) => NodeRequire };
+
+/**
+ * The slice of this file's own CommonJS `module` the bridge reads. Under Jest, `require` is the test
+ * file's module-registry `require`, with `resolve` and a `cache` view of that registry; under Node it is
+ * `Module.prototype.require`, which has neither, and `constructor` is the `Module` class.
+ */
+type HostModule = {
+  readonly require?: unknown;
+  readonly constructor?: unknown;
+};
+
+/**
+ * The CommonJS module record Node and test runners wrap the CommonJS build in, read by
+ * {@link hostModuleOf}. Declared here, untyped, rather than taken from `@types/node`, which an SDK
+ * without Node-only features does not install: without it `tsc` cannot find the name. A `declare`
+ * emits nothing, so the name still resolves to the wrapper's `module` at run time.
+ */
+declare const module: unknown;
 
 /** The globals the bridge feature-detects; browsers and most edge runtimes have no `process`. */
 type BridgeGlobals = {
@@ -106,19 +139,21 @@ type BridgeGlobals = {
         readonly getBuiltinModule?: (id: string) => unknown;
         readonly cwd?: () => string;
         readonly argv?: readonly string[];
+        readonly mainModule?: object | undefined;
       }
     | undefined;
 };
 
+/** One module cache the application's copy of the library may sit in, and its entry files there. */
+type LibraryLookup = { readonly cache: NodeRequire['cache']; readonly entries: readonly string[] };
+
 /**
  * Where the application's copy of the library would load from, resolved once on the first refusal:
- * the module cache and every distinct entry file. `null` once resolution has run and found nothing to
- * bridge (no `node:module`, or the library is not installed), so later refusals cost nothing.
+ * each module cache (Node's, and a test runner's own registry) with every distinct entry file in it.
+ * Empty once resolution has run and found nothing to bridge (no `node:module`, or the library is not
+ * installed), so later refusals cost nothing.
  */
-let libraryLookup:
-  | { readonly cache: NodeRequire['cache']; readonly entries: readonly string[] }
-  | null
-  | undefined;
+let libraryLookups: readonly LibraryLookup[] | undefined;
 
 /** Library classes this copy of the SDK has already tried to bridge, so a failure is not retried. */
 const attemptedLibraryClasses = new WeakSet<object>();
@@ -143,76 +178,195 @@ const isBridgedRefusal = (value: unknown): boolean =>
  * what can answer instead, and is wrapped to accept refusals carrying {@link REFUSAL_BRAND}.
  *
  * The SDK never loads the library. It only bridges a copy the application has already loaded, found
- * in Node's module cache (`require.cache`, where an ESM `import` of the CommonJS-only library lands
- * too) under the entry the resolver gives from the working directory and the entry script. Resolving
+ * in a module cache: Node's (`require.cache`, where an ESM `import` of the CommonJS-only library lands
+ * too) and, in the CommonJS build, the registry of a test runner that hands each module its own
+ * `require` (Jest). In each it looks under the entry the resolver gives from the working directory,
+ * the entry script and this file, and under any file of a `standardwebhooks` package already in the
+ * cache when the first refusal is raised (a workspace package's own copy, a nested one). Resolving
  * reads files but runs none, so a `node_modules` planted in an untrusted working directory is never
- * executed; requiring from there would be. The cache is checked on every refusal, a single lookup
- * per entry, so a library loaded after the first refusal is picked up by the next one.
+ * executed; requiring from there would be. The caches are checked on every refusal, a single lookup
+ * per entry, so a library that resolves from the application and is loaded after the first refusal is
+ * picked up by the next one.
  *
- * Feature-detected through `process.getBuiltinModule`, never a static import or `require`, so no
- * bundler tries to resolve the library and browsers and edge runtimes, which have neither, skip it.
- * Any failure leaves the refusal exactly as it was without the library.
+ * Feature-detected through `process.getBuiltinModule`, `process.mainModule` or this file's own
+ * CommonJS `module`, never a static import or `require`, so no bundler tries to resolve the library and
+ * browsers and edge runtimes, which have none of them, skip it. Where it cannot work (a copy bundled
+ * into the application, or one an ES module application loads on Node before 20.16, on 21 or on 22
+ * before 22.3), {@link isWebhookVerificationError} still recognises both classes. Any failure leaves
+ * the refusal exactly as it was without the library.
  *
  * Patching the library's class is deliberate and process-wide, and there is no opt-out: it changes
  * that class's `instanceof` answer for every caller in the process, but only ever to add refusals,
  * which are a refused delivery in every sense a handler of the library's class relies on.
  */
 const bridgeLibraryError = (): void => {
+  let lookups: typeof libraryLookups;
   try {
-    const lookup = libraryLookup === undefined ? resolveLibraryLookup() : libraryLookup;
-    if (!lookup) return;
-    for (const entry of lookup.entries) {
-      const exported = lookup.cache[entry]?.exports as
-        | { readonly WebhookVerificationError?: unknown }
-        | undefined;
-      const libraryClass = exported?.WebhookVerificationError;
-      if (typeof libraryClass !== 'function' || attemptedLibraryClasses.has(libraryClass)) continue;
-      attemptedLibraryClasses.add(libraryClass);
-      // A class whose instances are refusals (this SDK's own, or another SDK's that a planted entry
-      // re-exports) is never wrapped: the wrapper would make it match every other SDK's refusals too.
-      if (isBridgedRefusal((libraryClass as { readonly prototype?: unknown }).prototype)) continue;
-      if (Object.prototype.hasOwnProperty.call(libraryClass, BRIDGED_MARK)) continue;
-      patchLibraryHasInstance(libraryClass);
-    }
+    lookups = libraryLookups ?? resolveLibraryLookups();
   } catch {
-    // A locked-down runtime (a frozen class, a `process` polyfill that throws): leave the error as is.
+    // A locked-down runtime (a `process` polyfill that throws): leave the error as is.
+    return;
+  }
+  for (const lookup of lookups ?? []) {
+    for (const entry of lookup.entries) {
+      // Per entry, so one copy that cannot be patched (a frozen class) leaves the others bridged.
+      try {
+        const exported = lookup.cache[entry]?.exports as
+          | { readonly WebhookVerificationError?: unknown }
+          | undefined;
+        const libraryClass = exported?.WebhookVerificationError;
+        if (typeof libraryClass !== 'function' || attemptedLibraryClasses.has(libraryClass)) continue;
+        attemptedLibraryClasses.add(libraryClass);
+        // A class whose instances are refusals (this SDK's own, or another SDK's that a planted entry
+        // re-exports) is never wrapped: the wrapper would make it match every other SDK's refusals too.
+        if (isBridgedRefusal((libraryClass as { readonly prototype?: unknown }).prototype)) continue;
+        if (Object.prototype.hasOwnProperty.call(libraryClass, BRIDGED_MARK)) continue;
+        patchLibraryHasInstance(libraryClass);
+      } catch {
+        // A frozen class, or a getter that throws: this copy keeps its own answer.
+      }
+    }
   }
 };
 
 /**
- * Resolves the library's entry file from the working directory and the entry script, and records the
- * module cache to look them up in. Leaves {@link libraryLookup} unset where the runtime has no
- * `process.getBuiltinModule`, so a runtime that swaps `process` back in is still looked at; records
- * `null` when `node:module` has no `createRequire`, or once resolution has run and found no entry.
+ * This file's CommonJS `module`, or `undefined` where there is none: the ES module build, which Node
+ * evaluates with no `module` in scope, and a bundle that gives the file no `require` of its own.
+ *
+ * Read through `typeof`, so the ES module build never throws a `ReferenceError` on it, and only ever
+ * read, never assigned or called, so a bundler treats the file as it did before (esbuild, webpack and
+ * Rollup emit no warning for it). It is what reaches a test runner's own module registry: Jest gives
+ * each module a `require` whose `cache` is a view of the test file's registry, which Node's
+ * `require.cache` never sees.
  */
-const resolveLibraryLookup = (): typeof libraryLookup => {
+const hostModuleOf = (): HostModule | undefined =>
+  typeof module === 'object' && module !== null ? (module as HostModule) : undefined;
+
+/**
+ * The module-scope `require` a test runner hands this file, when it carries the `resolve` and `cache`
+ * the bridge reads (Jest's does); `undefined` under Node, whose `module.require` has neither and
+ * whose cache {@link nodeModuleOf} already reaches.
+ */
+const registryRequireOf = (host: HostModule | undefined): NodeRequire | undefined => {
+  const candidate: unknown = host?.require;
+  if (typeof candidate !== 'function') return undefined;
+  const { resolve, cache } = candidate as { readonly resolve?: unknown; readonly cache?: unknown };
+  return typeof resolve === 'function' && typeof cache === 'object' && cache !== null
+    ? (candidate as NodeRequire)
+    : undefined;
+};
+
+/**
+ * Resolves the library's entry file in every module cache the bridge can reach, adds every file of
+ * the library each cache already holds, and records the result in {@link libraryLookups}.
+ *
+ * Node's cache is reached through `node:module` (see {@link nodeModuleOf}), resolving from the working
+ * directory and the entry script. A test runner's registry is reached through the `require` it hands
+ * this file (see {@link registryRequireOf}), resolving from this file and the working directory.
+ * Leaves {@link libraryLookups} unset where neither exists, so a runtime that swaps `process` back in
+ * is still looked at; records an empty list once resolution has run and found no entry.
+ */
+const resolveLibraryLookups = (): typeof libraryLookups => {
   // Named apart from the `process` and `require` globals, so that nothing here reads to a bundler as
   // the CommonJS `require` of the library, whether or not it tracks scopes.
   const runtime = (globalThis as unknown as BridgeGlobals).process;
-  if (typeof runtime?.getBuiltinModule !== 'function') return undefined;
-  const nodeModule = runtime.getBuiltinModule('node:module') as
-    | { readonly createRequire?: (path: string) => NodeRequire }
-    | undefined;
-  const cwd = typeof runtime.cwd === 'function' ? runtime.cwd() : undefined;
-  if (typeof nodeModule?.createRequire !== 'function' || typeof cwd !== 'string') {
-    libraryLookup = null;
-    return null;
+  const host = hostModuleOf();
+  const registryRequire = registryRequireOf(host);
+  const nodeModule = runtime === undefined ? undefined : nodeModuleOf(runtime, host);
+  if (nodeModule === undefined && registryRequire === undefined) return undefined;
+  const cwd = typeof runtime?.cwd === 'function' ? runtime.cwd() : undefined;
+  /** Each `require` to resolve with, and the bases it resolves from; `undefined` is its own file. */
+  const resolvers: { readonly require: NodeRequire; readonly bases: readonly (string | undefined)[] }[] = [];
+  if (typeof nodeModule?.createRequire === 'function' && typeof cwd === 'string') {
+    // The trailing separator makes `createRequire` treat the directory as the requiring location.
+    const nodeRequire = nodeModule.createRequire(`${cwd}/`);
+    const getBuiltinModule = runtime?.getBuiltinModule;
+    /**
+     * A builtin module by id, through `process.getBuiltinModule` or else the `require` made above. Only
+     * ever asked for `node:fs`, so the `require` fallback runs no file either.
+     */
+    const builtin = (id: string): unknown =>
+      typeof getBuiltinModule === 'function' ? getBuiltinModule(id) : nodeRequire(id);
+    resolvers.push({ require: nodeRequire, bases: [cwd, ...entryScriptBases(runtime?.argv?.[1], builtin)] });
   }
-  // The trailing separator makes `createRequire` treat the directory as the requiring location.
-  const nodeRequire = nodeModule.createRequire(`${cwd}/`);
-  const bases = [cwd, ...entryScriptBases(runtime.argv?.[1], runtime.getBuiltinModule)];
-  const entries = new Set<string>();
-  for (const base of bases) {
-    try {
-      const entry = nodeRequire.resolve(LIBRARY_ID, { paths: [base] });
-      const manifest = nodeRequire.resolve(`${LIBRARY_ID}/package.json`, { paths: [base] });
-      if (isOwnPackageFile(entry, manifest)) entries.add(entry);
-    } catch {
-      // Not installed where this base looks: nothing to bridge from here.
+  // Last, so where it is the same cache as Node's (a runner that hands out Node's own `require`) the
+  // entries found above are kept and nothing is looked up twice.
+  if (registryRequire) {
+    resolvers.push({
+      require: registryRequire,
+      bases: typeof cwd === 'string' ? [undefined, cwd] : [undefined],
+    });
+  }
+  const found = new Map<NodeRequire['cache'], Set<string>>();
+  for (const { require: resolver, bases } of resolvers) {
+    const entries = found.get(resolver.cache) ?? new Set<string>();
+    found.set(resolver.cache, entries);
+    for (const base of bases) {
+      try {
+        const options = base === undefined ? undefined : { paths: [base] };
+        const entry = resolver.resolve(LIBRARY_ID, options);
+        const manifest = resolver.resolve(`${LIBRARY_ID}/package.json`, options);
+        if (isOwnPackageFile(entry, manifest)) entries.add(entry);
+      } catch {
+        // Not installed where this base looks: nothing to bridge from here.
+      }
+    }
+    // A copy no base resolves to — a workspace package's unhoisted one, a nested one — is only found
+    // loaded. The cache holds files the application already ran, so reading it runs nothing new.
+    // Once, here: scanning on every refusal cost ~0.6 ms with 5,000 modules loaded.
+    for (const [key, cached] of Object.entries(resolver.cache)) {
+      if (!isLibraryCacheKey(key)) continue;
+      // Per key, so one copy whose export throws when read (a getter, a Proxy) leaves the rest found.
+      try {
+        const exported = cached?.exports as { readonly WebhookVerificationError?: unknown } | undefined;
+        if (typeof exported?.WebhookVerificationError === 'function') entries.add(key);
+      } catch {
+        // This copy cannot be read, so it cannot be bridged either.
+      }
     }
   }
-  libraryLookup = entries.size > 0 ? { cache: nodeRequire.cache, entries: [...entries] } : null;
-  return libraryLookup;
+  libraryLookups = [...found]
+    .filter(([, entries]) => entries.size > 0)
+    .map(([cache, entries]) => ({ cache, entries: [...entries] }));
+  return libraryLookups;
+};
+
+/**
+ * `node:module`; `null` when `process.getBuiltinModule` has none to give; `undefined` where the runtime
+ * offers no synchronous way to it.
+ *
+ * `process.getBuiltinModule` first (Node 20.16+ and 22.3+, Bun). Before it, a CommonJS module's
+ * constructor is the `Module` class `node:module` exports: the application's entry module,
+ * `process.mainModule`, which a CommonJS entry sets (reading it prints no deprecation warning), and
+ * else this file's own `module` in the CommonJS build, which an ES module application that loads that
+ * build still provides. So Node 20.0–20.15, 21 and 22.0–22.2 bridge there too. An ES module
+ * application loading the ES module build has neither, and the only other way in, `import()`, is
+ * asynchronous: it would leave the first refusal unbridged and put a dynamic import into every bundle
+ * of the SDK, so that case is left to {@link isWebhookVerificationError}.
+ */
+const nodeModuleOf = (
+  runtime: NonNullable<BridgeGlobals['process']>,
+  host: HostModule | undefined,
+): NodeModule | null | undefined => {
+  if (typeof runtime.getBuiltinModule === 'function') {
+    return (runtime.getBuiltinModule('node:module') as NodeModule | undefined) ?? null;
+  }
+  for (const candidate of [runtime.mainModule as HostModule | undefined, host]) {
+    const constructor = candidate?.constructor as NodeModule | undefined;
+    if (typeof constructor?.createRequire === 'function') return constructor;
+  }
+  return undefined;
+};
+
+/**
+ * Whether a module-cache key is a file of a `standardwebhooks` package: the last `node_modules` in its
+ * path is directly followed by the package's directory, so the file is the package's own and not one
+ * of a package nested inside it, the same rule {@link isOwnPackageFile} applies to a resolved entry.
+ */
+const isLibraryCacheKey = (key: string): boolean => {
+  const segments = key.replace(/\\/g, '/').split('/');
+  const last = segments.lastIndexOf('node_modules');
+  return last !== -1 && segments[last + 1] === LIBRARY_ID && segments.length > last + 2;
 };
 
 /**
@@ -239,13 +393,11 @@ const isOwnPackageFile = (entry: string, manifest: string): boolean => {
  */
 const entryScriptBases = (
   script: string | undefined,
-  getBuiltinModule: (id: string) => unknown,
+  builtin: (id: string) => unknown,
 ): readonly string[] => {
   if (typeof script !== 'string' || script === '') return [];
   try {
-    const fs = getBuiltinModule('node:fs') as
-      | { readonly realpathSync?: (path: string) => string }
-      | undefined;
+    const fs = builtin('node:fs') as { readonly realpathSync?: (path: string) => string } | undefined;
     const real = typeof fs?.realpathSync === 'function' ? fs.realpathSync(script) : script;
     return real === script ? [script] : [script, real];
   } catch {
@@ -280,6 +432,35 @@ const patchLibraryHasInstance = (libraryClass: object): void => {
   });
   Object.defineProperty(libraryClass, BRIDGED_MARK, { value: true });
 };
+
+/**
+ * Whether `error` is a refused webhook delivery: this SDK's {@link WebhookVerificationError} or a
+ * subclass of it, from either build or any other copy of the SDK, or an `Error` named
+ * `WebhookVerificationError`, as every copy of the `standardwebhooks` library's is.
+ *
+ * Use it where a handler catches both classes and `instanceof` against the library's cannot be relied
+ * on. The SDK can only bridge a copy of the library it finds in a module cache it can reach, so a copy
+ * bundled into the application, and every copy in a browser, an edge runtime or an ES module
+ * application on Node before 20.16, on 21 or on 22 before 22.3, is not bridged. The SDK's own classes
+ * are matched by the brand their prototype carries, which a subclass inherits whatever it names
+ * itself. The library's class is matched by its name, which its constructor sets on every instance and
+ * which survives minification, since nothing the SDK can read tells one copy of it from another; any
+ * other verifier's error of that name is a refused delivery too, and matches as well. The name match
+ * goes through `instanceof Error`, so a library error from another realm (a `vm` context, an iframe)
+ * does not match; an SDK refusal from one does, by its brand.
+ *
+ * A true answer narrows to the SDK's class or to an `Error` of that name, not to the SDK's class
+ * alone: the library's error carries none of the members the SDK's base error may add (a status code,
+ * a response body), so a handler has to narrow further with `instanceof` before reading them. The class
+ * is nominal (see {@link WebhookVerificationError}), so a false answer leaves an `Error`-typed value an
+ * `Error`.
+ */
+export const isWebhookVerificationError = (
+  error: unknown,
+): error is WebhookVerificationError | (Error & { readonly name: 'WebhookVerificationError' }) =>
+  typeof error === 'object' &&
+  error !== null &&
+  (isBridgedRefusal(error) || (error instanceof Error && error.name === 'WebhookVerificationError'));
 
 /**
  * Verifies a Standard Webhooks delivery, throwing when it is not authentic.
