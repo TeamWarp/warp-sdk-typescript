@@ -1241,6 +1241,28 @@ export interface WorkerUpdateResponse {
    */
   timeZone: string | null;
   /**
+   * The worker's dietary restrictions. Empty when none are recorded.
+   */
+  dietaryRestrictions: Array<
+    | 'vegetarian'
+    | 'vegan'
+    | 'pescatarian'
+    | 'halal'
+    | 'kosher'
+    | 'no_pork'
+    | 'no_beef'
+    | 'no_red_meat'
+    | 'gluten_free'
+    | 'dairy_free'
+    | 'low_carb'
+    | 'nut_allergy'
+    | 'shellfish_allergy'
+    | 'fish_allergy'
+    | 'egg_allergy'
+    | 'soy_allergy'
+    | 'sesame_allergy'
+  >;
+  /**
    * The department the worker belongs to, or null if unassigned.
    */
   department: WorkerUpdateResponse.Department | null;
@@ -1270,28 +1292,6 @@ export interface WorkerUpdateResponse {
    * The worker's stored T-shirt size, or null when unset or unavailable.
    */
   tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
-  /**
-   * The worker's dietary restrictions. Empty when none are recorded.
-   */
-  dietaryRestrictions?: Array<
-    | 'vegetarian'
-    | 'vegan'
-    | 'pescatarian'
-    | 'halal'
-    | 'kosher'
-    | 'no_pork'
-    | 'no_beef'
-    | 'no_red_meat'
-    | 'gluten_free'
-    | 'dairy_free'
-    | 'low_carb'
-    | 'nut_allergy'
-    | 'shellfish_allergy'
-    | 'fish_allergy'
-    | 'egg_allergy'
-    | 'soy_allergy'
-    | 'sesame_allergy'
-  > | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1397,6 +1397,28 @@ export interface WorkerGetResponse {
    */
   timeZone: string | null;
   /**
+   * The worker's dietary restrictions. Empty when none are recorded.
+   */
+  dietaryRestrictions: Array<
+    | 'vegetarian'
+    | 'vegan'
+    | 'pescatarian'
+    | 'halal'
+    | 'kosher'
+    | 'no_pork'
+    | 'no_beef'
+    | 'no_red_meat'
+    | 'gluten_free'
+    | 'dairy_free'
+    | 'low_carb'
+    | 'nut_allergy'
+    | 'shellfish_allergy'
+    | 'fish_allergy'
+    | 'egg_allergy'
+    | 'soy_allergy'
+    | 'sesame_allergy'
+  >;
+  /**
    * The department the worker belongs to, or null if unassigned.
    */
   department: WorkerGetResponse.Department | null;
@@ -1426,28 +1448,6 @@ export interface WorkerGetResponse {
    * The worker's stored T-shirt size, or null when unset or unavailable.
    */
   tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
-  /**
-   * The worker's dietary restrictions. Empty when none are recorded.
-   */
-  dietaryRestrictions?: Array<
-    | 'vegetarian'
-    | 'vegan'
-    | 'pescatarian'
-    | 'halal'
-    | 'kosher'
-    | 'no_pork'
-    | 'no_beef'
-    | 'no_red_meat'
-    | 'gluten_free'
-    | 'dairy_free'
-    | 'low_carb'
-    | 'nut_allergy'
-    | 'shellfish_allergy'
-    | 'fish_allergy'
-    | 'egg_allergy'
-    | 'soy_allergy'
-    | 'sesame_allergy'
-  > | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -1588,6 +1588,28 @@ export namespace WorkerListResponse {
      */
     timeZone: string | null;
     /**
+     * The worker's dietary restrictions. Empty when none are recorded.
+     */
+    dietaryRestrictions: Array<
+      | 'vegetarian'
+      | 'vegan'
+      | 'pescatarian'
+      | 'halal'
+      | 'kosher'
+      | 'no_pork'
+      | 'no_beef'
+      | 'no_red_meat'
+      | 'gluten_free'
+      | 'dairy_free'
+      | 'low_carb'
+      | 'nut_allergy'
+      | 'shellfish_allergy'
+      | 'fish_allergy'
+      | 'egg_allergy'
+      | 'soy_allergy'
+      | 'sesame_allergy'
+    >;
+    /**
      * The department the worker belongs to, or null if unassigned.
      */
     department: Data.Department | null;
@@ -1617,28 +1639,6 @@ export namespace WorkerListResponse {
      * The worker's stored T-shirt size, or null when unset or unavailable.
      */
     tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
-    /**
-     * The worker's dietary restrictions. Empty when none are recorded.
-     */
-    dietaryRestrictions?: Array<
-      | 'vegetarian'
-      | 'vegan'
-      | 'pescatarian'
-      | 'halal'
-      | 'kosher'
-      | 'no_pork'
-      | 'no_beef'
-      | 'no_red_meat'
-      | 'gluten_free'
-      | 'dairy_free'
-      | 'low_carb'
-      | 'nut_allergy'
-      | 'shellfish_allergy'
-      | 'fish_allergy'
-      | 'egg_allergy'
-      | 'soy_allergy'
-      | 'sesame_allergy'
-    > | null;
     /**
      * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
      */
@@ -1899,6 +1899,28 @@ export interface WorkerCreateEmployeeResponse {
    */
   timeZone: string | null;
   /**
+   * The worker's dietary restrictions. Empty when none are recorded.
+   */
+  dietaryRestrictions: Array<
+    | 'vegetarian'
+    | 'vegan'
+    | 'pescatarian'
+    | 'halal'
+    | 'kosher'
+    | 'no_pork'
+    | 'no_beef'
+    | 'no_red_meat'
+    | 'gluten_free'
+    | 'dairy_free'
+    | 'low_carb'
+    | 'nut_allergy'
+    | 'shellfish_allergy'
+    | 'fish_allergy'
+    | 'egg_allergy'
+    | 'soy_allergy'
+    | 'sesame_allergy'
+  >;
+  /**
    * The department the worker belongs to, or null if unassigned.
    */
   department: WorkerCreateEmployeeResponse.Department | null;
@@ -1928,28 +1950,6 @@ export interface WorkerCreateEmployeeResponse {
    * The worker's stored T-shirt size, or null when unset or unavailable.
    */
   tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
-  /**
-   * The worker's dietary restrictions. Empty when none are recorded.
-   */
-  dietaryRestrictions?: Array<
-    | 'vegetarian'
-    | 'vegan'
-    | 'pescatarian'
-    | 'halal'
-    | 'kosher'
-    | 'no_pork'
-    | 'no_beef'
-    | 'no_red_meat'
-    | 'gluten_free'
-    | 'dairy_free'
-    | 'low_carb'
-    | 'nut_allergy'
-    | 'shellfish_allergy'
-    | 'fish_allergy'
-    | 'egg_allergy'
-    | 'soy_allergy'
-    | 'sesame_allergy'
-  > | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2452,6 +2452,28 @@ export interface WorkerCreateContractorResponse {
    */
   timeZone: string | null;
   /**
+   * The worker's dietary restrictions. Empty when none are recorded.
+   */
+  dietaryRestrictions: Array<
+    | 'vegetarian'
+    | 'vegan'
+    | 'pescatarian'
+    | 'halal'
+    | 'kosher'
+    | 'no_pork'
+    | 'no_beef'
+    | 'no_red_meat'
+    | 'gluten_free'
+    | 'dairy_free'
+    | 'low_carb'
+    | 'nut_allergy'
+    | 'shellfish_allergy'
+    | 'fish_allergy'
+    | 'egg_allergy'
+    | 'soy_allergy'
+    | 'sesame_allergy'
+  >;
+  /**
    * The department the worker belongs to, or null if unassigned.
    */
   department: WorkerCreateContractorResponse.Department | null;
@@ -2481,28 +2503,6 @@ export interface WorkerCreateContractorResponse {
    * The worker's stored T-shirt size, or null when unset or unavailable.
    */
   tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
-  /**
-   * The worker's dietary restrictions. Empty when none are recorded.
-   */
-  dietaryRestrictions?: Array<
-    | 'vegetarian'
-    | 'vegan'
-    | 'pescatarian'
-    | 'halal'
-    | 'kosher'
-    | 'no_pork'
-    | 'no_beef'
-    | 'no_red_meat'
-    | 'gluten_free'
-    | 'dairy_free'
-    | 'low_carb'
-    | 'nut_allergy'
-    | 'shellfish_allergy'
-    | 'fish_allergy'
-    | 'egg_allergy'
-    | 'soy_allergy'
-    | 'sesame_allergy'
-  > | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
@@ -2608,6 +2608,28 @@ export interface WorkerInviteResponse {
    */
   timeZone: string | null;
   /**
+   * The worker's dietary restrictions. Empty when none are recorded.
+   */
+  dietaryRestrictions: Array<
+    | 'vegetarian'
+    | 'vegan'
+    | 'pescatarian'
+    | 'halal'
+    | 'kosher'
+    | 'no_pork'
+    | 'no_beef'
+    | 'no_red_meat'
+    | 'gluten_free'
+    | 'dairy_free'
+    | 'low_carb'
+    | 'nut_allergy'
+    | 'shellfish_allergy'
+    | 'fish_allergy'
+    | 'egg_allergy'
+    | 'soy_allergy'
+    | 'sesame_allergy'
+  >;
+  /**
    * The department the worker belongs to, or null if unassigned.
    */
   department: WorkerInviteResponse.Department | null;
@@ -2637,28 +2659,6 @@ export interface WorkerInviteResponse {
    * The worker's stored T-shirt size, or null when unset or unavailable.
    */
   tShirtSize?: 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL' | null;
-  /**
-   * The worker's dietary restrictions. Empty when none are recorded.
-   */
-  dietaryRestrictions?: Array<
-    | 'vegetarian'
-    | 'vegan'
-    | 'pescatarian'
-    | 'halal'
-    | 'kosher'
-    | 'no_pork'
-    | 'no_beef'
-    | 'no_red_meat'
-    | 'gluten_free'
-    | 'dairy_free'
-    | 'low_carb'
-    | 'nut_allergy'
-    | 'shellfish_allergy'
-    | 'fish_allergy'
-    | 'egg_allergy'
-    | 'soy_allergy'
-    | 'sesame_allergy'
-  > | null;
   /**
    * The worker's assigned job level, or null if unassigned. Omitted when job levels are not enabled.
    */
